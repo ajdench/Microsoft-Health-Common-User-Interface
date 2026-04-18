@@ -7,6 +7,7 @@ const { head } = Astro.locals.starlightRoute;
 <style is:global>
   .sl-markdown-content .sl-heading-wrapper {
     --sl-anchor-icon-size: 20px;
+    --msh-anchor-shift: 0px;
   }
 
   .sl-markdown-content .sl-anchor-link {
@@ -14,14 +15,77 @@ const { head } = Astro.locals.starlightRoute;
   }
 
   .sl-markdown-content .sl-anchor-icon > svg {
-    vertical-align: text-bottom;
-    transform: translateY(0.18em);
+    display: inline;
+    width: var(--sl-anchor-icon-size);
+    vertical-align: top;
+    transform: translateY(
+      calc(
+        (var(--sl-line-height-headings) * 1em - var(--sl-anchor-icon-size)) / 2 +
+          var(--msh-anchor-shift)
+      )
+    );
   }
 </style>
 
 <script is:inline>
   (() => {
     const normalizeText = (value) => value?.replace(/\s+/g, ' ').trim() ?? '';
+    const descenderPattern = /[gjpqyQ,;:]/g;
+    const metricCanvas = document.createElement('canvas');
+    const metricContext = metricCanvas.getContext('2d');
+
+    const buildCanvasFont = (style) =>
+      [
+        style.fontStyle,
+        style.fontVariant,
+        style.fontWeight,
+        style.fontStretch,
+        style.fontSize,
+        style.fontFamily,
+      ]
+        .filter(Boolean)
+        .join(' ');
+
+    const applyHeadingAnchorAlignment = () => {
+      if (!metricContext) return;
+
+      document.querySelectorAll('.sl-markdown-content .sl-heading-wrapper').forEach((wrapper) => {
+        const heading = wrapper.querySelector(':scope > h1, :scope > h2, :scope > h3, :scope > h4, :scope > h5, :scope > h6');
+        const svg = wrapper.querySelector(':scope > .sl-anchor-link .sl-anchor-icon > svg');
+
+        if (!heading || !svg) return;
+
+        const headingText = normalizeText(heading.textContent);
+        if (!headingText) return;
+
+        const textStyle = getComputedStyle(heading);
+        const wrapperRect = wrapper.getBoundingClientRect();
+        const svgRect = svg.getBoundingClientRect();
+        const lineHeight = parseFloat(getComputedStyle(wrapper).lineHeight) || wrapperRect.height;
+
+        metricContext.font = buildCanvasFont(textStyle);
+
+        const fullMetrics = metricContext.measureText(headingText);
+        const descenderlessMetrics = metricContext.measureText(
+          headingText.replace(descenderPattern, 'x')
+        );
+
+        const ascent = fullMetrics.actualBoundingBoxAscent || 0;
+        const descent = fullMetrics.actualBoundingBoxDescent || 0;
+        const descenderlessDescent = descenderlessMetrics.actualBoundingBoxDescent || 0;
+        const textHeight = ascent + descent;
+        const leading = Math.max(0, lineHeight - textHeight);
+        const baselineY = wrapperRect.top + leading / 2 + ascent;
+
+        const topGuide = baselineY + descenderlessDescent;
+        const bottomGuide = baselineY + descent;
+        const targetCenter = (topGuide + bottomGuide) / 2;
+        const currentCenter = (svgRect.top + svgRect.bottom) / 2;
+        const shift = targetCenter - currentCenter;
+
+        wrapper.style.setProperty('--msh-anchor-shift', `${shift.toFixed(2)}px`);
+      });
+    };
 
     const getNavBucket = (pathname) => {
       if (pathname.startsWith('/derived/inventories/')) return 'Inventories';
@@ -107,6 +171,7 @@ const { head } = Astro.locals.starlightRoute;
       requestAnimationFrame(() =>
         requestAnimationFrame(() => {
           applyHeaderNavState();
+          applyHeadingAnchorAlignment();
           applyTocPageTitleLabel();
           applyTocHashSelection();
           applyTocOverflowState();
@@ -131,9 +196,12 @@ const { head } = Astro.locals.starlightRoute;
       bindObservers();
     }
 
+    document.fonts?.ready?.then(() => applyHeadingAnchorAlignment());
+
     document.addEventListener('astro:page-load', scheduleApply);
     window.addEventListener('resize', () => {
       applyHeaderNavState();
+      applyHeadingAnchorAlignment();
       applyTocPageTitleLabel();
       applyTocHashSelection();
       applyTocOverflowState();

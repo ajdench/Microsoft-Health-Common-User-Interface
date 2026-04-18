@@ -386,3 +386,9 @@
 - Inputs used: local `msh-cui-wiki/src/components/Head.astro`, live `http://localhost:4322/readme/`, Playwright WebKit verification on `http://localhost:4322/readme/#repo-shape`
 - Outputs created: updated `msh-cui-wiki/src/components/Head.astro`, refreshed browser artifact `output/playwright/repo-shape-anchor-alignment-webkit.png`, updated `log.md`
 - Unresolved issues: the icon now renders about `1.5px` above the heading element bottom in WebKit, which visually places it near the requested text-bottom line rather than on the lower descender region
+
+## 2026-04-19 00:49:25 BST — Switched heading anchor placement from fixed offsets to computed font-metric alignment
+- Action performed: replaced the fixed `translateY(...)` anchor tweak in `msh-cui-wiki/src/components/Head.astro` with a per-heading calculation that measures the heading text using canvas metrics, derives the band between descenderless text-bottom and full glyph-bottom, and sets a wrapper-level `--msh-anchor-shift` so the icon is placed into that band on load, resize, and page navigation
+- Inputs used: local `msh-cui-wiki/src/components/Head.astro`, live `http://localhost:4322/#concepts`, Playwright WebKit verification on the `Concepts` heading
+- Outputs created: updated `msh-cui-wiki/src/components/Head.astro`, browser artifact `output/playwright/concepts-anchor-alignment-webkit.png`, updated `log.md`
+- Unresolved issues: none in the current WebKit pass; the `Concepts` heading computed `--msh-anchor-shift: -13.70px`, and the icon now renders about `1.5px` above the heading element bottom, which is the intended placement away from the descender line
