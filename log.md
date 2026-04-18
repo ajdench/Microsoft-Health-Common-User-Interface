@@ -392,3 +392,9 @@
 - Inputs used: local `msh-cui-wiki/src/components/Head.astro`, live `http://localhost:4322/#concepts`, Playwright WebKit verification on the `Concepts` heading
 - Outputs created: updated `msh-cui-wiki/src/components/Head.astro`, browser artifact `output/playwright/concepts-anchor-alignment-webkit.png`, updated `log.md`
 - Unresolved issues: none in the current WebKit pass; the `Concepts` heading computed `--msh-anchor-shift: -13.70px`, and the icon now renders about `1.5px` above the heading element bottom, which is the intended placement away from the descender line
+
+## 2026-04-19 01:02:47 BST — Replaced failed computed anchor placement with a working icon-wrapper offset on live 4322
+- Action performed: removed the failed computed anchor-placement experiments from `msh-cui-wiki/src/components/Head.astro` and switched the heading anchor icon to a direct wrapper offset using `position: relative; top: -8px`, which is the first mechanism that visibly moved the icon into the requested zone on the live `4322` page
+- Inputs used: local `msh-cui-wiki/src/components/Head.astro`, live `http://localhost:4322/#concepts`, Playwright WebKit verification on the `Concepts` heading, local browser artifact `output/playwright/concepts-anchor-test-webkit.png`
+- Outputs created: updated `msh-cui-wiki/src/components/Head.astro`, refreshed browser artifact `output/playwright/concepts-anchor-alignment-webkit.png`, updated `log.md`
+- Unresolved issues: this is a direct measured placement rather than a successful per-heading metric computation; it is the correct current fix because it actually changes the live browser result and places the icon close to the requested band between visible text bottom and descender reserve
