@@ -236,6 +236,8 @@
 .right-sidebar-panel nav > ul > li > ul > li > a .msh-toc-link-shell {
   display: grid;
   inline-size: 100%;
+  box-sizing: border-box;
+  padding: var(--msh-toc-item-pad-y) var(--msh-toc-item-pad-x);
 }
 
 .right-sidebar-panel nav > ul > li > ul > li > a .msh-toc-link-measure,
@@ -245,7 +247,7 @@
   display: block;
   inline-size: 100%;
   max-inline-size: 100%;
-  padding: var(--msh-toc-item-pad-y) var(--msh-toc-item-pad-x);
+  min-inline-size: 0;
   line-height: 1.45;
   white-space: normal;
   word-break: normal;

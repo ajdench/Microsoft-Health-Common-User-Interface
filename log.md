@@ -272,3 +272,9 @@
 - Inputs used: local `msh-cui-wiki/src/components/Head.astro`, local `msh-cui-wiki/src/styles/global.css`, running Astro dev server on `http://localhost:4321/`, Playwright WebKit verification on `/wiki/overview/health-cui-overview/` and `/wiki/overview/health-cui-overview/#synthesis`
 - Outputs created: updated `msh-cui-wiki/src/components/Head.astro`, updated `msh-cui-wiki/src/styles/global.css`, browser artifact `output/playwright/toc-no-reflow-webkit.png`, updated `log.md`
 - Unresolved issues: none in the WebKit pass; the nested TOC current item now keeps a constant `200px` content box and `15.2px` left/right inner padding while switching the visible label from normal weight to `500`
+
+## 2026-04-18 21:14:52 BST — Made nested TOC wrapping respect the actual inset content box
+- Action performed: moved the nested TOC horizontal inset from the overlaid label/measure layers onto the shared shell itself so wrap calculation is driven by the real inset content box, making the right inner margin match the left visually in current/fill state and forcing earlier line breaks where needed
+- Inputs used: local `msh-cui-wiki/src/styles/global.css`, running Astro dev server on `http://localhost:4321/`, Playwright WebKit verification on `http://localhost:4321/agents/#wiki-content-must-distinguish-fact-from-interpretation`
+- Outputs created: updated `msh-cui-wiki/src/styles/global.css`, browser artifact `output/playwright/toc-inset-wrap-agents-webkit.png`, updated `log.md`
+- Unresolved issues: none in the AGENTS WebKit case; the previously problematic current TOC item now wraps to three lines with the inset shell defining the content width
