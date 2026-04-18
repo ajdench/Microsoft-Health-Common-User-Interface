@@ -10,8 +10,8 @@
   --msh-control-hover: rgb(235 235 235 / 0.98);
   --msh-soft-shadow: 0 16px 42px rgb(0 0 0 / 0.08);
   --msh-toc-shadow: 0 10px 24px rgb(0 0 0 / 0.05);
-  --msh-toc-item-pad-x: 1.1rem;
-  --msh-toc-item-pad-y: 0.5rem;
+  --msh-toc-item-inline-reserve: var(--page-space-2);
+  --msh-toc-item-block-pad: var(--page-space-2);
   --msh-sidebar-active-bg: rgb(232 232 232 / 0.98);
   --msh-sidebar-active-text: rgb(24 24 27 / 0.98);
   --msh-icon-search: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='10.75' cy='10.75' r='5.9' fill='none' stroke='black' stroke-width='1.9'/%3E%3Cpath d='M15.25 15.25L19.35 19.35' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round'/%3E%3C/svg%3E");
@@ -223,17 +223,18 @@
   inline-size: 100% !important;
   max-inline-size: 100% !important;
   padding: 0 !important;
-  line-height: 1.45 !important;
+  line-height: 1.4 !important;
   background: transparent !important;
 }
 
 .right-sidebar-panel nav ul ul a .msh-toc-link-shell {
   display: grid;
-  inline-size: calc(100% - (2 * var(--msh-toc-item-pad-x)));
-  max-inline-size: calc(100% - (2 * var(--msh-toc-item-pad-x)));
-  margin-inline: var(--msh-toc-item-pad-x);
+  inline-size: calc(100% - var(--msh-toc-item-inline-reserve));
+  max-inline-size: calc(100% - var(--msh-toc-item-inline-reserve));
+  margin-inline-start: 0;
+  margin-inline-end: var(--msh-toc-item-inline-reserve);
   box-sizing: border-box;
-  padding: var(--msh-toc-item-pad-y) 0;
+  padding: var(--msh-toc-item-block-pad) 0;
 }
 
 .right-sidebar-panel nav ul ul a .msh-toc-link-measure,
@@ -244,7 +245,7 @@
   inline-size: 100%;
   max-inline-size: 100%;
   min-inline-size: 0;
-  line-height: 1.45;
+  line-height: 1.4;
   white-space: normal;
   word-break: normal;
   overflow-wrap: break-word;

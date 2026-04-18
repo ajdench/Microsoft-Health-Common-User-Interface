@@ -296,3 +296,9 @@
 - Inputs used: local `msh-cui-wiki/src/styles/global.css`, running Astro dev server on `http://localhost:4321/`, Playwright WebKit verification on `http://localhost:4321/readme/#repo-shape` and `http://localhost:4321/agents/#wiki-content-must-distinguish-fact-from-interpretation`
 - Outputs created: updated `msh-cui-wiki/src/styles/global.css`, browser artifact `output/playwright/toc-nested-page-defaults-webkit.png`, updated `log.md`
 - Unresolved issues: none in the WebKit pass; nested current items are back on the Page default chip treatment and the measured wrapping logic remains active
+
+## 2026-04-18 22:05:44 BST — Rebased nested TOC measurement geometry onto Page default spacing
+- Action performed: replaced the custom nested TOC measurement-shell spacing with the Page theme’s own spacing tokens so the no-reflow logic now reserves the Page-default `8px` inset/margin geometry instead of the earlier oversized custom inset, while still keeping equal left/right visual reserve for wrapped text
+- Inputs used: local `msh-cui-wiki/src/styles/global.css`, running Astro dev server on `http://localhost:4321/`, Playwright WebKit geometry verification on `http://localhost:4321/readme/#repo-shape` and `http://localhost:4321/agents/#wiki-content-must-distinguish-fact-from-interpretation`
+- Outputs created: updated `msh-cui-wiki/src/styles/global.css`, browser artifact `output/playwright/toc-nested-page-geometry-defaults-webkit.png`, updated `log.md`
+- Unresolved issues: none in the WebKit pass; nested current items now measure at `8px` left inset, `8px` right reserve, `2px` vertical margins, `12px` radius, and retain stable wrapping
