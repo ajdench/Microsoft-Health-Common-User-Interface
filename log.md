@@ -254,3 +254,9 @@
 - Inputs used: local `msh-cui-wiki/astro.config.mjs`, local `msh-cui-wiki/src/components/Head.astro`, local `AGENTS.md`, running Astro dev server on `http://localhost:4321/`, Playwright WebKit verification on `/`, `/agents/`, `/wiki/overview/health-cui-overview/`, `/wiki/source-notes/toolkit-mirror-mscui/`, and `/derived/inventories/source-inventory/`
 - Outputs created: updated `msh-cui-wiki/astro.config.mjs`, updated `msh-cui-wiki/src/components/Head.astro`, updated `AGENTS.md`, browser artifact `output/playwright/header-wiki-nav-webkit.png`, updated `log.md`
 - Unresolved issues: Playwright WebKit verification passed for the new nav behavior; a Playwright Chromium pass was not completed in this stage because the local `chrome-for-testing` browser bundle was not installed for the CLI session
+
+## 2026-04-18 20:38:57 BST — Fixed root-page TOC duplication and promoted Index as the parent TOC node
+- Action performed: adjusted the mirrored root/index handling so the TOC no longer shows two sibling `Overview` items, rewrote the root-page top TOC link from `#_top` to `/index`, and nested the actual page sections under a single top-level `Index` entry with the theme’s standard inset/guide-line structure
+- Inputs used: local `msh-cui-wiki/scripts/sync-llm-wiki.mjs`, local `msh-cui-wiki/src/components/Head.astro`, local Astro dev server on `http://localhost:4321/`, Playwright WebKit DOM verification and screenshot on `/`
+- Outputs created: updated `msh-cui-wiki/scripts/sync-llm-wiki.mjs`, updated `msh-cui-wiki/src/components/Head.astro`, added `msh-cui-wiki/src/pages/index/index.astro`, browser artifact `output/playwright/page-index-toc-webkit.png`, updated `log.md`
+- Unresolved issues: the explicit `/index/` route currently redirects to `/`; the right-hand TOC link target is correct and resolves, but the canonical rendered page remains the root URL

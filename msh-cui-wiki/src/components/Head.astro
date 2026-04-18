@@ -6,6 +6,8 @@ const { head } = Astro.locals.starlightRoute;
 
 <script is:inline>
   (() => {
+    const isIndexPage = (pathname) => pathname === '/' || pathname === '/index' || pathname === '/index/';
+
     const getNavBucket = (pathname) => {
       if (pathname.startsWith('/derived/inventories/')) return 'Inventories';
       if (
@@ -28,6 +30,76 @@ const { head } = Astro.locals.starlightRoute;
       });
     };
 
+    const applyIndexTocState = () => {
+      const indexPath = '/index';
+
+      document
+        .querySelectorAll('.page-toc-sticky nav > ul, mobile-starlight-toc nav > ul')
+        .forEach((list) => {
+          const items = Array.from(list.children).filter((element) => element.tagName === 'LI');
+          if (items.length < 2) return;
+
+          const [topItem, ...remainingItems] = items;
+          const topLink = topItem.querySelector(':scope > a');
+          if (!topLink) return;
+
+          const topLabel = topLink.textContent?.trim() ?? '';
+          const onIndexPage = isIndexPage(window.location.pathname);
+
+          if (!onIndexPage) {
+            if (topLabel !== 'Index') return;
+            topLink.setAttribute('href', '#_top');
+            const topSpan = topLink.querySelector('span');
+            if (topSpan) {
+              topSpan.textContent = 'Overview';
+              topSpan.style.setProperty('--depth', '0');
+            } else {
+              topLink.textContent = 'Overview';
+            }
+
+            const nestedList = topItem.querySelector(':scope > ul');
+            if (nestedList) {
+              Array.from(nestedList.children)
+                .filter((element) => element.tagName === 'LI')
+                .forEach((item) => {
+                  item.style.setProperty('--depth', '0');
+                  item.querySelectorAll(':scope > a, :scope > a > span').forEach((element) => {
+                    element.style.setProperty('--depth', '0');
+                  });
+                  list.appendChild(item);
+                });
+              nestedList.remove();
+            }
+            return;
+          }
+
+          topLink.setAttribute('href', indexPath);
+          const topSpan = topLink.querySelector('span');
+          if (topSpan) {
+            topSpan.textContent = 'Index';
+            topSpan.style.setProperty('--depth', '0');
+          } else {
+            topLink.textContent = 'Index';
+          }
+
+          let nestedList = topItem.querySelector(':scope > ul');
+          if (!nestedList) {
+            nestedList = document.createElement('ul');
+            nestedList.className = list.className;
+            nestedList.style.setProperty('--depth', '1');
+            topItem.appendChild(nestedList);
+          }
+
+          remainingItems.forEach((item) => {
+            item.style.setProperty('--depth', '1');
+            item.querySelectorAll(':scope > a, :scope > a > span').forEach((element) => {
+              element.style.setProperty('--depth', '1');
+            });
+            nestedList.appendChild(item);
+          });
+        });
+    };
+
     const applyTocOverflowState = () => {
       document.querySelectorAll('.page-toc-sticky').forEach((element) => {
         const hasOverflow = element.scrollHeight > element.clientHeight + 1;
@@ -39,6 +111,7 @@ const { head } = Astro.locals.starlightRoute;
       requestAnimationFrame(() =>
         requestAnimationFrame(() => {
           applyHeaderNavState();
+          applyIndexTocState();
           applyTocOverflowState();
         })
       );
@@ -64,6 +137,7 @@ const { head } = Astro.locals.starlightRoute;
     document.addEventListener('astro:page-load', scheduleApply);
     window.addEventListener('resize', () => {
       applyHeaderNavState();
+      applyIndexTocState();
       applyTocOverflowState();
     }, { passive: true });
     window.addEventListener('pageshow', bindObservers);

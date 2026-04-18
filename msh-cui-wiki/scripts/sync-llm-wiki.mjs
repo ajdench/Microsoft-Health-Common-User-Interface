@@ -428,6 +428,11 @@ async function ensureParentDirectory(filePath) {
   await fs.mkdir(path.dirname(filePath), { recursive: true });
 }
 
+async function writeMirrorFile(targetPath, content) {
+  await ensureParentDirectory(targetPath);
+  await fs.writeFile(targetPath, content, 'utf8');
+}
+
 async function mirrorMarkdownFile(sourceAbsolutePath, descriptions) {
   const sourceRelativePath = normalizePath(path.relative(repoRoot, sourceAbsolutePath));
   const targetPath = path.join(docsRoot, sourceRelativePath);
@@ -471,8 +476,11 @@ async function mirrorMarkdownFile(sourceAbsolutePath, descriptions) {
   }
   const finalContent = `${frontmatter}${canonicalNote}${leadingBody}${contextNote}${transformedBody}\n`;
 
-  await ensureParentDirectory(targetPath);
-  await fs.writeFile(targetPath, finalContent, 'utf8');
+  await writeMirrorFile(targetPath, finalContent);
+
+  if (sourceRelativePath === 'index.md') {
+    await writeMirrorFile(path.join(docsRoot, 'index', 'index.md'), finalContent);
+  }
 }
 
 function renderJsonValue(value) {
@@ -560,8 +568,7 @@ async function mirrorJsonFile(sourceAbsolutePath, descriptions) {
   const parsed = JSON.parse(content);
   const markdown = buildJsonMarkdown(sourceRelativePath, parsed, descriptions.get(sourceRelativePath));
 
-  await ensureParentDirectory(targetPath);
-  await fs.writeFile(targetPath, markdown, 'utf8');
+  await writeMirrorFile(targetPath, markdown);
 }
 
 export async function syncRepoToDocs() {
