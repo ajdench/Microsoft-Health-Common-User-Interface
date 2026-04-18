@@ -87,6 +87,28 @@ const { head } = Astro.locals.starlightRoute;
       });
     };
 
+    const applyTocSelectionState = () => {
+      const hash = window.location.hash;
+
+      document.querySelectorAll('.page-toc-sticky nav > ul > li').forEach((topItem) => {
+        const topLink = topItem.querySelector(':scope > a');
+        if (!topLink) return;
+
+        const childLinks = Array.from(topItem.querySelectorAll(':scope > ul a[href]'));
+        const hasHashSelectedChild =
+          Boolean(hash) && childLinks.some((link) => (link.getAttribute('href') ?? '').endsWith(hash));
+
+        if (hasHashSelectedChild) {
+          topLink.removeAttribute('aria-current');
+          topLink.setAttribute('data-msh-parent-context', 'true');
+          return;
+        }
+
+        topLink.setAttribute('aria-current', 'true');
+        topLink.removeAttribute('data-msh-parent-context');
+      });
+    };
+
     const applyTocOverflowState = () => {
       document.querySelectorAll('.page-toc-sticky').forEach((element) => {
         const hasOverflow = element.scrollHeight > element.clientHeight + 1;
@@ -99,6 +121,7 @@ const { head } = Astro.locals.starlightRoute;
         requestAnimationFrame(() => {
           applyHeaderNavState();
           applyTocTitleState();
+          applyTocSelectionState();
           applyTocOverflowState();
         })
       );

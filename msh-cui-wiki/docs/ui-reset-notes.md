@@ -100,11 +100,12 @@ The current baseline is:
 
 The nested right-hand TOC should now be handled in explicit phases:
 
-### Phase 0: Pure defaults
+### Phase 0: Defaults plus title-and-nesting contract
 
 - remove all local nested TOC measurement-shell logic
-- remove all local nested TOC selected-hash logic
-- let `@pelagornis/page` own nested TOC hover/current/select behavior entirely
+- keep the page-title parent item and nested section structure
+- let `@pelagornis/page` own nested TOC hover/current/select visuals
+- remove parent selected styling when a hash-target child is active
 - verify the default behavior in Playwright WebKit before making any new TOC change
 
 This is the current reset baseline.
