@@ -96,6 +96,27 @@ The current baseline is:
 - restrained header/sidebar/TOC surface treatment for clearer light-mode segmentation
 - browser verification against WebKit, Chrome, and Edge
 
+## Nested TOC Contract
+
+For nested items in the right-hand TOC:
+
+- visual styling should start from the `@pelagornis/page` defaults, not from local custom chip geometry
+- the effective inset and margin values must use the Page default tokens:
+  - horizontal inset: `var(--page-space-2)`
+  - vertical spacing between items: `2px`
+  - radius: `var(--page-radius-xl)`
+  - fill color: `var(--page-accent-light)`
+- non-hover/non-selected text must wrap as if the active/filled state already exists
+- the contract should be width-based, not character-count-based, and must respond to the live viewport width
+- hover and selected/current states must keep the same wrap, line breaks, and inset geometry
+- deep section anchors selected by URL hash must receive the same visible inset shell treatment even if the theme keeps `aria-current` on the page-title TOC node
+
+Implementation rule:
+
+- let Page own the visual tokens
+- keep the local layer limited to measurement-shell width reservation and deep-hash selected-state continuity
+- do not reintroduce custom TOC color, radius, or spacing values when the theme already defines them
+
 ## Later references
 
 - `https://fevol.github.io/starlight-site-graph/` — keep as a future reference if we revisit graph-style discovery/navigation inside the Astro/Starlight layer

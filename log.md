@@ -308,3 +308,9 @@
 - Inputs used: local `msh-cui-wiki/src/components/Head.astro`, local `msh-cui-wiki/src/styles/global.css`, running Astro dev server on `http://localhost:4321/`, Playwright WebKit verification on `http://localhost:4321/agents/#wiki-content-must-distinguish-fact-from-interpretation`
 - Outputs created: updated `msh-cui-wiki/src/components/Head.astro`, updated `msh-cui-wiki/src/styles/global.css`, browser artifact `output/playwright/toc-hash-selected-shell-webkit.png`, updated `log.md`
 - Unresolved issues: none in the WebKit pass; the deep nested AGENTS anchor now carries a selected shell with `rgb(245, 245, 245)` fill and `12px` radius even though Starlight keeps `aria-current` on the page-title TOC node
+
+## 2026-04-18 22:16:57 BST — Documented and rebuilt the nested TOC contract on top of Page defaults
+- Action performed: documented the nested TOC requirements in `msh-cui-wiki/docs/ui-reset-notes.md`, then simplified the local nested TOC layer so Page continues to own the visual tokens and spacing values while the local shell only reserves the active-state width contract and preserves deep-hash selected-state continuity
+- Inputs used: local `msh-cui-wiki/docs/ui-reset-notes.md`, local `msh-cui-wiki/src/styles/global.css`, running Astro dev server on `http://localhost:4321/`, Playwright WebKit verification on `http://localhost:4321/agents/#wiki-content-must-distinguish-fact-from-interpretation`
+- Outputs created: updated `msh-cui-wiki/docs/ui-reset-notes.md`, updated `msh-cui-wiki/src/styles/global.css`, browser artifact `output/playwright/toc-defaults-plus-contract-webkit.png`, updated `log.md`
+- Unresolved issues: none in the WebKit pass; the deep nested AGENTS TOC item now uses the Page default `2px` vertical margins, `12px` radius, theme fill token, and a stable three-line measured contract
