@@ -122,6 +122,18 @@
   border-bottom-right-radius: 0 !important;
 }
 
+.page-toc-sticky .msh-toc-page-title {
+  margin: 0 0 var(--page-space-3) 0;
+  color: var(--page-text);
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.page-toc-sticky .msh-toc-page-title-mobile {
+  padding-bottom: var(--page-space-3);
+}
+
 .main-pane {
   background:
     radial-gradient(circle at top right, rgb(0 0 0 / 0.035), transparent 30%),

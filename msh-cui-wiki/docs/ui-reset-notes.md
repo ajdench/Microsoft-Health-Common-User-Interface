@@ -96,45 +96,21 @@ The current baseline is:
 - restrained header/sidebar/TOC surface treatment for clearer light-mode segmentation
 - browser verification against WebKit, Chrome, and Edge
 
-## Nested TOC Phases
+## TOC Model
 
-The nested right-hand TOC should now be handled in explicit phases:
+The right-hand TOC now follows the simpler model:
 
-### Phase 0: Defaults plus title-and-nesting contract
-
-- remove all local nested TOC measurement-shell logic
-- keep the page-title parent item and nested section structure
-- let `@pelagornis/page` own nested TOC hover/current/select visuals
-- remove parent selected styling when a hash-target child is active
-- verify the default behavior in Playwright WebKit before making any new TOC change
-
-This is the current reset baseline.
-
-### Phase 1: Measure the default contract
-
-- record the Page default nested TOC geometry as rendered:
-  - horizontal inset
-  - vertical margins
-  - radius
-  - fill token
-  - wrap behavior under hover/current
-- do not change behavior in this phase; only observe and capture
-
-### Phase 2: Add contract-only logic
-
-- if needed, add a minimal local layer that preserves the default wrap contract across states
-- that layer must not own color, radius, or spacing tokens
-- it may only reserve width so non-state wrapping matches the active-state text box
-
-### Phase 3: Restore deep-hash continuity only if needed
-
-- if the theme still keeps `aria-current` on the page-title TOC node instead of the deep section anchor, add a minimal selected-hash continuity layer
-- that layer must reuse the theme’s own visible styling rather than inventing new chip geometry
+- do not rewrite the theme’s TOC list structure
+- do not create a synthetic parent TOC node
+- render the page title as a separate static label above the untouched TOC list
+- let the theme keep ownership of hover, current-state visuals, spacing, and list structure
+- add only a minimal hash-selection pass so the exact matching TOC link becomes current on load and on hash changes
 
 Implementation rule:
 
-- never mix visual restyling and contract logic in the same pass
-- each phase should be verified in WebKit before moving to the next phase
+- structure stays native to `@pelagornis/page`
+- the local layer may add static title context and hash-selection correction only
+- no local TOC geometry or chip-style ownership unless a later bug proves it necessary
 
 ## Later references
 

@@ -6,7 +6,6 @@ const { head } = Astro.locals.starlightRoute;
 
 <script is:inline>
   (() => {
-    const isIndexPage = (pathname) => pathname === '/' || pathname === '/index' || pathname === '/index/';
     const normalizeText = (value) => value?.replace(/\s+/g, ' ').trim() ?? '';
 
     const getNavBucket = (pathname) => {
@@ -33,79 +32,52 @@ const { head } = Astro.locals.starlightRoute;
 
     const getTocPageTitle = () => normalizeText(document.querySelector('main h1')?.textContent) || 'Overview';
 
-    const applyTocTitleState = () => {
-      const topHref = isIndexPage(window.location.pathname) ? '/index' : window.location.pathname;
+    const applyTocPageTitleLabel = () => {
       const topLabel = getTocPageTitle();
 
-      document.querySelectorAll('.page-toc-sticky nav > ul').forEach((list) => {
-        const items = Array.from(list.children).filter((element) => element.tagName === 'LI');
-        if (items.length === 0) return;
-
-        const [topItem, ...directChildren] = items;
-        const topLink = topItem.querySelector(':scope > a');
-        if (!topLink) return;
-
-        const nestedList = topItem.querySelector(':scope > ul');
-        const nestedChildren = nestedList
-          ? Array.from(nestedList.children).filter((element) => element.tagName === 'LI')
-          : [];
-        const childItems = [...directChildren, ...nestedChildren];
-
-        if (nestedList) {
-          nestedList.remove();
+      document.querySelectorAll('.page-toc-sticky nav').forEach((nav) => {
+        let title = nav.querySelector(':scope > .msh-toc-page-title');
+        if (!title) {
+          title = document.createElement('div');
+          title.className = 'msh-toc-page-title';
+          const heading = nav.querySelector(':scope > h2');
+          if (heading) {
+            heading.insertAdjacentElement('afterend', title);
+          } else {
+            nav.prepend(title);
+          }
         }
+        title.textContent = topLabel;
 
-        topLink.setAttribute('href', topHref);
-        const topSpan = topLink.querySelector('span');
-        if (topSpan) {
-          topSpan.textContent = topLabel;
-          topSpan.style.setProperty('--depth', '0');
-        } else {
-          topLink.textContent = topLabel;
+        const mobileTitle = nav.querySelector(':scope > details > .dropdown > .msh-toc-page-title');
+        const dropdown = nav.querySelector(':scope > details > .dropdown');
+        if (dropdown && !mobileTitle) {
+          const titleNode = document.createElement('div');
+          titleNode.className = 'msh-toc-page-title msh-toc-page-title-mobile';
+          titleNode.textContent = topLabel;
+          dropdown.prepend(titleNode);
+        } else if (mobileTitle) {
+          mobileTitle.textContent = topLabel;
         }
-        topItem.style.setProperty('--depth', '0');
-        topItem.querySelectorAll(':scope > a, :scope > a > span').forEach((element) => {
-          element.style.setProperty('--depth', '0');
-        });
-
-        if (childItems.length === 0) {
-          return;
-        }
-
-        const nextNestedList = document.createElement('ul');
-        nextNestedList.className = list.className;
-        nextNestedList.style.setProperty('--depth', '1');
-        topItem.appendChild(nextNestedList);
-
-        childItems.forEach((item) => {
-          item.style.setProperty('--depth', '1');
-          item.querySelectorAll(':scope > a, :scope > a > span').forEach((element) => {
-            element.style.setProperty('--depth', '1');
-          });
-          nextNestedList.appendChild(item);
-        });
       });
     };
 
-    const applyTocSelectionState = () => {
+    const applyTocHashSelection = () => {
       const hash = window.location.hash;
+      if (!hash) return;
 
-      document.querySelectorAll('.page-toc-sticky nav > ul > li').forEach((topItem) => {
-        const topLink = topItem.querySelector(':scope > a');
-        if (!topLink) return;
+      document.querySelectorAll('.page-toc-sticky nav').forEach((nav) => {
+        const links = Array.from(nav.querySelectorAll('a[href^="#"]'));
+        const selected = links.find((link) => (link.getAttribute('href') ?? '') === hash);
+        if (!selected) return;
 
-        const childLinks = Array.from(topItem.querySelectorAll(':scope > ul a[href]'));
-        const hasHashSelectedChild =
-          Boolean(hash) && childLinks.some((link) => (link.getAttribute('href') ?? '').endsWith(hash));
-
-        if (hasHashSelectedChild) {
-          topLink.removeAttribute('aria-current');
-          topLink.setAttribute('data-msh-parent-context', 'true');
-          return;
-        }
-
-        topLink.setAttribute('aria-current', 'true');
-        topLink.removeAttribute('data-msh-parent-context');
+        links.forEach((link) => {
+          if (link === selected) {
+            link.setAttribute('aria-current', 'true');
+          } else {
+            link.removeAttribute('aria-current');
+          }
+        });
       });
     };
 
@@ -120,8 +92,8 @@ const { head } = Astro.locals.starlightRoute;
       requestAnimationFrame(() =>
         requestAnimationFrame(() => {
           applyHeaderNavState();
-          applyTocTitleState();
-          applyTocSelectionState();
+          applyTocPageTitleLabel();
+          applyTocHashSelection();
           applyTocOverflowState();
         })
       );
@@ -147,9 +119,11 @@ const { head } = Astro.locals.starlightRoute;
     document.addEventListener('astro:page-load', scheduleApply);
     window.addEventListener('resize', () => {
       applyHeaderNavState();
-      applyTocTitleState();
+      applyTocPageTitleLabel();
+      applyTocHashSelection();
       applyTocOverflowState();
     }, { passive: true });
+    window.addEventListener('hashchange', scheduleApply);
     window.addEventListener('pageshow', bindObservers);
   })();
 </script>
