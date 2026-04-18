@@ -338,3 +338,9 @@
 - Inputs used: local `msh-cui-wiki/src/styles/global.css`, running Astro dev server on `http://localhost:4322/`, Playwright WebKit verification on `http://localhost:4322/agents/#wiki-content-must-distinguish-fact-from-interpretation`
 - Outputs created: updated `msh-cui-wiki/src/styles/global.css`, browser artifact `output/playwright/toc-pane-heading-removed-webkit.png`, updated `log.md`
 - Unresolved issues: none for the desktop pane; mobile still shows `On this page`, which was left unchanged in this pass
+
+## 2026-04-18 23:39:54 BST — Reduced heading link icons to half size and grey
+- Action performed: overrode the Starlight heading-anchor icon size token to half its default value and changed the heading anchor link color to the grey secondary text color
+- Inputs used: local `msh-cui-wiki/src/styles/global.css`, running Astro dev server on `http://localhost:4322/`, Playwright WebKit verification on `http://localhost:4322/agents/`
+- Outputs created: updated `msh-cui-wiki/src/styles/global.css`, browser artifact `output/playwright/title-anchor-icons-grey-half-webkit.png`, updated `log.md`
+- Unresolved issues: none in the WebKit pass; the heading anchor link color is now grey and the reduced icon-size token is active

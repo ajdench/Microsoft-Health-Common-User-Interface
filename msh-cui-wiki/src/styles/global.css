@@ -149,9 +149,21 @@
   scroll-margin-top: 5rem;
 }
 
+.sl-markdown-content {
+  --sl-anchor-icon-size: 0.41375em;
+}
+
+.sl-markdown-content .sl-anchor-link {
+  color: var(--page-text-secondary) !important;
+}
+
 .page-content .sl-markdown-content blockquote,
 .page-content .sl-markdown-content blockquote p {
   font-style: normal !important;
+}
+
+.page-content .sl-markdown-content blockquote.canonical-note > p:last-of-type {
+  white-space: pre-line;
 }
 
 .page-content .sl-markdown-content blockquote > p + p:has(+ ul),
