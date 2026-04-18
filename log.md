@@ -302,3 +302,9 @@
 - Inputs used: local `msh-cui-wiki/src/styles/global.css`, running Astro dev server on `http://localhost:4321/`, Playwright WebKit geometry verification on `http://localhost:4321/readme/#repo-shape` and `http://localhost:4321/agents/#wiki-content-must-distinguish-fact-from-interpretation`
 - Outputs created: updated `msh-cui-wiki/src/styles/global.css`, browser artifact `output/playwright/toc-nested-page-geometry-defaults-webkit.png`, updated `log.md`
 - Unresolved issues: none in the WebKit pass; nested current items now measure at `8px` left inset, `8px` right reserve, `2px` vertical margins, `12px` radius, and retain stable wrapping
+
+## 2026-04-18 22:13:28 BST — Restored nested TOC selected-state inset behavior on hash navigation
+- Action performed: added a hash-selected state for nested TOC links so deep section anchors selected via URL hash receive the same inset shell fill treatment as hover, while preserving the Page default color/radius tokens and the no-reflow measurement shell
+- Inputs used: local `msh-cui-wiki/src/components/Head.astro`, local `msh-cui-wiki/src/styles/global.css`, running Astro dev server on `http://localhost:4321/`, Playwright WebKit verification on `http://localhost:4321/agents/#wiki-content-must-distinguish-fact-from-interpretation`
+- Outputs created: updated `msh-cui-wiki/src/components/Head.astro`, updated `msh-cui-wiki/src/styles/global.css`, browser artifact `output/playwright/toc-hash-selected-shell-webkit.png`, updated `log.md`
+- Unresolved issues: none in the WebKit pass; the deep nested AGENTS anchor now carries a selected shell with `rgb(245, 245, 245)` fill and `12px` radius even though Starlight keeps `aria-current` on the page-title TOC node

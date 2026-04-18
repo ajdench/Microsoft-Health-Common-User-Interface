@@ -10,7 +10,7 @@
   --msh-control-hover: rgb(235 235 235 / 0.98);
   --msh-soft-shadow: 0 16px 42px rgb(0 0 0 / 0.08);
   --msh-toc-shadow: 0 10px 24px rgb(0 0 0 / 0.05);
-  --msh-toc-item-inline-reserve: var(--page-space-2);
+  --msh-toc-item-inline-reserve: calc(2 * var(--page-space-2));
   --msh-toc-item-block-pad: var(--page-space-2);
   --msh-sidebar-active-bg: rgb(232 232 232 / 0.98);
   --msh-sidebar-active-text: rgb(24 24 27 / 0.98);
@@ -231,10 +231,11 @@
   display: grid;
   inline-size: calc(100% - var(--msh-toc-item-inline-reserve));
   max-inline-size: calc(100% - var(--msh-toc-item-inline-reserve));
-  margin-inline-start: 0;
-  margin-inline-end: var(--msh-toc-item-inline-reserve);
+  margin-inline: var(--page-space-2);
   box-sizing: border-box;
   padding: var(--msh-toc-item-block-pad) 0;
+  border-radius: var(--page-radius-xl);
+  transition: all 0.2s ease;
 }
 
 .right-sidebar-panel nav ul ul a .msh-toc-link-measure,
@@ -263,26 +264,32 @@
 .right-sidebar-panel nav ul ul a:hover,
 .right-sidebar-panel nav ul ul a:focus,
 .right-sidebar-panel nav ul ul a:focus-visible {
-  color: var(--page-text) !important;
-  background: var(--page-accent-light) !important;
-  border-radius: var(--page-radius-xl) !important;
-  padding-left: var(--page-space-2) !important;
 }
 
 .right-sidebar-panel nav ul ul a[aria-current="true"] {
-  color: var(--page-accent) !important;
+}
+
+.right-sidebar-panel nav ul ul a:hover .msh-toc-link-shell,
+.right-sidebar-panel nav ul ul a:focus .msh-toc-link-shell,
+.right-sidebar-panel nav ul ul a:focus-visible .msh-toc-link-shell,
+.right-sidebar-panel nav ul ul a[data-msh-selected] .msh-toc-link-shell {
   background: var(--page-accent-light) !important;
-  border-radius: var(--page-radius-xl) !important;
-  padding-left: var(--page-space-2) !important;
+}
+
+.right-sidebar-panel nav ul ul a[aria-current="true"] .msh-toc-link-shell {
+  background: var(--page-accent-light) !important;
 }
 
 .right-sidebar-panel nav ul ul a:hover .msh-toc-link-label,
 .right-sidebar-panel nav ul ul a:focus .msh-toc-link-label,
-.right-sidebar-panel nav ul ul a:focus-visible .msh-toc-link-label {
+.right-sidebar-panel nav ul ul a:focus-visible .msh-toc-link-label,
+.right-sidebar-panel nav ul ul a[data-msh-selected] .msh-toc-link-label {
+  color: var(--page-text) !important;
   font-weight: 500;
 }
 
 .right-sidebar-panel nav ul ul a[aria-current="true"] .msh-toc-link-label {
+  color: var(--page-accent) !important;
   font-weight: 500;
 }
 

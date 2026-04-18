@@ -121,6 +121,16 @@ const { head } = Astro.locals.starlightRoute;
         .forEach((link) => decorateMeasuredTocLink(link));
     };
 
+    const applyHashSelectedTocState = () => {
+      const hash = window.location.hash;
+
+      document.querySelectorAll('.page-toc-sticky .right-sidebar-panel nav ul ul a').forEach((link) => {
+        const href = link.getAttribute('href') ?? '';
+        const isHashSelected = Boolean(hash) && href.endsWith(hash);
+        link.toggleAttribute('data-msh-selected', isHashSelected);
+      });
+    };
+
     const applyTocOverflowState = () => {
       document.querySelectorAll('.page-toc-sticky').forEach((element) => {
         const hasOverflow = element.scrollHeight > element.clientHeight + 1;
@@ -134,6 +144,7 @@ const { head } = Astro.locals.starlightRoute;
           applyHeaderNavState();
           applyTocTitleState();
           applyMeasuredNestedTocLinks();
+          applyHashSelectedTocState();
           applyTocOverflowState();
         })
       );
@@ -160,8 +171,10 @@ const { head } = Astro.locals.starlightRoute;
     window.addEventListener('resize', () => {
       applyHeaderNavState();
       applyTocTitleState();
+      applyHashSelectedTocState();
       applyTocOverflowState();
     }, { passive: true });
+    window.addEventListener('hashchange', scheduleApply);
     window.addEventListener('pageshow', bindObservers);
   })();
 </script>
