@@ -368,3 +368,21 @@
 - Inputs used: local `msh-cui-wiki/package.json`, local `msh-cui-wiki/src/components/Head.astro`, local `msh-cui-wiki/src/styles/global.css`, live verification via `curl` against `http://localhost:4322/readme/`
 - Outputs created: updated `msh-cui-wiki/package.json`, updated `msh-cui-wiki/src/components/Head.astro`, updated `msh-cui-wiki/src/styles/global.css`, updated `log.md`
 - Unresolved issues: none for the new workflow route; live `4322` now serves the anchor overrides inline in the HTML response, which is the intended fix for the stale stylesheet issue
+
+## 2026-04-19 00:36:27 BST — Reclassified the Astro/Starlight reference bundle under a dedicated skills directory
+- Action performed: moved the standalone `astro-starlight-documentation-expert` bundle out of the repository root into a new top-level `skills/` directory so it is clearly classified as tooling/reference material rather than wiki corpus content or part of the `msh-cui-wiki` app
+- Inputs used: local `astro-starlight-documentation-expert/`, local repository structure review, local `msh-cui-wiki/README.md`
+- Outputs created: new `skills/` directory, moved `skills/astro-starlight-documentation-expert/`, updated `log.md`
+- Unresolved issues: none; the bundle remains untracked unless explicitly added to version control later
+
+## 2026-04-19 00:44:43 BST — Classified skills as non-corpus support material in AGENTS
+- Action performed: updated the repository operating rules to define the top-level `skills/` directory as local agent/tooling reference material and to state explicitly that it is not part of the canonical Health CUI corpus unless content is intentionally copied into canonical repo areas under normal provenance rules
+- Inputs used: local `AGENTS.md`, local repository structure, prior `skills/` reclassification decision
+- Outputs created: updated `AGENTS.md`, updated `log.md`
+- Unresolved issues: none
+
+## 2026-04-19 00:46:42 BST — Repositioned the heading anchor icon to the visible text-bottom target and verified it on live 4322
+- Action performed: moved the live inline heading-anchor override in `msh-cui-wiki/src/components/Head.astro` from `translateY(0.30em)` to `translateY(0.18em)`, restarted the `4322` dev server cleanly, and re-verified the `Repo shape` heading in WebKit so the anchor icon now sits near the visible text bottom instead of well below it
+- Inputs used: local `msh-cui-wiki/src/components/Head.astro`, live `http://localhost:4322/readme/`, Playwright WebKit verification on `http://localhost:4322/readme/#repo-shape`
+- Outputs created: updated `msh-cui-wiki/src/components/Head.astro`, refreshed browser artifact `output/playwright/repo-shape-anchor-alignment-webkit.png`, updated `log.md`
+- Unresolved issues: the icon now renders about `1.5px` above the heading element bottom in WebKit, which visually places it near the requested text-bottom line rather than on the lower descender region
