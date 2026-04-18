@@ -4,6 +4,21 @@ const { head } = Astro.locals.starlightRoute;
 
 {head.map(({ tag: Tag, attrs, content }) => <Tag {...attrs} set:html={content} />)}
 
+<style is:global>
+  .sl-markdown-content .sl-heading-wrapper {
+    --sl-anchor-icon-size: 20px;
+  }
+
+  .sl-markdown-content .sl-anchor-link {
+    color: color-mix(in srgb, var(--page-text-secondary) 56%, white 44%) !important;
+  }
+
+  .sl-markdown-content .sl-anchor-icon > svg {
+    vertical-align: text-bottom;
+    transform: translateY(0.30em);
+  }
+</style>
+
 <script is:inline>
   (() => {
     const normalizeText = (value) => value?.replace(/\s+/g, ' ').trim() ?? '';

@@ -362,3 +362,9 @@
 - Inputs used: local `msh-cui-wiki/src/styles/global.css`, local `msh-cui-wiki/scripts/sync-llm-wiki.mjs`, live HTML/CSS inspection via `curl` against `http://localhost:4322/` and `http://localhost:4322/readme/`, Playwright WebKit verification on `http://localhost:4322/readme/#repo-shape`
 - Outputs created: updated `msh-cui-wiki/src/styles/global.css`, refreshed browser artifact `output/playwright/repo-shape-anchor-alignment-webkit.png`, updated `log.md`
 - Unresolved issues: the reliable workflow conclusion is that this dev setup is not hot-reloading `src/styles/global.css` consistently, so CSS edits should be treated as restart-required on this app until proven otherwise; current live state on `4322` serves `transform: translateY(0.30em)` and shows the icon visibly lower than the previous stale render
+
+## 2026-04-19 00:27:07 BST — Added a reliable 4322 dev workflow and moved volatile anchor overrides into Head.astro
+- Action performed: added a dedicated polling-based `dev:4322` script so the wiki mirror can be started on a fixed port with more reliable file watching, and moved the heading-anchor size/color/position overrides out of `src/styles/global.css` into an inline global `<style>` block in `src/components/Head.astro` so those changes are served directly in page HTML instead of depending on the flaky CSS HMR path
+- Inputs used: local `msh-cui-wiki/package.json`, local `msh-cui-wiki/src/components/Head.astro`, local `msh-cui-wiki/src/styles/global.css`, live verification via `curl` against `http://localhost:4322/readme/`
+- Outputs created: updated `msh-cui-wiki/package.json`, updated `msh-cui-wiki/src/components/Head.astro`, updated `msh-cui-wiki/src/styles/global.css`, updated `log.md`
+- Unresolved issues: none for the new workflow route; live `4322` now serves the anchor overrides inline in the HTML response, which is the intended fix for the stale stylesheet issue
