@@ -332,3 +332,9 @@
 - Inputs used: local `msh-cui-wiki/src/components/Head.astro`, local `msh-cui-wiki/src/styles/global.css`, local `msh-cui-wiki/docs/ui-reset-notes.md`, running Astro dev server on `http://localhost:4322/`, Playwright WebKit verification on `http://localhost:4322/agents/#wiki-content-must-distinguish-fact-from-interpretation` and `http://localhost:4322/wiki/source-notes/microsoft-health-cui-v1-3-2008/#original-url`
 - Outputs created: updated `msh-cui-wiki/src/components/Head.astro`, updated `msh-cui-wiki/src/styles/global.css`, updated `msh-cui-wiki/docs/ui-reset-notes.md`, browser artifact `output/playwright/toc-static-title-hash-selection-webkit.png`, updated `log.md`
 - Unresolved issues: no inconsistency seen in the tested desktop/mobile WebKit paths after this change; hashes not present in a page’s TOC will still fall back to the theme’s native behavior because there is no matching TOC link to promote
+
+## 2026-04-18 23:29:21 BST — Removed the desktop TOC pane heading
+- Action performed: hid the desktop right-hand TOC pane heading `On this page` so the pane now starts with the static page-title label, while leaving the mobile TOC summary heading unchanged
+- Inputs used: local `msh-cui-wiki/src/styles/global.css`, running Astro dev server on `http://localhost:4322/`, Playwright WebKit verification on `http://localhost:4322/agents/#wiki-content-must-distinguish-fact-from-interpretation`
+- Outputs created: updated `msh-cui-wiki/src/styles/global.css`, browser artifact `output/playwright/toc-pane-heading-removed-webkit.png`, updated `log.md`
+- Unresolved issues: none for the desktop pane; mobile still shows `On this page`, which was left unchanged in this pass

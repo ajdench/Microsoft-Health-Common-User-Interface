@@ -134,6 +134,10 @@
   padding-bottom: var(--page-space-3);
 }
 
+.right-sidebar-panel nav > h2 {
+  display: none !important;
+}
+
 .main-pane {
   background:
     radial-gradient(circle at top right, rgb(0 0 0 / 0.035), transparent 30%),
