@@ -7,6 +7,7 @@ const { head } = Astro.locals.starlightRoute;
 <script is:inline>
   (() => {
     const isIndexPage = (pathname) => pathname === '/' || pathname === '/index' || pathname === '/index/';
+    const normalizeText = (value) => value?.replace(/\s+/g, ' ').trim() ?? '';
 
     const getNavBucket = (pathname) => {
       if (pathname.startsWith('/derived/inventories/')) return 'Inventories';
@@ -30,74 +31,60 @@ const { head } = Astro.locals.starlightRoute;
       });
     };
 
-    const applyIndexTocState = () => {
-      const indexPath = '/index';
+    const getTocPageTitle = () => normalizeText(document.querySelector('main h1')?.textContent) || 'Overview';
 
-      document
-        .querySelectorAll('.page-toc-sticky nav > ul, mobile-starlight-toc nav > ul')
-        .forEach((list) => {
-          const items = Array.from(list.children).filter((element) => element.tagName === 'LI');
-          if (items.length < 2) return;
+    const applyTocTitleState = () => {
+      const topHref = isIndexPage(window.location.pathname) ? '/index' : window.location.pathname;
+      const topLabel = getTocPageTitle();
 
-          const [topItem, ...remainingItems] = items;
-          const topLink = topItem.querySelector(':scope > a');
-          if (!topLink) return;
+      document.querySelectorAll('.page-toc-sticky nav > ul').forEach((list) => {
+        const items = Array.from(list.children).filter((element) => element.tagName === 'LI');
+        if (items.length === 0) return;
 
-          const topLabel = topLink.textContent?.trim() ?? '';
-          const onIndexPage = isIndexPage(window.location.pathname);
+        const [topItem, ...directChildren] = items;
+        const topLink = topItem.querySelector(':scope > a');
+        if (!topLink) return;
 
-          if (!onIndexPage) {
-            if (topLabel !== 'Index') return;
-            topLink.setAttribute('href', '#_top');
-            const topSpan = topLink.querySelector('span');
-            if (topSpan) {
-              topSpan.textContent = 'Overview';
-              topSpan.style.setProperty('--depth', '0');
-            } else {
-              topLink.textContent = 'Overview';
-            }
+        const nestedList = topItem.querySelector(':scope > ul');
+        const nestedChildren = nestedList
+          ? Array.from(nestedList.children).filter((element) => element.tagName === 'LI')
+          : [];
+        const childItems = [...directChildren, ...nestedChildren];
 
-            const nestedList = topItem.querySelector(':scope > ul');
-            if (nestedList) {
-              Array.from(nestedList.children)
-                .filter((element) => element.tagName === 'LI')
-                .forEach((item) => {
-                  item.style.setProperty('--depth', '0');
-                  item.querySelectorAll(':scope > a, :scope > a > span').forEach((element) => {
-                    element.style.setProperty('--depth', '0');
-                  });
-                  list.appendChild(item);
-                });
-              nestedList.remove();
-            }
-            return;
-          }
+        if (nestedList) {
+          nestedList.remove();
+        }
 
-          topLink.setAttribute('href', indexPath);
-          const topSpan = topLink.querySelector('span');
-          if (topSpan) {
-            topSpan.textContent = 'Index';
-            topSpan.style.setProperty('--depth', '0');
-          } else {
-            topLink.textContent = 'Index';
-          }
-
-          let nestedList = topItem.querySelector(':scope > ul');
-          if (!nestedList) {
-            nestedList = document.createElement('ul');
-            nestedList.className = list.className;
-            nestedList.style.setProperty('--depth', '1');
-            topItem.appendChild(nestedList);
-          }
-
-          remainingItems.forEach((item) => {
-            item.style.setProperty('--depth', '1');
-            item.querySelectorAll(':scope > a, :scope > a > span').forEach((element) => {
-              element.style.setProperty('--depth', '1');
-            });
-            nestedList.appendChild(item);
-          });
+        topLink.setAttribute('href', topHref);
+        const topSpan = topLink.querySelector('span');
+        if (topSpan) {
+          topSpan.textContent = topLabel;
+          topSpan.style.setProperty('--depth', '0');
+        } else {
+          topLink.textContent = topLabel;
+        }
+        topItem.style.setProperty('--depth', '0');
+        topItem.querySelectorAll(':scope > a, :scope > a > span').forEach((element) => {
+          element.style.setProperty('--depth', '0');
         });
+
+        if (childItems.length === 0) {
+          return;
+        }
+
+        const nextNestedList = document.createElement('ul');
+        nextNestedList.className = list.className;
+        nextNestedList.style.setProperty('--depth', '1');
+        topItem.appendChild(nextNestedList);
+
+        childItems.forEach((item) => {
+          item.style.setProperty('--depth', '1');
+          item.querySelectorAll(':scope > a, :scope > a > span').forEach((element) => {
+            element.style.setProperty('--depth', '1');
+          });
+          nextNestedList.appendChild(item);
+        });
+      });
     };
 
     const applyTocOverflowState = () => {
@@ -111,7 +98,7 @@ const { head } = Astro.locals.starlightRoute;
       requestAnimationFrame(() =>
         requestAnimationFrame(() => {
           applyHeaderNavState();
-          applyIndexTocState();
+          applyTocTitleState();
           applyTocOverflowState();
         })
       );
@@ -137,7 +124,7 @@ const { head } = Astro.locals.starlightRoute;
     document.addEventListener('astro:page-load', scheduleApply);
     window.addEventListener('resize', () => {
       applyHeaderNavState();
-      applyIndexTocState();
+      applyTocTitleState();
       applyTocOverflowState();
     }, { passive: true });
     window.addEventListener('pageshow', bindObservers);

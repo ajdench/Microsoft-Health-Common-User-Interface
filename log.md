@@ -260,3 +260,9 @@
 - Inputs used: local `msh-cui-wiki/scripts/sync-llm-wiki.mjs`, local `msh-cui-wiki/src/components/Head.astro`, local Astro dev server on `http://localhost:4321/`, Playwright WebKit DOM verification and screenshot on `/`
 - Outputs created: updated `msh-cui-wiki/scripts/sync-llm-wiki.mjs`, updated `msh-cui-wiki/src/components/Head.astro`, added `msh-cui-wiki/src/pages/index/index.astro`, browser artifact `output/playwright/page-index-toc-webkit.png`, updated `log.md`
 - Unresolved issues: the explicit `/index/` route currently redirects to `/`; the right-hand TOC link target is correct and resolves, but the canonical rendered page remains the root URL
+
+## 2026-04-18 20:44:29 BST — Made the first TOC item match the current page title across the wiki UI
+- Action performed: generalized the TOC transform so the first right-hand TOC item now uses the current page `h1` text instead of the stock `Overview` label, and nests the real section anchors underneath that page-title parent item on normal wiki pages as well as on the root page
+- Inputs used: local `msh-cui-wiki/src/components/Head.astro`, running Astro dev server on `http://localhost:4321/`, Playwright WebKit DOM verification on `/` and `/wiki/overview/health-cui-overview/`, visual verification on `/wiki/overview/health-cui-overview/`
+- Outputs created: updated `msh-cui-wiki/src/components/Head.astro`, browser artifact `output/playwright/toc-page-title-webkit.png`, updated `log.md`
+- Unresolved issues: none for this TOC-title behavior in WebKit; the first TOC item now reads `Index` on the root page and the actual page title on normal wiki pages
