@@ -117,7 +117,7 @@ const { head } = Astro.locals.starlightRoute;
 
     const applyMeasuredNestedTocLinks = () => {
       document
-        .querySelectorAll('.page-toc-sticky .right-sidebar-panel nav > ul > li > ul > li > a')
+        .querySelectorAll('.page-toc-sticky .right-sidebar-panel nav ul ul a')
         .forEach((link) => decorateMeasuredTocLink(link));
     };
 

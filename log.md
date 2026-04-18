@@ -278,3 +278,9 @@
 - Inputs used: local `msh-cui-wiki/src/styles/global.css`, running Astro dev server on `http://localhost:4321/`, Playwright WebKit verification on `http://localhost:4321/agents/#wiki-content-must-distinguish-fact-from-interpretation`
 - Outputs created: updated `msh-cui-wiki/src/styles/global.css`, browser artifact `output/playwright/toc-inset-wrap-agents-webkit.png`, updated `log.md`
 - Unresolved issues: none in the AGENTS WebKit case; the previously problematic current TOC item now wraps to three lines with the inset shell defining the content width
+
+## 2026-04-18 21:22:49 BST — Extended inset-width TOC wrapping rules to deep nested TOC levels
+- Action performed: generalized the measured-shell and no-reflow TOC selectors from first-level nested items only to all nested TOC levels, so deeply nested items such as AGENTS repository-rule entries use the same inset-width wrapping and hidden bold measurement logic as shallower TOC items
+- Inputs used: local `msh-cui-wiki/src/components/Head.astro`, local `msh-cui-wiki/src/styles/global.css`, running Astro dev server on `http://localhost:4321/`, Playwright WebKit verification on `http://localhost:4321/agents/#wiki-content-must-distinguish-fact-from-interpretation`
+- Outputs created: updated `msh-cui-wiki/src/components/Head.astro`, updated `msh-cui-wiki/src/styles/global.css`, browser artifact `output/playwright/toc-deep-nested-wrap-webkit.png`, updated `log.md`
+- Unresolved issues: none in the WebKit pass; the previously failing deep nested AGENTS TOC item now wraps to three lines with equal `18px` left/right shell inset

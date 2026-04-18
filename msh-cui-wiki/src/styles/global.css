@@ -12,7 +12,7 @@
   --msh-toc-shadow: 0 10px 24px rgb(0 0 0 / 0.05);
   --msh-toc-item-fill: rgb(239 239 239 / 0.98);
   --msh-toc-item-fill-active: rgb(236 236 236 / 0.98);
-  --msh-toc-item-pad-x: 0.95rem;
+  --msh-toc-item-pad-x: 1.1rem;
   --msh-toc-item-pad-y: 0.5rem;
   --msh-toc-item-radius: 1rem;
   --msh-sidebar-active-bg: rgb(232 232 232 / 0.98);
@@ -222,7 +222,7 @@
   -webkit-backdrop-filter: blur(16px);
 }
 
-.right-sidebar-panel nav > ul > li > ul > li > a {
+.right-sidebar-panel nav ul ul a {
   box-sizing: border-box !important;
   display: block !important;
   inline-size: 100% !important;
@@ -233,15 +233,17 @@
   background: transparent !important;
 }
 
-.right-sidebar-panel nav > ul > li > ul > li > a .msh-toc-link-shell {
+.right-sidebar-panel nav ul ul a .msh-toc-link-shell {
   display: grid;
-  inline-size: 100%;
+  inline-size: calc(100% - (2 * var(--msh-toc-item-pad-x)));
+  max-inline-size: calc(100% - (2 * var(--msh-toc-item-pad-x)));
+  margin-inline: var(--msh-toc-item-pad-x);
   box-sizing: border-box;
-  padding: var(--msh-toc-item-pad-y) var(--msh-toc-item-pad-x);
+  padding: var(--msh-toc-item-pad-y) 0;
 }
 
-.right-sidebar-panel nav > ul > li > ul > li > a .msh-toc-link-measure,
-.right-sidebar-panel nav > ul > li > ul > li > a .msh-toc-link-label {
+.right-sidebar-panel nav ul ul a .msh-toc-link-measure,
+.right-sidebar-panel nav ul ul a .msh-toc-link-label {
   grid-area: 1 / 1;
   box-sizing: border-box;
   display: block;
@@ -254,31 +256,31 @@
   overflow-wrap: break-word;
 }
 
-.right-sidebar-panel nav > ul > li > ul > li > a .msh-toc-link-measure {
+.right-sidebar-panel nav ul ul a .msh-toc-link-measure {
   visibility: hidden;
   pointer-events: none;
 }
 
-.right-sidebar-panel nav > ul > li > ul > li > a .msh-toc-link-label {
+.right-sidebar-panel nav ul ul a .msh-toc-link-label {
   font-weight: 400;
 }
 
-.right-sidebar-panel nav > ul > li > ul > li > a:hover,
-.right-sidebar-panel nav > ul > li > ul > li > a:focus,
-.right-sidebar-panel nav > ul > li > ul > li > a:focus-visible {
+.right-sidebar-panel nav ul ul a:hover,
+.right-sidebar-panel nav ul ul a:focus,
+.right-sidebar-panel nav ul ul a:focus-visible {
   background: var(--msh-toc-item-fill) !important;
   color: var(--page-text) !important;
 }
 
-.right-sidebar-panel nav > ul > li > ul > li > a[aria-current="true"] {
+.right-sidebar-panel nav ul ul a[aria-current="true"] {
   background: var(--msh-toc-item-fill-active) !important;
   color: var(--page-text) !important;
 }
 
-.right-sidebar-panel nav > ul > li > ul > li > a:hover .msh-toc-link-label,
-.right-sidebar-panel nav > ul > li > ul > li > a:focus .msh-toc-link-label,
-.right-sidebar-panel nav > ul > li > ul > li > a:focus-visible .msh-toc-link-label,
-.right-sidebar-panel nav > ul > li > ul > li > a[aria-current="true"] .msh-toc-link-label {
+.right-sidebar-panel nav ul ul a:hover .msh-toc-link-label,
+.right-sidebar-panel nav ul ul a:focus .msh-toc-link-label,
+.right-sidebar-panel nav ul ul a:focus-visible .msh-toc-link-label,
+.right-sidebar-panel nav ul ul a[aria-current="true"] .msh-toc-link-label {
   font-weight: 500;
 }
 
