@@ -290,3 +290,9 @@
 - Inputs used: local `msh-cui-wiki/src/styles/global.css`, running Astro dev server on `http://localhost:4321/`, Playwright WebKit visual verification on `http://localhost:4321/agents/#wiki-content-must-distinguish-fact-from-interpretation`
 - Outputs created: updated `msh-cui-wiki/src/styles/global.css`, browser artifact `output/playwright/toc-selected-matches-hover-webkit.png`, updated `log.md`
 - Unresolved issues: none for this token-alignment pass; selected/current and hover now draw from the same fill treatment
+
+## 2026-04-18 22:02:11 BST — Restored Page-default nested TOC fill, radius, and inset while keeping no-reflow wrapping
+- Action performed: removed the custom nested TOC hover/current chip styling that had drifted from the Page theme, then restored the nested hover/current behavior to the theme defaults so nested items again use the Page default grey fill, `12px` radius, and left inset while preserving the hidden-measure no-reflow wrapping logic
+- Inputs used: local `msh-cui-wiki/src/styles/global.css`, running Astro dev server on `http://localhost:4321/`, Playwright WebKit verification on `http://localhost:4321/readme/#repo-shape` and `http://localhost:4321/agents/#wiki-content-must-distinguish-fact-from-interpretation`
+- Outputs created: updated `msh-cui-wiki/src/styles/global.css`, browser artifact `output/playwright/toc-nested-page-defaults-webkit.png`, updated `log.md`
+- Unresolved issues: none in the WebKit pass; nested current items are back on the Page default chip treatment and the measured wrapping logic remains active
