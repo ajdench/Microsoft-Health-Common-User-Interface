@@ -8,7 +8,6 @@ const { head } = Astro.locals.starlightRoute;
   (() => {
     const isIndexPage = (pathname) => pathname === '/' || pathname === '/index' || pathname === '/index/';
     const normalizeText = (value) => value?.replace(/\s+/g, ' ').trim() ?? '';
-    const ACTIVE_TOC_FONT_WEIGHT = '500';
 
     const getNavBucket = (pathname) => {
       if (pathname.startsWith('/derived/inventories/')) return 'Inventories';
@@ -30,33 +29,6 @@ const { head } = Astro.locals.starlightRoute;
         const label = element.textContent?.trim() ?? '';
         element.classList.toggle('active', label === activeBucket);
       });
-    };
-
-    const decorateMeasuredTocLink = (link) => {
-      if (link.querySelector(':scope > .msh-toc-link-shell')) {
-        return;
-      }
-
-      const text = normalizeText(link.textContent);
-      if (!text) return;
-
-      link.textContent = '';
-
-      const shell = document.createElement('span');
-      shell.className = 'msh-toc-link-shell';
-
-      const measure = document.createElement('span');
-      measure.className = 'msh-toc-link-measure';
-      measure.setAttribute('aria-hidden', 'true');
-      measure.textContent = text;
-      measure.style.fontWeight = ACTIVE_TOC_FONT_WEIGHT;
-
-      const label = document.createElement('span');
-      label.className = 'msh-toc-link-label';
-      label.textContent = text;
-
-      shell.append(measure, label);
-      link.appendChild(shell);
     };
 
     const getTocPageTitle = () => normalizeText(document.querySelector('main h1')?.textContent) || 'Overview';
@@ -115,22 +87,6 @@ const { head } = Astro.locals.starlightRoute;
       });
     };
 
-    const applyMeasuredNestedTocLinks = () => {
-      document
-        .querySelectorAll('.page-toc-sticky .right-sidebar-panel nav ul ul a')
-        .forEach((link) => decorateMeasuredTocLink(link));
-    };
-
-    const applyHashSelectedTocState = () => {
-      const hash = window.location.hash;
-
-      document.querySelectorAll('.page-toc-sticky .right-sidebar-panel nav ul ul a').forEach((link) => {
-        const href = link.getAttribute('href') ?? '';
-        const isHashSelected = Boolean(hash) && href.endsWith(hash);
-        link.toggleAttribute('data-msh-selected', isHashSelected);
-      });
-    };
-
     const applyTocOverflowState = () => {
       document.querySelectorAll('.page-toc-sticky').forEach((element) => {
         const hasOverflow = element.scrollHeight > element.clientHeight + 1;
@@ -143,8 +99,6 @@ const { head } = Astro.locals.starlightRoute;
         requestAnimationFrame(() => {
           applyHeaderNavState();
           applyTocTitleState();
-          applyMeasuredNestedTocLinks();
-          applyHashSelectedTocState();
           applyTocOverflowState();
         })
       );
@@ -171,10 +125,8 @@ const { head } = Astro.locals.starlightRoute;
     window.addEventListener('resize', () => {
       applyHeaderNavState();
       applyTocTitleState();
-      applyHashSelectedTocState();
       applyTocOverflowState();
     }, { passive: true });
-    window.addEventListener('hashchange', scheduleApply);
     window.addEventListener('pageshow', bindObservers);
   })();
 </script>

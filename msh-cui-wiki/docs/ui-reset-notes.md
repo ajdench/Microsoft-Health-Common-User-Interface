@@ -96,26 +96,44 @@ The current baseline is:
 - restrained header/sidebar/TOC surface treatment for clearer light-mode segmentation
 - browser verification against WebKit, Chrome, and Edge
 
-## Nested TOC Contract
+## Nested TOC Phases
 
-For nested items in the right-hand TOC:
+The nested right-hand TOC should now be handled in explicit phases:
 
-- visual styling should start from the `@pelagornis/page` defaults, not from local custom chip geometry
-- the effective inset and margin values must use the Page default tokens:
-  - horizontal inset: `var(--page-space-2)`
-  - vertical spacing between items: `2px`
-  - radius: `var(--page-radius-xl)`
-  - fill color: `var(--page-accent-light)`
-- non-hover/non-selected text must wrap as if the active/filled state already exists
-- the contract should be width-based, not character-count-based, and must respond to the live viewport width
-- hover and selected/current states must keep the same wrap, line breaks, and inset geometry
-- deep section anchors selected by URL hash must receive the same visible inset shell treatment even if the theme keeps `aria-current` on the page-title TOC node
+### Phase 0: Pure defaults
+
+- remove all local nested TOC measurement-shell logic
+- remove all local nested TOC selected-hash logic
+- let `@pelagornis/page` own nested TOC hover/current/select behavior entirely
+- verify the default behavior in Playwright WebKit before making any new TOC change
+
+This is the current reset baseline.
+
+### Phase 1: Measure the default contract
+
+- record the Page default nested TOC geometry as rendered:
+  - horizontal inset
+  - vertical margins
+  - radius
+  - fill token
+  - wrap behavior under hover/current
+- do not change behavior in this phase; only observe and capture
+
+### Phase 2: Add contract-only logic
+
+- if needed, add a minimal local layer that preserves the default wrap contract across states
+- that layer must not own color, radius, or spacing tokens
+- it may only reserve width so non-state wrapping matches the active-state text box
+
+### Phase 3: Restore deep-hash continuity only if needed
+
+- if the theme still keeps `aria-current` on the page-title TOC node instead of the deep section anchor, add a minimal selected-hash continuity layer
+- that layer must reuse the theme’s own visible styling rather than inventing new chip geometry
 
 Implementation rule:
 
-- let Page own the visual tokens
-- keep the local layer limited to measurement-shell width reservation and deep-hash selected-state continuity
-- do not reintroduce custom TOC color, radius, or spacing values when the theme already defines them
+- never mix visual restyling and contract logic in the same pass
+- each phase should be verified in WebKit before moving to the next phase
 
 ## Later references
 

@@ -314,3 +314,9 @@
 - Inputs used: local `msh-cui-wiki/docs/ui-reset-notes.md`, local `msh-cui-wiki/src/styles/global.css`, running Astro dev server on `http://localhost:4321/`, Playwright WebKit verification on `http://localhost:4321/agents/#wiki-content-must-distinguish-fact-from-interpretation`
 - Outputs created: updated `msh-cui-wiki/docs/ui-reset-notes.md`, updated `msh-cui-wiki/src/styles/global.css`, browser artifact `output/playwright/toc-defaults-plus-contract-webkit.png`, updated `log.md`
 - Unresolved issues: none in the WebKit pass; the deep nested AGENTS TOC item now uses the Page default `2px` vertical margins, `12px` radius, theme fill token, and a stable three-line measured contract
+
+## 2026-04-18 22:24:43 BST — Reset nested TOC to Phase 0 pure Page defaults
+- Action performed: removed the local nested TOC measurement-shell logic and the local deep-hash selected-state logic so nested right-hand TOC items now render with the raw `@pelagornis/page` defaults again, and rewrote the reset notes so future TOC work proceeds in explicit phases from this clean baseline
+- Inputs used: local `msh-cui-wiki/src/components/Head.astro`, local `msh-cui-wiki/src/styles/global.css`, local `msh-cui-wiki/docs/ui-reset-notes.md`, running Astro dev server on `http://localhost:4321/`, Playwright WebKit verification on `http://localhost:4321/agents/#wiki-content-must-distinguish-fact-from-interpretation`
+- Outputs created: updated `msh-cui-wiki/src/components/Head.astro`, updated `msh-cui-wiki/src/styles/global.css`, updated `msh-cui-wiki/docs/ui-reset-notes.md`, browser artifact `output/playwright/toc-phase-0-page-defaults-webkit.png`, updated `log.md`
+- Unresolved issues: nested TOC is intentionally back on raw Page defaults, so the deep section anchor is no longer visually selected on hash navigation and the earlier no-reflow wrap contract is absent until a later phase explicitly reintroduces it
