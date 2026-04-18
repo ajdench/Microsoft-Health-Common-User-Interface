@@ -344,3 +344,9 @@
 - Inputs used: local `msh-cui-wiki/src/styles/global.css`, running Astro dev server on `http://localhost:4322/`, Playwright WebKit verification on `http://localhost:4322/agents/`
 - Outputs created: updated `msh-cui-wiki/src/styles/global.css`, browser artifact `output/playwright/title-anchor-icons-grey-half-webkit.png`, updated `log.md`
 - Unresolved issues: none in the WebKit pass; the heading anchor link color is now grey and the reduced icon-size token is active
+
+## 2026-04-18 23:53:58 BST — Lowered heading link icon to the text bottom and lightened its grey
+- Action performed: adjusted the heading anchor link color to a lighter grey and increased the anchor SVG vertical offset so the hovered icon sits against the text bottom rather than centered on the baseline
+- Inputs used: local `msh-cui-wiki/src/styles/global.css`, running Astro dev server on `http://localhost:4322/`, Playwright WebKit verification on `http://localhost:4322/#overview`
+- Outputs created: updated `msh-cui-wiki/src/styles/global.css`, browser artifact `output/playwright/heading-anchor-alignment-webkit.png`, updated `log.md`
+- Unresolved issues: none in the measured WebKit pass; the hovered icon rendered at `rgb(148,148,148)` and its SVG bottom edge sat about `1.3px` below the heading text bottom, which is intentionally closer to the text-bottom alignment requested

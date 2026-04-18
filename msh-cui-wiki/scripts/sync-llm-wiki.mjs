@@ -11,7 +11,7 @@ const markdownDirs = ['wiki', 'derived'];
 const jsonDirs = ['raw/metadata', 'raw/manifests'];
 
 const canonicalMessage =
-  'This page is generated automatically for the MSH CUI Wiki view. Edit the source in the LLM Wiki, not this mirror.';
+  'This page is generated automatically for the MSH CUI Wiki view.\nEdit the source in the LLM Wiki, not this mirror.';
 
 function normalizePath(value) {
   return value.replaceAll(path.sep, '/');

@@ -5,8 +5,8 @@
 - [AGENTS](AGENTS.md) — repository working rules
 - [Log](log.md) — append-only chronology of work
 
-## Overview
-- [Health CUI Overview](wiki/overview/health-cui-overview.md) — what the programme was, what the repo contains, and why it matters now
+## Microsoft Health (MSH) Common User Interface (CUI)
+- [MSH CUI](wiki/overview/health-cui-overview.md) — what the programme was, what the repo contains, and why it matters now
 - [History and Context](wiki/overview/history-and-context.md) — dated timeline and programme framing
 - [Adoption, Retirement, and Afterlife](wiki/overview/adoption-retirement-and-afterlife.md) — what evidence exists for uptake, why the standards were retired, and what survived
 - [Archive Limits and Dead Ends](wiki/overview/archive-limits-and-dead-ends.md) — what recovery paths were tried, what failed, and why

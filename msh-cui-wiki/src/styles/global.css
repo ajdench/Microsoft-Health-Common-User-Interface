@@ -149,12 +149,17 @@
   scroll-margin-top: 5rem;
 }
 
-.sl-markdown-content {
-  --sl-anchor-icon-size: 0.41375em;
+.sl-markdown-content .sl-heading-wrapper {
+  --sl-anchor-icon-size: 20px;
 }
 
 .sl-markdown-content .sl-anchor-link {
-  color: var(--page-text-secondary) !important;
+  color: color-mix(in srgb, var(--page-text-secondary) 56%, white 44%) !important;
+}
+
+.sl-markdown-content .sl-anchor-icon > svg {
+  vertical-align: text-bottom;
+  transform: translateY(0.26em);
 }
 
 .page-content .sl-markdown-content blockquote,
