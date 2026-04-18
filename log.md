@@ -350,3 +350,9 @@
 - Inputs used: local `msh-cui-wiki/src/styles/global.css`, running Astro dev server on `http://localhost:4322/`, Playwright WebKit verification on `http://localhost:4322/#overview`
 - Outputs created: updated `msh-cui-wiki/src/styles/global.css`, browser artifact `output/playwright/heading-anchor-alignment-webkit.png`, updated `log.md`
 - Unresolved issues: none in the measured WebKit pass; the hovered icon rendered at `rgb(148,148,148)` and its SVG bottom edge sat about `1.3px` below the heading text bottom, which is intentionally closer to the text-bottom alignment requested
+
+## 2026-04-18 23:59:58 BST — Split the root Microsoft Health heading across two lines and tightened anchor icon bottom alignment
+- Action performed: changed the root `index.md` Microsoft Health section heading to a two-line form using an inline break and reduced the heading anchor SVG vertical offset so the hovered icon bottom sits on the text-bottom line instead of below it
+- Inputs used: local `index.md`, local `msh-cui-wiki/src/styles/global.css`, running Astro dev server on `http://localhost:4322/`, Playwright WebKit verification on `http://localhost:4322/readme/#repo-shape` and `http://localhost:4322/`
+- Outputs created: updated `index.md`, updated `msh-cui-wiki/src/styles/global.css`, browser artifacts `output/playwright/repo-shape-anchor-alignment-webkit.png` and `output/playwright/index-two-line-heading-webkit.png`, updated `log.md`
+- Unresolved issues: none in the WebKit pass; the `Repo shape` icon bottom measured within `0.1px` of the heading text bottom and the root index heading now renders as `Microsoft Health (MSH)<br>Common User Interface (CUI)` with slug `microsoft-health-mshcommon-user-interface-cui`
