@@ -266,3 +266,9 @@
 - Inputs used: local `msh-cui-wiki/src/components/Head.astro`, running Astro dev server on `http://localhost:4321/`, Playwright WebKit DOM verification on `/` and `/wiki/overview/health-cui-overview/`, visual verification on `/wiki/overview/health-cui-overview/`
 - Outputs created: updated `msh-cui-wiki/src/components/Head.astro`, browser artifact `output/playwright/toc-page-title-webkit.png`, updated `log.md`
 - Unresolved issues: none for this TOC-title behavior in WebKit; the first TOC item now reads `Index` on the root page and the actual page title on normal wiki pages
+
+## 2026-04-18 21:03:20 BST — Stabilized nested TOC wrapping against active-state padding and font weight
+- Action performed: added a hidden bold measurement layer for nested right-hand TOC items and moved their visible text into an overlaid label layer so default-state wrapping is calculated against the same padded content box and active-state font weight used by hover/current fills, preventing reflow when those states appear
+- Inputs used: local `msh-cui-wiki/src/components/Head.astro`, local `msh-cui-wiki/src/styles/global.css`, running Astro dev server on `http://localhost:4321/`, Playwright WebKit verification on `/wiki/overview/health-cui-overview/` and `/wiki/overview/health-cui-overview/#synthesis`
+- Outputs created: updated `msh-cui-wiki/src/components/Head.astro`, updated `msh-cui-wiki/src/styles/global.css`, browser artifact `output/playwright/toc-no-reflow-webkit.png`, updated `log.md`
+- Unresolved issues: none in the WebKit pass; the nested TOC current item now keeps a constant `200px` content box and `15.2px` left/right inner padding while switching the visible label from normal weight to `500`
