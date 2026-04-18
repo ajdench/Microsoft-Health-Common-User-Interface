@@ -284,3 +284,9 @@
 - Inputs used: local `msh-cui-wiki/src/components/Head.astro`, local `msh-cui-wiki/src/styles/global.css`, running Astro dev server on `http://localhost:4321/`, Playwright WebKit verification on `http://localhost:4321/agents/#wiki-content-must-distinguish-fact-from-interpretation`
 - Outputs created: updated `msh-cui-wiki/src/components/Head.astro`, updated `msh-cui-wiki/src/styles/global.css`, browser artifact `output/playwright/toc-deep-nested-wrap-webkit.png`, updated `log.md`
 - Unresolved issues: none in the WebKit pass; the previously failing deep nested AGENTS TOC item now wraps to three lines with equal `18px` left/right shell inset
+
+## 2026-04-18 21:43:07 BST — Matched selected TOC chip fill token to hover
+- Action performed: aligned the selected/current TOC chip fill token with the hover fill token so the selected state uses the same fill color family and corner radius treatment as hover instead of a separate darker active fill
+- Inputs used: local `msh-cui-wiki/src/styles/global.css`, running Astro dev server on `http://localhost:4321/`, Playwright WebKit visual verification on `http://localhost:4321/agents/#wiki-content-must-distinguish-fact-from-interpretation`
+- Outputs created: updated `msh-cui-wiki/src/styles/global.css`, browser artifact `output/playwright/toc-selected-matches-hover-webkit.png`, updated `log.md`
+- Unresolved issues: none for this token-alignment pass; selected/current and hover now draw from the same fill treatment
