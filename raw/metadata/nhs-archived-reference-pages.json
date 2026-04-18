@@ -1,0 +1,61 @@
+{
+  "title": "Archived and reference Health CUI programme pages",
+  "retrieved_on": "2026-04-17",
+  "files": [
+    {
+      "title": "User interface guidance",
+      "original_url": "http://systems.digital.nhs.uk/data/cui/uig",
+      "archive_url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545/http:/systems.digital.nhs.uk/data/cui/uig",
+      "local_path": "raw/sources/references/nhs-archives/2016-systems-digital-cui-uig.html",
+      "source_type": "html",
+      "source_classification": "archive context",
+      "retrieval_status": "retrieved",
+      "trust_note": "Localized directly from official NHS or UK Government Web Archive infrastructure.",
+      "sha256": "1c9a9d53aaebfd96b51e22767c277dbaf9d839575213e5cb78038823fd10ee0f"
+    },
+    {
+      "title": "CUI ISB",
+      "original_url": "http://www.isb.nhs.uk/use/baselines/cui",
+      "archive_url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20150107144238/http://www.isb.nhs.uk/use/baselines/cui",
+      "local_path": "raw/sources/references/nhs-archives/2015-isb-cui-baselines.html",
+      "source_type": "html",
+      "source_classification": "archive context",
+      "retrieval_status": "retrieved",
+      "trust_note": "Localized directly from official NHS or UK Government Web Archive infrastructure.",
+      "sha256": "64680c6e2085f1cf8565d76a1c0a35e157877802bcac5f06559be42e17592a2f"
+    },
+    {
+      "title": "NHS Common User Interface",
+      "original_url": "http://www.cui.nhs.uk/Pages/NHSCommonUserInterface.aspx",
+      "archive_url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20121107083801/http://www.cui.nhs.uk/Pages/NHSCommonUserInterface.aspx",
+      "local_path": "raw/sources/references/nhs-archives/2012-cui-home.html",
+      "source_type": "html",
+      "source_classification": "archive context",
+      "retrieval_status": "retrieved",
+      "trust_note": "Localized directly from official NHS or UK Government Web Archive infrastructure.",
+      "sha256": "1a0effa9e0b88cd97fa38952d27dfc96412d3d0ae2d402f08f419a3a1520a20f"
+    },
+    {
+      "title": "Register.aspx",
+      "original_url": "http://www.cui.nhs.uk/Pages/Register.aspx",
+      "archive_url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20121107083903/http://www.cui.nhs.uk/Pages/Register.aspx",
+      "local_path": "raw/sources/references/nhs-archives/2012-cui-register.html",
+      "source_type": "html",
+      "source_classification": "archive context",
+      "retrieval_status": "retrieved",
+      "trust_note": "Localized directly from official NHS or UK Government Web Archive infrastructure.",
+      "sha256": "428befb34cc943742211e6f8a100e0ae990313e9e31f6607a8087a1577b31fcb"
+    },
+    {
+      "title": "Deprecation notice for CUI",
+      "original_url": "https://digital.nhs.uk/binaries/content/assets/website-assets/data-and-information/information-standards/isb_1500-1508_deprecationnoticeforcui.pdf",
+      "archive_url": null,
+      "local_path": "raw/sources/references/nhs-digital/deprecationnoticeforcui.pdf",
+      "source_type": "pdf",
+      "source_classification": "release metadata",
+      "retrieval_status": "retrieved",
+      "trust_note": "Localized directly from official NHS or UK Government Web Archive infrastructure.",
+      "sha256": "361b1e71e8fb43c0f4fce2fed40f790f58b6fa3dc25fd6c9a5076e59cd2f0610"
+    }
+  ]
+}

@@ -1,0 +1,3199 @@
+Design Guidance
+        Timeline View
+
+
+
+ Wednesday, 23 September 2009
+                Version 1.0.0.0
+
+
+                   Prepared by
+                     Microsoft
+                                                                                                                                                   Microsoft
+
+
+
+
+PREFACE
+   Documents replaced by this document
+
+   Document Title                                                                                                                  Version
+   None
+
+
+   Documents to be read in conjunction with this document
+
+   Document Title                                                                                                                  Version
+   Design Guidance – Drug Administration                                                                                           2.0.0.0
+
+   Design Guidance – Medication Line                                                                                               2.0.0.0
+
+   Design Guidance – Medications List                                                                                              1.0.0.0
+
+   Design Guidance – Displaying Graphs and Tables                                                                                  2.0.0.0
+
+
+
+
+This document and/or software (“this Content”) has been created in partnership with the National Health Service (NHS) in England. Intellectual Property
+Rights to this Content are jointly owned by Microsoft and the NHS in England, although both Microsoft and the NHS are entitled to independently exercise
+their rights of ownership. Microsoft acknowledges the contribution of the NHS in England through their Common User Interface programme to this Content.
+Readers are referred to www.cui.nhs.uk for further information on the NHS CUI Programme.
+
+All trademarks are the property of their respective companies. Microsoft and Windows are either registered trademarks or trademarks of Microsoft
+Corporation in the United States and/or other countries.
+
+© Microsoft Corporation 2009. All rights reserved.
+
+                                                                                                                                                     Page ii
+                                    Design Guidance – Timeline View
+                                    Prepared by Microsoft, Version 1.0.0.0
+                                    Last modified on 23 September 2009
+                                                                                                                                            Microsoft
+
+
+
+
+TABLE OF CONTENTS
+1    Introduction .............................................................................................................................. 1
+    1.1    Customer Need ................................................................................................................... 2
+    1.2    Scope .................................................................................................................................. 3
+     1.2.1      In Scope ......................................................................................................................... 3
+     1.2.2      Out of Scope .................................................................................................................. 3
+    1.3    Assumptions ........................................................................................................................ 4
+    1.4    Dependencies...................................................................................................................... 5
+
+2    Timeline Guidance Overview ................................................................................................... 6
+    2.1    Rationale Summary ............................................................................................................. 7
+    2.2    Summary of Guidance ......................................................................................................... 8
+
+3    Guidance Details for the Timeline View Layout .................................................................... 12
+    3.1    Introduction........................................................................................................................ 12
+    3.2    Guidelines ......................................................................................................................... 12
+     3.2.1      Timeline View Structure ................................................................................................ 12
+
+4    Guidance Details for the Display of the Timeline Viewing Area ........................................... 15
+    4.1    Introduction........................................................................................................................ 15
+    4.2    Guidelines ......................................................................................................................... 15
+     4.2.1      Timeline Viewing Area Canvas and Time Markers ........................................................ 15
+     4.2.2      Indication of Past, Now and Future ............................................................................... 18
+
+5    Guidance Details for the Display of Timeline Entries ........................................................... 20
+    5.1    Introduction........................................................................................................................ 20
+    5.2    Guidelines ......................................................................................................................... 21
+     5.2.1      Timeline Entries: Generic Considerations ..................................................................... 21
+     5.2.2      Timeline Entries with No Significant Duration ................................................................ 22
+     5.2.3      Timeline Entries with Known Duration ........................................................................... 23
+     5.2.4      Timeline Entries with Open Duration ............................................................................. 27
+     5.2.5      Timeline Entry Labels ................................................................................................... 28
+     5.2.6      Row Identifier Cells....................................................................................................... 34
+     5.2.7      Displaying Crowded Timeline Entries and Labels .......................................................... 37
+     5.2.8      Displaying Graphs in Conjunction With a Timeline View ................................................ 38
+
+6    Guidance Details for Navigating Timeline Entries Within a Chosen Time Period ............... 41
+    6.1    Introduction........................................................................................................................ 41
+    6.2    Guidelines ......................................................................................................................... 41
+     6.2.1      Timeline Sections ......................................................................................................... 41
+     6.2.2      Indicating Timeline Entries Within the Chosen Time Period That Are Out of View.......... 43
+     6.2.3      Timeline Section Levels of Detail .................................................................................. 44
+                                                                                                                                             Page iii
+                                Design Guidance – Timeline View
+                                Prepared by Microsoft, Version 1.0.0.0
+                                Last modified on 23 September 2009
+                                                                                                                                         Microsoft
+
+
+
+7    Guidance Details for Displaying Sets of Related Events ...................................................... 47
+    7.1   Introduction........................................................................................................................ 47
+    7.2   Guidelines ......................................................................................................................... 48
+     7.2.1     Displaying Related Events ............................................................................................ 48
+     7.2.2     Displaying Drug Administration Information As a Related Set of Events ........................ 50
+
+8    Guidance Details for Navigating Time ................................................................................... 53
+    8.1   Introduction........................................................................................................................ 53
+    8.2   Guidelines ......................................................................................................................... 53
+     8.2.1     Adjusting the Viewed Time Period ................................................................................ 53
+     8.2.2     Timeline Global Navigation Options .............................................................................. 56
+     8.2.3     Timeline Row-Level Navigation Options........................................................................ 58
+
+9    Document Information............................................................................................................ 59
+    9.1   Terms and Abbreviations ................................................................................................... 59
+    9.2   Definitions ......................................................................................................................... 59
+    9.3   Nomenclature .................................................................................................................... 60
+     9.3.1     Body Text ..................................................................................................................... 60
+     9.3.2     Cross-References ........................................................................................................ 60
+    9.4   References ........................................................................................................................ 61
+
+
+
+
+                                                                                                                                          Page iv
+                               Design Guidance – Timeline View
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 23 September 2009
+                                                                                                                                      Microsoft
+
+
+
+
+1            INTRODUCTION
+    This document provides guidance for the design of Timeline Views. It describes the area of focus,
+    lists mandatory and recommended guidance points with usage examples and explains the rationale
+    behind the guidance.
+    Patients’ medical records contain vast quantities of information which play a pivotal role in clinical
+    decision making. This decision making relies critically upon swiftly gleaning an accurate and
+    complete picture from a catalogue of previous and planned events while identifying cause-effect
+    relationships and trends. In addition, being able to visualise planned activities in the context of past
+    events provides the clinician with an ‘integrated vision’ of what has happened, what is about to
+    happen, and what has just failed to happen. Timeline Views of patient clinical data provide this
+    visualisation.
+    Timelines provide an easy mechanism to view and compare both items with duration, and single
+    events, against time. There are a few current clinical systems which employ timelines of some
+    description to convey information, sometimes to the patient, other times to the clinician or
+    multi-disciplinary team.
+    There are not, however, guidelines which Independent Software Vendors (ISVs) can follow to help
+    mitigate patient safety risks which may be encountered when showing clinical data in a Timeline
+    View. This guidance document provides guidelines relating to the use of timelines to convey
+    duration and event data in clinical systems developed by ISVs.
+    To indicate their relative importance, each guideline in this document is ranked by Conformance
+    and by Evidence Rating. Table 1 defines those terms:
+
+    Term                  Definition
+    Conformance           Indicates the extent to which you should follow the guideline when defining your UI implementation. There are
+                          two levels:
+                           Mandatory – An implementation should follow the guideline
+                           Recommended – An implementation is advised to follow the guideline
+
+    Evidence Rating       Summarises the strength of the research defining the guideline and the extent to which it mitigates patient safety
+                          hazards. There are three ratings (with example factors used to determine the appropriate rating):
+                           Low:
+                               Does not mitigate specific patient safety hazards
+                               User research findings unclear and with few participants
+                               Unreferenced usability principles indicate the design is not significantly better than alternatives
+                           Medium:
+                               Mitigates specific patient safety hazards
+                               User research findings clear but with few participants
+                               References authoritative guidance (for example, from the UK-based National Patient Safety Agency
+                                (NPSA), Institute for Safe Medication Practices (ISMP) or World Health Organization (WHO)) that is
+                                potentially soon to be superseded
+                               Referenced usability principles indicate the design is significantly better than alternatives
+                           High:
+                               Mitigates specific patient safety hazards
+                               User research findings clear and with a significant number of participants
+                               References recent authoritative guidance (for example, from NPSA, ISMP or WHO)
+                               Referenced usability principles indicate the design is significantly better than alternatives
+    Table 1: Conformance and Evidence Rating Definitions
+
+
+
+
+                                                                                                                                       Page 1
+                                  Design Guidance – Timeline View
+                                  Prepared by Microsoft, Version 1.0.0.0
+                                  Last modified on 23 September 2009
+                                                                                                            Microsoft
+
+
+
+      Note
+      Refer to section 9.2 for definitions of the specific terminology used in this document.
+
+
+
+1.1     Customer Need
+ The visualisation of clinical data against time is commonplace in clinical systems, but tends to be
+ limited to quantitative information such as physiological observations data. However, the ability to
+ visualise clinical event and duration information (in isolation or in combination with quantitative
+ information such as ‘observations’ data) gives clinicians more context as to the patient’s condition
+ and may assist them in identifying patterns in the data available for a patient.
+ Pattern detection is a universal human capacity which people tend to do very efficiently and often
+ subconsciously. However, the detection and meaning of a data pattern can be heavily influenced
+ by the way in which the data is presented, and misinterpretation may occur if the data is not
+ presented in a way that clinicians can easily understand.
+      Note
+      When clinical data is visualised in a Timeline View, there is the possibility that clinicians may incorrectly
+      interpret coincidental occurrences in time of clinical event and duration information as being evidence of a
+      cause-effect relationship.
+      However, wrongly assuming a cause-effect relationship is not unique to Timeline Views, and clinicians
+      have a professional responsibility to fully validate such assumptions before acting on them.
+
+ Unpublished research undertaken by the National Health Service (NHS) in the UK identified the
+ following areas, amongst others, where the visualisation of clinical events and durations for a
+ patient could be beneficial for patient care and improve patient safety:
+       Medications History
+          The visualisation of prescribed medications and data relating to the administration of those
+          medications
+       Medical History (the ‘past’ visualisation of the patient)
+          Being able to view at varying levels of detail the past medical history recorded for the
+          patient, to enable the clinician to easily assimilate it
+       Transfer of Care (the ‘about now’ visualisation of the patient)
+          In addition to transfer of care within hospital teams, transfer of care between hospital and
+          acute care and general practice care, as well as between different hospitals, could benefit
+          from the visualisation of patient data on a timeline.
+       Secondary uses (for example, Clinical Audit)
+ The electronic format of medical records and coding in general already facilitates clinical audit.
+ However, timelines may enable audit to be taken a step further and allow causal relationships to be
+ identified. This guidance draws upon User Interface (UI) current best practice and upon research
+ into the use of timelines in clinical settings.
+ This guidance is for use by Independent Software Vendors to ensure that good design principles
+ support clinicians’ interpretation of duration and event information, reveal critical patterns and assist
+ users in accessing more detailed information relating to the data being viewed.
+
+
+
+
+                                                                                                              Page 2
+                         Design Guidance – Timeline View
+                         Prepared by Microsoft, Version 1.0.0.0
+                         Last modified on 23 September 2009
+                                                                                                                                   Microsoft
+
+
+
+
+1.2       Scope
+1.2.1        In Scope
+ Scope Area                                                Details
+ Navigating vertically and horizontally (potentially       How to navigate the timeline canvas to view timeline data
+ simultaneously)
+
+ Indication of data beyond the visible area of the         How to indicate that there is information outside the current viewing window
+ canvas                                                    which may be relevant to the user
+
+ Indication of now, past and future                        How to identify whether the range of time for which the user is currently
+                                                           viewing data is in the past, the future, or spans past and future.
+
+ Position of timeline element labels                       How to position the timeline canvas elements (labels, durations, events) in a
+                                                           patient-safe manner
+
+ Visual design of continuous duration timeline             How to display duration elements on the timeline canvas
+ elements
+
+ Visual design of discrete event timeline elements         How to display event elements on the timeline canvas
+
+ Display of timeline element attributes                    How to display information related to a duration or event element (such as
+                                                           dosage and rate for medications prescriptions)
+
+ Position of timeline elements on the canvas               How to position timeline elements on the canvas to optimise the canvas
+                                                           space available whilst maintaining patient safety
+
+ Mixing timelines with graph data / integrating            How timeline data and quantitative data (such as physiological observations
+ quantitative data with timeline data                      data) can be displayed in the same view - high level guidance only
+
+ Background and gridlines                                  How to display the canvas on which the timeline elements are displayed
+
+ Time navigation                                           High level guidance relating to changing the viewed time range
+
+ Levels of detail                                          High level guidance on adjusting the level of detail shown for the timeline
+                                                           elements
+
+ ‘Time window’ selection                                   High level guidance only
+ Table 2: Subject Areas Covered by This Guidance
+
+1.2.2        Out of Scope
+ This section defines areas that are not covered in this guidance. Although there may be specific
+ risks associated with these areas that are not addressed in this guidance, it is likely that the
+ principles in this guidance will extend to Timeline Views in many of the areas listed in Table 3.
+ Table 3 lists the subject areas that are not covered in this guidance:
+
+ Scope Area                                   Details
+
+ Grouping timeline entries                    How to show different types of timeline data on the same canvas
+
+ Designing for multiple time axes             This guidance is applicable to where time is displayed on the x-axis only
+
+ Collapse/expand control                      The appearance and interaction behaviour of any user control that collapses and
+                                              expands (that is, hides and reveals) timeline visualised data
+
+ Sorting, filtering and grouping              How to sort, filter and group timeline entries(for example, by title, time of
+                                              occurrence or by some other data taxonomy attribute)
+
+ Non-linear timescale                         Displaying data on a timeline where the time axis is non-linear (such as
+                                              logarithmic)
+
+
+                                                                                                                                       Page 3
+                               Design Guidance – Timeline View
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 23 September 2009
+                                                                                                                                     Microsoft
+
+
+
+
+ Scope Area                                   Details
+
+ Linkage of control variables                 How to link controls on the form (for example, linking the level of detail shown for
+                                              element attributes with the time window selection control so that for large time
+                                              windows, minimal attributes are displayed)
+
+ Adding, removing or moving other data        How to manage which data series are displayed as timelines, including the
+ series                                       method of selecting from a list of available data series
+
+ Accessing more info by navigating to or      How to access further information related to a selected item by navigating to
+ revealing more data                          another view or revealing the information in parallel with the timeline (for
+                                              example, within a ‘pop-up’ dialogue)
+
+ Default time window                          The time period to be displayed by default (that is, when a user accesses a
+                                              Timeline View for the first time within a session)
+
+ Defaults for controls                        The defaults for controls (such as level of detail and section collapse/expand)
+
+ Representing absence of data                 How to indicate when information for a data series or type is not available to the
+                                              system either temporarily (for example, due to a hardware failure) or for more
+                                              fundamental reasons (such as lack of compatibility between systems)
+
+ Representing uncertainty                     How to graphically represent such notions of uncertainty as ‘event occurred
+                                              sometime between January and March 2008’, ‘patient self-administered during
+                                              Tuesday evening’, and ‘condition is likely to clear up within next 2 months’.
+
+ When to use a timeline representation        When (and when not) to use a timeline representation as opposed to other
+                                              representations of the same data.
+ Table 3: Subject Areas Not Covered by This Guidance
+
+      Note
+      Listing an item as out of scope does not classify it as unimportant. Project time and resource constraints
+      inevitably restrict what can be in scope for a particular release. It is possible that items out of scope for
+      this release may be considered for a future release.
+
+
+1.3       Assumptions
+ ID       Assumption
+ A1       The quality (that is, provenance, accuracy, and completeness) of the data displayed in the Timeline View is of an acceptable
+          level. Data quality will be particularly important in scenarios where there are multiple data sources (for example, from
+          general practice and hospital and acute care settings) as the quality of the data may vary between sources.
+          Although the quality of data is not in scope for this guidance, the following risks were recorded during user research (see
+          APPENDIX B):
+           Coding of data is suboptimal; for example, coding is not good quality, or at the ‘wrong’ level for displaying on timeline
+            (where coding is at symptomatic level rather than at underlying etiology), or different codes are used to represent the
+            same concept
+           System cannot display all the data, or cannot be certain that all data is there
+           User infers from the absence of unavailable data that no event(s) occurred
+           Data is known to be missing but a ‘best estimate’ is not displayed
+           If timelines are not implemented based upon encoded data (which aids aggregation of results) and are not in a record
+            which uses an individual coded statement approach, then Timeline Views may misrepresent the data stored in the
+            system, and therefore clinicians may gain a mistaken or (unnecessarily) incomplete understanding of the patient
+
+
+
+
+                                                                                                                                      Page 4
+                                Design Guidance – Timeline View
+                                Prepared by Microsoft, Version 1.0.0.0
+                                Last modified on 23 September 2009
+                                                                                                                                Microsoft
+
+
+
+
+ ID       Assumption
+ A2       The system performance is adequate to display the quantity of data without significant delays (for example when scrolling
+          through large quantities of data).
+          Although system performance is out of scope for this guidance, approaches that may improve performance recorded during
+          research are:
+           Cache data directly adjacent to the currently viewed time period (a technique used by popular Internet mapping sites to
+            enable seamless scrolling to adjacent areas)
+           When navigation beyond the adjacent time periods is being performed, only update the viewing area once the user has
+            completed the action
+
+ A3       The minimum screen resolution used by the clinician is 1024 x 768 pixels, although a higher resolution may be employed.
+
+ A4       Medications viewed on a timeline will be shown using the intended start and end dates of the course of medication.
+
+ A5       The Timeline View is not the only view of patient medical data in the Clinical System. All the data shown on the Timeline
+          View is accessible through other views, including the view that represents the data as entered into the system.
+
+ A6       Timelines are implemented based upon encoded data which aids aggregation of results, and a record which uses an
+          individual coded statement approach.
+
+ A7       Source data for the timeline supports duration, explicitly or by inference
+ Table 4: Assumptions
+
+
+1.4      Dependencies
+ ID       Dependency
+ D1       The following design guidance documents (changes in these documents may affect current guidance):
+           Design Guidance – Drug Administration
+           Design Guidance – Medication Line
+           Design Guidance – Medications List
+           Design Guidance – Displaying Graphs and Tables
+ Table 5: Dependencies
+
+
+
+
+                                                                                                                                  Page 5
+                             Design Guidance – Timeline View
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 23 September 2009
+                                                                                                               Microsoft
+
+
+
+
+2          TIMELINE GUIDANCE OVERVIEW
+    This guidance document provides high-level guidance for the implementation of a Timeline View
+    within an ISV application. It aims to create a framework that will allow a variety of clinical data to be
+    displayed in a timeline format. This can be any clinical data where temporal aspects are of interest
+    (that is, the start and end times, duration and timing compared to other events).
+    This guidance does not seek to describe safe default settings for particular data-types in particular
+    clinical contexts (for example, the safe default settings for displaying inpatient medications in a
+    Timeline View). Guidance that does describe these kinds of safe defaults can be found in Design
+    Guidance – Medications List {R7} and Design Guidance – Drug Administration {R5}.
+    The usage examples throughout this guidance display medications data. The settings the usage
+    examples show (such as the level of detail per medication) should not be taken as safe for display
+    in every clinical context where that medication is used.
+        Note
+        Significant patient safety risks were identified which can only be mitigated when taking into account the
+        specific context of use. System implementers should conduct a detailed patient safety risk assessment to
+        ensure the safe use of the timeline in their particular context.
+        Refer to sections 5.2.1, 6.2.3 and 7.2.1 for further details.
+
+    For more information on the safe display of medications please see:
+         Design Guidance – Drug Administration {R5}
+         Design Guidance – Medication Line {R6}
+         Design Guidance – Medications List {R7}
+         Design Guidance – Search and Prescribe {R14}
+    Figure 1 shows how a Timeline View might look when displaying patient medications in an inpatient
+    context. The default settings, such as how much detail is displayed per medication and whether
+    administration status is shown, are notional and not part of this guidance.
+        Important
+        The visual representations used within this document to display the guidance are illustrative only. They
+        are simplified in order to support understanding of the guidance points. Stylistic choices, such as colours,
+        fonts or icons are not part of the guidance and unless otherwise specified are not mandatory requirements
+        for compliance with the guidance in this document.
+        Some examples within this document are based on the requirements for the NHS within the UK. You
+        should consider how your clinical application will need to handle information, such as patient identification
+        numbers (shown with the label ‘NHS No.’ in some images in this guidance), within the country of use.
+
+
+
+
+                                                                                                                Page 6
+                            Design Guidance – Timeline View
+                            Prepared by Microsoft, Version 1.0.0.0
+                            Last modified on 23 September 2009
+                                                                                                       Microsoft
+
+
+
+
+ Figure 1: Possible Timeline View in an Inpatient Context
+
+ The guidelines illustrated by the usage examples can be applied to other data-types in other clinical
+ contexts. Similarly, any medication-specific guidance points could be abstracted to a higher level to
+ also apply to other data-types.
+
+
+2.1       Rationale Summary
+ The rationale for the current guidance draws on several pieces of evidence.
+ Research:
+       Secondary research
+                 Existing guidelines and standards
+                 UI best practice
+                 Clinical timelines literature:
+                       Gaining New Medical Insights through Interactive Visual Exploration {R9}
+                       LifeLines: Using Visualization to Enhance Navigation and Analysis of Patient
+                        Records {R10}
+                       LifeLines: Visualizing Personal Histories {R11}
+                       TimeLine: Visualizing Integrated Patient Records {R12}
+                       Viewing personal history records: A comparison of Tabular format and graphical
+                        presentation using LifeLines {R13}
+       Primary research
+                 Interviews with healthcare professionals, including doctors
+
+
+
+                                                                                                        Page 7
+                                 Design Guidance – Timeline View
+                                 Prepared by Microsoft, Version 1.0.0.0
+                                 Last modified on 23 September 2009
+                                                                                                Microsoft
+
+
+
+       Regular consultation with experts
+               A panel of clinical experts
+               A technical audience (developers)
+ Usability Principles (see APPENDIX A for details on these principles):
+       Nielsen’s usability heuristics
+       Shneiderman’s eight golden rules of interface design
+       ISO 9241: Characteristics of presented information (taken from ISO 9241-10: 1996
+        Ergonomic requirements for office work with visual display terminals (VDTs) -- Part 10:
+        Dialogues principles {R3})
+ Existing Standards:
+       BS ISO 9241-10:1996 Ergonomic requirements for office work with visual display terminals
+        (VDTs): Part 10: Dialogues principles {R3}
+  Evolving Standards:
+       Design Guidance – Displaying Graphs and Tables {R4}
+       Design Guidance – Drug Administration {R5}
+       Design Guidance – Medication Line {R6}
+
+2.2      Summary of Guidance
+ Table 6 summarises the content of this document by outlining each area of guidance (along with a
+ cross-reference to the relevant section) and providing a visual example to illustrate how it might be
+ implemented.
+      Note
+      Design illustrations are best viewed on a screen in colour.
+
+
+ Areas of Guidance                Visual Summary
+
+ Section 3 provides guidance
+ on the overall layout of the
+ Timeline View, including the
+ positioning of the patient
+ banner, options to navigate to
+ other views, and the main
+ timeline navigation controls.
+
+
+
+
+                                                                                                  Page 8
+                             Design Guidance – Timeline View
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 23 September 2009
+                                                                        Microsoft
+
+
+
+
+Areas of Guidance                   Visual Summary
+Section 4 includes guidance
+on the appearance of the
+timeline viewing area,
+including background colours
+and row delineation, and time
+axis markers. The indication of
+past, present, and future time
+periods is also detailed.
+
+
+
+
+Section 5 provides guidance
+for timeline entries (including
+entries with no duration,
+known duration, and open
+duration), timeline entry
+labels, and row identifier cells.
+
+
+
+
+Section 5 also provides
+guidance on the display of
+graphs in conjunction with
+timeline entries.
+Some quantitative data is
+better represented as a graph
+(for example, observations
+such as temperature, blood
+pressure, and so on.) These
+can be viewed in conjunction
+with a timeline representation
+of other data to provide
+comprehensive patient data
+visualisations.
+
+
+
+
+                                                                         Page 9
+                               Design Guidance – Timeline View
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 23 September 2009
+                                                                        Microsoft
+
+
+
+
+Areas of Guidance                   Visual Summary
+Section 6 includes guidance
+on using timeline sections to
+group entries, and covers the
+display of section title bars,
+indication of any timeline
+entries within the chosen
+period that are out of view,
+and controlling the level of
+detail displayed in each
+section.
+When the level of detail
+displayed in each timeline
+section can be controlled by
+the user, they can make best
+use of the available viewing
+space for their particular task.
+For example, clinicians may
+wish to compare a
+medication’s dose changes
+(requiring a high level of detail
+for the ‘medications’ section)
+with the patient’s health issues
+(viewable at a lower level of
+detail for the ‘problems’
+section).
+
+Section 7 provides guidance
+on the positioning and
+appearance of sets of events
+related to timeline entries (for
+example, Pharmacist Review
+events), including multiple
+sets.
+
+
+
+
+This section also covers the
+display of drug administrations
+as a related set of events.
+
+
+
+
+                                                                        Page 10
+                               Design Guidance – Timeline View
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 23 September 2009
+                                                                        Microsoft
+
+
+
+
+Areas of Guidance                 Visual Summary
+Section 8 contains guidance
+for the selection of the viewed
+time period, navigation to time
+periods adjacent to the current
+time period and larger scale
+navigation to time points
+throughout the total available
+time period.
+
+
+
+
+Table 6: Summary of Guidance
+
+
+
+
+                                                                        Page 11
+                               Design Guidance – Timeline View
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 23 September 2009
+                                                                                                                        Microsoft
+
+
+
+
+3            GUIDANCE DETAILS FOR THE TIMELINE VIEW LAYOUT
+3.1          Introduction
+    This section provides guidance on the overall layout of the Timeline View, including the positioning
+    of the patient banner, options to navigate to other views, and the main timeline navigation controls.
+    Figure 2 illustrates those features:
+
+
+
+
+    Figure 2: Timeline View Features Covered in this Section
+
+
+3.2          Guidelines
+3.2.1            Timeline View Structure
+                                                                                                                    Evidence
+    ID              Guideline                                                                         Conformance
+                                                                                                                    Rating
+    TLN-0010        Position all global timeline view navigation controls (such as time range         Recommended   Medium
+                    selection, main timeline navigation controls) in close proximity to each other.
+
+    TLN-0020        Locate the main timeline navigation area directly above the timeline viewing      Recommended   Medium
+                    area.
+
+    TLN-0030        Design the timeline viewing area so that it dynamically resizes to fill the       Recommended   Medium
+                    available space if the application window is resized.
+
+
+
+
+                                                                                                                        Page 12
+                                   Design Guidance – Timeline View
+                                   Prepared by Microsoft, Version 1.0.0.0
+                                   Last modified on 23 September 2009
+                                                                                                                                 Microsoft
+
+
+
+
+Usage Examples
+
+
+
+
+In this correct example, the patient banner is displayed across the top of the window, with tabbed options for selecting the current view
+(in this example image only the timeline tab is populated). The global Timeline View controls are co-located and positioned
+immediately above the timeline viewing area, and the timeline viewing area fills the remaining area. The design is based on a display
+size of 1024 pixels wide by 768 pixels high. (TLN-0010, TLN-0020)
+
+
+
+
+                                                                                                                                  Page 13
+                             Design Guidance – Timeline View
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 23 September 2009
+                                                                                                                                    Microsoft
+
+
+
+
+In this incorrect example, the patient banner is absent (with a risk that the data will be mistakenly attributed to another patient) and the
+global Timeline View controls are located in several areas of the window, requiring unnecessary movement by the user. (TLN-0010,
+TLN-0020)
+
+Rationale
+Locating all the Timeline View’s global controls together at the top of the view provides:
+ A consistent place for controls to be found, and is consistent with the CUI guidelines for control positioning in Design
+  Guidance – Medications List {R7} and Design Guidance – Drug Administration {R5}
+ More economical use of screen space, leaving a larger rectangular area for timeline viewing. In particular maximising the vertical
+  space is highly desirable in a Timeline View
+ Reduces the movement required by the user if they are globally manipulating the Timeline View
+Hazard Risk Analysis Summary:
+No mitigated hazards recorded for this area
+
+
+
+
+                                                                                                                                     Page 14
+                             Design Guidance – Timeline View
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 23 September 2009
+                                                                                                                         Microsoft
+
+
+
+
+4            GUIDANCE DETAILS FOR THE DISPLAY OF THE
+             TIMELINE VIEWING AREA
+4.1          Introduction
+    This section includes guidance on the appearance of the timeline viewing area, including
+    background colours and row delineation, and time axis markers. Guidance on how to indicate past,
+    present and future time periods is also included. Figure 3 illustrates those features:
+
+
+
+
+    Figure 3: Timeline View Features Covered in this Section
+
+
+4.2          Guidelines
+4.2.1            Timeline Viewing Area Canvas and Time Markers
+    Use these guidelines in conjunction with the time axis guidelines found in Design
+    Guidance – Displaying Graphs and Tables {R4}.
+
+                                                                                                                  Evidence
+    ID                Guideline                                                                     Conformance
+                                                                                                                  Rating
+    TLN-0040          Divide the timeline canvas into visually marked horizontal rows extending     Mandatory     High
+                      across the width of the canvas
+
+    TLN-0050          Do not use gradient fills for the canvas background                           Recommended   Medium
+
+    TLN-0060          Do not put watermarks or decorative patterns on the canvas background         Recommended   Medium
+
+    TLN-0070          Visually delineate each horizontal row on the timeline canvas by using two    Mandatory     Medium
+                      alternating background colours
+
+    TLN-0080          Choose colours that do not detract from the legibility of elements on the       Mandatory   Medium
+                      canvas (including gridlines), and are unlikely to have semantic meaning in that
+                      context
+
+    TLN-0090          One of these alternating row colours should be white                          Recommended   Medium
+
+
+
+                                                                                                                         Page 15
+                                   Design Guidance – Timeline View
+                                   Prepared by Microsoft, Version 1.0.0.0
+                                   Last modified on 23 September 2009
+                                                                                                                                  Microsoft
+
+
+
+
+TLN-0100         Use top and bottom margins within each row to ensure separation between            Recommended              Medium
+                 adjacent timeline entries and other elements on the canvas
+
+TLN-0110         Provide a Timeline View where time is displayed proportionately; that is, each     Mandatory                Medium
+                 time interval (such as one hour) must be represented as the same distance
+                 (such as 10 mm).
+
+TLN-0120         Use the same time axis for the entire timeline viewing area                        Mandatory                Medium
+
+TLN-0130         Mark the time intervals (that is, use hour marks, day marks, week marks and        Mandatory                Medium
+                 so on) across the top and bottom of the viewing area, and provide vertical
+                 gridlines between each pair of markers
+
+TLN-0140         For time gridlines use a thin line and a colour that does not detract from the     Recommended              Medium
+                 legibility of timeline entries and other elements on the canvas
+
+TLN-0150         Group the time intervals into higher units and distinguish these with more         Recommended              Medium
+                 prominent markings and gridlines
+
+Usage Examples
+
+
+
+
+In this correct example, each row is delineated by muted alternating colours that will not detract from the legibility of timeline entries
+and other elements that may be displayed. The time axis is clearly shown above and below the viewing area, with subtle gridlines and
+more prominent markings for the start of each day. (TLN-0040, TLN-0050, TLN-0070, TLN-0080, TLN-0090, TLN-0110, TLN-0120,
+TLN-0130, TLN-0140, TLN-0150)
+
+
+
+
+                                                                                                                                   Page 16
+                             Design Guidance – Timeline View
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 23 September 2009
+                                                                                                                                     Microsoft
+
+
+
+
+Example 1: Selection of Incorrect Examples
+
+In the first incorrect example, alternating columns have been used to delineate time markers. This disrupts the horizontal rows and
+leads to a confusing patchwork pattern. (TLN-0140)
+The second example uses strong alternating colours which would detract from the legibility of any timelines displayed and would
+additionally require different colour schemes to be applied to timeline elements depending on the background colour of the row they
+are located on. (TLN-0080)
+The third example uses a graduated fill to indicate time of day, but this will detract from the clarity of any timeline elements placed on it.
+(TLN-0050, TLN-0140, TLN-0150)
+The fourth example uses a repeating set of four colours to delineate rows. Users may wrongly infer meaning from the row background
+colour. (TLN-0070, TLN-0080, TLN-0090)
+
+Rationale
+Emphasising horizontal rows facilitates reading along the line, allowing the user to better associate the elements within that line, For
+example, making it less likely that a label from one line will be associated with an event marker from another line.
+Gradients and patterns on the canvas would reduce the clarity of elements on the canvas, and might mistakenly imply meaning.
+If more than two colours are used to delineate rows, users may wrongly infer meaning from the row colour (as in the fourth example of
+Example 1). The use of strong alternating colours will detract from the legibility of any timelines displayed, and will also require
+different colour schemes to be applied to timeline elements depending on the background colour of the row they are located on.
+Displaying time proportionally follows from the Design Guidance – Displaying Graphs and Tables {R4}. Using non-linear timescales is
+an interesting area of investigation that was out of scope for this work, and so cannot be ruled out.
+Display of the timescales should follow guidance laid out in the Design Guidance – Displaying Graphs and Tables {R4}
+Hazard Risk Analysis Summary:
+Potential Hazards:                                                         Mitigations:
+         MTI066 users do not have a sense of the time scale as no          TLN-0130, TLN-0140, TLN-0150 (Location and format of
+         vertical time markers are used                                      time interval markings)
+        MTI067users find it hard to read along from left hand labels       TLN-0040, TLN-0070 (Horizontal delineation of timeline
+         to the data plots (in order to match data to categories             canvas)
+
+
+
+
+                                                                                                                                      Page 17
+                              Design Guidance – Timeline View
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 23 September 2009
+                                                                                                                                  Microsoft
+
+
+
+
+4.2.2        Indication of Past, Now and Future
+                                                                                                                             Evidence
+ ID             Guideline                                                                           Conformance
+                                                                                                                             Rating
+ TLN-0160       Extend a prominent vertical line across the viewing area aligned to the current     Mandatory                Medium
+                time on the time axis, and display indicators at both ends of the line beyond the
+                viewing area close to the time markers
+
+ TLN-0170       Differentiate between past and future time periods by using different background Mandatory                   Medium
+                colours or different shades of the same background colour.
+
+ TLN-0180       The past should not have any additional background colour over its row banding Recommended                   Medium
+
+ Usage Examples
+
+
+
+
+ In this correct example, the ‘now’ point in time is displayed using indicators on each time axis between which a prominent vertical line
+ is drawn. The future time period has a subtly darker background to provide visual differentiation while not impacting on any elements
+ which may be display on the canvas. (TLN-0160, TLN-0170, TLN-0180)
+
+
+
+
+                                                                                                                                   Page 18
+                              Design Guidance – Timeline View
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 23 September 2009
+                                                                                                                               Microsoft
+
+
+
+
+Rationale
+Hazard Risk Analysis Summary:
+User research (see APPENDIX B) supported both the inclusion of, and design of the ‘Now’ indication. As described in the hazard
+below, not having a clear indication of ‘Now’ may lead to misinterpretation of the timescale, and provides an anchoring point when
+navigating the timescale.
+User research (see APPENDIX B) showed support for using the background to give extra indication of future and past. Additionally,
+most clinicians felt that a colour such as grey was semantically better associated with the past. However, further analysis concluded
+that as most timeline elements would be displayed in the past, and the best background colour for readability and reducing visual noise
+was white, the past should be shown with a white background. Therefore the future should be the side with the subtle colour
+distinction.
+User research (see APPENDIX B) suggested that changing the style of timeline elements between past and future might be
+misinterpreted as a status change. For example if a prescription was shown differently in the future and past, a clinician might assume
+that it had been administered according to plan, when in fact the administration status is independent from the time.
+   Potential Hazards:                                            Mitigations:
+       MTI130 If the view doesn't default to show 'Now', a       TLN-0160 (Display a prominent vertical line to indicate ‘now’).
+        clinician might not notice this and misinterpret time      Though TLN-0190 does not deal with defaulting to ‘Now’, if ‘Now’
+        scale by, for example, mistakenly thinking                 is not clearly shown, then there would be the same problem with
+        medications in view are current medications                misinterpreting the time scale.
+
+
+
+
+                                                                                                                                Page 19
+                            Design Guidance – Timeline View
+                            Prepared by Microsoft, Version 1.0.0.0
+                            Last modified on 23 September 2009
+                                                                                                       Microsoft
+
+
+
+
+5            GUIDANCE DETAILS FOR THE DISPLAY OF TIMELINE
+             ENTRIES
+5.1          Introduction
+    This section provides guidance for timeline entries (including entries with no duration, known
+    duration, and open duration), timeline entry labels, and row identifier cells. Figure 4 illustrates those
+    features:
+
+
+
+
+    Figure 4: Timeline View Features Covered in this Section
+
+    This section also provides guidance on the display of graphs in conjunction with timeline entries, as
+    shown in Figure 5:
+
+
+
+
+    Figure 5: Display of Graphs with Timeline Entries
+
+
+
+
+                                                                                                       Page 20
+                                    Design Guidance – Timeline View
+                                    Prepared by Microsoft, Version 1.0.0.0
+                                    Last modified on 23 September 2009
+                                                                                                                                     Microsoft
+
+
+
+
+5.2        Guidelines
+5.2.1         Timeline Entries: Generic Considerations
+ Timeline entries are visualisations of medical record entries plotted against time. They can
+ represent data at a point in time or over a duration.
+
+                                                                                                                              Evidence
+ ID             Guideline                                                                               Conformance
+                                                                                                                              Rating
+ TLN-0190       Provide a means for the user to navigate from an element of information (for            Recommended           Medium
+                example, a drug prescription) to alternative views of that information (for example,
+                the drug administration view) and back again.
+
+ TLN-0200       Apply context-specific rules supplied by the appropriate clinical authority regarding   Mandatory             High
+                the line identity for medications, to ensure the safe display of timelines that
+                represent medications (for example, in certain inpatient contexts it may be unsafe
+                to locate multiple medication prescriptions on the same row if those prescriptions
+                vary in dose, route, or frequency).
+
+ Usage Examples
+ No usage examples for these guidelines
+
+ Rationale
+ The usage examples in this and throughout this document show multiple prescriptions displayed on a single row, where the medication
+ row identity is at the level of drug name (for example, all prescriptions for paracetamol are shown on the same row). This level of row
+ identity is not Microsoft Health CUI guidance, but aims to make best use of the display space available while ensuring, through the
+ clear display of timeline entry labels, that important differences between entries can be highlighted.
+ However, for some clinical contexts and applications, medication row identity at the level of drug name may be deemed unsafe by an
+ appropriate clinical authority
+ Hazard Risk Analysis Summary:
+ No mitigated hazards recorded for this area
+ Significant Risks That Are Not Directly Mitigated by Guidance:
+ The following risks are not directly mitigated by the guidance in this document. Suppliers should be aware of these risks and design
+ their applications to mitigate them accordingly:
+ Potential Hazards:                         Cause:                           Potential Consequences:
+       MTI182 What if the row               How ISVs implement CUI          Actual changes (for example, to dose, route, frequency or
+        identifier is not easily changed      Medications Timeline             strength) are missed. Depending on the context, the
+        and is set at a too low level of      design guidance                  potential for inappropriate clinical treatment as a result is
+        detail?                                                                of varying severity. In this instance, user confusion,
+                                                                               potential delays to clinical treatment and an inappropriate
+                                                                               picture of clinical care understood by the user.
+       MTI183 What if the row               How ISVs implement CUI          For example, the user's ability to see all of the medication
+        identifier is not easily changed      Medications Timeline             information at once would be compromised, leading to a
+        and is set at a too high level of     design guidance                  potential for inappropriate treatment with varying
+        detail, eg. just the drug name?                                        consequences
+
+
+
+
+                                                                                                                                     Page 21
+                               Design Guidance – Timeline View
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 23 September 2009
+                                                                                                                                    Microsoft
+
+
+
+
+5.2.2        Timeline Entries with No Significant Duration
+ Some timeline entries occur at a point in time and have no duration. Examples of timeline entries
+ with no duration are:
+       ‘Once only’ prescriptions (other than once only infusions) that have no significant duration
+        (for example, tablets)
+       General notes recording (for example, ‘past history of appendicectomy’)
+
+                                                                                                                           Evidence
+ ID            Guideline                                                                              Conformance
+                                                                                                                           Rating
+ TLN-0210      Use the same colour scheme for all timeline entries with no duration                   Mandatory            Medium
+ TLN-0220      Avoid colour schemes that may have additional meanings which are unintended Mandatory                       Medium
+               (for example, red and green may be misinterpreted as ‘safe’ and ‘unsafe’)
+
+ TLN-0230      Use the same symbol for all timeline entries with no duration                          Mandatory            Medium
+
+ TLN-0240      Display the same size symbols for all timeline entries, regardless of the time         Mandatory            Medium
+               period chosen
+
+ TLN-0250      For a timeline entry with no duration, use a symbol that visually aligns with the      Mandatory            High
+               time axis
+
+ TLN-0260      For a timeline entry with no duration, use a symbol that is symmetrical along its      Recommended          Medium
+               vertical axis
+
+ TLN-0270      Use a symbol for which the centre point is clearly indicated                           Recommended          Medium
+
+ TLN-0280      Position the symbol so that its centre point is aligned with the time that it          Recommended          Medium
+               represents
+
+ TLN-0290      To indicate a once only (‘stat’) medication that has an administration of no           Mandatory            Medium
+               significant duration (for example, a tablet or injection), use a timeline entry with
+               no duration. Align the symbol with the planned administration time.
+
+ Usage Examples
+
+
+
+
+ In this correct example, the blue arrowhead symbols align clearly with the times they indicate. The same symbol is used for the
+ different data types shown (patient problem and drug prescription). The drug prescription represents a ‘once-only’ prescription.
+ (TLN-0210, TLN-0220, TLN-0230, TLN-0250, TLN-0260, TLN-0270, TLN-0280, TLN-0290)
+
+
+
+
+ In this incorrect example, different symbols have been wrongly used, and the second symbol uses the colour green, which may have
+ unintended semantic meaning. The second entry also incorrectly represents a prescription requiring more than one administration as a
+ timeline event with no duration. (TLN-0220, TLN-0230)
+
+
+
+
+                                                                                                                                    Page 22
+                             Design Guidance – Timeline View
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 23 September 2009
+                                                                                                                                     Microsoft
+
+
+
+
+ In this correct example, the symbols are vertically symmetrical and their centres clearly align with the time axis. (TLN-0250, TLN-0260,
+ TLN-0270, TLN-0280)
+
+
+
+
+ In this incorrect example, the symbols are not vertically symmetrical. (TLN-0250, TLN-0260, TLN-0270, TLN-0280)
+
+
+
+
+ In this incorrect example, the symbols are vertically symmetrical, but their centres do not clearly align with the time axis. (TLN-0250,
+ TLN-0270, TLN-0280)
+
+ Rationale
+ There are a very large number of different data types and categories that could be displayed simultaneously in a Timeline View.
+ Therefore, it is impractical to use different symbols and/or colours to distinguish these types and categories. For example, using red to
+ indicate cardiovascular health issues and medications.(This guidance does not apply to patient observations displayed as graphs,
+ guidelines for which can be found in section 5.2.8 of this document and in Design Guidance – Displaying Graphs and Tables {R4})
+ User research found that items marked in red and green were confusing and misinterpreted to mean ‘stop’ and ‘go’. Previous Microsoft
+ Health CUI research has found that very few colour conventions are universal in healthcare and therefore should be avoided if
+ possible in cases where it could mistakenly be interpreted as having meaning.
+ These guidance points follow the relevant guidance for plotting nodes described in Design Guidance – Displaying Graphs and
+ Tables {R4}, as on a graph, minimising ambiguity as to an item’s point in time is essential in a Timeline View. Clear centre points also
+ emphasise the point-in-time nature of such entries.
+ Hazard Risk Analysis Summary:
+      Potential Hazards:                                                  Mitigations:
+           MTI083 Colour is used to show linkage between data              TLN-0210 (Use the same colour scheme for all timeline
+            groups. If colour is not used consistently between patients, a   entries with no duration)
+            user may make mistaken assumptions about what colour
+            conveys for a patient. Also many grouping sets will have too
+            many members to support a useful colour scheme
+
+
+5.2.3          Timeline Entries with Known Duration
+ Many record entries have a period of validity determined by start and end times. Displaying entries
+ with a known duration is one of the strengths of the timeline approach to data visualisation.
+ Examples are:
+           Drug prescriptions that are for a defined period; for example, a prescription for an infusion
+            over 12 hours, or a seven day course of tablets
+           Patient conditions that have been noted and then recorded as resolved; for example,
+            ‘infected foot’
+
+                                                                                                                              Evidence
+ ID              Guideline                                                                             Conformance
+                                                                                                                              Rating
+ TLN-0300        Use the same start and end symbols and style (including colour) of duration lines     Mandatory              High
+                 for all timeline entries with known duration.
+
+ TLN-0310        Display duration as a horizontal unbroken line with a thickness and colour that       Mandatory              Medium
+                 clearly distinguishes it from the background, with no fill colour.
+
+                                                                                                                                     Page 23
+                               Design Guidance – Timeline View
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 23 September 2009
+                                                                                                                                      Microsoft
+
+
+
+
+TLN-0320       Use different symbols for the start time and end time. Position the symbols and the Mandatory                   Medium
+               duration line to form a continuous shape.
+
+TLN-0330       Use start time and end time symbols that provide a clear visual interruption to the      Mandatory              High
+               duration line, such that if two or more timeline entries with known duration are
+               positioned end-to-end, there is a noticeable discontinuation of the duration lines.
+
+TLN-0340       Use start time and end time symbols that extend downwards from the duration              Recommended            Medium
+               line.
+
+TLN-0350       Use a start time symbol with a left hand edge that clearly aligns with the time axis.    Mandatory              Medium
+TLN-0360       Use an end time symbol with a right hand edge that clearly aligns with the time          Mandatory              Medium
+               axis.
+
+TLN-0370       Do not vary the style of timeline entries and labels between past and future time        Recommended            Medium
+               periods
+
+TLN-0380       For drug prescriptions, use a timeline entry with known duration to indicate a           Mandatory              High
+               prescription requiring more than one administration. Align the start time symbol
+               with the first planned administration time and the end time symbol with the last
+               planned administration time.
+
+TLN-0390       To indicate a once only (‘stat’) medication that has an administration with a            Recommended            Medium
+               significant duration (for example, an infusion), use a timeline entry with known
+               duration. Align the start time symbol with the planned beginning of the
+               administration time and the end time symbol with the planned end of the
+               administration.
+
+Usage Examples
+
+
+
+
+Example 2: Same Symbols and Duration Line Styles Used for all Timeline Entries
+
+In this correct example, the same symbols and duration line style have been used for all the timeline entries of known duration. The
+start and end symbols have edges that clearly align with the time axis, and where two timelines share a row (the saline entries) there is
+a noticeable discontinuation of the duration lines. (TLN-0300, TLN-0310, TLN-0320, TLN-0330, TLN-0340, TLN-0350, TLN-0360,
+TLN-0390)
+
+
+
+
+In this incorrect example, different symbols and duration line styles have been incorrectly used to differentiate between data types.
+Additionally, the second timeline style does not provide a noticeable discontinuation of the duration line if another timeline of this style
+where positioned end-to-end with it. (TLN-0300, TLN-0330)
+
+
+
+
+                                                                                                                                      Page 24
+                              Design Guidance – Timeline View
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 23 September 2009
+                                                                                                                                    Microsoft
+
+
+
+
+In this incorrect example, the same symbol has been incorrectly used for start and end times. Additionally, the mid-point of the symbol
+is incorrectly used to align with the time axis. As a result, the end point of the first entry overlaps the start point of the second entry,
+wrongly inferring a data series. As there is no noticeable discontinuation of the duration lines, this false inference is reinforced.
+(TLN-0320, TLN-0330)
+
+
+
+
+These correct examples of alternative designs all satisfy the guidelines. (TLN-0300, TLN-0310, TLN-0320, TLN-0330, TLN-0340,
+TLN-0350TLN-0360)
+
+
+
+
+These incorrect examples of alternative designs do not provide a noticeable discontinuation of the duration lines. (TLN-0330)
+
+
+
+
+A selection of incorrect examples. The first symbol incorrectly uses a thin duration line, which may not have enough prominence to be
+clearly distinguishable when positioned on a coloured background. The second symbol incorrectly uses a dotted line, which may
+falsely infer a temporary status. The third symbol incorrectly uses a bar with an internal fill colour, which adds unnecessary visual
+complexity. (TLN-0310)
+
+
+
+
+In this correct example of timeline entry styling for future time periods, the entries do not change in style as they cross the ‘Now’ time
+point into the future time period. (TLN-0370, TLN-0300, TLN-0310, TLN-0320, TLN-0330, TLN-0340, TLN-0350, TLN-0360)
+
+
+
+
+                                                                                                                                     Page 25
+                             Design Guidance – Timeline View
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 23 September 2009
+                                                                                                                                    Microsoft
+
+
+
+
+In this incorrect example of timeline entry styling for future time periods, the duration lines change style to use a dashed line. This can
+be mistakenly interpreted as representing a series of ‘on-off’ events, or that the status of the medication prescription has changed in
+some way. (TLN-0370, TLN-0310)
+
+Rationale
+Broken lines may be inferred as representing unconfirmed or varying status, and very thin lines may either be lost on the background
+or mistaken as horizontal gridlines. User research (see APPENDIX B) suggested that internal fill colours might contribute to a mistaken
+assumption that the duration items are ‘progress bars’, conveying status such as administration status. Redundant use of fill colour
+was also perceived to contribute to overall visual complexity of the timeline.
+Start, end and duration should form a continuous shape so that they can be unambiguously associated.
+When timeline entries share rows, individual entries must be clearly discernable from each other. This is particularly important when
+entries that have been grouped onto a shared row using one attribute (for example, drug name) have other important attributes that
+may significantly differ (for example, dose.) In these circumstances if individual entries are not clearly discernable from each other, the
+viewer of the timelines may mistakenly infer a false continuity (for example, continuity of dose) between entries.
+In addition, user research showed that in designs without a clear start symbol, users can misinterpret the occlusion of the duration
+items by the left hand edge of the screen as the starting point of those items (when they actually extend off-screen leftwards).
+When timeline items share rows, it may be common for duration items to follow on from each other; such as when a prescription’s
+dose is changed when the line summarises all of the prescriptions a patient has had for a particular drug (see Example 2). As the end
+time of one item and start time of another are shared, having symbols that do not overlap makes the start and end of each item
+clearer. Shared start / end points are also a problem if durations can be ‘moused-over’ to highlight them, as indicated in potential
+hazard MTI153.
+Hazard Risk Analysis Summary:
+   Potential Hazards:                                                  Mitigations:
+        MTI073 dashed line misinterpreted as something else,           TLN-0300 (Display duration as a horizontal unbroken line with
+         such as on / off                                                a thickness and colour that clearly distinguishes it from the
+                                                                         background., with no fill colour )
+        MTI079 Only ‘discrete’ items are displayed – no items with  TLN-0300 (Display duration as a horizontal unbroken line with
+         duration. Users forget that some events may imply a          a thickness and colour that clearly distinguishes it from the
+         persistent condition (such as a diagnosis of asthma) and     background with no fill colour). Risk is mitigated by displaying
+         therefore do not factor in things like co-occurrence         any items that have a duration
+        MTI153 If you ‘mouse over’ a shared prescription start/end  TLN-0350 (Use a start time symbol with a left hand edge that
+         blob (that is, shares two durations) - which duration is     clearly aligns with the time axis) and TLN-0350 (Use an end
+         highlighted?                                                 time symbol with a right hand edge that clearly aligns with the
+                                                                      time axis)
+        MTI176 If two duration items one the same line have been  TLN-0330, TLN-0350, TLN-0360 (Start and end items do not
+         stopped and started in quick succession (e.g. a            occlude each other)
+         medication dose is changed by stopping one and starting
+         another) then it is quite likely that the two 'blobs' will
+         occlude and so turn the 'crowding' UI on (which might
+         make it harder to notice that items are separate?)
+        MTI072 User mistakenly thinks that past events HAVE            TLN-0370 (Do not vary the style of timeline entries and labels
+         occurred, or that future events WILL occur                      between past and future time periods)
+                                                                                                                                    Page 26
+                             Design Guidance – Timeline View
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 23 September 2009
+                                                                                                                                     Microsoft
+
+
+
+
+           MTI073 What if the dashed line (representing future items)  TLN-0370 (Do not vary the style of timeline entries and labels
+            is misinterpreted as something else, such as on / off?       between past and future time periods)
+           MTI162 The clinician mistakenly assumes that the solid        TLN-0370(Do not vary the style of timeline entries and labels
+            and dotted line on prescriptions refers to administration      between past and future time periods)
+            status
+           MTI163 The clinician is confused as to why the                  TLN-0370 (Do not vary the style of timeline entries and labels
+            prescription line (a plan) changes to a dotted in the future -   between past and future time periods)
+            as the PLAN to give it doesn't change, and that it might
+            (incorrectly) be seen as a status change (such as an
+            administration status change)
+
+
+5.2.4            Timeline Entries with Open Duration
+ Sometimes the end time of a timeline entry is unknown, indeterminate or infinite.
+ Examples are:
+           Current medical conditions which may (or may not) be resolved at some undetermined time
+            in the future
+           Drugs prescribed on an ‘ongoing basis
+           Amputations or congenital conditions which the patient will have for the duration of their life
+
+          Note
+          These examples, with the exception of amputations and congenital conditions, may be updated to timeline
+          entries with known duration if end times are later provided. Therefore, there is a need to represent timeline
+          entries with an open duration.
+
+
+                                                                                                                              Evidence
+ ID                  Guideline                                                                        Conformance
+                                                                                                                              Rating
+ TLN-0400            For a timeline with open duration, use the same design for the start time        Mandatory               Medium
+                     symbol and the duration line as used for timelines with known duration.
+
+ TLN-0410            For a timeline with open duration, extend the duration line to the right hand    Mandatory               Medium
+                     margin of the viewing area
+
+ TLN-0420            For a timeline with open duration, do not use any symbol on the right hand       Recommended             Low
+                     end of the duration line
+
+ TLN-0430            For drug prescriptions, use a timeline entry with open duration to indicate an   Mandatory               High
+                     ‘ongoing’ prescription. Align the start time symbol with the first planned
+                     administration time.
+
+ Usage Examples
+
+
+
+
+ This correct example shows the duration line extending to the last viewable time, with no symbol on the right hand end of the duration
+ line. (TLN-0400, TLN-0410, TLN-0420)
+
+
+
+
+ This incorrect example shows a symbol which interrupts the duration line before it reaches the right margin of the viewing area.
+ (TLN-0420)
+
+
+                                                                                                                                     Page 27
+                                Design Guidance – Timeline View
+                                Prepared by Microsoft, Version 1.0.0.0
+                                Last modified on 23 September 2009
+                                                                                                                                   Microsoft
+
+
+
+
+ Example 3: Duration Line Incorrectly Using a Symbol at the End
+
+  This incorrect example shows a duration line that correctly extends to the right margin of the viewable area, but incorrectly uses a
+  symbol at the end. (TLN-0420)
+
+ Rationale
+ During user research, some clinicians interviewed were unsure of the distinction between duration items that had no end date (open
+ items), and those that had a future end date that was not currently visible.
+ Symbols that interrupt a duration line, such as in Example 3, may be mistakenly interpreted as end symbols.
+ Hazard Risk Analysis Summary:
+      Potential Hazards:                                              Mitigations:
+         MTI076 If probably (or certainly) persistent durations  TLN-0410 and TLN-0420 (Durations where the future end date is
+          are not represented persistently (in that, they are not  unknown (for example asthma in a child) shown as extending into
+          represented past the ‘current’ time), then a user might  the future, rather than ending at the current time).
+          forget that a condition could be persistent
+
+
+5.2.5         Timeline Entry Labels
+                                                                                                                             Evidence
+ ID              Guideline                                                                               Conformance
+                                                                                                                             Rating
+ TLN-0440        Position the timeline entry label above the related timeline entry.                     Mandatory           Medium
+
+ TLN-0450        Extend a vertical line from the left hand edge of the label down to the related         Mandatory           Medium
+                 timeline entry.
+
+ TLN-0460        Ensure the vertical space between the top of the label and the row above is             Mandatory           Medium
+                 sufficient to avoid mistaken association of the label with entries in that row.
+
+ TLN-0470        For timeline entries with duration, if the start of the timeline entry is in view, align Mandatory          Medium
+                 the left hand edge of the label with the start time symbol.
+
+ TLN-0480        For timeline entries with duration, when the entry extends past the left edge of        Mandatory           Medium
+                 the viewing area (that is, the start time symbol is not visible), align the left hand
+                 edge of the label with the left edge of the viewing area.
+
+ TLN-0490        For a timeline entry with no duration, align the left hand edge of the label with       Mandatory           Medium
+                 the time of occurrence.
+
+ TLN-0500        If the label extends beyond the right edge of the viewing area, shorten it to fit in    Mandatory           Medium
+                 the available space and provide a symbol to indicate truncation. Provide an
+                 alternative means (for example a tooltip) to view the full label text.
+
+ TLN-0510        Provide an ellipsis symbol to indicate where truncation has occurred.                   Recommended         Medium
+
+ TLN-0520        When multiple timeline entries share a row and the labels contain identical text,       Recommended         Medium
+                 if the labels overlap then hide the labels that are obscured. Maintain the vertical
+                 lines up to (but not over) the label.
+
+ TLN-0530        When multiple timeline entries share a row and the labels do not contain                Recommended         Medium
+                 identical text, display the labels in such a way as to avoid overlap (for example,
+                 by repositioning the labels to different distances directly above the timeline
+                 entries and extending their vertical lines to maintain the visual linkage.)
+
+
+
+
+                                                                                                                                   Page 28
+                                Design Guidance – Timeline View
+                                Prepared by Microsoft, Version 1.0.0.0
+                                Last modified on 23 September 2009
+                                                                                                                                        Microsoft
+
+
+
+
+TLN-0540       Apply context-specific rules supplied by the appropriate clinical authority to the   Mandatory                    High
+               truncation and overlap of labels, to ensure the safe display of timeline labels (for
+               example, in inpatient contexts it may be unsafe to truncate full drug prescription
+               details).
+
+TLN-0550       Do not partially display medication names                                               Mandatory                 High
+TLN-0560       Do not partially display the individual fields (for example, dose, route and            Mandatory                 Medium
+               frequency) of each medication’s set of drug details.
+
+TLN-0570       When drug prescriptions are displayed as timeline entries, the facility to display      Mandatory                 High
+               full prescription details in the labels must be provided (the format for which is
+               detailed in Design Guidance – Medication Line {R6}).
+
+TLN-0580       When drug prescriptions are displayed as timeline entries, the facility to display      Recommended               High
+               only the drug name in the labels may be provided as an additional viewing
+               option to displaying full prescription details.
+                   Note
+                   Determining what is shown for the drug name is outside the scope of this
+                   guidance.
+
+TLN-0590       When full drug prescription details are displayed in timeline entry labels, the    Mandatory                      High
+               complete label text must be displayed (that is, not truncated or hidden). The only
+               exception is labels that extend beyond the right hand edge of the viewing area
+               (which will need to be truncated).
+
+TLN-0600       When drug prescriptions are displayed as timeline entries, if the option to display Mandatory                     High
+               shortened labels (for example, only the drug name) is provided, then when this
+               option is active the full prescription details must be available for the user to view
+               for each entry by an alternative mechanism (for example by revealing the full
+               prescription on mouse hover, or by selecting a greater level of detail).
+
+Usage Examples
+
+
+
+
+In this correct example, the label for the timeline entry with no duration is left aligned to the time of occurrence. The label for the
+timeline entry with duration is left aligned with the start time. For both entries a vertical line extends down to the related timeline entry.
+(TLN-0440, TLN-0450, TLN-0460, TLN-0470, TLN-0490)
+
+
+
+
+                                                                                                                                        Page 29
+                              Design Guidance – Timeline View
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 23 September 2009
+                                                                                                                                        Microsoft
+
+
+
+
+In this incorrect example, the label for the first entry (‘thunderclap headache’) is not positioned above the entry and does not have a
+line to visually associate it with the entry. If there were another entry to the right of the label it would not be clear which entry the label
+is associated with. (TLN-0440, TLN-0450, TLN-0490)
+The label for the second entry (‘paracetamol’) is also centrally aligned, but positioned under the duration line. This position may lead to
+the label obscuring the start and end point symbols for entries which have a duration line that is shorter than the label. (TLN-0440,
+TLN-0450, TLN-0470)
+The label for the third entry (‘infected foot’) is centrally aligned with the duration line, which gives undue prominence to this mid-point
+time. In this example, the user may wrongly infer that the mid-point time 10:20 has special relevance to the ‘infected foot’ entry.
+(TLN-0440, TLN-0450, TLN-0470)
+The label for the fourth entry (‘enoxaparin’) is so close to the row above it that the user may mistakenly associate the label with the
+third entry. (TLN-0460)
+
+
+
+
+Example 4: Correct Scrolling Behaviour
+
+In this correct example, when the user scrolls the viewing area two hours forward, the timeline entry with no duration is not visible and
+so the label is not displayed. The timeline entry with duration is still visible, and so its label aligns with the left hand edge of the viewing
+area. (TLN-0480)
+
+
+
+
+In this incorrect example, when the user scrolls the viewing area two hours forward, the labels stay positioned relative to the starting
+points of the timeline entries, and are partially obscured. (TLN-0480)
+
+
+
+
+                                                                                                                                        Page 30
+                              Design Guidance – Timeline View
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 23 September 2009
+                                                                                                                                   Microsoft
+
+
+
+
+Example 5: Correct Label Truncation
+
+In this correct example, the user has scrolled the viewable area so that the text in the two timeline entry labels extends past the right
+hand edge of the viewing area. The labels are adjusted to terminate at the right hand edge, and red ellipsis symbols are used to
+provide clear indication that the label text has been truncated. (TLN-0500, TLN-0510)
+
+
+
+
+Example 6: Incorrect Label Truncation
+
+In this incorrect example, the labels have been wrapped onto multiple lines within the horizontal space available. (In the worst case, if
+the available horizontal space was one character wide and the label was 25 characters in length, this would result in a label with 25
+rows of single characters.) (TLN-0500)
+
+
+
+
+Example 7: Incorrect Label Truncation
+
+In this incorrect example, the labels have been repositioned so that their right hand edge aligns with the right hand edge of the viewing
+area. This approach produces misalignment with the timeline entries: the user may wrongly infer that the first entry has duration
+starting at about 07:50. (TLN-0470, TLN-0490, TLN-0500)
+
+
+
+
+In this correct example, on both rows the medication names extend beyond the right edge of the viewing area. To avoid partial display,
+the medication names have been removed and a truncation symbol is displayed instead. (TLN-0550)
+
+
+
+
+In this incorrect example, in both rows the medication names extend beyond the right edge of the viewing area. The medication names
+have wrongly been partially displayed. (TLN-0550)
+
+
+
+
+                                                                                                                                   Page 31
+                               Design Guidance – Timeline View
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 23 September 2009
+                                                                                                                                     Microsoft
+
+
+
+
+In this incorrect example, in both rows the drug details extend beyond the right edge of the viewing area. The drug details have
+wrongly been partially truncated at points which show the maximum text in each label. (TLN-0560)
+
+
+
+
+In this incorrect example, the label of the first entry on the first row extends beyond the starting point of the next two entries, and so the
+overlapped labels are not displayed. The label of the first entry on the second row extends beyond the starting point of the next entry,
+which is similarly not displayed. The vertical lines of the hidden labels extend to the lower edge of the labels above, and additional
+visual indication is provided in the form of a ‘shadow’ label decoration. (TLN-0520)
+
+
+
+
+Example 8: Incorrect Label Overlap Behaviour
+
+In this incorrect example, labels on both rows are truncated by other labels. In a situation where many entries sharing a line have
+labels that truncate each other, the user may not be able to see any complete label text and could make wrong assumptions based on
+the truncated text. (TLN-0520)
+
+
+
+
+Example 9: Correct Display of Full Drug Prescription Details
+
+In this correct example of displaying full drug prescription details (the format of which is detailed in Design Guidance – Medication
+Line {R6}), the option to view all labels is shown. (TLN-0530, TLN-0560, TLN-0570)
+
+
+
+
+In this incorrect example, of displaying full drug prescription details, the first label overlaps the other three labels, and the system has
+hidden those labels. The user may wrongly infer that the first prescription details (dose, frequency, and so on) are valid for the other
+three timeline entries. (TLN-0530, TLN-0570)
+
+
+
+
+                                                                                                                                      Page 32
+                                Design Guidance – Timeline View
+                                Prepared by Microsoft, Version 1.0.0.0
+                                Last modified on 23 September 2009
+                                                                                                                                        Microsoft
+
+
+
+
+Example 10: Incorrect Display of Full Drug Prescription Details
+
+In this incorrect example of displaying full drug prescription details, the first three labels are truncated by the next label in the
+sequence. This makes it very difficult for the user to read the information. (TLN-0530, TLN-0560, TLN-0570)
+
+Rationale
+Positioning the label above the timeline item allows items to run up against one another without having to move the labels. Other
+examples of the benefits of positioning the label above the timeline item are given in Example 4. Preferences and rationale from user
+research (see APPENDIX B) supported labels displayed simultaneously on/near the items and in a static column (see the next
+section).
+The guidance points encourage the correct association of label and item. This is especially important when the label cannot be
+positioned exactly next to the timeline item as a result of TLN-0530 (see Example 9)
+The behaviour of the labels allows for a consistent placement of labels relative to the item’s starting point, and allows the user to
+always see a label for items in view.
+In this case, truncating labels that extend off the right hand side of the screen is preferable to either wrapping (as shown by
+Example 5 and Example 6) or repositioning the label (as shown by Example 7).
+As shown in Example 8, in situations with many closely arranged labels, overlapping labels from the left gives the best possible chance
+that at least one full label will be shown in view. Maintaining the vertical line from the overlapped label gives a reminder that some
+aspect of the item has changed.
+As shown in Example 10, overlapping labels which are NOT the same may lead the user to wrongly infer that the details displayed in
+the label for the first item are valid for the overlapped items as well.
+Hazard Risk Analysis Summary:
+   Potential Hazards:                                              Mitigations:
+        MTI097 What if the labels change position relative         TLN-0440, TLN-0450, TLN-0460, TLN-0470, TLN-0480,
+         to the line? (makes it harder to learn associations)        TLN-0490,(Timeline formatting)
+        MTI098 What if labels overlap?                             TLN-0520, TLN-0530, TLN-0540, TLN-0550, TLN-0560,
+                                                                     TLN-0570, TLN-0580, TLN-0590, TLN-0600 (Timeline label
+                                                                     positioning)
+        MTI099 What if the label is out of view?                   TLN-0440, TLN-0450, TLN-0460, TLN-0470, TLN-0480, TLN-0490,
+                                                                     TLN-0500 (Timeline formatting and truncation at right-hand screen
+                                                                     edge)
+
+
+
+
+                                                                                                                                        Page 33
+                                Design Guidance – Timeline View
+                                Prepared by Microsoft, Version 1.0.0.0
+                                Last modified on 23 September 2009
+                                                                                                                           Microsoft
+
+
+
+
+5.2.6          Row Identifier Cells
+ Additional to timeline labels, row identifier cells provide a means for the user to identify what is
+ displayed in a row. This is particularly useful when, for the viewed time period, a row does not
+ contain any timeline entries. Row identifier cells also provide the user a means for quickly
+ assimilating the information that is being displayed. Figure 6 illustrates row identifier cells:
+
+
+
+
+ Figure 6: Row Identifier Cells
+
+                                                                                                                       Evidence
+ ID               Guideline                                                                              Conformance
+                                                                                                                       Rating
+ TLN-0610         Provide the facility to display row identifier cells down the left edge of the viewing Mandatory     Medium
+                  area, aligned with (and using the background colour of) the associated timeline
+                  rows.
+
+ TLN-0620         For each row, position the identifier text at the top left within the row identifier   Mandatory     Medium
+                  cell.
+
+ TLN-0630         If the option for an alternative display of labels which avoids overlap is provided, Mandatory       Medium
+                  and this option can be performed at the row-level, locate the control for this
+                  option within each row identifier cell.
+
+ TLN-0640         Ensure the row identifier text has a clear relationship with the timeline entry        Mandatory     Medium
+                  labels on that row. For example, make the row identifier text the same as the
+                  timeline entry labels or, when labels vary, provide row identifier text that
+                  represents all the entries.
+
+ TLN-0650         If the option to hide timeline entry labels is provided, when timeline entry labels    Mandatory     Medium
+                  are hidden, row identifier labels must be displayed. When row identifier labels
+                  are hidden, timeline entry labels must be displayed.
+
+ TLN-0660         Provide an option to show or hide the column of row identifier cells. When the   Recommended         Medium
+                  row identifier column is collapsed, widen the viewing area but maintain the same
+                  visible time period.
+
+ TLN-0670         When row-level options are provided, locate them along the top right edge of           Recommended   Medium
+                  each row identifier cell. When the row identifier cell is collapsed, provide an
+                  alternative means to access the options (for example, display enough of the
+                  collapsed row identifier cell to provide a menu control).
+
+
+
+                                                                                                                           Page 34
+                                  Design Guidance – Timeline View
+                                  Prepared by Microsoft, Version 1.0.0.0
+                                  Last modified on 23 September 2009
+                                                                                                                                   Microsoft
+
+
+
+
+Usage Examples
+
+
+
+
+In this correct example, the row identifier cells are positioned to the left of the viewing area and share the background colour of the
+rows they are aligned with. The identifier text is positioned at the top left within the row identifier cell. (TLN-0610, TLN-0620, TLN-0640)
+
+
+
+
+In this correct example, the time span (approximately 07:50 to 16:50) is maintained. As the time is spread over a wider area, the labels
+that were previously hidden no longer overlap and so are displayed. (TLN-0660)
+
+
+
+
+In this incorrect example of viewing area expansion when row identifier cells are hidden, the time span is increased (that is, the
+earliest viewable time has changed from 07:50 to 06:30).
+As the user will have previously selected a specific time span (see section 8) this may mislead the user (who may not have noticed the
+time span has increased, in the above example from about 5 hours to about 6.5 hours) into thinking that more events have occurred
+within the original time period than is the case. (TLN-0660)
+
+
+
+
+                                                                                                                                     Page 35
+                             Design Guidance – Timeline View
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 23 September 2009
+                                                                                                                                   Microsoft
+
+
+
+
+In this correct example of correctly managing row-level options that are located within row identifier cells, the options ‘Go to previous
+entry’ and ‘Go to next entry’ (arrow-and-dot symbols) are shown (see section 8 for more details of the ‘Go to...’ options).
+When the user selects an option to hide the row identifier cells, they shrink in width and a row menu icon is displayed for each row.
+When the user selects the row menu for ‘saline’ entries, the row identifier text and row options appear in a pop-up dialog box.
+(TLN-0660, TLN-0670)
+
+Rationale
+User research (see APPENDIX B) showed strong clinician preference and rationale for the ability to view labels in/on the timelines and
+in a static column to the far left of the Timeline View. This column of ‘row identifiers’ allows users to scan down the items on the
+timeline more easily, both to find a particular item and to ensure they are aware of the presence of all items on the Timeline View.
+Clinicians felt there was a particular precedent here when displaying a patient’s medications, which are traditionally displayed as lists.
+Though row identifiers may often have the same label as the timeline items, they can also be used to describe a higher level group that
+defines the ‘line identity’, which may make navigation and gaining an ‘overview’ from the timeline easier. For example a row identifier
+might be ‘co-amoxiclav’, where the corresponding line shows the patient’s co-amoxiclav prescriptions. Or a row identifier might be
+‘insulin’, where the corresponding line shows the different insulin that the patient has been prescribed.
+Participants in user research (see APPENDIX B) suggested the option to show and hide the row identifier column. This function is
+familiar from other similar non-clinical software applications, and allows the user to view the same data in a wider area if desired.
+Hazard Risk Analysis Summary:
+   Potential Hazards:                              Mitigations:
+       MTI178 What if you hide the title       TLN-0650 (If the option to hide timeline entry labels is provided, when timeline
+        column and there are no labels inline?   entry labels are hidden row identifier labels must be displayed. When row
+                                                 identifier labels are hidden timeline entry labels must be displayed.)
+
+
+
+
+                                                                                                                                   Page 36
+                             Design Guidance – Timeline View
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 23 September 2009
+                                                                                                                                     Microsoft
+
+
+
+
+5.2.7        Displaying Crowded Timeline Entries and Labels
+ When multiple timeline entries are displayed on a shared row and the user chooses a greater time
+ period, the entries will be displayed closer together. As the chosen time period is increased, it is
+ highly likely that the entries will become crowded.
+
+                                                                                                                              Evidence
+ ID             Guideline                                                                               Conformance
+                                                                                                                              Rating
+ TLN-0680       When the time period is changed, do not change the size of the symbols or the           Mandatory             High
+                thickness of duration lines for timeline entries.
+
+ TLN-0690       For multiple timeline entries with known open duration that are so crowded on a     Mandatory                 High
+                shared row that their symbols overlap or are indistinguishable, replace the symbols
+                with vertical lines of the same height in order to accommodate more information
+                within the available space.
+
+ TLN-0700       For multiple timeline entries with no duration that are so crowded on a shared row Mandatory                  High
+                that they overlap or are indistinguishable, replace the symbols with vertical lines of
+                the same height in order to accommodate more information within the available
+                space.
+
+ TLN-0710       When multiple timeline entries on a shared row become so crowded that individual Recommended                  Medium
+                entries cannot be discerned even when reduced to vertical lines, replace the
+                vertical lines with an indication symbol and provide a (for example, hover-over)
+                message that displays a recommendation to view the data at a more granular
+                level.
+
+ Usage Examples
+
+
+
+
+ In this correct example, as the user increases the viewable time period, the entries are positioned closer together. After the first time
+ period change, the first two saline entries are so close together that they would overlap, so the symbols have been replaced with
+ vertical lines. After the second time period change, even using vertical lines all the individual entries are too close together to be
+ discerned, and so indicator symbols with a count of the entries are used instead. (TLN-0680, TLN-0690, TLN-0700, TLN-0710)
+
+
+
+
+                                                                                                                                     Page 37
+                              Design Guidance – Timeline View
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 23 September 2009
+                                                                                                                                    Microsoft
+
+
+
+
+ Rationale
+ Changing the size of symbols and thickness of duration lines when the timescale is changed would make the timeline difficult (and
+ unsafe) to interpret at anything other than at a pre-chosen time ‘resolution’. As a Timeline View would be used differently for different
+ purposes, it is very unlikely that a pre-chosen time resolution will be optimal for all uses. Clinicians in user research felt icons were
+ vulnerable to misinterpretation if shrunk or squashed.
+ Reducing items to uniform vertical lines then summarising with a symbol is the guidance from Design Guidance – Displaying Graphs
+ and Tables {R4}. This attempts to minimise the chance that items are missed (such as would be the case if they were not shown when
+ ‘too small’, or if they overlapped), or misinterpreted.
+ Hazard Risk Analysis Summary:
+      Potential Hazards:                                                Mitigations:
+         MTI173 if you only have a single location for warning          TLN-0710(Indication of crowding (that is, 'warning icons')
+          icons then you might not know WHERE the problems                appear in-context)
+          occur, resulting in increased time taken looking for
+          cause of a warning
+
+
+5.2.8        Displaying Graphs in Conjunction With a Timeline View
+ Some quantitative data is better represented as a graph (for example, observations such as
+ temperature, blood pressure, and so on). These can be viewed in conjunction with a timeline
+ representation of other data to provide comprehensive patient data visualisations.
+ Use the guidelines below in conjunction with the graph guidelines found in Design
+ Guidance – Displaying Graphs and Tables {R4}.
+
+                                                                                                                              Evidence
+ ID             Guideline                                                                                Conformance
+                                                                                                                              Rating
+ TLN-0720       When graphs are displayed in a Timeline View, do not locate both timeline entries        Recommended          Medium
+                and graphs in the same timeline section.
+
+ TLN-0730       Arrange multiple graphs in separate timeline rows, and display a prominent               Mandatory            Medium
+                horizontal dividing line between each row.
+
+ TLN-0740       When a graph is displayed in a timeline row, persist the display of the graph (title,    Mandatory            Medium
+                value scale, horizontal gridlines, and so on) even if the user navigates to a time
+                period that contains no graphical data.
+
+ TLN-0750       Use the same horizontal time axis for graphs as used for the timeline canvas             Mandatory            Medium
+ TLN-0760       Display the graph label in the row identifier cell.                                      Mandatory            Medium
+
+ TLN-0770       Display the graph vertical value scale on the left hand edge of viewing area.            Mandatory            Medium
+                Ensure that the value scale is always in view (even if the row identifier cells are
+                hidden).
+
+ TLN-0780       If the row identifier cells are hidden, display the label information next to the last   Mandatory            Medium
+                visible data point on the right hand side of the viewing area
+
+ TLN-0790       Extend horizontal scale gridlines across the width of the viewing area, aligned with Mandatory                Medium
+                the value scale of the graph.
+
+
+
+
+                                                                                                                                       Page 38
+                              Design Guidance – Timeline View
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 23 September 2009
+                                                                                                                                 Microsoft
+
+
+
+
+Usage Examples
+
+
+
+
+In this correct example, the graphs are located within a dedicated ‘observations’ section (for more information on timeline sections, see
+section 6.2.1.) The horizontal time axis is shared with other timeline sections (in this case, ‘medications’). The row identifier cells
+contain the graph labels. The value scales are located within the viewing area to the immediate right of the row identifier cells. The
+appearance and positioning of the data series, value gridlines, and ‘reference range’ shading conform to guidance in Design
+Guidance – Displaying Graphs and Tables {R4}. (TLN-0720, TLN-0730, TLN-0750, TLN-0760,TLN-0770, TLN-0790)
+
+
+
+
+                                                                                                                                 Page 39
+                             Design Guidance – Timeline View
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 23 September 2009
+                                                                                                                                 Microsoft
+
+
+
+
+In this incorrect example, the graphs have their own independent time axis that does not align with the time axis used for the timeline.
+This can lead to confusion and incorrect cause-effect relationship hypotheses. (TLN-0750)
+
+Rationale
+Displaying different data series graphs on the same row (at different time periods) may lead the user to misinterpret which data series
+they are looking at as they navigate the timescale. As described in Design Guidance – Displaying Graphs and Tables {R4} overlaying
+of different data series is only permitted in very few circumstances.
+Display of a graph even when there are no data points for the visible time period is consistent with the Design Guidance – Displaying
+Graphs and Tables {R4}. In some circumstances the absence of recorded measurement for a value in a given time period will be an
+important fact.
+Knowing which data series has no recorded measurement in a given time period will be an important fact in some circumstances.
+Hazard Risk Analysis Summary:
+Potential Hazards:                                         Mitigations:
+       MTI065 Confusion between horizontal and             TLN-0720, TLN-0750, TLN-0790 (Graphs displayed on a Timeline View
+        vertical gridlines between timeline and graphs       are aligned with the canvas vertical (time axis) gridlines. Horizontal
+                                                             gridlines are used only for graphs, and have dedicated scale information)
+
+
+
+
+                                                                                                                                  Page 40
+                             Design Guidance – Timeline View
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 23 September 2009
+                                                                                                                                Microsoft
+
+
+
+
+6            GUIDANCE DETAILS FOR NAVIGATING TIMELINE
+             ENTRIES WITHIN A CHOSEN TIME PERIOD
+6.1          Introduction
+    This part of the document includes guidance on using timeline sections to group entries, and
+    covers the display of section title bars, indication of any timeline entries within the chosen period
+    that are out of view, and controlling the level of detail displayed in each section. Figure 7 illustrates
+    those features:
+
+
+
+
+    Figure 7: Timeline View Features Covered in this Section
+
+
+6.2          Guidelines
+6.2.1            Timeline Sections
+    Timeline sections provide a means of partitioning different information into related sets, giving
+    users better control over what parts of the overall timeline canvas they can see at one time within
+    the limitations of the display size.
+
+                                                                                                                         Evidence
+    ID              Guideline                                                                              Conformance
+                                                                                                                         Rating
+    TLN-0800        Provide the facility to divide the timeline viewing area horizontally into sections.   Mandatory     Medium
+                    Enable users to vertically resize each section to best display the information they
+                    wish to view within the area available.
+
+    TLN-0810        Provide a section title bar positioned at the top of each section, extending across    Mandatory     High
+                    the width of the section.
+
+    TLN-0820        Provide a control to expand and collapse each section, and position it on the left in Mandatory      High
+                    the section title bar. On collapsing a section, persist the section title bar but hide
+                    the level of detail control and any related event display options and proportionately
+                    resize the other sections to fill the available space.
+
+    TLN-0830        When displaying a complete set of medications for a patient, show them in a            Mandatory     Medium
+                    dedicated section
+
+    TLN-0840        When displaying graphs, show them in a dedicated section                               Recommended   Medium
+
+
+                                                                                                                                Page 41
+                                   Design Guidance – Timeline View
+                                   Prepared by Microsoft, Version 1.0.0.0
+                                   Last modified on 23 September 2009
+                                                                                                                                Microsoft
+
+
+
+
+Usage Examples
+
+
+
+
+In this correct example, two sections (‘Problems’ and ‘Medications’) are displayed. Each section has a section heading bar in which the
+expand/collapse control and section title are located. (TLN-0800, TLN-0810, TLN-0820, TLN-0830)
+
+
+
+
+In this correct example, the user has collapsed the ‘problems’ section that was visible in the previous example. The ‘medications’
+section has moved up to maximise the available space, and three more medication rows are now in view. (TLN-0820)
+
+
+
+
+                                                                                                                                Page 42
+                            Design Guidance – Timeline View
+                            Prepared by Microsoft, Version 1.0.0.0
+                            Last modified on 23 September 2009
+                                                                                                                                  Microsoft
+
+
+
+
+ Rationale
+ Dividing the viewing area into sections which can then be collapsed and expanded allows the user to quickly focus on different sets of
+ information in a dataset without having to ‘re-query’ the dataset (such as by re-configuring it to show only medications data). It also
+ reduces the need to navigate a large data display (as data displayed will very often be larger than the available viewing window) and
+ facilitates comparison between different sections.
+ Alternative means of achieving these aims are out of scope. However, these would include: filtering, sorting and grouping, and adding,
+ moving or removing data series.
+ Hazard Risk Analysis Summary:
+ No mitigated hazards recorded for this area
+
+
+6.2.2        Indicating Timeline Entries Within the Chosen Time Period That
+             Are Out of View
+                                                                                                                           Evidence
+ ID             Guideline                                                                             Conformance
+                                                                                                                           Rating
+ TLN-0850       When timeline entries within the chosen time period are out of view above or          Mandatory            Medium
+                below the currently viewed section, use symbols (for example, up and down
+                arrows) to indicate the direction the user will need to scroll to view the timeline
+                entries that are out of view. Position the symbols towards the upper and lower
+                borders of the section and off the viewing area to avoid obscuring visible timeline
+                entries.
+
+ TLN-0860       Display the number of rows that have entries out of view next to the out-of-view      Recommended          Medium
+                symbols.
+
+ TLN-0870       Display the total number of rows that have entries out of view in the section title   Mandatory            High
+                bar.
+
+ Usage Examples
+
+
+
+
+  In this correct example, in the ‘problems’ section, the out-of-view arrow symbols indicate that there are four rows above and two rows
+  below the current viewing area that have timeline items in the chosen time period.
+  In the ‘medications’ section the out-of-view arrow symbols indicate that there are three rows below the current viewing area that have
+  timeline items in the chosen time period.
+  The text in each section title bar reinforces the out-of-view indicators. (TLN-0850, TLN-0860, TLN-0870)
+                                                                                                                                  Page 43
+                              Design Guidance – Timeline View
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 23 September 2009
+                                                                                                                                     Microsoft
+
+
+
+
+ Rationale
+ Given the large amount of data that will be available and the relatively small screen spaces of normal desktop monitors, it will be
+ common to have more data to display vertically than space allows. Previous Microsoft Health CUI work (Design
+ Guidance – Medications List {R7}) concluded that in certain circumstances (such as for a list of medications), a scroll bar is not
+ sufficient indication that data is out of view.
+ The indicators provide a supplementary indication that data is out of view, positioned at the opposite side of the screen to the scroll
+ bar, near to a user’s vertical scan line down the row identifier column.
+ The indicator differs from the look-ahead examples in Design Guidance – Medications List {R7} because:
+  Summarising entries that are out of view in a horizontal line (such as a list of drug names) is likely to be impractical for many data
+   sets in a Timeline View as they will potentially have hundreds of line items. These items also may not be able to be summarised
+   safely
+  The medications look-ahead indicator only operates on one list in a view, so it only takes up a maximum of two lines of vertical
+   space (at the top and the bottom of the scrollbar). The Timeline View may have many sections, most of which may have data
+   vertically out of view. If each also had two extra lines of ‘data out of view’ indicators this would take up a lot of vertical space and
+   further interrupt the vertical scanning of the view. As described in TLN-0840 the timeline indicator already has a means to interrupt
+   a user’s vertical scan and alert them to the presence of out of view items
+ Displaying a count of entries out of view is consistent with Design Guidance – Medications List {R7}.
+ An indication that extends horizontally across the view is more likely to be noticed when user’s are scanning down the middle section
+ of the view, and as such is also consistent with the risk mitigation behind the Design Guidance – Medications List {R7}.
+ Hazard Risk Analysis Summary:
+      Potential Hazards:                                              Mitigations:
+         MTI068 User is not aware that data is contained              TLN-0850, TLN-0860, TLN-0870 (Indicating timeline entries within
+          within a category (as it is scrolled out of view)             the chosen time period that are out of view)
+
+
+6.2.3        Timeline Section Levels of Detail
+ Clinicians can make best use of the viewing space available for their task when they can control the
+ level of detail displayed in each timeline section.
+ For example, clinicians may wish to compare a medication’s dose changes (requiring a high level
+ of detail for the ‘medications’ section) with the patient’s health issues (viewable at a lower level of
+ detail for the ‘problems’ section).
+
+                                                                                                                              Evidence
+ ID             Guideline                                                                                 Conformance
+                                                                                                                              Rating
+ TLN-0880       Provide options to vary the level of detail displayed within each section.                Mandatory           Medium
+
+ TLN-0890       Enable the level of detail for each section to be controlled independently of the         Mandatory           Medium
+                other sections.
+
+ TLN-0900       Provide a top level of detail that displays a ‘thumbnail’ of the timeline entries in that Recommended         Medium
+                section for the chosen time period. For example, construct the thumbnail by using
+                thin horizontal lines for each timeline entry, displayed without any vertical space
+                between them.
+
+ TLN-0910       Locate the level of detail control on the right in the section title bar.                 Recommended         Low
+ TLN-0920       Other than for a ‘thumbnail’ level of detail, always display identifying text for the     Mandatory           High
+                timelines, either by displaying the timeline entry labels, the row identifier cells, or
+                both.
+
+ TLN-0930       Apply context specific rules supplied by the appropriate clinical authority to specify Mandatory              Medium
+                the default level of detail for a given data type
+
+
+
+
+                                                                                                                                     Page 44
+                               Design Guidance – Timeline View
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 23 September 2009
+                                                                                                                                     Microsoft
+
+
+
+
+Usage Examples
+
+
+
+
+In this correct example, showing just the ‘medications’ section from the previous example for clarity, four levels of detail can be seen:
+1. Provides an overview of the quantity of medication timeline entries within the chosen time period.
+2. Displays the timeline entries and the row identifier cells, but not the timeline labels. This maximises the number of timelines
+   displayed within the available area.
+
+                                                                                                                                     Page 45
+                             Design Guidance – Timeline View
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 23 September 2009
+                                                                                                                                    Microsoft
+
+
+
+3. Adds timeline labels showing the medication name for further viewing clarity (at the expense of the number of timelines displayed)
+4. Adds full medication course details in the labels, and positions the labels in a vertically stacked arrangement to avoid overlap.
+(TLN-0880, TLN-0890, TLN-0900, TLN-0910, TLN-0920)
+
+Rationale
+Being able to vary the level of detail of timeline item labels was strongly supported by clinician preference and rationale in user
+research (see APPENDIX B) as the timeline would be used for a variety of purposes. Among other reasons, this was supported for:
+ Gaining an overview of past medications in an outpatient consultation
+ Seeing how doses of medication have changed during the past 24 hours in an outpatient context
+Level of detail can be varied independently per section because:
+ Different sections (that is, data types) will have different levels of detail
+ Clinicians may wish to compare sections at different levels (for example, comparing a medication’s dose changes (high detail)
+  against high-level patient health issues (low detail))
+Individual line items are too small to resolve in the ‘thumbnail’ and so label text would not be appropriate. The ‘thumbnail’ is intended to
+provide an indication that data is present in the section not what that data is.
+Hazard Risk Analysis Summary:
+No mitigated hazards recorded for this area
+Significant Risks That Are Not Directly Mitigated by Guidance:
+The following risks are not directly mitigated by the guidance in this document. Suppliers should be aware of these risks and design
+their applications to mitigate them accordingly:
+Potential Hazards:              Cause:                                        Potential Consequences:
+    MTI181 What if              Notation for change does not                 Actual changes (for example, to dose, route, frequency or
+     important clinical           distinguish between ‘administrative           strength) are missed. Depending on the context, the
+     changes were                 changes’, in which the actual                 potential for inappropriate clinical treatment as a result is
+     missed?                      prescription details do not change,           of varying severity. This could result in:
+                                  and situations in which the actual               User confusion, potential delays to clinical treatment
+                                  prescription details do change and                and inappropriate picture of clinical care understood
+                                  the user is not aware                             by the user
+                                                                                   Patient death
+
+
+
+
+                                                                                                                                     Page 46
+                              Design Guidance – Timeline View
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 23 September 2009
+                                                                                                        Microsoft
+
+
+
+
+7            GUIDANCE DETAILS FOR DISPLAYING SETS OF
+             RELATED EVENTS
+7.1          Introduction
+    This section provides guidance on the positioning and appearance of sets of events related to
+    timeline entries, including multiple sets.
+    Often, information related to timeline entries is usefully represented as a set of related events.
+    Figure 8 illustrates how, for medications, three sets of events could be visualised:
+          Administrations
+          Pharmacy reviews
+          International Normalised Ratio (INR) results
+    By having access to these additional layers of information, the clinician can review the sequence of
+    events and explore potential cause-effect relationships at a more granular level.
+
+
+
+
+    Figure 8: Visualisation of Three Sets of Events for Medications
+
+    This section also covers the display of drug administration status as a related attribute set, as
+    shown in Figure 9:
+
+
+
+
+    Figure 9: Display of Drug Administration Status as a Related Attribute Set
+                                                                                                         Page 47
+                                    Design Guidance – Timeline View
+                                    Prepared by Microsoft, Version 1.0.0.0
+                                    Last modified on 23 September 2009
+                                                                                                                             Microsoft
+
+
+
+
+7.2     Guidelines
+7.2.1       Displaying Related Events
+                                                                                                                       Evidence
+ ID          Guideline                                                                               Conformance
+                                                                                                                       Rating
+ TLN-0940    When the option to display timeline entry related event sets is supported, group the Recommended          Medium
+             timeline entries to which the events apply into a timeline section. Provide the facility
+             to reveal or hide the related event sets as a section-wide option. This does not mean
+             that sections can only contain timeline entries that share exactly the same set of
+             related event sets.
+
+ TLN-0950    Provide access to event value information (for example, in tooltip help).               Recommended       Medium
+
+ TLN-0960    Arrange the related events in a horizontal line below their associated timeline entries. Mandatory        Low
+             Align the middle of each icon with the time of occurrence of the attribute it
+             represents. Extend a vertical line from the middle of the icon up to the associated
+             timeline.
+
+ TLN-0970    When event icons become crowded, apply guidelines TLN-0690, TLN-0700 and                Mandatory         Low
+             TLN-0710.
+
+ TLN-0980    Where multiple event sets are displayed in the same timeline section, locate each       Recommended       Low
+             set on a separate line underneath the associated timeline entry. Extend a vertical
+             line from the middle of the icon up to the associated timeline.
+
+ TLN-0990    Display each event set name within the row identifier cells, aligned to the attribute   Recommended       Low
+             icons.
+
+ TLN-1000    Where the safe display of related event sets is tied to a particular level of detail,   Recommended       Low
+             when that level of detail is not selected de-select the related event set and disable
+             the control.
+
+ TLN-1010    Only display medication administration events when the level of detail selected for     Mandatory         Medium
+             medications timeline entries has displayed the ‘minimum’ detail required by the
+             ePrescribing Functional Specification1
+
+ TLN-1020    Only allow the display of related event sets for timeline entries that have a label         Recommended   Low
+             displayed in the main timeline viewing area (in that, not just in the row identifier cells)
+
+
+
+
+ 1
+  ePrescribing Functional Specification {R15}:
+ http://www.connectingforhealth.nhs.uk/newsroom/news-stories/eprescfunctspec
+                                                                                                                             Page 48
+                           Design Guidance – Timeline View
+                           Prepared by Microsoft, Version 1.0.0.0
+                           Last modified on 23 September 2009
+                                                                                                                                   Microsoft
+
+
+
+
+Usage Examples
+
+
+
+
+In this correct example, the user selects ‘INR’ and the event for this set is displayed in the warfarin timeline row (INR is only related to
+warfarin) The document symbol indicates the time of the INR report and could provide further information within associated hover-help.
+When the user selects ‘pharmacy reviews’ the events for this set are displayed under each timeline entry. The circled A symbols
+indicate the timing of the pharmacy reviews and could also provide an indication of the review conclusion (for example, ‘A =
+accepted’). (TLN-0940, TLN-0960, TLN-0980, TLN-0990).
+
+
+
+
+                                                                                                                                    Page 49
+                             Design Guidance – Timeline View
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 23 September 2009
+                                                                                                                                         Microsoft
+
+
+
+
+ Rationale
+ Rationale for being able to show or hide related event sets is the same as for changing the level of detail, in that clinicians may want to
+ use the timeline for a variety of purposes, and therefore change the display to suit their needs. Information that applies ‘once’ to the
+ whole timeline entry should be displayed as a level of detail (the dose of a medication), whereas information that applies (or may
+ apply) at multiple time points should be displayed in a related event set (for example, the various administrations of that dose). One
+ exception to this example would be where the prescription’s dose is defined as ‘variable’, and a dose calculated, administered and
+ recorded per administration.
+ The ability to access secondary information about the item without having to leave the Timeline View allows the user to explore the
+ data without the associated disruption (and potential waiting time) of being taken to other record views.
+ The consistent positioning of the related items relative to the timeline line, and the vertical joining line, reduces the possibility that the
+ user may mistakenly associate the two items. For example, the user might mistakenly associate the successful administration on one
+ medication with another medication.
+ Hazard Risk Analysis Summary:
+      Potential Hazards:                                         Mitigations:
+       MTI049 What if there is too much information on           TLN-0940 (As with level of detail, showing and hiding attribute sets
+        screen?                                                    allows users to customise the display to suit their particular purpose)
+ Significant Risks That Are Not Directly Mitigated by Guidance:
+ The following risks are not directly mitigated by the guidance in this document. Suppliers should be aware of these risks and design
+ their applications to mitigate them accordingly:
+      Potential Hazards:                Cause:                                        Potential Consequences:
+       MTI184 What if the related       Guidance does not explicitly contain         Statuses, key events are missed. Depending on
+        events sets (and clues as         references to statuses. ISV                   the context, the potential for inappropriate clinical
+        to their status) are not          interpretation and implementation of          treatment as a result is of varying severity. In this
+        shown, eg. medication             CUI Medications Timeline design               instance, user confusion, potential delays to clinical
+        administrations, pharmacy         guidance                                      treatment and an inappropriate picture of clinical
+        reviews, etc                                                                    care understood by the user
+       MTI185 What if the related  Guidance does not explicitly contain              For example, the user's ability to see all of the
+        events sets are shown, eg.   references to statuses. ISV                        medication information at once would be
+        medication administrations,  interpretation and implementation of               compromised, leading to a potential for
+        pharmacy reviews, etc        CUI Medications Timeline design                    inappropriate treatment with varying consequences
+                                     guidance
+
+
+7.2.2         Displaying Drug Administration Information As a Related Set of
+              Events
+                                                                                                                                  Evidence
+ ID             Guideline                                                                                 Conformance
+                                                                                                                                  Rating
+ TLN-1030       Do not use the Timeline View to record medication administrations data. Use the           Mandatory               High
+                Drug Administration View for this purpose (see Design Guidance – Drug
+                Administration {R5})
+
+ TLN-1040       When displaying drug administration events on a timeline, use iconography and             Mandatory               High
+                behaviour consistent with that shown in the Drug Administration view (more
+                guidance for this area can be found in Design Guidance – Drug
+                Administration {R5}).
+
+ TLN-1050       Position the administration events at the time of actual administration (rather than      Mandatory               Medium
+                the time the events were entered into the system). Planned administration events
+                should be positioned at their intended administration time.
+
+ TLN-1060       When the option to display drug administration events as a related set of events is Mandatory                     Medium
+                provided, only enable this option when the selected level of detail displays full
+                medication details.
+
+
+                                                                                                                                         Page 50
+                               Design Guidance – Timeline View
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 23 September 2009
+                                                                                                                               Microsoft
+
+
+
+
+Usage Examples
+
+
+
+
+In this correct example, the ‘administrations’ event set has been selected. The square icons indicate administration events such as oral
+doses. The ticks indicate that the drug has been administered on time, whereas the icon with the letter ‘L’ indicates an administration
+that occurred later than planned. (TLN-1040, TLN-1050, TLN-1060)
+
+
+
+
+In this correct example, the chosen time period includes past and future. In the future time period, planned drug administrations are
+shown by their dashed outline. This is consistent with sample iconography guidelines in Design Guidance – Drug Administration {R5}.
+(TLN-1040, TLN-1050, TLN-1060)
+
+
+
+
+                                                                                                                                Page 51
+                            Design Guidance – Timeline View
+                            Prepared by Microsoft, Version 1.0.0.0
+                            Last modified on 23 September 2009
+                                                                                                                                      Microsoft
+
+
+
+
+In this incorrect example, the ‘administrations’ event set is displayed at a level of detail that does not provide full medication details.
+This could mislead clinicians into false assumptions (for example, that the three administrations of paracetamol were of equal dose
+when this might not be the case). (TLN-1060)
+
+Rationale
+User research (see APPENDIX B) strongly supported the ability to view medication administration events on a timeline. This allows the
+clinician to:
+ View the real time differences between administrations, something that is more difficult in traditional representations of medication
+  administration information
+ View administrations events against patient values, such as inpatient observations. This allows the clinician to see the temporal
+  relationship between the two; for example, to see whether the administrations of antibiotics correspond to a drop in patient
+  temperature, or change in white cell count
+ View more medications simultaneously on screen, compared to traditional representations of medication administration
+If the data is available, medication administration information must also be made available in a display that complies with Design
+Guidance – Drug Administration {R5}.
+By following the iconography used in the medications administration view, users will be less likely to mistake the timeline item (such as
+items with duration) for administration statuses. Users are likely to become more familiar with both views more quickly if the
+iconography and behaviour is consistent between the views.
+Hazard Risk Analysis Summary:
+   Potential Hazards:                                               Mitigations:
+        MTI013 If viewing medications (in an inpatient         TLN-1030, TLN-1040, TLN-1050, TLN-0930 (In an inpatient
+         context), you need to be aware of whether it has been   context, it will be necessary to consider whether administration
+         administered or not                                     information should be shown by default whenever medication
+                                                                 timeline items are displayed)
+        MTI155 If (completed) administration events were            TLN-1050 (Position the administration events at the time of actual
+         plotted at the intended time of administration instead       administration (rather than the time the events were entered into
+         of the actual time of administration, this would give a      the system). Planned administration events should be positioned
+         misleading impression of when medications were               at their intended administration time)
+         administered
+
+
+
+
+                                                                                                                                       Page 52
+                              Design Guidance – Timeline View
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 23 September 2009
+                                                                                                                          Microsoft
+
+
+
+
+8            GUIDANCE DETAILS FOR NAVIGATING TIME
+8.1          Introduction
+    This section contains guidance for adjusting the time range displayed in the timeline viewing area
+    and navigating across the total time range
+    Whereas previous sections of this document have provided guidance on how to best display and
+    navigate timeline entries for a selected time period, this section considers navigation across the
+    total time period that is available for display.
+    This guidance covers the selection of the viewed time range, navigation to time periods adjacent to
+    the current time period and larger scale navigation to time points throughout the total time period.
+    Figure 10 illustrates those features:
+
+
+
+
+    Figure 10: Timeline View Features Covered in this Section
+
+
+8.2          Guidelines
+8.2.1            Adjusting the Viewed Time Period
+                                                                                                                      Evidence
+    ID              Guideline                                                                           Conformance
+                                                                                                                      Rating
+    TLN-1070        Provide a control to select the time period that is displayed in the timeline viewing Mandatory   Medium
+                    area. Provide defined time periods that best suit the intended audience (for
+                    example, 2 hours, 4 hours, 6 hours, 12 hours, 24 hours, 5 days, 10 days, 1 month,
+                    3 months and so on).
+
+    TLN-1080        When the user selects a new time period, and the ‘now’ time point is in view,     Recommended     Medium
+                    expand or contract the new viewable time period around the ‘now’ time point, such
+                    that it stays in the same position.
+
+    TLN-1090        When the user selects a new time period, and the ‘now’ time point is not in view,   Recommended   Medium
+                    expand or contract the new viewable time period around the middle time point in
+                    the previously viewed time period.
+
+
+
+
+                                                                                                                          Page 53
+                                   Design Guidance – Timeline View
+                                   Prepared by Microsoft, Version 1.0.0.0
+                                   Last modified on 23 September 2009
+                                                                                                                             Microsoft
+
+
+
+
+Usage Examples
+
+
+
+
+In this correct example, when the user changes the time period from 6 hours to 24 hours, the visible time period expands around the
+middle time point of 12:00. (TLN-1070, TLN-1090)
+
+
+
+
+                                                                                                                              Page 54
+                            Design Guidance – Timeline View
+                            Prepared by Microsoft, Version 1.0.0.0
+                            Last modified on 23 September 2009
+                                                                                                                             Microsoft
+
+
+
+
+In this correct example, when the user changes the time period from 6 hours to 24 hours, the visible time period expands around the
+‘Now’ time point (16:00), which stays in the same position. (TLN-1070, TLN-1080)
+
+Rationale
+User research (see APPENDIX B) and elicited hazards (below) strongly supported the need to be able to change the time period of the
+Timeline View, in order to cope with differing uses and data on the timeline. It is also a feature consistent with the Design
+Guidance –Displaying Graphs and Tables {R4}.
+Hazard Risk Analysis Summary:
+   Potential Hazards:                                             Mitigations:
+       MTI110 The user can’t alter the default timescale          TLN-1070 (Provide a control to select the time range that is
+                                                                    displayed in the timeline viewing area)
+       MTI111 The user is not aware how to / is not sufficiently  TLN-1070 (Provide a control to select the time range that is
+        motivated to zoom the relevant part of the timeline, as     displayed in the timeline viewing area)
+        zooming on a section of data is via a complex
+        mechanism
+
+
+
+
+                                                                                                                              Page 55
+                            Design Guidance – Timeline View
+                            Prepared by Microsoft, Version 1.0.0.0
+                            Last modified on 23 September 2009
+                                                                                                                                    Microsoft
+
+
+
+
+8.2.2        Timeline Global Navigation Options
+                                                                                                                              Evidence
+ ID             Guideline                                                                              Conformance
+                                                                                                                              Rating
+ TLN-1100       When the Timeline View is displayed for the first time during a user session,          Recommended            Medium
+                default the displayed time period to include the ‘now’ time point.
+
+ TLN-1110       Provide main time navigation controls that include the facility to scroll earlier or   Recommended            Medium
+                later, to tab in increments equivalent to the chosen time range (for example, 12
+                hours earlier or later), and to jump to the ‘now’ time point.
+
+ TLN-1120       Provide a ‘total time range’ navigation control (such as a slider) that gives the      Recommended            Medium
+                user quick access to time periods across the entire time range that the source
+                data spans.
+
+ TLN-1130       Do not permanently display time axis labels for the ‘total time range’ navigation      Mandatory              Medium
+                control. Instead, display time axis labels only while the user is interacting with
+                the control.
+
+ TLN-1140       Position the ‘total time range’ navigation control so that it is not immediately       Mandatory              Medium
+                adjacent to the timeline viewing area’s time axis
+
+ Usage Examples
+
+
+
+
+ In this correct example, main navigation controls are shown with options to scroll, to tab a time period forward or back (labelled ‘jump’)
+ and to navigate to the ‘now’ time point (labelled ‘today’). The ‘total time navigation control’ above the main navigation controls does not
+ permanently display its time axis labels. (TLN-1110, TLN-1120, TLN-1130)
+
+
+
+
+ In this correct example, when the user interacts with the total time range navigation control, time axis labels are temporarily displayed
+ at each end of the control. Hover-help is also displayed for the position of the control handle. (TLN-1120, TLN-1130)
+
+
+
+
+                                                                                                                                    Page 56
+                              Design Guidance – Timeline View
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 23 September 2009
+                                                                                                                                     Microsoft
+
+
+
+
+In this incorrect example, the ‘total time navigation control’ has a labelled time axis. The user can become confused by the presence of
+two time scales and may refer to the wrong labels when determining the timing of timeline entries. (TLN-1130, TLN-1140)
+
+Rationale
+The ability to navigate the time in view, either by scrolling or tabbing in increments, allows both fast time navigation (by scrolling), and
+systematic, more cautious or fine-grained movement (by tabbing in increments). Scrolling a dataset (particularly a very large data set)
+may lead to problems of accidentally overlooking items, or finding it hard to move to exactly the right position without fine motor
+control. In other words, the scale of the scroll causes the user to continually ‘overshoot’ his or her target position. This is similar to
+problems experienced when navigating a vertical list of items in email applications and spreadsheets.
+Some interactive timelines from non-clinical domains have the ‘total time’ axis and the ‘time in view’ axis displayed vertically adjacent,
+with time/date values displayed simultaneously. Analysis concluded that this posed a potential source of error where the user
+mistakenly reads the wrong timescale. Therefore, guidance requires that the two time scales are not shown immediately adjacent, and
+that the time values for the ‘total time’ axis are only shown when the user interacts with the control.
+Hazard Risk Analysis Summary:
+   Potential Hazards:                                                 Mitigations:
+        MTI109 What if the user misinterprets the time of an          TLN-1130 (By only showing a timescale when it is being
+         event on the timeline as they confuse the time                 interacted with, the navigation timescale is much less likely to
+         navigation control timeline for the real timescale of the      be misinterpreted as the real timescale)
+         Timeline View?
+        MTI115 What if the clinician is unsure what the scale for  TLN-1130 (The scale appears when the user interacts with it)
+         the timeline navigation control is? (as there is no scale
+         on it)
+        MTI116 What if the clinician is unsure which time period  TLN-1130 (The scale appears when the user interacts with it)
+         is referred to in the time range control, as there are two
+         timescales (the real view’s timescale and the time
+         navigation control’s)
+        MTI130 If the view doesn’t default to ‘now’ the clinician     TLN-1100 (When the Timeline View is displayed for the first
+         may misinterpret the timeline data                             time during a user session, default the displayed time period to
+                                                                        include the ‘now’ time point.)
+
+
+
+
+                                                                                                                                     Page 57
+                             Design Guidance – Timeline View
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 23 September 2009
+                                                                                                                                   Microsoft
+
+
+
+
+8.2.3        Timeline Row-Level Navigation Options
+                                                                                                                               Evidence
+ ID             Guideline                                                                              Conformance
+                                                                                                                               Rating
+ TLN-1150       Provide options for each row to navigate to ‘next entry’ and ‘previous entry’          Recommended             Medium
+                beyond the visible time period. This should change the time displayed of the
+                whole Timeline View, not just the row selected.
+
+ TLN-1160       Locate the ‘next entry’ and ‘previous entry’ options in the row identifier cells.      Recommended             Medium
+                Only display these options when there are horizontally out-of-view timeline
+                entries to navigate to in that row.
+
+ TLN-1170       When the user selects a ‘next entry’ navigation option, refresh the timeline        Recommended                Medium
+                viewing area to show the start of the next timeline entry in the middle of the time
+                period. When the user selects a ‘previous entry’ navigation option, refresh the
+                timeline viewing area to show the start of the previous timeline entry in the
+                middle of the time period.
+
+ Usage Examples
+
+
+
+
+ In this correct example, the user selects the ‘next entry’ option on the ‘sodium chloride 0.9%’ row, and the visible time period moves
+ forward to display the next entry (at 14:10 two days later) in the middle of the viewing area. In this example there are no later ‘sodium
+ chloride 0.9%’ entries so the ‘next entry’ option for this row is hidden. (TLN-1150, TLN-1160, TLN-1170)
+
+ Rationale
+ The ability to navigate in time based on the data per row enables the clinician to quickly answer questions like:
+  “When did the patient previously have a prescription for ampicillin?” (if there is a prescription for ampicillin in view)
+  “What medication was the patient prescribed the last time they came in with ketoacidosis?” (by navigating from a current health
+   issue to a previous occurrence then comparing to the medications prescribed at the same time)
+ Hazard Risk Analysis Summary:
+      Potential Hazards:                                                  Mitigations:
+         MTI131 What if the ‘previous entry’ row navigation jumps         TLN-1150 (The navigation moves to the start and end points
+          the user to the previous item and the user mistakenly             of each timeline item rather to always the start or always the
+          thinks both are part of one long continuous one?                  end, thereby showing up any discontinuity in the lines)
+
+
+
+
+                                                                                                                                    Page 58
+                               Design Guidance – Timeline View
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 23 September 2009
+                                                                                                                                        Microsoft
+
+
+
+
+9            DOCUMENT INFORMATION
+9.1          Terms and Abbreviations
+    Abbreviation                Definition
+    CUI                         Common User Interface
+    EMS                         Event Management System
+
+    ENT                         Ear, Nose and Throat
+
+    HCP                         Health Care Professional
+
+    INR                         International Normalised Ratio
+    ISMP                        The Institute for Safe Medication Practices
+
+    ISO                         International Organization for Standardization
+
+    LoD                         Level of Detail
+
+    NHS                         National Health Service
+
+    NHS CFH                     NHS Connecting for Health
+
+    NPfIT                       National Programme for Information Technology
+
+    NPSA                        National Patient Safety Agency
+
+    UI                          User Interface
+
+    VDT                         Visual Display Terminal
+
+    WHO                         World Health Organization
+    Table 7: Terms and Abbreviations
+
+
+
+
+9.2          Definitions
+    Term                    Definition
+    Conformance             In the guidance tables, indicates the extent to which you should follow the guideline when defining your UI
+                            implementation. There are two levels:
+                             Mandatory – An implementation should follow the guideline
+                             Recommended – An implementation is advised to follow the guideline
+
+    Current best practice Current best practice is used rather than best practice, as over time best practice guidance may change or be
+                          revised due to changes to products, changes in technology, or simply the additional field deployment
+                          experience that comes over time.
+
+    Evidence Rating         In the guidance tables, summarises the strength of the research defining the guideline and the extent to which
+                            it mitigates patient safety hazards. There are three ratings (with example factors used to determine the
+                            appropriate rating):
+                             Low:
+                                 Does not mitigate specific patient safety hazards
+                                 User research findings unclear and with few participants
+                                 Unreferenced usability principles indicate the design is not significantly better than alternatives
+                             Medium:
+                                 Mitigates specific patient safety hazards
+                                 User research findings clear but with few participants
+
+                                                                                                                                        Page 59
+                                  Design Guidance – Timeline View
+                                  Prepared by Microsoft, Version 1.0.0.0
+                                  Last modified on 23 September 2009
+                                                                                                                                 Microsoft
+
+
+
+
+ Term                        Definition
+                                References old authoritative guidance (for example, from the UK-based National Patient Safety Agency
+                                 (NPSA), Institute for Safe Medication Practices (ISMP) or World Health Organization (WHO)) that is
+                                 potentially soon to be superseded
+                                Referenced usability principles indicate the design is significantly better than alternatives
+                              High:
+                                Mitigates specific patient safety hazards
+                                User research findings clear and with a significant number of participants
+                                References recent authoritative guidance (for example, from the UK-based NPSA, ISMP or WHO)
+                                Referenced usability principles indicate the design is significantly better than alternatives
+ Table 8: Definitions
+
+
+9.3         Nomenclature
+ This section shows how to interpret the different styles used in this document to denote various
+ types of information.
+
+9.3.1          Body Text
+ Text                                                                    Style
+ Code                                                                    Monospace
+
+ Script
+
+ Other markup languages
+
+ Interface dialog names                                                  Bold
+
+ Field names
+
+ Controls
+
+ Folder names                                                            Title Case
+ File names
+ Table 9: Body Text Styles
+
+9.3.2          Cross-References
+ Reference                                                               Style
+ Current document – sections                                             Section number only
+
+ Current document – figures/tables                                       Caption number only
+
+ Other project documents                                                 Italics and possibly a footnote
+
+ Publicly available documents                                            Italics with a footnote
+
+ External Web-based content                                              Italics and a hyperlinked footnote
+ Table 10: Cross-Reference Styles
+
+
+
+
+                                                                                                                                 Page 60
+                                Design Guidance – Timeline View
+                                Prepared by Microsoft, Version 1.0.0.0
+                                Last modified on 23 September 2009
+                                                                                                                                Microsoft
+
+
+
+
+9.4       References
+ Reference        Document                                                                                            Version
+ R1.              Nielsen, J: Usability Engineering, 1993                                                             1993
+
+ R2.              Shneiderman, B: Designing the User Interface – Strategies for Effective Human-Computer              Third Edition
+                  Interaction, 1998
+
+ R3.              British Standards Institute, BS EN ISO 9241-10: 1996 Ergonomic requirements for office work with    1996
+                  visual display terminals (VDTs) – Part 10: Dialogues principles
+
+ R4.              Design Guidance – Displaying Graphs and Tables                                                      2.0.0.0
+
+ R5.              Design Guidance – Drug Administration                                                               2.0.0.0
+
+ R6.              Design Guidance – Medication Line                                                                   2.0.0.0
+
+ R7.              Design Guidance – Medications List                                                                  1.0.0.0
+ R8.              Aligning temporal data by sentinel events: discovering patterns in electronic health records. In    2008
+                  Proceeding of the Twenty-Sixth Annual SIGCHI Conference on Human Factors in Computing
+                  Systems – Wang, T. D., Plaisant, C., Quinn, A. J., Stanchak, R., Murphy, S., and Shneiderman, B.
+                  2008
+
+ R9.              Gaining New Medical Insights through Interactive Visual Exploration – Aigner, Miksch
+
+ R10.             LifeLines: Using Visualization to Enhance Navigation and Analysis of Patient Records - HCIL         1998
+                  Technical Report 1998 – Plaisant, Mushlin, Snyder, Heller, Shneiderman
+
+ R11.             LifeLines: Visualizing Personal Histories – ACM CHI 1996 – Plaisant, Milash, Rose, Widoff,          1996
+                  Shneiderman
+
+ R12.             TimeLine: Visualizing Integrated Patient Records – IEEE Trans. On Information Technology in         July 2007
+                  Biomedicine, Vol. 11, No. 4, July 2007 – Bui, Aberle, Kangarloo
+
+ R13.             Viewing personal history records: A comparison of Tabular format and graphical presentation using   1997
+                  LifeLines – Alonso, Rose, Plaisant, Norman
+
+ R14.             Design Guidance – Search and Prescribe                                                              1.0.0.0
+ R15.             ePrescribing Functional Specification:                                                              1.0
+                  http://www.connectingforhealth.nhs.uk/newsroom/news-stories/eprescfunctspec
+ Table 11: References
+
+
+
+
+                                                                                                                                Page 61
+                             Design Guidance – Timeline View
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 23 September 2009
+                                                                                               Microsoft
+
+
+
+
+APPENDIX A                       USABILITY PRINCIPLES
+A.1    Nielsen’s Usability Heuristics
+ See Usability Engineering {R1} for more information on these principles:
+           Visibility of system status
+           Match between system and the real world
+           User control and freedom
+           Consistency and standards
+           Error prevention
+           Recognition rather than recall
+           Flexibility and efficiency of use
+           Aesthetic and minimalist design
+           Help users recognise, diagnose, and recover from errors
+           Help and documentation
+
+A.2    Shneiderman’s Eight Golden Rules of Interface Design
+ See Designing the User Interface – Strategies for Effective Human-Computer Interaction {R2} for
+ more information on these principles:
+           Strive for consistency
+           Enable frequent users to use shortcuts
+           Offer informative feedback
+           Design dialogs to yield closure
+           Offer error prevention and simple error handling
+           Permit easy reversal of actions
+           Support internal locus of control
+           Reduce short-term memory load
+
+A.3    ISO 9241: Characteristics of Presented Information
+ See Ergonomic requirements for office work with visual display terminals (VDTs) -- Part 10:
+ Dialogues principles {R3} for more information on these principles:
+           Clarity (the information content is conveyed quickly and accurately)
+           Discriminability (the displayed information can be distinguished accurately)
+           Conciseness (users are given only the information necessary to accomplish the task)
+           Consistency (the same information is presented in the same way throughout the
+            application, according to the user’s expectation)
+           Detectability (the user’s attention is directed towards information required)
+           Legibility (information is easy to read)
+           Comprehensibility (meaning is clearly understandable, unambiguous, interpretable and
+            recognisable)
+                                                                                               Page 62
+                      Design Guidance – Timeline View
+                      Prepared by Microsoft, Version 1.0.0.0
+                      Last modified on 23 September 2009
+                                                                                                     Microsoft
+
+
+
+
+APPENDIX B                         STUDY ID 33: EXECUTIVE SUMMARY
+B.1     Abstract
+ The UK National Health Service (NHS) Common User Interface (CUI) programme is a partnership
+ between Microsoft® and NHS Connecting for Health (NHS CFH), which is part the NHS National
+ Programme for Information Technology (NPfIT).
+ As part of CUI, the Clinical Applications and Patient Safety (CAPS) Project has the goal of ensuring
+ that software applications used by the NHS enhance patient safety. To achieve this, CAPS
+ provides software developers with user interface design guidelines derived through a user-centric
+ development process that includes explicit patient-safety evaluations.
+ This summary describes key findings from user research carried out in April 2009 by the CUI CAPS
+ team on the display of clinical data in a Timeline View. These findings are a subset from a larger
+ internal report prepared for the CUI CAPS Timeline team.
+ Purpose:
+ To gain clinical feedback on design concepts for Timeline Views of clinical data (primarily
+ medications) in electronic systems.
+ Method:
+ Interviews: structured interviews with 13 Health Care Professionals (HCPs) eliciting HCP
+ preferences and qualitative feedback on design alternatives.
+ Key Results:
+ Based on clinician preference and rationale:
+       The distinction between prescription item and medication administration items should be
+        clearer
+       Options for alternative marking of future duration items should be considered, including
+        having the same representation for past and future
+       The canvas background should mark a distinction between past and future. However, this
+        should be subtle and take into account readability of all the elements on the canvas
+        (including gridlines)
+       The ability to view labels both inline and in a left column should be considered
+       The ability for the clinician to vary the level of detail and line identity should be retained (for
+        example, the ability to aggregate prescriptions to the 'drug name' level)
+       Further methods for reorganising large datasets and indicating data out of view should be
+        explored
+
+B.2     Research Objectives
+ To gather HCP design preferences and qualitative feedback on, and to identify possible patient
+ safety hazards with, CUI Timeline View designs.
+
+
+
+
+                                                                                                      Page 63
+                        Design Guidance – Timeline View
+                        Prepared by Microsoft, Version 1.0.0.0
+                        Last modified on 23 September 2009
+                                                                                                                             Microsoft
+
+
+
+
+B.3       Research Design
+ Interviews were structured, lasted one hour and carried out in person or by telephone. Participants
+ were taken through wireframe design alternatives for each area of investigation and a Microsoft®
+              ®
+ Office Excel mock-up, and then asked for preference based on patient safety criteria. Other
+ qualitative feedback was elicited covering:
+       Rationale for preference
+       Design fit with current and best practice
+       Design understandability
+       Any potential hazards resulting from the designs.
+ Detailed notes from the interviews were qualitatively analysed using thematic coding.
+
+B.4       Results
+B.4.1         Participant Description
+ 13 participants were interviewed separately. Each had either volunteered through the NHS CFH
+ Event Management System (EMS) signup or had been recruited by an HCP who had volunteered.
+ Four out of 13 participants had previously taken part in CUI clinical engagement for other work
+ areas. Table 12 shows a summary of the participants’ profiles:
+
+   Session Job Role                        Specialty           Level         Site                  Systems Used
+   389           Nurse Practitioner        Emergency           Senior        Walk-in centre        Various
+
+   390           Nurse Practitioner        Renal Outpatients   Senior        Large Hospital A      PAS, Path, PACS
+
+   391           Doctor                    Surgery             CT1           Teaching Hospital A   PAS, Path, PACS, eTTAs
+   392           Pharmacist and            Systems             Senior        Teaching Hospital B   PICS and various
+                 Analyst
+
+   393           Doctor                    Obstetrics and      F1            Teaching Hospital C   PAS, Path, PACS, eTTAs,
+                                           Gynaecology                                             iSOFT® Synergy, EMIS® LV™,
+
+   394           Doctor                    Obstetrics and      F1            Teaching Hospital C   PAS, PACS, Path, iSOFT
+                                           Gynaecology                                             i.Clinical Manager
+
+   395           Doctor                    Obstetrics and      F1            Teaching Hospital C   PAS, PACS, Path
+                                           Gynaecology
+
+   396           Doctor                    Obstetrics and      F2            Teaching Hospital C   PAS, PACS, Path, EMIS, INPS
+                                           Gynaecology                                             Vision
+
+   397           Pharmacist                ?                   Senior        Teaching Hospital C   PAS, PACS, Path, eTTAs,
+                                                                                                   iMDsoft® MetaVision
+
+   398           Nurse                     Stroke              ?             DGH                   PAS
+
+   399           Doctor                    Ear, Nose and       Research      DGH                   PAS, PACS, Path
+                                           Throat (ENT)        Fellow
+
+   400           Doctor                    Clinical            Research      Large hospital B      PAS, PACS, Path, eTTAs, an
+                                           Pharmacology        fellow                              ePrescribing system
+
+   401           Nurse                     ENT                 Sister        DGH                   PAS
+ Table 12: Interview Participants
+
+ All participants were clinical staff who had experience of viewing clinical data such as medications
+ in an inpatient setting. Participants were scoped to hospital and acute care (and mainly inpatient
+ care) as per the scope and example datasets for the CUI timelines work.
+                                                                                                                                Page 64
+                                    Design Guidance – Timeline View
+                                    Prepared by Microsoft, Version 1.0.0.0
+                                    Last modified on 23 September 2009
+                                                                                                   Microsoft
+
+
+
+ The 10 hospital and acute care participants were from a number of different trusts different trusts,
+ with diverse geographical locations.
+ All participants had used some kind of electronic patient record, though only one (participant 397)
+ had used electronic timeline displays of clinical data before. The majority had medium computer
+ experience, where high experience includes items such as being familiar with spreadsheet
+ calculation functions and having an understanding of databases.
+
+B.4.2       Design Areas
+ Bullet text in italics represents researcher recommendations or comments in order to distinguish
+ them from user feedback.
+
+ Duration Items – General
+     Participants made various errors in misinterpreting the ‘prescription’ duration items as
+      medication administration status indicators:
+            Therefore, continue to allow the display of medication administration items (to clarify the
+             ambiguity)
+            Consider how the ambiguity could be further clarified (for example, with a default setting
+             for inpatient contexts that showed medication administration whenever showing
+             medication data)
+     One participant assumed an item start date was when the item appeared on screen on the
+      left:
+            Ensure it is clear where items start or stop
+
+ Duration Items – Future Items
+     Examples of different styling for ‘future’ items raised a variety of feedback, with concerns
+      raised about items potentially being mistaken as ‘progress bars’, or wide-dotted items as
+      separate events, and more complex styling resulting in an overly ‘busy’ view
+     Several participants suggested that planned items (such as prescriptions) should not look
+      different in the past and future as the plan to have them was certain, even though the future
+      is by nature uncertain:
+            Therefore, consider the potential risks of misinterpretation. If the line does change it
+             might be more likely to be misinterpreted as a status indicator
+            Consider the balance between redundant cues and overall visual weight (that is, if
+             future is already conveyed by a canvas background change, is line styling change
+             necessary?)
+
+ Discrete Items
+     Some icons are potentially confusable with others:
+            Reduce sharing of visual attributes between icon types
+     Neither option presented for dealing with crowded icons was deemed to be that clear:
+            Continue to explore, incorporating ‘squashing tolerance’ work from the Displaying
+             Graphs and Tables – User Interface Design Guidance {R4} document
+     Though the indication of overdue items was commented on favourably, further consistency
+      with the Medications Management – Drug Administration – User Interface Design
+      Guidance {R5} should be explored
+
+
+
+                                                                                                   Page 65
+                      Design Guidance – Timeline View
+                      Prepared by Microsoft, Version 1.0.0.0
+                      Last modified on 23 September 2009
+                                                                                                  Microsoft
+
+
+
+
+Canvas Background
+    11 of 12 participants supported having a background shade distinction between past and
+     future. This was both to draw attention to ‘now’ and to provide extra cues as to whether an
+     item was past or future:
+         Continue to provide a background shade distinction
+    Opinion was divided on what shades to use for current and past, mainly based on
+     metaphorical reasoning “the future is a blank slate”:
+         Consider readability implications for using shaded and/or coloured background (for
+          example, darker backgrounds may make it harder to read items and hide gridlines)
+
+Labels
+    Most participants preferred having labels both ‘inline’ (to improve the association between
+     the lines and labels) AND in a left column (to allow for ease of scanning the list and
+     familiarity with current representations of medication lists):
+         Strongly consider ability to display both ‘inline’ AND ‘left’ labels
+
+Continuous Administration
+    Participants made various errors due to the word ‘continuous’:
+         ePrescribing team to consider naming issue
+
+Thumbnail
+    Two participants initially assumed the thumbnail indicated medications started 20 years
+     before they had:
+         Consider how to mitigate this error
+         The thumbnail also continually takes up space, which might be better used for the main
+          data display
+
+Active and Inactive
+    Participants mistakenly interpreted the red and green colours representing active and
+     inactive:
+         Do not use red and green to indicate status change
+    Several participants mistakenly assumed only a few medications were current and/or
+     active:
+         Consider how to indicate that other medications are out of view
+         Consider visual distinction of active and inactive items
+
+Level of Detail and Line Identity
+    All participants felt that Level of Detail (LoD) 2 (aggregating lines to the drug name level
+     with full prescription details hidden) was a useful addition to LoD 4 (seeing each
+     prescription as a separate line with full drug details):
+         Continue to allow the line identity and level of detail to be varied by the clinician
+    Some participants were concerned at being able to see medications without administration
+     information as this is not current practice in inpatient hospital and acute care:
+         Consult with the CUI medications team
+
+
+                                                                                                  Page 66
+                    Design Guidance – Timeline View
+                    Prepared by Microsoft, Version 1.0.0.0
+                    Last modified on 23 September 2009
+                                                                                            Microsoft
+
+
+
+
+Item Changes
+   Though 5 of 10 participants did not initially understand the meaning of the markers to
+    indicate item change (in this case, a change in prescription), once understood all supported
+    the need to clearly mark this:
+        Continue to display markers of item change when line identity is shrunk
+
+Representing ‘Health Issues’
+   Many issues were raised about the representation of patient problems/health issues,
+    especially regarding line identity, ‘?’ problems and the differences between symptoms and
+    diagnoses:
+        Consider these issues in future clinical noting work
+   Being able to vary line identity helped participants understand the nature of the problems:
+        Consider these issues in future clinical noting work
+
+Navigation and Large Datasets
+   Navigating the large (and arguably more realistic) dataset was very problematic for the few
+    participants it was shown to:
+        Consider guidance on minimising the amount of vertical space each row takes up to get
+         more in a single screen
+        Continue to explore other methods for reorganising data (for example, filtering, sorting
+         and grouping) and for indicating data out of view
+
+
+
+
+                                                                                             Page 67
+                   Design Guidance – Timeline View
+                   Prepared by Microsoft, Version 1.0.0.0
+                   Last modified on 23 September 2009
+

@@ -1,0 +1,1419 @@
+Design Guidance
+Micro Patient Banner
+
+
+
+    Thursday, 28 January 2010
+               Version 2.0.0.0
+
+
+                  Prepared by
+                    Microsoft
+                                                                                                                                                   Microsoft
+
+
+
+
+PREFACE
+   Documents replaced by this document
+
+   Document Title                                                                                                                  Version
+   Design Guidance – Micro Patient Banner                                                                                          1.0.0.0
+
+
+   Documents to be read in conjunction with this document
+
+   Document Title                                                                                                                  Version
+   Design Guidance – Patient Banner                                                                                                4.0.0.0
+
+   Design Guidance – Patient Name Input and Display                                                                                2.0.0.0
+
+   Design Guidance – Date Display                                                                                                  3.0.0.0
+
+   Design Guidance – Sex and Current Gender Input and Display                                                                      2.0.0.0
+
+   Design Guidance – Time Display                                                                                                  3.0.0.0
+
+   Design Guidance – Patient Identification Number Input and Display                                                               2.0.0.0
+
+   Design Guidance – Address Input and Display                                                                                     2.0.0.0
+
+   Design Guidance – Accessibility Principles                                                                                      1.0.0.0
+
+   Design Guidance – Accessibility Checklist                                                                                       1.0.0.0
+
+
+
+
+This document and/or software (“this Content”) has been created in partnership with the National Health Service (NHS) in England. Intellectual Property
+Rights to this Content are jointly owned by Microsoft and the NHS in England, although both Microsoft and the NHS are entitled to independently exercise
+their rights of ownership. Microsoft acknowledges the contribution of the NHS in England through their Common User Interface programme to this Content.
+Readers are referred to www.cui.nhs.uk for further information on the NHS CUI Programme.
+All trademarks are the property of their respective companies. Microsoft and Windows are either registered trademarks or trademarks of Microsoft
+Corporation in the United States and/or other countries.
+
+© Microsoft Corporation 2010. All rights reserved.
+
+                                                                                                                                                     Page ii
+                                    Design Guidance – Micro Patient Banner
+                                    Prepared by Microsoft, Version 2.0.0.0
+                                    Last modified on 28 January 2010
+                                                                                                                                                Microsoft
+
+
+
+
+TABLE OF CONTENTS
+1    Introduction ....................................................................................................................................1
+    1.1    Customer Need .........................................................................................................................2
+    1.2    Scope ........................................................................................................................................3
+     1.2.1      In Scope...............................................................................................................................3
+     1.2.2      Out of Scope ........................................................................................................................3
+    1.3    Assumptions..............................................................................................................................4
+    1.4    Dependencies ...........................................................................................................................4
+
+2    Micro Patient Banner Guidance Overview ...................................................................................5
+    2.1    Summary of Guidance ..............................................................................................................5
+
+3    Micro Patient Banner Guidance Details .......................................................................................8
+    3.1    Introduction ...............................................................................................................................8
+    3.2    Principles ...................................................................................................................................8
+    3.3    Guidelines .................................................................................................................................9
+     3.3.1      Guidance – Structure and Composition ..............................................................................9
+     3.3.2      Guidance – Application Context and Positioning ..............................................................10
+     3.3.3      Guidance – Minimum Data Set..........................................................................................11
+     3.3.4      Guidance – Information Grouping .....................................................................................13
+     3.3.5      Guidance – Data Labels and Values .................................................................................14
+     3.3.6      Guidance – Patient Name .................................................................................................17
+     3.3.7      Guidance – Micro Patient Banner for a Deceased Patient ................................................18
+     3.3.8      Guidance – Alignment of Information ................................................................................19
+    3.4    Rationale Summary ................................................................................................................19
+
+4    Document Information .................................................................................................................21
+    4.1    Terms and Abbreviations ........................................................................................................21
+    4.2    Nomenclature ..........................................................................................................................21
+     4.2.1      Body Text...........................................................................................................................21
+     4.2.2      Cross References ..............................................................................................................22
+    4.3    References ..............................................................................................................................22
+
+
+
+
+                                                                                                                                                  Page iii
+                                 Design Guidance – Micro Patient Banner
+                                 Prepared by Microsoft, Version 2.0.0.0
+                                 Last modified on 28 January 2010
+                                                                                                              Microsoft
+
+
+
+
+1         INTRODUCTION
+    This document provides guidance for the design of a Micro Patient Banner (MPB). It describes the
+    area of focus, lists mandatory and recommended guidance points with usage examples and
+    explains the rationale behind the guidance.
+    The term ‘patient banner’ (PAB) refers to the area of the user interface that contains demographic
+    information for a patient record. The patient banner is the area within the user interface that is most
+    often used to match records with patients and contains key information for identifying patients, such
+    as name, address, date of birth, and patient identification number. This information may be
+    matched with that provided by the patient (or a third party, such as a parent), usually in their
+    presence or over the telephone. Information in a patient banner may also be matched with that in
+    any of the patient’s associated artefacts, such as samples, letters, specimens, wristbands and
+    X-rays.
+    The Micro Patient Banner is a patient banner designed for small screen, hand-held devices such as
+    Personal Digital Assistants (PDAs). Its purpose is to display patient demographic information for
+    the patient whose record is currently being viewed on the PDA, so that healthcare staff can ensure
+    the correct patient is identified and the correct record is displayed, as shown in Figure 1:
+
+
+
+
+                                       Figure 1: A Micro Patient Banner Displayed on a PDA
+
+       Note
+       Existing Microsoft Health Common User Interface (CUI) guidance on the full-screen Patient Banner is
+       targeted at desktop monitors. Its title is Design Guidance – Patient Banner {R1}.
+
+       Important
+       The visual representations used within this document to display the guidance are illustrative only. Stylistic
+       choices, unless otherwise specified, are not part of the guidance and are therefore not mandatory
+       requirements for compliance with the guidance in this document.
+
+
+                                                                                                               Page 1
+                          Design Guidance – Micro Patient Banner
+                          Prepared by Microsoft, Version 2.0.0.0
+                          Last modified on 28 January 2010
+                                                                                                                              Microsoft
+
+
+
+ Table 1 describes the changes made since the previous version of this guidance (Baseline version
+ 1.0.0.0 dated 26-Aug-2008):
+
+ Change            IDs             Change Description
+ Deleted                           None
+
+ Modified                          Enhanced out of scope context setting (section 1.2.2)
+
+                                   Enhanced illustrations context setting (section2)
+
+                                   Length of name changed from 40 to 35 characters in Rationale (section 3.3.2)
+
+ Added                             None
+ Table 1: Changes Since the Last Baseline Version
+
+
+1.1        Customer Need
+ Although there are no accurate figures on the frequency or cost of mismatching errors, they form a
+ significant part of the whole range of errors in healthcare. These mismatches can occur between a
+ patient, their record, laboratory results and, in the case of inpatients, their wristband. Whilst the
+                                                                          1
+ wide variation in wristbands has now been addressed by a standard , there is considerable
+ variation in patient banner layout across applications, which has already been the subject of
+                                                                                       2
+ guidance {R1}. When errors do occur, they are typically one of three main types :
+
+        1. The patient is given the wrong treatment due to failure to identify the patient correctly
+
+        2. The patient is given the wrong treatment as a result of a failure to match the patient
+           correctly with samples, specimens or X-rays
+
+        3. The patient is given the wrong treatment as a result of a failure in communication between
+           staff, or due to staff not performing checking procedures correctly
+ Accurate patient identification is emphasised by the World Health Organization (WHO) publication
+                              3                            4
+ on Patient Safety Solutions and by the Joint Commission both of whom provide guidance on how
+ to improve patient identification.
+ Handheld computers, that is PDAs, are increasingly being used by healthcare staff. For a list of the
+ many uses to which they are being applied in a health care setting, refer to Handheld Computers
+                                                                 5
+ {R6}. For details of adoption rates, refer to Who’s Using PDAs?
+ This Micro Patient Banner design guidance is restricted to PDA usage and aims to:
+         Ensure patients are correctly identified and matched with their patient record and wristband
+          {R2} by displaying data items consistently
+         Allow quick access to and display of other summary information for a patient (such as the
+          address)
+ Significant inconsistencies exist across existing micro patient banners used in PDA-based clinical
+ applications displaying patient information. This has a large but unquantifiable cost in terms of
+
+
+ 1
+  Standardising wristbands improves patient safety, UK National Patient Safety Agency (NPSA) Safer Practice Notice {R2}:
+ http://www.npsa.nhs.uk/EasySiteWeb/GatewayLink.aspx?alId=5346
+ 2
+     Right patient - right care, NPSA {R3}: http://www.npsa.nhs.uk/EasySiteWeb/GatewayLink.aspx?alId=3234
+ 3
+     Patient Identification – Patient Safety Solutions {R4}: http://www.jcipatientsafety.org/fpdf/Presskit/PS-Solution2.pdf
+ 4
+  National Patient Safety Goals {R5}:
+ http://www.jointcommission.org/PatientSafety/NationalPatientSafetyGoals/08_npsg_facts.htm
+ 5
+  Who’s Using PDAs? Estimates of PDA Use by Health Care Providers: A Systematic Review of Surveys {R7}:
+ http://www.jmir.org/2006/2/e7/
+                                                                                                                               Page 2
+                               Design Guidance – Micro Patient Banner
+                               Prepared by Microsoft, Version 2.0.0.0
+                               Last modified on 28 January 2010
+                                                                                                       Microsoft
+
+
+
+ incorrect identification of patients, leading to safety issues and, potentially, additional staff training.
+ Reduction of inconsistency is therefore an important goal in itself. Finally, having a consistent,
+ agreed layout for micro patient banners in clinical systems makes the design and development of
+ such systems easier and quicker.
+
+1.2     Scope
+ The guidance in this document informs the design of a patient-safe micro patient banner to support
+ one task, namely patient identification. This section details the items that are in scope, and those
+ that are out of scope, with respect to this guidance.
+
+1.2.1      In Scope
+ This guidance is applicable to User Interfaces (UIs) such as those displayed on hand-held devices,
+ also known as PDAs. These devices are characterised by a small display screen size, typically
+ quoted by manufacturers as about 4 inches (that is, approximately 10 centimetres) in diagonal. It is
+ assumed that, as a minimum, these devices are capable of operating at a display resolution greater
+ than or equal to 240 x 320 pixels, but less than 1024 x 768 pixels, and have a pointing device such
+ as a stylus.
+ This guidance informs the design of demographic information displays to support the identification
+ of a single patient, safely and accurately. It is applicable for all care settings. This guidance was
+ developed primarily to support the work of the following healthcare staff as these are especially
+ likely not to have a previous relation with the patient. Additionally, they are the most likely users of
+ a hand-held device such as a PDA (this guidance is not limited to these roles):
+
+      1. Inpatient doctor
+
+      2. Night nurse practitioner
+
+      3. Out of hours clinician
+
+      4. First response paramedic
+
+      5. District nurse
+
+      6. Bank nurse
+
+1.2.2      Out of Scope
+ This section defines areas that are not covered in this guidance. Although there may be specific
+ risks associated with these areas that are not addressed in this guidance, it is likely that the
+ principles in this guidance will extend to micro patient banner aspects in many of the areas listed
+ below.
+ The following items are out of scope:
+       The display of clinical information
+       The modification of demographic information
+       The display of information for more than one patient at a time
+       Information governance, security and confidentiality
+       The following form factors: wall-mounted screens, whiteboards, projected images, desktop
+        monitors, Tablet PCs, telephones, and Smartphones
+       Displaying alerts in an MPB
+       Displaying an MPB in a pop-up window
+
+
+                                                                                                        Page 3
+                          Design Guidance – Micro Patient Banner
+                          Prepared by Microsoft, Version 2.0.0.0
+                          Last modified on 28 January 2010
+                                                                                                                                   Microsoft
+
+
+
+       Multi-language applications that use right-to-left writing (such as Arabic), the Cyrillic
+        alphabet (such as Russian), or ideograms (such as Japanese)
+       Display styles such as the choice of font size, background and foreground text colour that
+        can affect the readability of information in the MPB, as with all other displayed text
+       Bar code representations (such as a patient identification number in the form of a bar code)
+
+      Note
+      Listing an item as out of scope does not classify it as unimportant. Project time and resource constraints
+      inevitably restrict what can be in scope for a particular release. It is possible that items out of scope for
+      this release may be considered for a future release.
+
+
+1.3      Assumptions
+ ID       Assumption
+ A1       Existing guidance on the Patient Banner {R1} is targeted at desktop monitors and is an important reference document but is
+          not automatically applicable to the MPB
+
+ A2       The ‘log in’ dialogue is out of scope and users are assumed to have logged in successfully to the application running on the
+          PDA in order to view the patient record and MPB
+
+ A3       All aspects relating to security, privacy and data protection are out of scope of the MPB work
+
+ A4       A MPB is not to be used within a Patient List, but is displayed after a single patient has been selected from a Patient List
+
+ A5       Whilst the MPB has not been designed for use by patients, healthcare staff may at their discretion, show an MPB to patients
+
+ A6       This guidance is equally applicable on devices used in portrait and in landscape display modes
+ Table 2: Assumptions
+
+
+1.4      Dependencies
+ ID       Dependency
+ D1       Changes to any of the documents listed in the References section in this guidance document
+
+ D2       The display of dates must conform to the guidance for Date Display {R8}
+
+ D3       The display of age must conform to the guidance for Time Display {R9}
+
+ D4       The display of name must conform to the guidance for Patient Name Display {R10}
+
+ D5       The display of gender must conform to the guidance for Gender and Sex Display {R11}
+
+ D6       The display of patient identification number must conform to the guidance for Patient Identification Number Display {R12}
+
+ D7       The display of addresses must conform to the guidance for Address Display {R13}
+
+ D8       The design of clinical applications must conform to the accessibility guidance {R14, R15}
+ Table 3: Dependencies
+
+
+
+
+                                                                                                                                     Page 4
+                             Design Guidance – Micro Patient Banner
+                             Prepared by Microsoft, Version 2.0.0.0
+                             Last modified on 28 January 2010
+                                                                                                                                Microsoft
+
+
+
+
+2         MICRO PATIENT BANNER GUIDANCE OVERVIEW
+       Important
+       The visual representations used within this document to display the guidance are illustrative only. They
+       are simplified in order to support understanding of the guidance points. Stylistic choices, such as colours,
+       fonts or icons are not part of the guidance and unless otherwise specified are not mandatory requirements
+       for compliance with the guidance in this document.
+
+
+2.1       Summary of Guidance
+    Reference   Section      Description
+    MPB-0001    3.3.1        A Micro Patient Banner always consists of one zone, referred to in this guidance as Zone 1, and may
+                             optionally also contain an additional zone, Zone 2
+
+    MPB-0002    3.3.1        Display of Zone 2 is optional
+
+    MPB-0003    3.3.1        Display information that facilitates patient identification in Zone 1
+
+    MPB-0004    3.3.1        Display supplementary information that may support patient identification in Zone 2
+
+    MPB-0005    3.3.1        Do not display any clinical information in a Micro Patient Banner
+
+    MPB-0006    3.3.1        In the default display of a Micro Patient Banner, show Zone 1; if Zone 2 is to be displayed in this
+                             default state, show Zone 2 in the collapsed state
+
+    MPB-0007    3.3.1        Provide visual indication that information is occluded, while Zone 2 is expanded, if appropriate
+
+    MPB-0008    3.3.1        A Micro Patient Banner will only support data display, not data input
+
+    MPB-0009    3.3.2        Display a Micro Patient Banner at the top of the screen
+
+    MPB-0010    3.3.2        Display a Micro Patient Banner horizontally rather than vertically
+
+    MPB-0011    3.3.2        Display a Micro Patient Banner in a fixed position, unmovable by the user
+
+    MPB-0012    3.3.2        Display a Micro Patient Banner so that it occupies the full width of the application window
+
+    MPB-0013    3.3.2        Do not obscure a Micro Patient Banner with other elements of the screen
+
+    MPB-0014    3.3.2        Apply visual styling to a Micro Patient Banner (such as a thick border or distinguishing background
+                             colour) in contrast to other elements of the application’s user interface
+
+    MPB-0015    3.3.2        Do not display a Micro Patient Banner on screens that contain information relating to more than one
+                             patient
+
+    MPB-0016    3.3.2        Do not display a Micro Patient Banner in or alongside a Patient List
+
+    MPB-0017    3.3.3        Always display the patient’s name (family name and given name), date of birth, and patient
+                             identification number in a Micro Patient Banner
+
+    MPB-0018    3.3.3        An MPB may optionally display the patient’s title
+
+    MPB-0019    3.3.3        An MPB may optionally display the patient’s age
+
+    MPB-0020    3.3.3        Do not display the patient’s location (such as ward and bed), in an MPB
+
+    MPB-0021    3.3.3        For a deceased patient, an MPB additionally displays the date of death and age at death
+
+    MPB-0022    3.3.3        If an individual data item is not known or is otherwise unavailable, appropriate self-explanatory text or
+                             a blank string (but not a ‘?’), are to be displayed immediately after the corresponding data label
+
+    MPB-0023    3.3.3        Display the preferred name if available
+
+    MPB-0024    3.3.3        Do not display the patient’s photograph in a MPB
+
+    MPB-0025    3.3.4        Display the elements of the patient name, date of birth and patient identification number in Zone 1
+
+
+                                                                                                                                   Page 5
+                          Design Guidance – Micro Patient Banner
+                          Prepared by Microsoft, Version 2.0.0.0
+                          Last modified on 28 January 2010
+                                                                                                                             Microsoft
+
+
+
+
+Reference   Section      Description
+MPB-0026    3.3.4        Where the age of a living patient is being displayed, display the age in Zone 1
+
+MPB-0027    3.3.4        For a deceased patient, display the date of death and the age at death in Zone 1
+
+MPB-0028    3.3.4        Display the full address (including the postcode) and gender in the expanded Zone 2
+
+MPB-0029    3.3.4        In the expanded Zone 2, precede the full address with the label ‘Usual address’ or ‘Temporary
+                         address’ as appropriate
+
+MPB-0030    3.3.4        In the expanded Zone 2, provide a means to access all addresses available in the record
+
+MPB-0031    3.3.5        Precede the date of birth with the label ‘Born’
+
+MPB-0032    3.3.5        When displaying the age use only two abbreviated units, a lower and an upper unit, without any
+                         intermediate units (as described in the rationale)
+
+MPB-0033    3.3.5        Precede the gender with the label ‘Gender’
+
+MPB-0034    3.3.5        Display the gender value in full (that is, do not display the gender value using a symbol, icon,
+                         pictogram or a textual abbreviation)
+
+MPB-0035    3.3.5        Precede the patient identification number with an appropriate label, for example, ‘NHS No.’
+
+MPB-0036    3.3.5        Precede the preferred name with the label ‘Preferred name’
+
+MPB-0037    3.3.5        Precede the date of death with the label ‘Died’
+
+MPB-0038    3.3.5        Precede the age at death with the label ‘Age at Death’
+
+MPB-0039    3.3.5        Do not add a colon after the label text
+
+MPB-0040    3.3.5        Do not include unnecessary punctuation in a label
+
+MPB-0041    3.3.5        Display labels in the style given to label text
+
+MPB-0042    3.3.5        Display values in the style given to data text
+
+MPB-0043    3.3.5        Use text styles for labels and for values so that more visual emphasis is given to the value text relative
+                         to the label text
+
+MPB-0044    3.3.5        For each label in Zone 1, provide a definition and a means to access the definition (for example, by a
+                         tooltip)
+
+MPB-0045    3.3.5        Provide a means to inform the user that gender should only be used to identify and address the
+                         patient correctly, not for clinical judgements
+
+MPB-0046    3.3.5        Provide a means to access the record for all data items in Zone 1 and Zone 2
+
+MPB-0047    3.3.5        Provide a means to enable users to adjust font properties for all text displayed in a Micro Patient
+                         Banner, particularly the font family, size and colour
+
+MPB-0048    3.3.6        Display the patient name elements and title, in the following order: family name, given name, title
+
+MPB-0049    3.3.6        Do not include labels for the patient name elements and title
+
+MPB-0050    3.3.6        Display a comma after the family name
+
+MPB-0051    3.3.6        Display the title in parentheses, omitting the parentheses if the title is not being displayed
+
+MPB-0052    3.3.6        Display the patient’s family name in upper case and the patient’s given name and title in title case
+
+MPB-0053    3.3.6        Display the patient’s preferred name, if available, immediately below the family name
+
+MPB-0054    3.3.6        Display the family name and the given name in full (that is, without truncation), splitting across lines if
+                         absolutely necessary
+
+MPB-0055    3.3.7        For a deceased patient, use a background area for Zone 1 in which both the colour and the pattern
+                         are substantially different from those used for a living patient
+
+
+                                                                                                                               Page 6
+                      Design Guidance – Micro Patient Banner
+                      Prepared by Microsoft, Version 2.0.0.0
+                      Last modified on 28 January 2010
+                                                                                                                                 Microsoft
+
+
+
+
+Reference        Section          Description
+MPB-0056         3.3.7            The choice of both background colour and pattern must be such as to differentiate a Micro Patient
+                                  Banner of a deceased patient from that of a living patient
+
+MPB-0057         3.3.7            Display the date of death along with its label
+
+MPB-0058         3.3.7            Display the date of death below the date of birth
+
+MPB-0059         3.3.7            Display the age at death, preceded by its label, immediately after the date of death
+
+MPB-0060         3.3.7            Display the age at death without parentheses
+
+MPB-0061         3.3.8            Display the patient’s preferred name (if available) immediately below the given name, with both items
+                                  left-aligned
+
+MPB-0062         3.3.8            When a patient’s preferred name is not available, the patient’s name must be centred vertically and
+                                  left-aligned in Zone 1
+
+MPB-0063         3.3.8            For a deceased patient, display the date of death and age at death labels and values in that order,
+                                  immediately below the label corresponding to the date of birth. Left-align both date labels
+Table 4: Summary of Guidance
+
+
+
+
+                                                                                                                                   Page 7
+                               Design Guidance – Micro Patient Banner
+                               Prepared by Microsoft, Version 2.0.0.0
+                               Last modified on 28 January 2010
+                                                                                                           Microsoft
+
+
+
+
+3         MICRO PATIENT BANNER GUIDANCE DETAILS
+
+3.1       Introduction
+    The guidance provided in this document is based upon a programme of research, including:
+        A Web based survey of clinicians and administrative staff covering a range of patient
+         identification issues
+        One-to-one interviews with a range of healthcare professionals
+        A plenary discussion with members of a design steering group for a large clinical system
+       Note
+       The guidance and examples within this document are based on the requirements for the National Health
+       Service (NHS) within the UK. When applying this guidance, you should consider how your clinical
+       application will need to handle information, such as patient identification numbers (shown with the label
+       ‘NHS No.’ in the images in this guidance), within the country of use.
+
+
+3.2       Principles
+    The following key principles have shaped the guidance in this document:
+        Reliable and accurate identification of an individual patient record
+        Matching a patient record with:
+              The correct patient, whether present in person or by phone
+              Other artefacts associated with the patient, for example, samples, letters, or wristbands
+        Displaying core information according to existing standards and guidance and using a
+         minimum data set available to clinical applications
+        Promoting consistency across the mix of users, clinical applications and care settings
+        Displaying minimum supplementary information to support patient identification
+        Minimising opportunities for human error
+
+
+
+
+                                                                                                            Page 8
+                          Design Guidance – Micro Patient Banner
+                          Prepared by Microsoft, Version 2.0.0.0
+                          Last modified on 28 January 2010
+                                                                                                                                     Microsoft
+
+
+
+
+3.3      Guidelines
+3.3.1        Guidance – Structure and Composition
+                                                                                                                              Evidence
+ ID             Description                                                                             Conformance
+                                                                                                                              Rating
+ MPB-0001       A Micro Patient Banner always consists of one zone, referred to in this guidance        Mandatory             High
+                as Zone 1, and may optionally also contain an additional zone, Zone 2
+
+ MPB-0002       Display of Zone 2 is optional                                                           Mandatory             Medium
+
+ MPB-0003       Display information that facilitates patient identification in Zone 1                   Mandatory             High
+
+ MPB-0004       Display supplementary information that may support patient identification in Zone 2 Mandatory                 Medium
+
+ MPB-0005       Do not display any clinical information in a Micro Patient Banner                       Mandatory             High
+
+ MPB-0006       In the default display of a Micro Patient Banner, show Zone 1; if Zone 2 is to be       Mandatory             High
+                displayed in this default state, show Zone 2 in the collapsed state
+
+ MPB-0007       Provide visual indication that information is occluded, while Zone 2 is expanded, if    Recommended           Medium
+                appropriate
+
+ MPB-0008       A Micro Patient Banner will only support data display, not data input                   Mandatory             Medium
+
+ Usage Examples
+                                                                                In this correct example showing Zone 1, all required
+                                                                                elements are displayed. They are also positioned in the
+                                                                                correct order, and are labelled correctly.
+
+                                                                                In this correct example, Zone 1 is shown, along with Zone
+                                                                                2 in the default collapsed state. Menu items for access to
+                                                                                supplementary information, namely address and gender,
+                                                                                are displayed in Zone 2.
+
+
+                                                                                This is an incorrect example, as the MPB is shown with
+                                                                                menu items in Zone 2 for accessing clinical data namely
+                                                                                risks and allergies.
+
+
+ Rationale
+ The sole purpose of the MPB is to support patient identification. The primary information required for this task (as identified in the
+ wristband guidance {R2}) is displayed in Zone 1, which is permanently displayed. Additional supplementary information, such as the
+ address, can be useful when resolving multiple matches of name. However, as this is not always necessary, the address has been
+ allocated for display in Zone 2. As Zone 2 is a repository for supplementary information, its entire display is optional, however when it
+ is displayed in its default collapsed form, it may be expanded on-demand by a user. This enables optimum use of the limited screen
+ on small devices such as PDAs.
+ The expansion of Zone 2 may lead to the occlusion of information that was being displayed below the MPB prior to Zone 2 being
+ expanded. This information may be critical to the clinical task at hand and the user may not be aware that its occlusion is only
+ temporary. The user may not even be aware that data have been occluded, potentially compromising patient-safety. By requiring that
+ visual indication of occlusion is provided, such as a transparent background for Zone 2, the presence of data will be apparent to the
+ user and a potential risk mitigated.
+ The MPB guidance only supports the display of demographic information and does not consider the editing of it. Hence, guidance is
+ limited to display.
+
+
+
+
+                                                                                                                                      Page 9
+                              Design Guidance – Micro Patient Banner
+                              Prepared by Microsoft, Version 2.0.0.0
+                              Last modified on 28 January 2010
+                                                                                                                                      Microsoft
+
+
+
+
+3.3.2         Guidance – Application Context and Positioning
+                                                                                                                               Evidence
+ ID              Description                                                                            Conformance
+                                                                                                                               Rating
+ MPB-0009        Display a Micro Patient Banner at the top of the screen                                Mandatory              Medium
+
+ MPB-0010        Display a Micro Patient Banner horizontally rather than vertically                     Mandatory              High
+
+ MPB-0011        Display a Micro Patient Banner in a fixed position, unmovable by the user              Mandatory              High
+
+ MPB-0012        Display a Micro Patient Banner so that it occupies the full width of the application   Mandatory              Medium
+                 window
+
+ MPB-0013        Do not obscure a Micro Patient Banner with other elements of the screen                Mandatory              High
+
+ MPB-0014        Apply visual styling to a Micro Patient Banner (such as a thick border or            Mandatory                High
+                 distinguishing background colour) in contrast to other elements of the application’s
+                 user interface
+
+ MPB-0015        Do not display a Micro Patient Banner on screens that contain information relating     Mandatory              High
+                 to more than one patient
+
+ MPB-0016        Do not display a Micro Patient Banner in or alongside a Patient List                   Mandatory              High
+
+ Usage Examples
+ Intentionally left blank
+
+ Rationale
+ The sole purpose of a Micro Patient Banner is to ensure the user has sufficient information to confirm the patient’s identity (‘right
+ patient’) and that the correct record is open (‘right care’). This guidance accounts for the application context and achieves:
+  Careful placement of a Micro Patient Banner in a permanent and prominent part of the screen in order to optimise visibility of the
+   key information needed for patient identification
+  Easy recognition of a Micro Patient Banner in the wider context of the application, by the use of visual styling to differentiate the
+   banner from other items displayed on the screen
+ The optimal positioning of a Micro Patient Banner is important as patient identification is a frequent and critical task. This guidance:
+  Enables users to find the information required for patient identification quickly and repeatedly, by ensuring a Micro Patient Banner
+   is in a fixed position at the top of the screen (as indicated by Research-Based Web Design and usability Guidelines6)
+  Ensures patient identification is accurate by displaying a Micro Patient Banner only when information for a single patient is
+   displayed; this prevents a Micro Patient Banner from being associated with the records for another patient if a screen is displaying
+   information for more than one patient
+  Supports users’ natural reading pattern; users of clinical applications in English-speaking countries have a cultural disposition to
+   read from top-to-bottom and left-to-right, whether reading a printed page or a computer screen {R16}
+  Allows efficient use to be made of the screen by using a horizontal Micro Patient Banner
+          Note
+          A vertical Micro Patient Banner would lead to wasted space. For example, the maximum number of characters required for a
+          patient’s family name is 35 characters. To avoid text wrapping over multiple lines, the vertical banner would have to be very
+          wide. Accordingly, a horizontal banner must be used.
+ Due to the fact that, unlike the PAB, the MPB only displays demographic information, it might seem to developers of clinical
+ applications as suited for display in a Patient List. However, there are a range of different tasks for which a Patient List is used by
+ clinical and administrative users, and their design varies across clinical applications. For example, in some applications the Patient List
+ might be required to display patients’ phone numbers, or the names of patients’ clinicians. Neither of these items supports patient
+ identification {R2}. Mandating that the MPB only supports patient identification excludes the display of extraneous items of information
+ that may lead to screen clutter and compromise patient safety.
+
+
+
+ 6
+   Koyani et al, Research-Based Web Design and Usability Guidelines: U.S. Department of Health and Human Services
+ {R16}: http://www.usability.gov/pdfs/guidelines.html
+                                                                                                                                      Page 10
+                               Design Guidance – Micro Patient Banner
+                               Prepared by Microsoft, Version 2.0.0.0
+                               Last modified on 28 January 2010
+                                                                                                                                     Microsoft
+
+
+
+
+3.3.3         Guidance – Minimum Data Set
+                                                                                                                              Evidence
+ ID             Description                                                                             Conformance
+                                                                                                                              Rating
+ MPB-0017       Always display the patient’s name (family name and given name), date of birth,          Mandatory             High
+                and patient identification number in a Micro Patient Banner
+
+ MPB-0018       An MPB may optionally display the patient’s title                                       Mandatory             Medium
+
+ MPB-0019       An MPB may optionally display the patient’s age                                         Mandatory             Medium
+
+ MPB-0020       Do not display the patient’s location (such as ward and bed), in an MPB                 Recommended           Medium
+
+ MPB-0021       For a deceased patient, an MPB additionally displays the date of death and age at Mandatory                   High
+                death
+
+ MPB-0022       If an individual data item is not known or is otherwise unavailable, appropriate self- Mandatory              High
+                explanatory text or a blank string (but not a ‘?’), are to be displayed immediately
+                after the corresponding data label
+
+ MPB-0023       Display the preferred name if available                                                 Recommended           Medium
+
+ MPB-0024       Do not display the patient’s photograph in a MPB                                        Recommended           Medium
+
+ Usage Examples
+
+
+                                                                               In this correct example, all three optional items in Zone 1,
+                                                                               namely title, preferred name and age, are displayed.
+
+
+
+                                                                               In this incorrect example, the patient identification number
+                                                                               is not available and is incorrectly shown as a ‘?’.
+
+ Rationale
+ Displaying and using a minimum data set will:
+  Improve patient safety by ensuring that the process of identifying patients and associating them with their respective records is
+   based upon a consistent set of data that is common to all clinical applications
+  Facilitate clinical effectiveness by providing a consistent set of data that is displayed in a standardised manner across all clinical
+   applications; users will spend less time scanning the interface for key data items and more time using that data effectively (see
+   Designing Interfaces7)
+  At least partially mitigate the risk associated with using out-of-date images by not including a photo of the patient; user feedback
+   indicated that photographs are not critical for patient identification, and currently have more logistical drawbacks than patient safety
+   benefits {Error! Reference source not found.}
+ The following requirements are met in full or in part:
+  The user can clearly confirm that the correct patient record is open when the patient is present in person and able to answer
+   questions
+  The user can clearly confirm that the correct patient record is open when identifying the patient over the phone
+  The user can clearly confirm that the correct patient record is open using another set of information about the patient. This other set
+   of information may be held in the user’s memory or as an external source, such as written correspondence, paper records, or other
+   artefacts such as wristbands {R2} and specimen bottle labels. The information may be machine-readable, such as bar codes or
+   Radio Frequency Identification (RFID) tags
+  The user can identify an individual patient record with the highest degree of accuracy possible as the minimum data set is the
+   necessary and sufficient set of information required for accurate patient identification
+
+
+
+
+ 7
+     Tidwell J, Designing Interfaces {R17}: www.designinginterfaces.com
+                                                                                                                                     Page 11
+                              Design Guidance – Micro Patient Banner
+                              Prepared by Microsoft, Version 2.0.0.0
+                              Last modified on 28 January 2010
+                                                                                                                                   Microsoft
+
+
+
+ The user can see when any part of key patient identification information, namely the minimum data set, is missing from the system
+ The information represented in a Micro Patient Banner conforms to information display standards applicable to clinical computer
+  systems (for example, date display)
+ The attributes displayed in a Micro Patient Banner are those that are most likely to be known for all patients
+The minimum dataset for living and deceased patients is supported by user feedback from a range of clinical and non-clinical roles.
+This user feedback found that using abbreviations in the Patient Banner, such as ‘?’ or ‘-’, to indicate the absence of key data was
+confusing to a large number of users.
+User feedback also showed strong support for displaying a patient’s preferred name if this is different from the first name (such as a
+nickname) and it is recorded in the system. This facilitates less formal patient-clinician interactions and could be used by, for example,
+nurses to enhance patient care. Additionally, it provides supplementary information to support patient identification. The PDS {Error!
+Reference source not found.} may record the preferred name as composed of a given name, a family name, and any middle names.
+         Note
+         While it is recognised that a photograph of the patient may be helpful, its inclusion would compound the significant space
+         constraints that already impact a Micro Patient Banner. Additionally, new business processes and systems may need to be
+         established to accommodate the handling of photographs, if they are not already in place. For these reasons, inclusion of a
+         photograph has not been mandated in this guidance.
+User research healthcare staff, has shown that a patient’s title (such as Mr, Mrs and so on) is not of high importance for patient
+identification, relative to other identifiers. However it may be important to know, so as to address a patient correctly. Again, due to the
+limited screen estate of the MPB, we have not mandated the display of the patient’s preferred name but are mindful that clinicians like
+to use the preferred name when giving care. In the absence of this, the title becomes more important. Its display in the MPB is
+therefore deprecated from that in the PAB (that is, its display is Recommended rather than Mandatory).
+The patient’s telephone numbers and email address are also excluded from display in the MPB, as the sole role of the MPB is to
+support patient identification and is not to support other tasks such as contacting a patient.
+Risk assessments and user research with healthcare staff, have indicated that for newly born babies there is a risk that the date of
+birth may be interpreted incorrectly as the current date. To mitigate this risk, the guidance mandates that the date of birth must always
+be accompanied with its corresponding label, which should always be ‘Born’. Age is not a core item of information for patient
+identification (for example, it is not part of the wristband specification {R2}). However, user research has indicated that knowing a
+patient’s age can be helpful when resolving multiple patient matches. Being mindful of the limited screen space, the guidance therefore
+does not mandate that the age always be displayed.
+In the user research, participants were asked to state what information is most effective for identifying patients. They were also asked
+what additional information they would like to see at a glance, immediately on opening a patient’s record. Though for some participants
+the postal address was useful information, the patient’s location (such as ward and bed) was never stated. This information is certainly
+very useful, such as for staff working in the secondary care setting who need to know where a patient is, but is not useful for patient
+identification.
+
+
+
+
+                                                                                                                                    Page 12
+                             Design Guidance – Micro Patient Banner
+                             Prepared by Microsoft, Version 2.0.0.0
+                             Last modified on 28 January 2010
+                                                                                                                                     Microsoft
+
+
+
+
+3.3.4        Guidance – Information Grouping
+                                                                                                                              Evidence
+ ID           Description                                                                               Conformance
+                                                                                                                              Rating
+ MPB-0025 Display the elements of the patient name, date of birth and patient identification            Mandatory             High
+          number in Zone 1
+
+ MPB-0026 Where the age of a living patient is being displayed, display the age in Zone 1               Mandatory             High
+
+ MPB-0027 For a deceased patient, display the date of death and the age at death in Zone 1              Mandatory             High
+
+ MPB-0028 Display the full address (including the postcode) and gender in the expanded Zone 2 Mandatory                       Medium
+
+ MPB-0029 In the expanded Zone 2, precede the full address with the label ‘Usual address’ or            Mandatory             Medium
+          ‘Temporary address’ as appropriate
+
+ MPB-0030 In the expanded Zone 2, provide a means to access all addresses available in the              Mandatory             High
+          record
+
+ Usage Examples
+
+                                                                               In this incorrect example, the gender is displayed wrongly
+                                                                               in Zone 1. Additionally, its label is absent.
+
+ Rationale
+ This guidance increases patient safety by:
+  Ensuring that the process of identifying patients and associating them with their respective records is based upon a set of data that
+   is organised according to a consistent and logical set of principles
+  Displaying information in consistent zones, so the user is able to quickly recognise and distinguish between key data items
+  Displaying information in a consistent order, so the user is better able to interpret the text field values and correlate them with other
+   patient information screens
+  Reflecting the order of information used by most clinicians in patient identification and verification; by displaying the patient name
+   first, the most important data item is emphasised
+  Enabling supplementary information such as address and gender, to be revealed in an expandable section
+
+
+
+
+                                                                                                                                     Page 13
+                              Design Guidance – Micro Patient Banner
+                              Prepared by Microsoft, Version 2.0.0.0
+                              Last modified on 28 January 2010
+                                                                                                                                  Microsoft
+
+
+
+
+3.3.5       Guidance – Data Labels and Values
+                                                                                                                          Evidence
+ ID          Description                                                                           Conformance
+                                                                                                                          Rating
+ MPB-0031    Precede the date of birth with the label ‘Born’                                       Mandatory              High
+
+ MPB-0032    When displaying the age use only two abbreviated units, a lower and an upper          Recommended            High
+             unit, without any intermediate units (as described in the rationale)
+
+ MPB-0033    Precede the gender with the label ‘Gender’                                            Mandatory              High
+
+ MPB-0034    Display the gender value in full (that is, do not display the gender value using a    Mandatory              Medium
+             symbol, icon, pictogram or a textual abbreviation)
+
+ MPB-0035    Precede the patient identification number with an appropriate label, for example, Mandatory                  Medium
+             ‘NHS No.’
+
+ MPB-0036    Precede the preferred name with the label ‘Preferred name’                            Recommended            High
+
+ MPB-0037    Precede the date of death with the label ‘Died’                                       Mandatory              High
+
+ MPB-0038    Precede the age at death with the label ‘Age at Death’                                Mandatory              Medium
+
+ MPB-0039    Do not add a colon after the label text                                               Mandatory              Medium
+
+ MPB-0040    Do not include unnecessary punctuation in a label                                     Recommended            Medium
+
+ MPB-0041    Display labels in the style given to label text                                       Mandatory              Medium
+
+ MPB-0042    Display values in the style given to data text                                        Mandatory              Medium
+
+ MPB-0043    Use text styles for labels and for values so that more visual emphasis is given to Mandatory                 Medium
+             the value text relative to the label text
+
+ MPB-0044    For each label in Zone 1, provide a definition and a means to access the              Recommended            High
+             definition (for example, by a tooltip)
+
+ MPB-0045    Provide a means to inform the user that gender should only be used to identify        Mandatory              Medium
+             and address the patient correctly, not for clinical judgements
+
+ MPB-0046    Provide a means to access the record for all data items in Zone 1 and Zone 2          Recommended            High
+
+ MPB-0047    Provide a means to enable users to adjust font properties for all text displayed in Recommended              Medium
+             a Micro Patient Banner, particularly the font family, size and colour
+
+ Usage Examples
+
+
+                                                                            In this correct example, a definition is displayed for the
+                                                                            label accompanying the patient identification number.
+
+
+
+
+                                                                            In this incorrect example, gender is displayed in Zone 1.
+                                                                            Furthermore, it is displayed using a pictogram.
+
+
+
+                                                                            In this incorrect example, text styles applied to labels and
+                                                                            to data do not give the desired emphasis on the latter.
+
+
+                                                                            In this incorrect example, the date of birth is not displayed
+                                                                            with its required label.
+
+
+                                                                                                                                   Page 14
+                           Design Guidance – Micro Patient Banner
+                           Prepared by Microsoft, Version 2.0.0.0
+                           Last modified on 28 January 2010
+                                                                                                                                     Microsoft
+
+
+
+
+Rationale
+User feedback indicated that the labels ‘Born’, ‘Died’ and ‘Preferred name’ were seen as most suitable for the date of birth, date of
+death and preferred name respectively. For example, ‘DoB’ and ‘DoD’ were determined to be hard to differentiate visually; additionally
+some screen readers read aloud ‘DoB’ as ‘dob’.
+To guide the user’s eye to relevant information, the font size and weight must be chosen so more visual emphasis is given to data
+values than to their corresponding labels. Data values may, therefore, be rendered in, for example, a larger font size or with greater
+weight than the corresponding labels to help users locate the required information efficiently. The corresponding data text style and
+label text style are not specified here but are left to the designers of software applications to choose. As specified in the accessibility
+guidance {R14, R15}, users should be allowed to set their own font preferences to maximise readability.
+For a living patient, the patient’s age is displayed in parentheses and a label is not included as displaying the actual age alongside the
+date of birth makes the value self-explanatory. In addition, the parentheses separate the age from the other text placed nearby and
+give the age a unique style, helping users to identify this part of the display efficiently.
+For a deceased patient, there is again a need to give the age a unique style so as to ensure users do not mistake a deceased patient
+for one who is alive, nor vice versa. This is achieved by doing the converse to the case of a living patient, namely, by displaying a label
+with the age, which is displayed without parentheses.
+The display of an age value has been considered carefully for the range of patients from babies to adults. Short, that is, abbreviated
+units are used to save on space in the already constrained Micro Patient Banner. Additionally, only two units are used, a lower and an
+upper unit, without any intermediate units, further economising on space without compromising the displayed value. The permitted
+abbreviations for the units are listed in the Design Guidance – Time Display {R9}.
+
+Here is a summary of the age bands with their lower and higher units:
+
+Age                                 Lower Unit             Higher Unit
+
+< 2 hours                           Minutes                Minutes
+
+< 2 days                            Hours                  Hours
+
+< 4 weeks                           Days                   Days
+
+< 1 year                            Weeks                  Days
+
+< 2 years                           Months                 Days
+
+< 18 years                          Years                  Months
+
+>= 18 years                         Years                  Years
+
+Here are examples of the display of a patient’s age:
+
+Age                                 Display
+
+1 hour 30 minutes                   90min
+
+1 day 2 hours 5 minutes             26hrs
+
+3 days 17 hours 7 minutes           3d
+
+27 days 5 hours 2 minutes           27d
+
+28 days 5 hours 2 minutes           4w
+
+29 days 5 hours 2 minutes           4w 1d
+
+1 year 1 day 5 hours                12m 1d
+
+1 year 8 days 5 hours               12m 8d
+
+1 year 39 days 5 hours              13m 8d
+
+4 years 39 days                     4y 1m
+
+                                                                                                                                      Page 15
+                              Design Guidance – Micro Patient Banner
+                              Prepared by Microsoft, Version 2.0.0.0
+                              Last modified on 28 January 2010
+                                                                                                                                Microsoft
+
+
+
+
+Labelling the information according to the above guidance confers the following benefits:
+ Users can clearly differentiate between data items (see How to limit clinical error in interpretation of data 8)
+ Users are less likely to be confused about what certain data values represent, for example, a date on its own could be a date of
+  birth or a date of death
+ The user is able to read patient identification information in an unambiguous, consistent way wherever this information might
+  appear
+This guidance supports the need for flexibility on the part of application designers by leaving open the choice of:
+ Data and label text styles
+ Label definitions
+ Means to access the definitions and the record
+
+User research with healthcare staff has shown that using an icon such as       or     to display a patient’s gender is not understood.
+Also, Design Guidance – Sex and Current Gender Input and Display {R11}, also specifies other permissible values (namely ‘Not
+known’ and ‘Not Specified’) for which there are no graphical representations. For these reasons, this guidance prohibits all pictorial
+forms of displaying gender in the MPB. A common form for displaying gender is in abbreviated form, such as ‘M’ for male and ‘F’ for
+female. While these are more intuitively understood, the problem remains for the other values, for which any abbreviation would be
+ambiguous. The overarching principle, which applies across all items in a MPB, is to always display the minimum data set and
+accompanying labels in full, provided screen space allows for this. Any departures from this principle should be based on sound safety
+assessments.
+As already discussed, for age and for address, gender is not a core item of information for patient identification {R2}, but is a helpful
+item when resolving multiple matches or when addressing a patient. In the user research, a participant commented that “Having
+gender displayed reduces the chance of mistaken identity by half. It is good to know the gender when discussing patients with relatives
+and over the phone, so that the correct personal pronouns can be used. This saves anxiety and embarrassment”. Its display is
+therefore not mandatory but, when displayed, the label ‘Gender’ must be used rather than ‘Sex’ as, for patient identification, the
+patient’s current gender classification is more relevant than that recorded at birth. Comments were also made by participants about the
+difference between sex and gender and that the former is used for clinical purposes (such as for prescribing). However, this difference
+between sex and gender was not understood by all participants in the user research, a number of whom saw these terms as being
+synonymous. To emphasise the difference, this guidance advises that suitable cautionary information be provided to users. The
+suggested definition for gender is: ‘Gender: a person’s current gender. This may be different from a person’s sex, which is a person’s
+gender defined at the point of birth registration.’
+A further aspect mentioned by one participant in the user research was the need to know whether a patient was of transgender or
+whether the sex and gender differed. These aspects stray from the aim of the Micro Patient Banner and therefore the guidance does
+not advise displaying such information.
+The label ‘Born’ is mandated, though wristband guidance uses ‘Date of Birth’, because the former is shorter and screen space is
+limited on the MPB. In the user research, one person commented that the label helps “To avoid confusion with today's date [for] new
+born babies.”
+Finally, reference to tooltips is only to serve as an example, not as a recommended design choice. Indeed, tooltips may not be
+supported by the operating system software running on the PDA, as these do not typically support stylus-hover behaviour in the way
+that desktops support mouse-hover behaviour. One can envisage a tooltip-like display style activated upon touch instead of on hover.
+However, the guidance does not require that PDAs used for clinical applications must have touch-sensitive screens. The guidance
+endeavours to be platform-agnostic, so simply emphasises the need to support on-demand explanatory information to the user in a
+form suited to the chosen platform. In addition to the suggested definition for gender given above, the following definitions are
+suggested:
+ Patient name: ‘The patient’s family name, followed by their given name’
+ Date of birth: ‘The patient’s date of birth’.
+
+
+
+
+8
+ Wright, P. C. Jansen, JC. Wyatt. (1998): How to limit clinical error in interpretation of data: Lancet 352: 1539-43 {R18}:
+http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Retrieve&list_uids=9820319&dopt=Citation
+                                                                                                                                 Page 16
+                              Design Guidance – Micro Patient Banner
+                              Prepared by Microsoft, Version 2.0.0.0
+                              Last modified on 28 January 2010
+                                                                                                                                       Microsoft
+
+
+
+
+3.3.6        Guidance – Patient Name
+                                                                                                                                Evidence
+ ID             Description                                                                              Conformance
+                                                                                                                                Rating
+ MPB-0048       Display the patient name elements and title, in the following order: family name,        Mandatory              High
+                given name, title
+
+ MPB-0049       Do not include labels for the patient name elements and title                            Mandatory              High
+
+ MPB-0050       Display a comma after the family name                                                    Mandatory              High
+
+ MPB-0051       Display the title in parentheses, omitting the parentheses if the title is not being     Mandatory              Medium
+                displayed
+
+ MPB-0052       Display the patient’s family name in upper case and the patient’s given name and         Mandatory              High
+                title in title case
+
+ MPB-0053       Display the patient’s preferred name, if available, immediately below the family         Recommended            Low
+                name
+
+ MPB-0054       Display the family name and the given name in full (that is, without truncation),        Mandatory              High
+                splitting across lines if absolutely necessary
+
+ Usage Examples
+
+
+                                                                                In this correct example, the long family name and given
+                                                                                name are displayed in full, without truncation.
+
+
+
+                                                                                In this incorrect example, the family name is displayed with
+                                                                                a label. Additionally, the given name is absent.
+
+
+                                                                                In this incorrect example, the given name instead of the
+                                                                                family name is displayed in uppercase.
+
+ Rationale
+ Identifying and then interpreting the patient’s name correctly is a very frequent user task and is clearly a vital requirement for patient
+ safety. This guidance promotes task efficiency by giving the elements of the patient’s name a clear and consistent emphasis.
+ Furthermore, user feedback showed that the elements of a patient’s name were always identified correctly by users, hence a label
+ need not be provided for the elements of a patient’s name.
+ Clinical applications must be capable of displaying all the elements of patient names, in full. The family name and the given name are
+ both crucial for correct patient identification, and must therefore be displayed without truncation.
+ The comma required after the family name might seem to contradict the requirement to avoid unnecessary punctuation. However,
+ adding a comma is normal practice when the family name precedes the given name and helps the user interpret the name elements
+ correctly, especially as these elements are not labelled.
+ Displaying the patient’s title is optional as user research has indicated that while it can be helpful (like gender) in addressing the patient
+ correctly, it supports, but is not necessary for patient identification. So, while users may value all items of information, this has to be
+ balanced with the need to avoid screen clutter, and focus on the sole purpose of the banner, namely patient identification. Finally, the
+ title is not part of the core set of information required by the wristband guidance {R2}. For these reasons, the patient’s title may be
+ optionally displayed in the MPB.
+
+
+
+
+                                                                                                                                       Page 17
+                               Design Guidance – Micro Patient Banner
+                               Prepared by Microsoft, Version 2.0.0.0
+                               Last modified on 28 January 2010
+                                                                                                                                       Microsoft
+
+
+
+
+3.3.7        Guidance – Micro Patient Banner for a Deceased Patient
+                                                                                                                                Evidence
+ ID             Description                                                                              Conformance
+                                                                                                                                Rating
+ MPB-0055       For a deceased patient, use a background area for Zone 1 in which both the colour Mandatory                     High
+                and the pattern are substantially different from those used for a living patient
+
+ MPB-0056       The choice of both background colour and pattern must be such as to differentiate Mandatory                     High
+                a Micro Patient Banner of a deceased patient from that of a living patient
+
+ MPB-0057       Display the date of death along with its label                                           Mandatory              High
+
+ MPB-0058       Display the date of death below the date of birth                                        Mandatory              Medium
+
+ MPB-0059       Display the age at death, preceded by its label, immediately after the date of death Mandatory                  Medium
+
+ MPB-0060       Display the age at death without parentheses                                             Mandatory              Low
+
+ Usage Examples
+
+                                                                                In this correct example, all the required elements for a
+                                                                                deceased person are displayed and labelled correctly.
+
+
+
+
+                                                                                In this incorrect example, the age at death is incorrectly
+                                                                                positioned and its label is missing.
+
+
+                                                                                In this incorrect example, there is no background fill
+                                                                                pattern. Additionally, the background colour does not
+                                                                                adequately emphasise the banner as that of a deceased
+                                                                                person.
+
+ Rationale
+ Applying the above guidance confers the following benefits:
+  Users can easily recognise when they are viewing the record of a deceased patient; the Micro Patient Banner is substantially
+   different from that of a living patient, and a user will not fail to recognise this even without reading the contents of the Micro Patient
+   Banner
+  Users who are colour-blind are fully supported as the guidance requires that a pattern be used in addition to any change in
+   background colour
+  Enquiries from relatives can be dealt with more sensitively
+ To reduce the possibility of mistaking a living patient for a deceased one, or vice versa, it is important that the changes to the display
+ are not subtle. For example, the choice of background colour must be substantially different for a deceased patient than that for a living
+ patient. However, changing only colour is not adequate as about one in ten of the population is known to have colour-blindness.
+ Therefore, choose brightness, saturation, and hue to emphasise the difference as some users will notice these instead of a seemingly
+ obvious change of colour. Furthermore, use a pattern to account for those cases where all colour-related cues go unnoticed. Refer to
+ the accessibility guidance {R14, R15} for more information.
+ User research found that participants sometimes recognized that the Micro Patient Banner referred to a deceased patient because of
+ the additional information displayed (namely the date of death and the age at death with their corresponding labels). These items
+ provide additional visual cues to alert the user that something is different. These cues are subtle but sufficient and effective; they
+ encourage users to read the display more carefully thereby reducing the possibility of making errors in patient identification.
+
+
+
+
+                                                                                                                                       Page 18
+                              Design Guidance – Micro Patient Banner
+                              Prepared by Microsoft, Version 2.0.0.0
+                              Last modified on 28 January 2010
+                                                                                                                                    Microsoft
+
+
+
+
+3.3.8          Guidance – Alignment of Information
+                                                                                                                              Evidence
+ ID             Description                                                                            Conformance
+                                                                                                                              Rating
+ MPB-0061       Display the patient’s preferred name (if available) immediately below the given        Mandatory              Medium
+                name, with both items left-aligned
+
+ MPB-0062       When a patient’s preferred name is not available, the patient’s name must be           Mandatory              Low
+                centred vertically and left-aligned in Zone 1
+
+ MPB-0063       For a deceased patient, display the date of death and age at death labels and         Mandatory               Low
+                values in that order, immediately below the label corresponding to the date of birth.
+                Left-align both date labels
+
+ Usage Examples
+
+                                                                             In this incorrect example, the preferred name is
+                                                                             right-justified instead of being left-aligned with the family
+                                                                             name.
+
+
+
+                                                                             In this incorrect example, the age at death is left-aligned
+                                                                             with the patient identification number.
+
+
+
+ Rationale
+ Information in a Micro Patient Banner must be displayed in a uniform manner so consistency is achieved across the range of clinical
+ applications and care settings. This will help users find information reliably, repeatedly and efficiently.
+
+
+3.4      Rationale Summary
+ The guidance in this document mitigates patient safety issues that arise during patient
+ identification.
+ General Principles:
+       Reliable and accurate identification of an individual patient record
+       Matching a patient record with:
+               The correct patient, whether present in person or on the telephone
+               Other artefacts associated with the patient (for example, samples, letters or wristbands)
+       Displaying core information according to existing standards and guidance and using a
+        minimum data set available to all clinical applications
+       Promoting consistency across the mix of users, clinical applications and care settings
+       Displaying minimum supplementary information to support patient identification
+       Minimising opportunities for human error
+ Usability Principles:
+       Enhance readability of data over that of corresponding labels
+       Separate primary data required for patient identification from secondary supporting data
+       Permanent display of primary data for frequent and efficient access
+       On-demand display of secondary data to reduce screen clutter
+
+                                                                                                                                     Page 19
+                             Design Guidance – Micro Patient Banner
+                             Prepared by Microsoft, Version 2.0.0.0
+                             Last modified on 28 January 2010
+                                                                                         Microsoft
+
+
+
+    Guidance based on feedback from user research
+    Support all users by additionally addressing requirements for accessibility
+Existing Standards:
+    NPSA Safer Practice Notice: Standardising wristbands improves patient safety {R2}
+Evolving Standards Under Development by Healthcare Organisations:
+    Information needed for patient identification
+    Age display in electronic system for children
+    Gender display
+
+
+
+
+                                                                                         Page 20
+                      Design Guidance – Micro Patient Banner
+                      Prepared by Microsoft, Version 2.0.0.0
+                      Last modified on 28 January 2010
+                                                                                                  Microsoft
+
+
+
+
+4              DOCUMENT INFORMATION
+
+4.1            Terms and Abbreviations
+    Abbreviation                       Definition
+    CUI                                Common User Interface
+
+    MPB                                Micro Patient Banner
+
+    NHS                                National Health Service
+
+    NPSA                               National Patient Safety Agency
+
+    PAB                                Patient Banner
+
+    PC                                 Personal Computer
+
+    PDA                                Personal Digital Assistant
+
+    RFID                               Radio Frequency Identification
+
+    UI                                 User Interface
+
+    WHO                                World Health Organization
+    Table 5: Terms and Abbreviations
+
+
+4.2            Nomenclature
+    This section shows how to interpret the different styles used in this document to denote various
+    types of information.
+
+4.2.1            Body Text
+    Text                                                                Style
+    Code                                                                Monospace
+
+    Script
+
+    Other markup languages
+
+    Interface dialog names                                              Bold
+
+    Field names
+
+    Controls
+
+    Folder names                                                        Title Case
+
+    File names
+    Table 6: Body Text Styles
+
+
+
+
+                                                                                                   Page 21
+                                  Design Guidance – Micro Patient Banner
+                                  Prepared by Microsoft, Version 2.0.0.0
+                                  Last modified on 28 January 2010
+                                                                                                                               Microsoft
+
+
+
+
+4.2.2        Cross References
+ Reference                                                           Style
+ Current document – sections                                         Section number only
+
+ Current document – figures/tables                                   Caption number only
+
+ Other project documents                                             Italics and possibly a footnote
+
+ Publicly available documents                                        Italics with a footnote
+
+ External Web-based content                                          Italics and a hyperlinked footnote
+ Table 7: Cross Reference Styles
+
+
+4.3       References
+ Reference Document                                                                                                         Version
+ R1.             Design Guidance – Patient Banner                                                                           4.0.0.0
+
+ R2.             Standardising wristbands improves patient safety, NPSA Safer Practice Notice:                              2007
+                 http://www.npsa.nhs.uk/EasySiteWeb/GatewayLink.aspx?alId=5346
+
+ R3.             Right patient - right care, NPSA:                                                                          2004
+                 http://www.npsa.nhs.uk/EasySiteWeb/GatewayLink.aspx?alId=3234
+
+ R4.             WHO Collaborating Centre for Patient Safety Releases - Patient Safety Solutions – Volume 1, Solution 2:    2007
+                 http://www.jcipatientsafety.org/fpdf/Presskit/PS-Solution2.pdf
+
+ R5.             The Joint Commission - National Patient Safety Goals – Goal 1:                                             2007
+                 http://www.jointcommission.org/PatientSafety/NationalPatientSafetyGoals/08_npsg_facts.htm
+
+ R6.             Mohammad Al-Ubaydli, Handheld Computers, BMJ 2004;328;1181-1184
+
+ R7.             Chantelle Garritty and Khaled El Emam: Who’s Using PDAs? Estimates of PDA Use by Health Care
+                 Providers: A Systematic Review of Surveys: J Med Internet Res 2006;8(2):e7:
+                 http://www.jmir.org/2006/2/e7/
+
+ R8.             Design Guidance – Date Display                                                                             3.0.0.0
+
+ R9.             Design Guidance – Time Display                                                                             3.0.0.0
+
+ R10.            Design Guidance – Patient Name Input and Display                                                           2.0.0.0
+
+ R11.            Design Guidance – Sex and Current Gender Input and Display                                                 2.0.0.0
+
+ R12.            Design Guidance – Patient Identification Number Input and Display                                          2.0.0.0
+
+ R13.            Design Guidance – Address Input and Display                                                                2.0.0.0
+
+ R14.            Design Guidance – Accessibility Checklist                                                                  1.0.0.0
+
+ R15.            Design Guidance – Accessibility Principles                                                                 1.0.0.0
+
+ R16.            Koyani et al, Research-Based Web Design and Usability Guidelines: U.S. Department of Health and            2006
+                 Human Services:
+                 http://www.usability.gov/pdfs/guidelines.html
+
+ R17.            Tidwell J, Designing Interfaces:                                                                           First
+                 www.designinginterfaces.com                                                                                Edition
+
+ R18.            Wright, P. C. Jansen, JC. Wyatt. (1998): How to limit clinical error in interpretation of data: Lancet 352: 1998
+                 1539-43:
+                 http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Retrieve&list_uids=9820319&dopt=Citati
+                 on
+ Table 8: References
+
+                                                                                                                                Page 22
+                               Design Guidance – Micro Patient Banner
+                               Prepared by Microsoft, Version 2.0.0.0
+                               Last modified on 28 January 2010
+

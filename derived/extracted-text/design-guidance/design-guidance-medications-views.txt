@@ -1,0 +1,2112 @@
+                    Design Guidance
+Medications Management – Medications Views
+
+
+
+                       Wednesday, 19 December 2007
+                                     Version 2.0.0.0
+
+
+                                        Prepared by
+                                          Microsoft
+                                                                                                                                                   Microsoft
+
+
+
+
+PREFACE
+   Documents replaced by this document
+
+   Document Title                                                                                                                  Version
+   Design Guidance – Medications Management – Medications Views                                                                    1.0.0.0
+
+
+   Documents to be read in conjunction with this document
+
+   Document Title                                                                                                                  Version
+   Design Guidance – Medications Management – Drug Administration                                                                  2.0.0.0
+
+   Design Guidance – Time Display                                                                                                  1.0.0.0
+
+   Design Guidance – Date and Time Input                                                                                           1.0.0.0
+
+   Design Guidance – Patient Banner                                                                                                2.0.0.0
+
+
+
+
+This document and/or software (“this Content”) has been created in partnership with the National Health Service (NHS) in England. Intellectual Property
+Rights to this Content are jointly owned by Microsoft and the NHS in England, although both Microsoft and the NHS are entitled to independently exercise
+their rights of ownership. Microsoft acknowledges the contribution of the NHS in England through their Common User Interface programme to this Content.
+Readers are referred to www.cui.nhs.uk for further information on the NHS CUI Programme.
+
+All trademarks are the property of their respective companies. Microsoft and Windows are either registered trademarks or trademarks of Microsoft
+Corporation in the United States and/or other countries.
+
+© Microsoft Corporation 2007. All rights reserved.
+
+                                                                                                                                                     Page ii
+                                    Design Guidance – Medications Management – Medications Views
+                                    Prepared by Microsoft, Version 2.0.0.0
+                                    Last modified on 19 December 2007
+                                                                                                                                                 Microsoft
+
+
+
+
+TABLE OF CONTENTS
+1    Introduction .................................................................................................................................... 1
+    1.1    Customer Need......................................................................................................................... 1
+    1.2    Scope ........................................................................................................................................ 1
+     1.2.1      In Scope .............................................................................................................................. 2
+     1.2.2      Out of Scope ....................................................................................................................... 2
+     1.2.3      Dependencies and Assumptions ......................................................................................... 3
+    1.3    Key Principles ........................................................................................................................... 3
+
+2    Recommendations and Guidance ................................................................................................ 4
+    2.1    Medications Framework ........................................................................................................... 4
+     2.1.1      Medications Views............................................................................................................... 4
+     2.1.2      Common Controls ............................................................................................................... 6
+    2.2    Medications List View ............................................................................................................... 8
+     2.2.1      Controls ............................................................................................................................... 9
+     2.2.2      Structure and Layout ......................................................................................................... 10
+    2.3    Displaying a Medication Line .................................................................................................. 12
+     2.3.1      Structure ............................................................................................................................ 12
+     2.3.2      Layout ................................................................................................................................ 13
+     2.3.3      Text Formatting ................................................................................................................. 14
+    2.4    Look-Ahead Scroll Bar ............................................................................................................ 14
+     2.4.1      Structure and Layout ......................................................................................................... 15
+     2.4.2      Notification Contents ......................................................................................................... 16
+     2.4.3      Interactions ........................................................................................................................ 18
+    2.5    Filtering ................................................................................................................................... 18
+     2.5.1      Controls for Current and Past ........................................................................................... 19
+     2.5.2      Filtering Past Medications ................................................................................................. 21
+    2.6    Recent Past Medications ........................................................................................................ 22
+     2.6.1      Displaying a Recent Past Notification ............................................................................... 22
+    2.7    Grouping ................................................................................................................................. 24
+     2.7.1      Grouping a List of Medications .......................................................................................... 24
+     2.7.2      Handling Duplicates in Groups .......................................................................................... 26
+    2.8    Sorting .................................................................................................................................... 28
+     2.8.1      Sorting Using Column Headings ....................................................................................... 28
+    2.9    Level of Detail ......................................................................................................................... 30
+     2.9.1      The Level of Detail Control ................................................................................................ 30
+     2.9.2      Information Display for Specific Levels of Detail ............................................................... 31
+    2.10        Selection and Action ......................................................................................................... 33
+     2.10.1         Selection ........................................................................................................................ 33
+     2.10.2         Context Menus .............................................................................................................. 33
+
+                                                                                                                                                   Page iii
+                                 Design Guidance – Medications Management – Medications Views
+                                 Prepared by Microsoft, Version 2.0.0.0
+                                 Last modified on 19 December 2007
+                                                                                                                                               Microsoft
+
+
+
+    2.11        All Details .......................................................................................................................... 34
+     2.11.1        Displaying All Details for One Medication ..................................................................... 34
+
+3    Document Information ................................................................................................................ 36
+    3.1    Terms and Abbreviations ........................................................................................................ 36
+    3.2    Nomenclature ......................................................................................................................... 36
+     3.2.1      Body Text .......................................................................................................................... 36
+     3.2.2      Cross References.............................................................................................................. 36
+    3.3    References ............................................................................................................................. 37
+
+
+
+
+                                                                                                                                                 Page iv
+                                 Design Guidance – Medications Management – Medications Views
+                                 Prepared by Microsoft, Version 2.0.0.0
+                                 Last modified on 19 December 2007
+                                                                                                                  Microsoft
+
+
+
+
+1            INTRODUCTION
+    This document provides design guidance for Medications Views. It describes the area of focus,
+    provides guidance and recommendations and explains the rationale behind the guidance and
+    recommendations.
+    This document is intended for use by anyone whose role includes screen design, or the
+    implementation or assessment of clinical applications. This document can therefore be used as
+    guidance for the specification of interaction models for reviewing and manipulating lists of
+    medication items on a user interface.
+    Table 1 below highlights the revisions made to this document since the last release.
+
+    Previous Version               Previous Date             Changes Since Previous Version
+             1.0.0.0                   06-Jul-2007           Content completely re-written.
+    Table 1: Updates to the Design Guidance – Medications Management – Medications Views Since the Last Version
+
+
+1.1          Customer Need
+    An electronic system for managing a patient’s medications must be able to support the complex
+    needs of a wide range of healthcare professions and healthcare settings. A successful display
+    solution must therefore balance those complex information needs with safety concerns, and ensure
+    consistency across views and between systems.
+    Medications Incidents – For example, in the UK, the National Patient Safety Agency (NPSA)
+    reports that the majority of medication incidents reported between January 2005 and June 2006
+    related to administration of medicines (59.3 per cent), followed by incidents related to preparation
+    and dispensing (17.8 per cent), and prescribing (15.7 per cent). Their findings also state that the
+    most common types of medication incidents reported to the NSPA were wrong dose, strength or
+    frequency; omitted medicine and wrong medicine {R1}.
+    Existing Systems – In-patient care settings currently use multiple kinds of medications
+    documents, both paper-based and electronic. Some of these design differences may well already
+    impact patient safety as care professionals move between hospitals and are faced with new
+    information groupings while working in stressful environments. Differences in display formats for
+    medicines impact both the review and management of those medications, and will become a safety
+    concern as electronic systems become more widely available in the next few years. The challenge
+    for developers of electronic systems is particularly great in this area, as there are no universally-
+    accepted, paper-based standards to refer to and computer screens are not capable of displaying
+    the same density of information as a sheet of A4 paper (let alone a fold-out chart which may cover
+    up to three sheets). This ‘information density problem’ is one of the primary reasons why designers
+    of electronic systems resort to ‘creative’ display solutions and why these solutions inevitably
+    diverge.
+
+1.2          Scope
+    The guidance in this document defines a set of display styles for medications. Guidance for one of
+    those display styles, the List View, is also defined in this document. Guidance for one of the other
+    display styles, the Drug Chart view, is defined in the Medications Drug Administration document
+    {R2}. Figure 1 illustrates the different areas covered by the Medications Views Framework.
+
+
+
+
+                                                                                                                   Page 1
+                                 Design Guidance – Medications Management – Medications Views
+                                 Prepared by Microsoft, Version 2.0.0.0
+                                 Last modified on 19 December 2007
+                                                                                                 Microsoft
+
+
+
+
+        Medications Views
+           Framework                                                This Document
+
+
+                 Drug Chart                                Drug Administration Document
+
+                        List                               This Document
+
+
+                   Timeline
+
+
+           Monitoring Chart
+
+ Figure 1: Medications Views Framework
+
+1.2.1        In Scope
+ This guidance has been developed for, and is backed up by, research in short-term acute managed
+ care settings. It is relevant to the presentation of and interaction with medications information for a
+ single patient, specifically for supporting the review of a patient’s medications.
+
+1.2.2        Out of Scope
+ This guidance has been designed and assessed for a short-term acute managed care environment
+ and not for any other area. It does not extend to intensive care, emergency departments,
+ community or other contexts of care. It does not cover specialist clinical areas such as
+ chemotherapy.
+ This document does not extend to include specific guidance that defines:
+       What constitutes a unique medication item
+       Which attributes each medication should have
+       How those attributes can be displayed (including rules for truncation and wrapping)
+       Which attributes can change without generating a new unique medication item for that
+        patient
+ The handling of specialist and complex medications, regimens, devices and dressings is out of
+ scope.
+ The guidance in this document does not preclude the pre-filtering of information displayed in a
+ medications view via the application of a filter, either manually using controls outside of the
+ medications framework or dynamically as part of a workflow that supports a task.
+
+
+
+
+                                                                                                   Page 2
+                              Design Guidance – Medications Management – Medications Views
+                              Prepared by Microsoft, Version 2.0.0.0
+                              Last modified on 19 December 2007
+                                                                                                           Microsoft
+
+
+
+
+1.2.3      Dependencies and Assumptions
+ This guidance assumes that the clinical application will have a complete record of medications for
+ each patient, and that the application can access and combine information about current and
+ historic medications from many contexts of care.
+ Guidance defined in this document, in the Drug Administration document {R2} and in an ongoing
+ project that aims to determine what constitutes a unique medication and how it should be
+ displayed, is informed by The Dictionary of Medicines and Devices {R3}.
+ The guidance for the Level of Detail control in section 2.9.1 assumes that medications could and
+ should be presented as levels of detail that are hierarchical, with predefined sets of attributes that
+ are revealed as the level of detail is increased.
+
+      Important
+      The diagrams and mock screenshots in this document are used to show example designs that conform to
+      the guidance. These illustrations are simplified in order to support understanding of the guidance points in
+      each section respectively, with details included or excluded as relevant. These are purely illustrative and
+      do not represent guidance on the specific style, colour schemes, or icons that should be used. Guidance
+      for the design of specific icons will be produced in subsequent releases.
+
+
+1.3     Key Principles
+ The following key principles inform the critical areas of guidance discussed within this document:
+       Restrict significant medications-related actions to medications-specific views
+       Provide a set of views of the patient’s medications according to the most important and
+        useful divisions for the context and task
+       Present the information within each view in a display style most appropriate for the tasks
+        associated with that view
+       Support each view with appropriate controls chosen from a set of generic controls that are
+        used across all views wherever relevant
+       Provide the information required to make a high-level clinical assessment of the patient’s
+        medications
+       Restrict the display of unnecessary information to reduce clutter and prioritise information
+        most likely to require action
+       Provide access in context to further details on demand
+       Mitigate the potential for action to be taken without sufficient information by presenting
+        carefully selected information and by providing explicit labels to clarify what information is
+        displayed and the extent to which it is complete
+       When dynamically presenting information (such as status information, error messages or
+        warnings) display the information in context and facilitate action where necessary by
+        providing clearly associated controls
+
+
+
+
+                                                                                                             Page 3
+                         Design Guidance – Medications Management – Medications Views
+                         Prepared by Microsoft, Version 2.0.0.0
+                         Last modified on 19 December 2007
+                                                                                                                        Microsoft
+
+
+
+
+2            RECOMMENDATIONS AND GUIDANCE
+
+2.1          Medications Framework
+    The Medications Framework defines a minimum set of views for presenting medications
+    information and provides guidance for presenting, navigating between and maintaining consistency
+    for the common controls across those views, as illustrated in Figure 2.
+
+
+              Patient Record
+                                                                                                   Other Patient
+                                                                                                   Record Views
+
+
+
+
+                                                                                      Drug Chart
+                 Medications
+
+                                                                                         List
+                                                                                                          Medications
+                                                                                                          Views
+                                                                                       Timeline
+
+                                                                                      Monitoring
+                                                                                       Charts
+    Figure 2: Using Medications Views to Divide and Present Medications Information
+
+2.1.1            Medications Views
+    This section provides guidance to support the division and presentation of medications information
+    into a set of views. Some of these views contain only medications information and some combine
+    medications information with other information. Other patient record views may contain or reference
+    medications. Figure 3 shows how medications views fit into the wider application.
+
+                                         Patient Record Navigation
+      Application
+      Framework                                                                Patient Banner
+
+                                                                                       Toolbar
+       Medications
+       Framework
+
+
+
+          Medications
+          View
+
+
+
+    Figure 3: Medications Views in the Context of the Wider Application
+
+
+                                                                                                                         Page 4
+                                   Design Guidance – Medications Management – Medications Views
+                                   Prepared by Microsoft, Version 2.0.0.0
+                                   Last modified on 19 December 2007
+                                                                                                                                 Microsoft
+
+
+
+
+2.1.1.1           Guidance
+  ID                Guideline                                                                                            Status
+  MEDv-0001         Provide the following four views of medications as a minimum, in this order and with these labels:   Mandatory
+                    List, Timeline, Drug Chart, Monitoring Charts
+
+  MEDv-0002         Keep the number of medications views to a minimum                                                    Mandatory
+
+  MEDv-0003         Provide a List view that displays medications primarily in text form with information and functions to Mandatory
+                    support reviewing a patient’s medications
+
+  MEDv-0004         Provide a Timeline view in which medications are represented by graphics plotted against a           Mandatory
+                    timeline
+
+  MEDv-0005         Provide a Drug Chart view with information and functions to support preparation and administration Mandatory
+
+  MEDv-0006         Provide a Monitoring Charts view that supports the tracking of changes (such as varied doses)        Mandatory
+                    alongside related information (such as observations and test results)
+  Table 2: Guidance – Medication Views
+
+2.1.1.2           Rationale
+  The set of medications views provides alternative ways of looking at medications that emphasise
+  different qualities of the individual medications and of the whole list of medications for one patient.
+  The views are a complementary set that allow for the same medication or set of medications to be
+  viewed from many different perspectives. Viewing medications from these different perspectives is
+  maximised by providing a clear means of switching between them.
+  By not surfacing common options and therefore minimising the space needed for controls (in a
+  toolbar area), the guidance strikes a balance between optimising for usability and maximising
+  space for the presentation of medications.
+  Throughout five rounds of user feedback, no user ever felt that using different views to display the
+  same medications in different ways was problematic.
+  The Drug Chart view and the idea of a Timeline view (not specified in this document) received
+  strong support from users as alternative ways of displaying medication information.
+  No user feedback indicated any benefit of grouping the medications views, for example, into
+  task-based groups such as into ‘Review’ and ‘Administer’.
+  Exploratory designs in which views were divided by task were used to elicit user feedback. These
+  designs grouped the four views into two groups, labelled ‘Administer’ which contained the Drug
+  Chart and ‘Review’ which contained the List, Timeline and Monitoring Charts. Other exploratory
+  designs used the label ‘Overview’ to refer to an equivalent of the List view. User feedback indicated
+  that labels such as ‘Review’, ‘Overview’ and ‘Administer’ were problematic. The current labels,
+  ‘List’, ‘Timeline’, ‘Drug Chart’ and ‘Monitoring Charts’ are less open to interpretation.
+
+
+
+
+                                                                                                                                   Page 5
+                               Design Guidance – Medications Management – Medications Views
+                               Prepared by Microsoft, Version 2.0.0.0
+                               Last modified on 19 December 2007
+                                                                                                               Microsoft
+
+
+
+
+2.1.2         Common Controls
+ This section provides guidance for controls that are used in more than one medications view.
+ Figure 4 shows three medications views that share the grouping control as well as the view
+ selection control.
+
+                                                                                                Grouping Control
+
+
+  View Selection Control
+
+
+                                           List View
+
+                                                         Drug Chart
+
+                                                                          Other Medications View
+ Figure 4: Common Controls for Medications Views
+
+ Figure 5 shows the view selection control and the set of controls for the List view.
+
+                                                                    List View Controls
+
+
+
+        View                     Filters                   Grouping Control              Level of Detail Control
+
+
+
+
+                List
+ Figure 5: Medications Controls: View Selection
+
+ The view control supports switching between medications views. Figure 6 is one example of
+ presenting the list of views when the control is activated.
+
+
+          List
+   Medications Views
+
+            List
+            Timeline
+            Drug Chart
+            Monitoring Charts
+ Figure 6: Example of a Combo Box Style Medications Views Control
+
+
+
+
+                                                                                                                   Page 6
+                                Design Guidance – Medications Management – Medications Views
+                                Prepared by Microsoft, Version 2.0.0.0
+                                Last modified on 19 December 2007
+                                                                                                                               Microsoft
+
+
+
+
+2.1.2.1          Guidance
+  ID               Guideline                                                                                             Status
+  MEDv-0007        Present the List view by default when accessing a medications specific section of the patient record Mandatory
+
+  MEDv-0008        Present controls for medications views such that they detract as little screen space as possible      Recommended
+                   from the display of medications
+
+  MEDv-0009        Provide a standard control for switching between medications views that is persistently placed and    Mandatory
+                   consistent across all views
+
+  MEDv-0010        Support the selection of a medication view using a combo box control                                  Recommended
+
+  MEDv-0011        The control used to select the medication view is also used to indicate the view which is currently   Mandatory
+                   selected
+
+  MEDv-0012        Supplement the label for each view with an icon                                                       Recommended
+
+  MEDv-0013        Support functionality available in multiple medication views (such as grouping and view selection),   Mandatory
+                   with the same type of control throughout
+
+  MEDv-0014        Maintain the same control settings for common controls when switching between medications             Mandatory
+                   views (not including sort orders)
+  Table 3: Guidance – Common Controls
+
+2.1.2.2          Rationale
+  By not surfacing common options for the view selection control and therefore minimising the space
+  it requires in the toolbar, the guidance strikes a balance between optimising for usability and
+  maximising space for the presentation of medications.
+  Following one usability principle, the set of medications views would be presented such that
+  common options are visible and can be immediately selected, thus enabling faster use and
+  surfacing useful options for novice users. However, the compromise of not showing common
+  options is justified when it is considered that the design would be a tool that is used frequently. The
+  vast majority of use would not be ‘first time use’ and therefore a small learning curve is acceptable.
+  In addition, bulky controls leading to a lack of space for data display (in this case medications data)
+  has been raised as a risk with clinical applications.
+
+
+
+
+                                                                                                                                  Page 7
+                              Design Guidance – Medications Management – Medications Views
+                              Prepared by Microsoft, Version 2.0.0.0
+                              Last modified on 19 December 2007
+                                                                                                            Microsoft
+
+
+
+
+2.2       Medications List View
+ Figure 7 shows the basic areas of the List view.
+
+                                                                                               Toolbar
+
+                                                                                               Column Headings
+
+
+                                                                                               Medication Lines
+
+
+
+
+ Figure 7: Medications List View Basic Structure
+
+ Figure 8 outlines the structure and layout of all the elements within the List view. This illustration is
+ used in the following sections with shading to indicate the area to which the guidance in that
+ section applies.
+
+
+
+
+ Figure 8: Medications Views Areas
+
+
+
+
+                                                                                                              Page 8
+                                Design Guidance – Medications Management – Medications Views
+                                Prepared by Microsoft, Version 2.0.0.0
+                                Last modified on 19 December 2007
+                                                                                                                                   Microsoft
+
+
+
+
+2.2.1           Controls
+  This section provides guidance for the controls that are explicitly associated with the List view and
+  that are displayed in a toolbar or similar area. Figure 9 shows the position of the control area (in
+  blue) relative to the medications data area.
+
+
+
+
+  Figure 9: Medications Views Areas – Controls
+
+  Figure 10 shows the controls available in the List view.
+
+                                                                       List View Controls
+
+
+
+         View                       Filters                   Grouping Control                       Level of Detail Control
+  Figure 10: Controls for the List View
+
+2.2.1.1             Guidance Principles
+        Use standard controls wherever possible to ensure compatibility and to reduce the potential
+         for amendments in order to achieve the desired level of accessibility
+        Minimise the need for controls that manipulate the lists
+
+2.2.1.2             Guidance
+  ID                 Guideline                                                                                               Status
+  MEDv-0015          Present controls in the List view in this order: View Selection, Filtering, Grouping, Level of Detail   Recommended
+                     Selection
+
+  MEDv-0016          In the List view, provide buttons for filtering to display Current or Past medications respectively     Mandatory
+
+  MEDv-0017          In the List view, provide a control for filtering past medications                                      Mandatory
+
+  MEDv-0018          In the List view, provide a control for grouping items in the list                                      Mandatory
+
+  MEDv-0019          In the List view, provide a Level of Detail control for changing the number of attributes visible for   Mandatory
+                     each medication
+  Table 4: Guidance – Controls
+
+
+
+
+                                                                                                                                      Page 9
+                                  Design Guidance – Medications Management – Medications Views
+                                  Prepared by Microsoft, Version 2.0.0.0
+                                  Last modified on 19 December 2007
+                                                                                                               Microsoft
+
+
+
+
+2.2.1.3            Rationale
+  The medications list must be flexible enough to emphasise different properties of medications in the
+  list with a small number of controls that are straightforward to understand and interact with. The List
+  view employs a combination of filtering, grouping and sorting to provide complex end results that
+  are simple to achieve using familiar controls.
+
+2.2.2          Structure and Layout
+  This section provides guidance for the structure and layout for presenting medications within the
+  List view, including the layout and visual treatment of the list and list items. Figure 11 shows the
+  position of the medications data area (in blue) in the List view.
+
+
+
+
+  Figure 11: Medications Views Areas – Structure and Layout
+
+  Figure 12 is an example of the table-like structure used to display medications. Guidance for the
+  specific details for a medication are being defined as part of an ongoing project that aims to
+  determine what constitutes a unique medication and how it should be displayed.
+
+                                                              Toolbar
+
+    Start Date             Drug Details                                      Reason        Status   End Date
+    Start Date             drug name and drug details                        Reason        Status   Date
+    Start Date             drug name and drug details                        Reason        Status   Date
+    Start Date             drug name and drug details                        Reason        Status   Date
+    Start Date             drug name and drug details                        Reason        Status   Date
+    Start Date             drug name and drug details                        Reason        Status   Date
+    Start Date             drug name and drug details                        Reason        Status   Date
+    Start Date             drug name and drug details                        Reason        Status   Date
+    Start Date             drug name and drug details                        Reason        Status   Date
+
+
+
+
+  Figure 12: Structure and Layout of the List View
+
+  In the List view, medications are presented in a flexible table-like structure. The attributes displayed
+  for each medication are dependent on the Level of Detail selected. Specific attributes (and thus
+  columns and column headings) are defined in section 2.9.1.
+
+
+                                                                                                               Page 10
+                                  Design Guidance – Medications Management – Medications Views
+                                  Prepared by Microsoft, Version 2.0.0.0
+                                  Last modified on 19 December 2007
+                                                                                                                                     Microsoft
+
+
+
+  Figure 13 shows an example of formatting for the medications List view. The formatting is used to
+  draw attention to the suspended medication and to differentiate medications with a status of ‘Not
+  Started’ from those with a status of ‘Started’.
+
+    Start Date             Drug Details                                                    Reason                     Status    Date
+    Start Date             Drug Details                                                    Reason            Not Started        Date
+    Start Date                 Drug Details                                                Reason            Not Started        Date
+    Start Date             Drug Details                                                    Reason            Not Started        Date
+    Start Date             Drug Details                                                    Reason           Suspended           Date
+    Start Date             Drug Details                                                    Reason                  Started      Date
+    Start Date             Drug Details                                                    Reason                  Started      Date
+    Start Date             Drug Details                                                    Reason                  Started      Date
+    Start Date             Drug Details                                                    Reason                  Started      Date
+  Figure 13: Example Formatting for Medications in the List View
+
+2.2.2.1            Guidance
+  ID                 Guideline                                                                                                 Status
+  MEDv-0020          Present medications as lines of text in a table-like format                                               Mandatory
+
+  MEDv-0021          Avoid the use of strong grids and strong vertical lines. (Use subtle methods of distinguishing            Mandatory
+                     between rows in the list.)
+
+  MEDv-0022          Use subtle alternate shading of medications in the list                                                   Recommended
+
+  MEDv-0023          Support the display of icons following the text of the Drug Details column in the List view               Mandatory
+
+  MEDv-0024          Use visual design to draw attention to suspended medications                                              Mandatory
+
+  MEDv-0025          Use visual design to distinguish current and past medications in the List view                            Mandatory
+
+  MEDv-0026          Use visual design to distinguish medications with a different status (and thus between current and        Recommended
+                     past)
+  Table 5: Guidance – Structure and Layout
+
+2.2.2.2            Rationale
+  The guidance aims to support the presentation of medications in a format that supports both
+  comparing across the lines (down a single column) and reading within the lines (across a single
+  row). It does this without restricting the view to a pure table-like format that depends on
+  medications sharing exactly the same set of attributes and thus requires more space to lay them
+  out.
+  Several rounds of user feedback indicated that a general table-like layout was familiar to clinical
+  users for medications data. The various advantages and disadvantages with a table-like layout
+  identified during user feedback, such as ease of reading along a line, ease of identifying key
+  attributes and compare across them, ease of sorting, and so on, have been incorporated or
+  mitigated in the current designs (which are not strict tables).
+  Guidance around the promotion of reading along a line in order to clearly associate medication
+  attributes together and aid readability (via the removal of vertical lines), while retaining table-like
+  column alignment, is supported by several rounds of user feedback.
+  Visual design is recommended to differentiate between medications of different statuses to support
+  quick recognition of the composition of a list, and to enhance sense of place when switching
+  between a view of ‘current’ medications and a view of ‘past’ medications. This extra distinction of
+
+                                                                                                                                       Page 11
+                                 Design Guidance – Medications Management – Medications Views
+                                 Prepared by Microsoft, Version 2.0.0.0
+                                 Last modified on 19 December 2007
+                                                                                                                                  Microsoft
+
+
+
+  different statuses, (especially suspended medication within the list of ‘Current’) is supported by user
+  feedback.
+  The use of alternate shading is recommended to mitigate a patient safety hazard relating to reading
+  across the row clearly and easily. It is especially designed to support association of information on
+  the left, such as Start Date, and information on the right, such as Status. User feedback supported
+  the alternate row shading design pattern to enhance line readability. Users commented that it
+  would likely reduce line misreading (via skipping midway in a line) especially when tired.
+
+2.3        Displaying a Medication Line
+  Each medication line in the List view is presented as a set of attributes that are displayed within
+  columns. This section provides guidance for the structure and layout of attributes within each
+  medication line.
+  Guidance for the specific details for (attributes of) a medication are being defined as part of an
+  ongoing project that aims to determine what constitutes a unique medication and how it should be
+  displayed. This work will define which attributes are displayed in the Drug Details column.
+
+2.3.1          Structure
+  This section provides guidance that describes how to structure the information for the currently
+  visible level of detail. The columns that are displayed depend on which Level of Detail is currently
+  selected, such that higher levels of detail may introduce further columns. See section 2.9.2 for
+  details on the Level of Detail control.
+  The guidance in this section is heavily dependent on the ongoing project to define guidance for
+  what constitutes a unique medication. It restricts this document in the following way:
+        Guidance is provided for the labelling of only some of the column headings
+        The Date column that is displayed to the right of the status column displays a date that is
+         associated with the Status. This date is not fully defined here and can only be described as
+         the date relating to the status such that when the status is ‘started’ the date is the start date
+        For the purposes of this document, start date is defined as the intended date of the first
+         administration for medications in short-term acute care settings
+
+2.3.1.1           Guidance
+  ID                Guideline                                                                                               Status
+  MEDv-0027         Allow columns in the List view to contain more than one attribute for a single medication               Mandatory
+
+  MEDv-0028         In the List view, the following columns (when visible) should be displayed in this order: Start Date,   Mandatory
+                    Drug Details, Reason, Status, Status Date
+
+  MEDv-0029         In the List view, when a date column is displayed that contains end or review dates, display this       Mandatory
+                    column to the right of the status column
+
+  MEDv-0030         In the List view, start each medication line with the Start Date                                        Mandatory
+
+  MEDv-0031         Right align the Start Date and Status in the List view                                                  Mandatory
+
+  MEDv-0032         Left align the Drug Details, Reason and End or Review Date in the List view of medications              Mandatory
+
+  MEDv-0033         When a medication in the List view has an associated decision support alert, display an alert icon      Mandatory
+                    before the drug name such that the drug name is moved to the right
+  Table 6: Guidance – Structure
+
+
+
+
+                                                                                                                                   Page 12
+                                  Design Guidance – Medications Management – Medications Views
+                                  Prepared by Microsoft, Version 2.0.0.0
+                                  Last modified on 19 December 2007
+                                                                                                                              Microsoft
+
+
+
+
+2.3.1.2            Rationale
+  The guidance on allowing multiple attributes in table-like columns is informed by user feedback on
+  the disadvantages of strict tables when representing different medications within the same list.
+  The drug details of a medication are preceded by a decision support alert icon, such that the drug
+  name is offset to the right. This approach makes use of the interruption of the natural reading flow
+  down the drug details column in order to draw attention to those medications with alerts.
+  User feedback on the order of attributes in the line, found a minority of users in two rounds of
+  feedback, raised a concern about having to read along the line from the start date to end date in
+  order to work out the duration or intended duration. However the wide separation of the two dates
+  is considered to be a safety mitigation to prevent accidental confusion of the two dates. In addition,
+  the guidance on visual design of the lines is intended to aid ease of reading along the medication
+  lines.
+  Previous user feedback had found that clustering multiple dates in close proximity per medication
+  line might cause some of those dates to be overlooked. Similarly, labelling every date in a line to
+  distinguish the dates was found to be cluttering.
+  The Status Date is displayed to the right of the Status to encourage association, and to support a
+  natural reading order. For example, ‘Started 12-Mar-2007’.
+
+2.3.2          Layout
+  This section provides guidance for the layout of the information within in each medication line.
+  Figure 14 is an example of a layout that illustrates the way that text wraps in some columns and is
+  truncated in others.
+
+       Date            drug name and drug details                                  Reason                     Status   Date
+       Date       drug name and drug details                                       Long reason,               Status   Date
+                                                                                   wrapped...
+
+       Date       drug name and drug details                                       Reason                     Status   Date
+       Date            drug name and drug details that are long enough             Reason                     Status   Date
+                       to wrap onto a new line
+
+       Date       drug name and drug details                                       Reason                     Status   Date
+
+  Figure 14: Layout Examples for a Medication Line
+
+  When the List view is presented with limited horizontal space or when the Drug Details column
+  requires more width, the status and associated date can be presented within a single column. This
+  is illustrated in Figure 15.
+
+       Date             drug name and drug details                           Reason                  Status
+                                                                                                       Date
+
+       Date       drug name and drug details                                 Long                    Status
+                                                                             reason...                 Date
+
+       Date             drug name and drug details that are                  Reason                  Status
+                        long enough to wrap onto a new line                                            Date
+
+  Figure 15: Medication Lines in Restricted Horizontal Space
+
+2.3.2.1            Guidance
+  ID                 Guideline                                                                                         Status
+  MEDv-0034          Allow the contents of the Drug Details and Reason columns in the List view to wrap where          Mandatory
+                     necessary
+
+  MEDv-0035          Where a Reason field in the List view has been truncated, display an ellipsis                     Mandatory
+                                                                                                                              Page 13
+                                 Design Guidance – Medications Management – Medications Views
+                                 Prepared by Microsoft, Version 2.0.0.0
+                                 Last modified on 19 December 2007
+                                                                                                                                Microsoft
+
+
+
+
+  ID                Guideline                                                                                             Status
+  MEDv-0036         Allow the end or review date to be right aligned and displayed below the status where horizontal      Mandatory
+                    space is restricted in the List view, or where the Drug Details column requires more width
+
+  MEDv-0037         Do not wrap the contents of the Reason field beyond two lines when this would increase the height Mandatory
+                    of the medication line, allow the contents of the Reason field to be truncated after it has wrapped to
+                    a new line
+  Table 7: Guidance – Layout
+
+2.3.2.2           Rationale
+  The layout rules support the prioritisation of important information, such as start date and drug
+  details, and ensure that the display of drug details is not compromised.
+
+2.3.3          Text Formatting
+  This section provides guidance for the text formatting of the information within each medication line.
+  Figure 16 shows an example of how this could look.
+
+    Start Date           Drug Details                                     Reason                       Started         Date
+
+
+
+
+               drug name dose – frequency – route – form
+  Figure 16: Example of Attributes Combined in the Drug Details Column
+
+2.3.3.1           Guidance
+  ID                Guideline                                                                                             Status
+  MEDv-0038         Use formatting to distinguish the Reason from the rest of the medication line in the medications List Mandatory
+                    view
+
+  MEDv-0039         Display the drug name in bold in the Drug Details column of the medications List view                 Mandatory
+
+  MEDv-0040         Display two spaces after a drug name in the Drug Details column of the medications List view          Mandatory
+
+  MEDv-0041         Use a hyphen with surrounding spaces to separate attributes (apart from drug name) in the Drug        Mandatory
+                    Details column of the medications List view
+
+  MEDv-0042         In the medications List view, display the status of each medication in bold                           Mandatory
+  Table 8: Guidance – Text Formatting
+
+2.3.3.2           Rationale
+  This guidance is designed to support readability of a medication line with particular attention to
+  preventing misinterpretation of critical information, such as drug name and dose.
+
+2.4        Look-Ahead Scroll Bar
+  The Look-Ahead Scroll Bar provides visibility of medications that are outside of the currently visible
+  area of the list. This section provides guidance on the structure and layout of the Look-Ahead Scroll
+  Bar and associated notifications. It also defines guidance for how to populate the look-ahead
+  notifications, and which dynamic behaviours and interactions should be supported.
+
+
+
+
+                                                                                                                                 Page 14
+                                Design Guidance – Medications Management – Medications Views
+                                Prepared by Microsoft, Version 2.0.0.0
+                                Last modified on 19 December 2007
+                                                                                                                                Microsoft
+
+
+
+
+  Figure 17: Medications Views Areas – The Look-Ahead Scroll Bar
+
+2.4.1          Structure and Layout
+  The Look-Ahead Scroll Bar supplements a standard scroll bar with notifications. These are
+  illustrated in Figure 18. This section provides guidance for the presentation of these notifications.
+
+                                                                                  drug 1  drug
+                                                                                            drug22
+
+                                                                                            drug 3
+                                                                                            drug 4
+                                                                                            drug 5
+                    Look-ahead                                                                                          Scroll bar
+                    notifications                                                           drug 6
+                                                                                            drug 7
+                                                                                            drug 8
+                                                                                            drug 9
+                                                                                          drug 10
+                                                         drug 11
+         6 more  drug 15  drug 14  drug 13  drug 12  drug 11
+
+  Figure 18: Look-Ahead Notifications
+
+2.4.1.1            Guidance
+  ID                Guideline                                                                                             Status
+  MEDv-0043         The look-ahead notification should be clearly joined to the ‘up’ and ‘down’ arrow controls of the     Mandatory
+                    scroll bar
+
+  MEDv-0044         Restrict the look-ahead notifications to a single line each                                           Mandatory
+
+  MEDv-0045         Do not place controls or other notifications such that they separate the look-ahead notification from Mandatory
+                    the medications in the List view
+
+  MEDv-0046         Allow the Look-Ahead Scroll Bar notification to occlude medications in the list                       Mandatory
+  Table 9: Guidance – Look-Ahead Scroll Bar
+
+
+
+
+                                                                                                                                 Page 15
+                                 Design Guidance – Medications Management – Medications Views
+                                 Prepared by Microsoft, Version 2.0.0.0
+                                 Last modified on 19 December 2007
+                                                                                                                   Microsoft
+
+
+
+
+2.4.1.2            Rationale
+  The Look-Ahead Scroll Bar mitigates the risk that there are medications, in the full list of
+  medications for one patient, that are not currently visible and thus could be overlooked. The
+  Look-Ahead Scroll Bar is appropriate for use in any view where an understanding of the extent and
+  contents of a full list are a safety concern.
+  User feedback with a small number of clinicians showed strong support for the look-ahead
+  notifications.
+  An early prototype of the Look-Ahead Scroll Bar showed that it is necessary to allow the
+  look-ahead notifications to occlude medications in the list. This was because moving medications
+  up or down out of the visible area so that they did not get occluded, left a gap at the bottom or top
+  of the list which acted as a ‘scroll-stopper’ implying the list did not continue either up or downwards.
+
+2.4.2          Notification Contents
+  This section provides guidance for the information that is displayed in the look-ahead notification.
+  The contents of a Look-Ahead Scroll Bar notification are different when the time filter is set to show
+  current medications, than when the time filter is set to show past medications. Figure 19 illustrates
+  these differences.
+
+           Past Medications                                                       Current Medications
+
+
+                   2 more                                                                                drug 1
+
+
+
+
+                74 more                                                   34 more                drug 8  drug 7
+
+
+
+  Figure 19: Examples of Look-Ahead Scroll Bar Notifications for Current and Past Respectively
+
+
+
+
+                                                                                                                   Page 16
+                                 Design Guidance – Medications Management – Medications Views
+                                 Prepared by Microsoft, Version 2.0.0.0
+                                 Last modified on 19 December 2007
+                                                                                                                                     Microsoft
+
+
+
+  The look-ahead notifications dynamically display the names of medications that are above and just
+  below the visible section of the list. The order in which drugs appear in the look-ahead notification
+  is illustrated in Figure 20 and also in Figure 18.
+
+
+
+
+  Figure 20: Diagram to Illustrate the Order of Medications in the Look-Ahead Notifications
+
+  The notifications provide:
+        A clear signal that there are more medications to be displayed
+        An indication of the number of medications above and below the visible section of the list
+        The names of the medications that are just beyond the visible section
+        Alert icons to draw attention to medications that may require particular attention
+
+2.4.2.1            Guidance
+  ID                 Guideline                                                                                                 Status
+  MEDv-0047          Medications that are occluded by the look-ahead notification should be included in the look-ahead         Mandatory
+                     notification
+
+  MEDv-0048          The look-ahead notification is populated from right to left such that the next drug in the list appears   Mandatory
+                     closest to the scroll bar
+
+  MEDv-0049          The contents of the look-ahead notification should follow the current order of the list                   Mandatory
+
+  MEDv-0050          Where exceptionally long drug names require more space than is available in a look-ahead                  Mandatory
+                     notification, display a count (as for past medications) instead
+
+  MEDv-0051          Do not truncate or abbreviate drug names in the look-ahead scroll bar notification                        Mandatory
+
+  MEDv-0052          When there are more items than can be displayed in the look-ahead notification for current                Mandatory
+                     medications, display as many as possible and end the list with a count of the remaining items that
+                     could not be displayed
+
+  MEDv-0053          When a count is displayed in a look-ahead notification and one or more of the medications included Mandatory
+                     in that count have decision support alerts, display a decision support alert icon next to the count
+
+  MEDv-0054          When displaying past medications only, display counts in the look-ahead notification and not drug         Mandatory
+                     names
+
+
+
+                                                                                                                                      Page 17
+                                  Design Guidance – Medications Management – Medications Views
+                                  Prepared by Microsoft, Version 2.0.0.0
+                                  Last modified on 19 December 2007
+                                                                                                                                   Microsoft
+
+
+
+
+  ID                 Guideline                                                                                             Status
+  MEDv-0055          When displaying current medications only, show drug names and decision support alert icons in         Mandatory
+                     the look-ahead notification
+
+  MEDv-0056          When drug names are displayed in a look-ahead notification, separate them with spaces and a           Mandatory
+                     clear delimiter
+
+  MEDv-0057          When displaying current medications, do not include (or count) medications that are displayed         Mandatory
+                     within a recent past notification in the Look-Ahead Scroll Bar notifications
+  Table 10: Guidance – Notification Controls
+
+2.4.2.2            Rationale
+  The presentation of a Look-Ahead Scroll Bar notification reduces the amount of space available to
+  display the list of medications and for this reason it is restricted to a single line.
+  Displaying a Look-Ahead Scroll Bar with simple counts of medications already begins to mitigate
+  the risk that the scroll bar alone is not a strong enough signal to indicate that there are more
+  medications in the list than are currently visible. By supplementing this with drug names, the
+  notification supports more efficient navigation and encourages access to the remainder of the list.
+  By presenting alert icons in the Look-Ahead Scroll Bar notification, an alert icon is always visible
+  whenever there are any medications in the list with alerts.
+
+2.4.3          Interactions
+  This section provides guidance that describes: how and when look-ahead notifications are
+  presented, how they dynamically update and what interactions are supported.
+
+2.4.3.1            Guidance
+  ID                 Guideline                                                                                             Status
+  MEDv-0058          Update the look-ahead notifications dynamically in response to scrolling                              Mandatory
+
+  MEDv-0059          The look-ahead notification changes width dynamically to accommodate its contents up to the           Mandatory
+                     available width
+
+  MEDv-0060          Support clicking on a drug name in the look-ahead notification to bring that medication to the top of Mandatory
+                     the view
+
+  MEDv-0061          Support clicking on a count within the look-ahead notification to bring the next medication in the list Mandatory
+                     referred to by that count to the top of the list
+  Table 11: Guidance – Interactions
+
+2.4.3.2            Rationale
+  The Look-Ahead Scroll Bar notifications are extensions of a standard scroll bar and are thus
+  necessarily as dynamic as the scroll bar itself.
+
+2.5        Filtering
+  The filtering controls provide access to views that use simple pre-defined divisions of medications
+  into ‘current’ and ‘past’ and that allow further filtering of past medications. The terms ‘current’ and
+  ‘past’ refer to sets of medications with certain statuses as defined in Table 12. These definitions are
+  solely for the purposes of defining the inclusion criteria for the ‘current’ and ‘past’ time filters and
+  are not intended to provide definitions for use in other contexts.
+
+
+
+
+                                                                                                                                    Page 18
+                                 Design Guidance – Medications Management – Medications Views
+                                 Prepared by Microsoft, Version 2.0.0.0
+                                 Last modified on 19 December 2007
+                                                                                                                                         Microsoft
+
+
+
+
+ Status                Filter                   Description
+                                                Medications that have started (have an administration event recorded) and have further
+ Started               Current
+                                                scheduled administrations
+
+ Not Started           Current                  Medications that have administrations scheduled and a start date in the future
+
+                                                Medications that are marked as not to be administered but which are intended to be resumed at
+ Suspended             Current
+                                                a later date
+
+                                                Medications that have administration events recorded according to their schedule (within
+ Completed             Past
+                                                tolerances) and have an end date in the past
+
+                                                Medications that were stopped on a date that precedes one or more of the scheduled
+ Discontinued          Past
+                                                administrations
+ Table 12: Definitions of Current and Past for the Purposes of Filtering
+
+2.5.1         Controls for Current and Past
+ This section provides guidance for the controls to support switching between a list of current
+ medications and a list of past medications. Figure 21 shows where these controls are positioned.
+
+
+
+
+ Figure 21: Medications Views Areas – Current and Past Controls
+
+ Figure 22 shows a notional toolbar with the View control that is present for each of the medications
+ views (List, Timeline, Drug Chart and Monitoring Charts) and indicates the names of the three
+ controls for the List view. The controls for displaying current and past medications respectively, and
+ for further filtering past medications, are referred to in this figure as “Filters”.
+
+                                                                       List View Controls
+
+
+
+        View                     Filters                      Grouping Control                    Level of Detail Control
+
+
+
+
+                Current                           Past
+
+ Figure 22: List View Controls – Time Filters
+
+
+
+
+                                                                                                                                           Page 19
+                                 Design Guidance – Medications Management – Medications Views
+                                 Prepared by Microsoft, Version 2.0.0.0
+                                 Last modified on 19 December 2007
+                                                                                                                                     Microsoft
+
+
+
+
+2.5.1.1            Guidance
+  ID                Guideline                                                                                                  Status
+  MEDv-0062         Present the List view with ‘Current’ selected by default                                                   Mandatory
+
+  MEDv-0063         Provide buttons for displaying current and past medications respectively in the medications List           Mandatory
+                    view and label the buttons ‘Current’ and ‘Past’
+
+  MEDv-0064         Use the ‘Current’ and ‘Past’ buttons to indicate which is currently selected                               Mandatory
+
+  MEDv-0065         Do not allow ‘Current’ and ‘Past’ buttons to be simultaneously selected                                    Mandatory
+
+  MEDv-0066         Supplement the ‘Past’ button in the medications List view with a drop-down control for displaying,         Mandatory
+                    selecting and applying a filter on the past medications view
+
+  MEDv-0067         Include an option for removing a filter in the filter control in the medications List view and disable     Mandatory
+                    the option when there is no filter applied
+
+  MEDv-0068         If a filter is applied to the medications list from elsewhere in the application, display a notification   Mandatory
+                    below the column headings and above the medications list and include a control for removing the
+                    filter within that notification
+  Table 13: Guidance – Controls for Current and Past
+
+2.5.1.2            Rationale
+  Expert reviews, comparative analysis of alternative designs, user feedback sessions and patient
+  safety hazard assessments have provided extensive input to the guidance for time filtering. The
+  following conclusions have informed this guidance:
+        Separate Current and Past views match user mental models and support the majority of
+         time filtering needs. Detailed time filtering was considered by users to be an edge case, and
+         so can be demoted in the interface. A separate page for ‘current’ medication provides the
+         required unambiguous indication of what is currently prescribed
+        Separate Current and Past views also support the more common task of reviewing current
+         medications without past medications appearing at the same time. This is especially
+         pertinent when grouping is applied
+        More advanced filters support effective display of past medications especially where the list
+         of past medications is very long
+        A mixture of current and past medications in a single list creates issues relating to: sorting,
+         grouping, the display of common attributes and easy distinction of medications with different
+         states. These issues are considered to outweigh the benefits of a mixed list
+        Risks associated with presenting a list from which some medications are hidden can be
+         mitigated in certain circumstances providing the inclusion criteria are clearly communicated
+        Separation of current and past medications allows different default sort orders (such as
+         reverse chronologically by start date for current and by end date for past) to be applied to
+         each. User feedback suggested that current and past do have different optimum sort orders
+         ‘Current’ and ‘Past’ as status filters and calls to action were shown to be clear and feedback
+         supported the guidance that the indicators/calls to action should both be displayed all the
+         time
+
+
+
+
+                                                                                                                                      Page 20
+                                 Design Guidance – Medications Management – Medications Views
+                                 Prepared by Microsoft, Version 2.0.0.0
+                                 Last modified on 19 December 2007
+                                                                                                                                           Microsoft
+
+
+
+
+2.5.2            Filtering Past Medications
+  This section provides guidance on filtering the list of past medications. Figure 23 shows the position
+  of a filter notification that is displayed at the top of the list of medications in the List view.
+
+
+
+
+  Figure 23: Medications Views Areas – Filter Notification
+
+  Figure 24 shows an example of a filter notification.
+
+    Start Date                  Drug Details                                     Reason                      Status           Date
+
+    This list is filtered to show: Last 2 Months                                                                           Remove Filter
+
+
+                                                         Medication Lines
+
+  Figure 24: Example of a Filtered List Notification
+
+2.5.2.1             Guidance
+  ID                  Guideline                                                                                                      Status
+  MEDv-0069           When a filter is applied to past medications in List view, the Past button should indicate that it is          Mandatory
+                      currently selected
+
+  MEDv-0070           When a filter is applied to past medications in the List view, display a filter notification at the top of     Mandatory
+                      the list, below the column headings and above the scroll bar (thus ‘pushing’ the list of medications
+                      down a line)
+
+  MEDv-0071           Display a description of the current filter within the filter notification in the medications list             Mandatory
+
+  MEDv-0072           Include a count of the number of medications displayed and a count of the total (unfiltered) number Mandatory
+                      of past medications in a filter notification
+
+  MEDv-0073           Provide a control for removing the filter within the filter notification in the medication list                Mandatory
+  Table 14: Guidance – Filtering Past Medications
+
+
+
+
+                                                                                                                                            Page 21
+                                   Design Guidance – Medications Management – Medications Views
+                                   Prepared by Microsoft, Version 2.0.0.0
+                                   Last modified on 19 December 2007
+                                                                                                          Microsoft
+
+
+
+
+2.6       Recent Past Medications
+2.6.1         Displaying a Recent Past Notification
+ A recent past notification in a view of current medications, draws attention to medications that have
+ completed or been discontinued recently (within a specified time interval such as 48 hours). This
+ section provides guidance for the display of a recent past notification. Figure 25 shows the position
+ where recent past notifications are displayed.
+
+
+
+
+ Figure 25: Medications Views Areas – Recent Past Notification
+
+ Figure 26 illustrates revealing and hiding the medications referred to in the recent past notification.
+ In this figure, a shaded area represents the recent past notification (see Figure 27) within which
+ there is a button for displaying the medications that the notification refers to. When the recently
+ past medications are displayed, they are presented within the recent past notification area.
+
+  1. A Recent Past Notification                                  2. Recent Past Medications Revealed
+
+
+
+
+                                             Show                                                Hide
+
+
+
+
+ Figure 26: Recent Past Notification Show and Hide Action
+
+ Figure 27 is an example of the text that may appear in a recent past notification.
+
+   3 medications have been completed or discontinued in the last 48 hours                          Show
+ Figure 27: An Example of a Recent Past Notification
+
+
+
+
+                                                                                                          Page 22
+                                Design Guidance – Medications Management – Medications Views
+                                Prepared by Microsoft, Version 2.0.0.0
+                                Last modified on 19 December 2007
+                                                                                                                                   Microsoft
+
+
+
+
+2.6.1.1            Guidance
+  ID                 Guideline                                                                                               Status
+  MEDv-0074          Display a notification for recently past medications that have been completed or discontinued within Mandatory
+                     a specified time interval from the current time
+
+  MEDv-0075          Clearly display the time interval within the recent past notification                                   Mandatory
+
+  MEDv-0076          When displaying recent past medications, ensure that they are clearly associated with the control       Mandatory
+                     from which they are opened and distinguished from other medications in the list
+
+  MEDv-0077          Display a count of the number of recently past medications within the recent past notification in the   Mandatory
+                     medication list
+
+  MEDv-0078          Within a recent past notification in the medications list, provide a button labelled ‘Show’ for         Mandatory
+                     revealing the medications to which it refers
+
+  MEDv-0079          When the ‘Show’ button in the recent past notification has been selected to display the medications Mandatory
+                     to which it refers, change the ‘Show’ button to ‘Hide’
+
+  MEDv-0080          When a recent past notification is displaying a list of medications, support selection of the ‘Hide’    Mandatory
+                     button to return to the default recent past notification and change the ‘Hide’ button back to ‘Show’
+
+  MEDv-0081          Present medications within a recent past notification as read-only                                      Mandatory
+
+  MEDv-0082          Display recent past notifications at the bottom of the medications list when ordered reverse            Mandatory
+                     chronologically by start date and at the top when that order is reversed
+  Table 15: Guidance – Displaying a Recent Past Notification
+
+2.6.1.2            Rationale
+  Since medications are selected for presentation in the current view according to their status, there
+  is a very clear cut off point at which a medication becomes past and is thus no longer visible in the
+  current medications list. This could mean that a medication that was completed five minutes ago is
+  no longer visible in the list of current medications. The guidance provides a recent past notification
+  to mitigate the risk that recent events are missed. It supports the configuration of a time interval that
+  is relevant for the context of use.
+  This is a pragmatic way of alerting a user to medications which might still be pharmacologically
+  active within the patient’s body, even though they are no longer prescribed to the patient. A
+  genuine measure of the pharmacological activity of a medication is considered to be too difficult to
+  accurately accomplish without significant data input to the system (such as renal function).
+  Patient safety assessments identified a hazard associated with the recent past time interval.
+  Allowing the time interval to be configurable to an interval that is relevant to the context of use and
+  ensuring that the time interval is clearly displayed mitigate this risk.
+  Two rounds of user feedback found strong support for the idea of ‘Recent Past’ notification
+  associated with current medications.
+
+
+
+
+                                                                                                                                    Page 23
+                                 Design Guidance – Medications Management – Medications Views
+                                 Prepared by Microsoft, Version 2.0.0.0
+                                 Last modified on 19 December 2007
+                                                                                                         Microsoft
+
+
+
+
+2.7       Grouping
+ This section provides guidance for applying grouping to the list of medications and for the display of
+ the grouped list. Figure 28 shows where the grouped lists are displayed and Figure 29 illustrates
+ the list view controls.
+
+
+
+
+ Figure 28: Medications Views Areas – Grouping
+
+                                                             List View Controls
+
+
+
+        View                     Filters              Grouping Control               Level of Detail Control
+
+
+
+
+                                     Group By:
+
+ Figure 29: List View Controls – Group By
+
+2.7.1         Grouping a List of Medications
+ This section provides guidance for arranging the list of medications into groups according to
+ common attributes. Potential groupings to consider include:
+       Drug name
+       Medication Type: Regular, One-off, As Required, Continuous
+       Type (as above) and Route
+       Prescriber
+       Reason for prescribing
+       Encounter (or episode)
+       Status (Not Started, Started, Suspended, Completed, Discontinued)
+       Medications with decision support alerts
+       Frequency and Route
+
+
+
+
+                                                                                                          Page 24
+                                Design Guidance – Medications Management – Medications Views
+                                Prepared by Microsoft, Version 2.0.0.0
+                                Last modified on 19 December 2007
+                                                                                                                                       Microsoft
+
+
+
+  Figure 30 illustrates a list with grouping applied and shows the use of group headings that include a
+  count of the number of medications in that group and expand/collapse controls.
+
+   - Group X (4)
+    Medication A
+    Medication B
+    Medication C
+    Medication D
+
+   - Group Y (3)
+    Medication E
+    Medication F
+    Medication G
+
+   - Group Z (2)
+    Medication H
+    Medication I
+  Figure 30: Example of Grouping Applied to a List
+
+2.7.1.1            Guidance
+  ID                 Guideline                                                                                                   Status
+  MEDv-0083          Present the List view with no grouping active by default                                                    Mandatory
+
+  MEDv-0084          Provide a standard combo box control for displaying, selecting and applying a grouping to the               Mandatory
+                     medications list
+
+  MEDv-0085          Label the grouping control ‘Group By’                                                                       Mandatory
+
+  MEDv-0086          Display clear and prominent headings for each group category                                                Mandatory
+
+  MEDv-0087          Retain the column sort order in the medications list when grouping is applied                               Mandatory
+
+  MEDv-0088          Allow other controls (time filters, level of detail) in the medications list to be used without affecting   Mandatory
+                     the applied grouping
+
+  MEDv-0089          Supplement the group headings with a number representing a count of medications within that                 Mandatory
+                     group
+
+  MEDv-0090          Do not display group headings for empty groups                                                              Mandatory
+
+  MEDv-0091          Provide ‘null’ groups where necessary to support the display of medications that do not have a              Mandatory
+                     value for the attribute being used to group the medications
+
+  MEDv-0092          Provide controls for expanding and collapsing individual groups. Place these controls at the                Mandatory
+                     beginning of the group heading
+
+  MEDv-0093          Support auto-collapsing of groups for some grouping schemes when the number of groups is high               Recommended
+  Table 16: Guidance – Grouping a List of Medications
+
+
+
+
+                                                                                                                                        Page 25
+                                 Design Guidance – Medications Management – Medications Views
+                                 Prepared by Microsoft, Version 2.0.0.0
+                                 Last modified on 19 December 2007
+                                                                                                    Microsoft
+
+
+
+
+2.7.1.2      Rationale
+  Grouping and filtering were evaluated as solutions for breaking lists of medications into meaningful
+  sets and for displaying medications with particular attributes in common. The decision to use
+  grouping is based primarily on the perceived risks associated with presenting a filtered view.
+  The following assumptions are made:
+      It is more important to mitigate risks associated with hiding information from view by
+       applying a filter than risks associated with scrolling long lists once medications have been
+       grouped. This risk is also mitigated by the Look-Ahead Scroll Bar defined in section 2.4
+      Some attributes will create a large number of sets (for example, if there are a great number
+       of prescribers in a list of medications) and these are better handled by grouping within a list
+       rather than providing a large number of filters that present a series of lists
+      The advantages of filtering for handling mutually exclusive sets and mixed topology sets are
+       outweighed by the risks associated with hiding information by presenting a filtered list
+      There is more space for descriptive text labels for group headings than for filters if filters are
+       presented as tabs. This assumes that sets of filters are expected to be always visible and
+       thus displayed outside of the list whilst group headings can be presented within the list and
+       revealed by scrolling
+      The need for visibility of the full set (of groups or filters) is less important than being able to
+       support descriptive labels for sets and presenting sets in the context of the whole list rather
+       than using a filter to hide some medications from view
+  Grouping and filtering were explored at some length over successive user feedback sessions, with
+  requirements, advantages and disadvantages identified. The ability to reorganise the list of
+  medication into different sets in some way was consistently supported.
+  Successive rounds of user feedback also found that Secondary Care users were very familiar with
+  having medication grouped into the kinds of categories on their paper drug charts. Though these
+  vary, common categories are by ‘type’, for example, regular, one-off, as required and infusions.
+  Users in all rounds confirmed that they would like to be able to organise medication by ‘type’.
+  However, user feedback also showed that the majority of users in several feedback rounds would
+  prefer the medications to NOT be grouped by type by default, with the caveat that certain key
+  differences between medications should clearly be indicated (for example, whether a medication
+  was ‘as required’).
+  The ‘Group By‘ label was found be an acceptable call to action for the grouping control.
+  Interpretation of user feedback responses indicated that auto-collapsing of groups when the
+  number of groups is high or the number of medications in each group is high, would aid users in
+  understanding the categories within a grouping set and enable quick navigation to the group
+  category they were looking for. Auto-collapsing of groups carries some of the benefits and risks
+  associated with filtering.
+
+2.7.2      Handling Duplicates in Groups
+  When a grouping scheme is applied that is not mutually exclusive, some medications will need to
+  appear in more than one group. This section provides guidance on how to present duplicate
+  medications within such a grouping and to draw attention to their presence in the list.
+  An example of this would be where a patient has been prescribed aspirin to treat both their pain,
+  and to thin their blood, thus there would be two reasons for prescribing in the ‘Reason’ column. If
+  the user grouped the medications list by ‘Reason for Prescribing’, the aspirin prescription would
+  logically belong to two groups: ‘For Pain’ and ‘For Blood Thinning’.
+  Figure 31 is an example of how the list may look when first grouped using a grouping scheme that
+  requires duplicates.
+                                                                                                     Page 26
+                       Design Guidance – Medications Management – Medications Views
+                       Prepared by Microsoft, Version 2.0.0.0
+                       Last modified on 19 December 2007
+                                                                                                                                    Microsoft
+
+
+
+
+   + Group A (4) (1) medication appears in more than one group
+
+   + Group B (3) (2) medications appear in more than one group
+
+   - Group C (2)
+    Medication -g
+    Medication -h
+  Figure 31: Example of Collapsing Groups Containing Duplicates
+
+  Figure 32 below shows that same list once the first two groups have been expanded indicating
+  which medications within the groups are duplicates.
+
+   - Group A (4) (1) medication appears in more than one group
+    Medication -a
+    Medication -b
+    Medication -c
+    Medication -d
+
+   - Group B (3) (2) medications appear in more than one group
+    Medication -b
+    Medication -e
+                                                                                                                              Group A
+    Medication -f                                                                                                             Group D
+
+   - Group C (2)
+    Medication -g
+    Medication -h
+  Figure 32: Example Showing Expanded Groups Containing Duplicates
+
+2.7.2.1           Guidance
+  ID                Guideline                                                                                                 Status
+  MEDv-0094         Keep the number of grouping schemes that are not mutually exclusive to a minimum                          Mandatory
+
+  MEDv-0095         When the List view has a grouping applied and a medication belongs to more than one group,                Mandatory
+                    duplicate the medication so that it appears in each group to which it belongs
+
+  MEDv-0096         Clearly mark medications that appear in more than one group by placing a ‘duplicates icon’ to the         Mandatory
+                    right of the medication line
+
+  MEDv-0097         Support selection of a ‘duplicates icon’ to display an inclusive list of the groups that the medication   Mandatory
+                    belongs to
+
+  MEDv-0098         Supplement the group headings and counts with an additional count of medications in that group            Mandatory
+                    for which there are duplicates and provide a clear text description for this count
+  Table 17: Guidance – Handling Duplicates in Groups
+
+
+
+
+                                                                                                                                     Page 27
+                                Design Guidance – Medications Management – Medications Views
+                                Prepared by Microsoft, Version 2.0.0.0
+                                Last modified on 19 December 2007
+                                                                                                     Microsoft
+
+
+
+
+2.7.2.2           Rationale
+  This guidance is based on the assumption that the clinical application will necessarily need to
+  support some grouping schemes that are not mutually exclusive. The guidance has established
+  three approaches for handling grouping of a list using non-mutually exclusive groups:
+        Duplicate items that appear in more than one group
+        Define a primary group for every list item
+        Combining values to create new groups
+  The guidance makes the assumption that it is not necessarily possible to define a ‘primary’ group
+  for each medication that belongs to more than one group in a non-mutually exclusive grouping
+  scheme.
+  Combining values to create groups means that a new group is created for every item that would
+  otherwise belong in more than one group. This new group is usually named after the combination
+  of values for the attribute that the list is being grouped by. For example, if you supported grouping
+  medications by active ingredients and you were looking for one that contains both aspirin and
+  paracetamol, you might expect to find them in those two groups but they would appear in a new
+  group for medications containing (both and only) aspirin and paracetamol. This guidance therefore
+  takes the view that it is important to support finding medications in the group or groups that they are
+  expected to belong to.
+  Duplicate medications must be clearly marked to avoid the interpretation that the same drug has
+  been prescribed more than once.
+  Though user feedback did not indicate duplication as the most user-preferred solution to
+  non-mutually exclusive groups, based on interpretation of user expectations, duplication (with clear
+  indication of duplicates) is considered to be the least unsatisfactory of the three solutions. Auto
+  collapsing of groups may also help mitigate the potential confusion of duplication.
+
+2.8        Sorting
+2.8.1         Sorting Using Column Headings
+  Sorting of the list of medications is achieved by interacting with column headings and is thus
+  restricted to those attributes that are visible in the list. This section provides guidance for supporting
+  sorting via column headings. Figure 33 shows where the column headings are displayed.
+
+
+
+
+  Figure 33: Medications Views Areas – Column Headings Used for Sorting
+
+
+
+
+                                                                                                      Page 28
+                                Design Guidance – Medications Management – Medications Views
+                                Prepared by Microsoft, Version 2.0.0.0
+                                Last modified on 19 December 2007
+                                                                                                                                      Microsoft
+
+
+
+  Figure 34 illustrates two guidance-compliant examples of displaying the current sort order by
+  marking the column for the active sort and indicating the direction of the sort.
+
+   Start Date               Drug Details                                   Reason                           Status         End Date
+
+
+   Start Date               Drug Details                                   Reason                           Status         End Date
+  Figure 34: Two Approaches to Displaying the Active Sort Order
+
+2.8.1.1           Guidance
+  ID                Guideline                                                                                                 Status
+  MEDv-0099         By default, sort medications reverse chronologically by start date ( with the most recent start date      Mandatory
+                    first) when the filter is set to ‘Current’ in the List view
+
+  MEDv-0100         By default, sort medications reverse chronologically by end date (with the most recent end date           Recommended
+                    first) when the filter is set to ‘Past’ in the List view
+
+  MEDv-0101         Allow the sort order of a list in the medications list to be changed by clicking on a column heading      Mandatory
+
+  MEDv-0102         Allow the sort order of a list in the List view to be reversed by clicking on the column heading for      Mandatory
+                    the column with the active sort applied
+
+  MEDv-0103         Use formatting of the column heading to clearly indicate the column to which the sort order is            Mandatory
+                    currently applied
+
+  MEDv-0104         Use an icon in the column heading to indicate the current sort order                                      Mandatory
+
+  MEDv-0105         When the sort order is changed from start date to another attribute in the List view, retain the start    Mandatory
+                    date as a secondary sort order
+
+  MEDv-0106         Do not support sorting by attributes that are not visible (and thus are not represented by a column       Recommended
+                    heading)
+  Table 18: Guidance – Sorting Using Column Headings
+
+2.8.1.2           Rationale
+  During five rounds of user feedback on the current medications list, the large majority of users
+  either actively supported sorting the Current medications chronologically by start date with the most
+  recent at the top, or did not contest the order. This was despite the acknowledgement that the
+  current paper drug charts were ordered chronologically with the oldest at the top based on
+  prescription written date. It is assumed that the prevalence of email clients that display emails in
+  reverse chronological order by default partly explains this acceptance of reverse chronological
+  ordering.
+  In contrast, user feedback suggested that Past medications should be ordered reverse
+  chronologically by end date. This was so that more recently ended medication would be more
+  obvious to the user. It is expected that a Timeline view of medications would provide the most
+  effective means for clinicians to view the history of medications, as it would be more effective at
+  indicating the interrelations between different medication’s start and end dates.
+
+
+
+
+                                                                                                                                      Page 29
+                                Design Guidance – Medications Management – Medications Views
+                                Prepared by Microsoft, Version 2.0.0.0
+                                Last modified on 19 December 2007
+                                                                                                                                   Microsoft
+
+
+
+
+2.9         Level of Detail
+  The Level of Detail control allows the set of information shown in the medication lines to be
+  changed from minimal summary information through a sliding scale to a more detailed set of
+  information. Figure 35 shows how the addition of a column is displayed when the Level of Detail
+  control is used to display a higher level of detail.
+
+
+
+
+  Figure 35: Medications Views Areas – Level of Detail Control and Additional Column
+
+2.9.1           The Level of Detail Control
+  This section provides guidance for the provision of a control that adjusts the amount of information
+  that is displayed for each medication. The control used to change the level of detail provides zoom
+  in and zoom out functionality to increase and decrease the number of attributes visible for each
+  medication. Figure 36 illustrates the structure of a Level of Detail control.
+
+                                                                         List View Controls
+
+
+
+         View                       Filters                      Grouping Control                      Level of Detail Control
+
+
+
+
+                                                            Level of Detail: Standard
+
+  Figure 36: List View Controls – Level of Detail
+
+2.9.1.1             Guidance
+  ID                 Guideline                                                                                               Status
+  MEDv-0107          For the List view, provide a control for changing the level of detail (columns and attributes           Mandatory
+                     displayed) for each medication line
+
+  MEDv-0108          Precede the Level of Detail control with the label ‘Level of Detail’                                    Mandatory
+
+  MEDv-0109          Use the Level of Detail control to clearly display the currently selected level, and the total number   Mandatory
+                     of levels of detail
+
+
+
+
+                                                                                                                                    Page 30
+                                  Design Guidance – Medications Management – Medications Views
+                                  Prepared by Microsoft, Version 2.0.0.0
+                                  Last modified on 19 December 2007
+                                                                                                                                      Microsoft
+
+
+
+
+  ID                 Guideline                                                                                                  Status
+  MEDv-0110          Within the List view Levels of Detail control, place the control for reducing the level of detail to the   Mandatory
+                     left, the control for increasing the level of detail to the right, and the indicators for each level
+                     between the two
+
+  MEDv-0111          Within the List view Levels of Detail control, display the label for the currently selected level of       Mandatory
+                     detail immediately to the right of the ‘Level of Detail’ label
+
+  MEDv-0112          Provide a small number of levels of detail via the Level of Detail control in the medications List view Mandatory
+
+  MEDv-0113          Display a label of ‘Low’ for the lowest level of detail in the List view                                   Mandatory
+
+  MEDv-0114          Label the second lowest level of detail in the List view ‘Standard’                                        Mandatory
+
+  MEDv-0115          Set the default level of detail for the List view to ‘Standard’                                            Mandatory
+
+  MEDv-0116          Provide controls for navigating ‘up’ and ‘down’ the levels of detail in the List view                      Mandatory
+  Table 19: Guidance – The Level of Detail Control
+
+2.9.1.2            Rationale
+  The Levels of Detail control extends the currently visible set of attributes for all medications in the
+  list to allow comparison between them. As more information is added to the list, it becomes harder
+  to distinguish individual medications and there are likely to be fewer medications visible since each
+  line will be greater in height. The Levels of Detail control thus supports a few levels to allow more
+  information to be displayed, and is limited to prevent the display of so much information for one
+  medication that the benefits of being able to see a list and compare across medications is lost.
+  Accessing all the details for one medication is described in section 2.11.
+  The Level of Detail control provides the opportunity to reveal extra information as and when it is
+  needed. For example, a patient safety hazard was raised relating to the information in the Start
+  Date column. If this information is presented as a date without a time, then the status column must
+  be used to determine which of a series of medications that start on the same day have actually
+  been started. A higher level of detail could reveal the time as well as the date in the Start Date
+  column.
+  User feedback supported the idea that even with the presence of other medications views such as
+  the Drug Chart, being able to provide one level of detail for medications that would satisfy all
+  clinical roles in all contexts would be unlikely and therefore it should be possible to access different
+  amounts of detail ‘on request’. Feedback indicated that access to many of these details would be
+  useful across all the medications in the list at the same time, as well as one at a time.
+  The slider mechanism for varying the levels of detail was clearly understood when shown to users.
+
+2.9.2          Information Display for Specific Levels of Detail
+  The guidance in this section defines some of the specific attributes that should be displayed for the
+  lower levels of details. It also defines how to display the additional attributes as the level of detail is
+  increased.
+
+       Important
+       Guidance for the display of information for specific levels of detail is based on the assumption that the full
+       width of a 1024 by 768 pixel display will be available for the display of the List view.
+
+
+
+
+                                                                                                                                       Page 31
+                                 Design Guidance – Medications Management – Medications Views
+                                 Prepared by Microsoft, Version 2.0.0.0
+                                 Last modified on 19 December 2007
+                                                                                                                                        Microsoft
+
+
+
+  Information displayed in the lowest two levels of detail is more closely defined than other levels.
+  Figure 37 to Figure 39 illustrate the addition of information both as columns and as additional
+  information within one column, as the level of detail is increased.
+
+    Start Date             Drug Details                                             Reason                             Status    End Date
+
+                 Date            drug name                                          Reason                            Status     Date
+                 Date      drug name                                                Reason                            Status     Date
+
+  Figure 37: Example of Columns and Details for a Low Level of Detail
+
+
+    Start Date             Drug Details                                             Reason                             Status    End Date
+
+                 Date            drug name and drug details                         Reason                            Status     Date
+                 Date      drug name and drug details                               Reason                            Status     Date
+
+  Figure 38: Example of a Standard Level of Detail
+
+
+    Start Date       Drug Details                                              Other Information           Reason                         Status
+
+           Date            drug name and drug details with                     Other information           Reason                  Status
+                           greater detail than previous levels                                                                       Date
+
+           Date      drug name and drug details with greater                   Other information           Reason                  Status
+                     detail than previous levels                                                                                     Date
+
+  Figure 39: Example of a Higher Level of Detail with an Additional Column
+
+2.9.2.1            Guidance
+  ID                 Guideline                                                                                                  Status
+  MEDv-0117          When the lowest level of detail is selected in the List view, display drug names only in the Drug          Mandatory
+                     Details column
+
+  MEDv-0118          When the lowest level of detail is selected in the List view, display Start Date, Drug Details, Reason Mandatory
+                     and Status columns
+
+  MEDv-0119          When the standard level of detail is selected in the List view, display drug details (such as dose,        Mandatory
+                     frequency and route) in addition to the drug name in the Drug Details column
+
+  MEDv-0120          For higher levels of detail in the List view, show additional attributes that are useful to see for        Mandatory
+                     multiple medications simultaneously
+
+  MEDv-0121          Support the display of limited additional columns in the List view for higher levels of detail             Mandatory
+  Table 20: Guidance – Information Display for Specific Levels of Detail
+
+2.9.2.2            Rationale
+  The ‘low’ level of detail is designed to provide a summary list of medications that is most useful for
+  an initial review of an entire list of a patient’s medications.
+  Patient safety hazard assessments raised a concern that clinicians might make decisions based on
+  the information displayed in the low level of detail and that this information may be insufficient for
+  such decisions. The provision of a summary list is considered key in supporting certain types of
+  review of a patient’s medications so to mitigate the identified risk, the Level of Detail control
+  defaults to the Standard view which has more information in the Drug Details column and includes
+  a reason column. By defining a default of ‘Standard’, the guidance also ensures that defaults are
+  not inappropriately set to a high level of detail.
+
+
+
+                                                                                                                                        Page 32
+                                  Design Guidance – Medications Management – Medications Views
+                                  Prepared by Microsoft, Version 2.0.0.0
+                                  Last modified on 19 December 2007
+                                                                                                                                  Microsoft
+
+
+
+
+2.10 Selection and Action
+  This section provides guidance on the selection of one or more medications in the list, and the
+  presentation of a context menu for displaying available functions.
+
+2.10.1         Selection
+  Figure 40 illustrates a selected item in a list.
+
+    Medication A
+    Medication B
+    Medication C
+    Medication D
+  Figure 40: Example of a Selected Item in a List
+
+2.10.1.1           Guidance
+  ID                 Guideline                                                                                            Status
+  MEDv-0122          Support click (or keyboard selection) to select a medication in the medication list                  Mandatory
+
+  MEDv-0123          Clearly highlight selected medications in the medication list                                        Mandatory
+
+  MEDv-0124          Maintain the selection of a medication when switching between Medications Views (such that a         Mandatory
+                     medication selected in List view is automatically selected when switching to the Drug Chart)
+
+  MEDv-0125          Maintain the selection of a medication when applying or changing a grouping or a sort order and      Mandatory
+                     ensure that the selection remains visible
+
+  MEDv-0126          Support the selection of multiple items in the List view using CTRL and click for discrete selections, Mandatory
+                     and SHIFT and click for contiguous selections
+
+  MEDv-0127          Support keyboard-only equivalents such as arrow keys and the SPACEBAR for selecting multiple         Mandatory
+                     items in the List view
+  Table 21: Guidance – Selection
+
+2.10.2         Context Menus
+  This section provides guidance on the display of a context menu that provides access to relevant
+  functions for medications that have been selected. Figure 41 shows two medications selected and
+  a context menu (such as a right-click menu) displayed.
+
+    Medication A
+    Medication B
+    Medication C
+    Medication D
+                                                                                                    Action 1
+    Medication E
+                                                                                                    Action 2
+    Medication F
+                                                                                                    Action 3
+    Medication G
+    Medication H
+  Figure 41: Example of Multiple Selections and a Context Menu with One Action Disabled
+
+
+
+
+                                                                                                                                   Page 33
+                                   Design Guidance – Medications Management – Medications Views
+                                   Prepared by Microsoft, Version 2.0.0.0
+                                   Last modified on 19 December 2007
+                                                                                                                                 Microsoft
+
+
+
+
+2.10.2.1           Guidance
+  ID                 Guideline                                                                                             Status
+  MEDv-0128          Support the display of a context menu for selected medications in the List view (for example, via     Mandatory
+                     right-click)
+
+  MEDv-0129          In the context menu for selections in the List view, provide appropriate actions and options          Mandatory
+
+  MEDv-0130          In the context menu for selections in the List view, support actions with icons where appropriate     Recommended
+
+  MEDv-0131          In the context menu for selections in the List view, grey out actions that are unavailable or         Mandatory
+                     disallowed for one or more of the current selections
+
+  MEDv-0132          In the context menu for selections in the List view, prioritise frequently used actions by placing    Mandatory
+                     them higher in the list
+
+  MEDv-0133          In the context menu for selections in the medications list, group similar options so that direct      Mandatory
+                     actions, actions that permit addition of information and actions that display more information are
+                     each grouped together
+
+  MEDv-0134          If the clinical application cannot support the display of information about multiple items either     Mandatory
+                     simultaneously or sequentially, information items that are only relevant to a single item should be
+                     removed
+  Table 22: Guidance – Context Menus
+
+
+2.11 All Details
+2.11.1         Displaying All Details for One Medication
+  This section provides guidance for supporting access to detailed information about a single
+  medication. Details for one medication are presented such that part of the list is still visible and the
+  currently selected medication within that list is clearly indicated.
+  Figure 42 illustrates the display of all details for one selected medication in a list.
+
+
+
+
+                                                                   All Details for the
+                                                                  Selected Medication
+
+
+
+
+  Figure 42: Medications Views Area – Displaying all Details for One Medication
+
+
+
+                                                                                                                                  Page 34
+                                 Design Guidance – Medications Management – Medications Views
+                                 Prepared by Microsoft, Version 2.0.0.0
+                                 Last modified on 19 December 2007
+                                                                                                                                     Microsoft
+
+
+
+
+2.11.1.1           Guidance
+  ID                 Guideline                                                                                               Status
+  MEDv-0135          In the context menu for selections in the List view, provide an option for displaying all details for the Mandatory
+                     selected medication
+
+  MEDv-0136          Support accessing all details for one medication by double-clicking the medication line in the          Mandatory
+                     medication List view
+
+  MEDv-0137          Display all details for one medication such that the beginning of the Drug Details column in the List   Recommended
+                     view from which the medication was selected is also visible
+
+  MEDv-0138          When displaying all details for one medication in the medication list, provide controls for accessing   Mandatory
+                     all details for the next and previous medications in the list
+
+  MEDv-0139          Support the display of all details for a medication selected without losing the context of the view     Mandatory
+                     from which it was opened; clearly mark the selection in the list and associate it with the details
+                     displayed
+
+  MEDv-0140          When displaying all details for one medication, support the minimisation of information that is not     Mandatory
+                     needed (for example, by providing sections that can expand and collapse)
+  Table 23: Guidance – Displaying All Details for One Medication
+
+2.11.1.2           Rationale
+  The presentation of all details for a medication such that the list from which it was opened is visible,
+  follows the principle of presenting an overview and providing access to details on demand, whilst
+  maintaining context.
+  Two rounds of user feedback indicated that the method for accessing all the details of a medication
+  was familiar and expected.
+
+
+
+
+                                                                                                                                      Page 35
+                                 Design Guidance – Medications Management – Medications Views
+                                 Prepared by Microsoft, Version 2.0.0.0
+                                 Last modified on 19 December 2007
+                                                                                                              Microsoft
+
+
+
+
+3              DOCUMENT INFORMATION
+
+3.1            Terms and Abbreviations
+    Abbreviation                        Definition
+    CUI                                 Common User Interface
+
+    NPSA                                National Patient Safety Agency
+
+    UI                                  User Interface
+    Table 24: Terms and Abbreviations
+
+
+3.2            Nomenclature
+    This section shows how to interpret the different styles used in this document to denote various
+    types of information.
+
+3.2.1            Body Text
+    Text                                                                 Style
+    Code                                                                 Monospace
+
+    Script
+
+    Other markup languages
+
+    Interface dialog names                                               Bold
+
+    Field names
+
+    Controls
+
+    Folder names                                                         Title Case
+
+    File names
+    Table 25: Body Text Styles
+
+3.2.2            Cross References
+    Reference                                                            Style
+    Current document – sections                                          Section number only
+
+    Current document – figures/tables                                    Caption number only
+
+    Other project documents                                              Italics and possibly a footnote
+
+    Publicly available documents                                         Italics with a footnote
+
+    External Web-based content                                           Italics and a hyperlinked footnote
+    Table 26: Cross Reference Styles
+
+
+
+
+                                                                                                              Page 36
+                                  Design Guidance – Medications Management – Medications Views
+                                  Prepared by Microsoft, Version 2.0.0.0
+                                  Last modified on 19 December 2007
+                                                                                                                      Microsoft
+
+
+
+
+3.3       References
+ Reference Document                                                                                        Version
+ R1.              NPSA Safe Medication Practice Work Programme 2007–08 – Safety in doses: improving the use 2007–08
+                  of medicines in the NHS
+                  http://www.npsa.nhs.uk/site/media/documents/2510_Safety_in_doses_WEB.pdf
+
+ R2.              Design Guidance – Medications Management – Drug Administration                           2.0.0.0
+
+ R3.              The Dictionary of Medicines and Devices
+                  http://www.dmd.nhs.uk/
+ Table 27: References
+
+
+
+
+                                                                                                                      Page 37
+                             Design Guidance – Medications Management – Medications Views
+                             Prepared by Microsoft, Version 2.0.0.0
+                             Last modified on 19 December 2007
+

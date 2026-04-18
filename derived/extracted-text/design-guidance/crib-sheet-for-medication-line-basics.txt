@@ -1,0 +1,46 @@
+Medication Line Basics Crib Sheet
+  Single-Text Sentence                                                                          Labels in              Multiple drug names
+                                                          Dose (or equivalent)
+                                                                                                uppercase and         plus symbol surrounded with spaces
+                                                           must be labelled
+                                                                                                in a different
+                        Drug Brand                                                                                                double space
+                                                                                                font and colour
+                         uppercase                                         No full stop for     Do not use a colon
+                       (and not bold)                                     abbreviated units     after a label           paracetamol 500 mg +
+                                                                                                                        metoclopramide 5 mg
+   oxycodone – OXYCONTIN – modified-release tablet – DOSE 10 mg – oral – once only
+                                                                                                                                      double space
+    Generic Drug                                                                  Dose amount
+                              Long Dash                                                                                 Strength expressed in percentage
+    Display in full,                                                              and units in bold
+                               (em dash)
+ lowercase and bold
+   Do not abbreviate            between                                                                                 sodium chloride 0.9%
+      or truncate               attributes                       space          space to separate dose
+                                           to separate label from value         amount from dose units                                 double space
+
+Order of Attributes: use this order for the display of attributes in a medication line
+
+generic drug – brand name – strength – form – dose (dose, volume or equivalent) – rate – dose duration – route – frequency
+
+
+  Wrapped                                                                                                            Wrap between words of a drug name
+                                              Keep labels
+   Keep attributes together                  with attributes                 haemophilus influenzae
+                                                                                                                      Line height 120% to 140%
+   when wrapping                                                             type B vaccine –
+                                                                             solution for injection ––
+    DIORALYTE –                                                              DOSE 0.5 mL –                        Keep delimiters with preceding attribute
+    powder for oral solution
+                                        When using hard line breaks          intramuscular – once only
+                                        (the dose is on a new line)                                                   At least one line
+    DOSE 1 sachet – oral –                                                                                            height between lines
+                                        no delimiter is needed at the        haemophilus influenzae
+    once only
+                                        end of the previous line             type B vaccine –
+
+
+
+  Edition 1 – 20th May 2010        © Microsoft Corporation 2010. All rights reserved.
+

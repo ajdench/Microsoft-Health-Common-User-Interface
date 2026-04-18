@@ -1,0 +1,46 @@
+Patient Banner Format Crib Sheet
+                                                Apply a visual styling such as a thick border or background colour
+                                                                                  Full width of the application window
+Zone 1
+Information that
+facilitates patient           CHANDRASEKHAR, Subramanyan (Mr)                                   Born 14-Jul-1945 (61y)     Gender Male       NHS No. 129 728 7652
+identification
+                             Address 340 Gloucester R...   Phone and email 020 8123 4567                                                      A
+                                                                                                                                             Known allergies
+Zone 2 (optional)                                                                                                            Gender: A person’s   current Gender.
+Supplementary                                                                                                                This may be different from a person’s
+information that either                                                                                                      Sex which is a person’s Gender
+supports patient                                           Click to expand for more detail
+                                                                                                                             defined at the point of birth registration
+identification or assists
+patient care                                               Tooltip
+                                                                                                                             For each label in Zone 1, provide a
+                                                           Provide a tooltip stating that
+                                                                                                                             definition and a means to access the
+                                                           Zone 2 can be expanded
+                                                                                                                             definition. For example, by displaying
+                                                                                                                             a tooltip
+
+                       Fixed position
+
+                                                                                       Born 14-Jul-1945 (61y) Gender Male NHS No. 129 728 7652
+                      Patient Banner
+                                                       Aligned                                                               A   Known allergies
+                         Full width
+                                                        to top                                                           Click here to open this section of the record
+                                                                                                                         Provide a means to access the record for
+                       Information for                                                                                   all data items in Zone 1
+                       a single patient                                      Role-based Access Control
+                                                                             Adhere to role-based access
+                                                                             control. For example, do not                Phone and email Not Known
+                                                                             display clinical information
+                                                                                                                         If a data item is now known or is
+    Maintain Visibility                                                      such as allergy propensities,
+                                                                                                                         otherwise unavailable, use a blank
+    Do not obscure the patient banner                                        to non-clinical users
+                                                                                                                         string or self explanatory text
+    with other elements of the screen                                                                                    immediately after the label
+
+
+   Edition 1 – 20th May 2010              © Microsoft Corporation 2010. All rights reserved.
+

@@ -1,0 +1,2278 @@
+# Design Guidance -- Patient List View
+
+## Provenance
+- Source file: `raw/sources/design-guidance/toolkit-bundled-pdfs/Design Guidance -- Patient List View.pdf`
+- Extracted text: `derived/extracted-text/design-guidance/design-guidance-patient-list-view.txt`
+- Normalization note: machine-cleaned `pdftotext -layout` output; verify against the PDF for edge cases.
+
+## Extracted Text
+
+Design Guidance
+   Patient List View
+
+    Tuesday, 26 January 2010
+              Version 1.0.0.0
+
+                 Prepared by
+
+PREFACE
+   Documents replaced by this document
+
+   Document Title                                                                                                                  Version
+   None
+
+   Documents to be read in conjunction with this document
+
+   Document Title                                                                                                                  Version
+   Design Guidance – Patient Banner                                                                                                4.0.0.0
+
+   Design Guidance – Displaying Graphs and Tables                                                                                  2.0.0.0
+
+   Design Guidance – Filtering, Sorting and Grouping                                                                               1.0.0.0
+
+This document and/or software (“this Content”) has been created in partnership with the National Health Service (NHS) in England. Intellectual Property
+Rights to this Content are jointly owned by Microsoft and the NHS in England, although both Microsoft and the NHS are entitled to independently exercise
+their rights of ownership. Microsoft acknowledges the contribution of the NHS in England through their Common User Interface programme to this Content.
+Readers are referred to www.cui.nhs.uk for further information on the NHS CUI Programme.
+All trademarks are the property of their respective companies. Microsoft and Windows are either registered trademarks or trademarks of Microsoft
+Corporation in the United States and/or other countries.
+
+© Microsoft Corporation 2010. All rights reserved.
+
+                                    Design Guidance – Patient List View
+                                    Prepared by Microsoft, Version 1.0.0.0
+                                    Last modified on 26 January 2010
+
+TABLE OF CONTENTS
+1    Introduction ....................................................................................................................................1
+    1.1    Customer Need .........................................................................................................................1
+    1.2    Scope ........................................................................................................................................3
+     1.2.1      In Scope...............................................................................................................................3
+     1.2.2      Out of Scope ........................................................................................................................4
+    1.3    Assumptions..............................................................................................................................6
+    1.4    Dependencies ...........................................................................................................................6
+
+2    Guidance Overview ........................................................................................................................7
+    2.1    Rationale Summary ..................................................................................................................7
+    2.2    Summary of Guidance ..............................................................................................................8
+
+3    Guidance Details for Patient List Layout ...................................................................................12
+    3.1    Introduction .............................................................................................................................12
+    3.2    Guidelines ...............................................................................................................................12
+     3.2.1      Patient List Header ............................................................................................................12
+     3.2.2      Column Headers ................................................................................................................14
+     3.2.3      Columns.............................................................................................................................17
+     3.2.4      Rows and Cells ..................................................................................................................23
+     3.2.5      Sublists ..............................................................................................................................27
+     3.2.6      Patient Identification ..........................................................................................................30
+     3.2.7      Row Key Identifiers ............................................................................................................35
+
+4    Guidance Details for Managing the Information Displayed .....................................................41
+    4.1    Introduction .............................................................................................................................41
+    4.2    Guidelines ...............................................................................................................................41
+     4.2.1      Managing the Columns Displayed .....................................................................................41
+     4.2.2      Refresh Options and Update Indication ............................................................................46
+     4.2.3      Displaying Historical Patient List Information ....................................................................52
+     4.2.4      Displaying Further Information ..........................................................................................54
+
+5    Document Information .................................................................................................................58
+    5.1    Terms and Abbreviations ........................................................................................................58
+    5.2    Definitions ...............................................................................................................................58
+    5.3    Nomenclature ..........................................................................................................................59
+     5.3.1      Body Text...........................................................................................................................59
+     5.3.2      Cross References ..............................................................................................................60
+    5.4    References ..............................................................................................................................60
+
+APPENDIX A            Usability Principles ...................................................................................................61
+
+APPENDIX B            Study ID 77: Executive Summary ............................................................................62
+                                 Design Guidance – Patient List View
+                                 Prepared by Microsoft, Version 1.0.0.0
+                                 Last modified on 26 January 2010
+
+Design Guidance – Patient List View
+Prepared by Microsoft, Version 1.0.0.0
+Last modified on 26 January 2010
+
+1            INTRODUCTION
+    This document provides guidance for the design of Patient Lists. It describes the area of focus, lists
+    mandatory and recommended guidance points with usage examples and explains the rationale
+    behind the guidance.
+    To indicate their relative importance, each guideline in this document is ranked by Conformance
+    and by Evidence Rating. Table 1 defines those terms:
+
+    Term                  Definition
+    Conformance           Indicates the extent to which you should follow the guideline when defining your User Interface (UI)
+                          implementation. There are two levels:
+                           Mandatory – An implementation should follow the guideline
+                           Recommended – An implementation is advised to follow the guideline
+
+    Evidence Rating       Summarises the strength of the research defining the guideline and the extent to which it mitigates patient safety
+                          hazards. There are three ratings (with example factors used to determine the appropriate rating):
+                           Low:
+                               Does not mitigate specific patient safety hazards
+                               User research findings unclear and with few participants
+                               Unreferenced usability principles indicate the design is not significantly better than alternatives
+                           Medium:
+                               Mitigates specific patient safety hazards
+                               User research findings clear but with few participants
+                               References old authoritative guidance (for example, from the UK National Patient Safety Agency (NPSA),
+                                Institute for Safe Medication Practices (ISMP) or World Health Organization (WHO)) that is potentially
+                                soon to be superseded
+                               Referenced usability principles indicate the design is significantly better than alternatives
+                           High:
+                               Mitigates specific patient safety hazards
+                               User research findings clear and with a significant number of participants
+                               References recent authoritative guidance (for example, from NPSA, ISMP or WHO)
+                               Referenced usability principles indicate the design is significantly better than alternatives
+    Table 1: Conformance and Evidence Rating Definitions
+
+         Note
+         Refer to section 5.2 for definitions of the specific terminology used in this document.
+
+1.1          Customer Need
+    Patient Lists are used in a wide range of clinical contexts within both primary and hospital and
+    acute care settings.
+    A Patient List comprises a structured list of patients specific to a service, a location or a care
+    provider. For each patient, the list contains unique identification information and a subset of the
+    patient’s health record appropriate to the use of the list.
+    Uses of Patient Lists include:
+          Reviewing information about a set of patients
+          Gaining an overview of their clinical situation
+          Managing tasks
+
+                                                                                                                                       Page 1
+                                  Design Guidance – Patient List View
+                                  Prepared by Microsoft, Version 1.0.0.0
+                                  Last modified on 26 January 2010
+
+Figure 1 illustrates a Patient List that follows the guidance in this document:
+
+Figure 1: Example Patient List Conformant to This Guidance, Populated with Fictitious Data
+
+     Important
+     The visual representations used within this document to display the guidance are illustrative only. They
+     are simplified in order to support understanding of the guidance points. Stylistic choices, such as colours,
+     fonts or icons are not part of the guidance and unless otherwise specified are not mandatory requirements
+     for compliance with the guidance in this document.
+     Some examples within this document are based on the requirements for the NHS within the UK. You
+     should consider how your clinical application will need to handle information, such as patient identification
+     numbers (shown with the label ‘NHS No.’ in some images in this guidance), within the country of use.
+
+Patient Lists may be used by an individual clinician (for example, consultant) or a team (for
+example, nursing team). The lists are typically used for a specific time period (for example, a shift)
+and are updated during this period if changes to the patient information occur.
+During the research and collation of data for this document no guidance was found for a common
+presentation of Patient Lists as defined above.
+
+                                                                                                             Page 2
+                               Design Guidance – Patient List View
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 26 January 2010
+
+ During the development of this document, potential patient safety hazards around the display of
+ patient data within a list were identified and recorded. The guidance within this document helps
+ mitigate these recorded hazards and is determined by three key considerations:
+          Users must be able to easily access the Patient List information they need
+          Users must be able to quickly and easily familiarise themselves with the Patient List layout
+           on first use
+          Users must be able to quickly understand how to manage the display of Patient List
+           information
+ This guidance covers the safe display of information for multiple patients in a Patient List format.
+ During research, the majority of identified potential patient safety hazards concerning Patient Lists
+ applied to hospital and acute care contexts, where teams of clinicians are caring for multiple
+ patients in a single location (for example, a medical ward in a hospital). For this reason, the
+ majority of examples provided throughout this document are based on a hospital and acute care
+ scenario, specifically a hospital respiratory ward. The medical information shown in these examples
+ is fictitious but is based on the experiences of medical professionals who work or have recently
+ worked on respiratory wards.
+
+1.2        Scope
+ This section sets out the items that are in and out of scope for this design guidance.
+
+1.2.1          In Scope
+ Areas              Details
+ Datatype (format  Structured text (for example, tasks) excluding
+ and layout)        associated metadata (for example, task status
+                    changes)
+
+ Attribute (content  Patient identifiers (including layout and positioning)      'Appointment' times (including multiple times)
+ and format)         Location (static location)
+
+ Cells               Cell padding                                                Multiple data types per cell
+                     Multiple entries per cell
+
+ List Header         Label and inclusion criteria of list
+
+ Row and Column  Headers (for example, style, labels)                            Style (for example, banding
+                     Gridlines                                                   Size and resizing (both user and system initiated)
+
+ More Details        Opening items (for example, patient care records)           'Opened' items in context with list
+
+ Navigation          Moving around a long or wide list (vertical and
+                      horizontal scrolling)
+
+ No Data             Empty rows (beds or timeslots)                              No results in list
+
+ Out of View         Indicating data out of view per cell and/or row (for        Use of out of view (that is, do you always show some
+                      example, truncation)                                         datatypes and/or attributes)
+                     Indicating items out of list view                           Fitting items on a page (for default views)
+
+ Provenance          Indication of refreshed list                                Refreshing the list
+
+ Updates             Indication of update (at list or 'cell' level, including    Provenance –- when was data last updated
+                      'new' items)                                                Snapshot history (viewing, navigating, indication of
+                     Viewing update history                                       past, and so on)
+                     Viewing previous patients on the list
+
+                                                                                                                                     Page 3
+                              Design Guidance – Patient List View
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 26 January 2010
+
+ Areas               Details
+ Datasets             Alter the visible dataset (for example, adding
+                       columns, including role specific views, list level of
+                       detail, and so on)
+
+ Layout               Layout of data (for example, column order)
+
+ Manipulation         Indication of filtered list                              Indication of sort order
+                      Filtering the list                                       Showing and hiding 'columns'
+                      Indication of grouping
+
+ Similarity           Flagging similar names and similarity (indication of
+                       determining differential)
+ Table 2: In Scope
+
+1.2.2          Out of Scope
+ This section defines areas that are not covered by this guidance. Although there may be specific
+ hazards associated with these areas that are not addressed in this guidance, it is likely that the
+ principles in this guidance will extend to Patient Lists in many of the areas listed in Table 3:
+
+ Areas               Details
+ Alerts               Alerts of change in patient state (for example,
+                       change of Medical Early Warning Score (MEWS))
+
+ Application          Location in window                                       Simultaneous user considerations (for example,
+                      Context of list                                           checkout, editing and so on)
+                      Window or port sizing                                    Search in progress
+                                                                                Determining default row and column dimensions
+
+ Attribute (content  Mark for discharge                                        Association of goals with tasks, results and
+ and format)         Resuscitation status                                       outcomes
+                      Clinical summary (or equivalent) and its structure       Rationale for decisions
+                                                                                Sealed information
+
+ Datasets             Specifying datasets for particular contexts              Multi-user view (for example, viewing in a
+                      Handling 'exceptional data' (that is, important data      Multi-Disciplinary Team (MDT) meeting)
+                       but outside of the normal dataset)                       Alter level of detail shown within a column
+
+ Datatype (format  Numerical data per cell                                     Flagging and check of auto populated information
+ and layout)       Free-text                                                   Flagging missing data
+                      Numerical series                                         Graphing display
+                      Scoring (for example, MEWS)                              Data structured in contextually relevant handover
+                      Flagging potentially incorrect information                information structures (for example, Mechanism
+                                                                                 Illness/Injury Signs/Symptoms Treatment (MIST))
+                      Personal notes
+                                                                                Abbreviations
+                      Highlighting information
+                                                                                Misspellings
+
+ Dual layout view  Ensuring equivalent patient information is presented        Selection behaviour (for example, selecting a Patient
+                    consistently between the two views                           List row highlights location on a graphical schema)
+                      Dealing with information that is only displayed in one  Ensuring equivalent patient information is in view in a
+                       of the views (for example, 'summary' not shown on a      table when selected on a graphical schema
+                       schematic view)                                         Method of switching between views (if viewed
+                      Consistent visual indication of selection                alternately)
+
+ Form factor          Size and interaction modality
+
+                                                                                                                                 Page 4
+                               Design Guidance – Patient List View
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 26 January 2010
+
+Areas               Details
+Graphical layout     Schematic, architectural, layout, and so on               Access to further information
+                     Minimum information                                       Area showing ‘patient row’ for selection
+                     Information constraints                                   Area showing Patient Banner for selected location
+
+Information      Showing and hiding data                                       Restrictions on history viewing
+Governance (IG)  Screensaver or lockout
+
+Input                Input of any data
+
+Layout               Changing of layout (for example, column horizontal
+                      order)
+
+List actions        The Patient List is not used to enter data into the system  Find within a list
+                    Access to actions (for example, through header and in-      Selection of rows, cells, data in cells, columns
+                    context including selection):                                (navigation, visual confirmation, states, navigation,
+                     Differing actions based on list and/or selection           and so on)
+
+List header          Ward level aggregated scores (for example, number
+                      of infections)
+
+List inclusion       Patient’s ‘outside’ the standard set (for example,        Lists with multiple instance of the same patient
+                      those pending admission)                                  Specifying list criteria
+                     View non-patient data (for example, ward level            Multiple patients allocated to the same bed (next
+                      information)                                               patient awaiting admission)
+                     Data about patients not in the systems
+
+Manipulation         Indication of grouping                                    Sort on a key within multiple datatype cells
+                     Change view setting                                       Sorting items within a cell (for example, prioritising
+                     Use of sort order                                          patients)
+
+Miscellaneous        Handover status                                           Remote view
+                     Colours                                                   Patient List summary in the context of a single record
+                     Ambiguous information
+
+Navigation           Navigating to a Patient List                              Navigating from Patient List
+
+Printing             Printing all or part of a Patient List
+
+Process              Process of handover (for example, transfer of responsibility)
+
+Structured layout  Structured lines (for example, stack of Patient Banners)
+
+Summary              Indicating fallibility of summaries                       Usage of ‘how much’ data should be allowed ‘in’ a
+                                                                                 Patient List
+
+Tasks                Basic task display layout and format                      Task state transition model
+                     Task status indicator per task                            Viewing task priority
+                     Task status indicator per patient                         Viewing tasks independence
+                     Hierarchical view of tasks                                Viewing task time dependence
+                     Filtering tasks                                           Discharge with outstanding tasks
+                     Display of completed tasks                                Changing a task’s status
+                     Colour coding                                             Allocation of tasks
+                     Role specific mark-up                                     Setting task priority
+                     View task assignment                                      View tasks in relation to care pathway
+                     Indicate overdue tasks
+Table 3: Out of Scope
+
+                                                                                                                                    Page 5
+                              Design Guidance – Patient List View
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 26 January 2010
+
+      Note
+      Listing an item as out of scope does not classify it as unimportant. Project time and resource constraints
+      inevitably restrict what can be in scope for a particular release. It is possible that items out of scope for
+      this release may be considered for a future release.
+
+1.3      Assumptions
+ ID       Assumption
+ A1       The quality (that is, provenance, accuracy, and completeness) of the data displayed in the Patient List is of an acceptable
+          level. Data quality is particularly important in scenarios where there are multiple data sources (as the quality of data may
+          vary between sources).
+
+ A2       Where the system supports the live update of Patient List information, the system performance and connectivity is of such a
+          level that there is minimum delay between the update being entered and the Patient List being updated.
+
+ A3       The minimum screen resolution used by the clinician is 1024 x 768 pixels, although a higher resolution may be employed.
+
+ A4       The Patient List consists entirely of information that resides in and is accessible through other views, including views that
+          represent the data as entered into the system.
+ Table 4: Assumptions
+
+1.4      Dependencies
+ ID       Dependency
+ D1       Changes in the following documents may affect the guidance presented in this document:
+           Design Guidance – Patient Banner
+           Design Guidance – Displaying Graphs and Tables
+           Design Guidance – Filtering, Sorting and Grouping
+ Table 5: Dependencies
+
+                                                                                                                                     Page 6
+                             Design Guidance – Patient List View
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 26 January 2010
+
+2         GUIDANCE OVERVIEW
+
+2.1       Rationale Summary
+    The rationale for the current guidance draws on several pieces of evidence:
+    Research:
+        Primary Research:
+               Interviews with healthcare professionals, including doctors (see APPENDIX B)
+               Regular consultation with a panel of clinical experts
+        Secondary Research:
+               Existing guidelines and standards
+               UI best practice
+    Usability Principles (see APPENDIX A for details on these principles):
+        Nielsen’s usability heuristics
+        Shneiderman’s eight golden rules of interface design
+        International Organization for Standardization (ISO) 9241: Characteristics of presented
+         information (taken from BS EN ISO 9241-10: 1996 Ergonomic requirements for office work
+         with visual display terminals (VDTs) -- Part 10: Dialogues principles {R1})
+    Existing Standards:
+        BS EN ISO 9241-10:1996 Ergonomic requirements for office work with visual display
+         terminals (VDTs): Part 10: Dialogues principles {R1}
+        BS 7581:1992 Guide to Presentation of tables and graphs {R2}
+    Evolving Standards:
+        Design Guidance – Patient Banner {R3}
+        Design Guidance – Displaying Graphs and Tables {R4}
+        Design Guidance – Filtering, Sorting and Grouping {R5}
+
+                                                                                                Page 7
+                          Design Guidance – Patient List View
+                          Prepared by Microsoft, Version 1.0.0.0
+                          Last modified on 26 January 2010
+
+2.2       Summary of Guidance
+ Table 6 summarises the content of this document by outlining each area of guidance (along with a
+ cross reference to the relevant section) and providing a visual example to illustrate how it might be
+ implemented:
+
+ Areas of Guidance                                                      Visual Summary
+ Section 3 provides guidance on the layout of Patient Lists
+
+ Section 3.2.1 provides
+ guidance on the Patient List
+ header, which communicates
+ the context of the Patient List
+
+ Section 3.2.2 provides
+ guidance on column headers,
+ which provide the titles for
+ each column
+
+ Section 3.2.3 provides
+ guidance on columns, which
+ contain the sets of
+ information for the Patient List
+
+ Section 3.2.4 provides
+ guidance on rows and cells.
+ Rows contain the information
+ for each patient in the Patient
+ List. Cells contain specific
+ information for each patient
+
+                                                                                                  Page 8
+                               Design Guidance – Patient List View
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 26 January 2010
+
+Areas of Guidance                                                       Visual Summary
+Section 3.2.5 provides
+guidance on sublists, which
+are located within cells and
+contain information that is
+structured in a list format
+
+Section 3.2.6 provides
+guidance on the display of
+patient identification
+information
+
+Section 3.2.7 provides
+guidance on row key
+identifiers, which uniquely
+identify each row from others
+in the Patient List
+
+Section 4 provides guidance on managing the information displayed in a Patient List
+
+Section 4.2.1 provides
+guidance on how to manage
+the columns displayed in the
+Patient List
+
+                                                                                          Page 9
+                               Design Guidance – Patient List View
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 26 January 2010
+
+Areas of Guidance                                                         Visual Summary
+Section 4.2.2 provides
+guidance on notifying the
+user of updates to information
+displayed in the Patient List.
+
+Section 4.2.3 provides
+guidance on displaying
+historical patient information
+as a complete Patient List
+‘snapshot’.
+
+                                                                                           Page 10
+                                 Design Guidance – Patient List View
+                                 Prepared by Microsoft, Version 1.0.0.0
+                                 Last modified on 26 January 2010
+
+Areas of Guidance                                                       Visual Summary
+Section 4.2.4 provides
+guidance on how to display
+further information that a user
+has opened
+
+Table 6: Summary of Guidance
+
+                                                                                         Page 11
+                               Design Guidance – Patient List View
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 26 January 2010
+
+3            GUIDANCE DETAILS FOR PATIENT LIST LAYOUT
+
+3.1          Introduction
+    This section includes guidance for the layout of Patient Lists, specifically:
+          Patient List headers
+          Column headers
+          Columns
+          Rows and cells
+          Sublists
+          Patient identification
+          Row key identifiers
+
+3.2          Guidelines
+3.2.1            Patient List Header
+    This section provides guidance on the Patient List header. This communicates the context of the
+    list to the user. Figure 2 illustrates that feature:
+
+    Figure 2: Patient List Header
+
+                                                                                                                          Evidence
+    ID              Guideline                                                                               Conformance
+                                                                                                                          Rating
+    PAL-0010        Ensure that the Patient List header is always visible when the Patient List is          Mandatory     High
+                    displayed
+
+    PAL-0020        Locate the Patient List header at the top of the Patient List area and extend it        Mandatory     High
+                    across the entire width of the Patient List area
+
+    PAL-0030        Ensure that the Patient List header is displayed using a font size and weight that      Recommended   Medium
+                    gives it greater visual prominence than neighbouring Patient List elements
+
+    PAL-0040        In the Patient List header, display an appropriate combination of the following         Mandatory     High
+                    information:
+                     Who the list is for
+                     The service provided
+                     The location to which the list applies
+                     The time and date at which the data was last updated or, if the system supports
+                      real-time updates, the current time
+
+    PAL-0050        If the Patient List has been prepared for a single clinician, display the clinician’s   Recommended   Medium
+                    name in the Patient List header using family name, given name and salutation
+
+    PAL-0060        If the Patient List has been prepared for several individuals, reflect this in the      Recommended   Medium
+                    Patient List header (for example, display ‘Patient List for: Mr Crossley, Mr Argos’)
+
+    PAL-0070        If the Patient List has been prepared for a team, reflect this in the Patient List      Recommended   Medium
+                    header (for example, display ‘Patient List for: Physiotherapists’)
+
+                                                                                                                                 Page 12
+                                    Design Guidance – Patient List View
+                                    Prepared by Microsoft, Version 1.0.0.0
+                                    Last modified on 26 January 2010
+
+PAL-0080       In the Patient List header, provide sufficient location details to uniquely identify the Mandatory               High
+               location the Patient List applies to
+
+PAL-0090       When a Patient List comprises patients in different locations (for example, multiple Recommended                 Medium
+               wards) reflect this in the Patient List header (for example, ‘Elkington Ward,
+               Remington Ward’, ‘All Wards’)
+
+PAL-0100       In the Patient List header, display the current time and date in accordance with          Mandatory              High
+               Design Guidance – Time Display {R6} and Design Guidance – Date
+               Display {R7}
+
+Usage Examples
+
+In this correct example, the Patient List header extends across the entire width of the Patient List area and the contents are displayed
+using a prominent font size and weight. The header information includes who the list is for (Dr Maxhurst), the location to which it
+applies (Elkington Ward) and the current time and date in the correct format (PAL-0020, PAL-0030, PAL-0040, PAL-0050, PAL-0100)
+
+In this incorrect example, there is no location information to set context for the Patient List. The date is also missing, and the time is not
+in the correct format. (PAL-0040, PAL-0080, PAL-0100)
+
+In this correct example, the Patient List shows that it is configured for use by the on-call surgical team. (PAL-0050)
+
+In this correct example, the Patient List shows that it is configured to display patients across all wards. (PAL-0090)
+
+In this correct example, multiple ‘Ward 3’ locations exist in the same hospital so the additional detail ‘North wing’ has been added.
+(PAL-0080)
+
+In this correct example, the Patient List is for a ‘Baby Clinic’ service, for which a specific location is not required (PAL-0040)
+
+Rationale
+As the Patient List header communicates the context of use of the list to the user, it is important that the information is presented in a
+clear, consistent and unambiguous form and has visual prominence at the top of the list. Such headers are particularly important when
+a variety of Patient Lists may be used within multi-disciplinary teams.
+For example, Patient Lists such as these:
+ Used by all clinicians on a ward with general information (such as patient location and infection control measures)
+ Used for role-specific lists shared between a group of clinicians (such as junior doctors and nursing staff)
+ Configured for use by individuals (such as consultants and occupational therapists)
+
+                                                                                                                                       Page 13
+                              Design Guidance – Patient List View
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 26 January 2010
+
+ Hazard Risk Analysis Summary:
+      Potential Hazards:                                                                          Mitigations:
+       PLI012 What if there is no clear header on the list?                                       PAL-0010, PAL-0020
+       PLI109 What if the title does not have sufficient emphasis to identify the particular  PAL-0030
+        list shown?
+       PLI112 What if the status of the list is not shown within close proximity to the list?  PAL-0010, PAL-0020, PAL-0080
+       PLI127 What happens if a clinician cannot distinguish which list is being viewed           PAL-0040, PAL-0060, PAL-0080
+       PLI128 What if the date and time fields are not closely situated                           PAL-0100
+       PLI046 What if there is more than one consultant with the same name within the  PAL-0050
+        medical organization, the given name and prefix (or initial) is not on the list and ID
+        numbers are not available?
+       PLI283 What if the list presents patients from mixed locations (for example, more  PAL-0090
+        than one hospital ward in one view)?
+
+3.2.2         Column Headers
+ This section provides guidance on column headers, which provide the titles for each column. Figure
+ 3 illustrates that feature:
+
+ Figure 3: Column Headers
+
+                                                                                                                           Evidence
+ ID               Guideline                                                                             Conformance
+                                                                                                                           Rating
+ PAL-0110         Vertically align all column header titles to the top of their text area               Recommended        Low
+
+ PAL-0120         Support wrapping of column header titles onto multiple lines                          Recommended        High
+
+ PAL-0130         Match the left and right margins within each column header to that used by the Recommended               Medium
+                  data displayed in the column
+
+ PAL-0140         Match the horizontal alignment of each column header title to that used by the        Recommended        Medium
+                  data displayed in the column
+
+ PAL-0150         Do not truncate the column header title                                               Recommended        High
+
+ PAL-0160         If the width of the column is insufficient to display the column header title on      Recommended        Medium
+                  one line, display the title on multiple lines
+
+ PAL-0170         If the Patient List content area requires vertical scrolling, ensure that the         Mandatory          High
+                  column header bar remains visible (that is, it does not scroll out of view)
+
+                                                                                                                                   Page 14
+                               Design Guidance – Patient List View
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 26 January 2010
+
+Usage Examples
+
+In this correct example, the column header titles are vertically aligned to the top of their text area and use the same horizontal
+alignment as the column content (hence, ‘Location’ is centre aligned and the other fields left aligned.) The left and right margins within
+each column header title match those used for the content. ’Presenting complaint’ and ‘Past medical history’ have wrapped onto the
+next line. (PAL-0110, PAL-0130, PAL-0140, PAL-0150, PAL-0160)
+
+In this incorrect example, the column header titles are middle aligned regardless of the horizontal alignment of the column content.
+‘Presenting complaint’ and ‘Past medical history’ have been truncated. (PAL-0140, PAL-0150, PAL-0160)
+
+In this incorrect example, in addition to mismatching horizontal alignment, the column header title left and right margins are not the
+same as the column content. This impedes visual scanning between title and content. The lack of separation between ‘Presenting
+complaint’ and ‘Past medical history’ impedes legibility. (PAL-0130, PAL-0140, PAL-0160)
+
+                                                                                                                                   Page 15
+                             Design Guidance – Patient List View
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 26 January 2010
+
+In this correct example, when the user scrolls the viewing area down, the column headers remain visible. (PAL-0170)
+
+In this incorrect example, when the user scrolls down, the column headers are scrolled off the top of the viewing area. (PAL-0170)
+
+                                                                                                                               Page 16
+                            Design Guidance – Patient List View
+                            Prepared by Microsoft, Version 1.0.0.0
+                            Last modified on 26 January 2010
+
+ Rationale
+ Correctly aligned and non-truncated column headers are particularly important for those Patient Lists that have a large number of
+ columns. Such column headers assist the user in identifying the types of content displayed (for example, ‘Presenting complaint’ versus
+ ‘Past medical history’). Maintaining the visibility of the column headers for a scrolled list is particularly important for this reason.
+ Section 4.2.1 includes guidance and rationale on permitting users to choose which columns are displayed in the Patient List and the
+ order in which they appear. Thereby, it is possible that users will position columns with similarly formatted content next to each other
+ (for example, two or more columns containing times). For this reason, it is important that the user can readily view the identity of each
+ column at all times.
+ Hazard Risk Analysis Summary:
+      Potential Hazards:                                             Mitigations:
+       PLI246 What if you cannot see the labels for the data you  PAL-0150, PAL-0160, PAL-0170
+        are looking at?
+
+3.2.3        Columns
+ This section provides guidance on columns, which contain the sets of information for the Patient
+ List. Figure 4 illustrates that feature:
+
+ Figure 4: Columns
+
+                                                                                                                             Evidence
+ ID             Guideline                                                                              Conformance
+                                                                                                                             Rating
+ PAL-0180       Separate columns with prominent vertical divider lines                                 Mandatory             High
+
+ PAL-0190       Use left and right margins within each column to ensure separation between             Mandatory             High
+                adjacent content
+
+ PAL-0200       Allow the user to adjust the width of columns and persist the set column widths        Mandatory             High
+                between the user’s sessions
+
+ PAL-0210       To prevent truncation, by default limit the minimum width of a column to the widest Recommended              High
+                element in its title and content (for example, the longest word) plus its left and right
+                margins
+
+ PAL-0220       When users change the width of a column, ensure that by default the widths of          Recommended           Medium
+                other columns are kept the same (even if this causes the combined column width
+                to exceed the viewable area)
+
+ PAL-0230       When the combined column width exceeds the viewable area, permit horizontal            Recommended           Medium
+                scrolling
+
+                                                                                                                                    Page 17
+                              Design Guidance – Patient List View
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 26 January 2010
+
+PAL-0240   When columns are out of view, by default display symbols (for example, left and           Mandatory            High
+           right arrows) to indicate the direction the user will need to scroll to view those
+           columns. Position the symbols immediately above and towards the left and right
+           borders of the viewing area to avoid obscuring information
+
+PAL-0250   Supplement out of view symbols with the message ‘columns out of view – scroll             Recommended          Low
+           left and right’ or similar. Position this message in close proximity to the out of view
+           symbols
+
+PAL-0260   Provide users with the option to hide out of view notifications until the next user       Recommended          Medium
+           session
+
+PAL-0270   If, after an update of Patient List content, the elements in a column (for example,       Recommended          High
+           the longest word) become wider than the column width, automatically resize the
+           column to prevent truncation.
+
+Usage Examples
+                                                                                                 In this correct example, columns are
+                                                                                                 separated by prominent vertical lines
+                                                                                                 and the margins within each column
+                                                                                                 ensure separation of adjacent content.
+                                                                                                 (PAL-0180, PAL-0190)
+
+                                                                                                 In this incorrect example, the column
+                                                                                                 divider lines are not prominent enough
+                                                                                                 and the margins inadequate to ensure
+                                                                                                 separation between adjacent content.
+                                                                                                 For example, ‘Chronic Pancreatitis’ and
+                                                                                                 ‘Urinary antigens negative’ could be
+                                                                                                 accidentally read as one sentence.
+                                                                                                 (PAL-0180, PAL-0190)
+
+                                                                                                                                 Page 18
+                         Design Guidance – Patient List View
+                         Prepared by Microsoft, Version 1.0.0.0
+                         Last modified on 26 January 2010
+
+In this incorrect example, the user has been permitted to resize the middle column narrower than the widest elements resulting in the
+words ‘Pancreatitis’ and ‘Cerebrovascular’ being truncated. (PAL-0210)
+
+                                                                                                                               Page 19
+                            Design Guidance – Patient List View
+                            Prepared by Microsoft, Version 1.0.0.0
+                            Last modified on 26 January 2010
+
+In this incorrect example, when the user resizes the first column, the other columns are automatically resized to maintain the overall
+width of the combined columns. As a consequence information has been relocated (for example, ‘Wednesday – on Potassium’ and
+‘Diarrhoea’ are no longer in view). (This example assumes the user has not set a preference for this behaviour). (PAL-0220)
+
+                                                                                                                                 Page 20
+                             Design Guidance – Patient List View
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 26 January 2010
+
+In this correct example, when the user resizes the third column (‘Presenting complaint’) the columns to the right remain the same
+width. The overall width has increased beyond the viewable area, so a horizontal scrollbar is displayed. The out-of-view symbols and
+warning message are displayed by default immediately above the viewable area. (PAL-0200, PAL-0220, PAL-0230, PAL-0240,
+PAL-0250, PAL-0260)
+
+                                                                                                                              Page 21
+                            Design Guidance – Patient List View
+                            Prepared by Microsoft, Version 1.0.0.0
+                            Last modified on 26 January 2010
+
+In this correct example, the system updates the second column, replacing ‘None’ with ‘Echocardiogram’. The width of the column is
+automatically adjusted so that the new content is not truncated. (PAL-0270)
+See section 4.2.2 for guidance and rationale on information updates
+
+Rationale
+The close positioning of information within columns has potential safety hazards if the boundaries of each column are not clearly
+delineated. If a user accidentally reads two adjacent lines of content as one sentence, at best they will be confused; at worst they will
+form a wrong interpretation. This guidance mitigates that hazard.
+The ability to adjust the width of columns was considered desirable by the majority of participants (see APPENDIX B). Horizontal
+scrolling was considered unfamiliar as many existing Patient Lists are based on word processing documents, which are typically
+constrained to a fixed width. However, participants generally agreed that the benefits of an unrestricted list width (including the ability
+for users to adjust columns to a width appropriate for the content) outweighed the initial unfamiliarity.
+This guidance mitigates the identified hazards that may arise when clinicians migrate from document-based Patient Lists, in particular
+with regard to horizontal scrolling and columns that are out of view.
+         Note
+         The following rationale regarding truncation also applies to sections 3.2.4 and 3.2.5.
+
+The truncation of information within a Patient List was considered in several forms:
+ Truncation caused by a set maximum character limit within a field
+ Truncation of long words that exceed the width of the column they are located in
+ Truncation of sublists (where a maximum number of entries has been exceeded.)
+Design mock-ups for each of these types of truncation were shown to the user research and hazard assessment participants.
+
+                                                                                                                                     Page 22
+                             Design Guidance – Patient List View
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 26 January 2010
+
+ The majority of participants considered truncation to be a significant safety hazard, in particular with regard to truncated sublists (for
+ example where only the first 10 entries are displayed) where users may wrongly assume the sublist is complete (see APPENDIX B).
+ This guidance therefore recommends that truncation should be avoided in any form within Patient Lists.
+           Note
+           The quality of the source data is out of scope for this guidance, including the length of source data to display. However,
+           hazard assessments did explore and record the hazards of displaying unlimited, non-truncated information (for example,
+           displaying unnecessary or inappropriate detail for a given use) (see APPENDIX B). In the absence of guidance on the quality
+           of source data, the discussion concluded that clinicians can help mitigate these hazards by:
+            Managing the columns that are displayed in their Patient Lists (for example, to avoid unnecessarily verbose content)
+            Managing the quantity and appropriateness of the content that they provide
+
+ Hazard Risk Analysis Summary:
+      Potential Hazards:                                                   Mitigations:
+       PLI071 What if, when horizontally scrolling, there is no            PAL-0240, PAL-0250, PAL-0260
+        indication of data present to the left or right?
+       PLI245 What if many similar columns are presented next to           PAL-0180, PAL-0190
+        each other?
+       PLI014 What if the column width is not flexible or set to           PAL-0200, PAL-0210, PAL-0220, PAL-0230, PAL-0270
+        useful sizes to accommodate the data clearly?
+
+3.2.4         Rows and Cells
+ This section provides guidance on rows and cells. Rows contain the information for each patient in
+ the Patient List. Cells contain individual content (and sublists, where required). Figure 5 illustrates
+ those features:
+
+ Figure 5: Rows and Cells
+
+                                                                                                                               Evidence
+ ID               Guideline                                                                           Conformance
+                                                                                                                               Rating
+ PAL-0280         Orientate Patient List entries horizontally (that is, so the information for each   Mandatory                High
+                  patient is displayed across the viewing area.)
+                            Note
+                            This guidance overrides GTAB-191 in Design Guidance – Displaying
+                            Graphs and Tables {R4} for Patient List contexts only
+
+ PAL-0290         Separate rows using prominent horizontal divider lines                              Mandatory                High
+                                                                                                                                      Page 23
+                                   Design Guidance – Patient List View
+                                   Prepared by Microsoft, Version 1.0.0.0
+                                   Last modified on 26 January 2010
+
+PAL-0300       Visually delineate each row by using two alternating background colours                 Recommended              Medium
+
+PAL-0310       Choose row background colours that do not detract from the legibility of content Recommended                     Medium
+               within the list and the divider lines, and are unlikely to have semantic meaning in
+               that context
+
+PAL-0320       Support wrapping of cell text content onto multiple lines                               Recommended              High
+
+PAL-0330       Content in Patient List cells should never be truncated                                 Recommended              High
+
+PAL-0340       By default, the height of each patient row must be sufficient to avoid truncation       Recommended              High
+               of content
+
+PAL-0350       If, after an update of Patient List content, the content exceeds the row height,        Recommended              High
+               automatically resize the row to prevent truncation
+
+PAL-0360       When the Patient List is longer than the viewable area, allow access to the out of Recommended                   Medium
+               view part of the list with a vertical scrollbar
+
+PAL-0370       Provide an indicator at the top and across the full width of the Patient List to        Recommended              Medium
+               inform the user they are at the start of the list
+
+PAL-0380       Provide an indicator at the end and across the full width of the Patient List to        Recommended              Medium
+               inform the user they are at the end of the list
+
+Usage Examples
+
+In this correct example, the Patient List is oriented horizontally and each row is separated by a prominent horizontal line. Each row is
+delineated using alternating background colours and the height of each row is sufficient to avoid truncation of content. (PAL-0280,
+PAL-0260, PAL-0300, PAL-0310, PAL-0330, PAL-0340)
+
+In this incorrect example, the horizontal divider lines between rows are not prominent enough and there is no alternating background
+colour to delineate the rows. As a result, users would find it difficult to associate content with the row it belongs to. For example, it is
+not clear where the list of problems and test results in the fifth column for the second patient ends and the list for the third patient
+begins. (PAL-0290, PAL-0300, PAL-0310)
+
+                                                                                                                                       Page 24
+                              Design Guidance – Patient List View
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 26 January 2010
+
+In this correct example, new content is added to two of the rows as a result of an update. The height of each row has automatically
+increased to accommodate the new content and truncation is avoided. (PAL-0330, PAL-0340, PAL-0350)
+See section 4.2.2 for guidance and rationale on information updates.
+
+In this correct example, an indicator is displayed at the top of the Patient List informing the user they are at the start of the list.
+(PAL-0370)
+
+                                                                                                                                          Page 25
+                              Design Guidance – Patient List View
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 26 January 2010
+
+In this correct example, an indicator is displayed at the bottom of the Patient List informing the user they are at the end of the list.
+(PAL-0380)
+
+Rationale
+All observed examples of existing Patient Lists orient the information horizontally (that is, information for a patient is displayed in a row
+across the screen). This orientation is particularly appropriate when the number of rows is likely to vary over time and for Patient Lists
+this occurs when patients are added or removed. During guidance research and design no significant benefits of vertically oriented lists
+were discovered (see APPENDIX B). Therefore, GTAB-191 in Design Guidance – Displaying Graphs and Tables {R4}, which
+recommends the facility for users to re-orient tables, is overridden for Patient List contexts only
+Emphasising horizontal rows by using prominent horizontal divider lines and alternating background colours facilitates reading across
+each row within the Patient List. Using more than two background colours may lead users to wrongly infer meaning from the row
+colour.
+During hazard assessments, participants found the concept of vertically scrolling a single ‘page’ familiar due to their use of this
+navigation technique in other contexts (for example, browsing Web pages). Advantages of a single, scrollable page include:
+      Improved speed of navigation (no need to click through multiple pages)
+      List completeness (clear list beginning and end points)
+      Avoiding patient information being spread over separate pages
+See the rationale in section 3.2.3 for discussion of truncation issues.
+         Note
+         Although the format and layout of data is out of scope for this guidance, during discussions it was noted that there are hazards
+         associated with wrapping cell text content onto multiple lines. Examples of such hazards are:
+          Fragmentation of structured data (for example, the label ‘potassium’ becomes separated from its value ‘2.6’)
+          Fragmentation of free text instructions (for example, the essential qualifier ‘not’ becomes separated from ‘to go home’)
+
+Hazard Risk Analysis Summary:
+    Potential Hazards:                                                                            Mitigations:
+     PLI143 What if patients are not displayed as strict columns and rows?                        PAL-0280
+     PLI131 What if clinician misinterprets colours used?                                         PAL-0310
+     PLI026 What if there is not enough space in the columns?                                     PAL-0330
+     PLI110 What if the text within a column is truncated?                                        PAL-0330, PAL-0340, PAL-0350
+     PLI025 What if a row is split over a page or fold boundary?                                  PAL-0360
+     PLI120 What if patients are listed on more than one tab?                                     PAL-0360
+     PLI147 What if all your patients are not on one page?                                        PAL-0360
+     PLI149 What if it is not clear that there are more patients out of view?                     PAL-0360
+     PLI275 What if patient entries on the lists go out of view?                                  PAL-0360
+     PLI055 What if the data is displayed in too long a list, which may take the                  PAL-0360, PAL-0370, PAL-0380
+      information off the page (particularly relevant to printing)?
+     PLI056 What if you do not have a 'this is the top of the list' to match the 'this is the     PAL-0370, PAL-0380
+      bottom of the list'?
+
+                                                                                                                                      Page 26
+                              Design Guidance – Patient List View
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 26 January 2010
+
+3.2.5          Sublists
+ This section provides guidance on sublists, which are located within cells and contain information
+ that is structured in a list format. Figure 6 illustrates that feature:
+
+ Figure 6: Sublists
+
+                                                                                                                      Evidence
+ ID               Guideline                                                                             Conformance
+                                                                                                                      Rating
+ PAL-0390         When content is structured in a list format (for example, tasks outstanding or        Mandatory     High
+                  results recorded), horizontally divide the Patient List cell into a sublist and
+                  display each content list item in a separate sublist row
+
+ PAL-0400         Separate sublist rows using horizontal divider lines that are prominent enough to Mandatory         High
+                  be noticeable but less prominent than the row divider line.
+
+ PAL-0410         When cell content is structured in a list format, by default never display a subset Recommended     Medium
+                  of that content (for example, only five of eight items)
+
+ PAL-0420         The height of each sublist row must be sufficient to avoid truncation of content      Recommended   High
+
+ PAL-0430         If, after an update of Patient List content, the content exceeds the sublist row      Recommended   High
+                  height, automatically resize the sublist row to prevent truncation
+
+ PAL-0440         If, after an update of Patient List content, the number of sublist rows required to   Recommended   High
+                  display the content has changed, add or remove sublist rows accordingly
+
+                                                                                                                             Page 27
+                                Design Guidance – Patient List View
+                                Prepared by Microsoft, Version 1.0.0.0
+                                Last modified on 26 January 2010
+
+Usage Examples
+
+In this correct example, content structured in a list format is presented in sublists and entries are separated by horizontal divider lines
+that are prominent enough to be noticeable but less prominent than the row divider lines. The height of each row is sufficient to display
+each sublist in its entirety. (PAL-0390, PAL-0400, PAL-0410)
+
+In this incorrect example, the system has permitted the rows to have a height less than needed to display each complete sublist.
+(PAL-0410, PAL-0420)
+
+                                                                                                                                   Page 28
+                             Design Guidance – Patient List View
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 26 January 2010
+
+In this correct example, an update has added items to two of the sublists, which have increased in size accordingly. The rows
+containing the sublists have increased in height to avoid truncation. (PAL-0430, PAL-0440)
+
+                                                                                                                                Page 29
+                            Design Guidance – Patient List View
+                            Prepared by Microsoft, Version 1.0.0.0
+                            Last modified on 26 January 2010
+
+ Rationale
+ The majority of existing Patient Lists explored during guidance research included data that was structured in a list format. Common
+ examples for in-patient scenarios include:
+  Patient medical histories
+  Problems and results
+  Task lists (as reflected in the examples throughout this guidance).
+ Therefore it can be concluded that the provision of ‘sublists’ is desirable.
+ The sublist entry horizontal dividers, while important for delineating entries, must not compete with the row dividers: it is essential that
+ users can identify where one row ends and another starts (as detailed in section 3.2.4)
+ During user research (see APPENDIX B) several exploratory design mock-ups for sublists were shown to participants, including
+ mock-ups with a maximum sublist row count beyond which sublist entries were not displayed. Participants expressed concern that the
+ display of incomplete sublists would not give them a full picture of a patient’s clinical status. This guidance mitigates that concern.
+ Also see the rationale in section 3.2.3 for discussion of truncation issues.
+ Hazard Risk Analysis Summary:
+     Potential Hazards:                                                                                Mitigations:
+      PLI062 What if the task is not split into subtasks (each of which may have a status and          PAL-0390, PAL-0400
+       be a different role's responsibility)?
+      PLI137 What if multiple test results for the same patient are shown as separate,                 PAL-0390
+       ungrouped items?
+      PLI095 Not seeing the full picture of the patient's clinical status and/or summary, it is        PAL-0410
+       preferred to not see any of it than just some of it.
+      PLI148 What if all your tasks per patient are not immediately visible?                           PAL-0410
+      PLI079 What if you have too many jobs in one view?                                               PAL-0410
+      PLI110 What if the text within a column is truncated?                                            PAL-0420, PAL-0430
+      PLI065 What if there are no consistent rules for when a completed job is removed from            PAL-0440
+       the view?
+
+3.2.6          Patient Identification
+ This section provides guidance on the display of patient identification information in a Patient List.
+ Figure 7 illustrates that feature:
+
+ Figure 7: Patient Identification
+
+                                                                                                                                      Page 30
+                                    Design Guidance – Patient List View
+                                    Prepared by Microsoft, Version 1.0.0.0
+                                    Last modified on 26 January 2010
+
+                                                                                                                 Evidence
+ID         Guideline                                                                              Conformance
+                                                                                                                 Rating
+PAL-0450   Locate the patient name, date of birth and patient identification number in that       Mandatory      High
+           order on separate lines in the same column
+
+PAL-0460   When both the family name and given name of a patient are unknown, display             Recommended    Medium
+           the words ‘UNKNOWN, Unknown’ and the patient gender (if known)
+
+PAL-0470   When the family name of a patient is unknown and the given name is known,    Recommended              Medium
+           display the word ‘UNKNOWN’, the given name and the patient gender (if known)
+
+PAL-0480   When the family name of a patient is known and the given name is unknown,              Recommended    Medium
+           display the family name, the word ‘Unknown’ and the patient gender (if known).
+
+PAL-0490   When the date of birth of a patient is unknown display the word ‘Unknown’              Recommended    Medium
+
+PAL-0500   When a patient identification number is unknown, display the word ‘Unknown’            Recommended    Medium
+
+PAL-0510   For the duration that a patient identification number is unknown, display the      Recommended        Low
+           temporary identification number used by the care setting to uniquely identify that
+           patient. Use the same font style as the patient name field and the label
+           ‘Temporary Number’ or similar
+
+PAL-0520   Ensure that the display of the patient name conforms to all guidance points in         Mandatory      High
+           section 2.6.1 of Design Guidance – Patient Banner {R3}
+
+PAL-0530   Ensure that the display of the preferred name (if available), date of birth and Recommended           Medium
+           patient identification number conforms to guidance points PAB-0033, PAB-0036,
+           PAB-0037, PAB-0042, PAB-0043 and PAB-0046 in section 2.5.1 of Design
+           Guidance – Patient Banner {R3}
+
+PAL-0540   When patients on a Patient List have identical names (including the family             Mandatory      High
+           name) visually highlight these names and display a warning symbol next to the
+           patients’ names
+
+PAL-0550   When patients on the same Patient List have identical names (including the                Mandatory   High
+           family name), indicate the first element of patient identification information that
+           differentiates the patients (for example, by underlining). This might be their given
+           name or, if identical, their date of birth or, if identical, their patient identification
+           number.
+
+PAL-0560   If supported by the system, when patients on a Patient List have similar looking       Recommended    Low
+           or sounding names (including the family name) visually highlight those names
+           and display a warning symbol next to the patients’ names
+
+PAL-0570   If supported by the system, when patients on the same Patient List have similar Recommended           Low
+           looking or sounding names (including the family name), indicate the first element
+           of patient identification information that differentiates the patients (for example,
+           by underlining). This might be their given name or, if identical or similar, their
+           date of birth or, if identical, their patient identification number
+
+                                                                                                                        Page 31
+                         Design Guidance – Patient List View
+                         Prepared by Microsoft, Version 1.0.0.0
+                         Last modified on 26 January 2010
+
+Usage Examples
+                                                     In this correct example, the patient identification information is
+                                                     provided in the order patient name, date of birth and patient
+                                                     identification number. Where a preferred name is available, this is
+                                                     displayed after the patient name. (PAL-0450, PAL-0520,
+                                                     PAL-0530)
+
+                                                     In this incorrect example, the patient identification information is
+                                                     not displayed in the required order. As a result, users will have
+                                                     difficulty reading the information quickly and safely (for example,
+                                                     Tony Madigan’s day of birth may accidentally be read as part of
+                                                     the patient identification number.) (PAL-0450, PAL-0520,
+                                                     PAL-0530)
+
+                                                     In this correct example, a patient whose family name and given
+                                                     name are unknown is displayed using the words ‘UNKNOWN,
+                                                     Unknown’ plus his gender. His date of birth and patient
+                                                     identification number also have the word ‘Unknown’ displayed.
+                                                     While his patient identification number is unknown, the temporary
+                                                     number used by the care setting to uniquely identify him is
+                                                     displayed using the same font style as for the patient name field,
+                                                     and is labelled ‘Temporary No’ (PAL-0460, PAL-0490, PAL-0500,
+                                                     PAL-0510)
+
+                                                     In this correct example, a patient whose family name is unknown
+                                                     and whose given name is known is displayed using his family
+                                                     name, the word ‘Unknown’ and his gender. (PAL-0460, PAL-0490,
+                                                     PAL-0500, PAL-0510)
+
+                                                     In this correct example, a patient whose family name is known and
+                                                     whose given name is unknown is displayed using the word
+                                                     ‘UNKNOWN’, his given name and his gender. (PAL-0460,
+                                                     PAL-0490, PAL-0500, PAL-0510)
+
+                                                                                                                   Page 32
+                 Design Guidance – Patient List View
+                 Prepared by Microsoft, Version 1.0.0.0
+                 Last modified on 26 January 2010
+
+In this incorrect example, two patients in the list have the same names but this is not highlighted in any way, potentially leading to
+misidentification by users of the list. (PAL-0540, PAL-0550)
+
+In this correct example, two patients in the list have the same names. This is highlighted by a symbol next to the names and a changed
+font colour for the identical information. The first elements of patient identification information which differentiates the patients (their
+dates of birth) are underlined. (PAL-0540, PAL-0550)
+
+In this correct example, two patients in the list have similar sounding names. This is highlighted by a symbol next to the names and a
+changed font colour for the similar information. The first elements of patient identification information which differentiates the patients
+(their dates of birth) are underlined. (PAL-0560, PAL-0570)
+
+                                                                                                                                     Page 33
+                             Design Guidance – Patient List View
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 26 January 2010
+
+Rationale
+The clear identification of patients is essential to any Patient List. The guidance in this section is consistent with that provided in
+Design Guidance – Patient Banner {R3} and extends that guidance by considering display of identification information for multiple
+patients at the same time.
+In certain clinical scenarios (for example, emergency wards) the names of patients may be unknown. Guidance on the display of
+partially or completely unknown patient names was informed by the NPSA communication Guidance on the standard for Patient
+Identifiers for Identity bands {R9}.
+Table 7 details the differences between the NPSA guidance and the Patient List guidance on unknown names:
+
+  Name Part Known/Unknown                              NPSA Guidance                        Patient List Guidance
+  Family name unknown, given name unknown              Unknown Male, Unknown Male           UNKNOWN, Unknown, Male
+
+  Family name unknown, given name known                Unknown Male, Ben                    UNKNOWN, Ben, Male
+
+  Family name known, given name unknown                SMITH, Unknown Male                  SMITH, Unknown, Male
+Table 7: Differences Between NPSA and Patient List Unknown Name Guidance
+
+The Patient List guidance has been adapted for the following reasons:
+1. The family name and given name are displayed on the same line in the Patient List, so two ‘Male’ qualifiers are not required
+2. The capitalisation of ‘UNKNOWN’ reflects the guidance for known names (that is, the family name is all capitals and the given
+   name is only first capital)
+Patient Lists in contexts where patient identification numbers may not be known need to be able to display those patients with a
+temporary identification number.
+The hazards of misidentification of patients with the same name are documented by the WHO in an aide memoire entitled Patient
+Identification {R8}. The WHO recommends ‘clear protocols for identifying patients who lack identification and for distinguishing the
+identity of patients with the same name’. This recommendation is particularly relevant to Patient Lists, which may frequently list two or
+more patients with the same family names.
+Hazard Risk Analysis Summary:
+   Potential Hazards:                                                                                Mitigations:
+    PLI028 What if the different attributes in the patient identification cell are not formatted     PAL-0450, PAL-0520, PAL-0530
+     differently?
+    PLI038 What if labels are used within the Patient List (for example, born, patient               PAL-0530
+     identification number, gender)?
+    PLI044 What if the 'Patient Identification number' is not displayed?                             PAL-0450
+    PLI024 What if there is blank space in the list (for example, surname missing)? Solution:  PAL-0460, PAL-0490
+     would want to confirm or action this rather than leave it blank
+    PLI034 What if the name prefix is not shown in the list?                                         PAL-0520
+    PLI153 What if multiple items in the list share similar details?                                 PAL-0540, PAL-0550
+    PLI030 What if the preferred name is not displayed on the list and staff refer to the            PAL-0530
+     patient by their given name?
+
+                                                                                                                                    Page 34
+                             Design Guidance – Patient List View
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 26 January 2010
+
+3.2.7         Row Key Identifiers
+ This section provides guidance on row key identifiers, which uniquely identify each row from others
+ in the Patient List. Figure 8 illustrates that feature:
+
+ Figure 8: Row Key Identifiers
+
+                                                                                                                      Evidence
+ ID               Guideline                                                                             Conformance
+                                                                                                                      Rating
+ PAL-0580         Each row must contain key identifier information that uniquely distinguishes it       Mandatory     High
+                  from the other rows in the Patient List
+
+ PAL-0590         The row key identifier information must include the patient identification            Mandatory     High
+                  information if a patient is assigned to that location or scheduled time
+
+ PAL-0600         Display row key identifier content using a font size and weight that gives it visual Mandatory      High
+                  prominence over other Patient List content (for patient identification information
+                  cells, apply this guideline to the patient name only)
+
+ PAL-0610         Order the columns that contain the row key identifier information at the left side    Mandatory     High
+                  of the viewing area
+
+ PAL-0620         When horizontal scrolling is used, ensure that the columns that contain the row Mandatory           High
+                  key identifier information remain in view (that is, do not include these columns in
+                  the scrollable area)
+
+ PAL-0630         For contexts where patients are managed using their physical locations (for           Recommended   Medium
+                  example, ward beds), include the physical location in the key identifier
+                  information
+
+ PAL-0640         When a Patient List comprises patients in different locations (for example            Mandatory     High
+                  multiple wards), include the location of each patient in their physical location cell
+                  (for example ‘Remington Ward, bed B3’)
+
+ PAL-0650         For contexts where patients are managed using their physical locations, by            Recommended   Medium
+                  default set the physical location to be the first column and the default sort order
+                  to be on this column
+
+ PAL-0660         For contexts where patients are managed using their physical locations, by            Recommended   Medium
+                  default display physical locations that have no patients allocated to them.
+                  Display the text ‘UNOCCUPIED’ where patient identification information would
+                  be displayed
+
+ PAL-0670         For contexts where patients are managed using their physical locations, provide Recommended         Medium
+                  an option to automatically hide rows for unoccupied locations and reveal them
+                  when patients are allocated there
+
+                                                                                                                             Page 35
+                                 Design Guidance – Patient List View
+                                 Prepared by Microsoft, Version 1.0.0.0
+                                 Last modified on 26 January 2010
+
+PAL-0680        For contexts where patients are managed using scheduled times (for example,           Recommended              Medium
+                on an appointment list) include the scheduled times in the key identifier
+                information
+
+PAL-0690        For contexts where patients are managed using scheduled times, by default set Recommended                      Medium
+                scheduled times as the first column and the default sort order to be on this
+                column
+
+PAL-0700        When the user has moved focus onto a Patient List cell, ensure that the row key Mandatory                      High
+                identifiers and the column header for that cell are visually highlighted (for
+                example, by changing the background colour)
+
+Usage Examples
+
+In this correct example, the row key identifiers (the first two columns) contain information that uniquely identifies each row (including
+patient identification information) and are ordered at the left side of the viewing area. As the Patient List where patients are managed
+using their physical locations, the row key identifiers include the physical locations (that is, the ward beds). The content of the row key
+identifiers uses a font and weight that gives it visual prominence over other Patient List content. (PAL-0580, PAL-0590, PAL-0600,
+PAL-0610, PAL-0630, PAL-0650)
+
+In this incorrect example, the patients’ physical locations are not included in the row key identifiers and are not ordered at the left of the
+viewing area. The row key identifiers do not use an adequate font size to be sufficiently prominent over other Patient List content.
+(PAL-0600, PAL-0610, PAL-0630, PAL-0650)
+
+                                                                                                                                      Page 36
+                              Design Guidance – Patient List View
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 26 January 2010
+
+In this correct example, the user horizontally scrolls the list. The row key identifiers remain visible (that is, the first two columns are
+‘frozen’) while the other content scrolls. (PAL-0620)
+
+In this correct example, an unoccupied bed is listed by default in the Patient List and the word ‘UNOCCUPIED’ is displayed in the
+patient identification column. (PAL-0660, PAL-0670)
+
+                                                                                                                                        Page 37
+                              Design Guidance – Patient List View
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 26 January 2010
+
+                                     In this correct example, the Patient List includes patients from
+                                     two locations (Remington Ward and Elkenhurst Ward). The
+                                     location for each patient includes the ward and the bed.
+                                     (PAL-0640)
+
+                                     In this correct example, patients are managed by appointments
+                                     and the scheduled times are included in the row key identifier
+                                     information. The list has by default been ordered by the
+                                     scheduled times. (PAL-0680, PAL-0690)
+
+                                                                                                Page 38
+Design Guidance – Patient List View
+Prepared by Microsoft, Version 1.0.0.0
+Last modified on 26 January 2010
+
+In this correct example, the user has moved focus onto a sublist item (‘Chest x-ray left…’). The row key identifier and column title
+corresponding to that sublist item has been visually highlighted using a background colour. (PAL-0700)
+
+Rationale
+The constant visibility and visual prominence of row key identifiers is essential to avoid user confusion and patient misidentification.
+When horizontal scrolling is used, the ‘freezing’ of the row key identifiers ensures the user can always relate information in a row to the
+patient that information relates to.
+         Note
+         During hazard assessment discussions it was noted that permitting column resizing and horizontal scrolling introduces the
+         unmitigated hazard that columns can become partially obscured when they overlap a viewing area border. This hazard is
+         illustrated in the third usage example in this section, where the column ‘Presenting Complaint’ is partially obscured by the
+         border of the frozen column ‘Patient Identification’.
+
+During hazard assessment discussions (see APPENDIX B), it was noted that it may be desirable to view unoccupied locations (for
+example, ward beds) in the Patient List, as some tasks can relate to locations alone (for example, infectious disease or hygiene
+management). However, the option to hide unoccupied locations was considered desirable, particularly when the Patient List viewing
+area is to be optimised for patient information.
+User research and hazard assessment participants (see APPENDIX B) with responsibilities which often span locations (such as
+community nurses and occupational therapists) expressed interest in multi-location lists, particularly with regard to the facility to sort all
+their patients by a given priority (for example, by Medical Early Warning Score (MEWS)). They highlighted the need for unambiguous
+location identifiers, as in their experience locations can share similar labels (for example, wards may all have bed locations identified
+as ‘A1’ or similar).
+Highlighting the row key identifier and column header on cell focus provides the user with a clear indication of the type of information
+and the patient it pertains to. This is particularly important for Patient Lists displayed on large monitors where the distance between the
+focussed cell, the row key identifiers and the column title may be significant.
+Hazard Risk Analysis Summary:
+   Potential Hazards:                                                                 Mitigations:
+    PLI146 What happens if the patient identifier details are not immediately         PAL-0580, PAL-0610, PAL-0620
+     obvious on the left hand side of the list?
+    PLI130 What if an unfamiliar user does not recognise the difference               PAL-0600
+     between patient and clinician?
+    PLI223 What if the patient location and/or identifier is hard to                  PAL-0600, PAL-0630, PAL-0650
+     immediately identify (for example, the bed number is not in a scannable
+     column)?
+                                                                                                                                      Page 39
+                              Design Guidance – Patient List View
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 26 January 2010
+
+ PLI029 What if the 'main identifier' (probably the patient name) is not the  PAL-0600
+  most prominent attribute?
+ PLI283 What if the list presents patients from mixed locations (for           PAL-0640
+  example, more than one hospital ward in one view)?
+ PLI030 What if preferred name is not displayed on the list and staff refer    PAL-0590
+  to the patient by his or her given name?
+ PLI033 What if the name prefix is shown in the list?                          PAL-0590
+ PLI044 What if the 'Patient identification number' is not displayed?          PAL-0590
+ PLI016 What if empty beds are not shown in the list?                          PAL-0660
+ PLI017 What if empty beds are shown as completely blank lines (with no  PAL-0660
+  bed number)?
+ PLI015 What if empty beds are shown in the list?                              PAL-0670
+ PLI072 What if the visible view is horizontally long and you want to relate  PAL-0620
+  information from opposite ends of the line?
+
+                                                                                            Page 40
+                         Design Guidance – Patient List View
+                         Prepared by Microsoft, Version 1.0.0.0
+                         Last modified on 26 January 2010
+
+4            GUIDANCE DETAILS FOR MANAGING THE INFORMATION
+             DISPLAYED
+
+4.1          Introduction
+    This section includes guidance for managing the information displayed in Patient Lists, specifically:
+          Managing the columns displayed
+          Refresh options and update indication
+          Displaying historical Patient List information
+          Displaying further information
+
+4.2          Guidelines
+4.2.1           Managing the Columns Displayed
+    This section provides guidance on how users should be able to manage the columns displayed in
+    the Patient List. Figure 9 illustrates that feature:
+
+    Figure 9: Managing the Columns Displayed
+
+                                                                                                                    Evidence
+    ID             Guideline                                                                          Conformance
+                                                                                                                    Rating
+    PAL-0710       Allow individual users to manage the columns that are displayed in the Patient     Recommended   Medium
+                   List, including the order they are displayed in (with the exception of those
+                   containing row key identifier information)
+
+    PAL-0720       Do not permit the removal of columns that contain row key identifier information   Mandatory     High
+                   (for example, patient identification and ward location columns)
+
+    PAL-0730       Enable users to manage default column selections for different user types (for     Recommended   Medium
+                   example, default column selections for junior doctors, paediatric nurses,
+                   occupational therapists, and so on)
+
+    PAL-0740       On a user’s first use of a default column selection, size the columns to fit the Recommended     Medium
+                   width of the viewing area so that none are out of view. If the combined minimum
+                   column widths exceed the width of the viewing area, use the minimum column
+                   widths
+
+                                                                                                                           Page 41
+                                 Design Guidance – Patient List View
+                                 Prepared by Microsoft, Version 1.0.0.0
+                                 Last modified on 26 January 2010
+
+PAL-0750       Enable users to filter the Patient List using the attributes displayed. Follow      Recommended              Medium
+               guidance in section 3.6 of Design Guidance – Filtering Sorting and
+               Grouping {R5}
+
+PAL-0760       When a filter has been applied to the Patient List, ensure that the filter          Mandatory                High
+               notification (as mandated in section 3.6 of Design Guidance – Filtering Sorting
+               and Grouping {R5}) is located above the viewing area and uses clear visual
+               differentiation (for example, from a strong background colour)
+
+PAL-0770       Enable users to sort the Patient List using the columns displayed. Follow           Recommended              Medium
+               guidance in section 3.7 of Design Guidance – Filtering Sorting and
+               Grouping {R5}
+
+PAL-0780       Enable users to group the Patient List using the attributes displayed. Follow       Recommended              Medium
+               guidance in section 3.8 of Design Guidance – Filtering Sorting and
+               Grouping {R5}
+
+PAL-0790       Persist the users column selection, sorting, grouping and filtering settings        Recommended              Medium
+               between user sessions
+
+Usage Examples
+
+In this correct example, users can select a default column set which best matches their needs and can also adjust the columns and the
+order they will be displayed in. If the ‘Location’ or ‘Patient Identification’ column is selected, it cannot be removed as it is a row key
+identifier. (PAL-0710, PAL-0720, PAL-0730)
+        Note
+        The method and interface for Patient List column selection and ordering is out of scope for this guidance. The interface shown
+        in this example is used solely to convey column management concepts and should not be considered part of guidance.
+
+                                                                                                                                   Page 42
+                             Design Guidance – Patient List View
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 26 January 2010
+
+In this incorrect example, the user has been allowed to remove a row key identifier (the patient identification information) (PAL-0720)
+
+In this correct example, the user is viewing a default column selection for the first time. The columns have been automatically sized to
+fit the width of the viewing area so that none are out of view. Although the columns are narrow the user has been made aware of the
+complete column set. (PAL-0740)
+
+                                                                                                                                 Page 43
+                             Design Guidance – Patient List View
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 26 January 2010
+
+In this correct example, the Patient List has been filtered with the filter notification area displayed above the viewing area using a
+strong visual differentiator. (PAL-0750, PAL-0760)
+
+In this correct example, the Patient List has been progressively sorted, firstly by the consultant name in ascending alphabetical order
+and secondly by the patient age in ascending order. (PAL-0770)
+
+                                                                                                                                     Page 44
+                             Design Guidance – Patient List View
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 26 January 2010
+
+Rationale
+During user research and hazard assessments (see APPENDIX B), discussions concerning column management included the
+following design areas:
+ Column sets (including default and group determined sets)
+ Role-based column sets (for example, switching between a number of predefined sets such as ‘Junior Doctor’, ‘Consultant’, and so
+  on)
+ Mandatory content per role (for example, always displaying certain columns, such as ‘Tasks’, depending on the users role)
+ Consistency between users’ Patient Lists
+Participants agreed that users should be given the flexibility to manage the columns displayed in their Patient Lists, so that they can
+optimise the information displayed to meet their individual needs. However, participants also thought that provision of ‘default’ column
+sets for role and working context (for example, ‘Nursing staff – Respiratory Ward’) would be a useful starting point for new users. From
+discussion around columns out of view (see section 3.2.3), it was recommended that at first display column widths should be sized to
+fit within the viewing area to ensure the user is fully aware of all columns in the set.
+        Note
+        Although guidance on determining ‘safe’ sets of columns is out of scope, during discussions it was acknowledged that there
+        are hazards associated with enabling users to manage the columns in their Patient List (for example, the risk that the user will
+        choose not to display information that is essential for their role).
+
+Hazard Risk Analysis Summary:
+   Potential Hazards:                                                                              Mitigations:
+    PLI006 What if a Multi-Disciplinary Team is sharing the list and all members' information  PAL-0710
+     is on one list?
+    PLI007 What if different roles have different views of the list?                               PAL-0710, PAL-0730
+    PLI018 What if it is not possible to configure the list to suit the user?                      PAL-0710, PAL-0790
+    PLI020 What if staff could not clearly and easily view a list that shows patients that are     PAL-0710
+     the doctor’s or team’s responsibility?
+    PLI072 What if the visible view is horizontally long and you want to relate information        PAL-0710, PAL-0740
+     from opposite ends of the line?
+    PLI075 What if you are not able to filter jobs by role?                                        PAL-0710, PAL-0730, PAL-0790
+    PLI080 What if the clinician cannot lower the level of detail to the related task level for    PAL-0710
+     his or her role?
+    PLI215 What if one professional group find the data hard to read because the view              PAL-0710, PAL-0730, PAL-0790
+     contains data that is not appropriate to them?
+    PLI216 What if data that would be relevant to all professional groups is missed because  PAL-0710, PAL-0730, PAL-0790
+     it is only contained in a view or area for one particular professional group (for example,
+     important information is put in a nursing section which is not read by doctors)?
+    PLI222 What if the layout of the information is optimised for one professional group or        PAL-0710, PAL-0730, PAL-0790
+     task?
+    PLI229 What if the clinician can only see some of the data per patient (for example, only  PAL-0710
+     some of the tasks, some of the problems, and so on)?
+    PLI094 What if you cannot view all the patients in the list in some summary form that          PAL-0710
+     minimises everything but the patient identifiers?
+    PLI091 What if you cannot see all the associated tasks for the patient in one view AND         PAL-0730
+     all tasks for all patients in one view?
+    PLI277 What if the default view of the list is configurable?                                   PAL-0790
+    PLI148 What if all your tasks per patient are not immediately visible?                         PAL-0740
+    PLI265 What if user preferences are not persisted from session to session?                     PAL-0790
+
+                                                                                                                                 Page 45
+                             Design Guidance – Patient List View
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 26 January 2010
+
+       PLI108 What if it is unclear that the list is filtered?                                          PAL-0750, PAL-0760
+       PLI082 What if a user cannot set up lists with different inclusion criteria (for example, all    PAL-0750
+        patients, all deteriorating patients)?
+       PLI116 What if there is no indication what the list is ordered on?                               PAL-0770
+       PLI134 What if it is unclear that the sort order is per group and the amount of groups           PAL-0770, PAL-0780
+        mean the sort order is less useful than it might be?
+       PLI259 What if the list is only ever able to be sorted by one criterion?                         PAL-0770
+       PLI274 What if there is only one sort order and the user is unable to change the view of         PAL-0770
+        the list depending on preference and context of use?
+       PLI022 What if in a list showing patients from multiple wards the patients are not               PAL-0780
+        grouped by ward?
+
+4.2.2          Refresh Options and Update Indication
+ This section provides guidance on notifying the user of updates to information displayed in the
+ Patient List. Figure 10 illustrates those features:
+
+ Figure 10: Refresh Options and Update Notification
+
+                                                                                                                           Evidence
+ ID               Guideline                                                                              Conformance
+                                                                                                                           Rating
+ PAL-0800         Ensure that data displayed in the Patient List can be refreshed (that is, any          Mandatory         High
+                  updates to the source data can be reflected in the Patient List)
+
+ PAL-0810         Apply updates to Patient List data in real-time                                        Recommended       High
+
+ PAL-0820         If the system supports real-time update of data, ensure that updates to the source     Recommended       Medium
+                  data are automatically reflected in the Patient List as soon as possible
+
+                                                                                                                                  Page 46
+                                Design Guidance – Patient List View
+                                Prepared by Microsoft, Version 1.0.0.0
+                                Last modified on 26 January 2010
+
+PAL-0830   If the system does not support real-time update of data, ensure that the system         Recommended   Medium
+           automatically refreshes the data displayed in the Patient List using an interval
+           communicated to the users
+
+PAL-0840   Provide an update notification field to inform the user how many updates are          Recommended     Medium
+           currently marked for viewing in the Patient List. Locate this field above the viewing
+           area
+
+PAL-0850   When the update notification field displays how many updates are currently        Recommended         Medium
+           marked for viewing, include advice on how many of these are currently out of view
+           (that is, how many could be viewed if the user scrolled the viewing area
+           horizontally and/or vertically)
+
+PAL-0860   If the system does not support real-time update of data, display the elapsed time       Recommended   Medium
+           since the last refresh in the update notification field
+
+PAL-0870   If the system does not support real-time update of data, provide an option for the     Recommended    Medium
+           user to manually trigger a refresh. Locate this option near to the update notification
+           field
+
+PAL-0880   When content within a cell is updated, bring this to the user’s attention by marking    Mandatory     High
+           the cell with an update symbol and visually differentiating the cell (for example, by
+           changing the cell background colour). Ensure that the update symbol does not
+           obscure content and that the overall readability of the Patient List is not unduly
+           disrupted
+
+PAL-0890   If the Patient List is configured to be used by an individual clinician, do not mark    Recommended   Medium
+           updates that have been made by the clinician (if the system can detect this)
+
+PAL-0900   When a sublist entry has been updated (but not removed) visually differentiate the      Mandatory     High
+           sublist entry (not the entire cell)
+
+PAL-0910   When content has been removed by an update, display a notification in the list cell Recommended       Medium
+           where the content was previously displayed (for example, the text ‘item removed’)
+
+PAL-0920   When one or more items in a sublist have been removed by an update, display a           Recommended   Medium
+           notification at the end of the sublist (for example, the text ‘3 items removed’)
+
+PAL-0930   Provide the option for users to unmark each update individually for their Patient       Recommended   Medium
+           List
+
+PAL-0940   When a patient has been added to the list as a result of an update, mark the            Recommended   Medium
+           patient identification cell with an update symbol and visually differentiate the entire
+           row (for example, by changing the row background colour). Provide the option for
+           users to unmark this update as an entire row (rather than individual cells within the
+           row)
+
+PAL-0950   When a patient has been removed from the list as a result of an update, mark the Recommended          Low
+           Patient Identification cell with an update symbol and visually differentiate the entire
+           row (for example, by changing the row background colour). Provide the option for
+           users to unmark this update as an entire row (rather than individual cells within the
+           row)
+
+PAL-0960   Provide an option to unmark all updates. Locate this option next to the update          Recommended   Low
+           notification field
+
+PAL-0970   When a user unmarks updates for their Patient List, ensure that other users’            Recommended   Medium
+           Patient Lists are unaffected
+
+PAL-0980   When a user selects the option to unmark all updates, by default alert them that        Recommended   Medium
+           they may not have seen all the updates on the list and require confirmation of the
+           action. Provide an option to not show this alert and continue to display this option
+           unless it is selected
+
+                                                                                                                        Page 47
+                         Design Guidance – Patient List View
+                         Prepared by Microsoft, Version 1.0.0.0
+                         Last modified on 26 January 2010
+
+Usage Examples
+
+In this correct example, the update notification field is displayed above the viewing area. It informs the users how many updates are
+currently marked on the Patient List and how many of these are currently out of view. An option to unmark all the updates is also
+provided next to the update notification field. (PAL-0840, PAL-0850, PAL-0960)
+
+In this correct example, the system does not support the real-time update of data and so a manual refresh option is provide. The
+elapsed time since the last refresh is displayed in the update notification field (PAL-0860, PAL-0870)
+
+In this correct example, the system has updated the content and two new sublist entries have been added. The new entries are
+visually highlighted using a background colour and a symbol (the corner triangle), which is positioned so that it does not obscure the
+content. (PAL-0880, PAL-0900)
+
+                                                                                                                                 Page 48
+                            Design Guidance – Patient List View
+                            Prepared by Microsoft, Version 1.0.0.0
+                            Last modified on 26 January 2010
+
+In this correct example, the system has updated the content and three entries have been removed from the sublists. The user is
+informed of this by the display of ‘item removed’ messages in the sublists. (PAL-0910, PAL-0920)
+
+In this correct example, the system has updated the content and a new patient has been added to the list. The entire row for the new
+patient is visually differentiated using the background colour and the patient identification cell has been marked with the update
+symbol. (PAL-0940)
+
+                                                                                                                              Page 49
+                            Design Guidance – Patient List View
+                            Prepared by Microsoft, Version 1.0.0.0
+                            Last modified on 26 January 2010
+
+In this correct example, the system has updated the content and a patient has been removed from the list, leaving that location
+unoccupied. The entire row for the unoccupied location is visually differentiated using the background colour and the patient
+identification cell has been marked with the update symbol. (PAL-0950)
+
+Rationale
+The ‘live’ update of information displayed in Patient Lists will be an unfamiliar concept to those users migrating from document or
+paper based lists. For such users, a Patient List will have typically been created at a defined point in time (for example, at the start of a
+shift) and updated by the users themselves during the period of usage (for example, throughout the shift). However, system-based
+Patient Lists could be updated continually, for example, for events such as:
+ When the Pathology Department enter test results into the hospital system for a patient that is on the Patient List
+ When a patient record is updated and the Patient List includes content sourced from that patient record
+ When a new patient is admitted to a ward during a shift
+Design mock-ups for marking updated information were shown to user research participants (see APPENDIX B), who particularly liked
+how live update mark-ups could mitigate the risk of missing changes in patient information including improvements and/or
+deteriorations.
+Research found that the safest method of clearing update mark-ups is individually on each mark-up, as clinicians can then ensure that
+they have seen all updates (including those that may be out of view). However, this could be time consuming, particularly when
+updates occur frequently. It was also found that sporadic viewing of a Patient List may result in it being covered with numerous update
+mark-ups, which could potentially distract from the patient information. The guidance therefore includes recommendations on the
+provision of a ‘clear all mark-up’ option.
+         Note
+         Determining when information should be removed from the Patient List (for example, when tasks are completed) is out of
+         scope for this guidance. However, it was considered important for users to be made aware when information is removed from
+         the Patient List and so guidance on update mark-up includes removed information.
+
+Participants discussed whether users should be alerted about updates for columns they have chosen not to display but which may
+have been deemed important to their role (for example, by being in the default column set for that users role). On exploring how these
+alerts may be made, it was found that there was no clear way to convey this information in a clear and unambiguous manner. The
+benefits of displaying alerts about information the user had chosen not to display were therefore deemed not great enough to outweigh
+the potential interface complexity.
+         Note
+         Indication of status (for example, task completion), responsibility (for example, task allocation) or acceptance (for example,
+         acknowledgement of test results) is out of scope, therefore the guidance in this section should not be considered suitable for
+         supporting mark-up for these purposes.
+
+                                                                                                                                     Page 50
+                             Design Guidance – Patient List View
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 26 January 2010
+
+Hazard Risk Analysis Summary:
+  Potential Hazards:                                                               Mitigations:
+   PLI001 What if entries are made into the Patient List that result in two or     PAL-0800, PAL-0820, PAL-0830
+    more versions of the same information in the record and in the Patient
+    List?
+   PLI097 What if the information underlying the view has changed (since it        PAL-0870
+    was opened) even though the refresh alert has not yet appeared?
+   PLI098 What if the view is updated while open without manual refresh or         PAL-0840, PAL-0880
+    indication of a change or what those changes are?
+   PLI099 What if updates are not automatic (once the view is open) and            PAL-0800, PAL-0870
+    there is no option for manual refresh?
+   PLI100 What if the changes since the clinician's last view are not              PAL-0800, PAL-0840, PAL-0880, PAL-0900
+    indicated?
+   PLI103 Risk of not knowing whether it was worth refreshing or not               PAL-0840, PAL-0860
+   PLI104 Misinterpretation of time associated with refresh action                 PAL-0840, PAL-0860
+   PLI107 Updates: what if there is no marker to show what is new or what          PAL-0840, PAL-0880, PAL-0900
+    has been updated and/or changed?
+   PLI111 What if you do not realise that the status of the list has to be         PAL-0870
+    manually updated?
+   PLI125 What if you are not aware of the status of the list because no time  PAL-0840, PAL-0860
+    is shown?
+   PLI129 What happens if you do not notice additional data which is               PAL-0840, PAL-0880, PAL-0900, PAL-0940
+    appearing on screen?
+   PLI220 What if data in the view (either the list of patients or the data per    PAL-0840, PAL-0860
+    patient) is mistakenly interpreted to be current information when it is
+    actually out of date?
+   PLI279 What if the system allows you the ability to unmark all updates          PAL-0850, PAL-0930, PAL-0980
+    even if all updates have not been viewed?
+   PLI152 What if you cannot see completed tasks?                                  PAL-0910, PAL-0920
+   PLI066 What if completed jobs are removed too soon from the list?               PAL-0910, PAL-0920
+   PLI270 What if results for unknown patient still show 'unknown' but live        PAL-0820
+    system has now updated patient's record with known demographics?
+
+                                                                                                                        Page 51
+                           Design Guidance – Patient List View
+                           Prepared by Microsoft, Version 1.0.0.0
+                           Last modified on 26 January 2010
+
+4.2.3          Displaying Historical Patient List Information
+ This section provides guidance on displaying historical patient information as a complete Patient
+ List ‘snapshot’. Figure 11 illustrates those features:
+
+ Figure 11: Historical Patient List Information
+
+                                                                                                                       Evidence
+ ID               Guideline                                                                              Conformance
+                                                                                                                       Rating
+ PAL-0990         Enable users to access historical Patient List information as a complete list for a    Recommended   Medium
+                  specified point in time
+
+ PAL-1000         When historical Patient List information is displayed as a complete list, ensure       Recommended   Medium
+                  that it is displayed in a similar format to that used by the equivalent current
+                  Patient List.
+
+ PAL-1010         When historical Patient List information is displayed as a complete list, visually     Recommended   Medium
+                  emphasise the time and date to which it applies
+
+ PAL-1020         When historical Patient List information is displayed as a complete list, ensure       Mandatory     High
+                  that there is clear visual differentiation between it and current Patient Lists (for
+                  example, by using a distinct colour scheme and including the word ‘Historical’ in
+                  the header)
+
+ PAL-1030         When historical Patient List information is displayed as a complete list, never        Mandatory     High
+                  display it and the equivalent current Patient List at the same time
+
+                                                                                                                              Page 52
+                                  Design Guidance – Patient List View
+                                  Prepared by Microsoft, Version 1.0.0.0
+                                  Last modified on 26 January 2010
+
+Usage Examples
+
+In this correct example, the historical Patient List is displayed with a different colour scheme to that used in other guidance examples,
+and the time and date are emphasised. The information is presented in a similar format to the current Patient List. (PAL-0990,
+PAL-1000, PAL-1010, PAL-1020)
+
+In this incorrect example, the historical Patient List and the current Patient List are displayed at the same time. (PAL-1030)
+
+                                                                                                                                   Page 53
+                             Design Guidance – Patient List View
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 26 January 2010
+
+ Rationale
+ When user research participants (see APPENDIX B) were shown design mock-ups of historical Patient Lists, they agreed that
+ accessing historical information on current patients and on previous patients was useful.
+ Providing a historical ‘snapshot’ of all information across a Patient List has the advantages of providing clinicians with a familiar format
+ in which to view the information. This is particularly useful if clinicians want to remind themselves of what their Patient List looked like
+ at the end of their previous shift and to discover what happened to previous patients who may have been discharged since then.
+ Providing a historical Patient List with a similar format to the current Patient List could introduce hazards of misidentification, so
+ specific guidelines are provided to mitigate this hazard.
+ Hazard Risk Analysis Summary:
+    Potential Hazards:                                                          Mitigations:
+     PLI151 What if you cannot see the details from the previous day?           PAL-0990, PAL-1000, PAL-1010, PAL-1020, PAL-1030
+     PLI205 Being unable to review previous information such as                 PAL-0990, PAL-1000, PAL-1010, PAL-1020, PAL-1030
+      trends (which are not necessarily quantitative information),
+      completed actions and patients who have now been discharged
+     PLI219 What if 'snapshots' of the state of the list have to be taken       PAL-0990, PAL-1000, PAL-1010, PAL-1020, PAL-1030
+      manually?
+     PLI240 What if you cannot access jobs that have been completed             PAL-0990, PAL-1000, PAL-1010, PAL-1020, PAL-1030
+      for a patient?
+     PLI239 What if you cannot get access to patients who have been             PAL-0990, PAL-1000, PAL-1010, PAL-1020, PAL-1030
+      on the ward recently?
+
+4.2.4         Displaying Further Information
+ This section provides guidance on how to display further information that a user has opened from
+ the Patient List. Figure 12 illustrates that feature:
+
+ Figure 12: Displaying Further Information
+                                                                                                                                          Page 54
+                                Design Guidance – Patient List View
+                                Prepared by Microsoft, Version 1.0.0.0
+                                Last modified on 26 January 2010
+
+                                                                                                                           Evidence
+ID            Guideline                                                                           Conformance
+                                                                                                                           Rating
+PAL-1040      Do not display the Patient List and individual patient information (for example,    Mandatory                High
+              patient records) at the same time
+
+PAL-1050      If the Patient List provides the facility for the user to navigate to other         Mandatory                High
+              information, ensure that the Patient List and the other information is not viewable
+              at the same time
+
+Usage Examples
+
+In this correct example, when the user navigates to further information, the Patient List is replaced by the new information. (PAL-1040,
+PAL-1050)
+
+                                                                                                                                  Page 55
+                            Design Guidance – Patient List View
+                            Prepared by Microsoft, Version 1.0.0.0
+                            Last modified on 26 January 2010
+
+In this incorrect example, the Patient List and a patient record are displayed at the same time (PAL-1040, PAL-1050)
+
+In this incorrect example, the patient has navigated to further information, but it is being displayed at the same time as the Patient List.
+(PAL-1050)
+
+                                                                                                                                     Page 56
+                             Design Guidance – Patient List View
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 26 January 2010
+
+Rationale
+During user research (see APPENDIX B) and hazard assessments, several design mock-ups of Patient Lists alongside individual
+patient information were shown to participants, as navigating from the Patient List to other views (for example, a patient’s record) was
+considered important. Some participants expressed concern over potential safety hazards arising from patient misidentification (for
+example, if some details in the individual patient information are wrongly attributed to a different patient in the Patient List). A more
+general concern was raised over the practicality of displaying this quantity of information at the same time.
+Having a clear separation between the Patient List and other views of information mitigates these hazards and concerns and will also
+assist in communicating the nature of the Patient List as a summary of information that exists elsewhere in the system (for example,
+patient records) and not as the key interface for that information.
+Hazard Risk Analysis Summary:
+   Potential Hazards:                                                                               Mitigations:
+    PLI087 What if the information pop-up covers patient information?                               PAL-1040
+    PLI088 What if more information is presented in a pop-up that is not clearly associated         PAL-1040
+     with the patient it came from?
+    PLI089 What if further information was opened up for more than one patient?                     PAL-1040
+    PLI090 What if the clinician is unable to see relevant information such as the tasks            PAL-1040
+     alongside the additional information at the same time?
+    PLI115 What if multiple records can be opened at once?                                          PAL-1040
+    PLI126 What happens if single patient data is presented to the side of a multi-Patient          PAL-1040
+     List and it is not clear to which patient it refers?
+
+                                                                                                                                   Page 57
+                             Design Guidance – Patient List View
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 26 January 2010
+
+5            DOCUMENT INFORMATION
+
+5.1          Terms and Abbreviations
+    Abbreviation            Definition
+    CUI                     Common User Interface
+
+    IG                      Information Governance
+
+    ISMP                    Institute for Safe Medication Practices
+
+    ISO                     International Organization for Standardization
+
+    MDT                     Multi-Disciplinary Team
+
+    MEWS                    Medical Early Warning Score
+
+    MIST                    Mechanism Illness/Injury Signs/Symptoms Treatment
+
+    NHS                     National Health Service
+
+    NHS CFH                 NHS Connecting for Health
+
+    NPSA                    National Patient Safety Agency
+
+    UI                      User Interface
+
+    VDT                     Visual Display Terminal
+
+    WHO                     World Health Organization
+    Table 8: Terms and Abbreviations
+
+5.2          Definitions
+    Term                    Definition
+    Conformance             In the guidance tables, indicates the extent to which you should follow the guideline when defining your UI
+                            implementation. There are two levels:
+                             Mandatory – An implementation should follow the guideline
+                             Recommended – An implementation is advised to follow the guideline
+
+    Current best practice Current best practice is used rather than best practice, as over time best practice guidance may change or be
+                          revised due to changes to products, changes in technology, or simply the additional field deployment
+                          experience that comes over time.
+
+                                                                                                                                     Page 58
+                                  Design Guidance – Patient List View
+                                  Prepared by Microsoft, Version 1.0.0.0
+                                  Last modified on 26 January 2010
+
+ Term                     Definition
+ Evidence Rating          In the guidance tables, summarises the strength of the research defining the guideline and the extent to which
+                          it mitigates patient safety hazards. There are three ratings (with example factors used to determine the
+                          appropriate rating):
+                           Low:
+                               Does not mitigate specific patient safety hazards
+                               User research findings unclear and with few participants
+                               Unreferenced usability principles indicate the design is not significantly better than alternatives
+                           Medium:
+                               Mitigates specific patient safety hazards
+                               User research findings clear but with few participants
+                               References old authoritative guidance (for example, from the UK National Patient Safety Agency
+                                (NPSA), Institute for Safe Medication Practices (ISMP) or World Health Organization (WHO)) that is
+                                potentially soon to be superseded
+                               Referenced usability principles indicate the design is significantly better than alternatives
+                           High:
+                               Mitigates specific patient safety hazards
+                               User research findings clear and with a significant number of participants
+                               References recent authoritative guidance (for example, from NPSA, ISMP or WHO)
+                               Referenced usability principles indicate the design is significantly better than alternatives
+ Table 9: Definitions
+
+5.3         Nomenclature
+ This section shows how to interpret the different styles used in this document to denote various
+ types of information.
+
+5.3.1          Body Text
+ Text                                                                   Style
+ Code                                                                   Monospace
+
+ Script
+
+ Other markup languages
+
+ Interface dialog names                                                 Bold
+
+ Field names
+
+ Controls
+
+ Folder names                                                           Title Case
+
+ File names
+ Table 10: Body Text Styles
+
+                                                                                                                                      Page 59
+                               Design Guidance – Patient List View
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 26 January 2010
+
+5.3.2        Cross References
+ Reference                                                            Style
+ Current document – sections                                          Section number only
+
+ Current document – figures/tables                                    Caption number only
+
+ Other project documents                                              Italics and possibly a footnote
+
+ Publicly available documents                                         Italics with a footnote
+
+ External Web-based content                                           Italics and a hyperlinked footnote
+ Table 11: Cross Reference Styles
+
+5.4       References
+ Reference Document                                                                                                  Version
+ R1.              British Standards Institute – BS EN ISO 9241-10:1996 Ergonomic requirements for office work with   1996
+                  visual display terminals (VDTs) – Part 10: Dialogues principles
+
+ R2.              British Standards Institute – BS 7581:1992 Guide to Presentation of tables and graphs              1992
+
+ R3.              Design Guidance – Patient Banner                                                                   4.0.0.0
+
+ R4.              Design Guidance – Displaying Graphs and Tables                                                     2.0.0.0
+
+ R5.              Design Guidance – Filtering, Sorting and Grouping                                                  1.0.0.0
+
+ R6.              Design Guidance – Time Display                                                                     3.0.0.0
+
+ R7.              Design Guidance – Date Display                                                                     3.0.0.0
+
+ R8.              World Health Organization Collaborating Centre for Patient Safety Solutions – Aide Memoire –       May 2007
+                  Volume 1, solution 2, May 2007 – Patient Identification
+
+ R9.              National Patient Safety Agency National Reporting and Learning Service – DSCN 04/2009 –            March 2009
+                  Guidance on the standard for Patient Identifiers for Identity bands
+
+ R10.             Nielsen, J – Usability Engineering                                                                 1993
+
+ R11.             Shneiderman, B – Designing the User Interface: Strategies for Effective Human-Computer             Third Edition
+                  Interaction
+ Table 12: References
+
+                                                                                                                               Page 60
+                               Design Guidance – Patient List View
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 26 January 2010
+
+APPENDIX A                       USABILITY PRINCIPLES
+
+A.1     Nielsen’s Usability Heuristics
+ See Usability Engineering {R10} for more information on these principles:
+       Visibility of system status
+       Match between system and the real world
+       User control and freedom
+       Consistency and standards
+       Error prevention
+       Recognition rather than recall
+       Flexibility and efficiency of use
+       Aesthetic and minimalist design
+       Help users recognise, diagnose, and recover from errors
+       Help and documentation
+
+A.2     Shneiderman’s Eight Golden Rules of Interface Design
+ See Designing the User Interface – Strategies for Effective Human-Computer Interaction {R11} for
+ more information on these principles:
+       Strive for consistency
+       Enable frequent users to use shortcuts
+       Offer informative feedback
+       Design dialogs to yield closure
+       Offer error prevention and simple error handling
+       Permit easy reversal of actions
+       Support internal locus of control
+       Reduce short-term memory load
+
+A.3     ISO 9241: Characteristics of Presented Information
+ See Ergonomic requirements for office work with visual display terminals (VDTs) -- Part 10:
+ Dialogues principles {R1} for more information on these principles:
+       Clarity (the information content is conveyed quickly and accurately)
+       Discriminability (the displayed information can be distinguished accurately)
+       Conciseness (users are given only the information necessary to accomplish the task)
+       Consistency (the same information is presented in the same way throughout the
+        application, according to the user’s expectation)
+       Detectability (the user’s attention is directed towards information required)
+       Legibility (information is easy to read)
+       Comprehensibility (meaning is clearly understandable, unambiguous, interpretable and
+        recognisable)
+                                                                                               Page 61
+                       Design Guidance – Patient List View
+                       Prepared by Microsoft, Version 1.0.0.0
+                       Last modified on 26 January 2010
+
+APPENDIX B                       STUDY ID 77: EXECUTIVE SUMMARY
+
+B.1     Abstract
+ The UK National Health Service (NHS) Common User Interface (CUI) programme is a partnership
+                  ®
+ between Microsoft and NHS Connecting for Health (NHS CFH), which is part the NHS National
+ Programme for Information Technology (NPfIT).
+ As part of CUI, the Clinical Applications and Patient Safety (CAPS) project has the goal of ensuring
+ that software applications used by the NHS enhance patient safety. To achieve this, CAPS
+ provides software developers with user interface design guidelines derived through a user-centric
+ development process that includes explicit patient-safety evaluations.
+ This summary describes key findings from user research carried out in November 2009 by the CUI
+ CAPS team on Patient List Views. These findings are a subset of those in a larger internal report
+ prepared for the CUI CAPS Patient List Views team.
+ Purpose:
+ To gain clinical feedback on designs for Patient List Views.
+ Method:
+ Interviews: structured interviews with 11 Health Care Professionals (HCPs) eliciting HCP
+ preferences and qualitative feedback on designs.
+ Key Results:
+ Based on clinician preference and rationale:
+       Truncating items in sublists is problematic and may hinder use of the view
+       The option for end-user clinicians to be able to customise the dataset visible should be
+        further explored
+       Marking of updates was a popular feature, though unmarking was initially unclear
+       A ‘snapshots’ feature was also liked, primarily in order to access patients no longer on the
+        current list
+
+B.1     Research Objectives
+ To gather HCP preferences and qualitative feedback on, and to identify possible patient safety
+ hazards with, CUI Patient List designs.
+
+B.2     Research Design
+ 11 clinicians were interviewed across 11 structured 1 hour interviews, carried out in person.
+ Participants were shown static designs of the Patient List View, with design alternatives per design
+ area. Designs and example data used a secondary care inpatient scenario.
+ Participants were asked for preferences based on patient safety criteria. Other qualitative feedback
+ was elicited covering:
+       Rationale for preference
+       Design fit with current and best practice
+       Design understandability
+       Any potential hazards resulting from the designs
+ Detailed notes from the interviews were qualitatively analysed using thematic coding.
+                                                                                                Page 62
+                       Design Guidance – Patient List View
+                       Prepared by Microsoft, Version 1.0.0.0
+                       Last modified on 26 January 2010
+
+B.3       Results
+B.3.1         Participant Description
+ 11 participants were interviewed in 11 sessions. Each had either volunteered through the NHS
+ CFH Event Management System (EMS) signup or had been recruited by an HCP who had
+ volunteered. 5 out of 11 participants had previously taken part in CUI clinical engagement for other
+ work areas. Table 4 shows a summary of the participants’ profiles:
+
+                                                                                                                     CUI Feedback
+ Session       Job Role              Specialty                 Level          Used Electronic Templates?
+                                                                                                                     before?
+ 426           Doctor                Obstetrics and            Senior SpR     Labour board, handwritten list         No
+                                     Gynaecology
+
+ 427           Doctor                Obstetrics and            Junior SpR     Labour board, printed document         No
+                                     Gynaecology
+
+ 428           Doctor                Obstetrics and            SpR            Labour board, handwritten list         No
+                                     Gynaecology
+
+ 429           Doctor                Obstetrics and            SpR            Labour board, printed document         No
+                                     Gynaecology
+
+ 430           Doctor                GP Rotation (Obstetrics   SHO            Labour board, printed document (both   No
+                                     and Gynaecology)                         personal and shared)
+
+ 431           Nurse                 Renal (outpatients)       ? Consultant   Printed document (both personal and    Yes
+                                                                              shared)
+
+ 432           Nurse                 Critical Care             Senior         Printed document (shared)              Yes
+
+ 433           Pharmacist            ITU                       ?              Printed document (personal)            No
+
+ 434           Doctor                GP Rotation / Military    ? F2           Electronic systems at two trusts,      Yes
+                                                                              printed document (personal)
+
+ 435           Doctor                Surgery                   SHO            Printed document (personal)            Yes
+
+ 436           Pharmacist            Various                   ?              Electronic system, printed document    Yes
+                                                                              (personal)
+ Table 13: Interview Participants
+
+ All participants were clinical staff who used patient lists as part of their role, generally for handover
+ and supporting their work on the wards. The majority of the participants were junior doctors.
+ Participants were from a number of different trusts around the UK.
+ The majority had had no experience of using electronic patient lists.
+
+                                                                                                                            Page 63
+                                    Design Guidance – Patient List View
+                                    Prepared by Microsoft, Version 1.0.0.0
+                                    Last modified on 26 January 2010
+
+B.3.2       Design Areas
+ Bullet text in italics represents researcher recommendations or comments in order to distinguish
+ them from user feedback.
+
+ Current Practice
+     Inpatient lists are used by junior doctors as “an aide memoire so you know where they are,
+      who they are, what they are, and what you’ve done” (p435)
+     Several participants described using old versions of the patient list (usually from the
+      previous day) for:
+            Backup – Due to still-relevant information not being transferred to the new version
+            To see what had happened to patients no longer on the ward, in particular where they
+             had been moved to
+            To track the responsible staff on duty on a particular day
+            To track infection risks
+
+ Too Much Data
+     Participants were shown three designs for dealing with large numbers of items in a cell
+      sublist (for example, tasks)
+     The most serious risks were with the design that forced the clinician to scroll the list within
+      the cell as this prevented them from comparing across patient’s tasks both within and
+      between patients. They might forget to scroll, and they might mistakenly assume that the
+      items were in order of importance (when it is likely they would not be as this is hard to
+      reliably determine and varies depending on your clinical perspective)
+     Advantages of showing all items in a sublist without truncation were that all items across all
+      patients could (in theory) be seen in ‘one go’, though, as each patient row was likely to be
+      much higher in this case, the clinician would have to do more scrolling and/or paging in
+      order to see and compare items between patients
+     All current paper patient lists follow an untruncated model
+     Participants suggested that a short list of patients might be useful to get an overview of the
+      location or as a way to select a patient
+
+ Current Dataset Variation
+     As has been seen from analysis of current inpatient paper lists, participants described how
+      different wards can have very different datasets (for example, a general medical ward
+      compared to a labour ward) and some modelled in different ways (for example, organising
+      data by the body system in the Intensive Therapy Unit (ITU)):
+            Implying that a patient list design cannot ignore the issue of varying datasets between
+             wards and/or contexts
+
+ Changing Dataset
+     Participants were shown different designs for user-variation of the visible dataset. Issues
+      arising were:
+            Disorientating ‘jumping’ if datasets were presented on different pages (in that the
+             clinician has to re-find the patient they were interested in)
+            Having to re-read information if datasets were presented on different pages
+
+                                                                                                   Page 64
+                       Design Guidance – Patient List View
+                       Prepared by Microsoft, Version 1.0.0.0
+                       Last modified on 26 January 2010
+
+         The desire to be able to compare attributes for a given patient (difficult if attributes were
+          always displayed on separate pages)
+         The belief among junior doctors that a dataset would be determined by senior staff (and
+          possibly even non-clinical staff) and would likely be inappropriate for the juniors’ needs.
+          Therefore, they would like the ability to vary the dataset themselves
+         The desire for different roles to be able to access different datasets
+         A desire to guide new staff to a recommended dataset for them in their context
+         A desire to be able to vary the dataset visible dependant on patient or clinical situation
+         All participants preferred a design where they could fully customise the visible dataset:
+             However, this may have been influenced by a desire to account for varying datasets
+              per ward (which does not necessarily imply that the end-user can vary the dataset)
+   Various risks were raised with the ability for the end-user to fully customise the visible
+    dataset
+
+Updates
+   All participants liked the idea of marking the updates since you last saw the list:
+         One participant pointed out this would be of most value in a larger team where many
+          people were making updates to the same patients during a day (p437)
+   It was not seen as necessary to indicate times of updates in this view
+   Participants were unclear as to whether the update count included those updates on
+    columns out of view
+   The first five participants shown the design initially (mistakenly) assumed unmarking would
+    clear all the updates from the whole team’s view and didn’t like this, preferring the update
+    unmarking to be personal
+   Other participants discussed the merits of using the updates as a kind of ‘micro-handover’
+    acknowledgement, in that the marking and unmarking could be shared between the team to
+    indicate acceptance of information and tasks:
+         Following internal CUI discussion, it was felt that this kind of functionality was both out
+          of scope for this work and probably best left to a ‘proper’ communications feature
+
+Snapshots
+   All six participants asked confirmed that they did want to know about patients who had
+    previously been on the ward (which is not possible from a continually updated patient list
+    view)
+   This was mainly seen as a learning opportunity, an aid in finding the patient, for checking
+    tasks were done for patients now not on the ward and for quick access when writing the
+    discharge summary
+         A previous version of the patient list would mean that a clinician could find the patient’s
+          details without having to remember unique identifiers and searching for them in the
+          Patient Administration System (PAS), which may be unsuccessful or error prone as
+          patients’ unique identifiers are hard to remember
+
+History
+   Response was generally ambivalent, with no strong opinions for or against viewing a
+    per-patient history
+
+                                                                                                 Page 65
+                    Design Guidance – Patient List View
+                    Prepared by Microsoft, Version 1.0.0.0
+                    Last modified on 26 January 2010
+
+Opening More Details
+   The option to show more details for one patient at the same time as the patient list was only
+    discussed with four participants but there were more risks elicited for having the option than
+    not having it
+   It was suggested that, given space constraints, there would in any case be a limit to how
+    much extra information would be able to be usefully seen at the same time
+
+Multiple Wards
+   All six participants asked were initially confused by the ‘mixed’ list and all described the
+    benefits of seeing the patients grouped or ordered by ward
+
+                                                                                               Page 66
+                   Design Guidance – Patient List View
+                   Prepared by Microsoft, Version 1.0.0.0
+                   Last modified on 26 January 2010

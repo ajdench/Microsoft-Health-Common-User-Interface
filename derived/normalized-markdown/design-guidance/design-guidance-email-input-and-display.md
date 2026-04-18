@@ -1,0 +1,553 @@
+# Design Guidance -- Email Input and Display
+
+## Provenance
+- Source file: `raw/sources/design-guidance/toolkit-bundled-pdfs/Design Guidance -- Email Input and Display.pdf`
+- Extracted text: `derived/extracted-text/design-guidance/design-guidance-email-input-and-display.txt`
+- Normalization note: machine-cleaned `pdftotext -layout` output; verify against the PDF for edge cases.
+
+## Extracted Text
+
+Design Guidance
+Email Address Input and Display
+
+                 Tuesday, 25 March 2008
+                         Version 1.0.0.0
+
+                            Prepared by
+
+PREFACE
+   Documents replaced by this document
+
+   Document Title                                                                                                                  Version
+   None
+
+   Documents to be read in conjunction with this document
+
+   Document Title                                                                                                                  Version
+   Design Guidance – Accessibility Principles                                                                                      1.0.0.0
+
+   Design Guidance – Accessibility Checklist                                                                                       1.0.0.0
+
+This document and/or software (“this Content”) has been created in partnership with the National Health Service (NHS) in England. Intellectual Property
+Rights to this Content are jointly owned by Microsoft and the NHS in England, although both Microsoft and the NHS are entitled to independently exercise
+their rights of ownership. Microsoft acknowledges the contribution of the NHS in England through their Common User Interface programme to this Content.
+Readers are referred to www.cui.nhs.uk for further information on the NHS CUI Programme.
+
+All trademarks are the property of their respective companies. Microsoft and Windows are either registered trademarks or trademarks of Microsoft
+Corporation in the United States and/or other countries.
+
+© Microsoft Corporation 2008. All rights reserved.
+
+                                    Design Guidance – Email Address Input and Display
+                                    Prepared by Microsoft, Version 1.0.0.0
+                                    Last modified on 25 March 2008
+
+TABLE OF CONTENTS
+1    Introduction .................................................................................................................................... 1
+    1.1    Customer Need......................................................................................................................... 1
+    1.2    Scope ........................................................................................................................................ 2
+     1.2.1      In Scope .............................................................................................................................. 2
+     1.2.2      Out of Scope ....................................................................................................................... 2
+    1.3    Key Principles ........................................................................................................................... 3
+
+2    Recommendations and Guidance ................................................................................................ 4
+    2.1    Email Address Display .............................................................................................................. 4
+     2.1.1      Guidance ............................................................................................................................. 4
+     2.1.2      Examples of Correct Usage ................................................................................................ 4
+     2.1.3      Examples of Incorrect Usage .............................................................................................. 4
+     2.1.4      Rationale ............................................................................................................................. 5
+    2.2    Email Address Input.................................................................................................................. 6
+     2.2.1      Hints, Prompts and Tooltips ................................................................................................ 6
+     2.2.2      Guidance ............................................................................................................................. 7
+     2.2.3      Examples of Correct Usage ................................................................................................ 7
+     2.2.4      Examples of Incorrect Usage .............................................................................................. 8
+     2.2.5      Rationale ............................................................................................................................. 8
+
+3    Document Information ................................................................................................................ 10
+    3.1    Terms and Abbreviations ........................................................................................................ 10
+    3.2    Nomenclature ......................................................................................................................... 10
+     3.2.1      Body Text .......................................................................................................................... 10
+     3.2.2      Cross References.............................................................................................................. 10
+    3.3    References ............................................................................................................................. 11
+
+                                 Design Guidance – Email Address Input and Display
+                                 Prepared by Microsoft, Version 1.0.0.0
+                                 Last modified on 25 March 2008
+
+1         INTRODUCTION
+    This document describes the design guidance for input and display of ‘Email address’ data. It
+    describes the area of focus, provides guidance and recommendations, and explains the rationale
+    behind the guidance and recommendations.
+
+    This document is intended for the use of anyone whose role includes screen design,
+    implementation, or assessment of a clinical application. This document can be used as guidance
+    for the:
+        Specification of an input control and a display control for an email address in a user
+         interface (UI)
+        Implementation of an input control and a display control for an email address within an
+         application
+        Assessment of an input control and a display control for an email address in a clinical
+         application user interface
+
+       Note
+       Elements used within a software application are commonly referred to as a ‘control’. These can take many
+       forms but the types referred to in this document will either be ‘input controls’ that can receive input from a
+       user, such as a button, text box, option button (radio button) or check box, or ‘display controls’ such as a
+       label, which can only display information.
+
+       Important
+       The visual representations used within this document to display the guidance are illustrative only. Stylistic
+       choices, unless otherwise specified, are not part of the guidance and are therefore not mandatory
+       requirements for compliance with the guidance in this document.
+
+1.1       Customer Need
+    Electronic mail (email) is increasingly being used in the healthcare industry by clinical and non-
+    clinical users. Email is used both within and across organisations, for example, between a practice
+    manager and other staff members in a surgery. The information exchanged may vary from
+    administrative data, such as the day’s schedule, to clinical data, such as a patient’s test results.
+    Some of the advantages of email include quick and efficient information delivery, bypassing manual
+    handling, and direct communication between the relevant parties, bypassing a mail room. Email
+    reduces, but does not eliminate, the possibility that confidential information will be compromised,
+    for example, by being delivered to the wrong or unauthorised person.
+    In the future, we can also expect email usage to grow amongst patients, who will be able to contact
+    their General Practitioner’s surgery and hospital, and receive their test results electronically.
+    Therefore, there is a need for clinical applications to support the input and display of email
+    addresses in a consistent and efficient manner, to enable users of different applications to use
+    email systems confidently and securely.
+
+                                                                                                               Page 1
+                          Design Guidance – Email Address Input and Display
+                          Prepared by Microsoft, Version 1.0.0.0
+                          Last modified on 25 March 2008
+
+1.2     Scope
+ This section defines the scope of this guidance document.
+
+1.2.1      In Scope
+ This guidance is applicable to UIs such as those displayed on desktop or laptop computers. It is
+ assumed that, as a minimum, these computers are capable of operating at a display resolution of
+ 1024 x 768, and have a keyboard and pointing device.
+ The following items are in scope:
+       Input of fully-specified email addresses where a fully-specified address has a string of
+        characters known as a local-part, identifying a single person, or a group of users with a
+        shared job, followed by an ‘@’ symbol, and an Internet domain name
+       Display of fully-specified email addresses
+
+1.2.2      Out of Scope
+ The following items are out of scope:
+       Name display – Often the recipient’s name is displayed in angle-brackets, immediately
+        before the email address
+       Validation of email address as a real address – Techniques to determine whether an
+        entered address is an actual address
+       Validation that a given email address is that of the stated person – Methods for
+        determining this are beyond scope
+       Multi-language applications – Languages that use right-to-left writing, such as Arabic, the
+        Cyrillic alphabet, such as Russian, or ideograms, such as Japanese
+       International keyboards – Some keyboard layouts do not have an obvious ‘@’ symbol
+       Labels – An important factor for clarity, is the display of unambiguous and consistent labels
+        for email addresses, for example, whether the label should be ‘Email Address’ or
+        ‘Email ID’
+       Display styles – Choice of display font size, background and foreground text colour will
+        affect the readability of email addresses, as with all other displayed text
+       Reduced-size form factors – Handheld devices, such as personal digital assistants
+        (PDAs) and other such mobile devices
+       Data storage and transmission – This guidance relates only to the display layer of a
+        clinical application, and does not prescribe how email addresses should be stored. It is
+        assumed that all applications will be capable of transforming an email address stored in an
+        arbitrary format, into that prescribed by this guidance, without error. Additionally, this
+        guidance does not consider aspects relating to the transmission of messages, such as the
+        Internet Message Access Protocol (IMAP), Post Office Protocol version 3 (POP3) and
+        Simple Mail Transfer Protocol (SMTP), or the storage of messages
+       Message body and attachments – All matters relating to the size and format of
+        messages, and permissible attachments, are governed by Internet Message Format RFC
+            1
+        2822 , and by local policies and systems
+
+ 1
+  The Internet Engineering Task Force: Internet Message Format, RFC 2822 {R1}:
+ http://www.ietf.org/rfc/rfc2822.txt
+                                                                                                    Page 2
+                         Design Guidance – Email Address Input and Display
+                         Prepared by Microsoft, Version 1.0.0.0
+                         Last modified on 25 March 2008
+
+       Data history and provenance – The recording of dates for when an address is valid is left
+        to the designer of the clinical application
+       Address Types – Entering multiple email addresses, for example an Office email address or a
+        Home email address, is left to the designer of the clinical application
+
+       Method of providing help text and user messages – There are many ways of providing
+        the user with assistance, for example, tooltips, watermarks, Frequently Asked Questions
+        (FAQ) files, and online help. This guidance does not explore the pros and cons of these
+        methods and does not provide guidance on the wording for such text
+       Form design – Typically, an email address will be entered in a form in which a user is
+        asked to enter additional information, such as name and contact address. This guidance
+        does not address form-level aspects such as the positioning of labels, error messages, or
+        how mandatory fields should be displayed
+       Allocation of new email addresses – In addition to Internet protocols, IT policies used by
+        Internet Service Providers (ISPs) and systems administrators govern permissible user
+        names and thus, valid email addresses
+
+1.3     Key Principles
+ The following key principles have shaped the guidance in this document:
+       Conforming to convention and existing best practice with which clinicians are already
+        familiar, so as to reduce the training requirements of clinical applications
+       Promoting data quality so as to reduce occurrences of errors
+       Balancing the need for consistency and commonality across clinical applications with the
+        need to support Independent Software Vendor (ISV) requirements for flexibility
+
+                                                                                                      Page 3
+                       Design Guidance – Email Address Input and Display
+                       Prepared by Microsoft, Version 1.0.0.0
+                       Last modified on 25 March 2008
+
+2            RECOMMENDATIONS AND GUIDANCE
+    The guidance provided in this document is based upon a programme of user research, including:
+          A desk-based research project looking at a range of information entry Web pages and
+           clinical applications
+          A Web-based survey of 41 respondents drawn from Independent Software Vendors (ISVs),
+           healthcare administrative staff and healthcare professionals, including clinicians and
+           community pharmacists
+          A patient safety assessment
+
+         Important
+         An email address consists essentially of two parts, a local-part and a domain, separated by the ‘@’
+         symbol. The local-part usually, though not exclusively, corresponds to the user name. The domain
+         consists of a dot-separated list of hosts that act as intermediate destinations involved in routing the
+         message to the local-part.
+
+2.1          Email Address Display
+    Email addresses should be displayed in a form that is easy to read, and which can be used with an
+    email application. In this section, the guidance to support these requirements is described.
+
+2.1.1            Guidance
+    ID                    Guideline                                                                                              Status
+    EMA-0001              Display the email address without changing the case of any character                                   Recommended
+
+    EMA-0002              Display the email address in full, in a single line, without truncation or wrapping                    Recommended
+
+    EMA-0003              Support the copying of email addresses by the user as part of the ‘Copy and Paste’ task                Recommended
+
+    EMA-0004              Display email addresses as links to facilitate their efficient use for initiating email                Recommended
+                          communication
+    Table 1: Guidance for Email Address Display
+
+2.1.2            Examples of Correct Usage
+    Usage Format                                        Example                                            Comments
+              Username@Domain                          JoeBloggs@ms.net                                   The email address is complete, clear
+                                                                                                           and unambiguous
+    Table 2: Correct Email Address Example
+
+2.1.3            Examples of Incorrect Usage
+    Usage Format                                        Example                                            Comments
+              Username                                 JoeBloggs                                          The email address has been
+                                                                                                           truncated; only the user name is
+                                                                                                           displayed. The address is ambiguous
+
+              Username@partial-domain                  JoeBloggs@ms                                       The email address is not complete as
+                                                                                                           the domain name is not entered in
+                                                                                                           full. It is not possible to send an email
+                                                                                                           using the address as supplied
+
+                                                                                                                                              Page 4
+                                  Design Guidance – Email Address Input and Display
+                                  Prepared by Microsoft, Version 1.0.0.0
+                                  Last modified on 25 March 2008
+
+  Usage Format                                    Example                               Comments
+            Username@Domain-                     JoeBloggs@ms-                         The email address has wrapped to
+             Domain-continued                     .net                                  two lines
+
+  Table 3: Incorrect Email Address Examples
+
+2.1.4         Rationale
+  This section discusses the reasons underlying the guidance for displaying email addresses.
+
+2.1.4.1           Case Sensitivity
+  When displayed, an email address will be visually scanned by the user to check for any typographic
+  errors. This is most efficiently achieved when the text is in mixed case; this format allows text to be
+  read easily.
+  Text in all caps is the most difficult format to read as visual shape cues are absent. Readability
+  problems are further compounded by the prohibition on the use of space characters in email
+  addresses, which makes it difficult to distinguish between parts of an email address. An example of
+  this type of email address is ADAMARMSTRONG@SOMEWHERE.CO.UK.
+  Text that is entirely in lowercase and in which compound words are joined without delimiting
+  characters, also makes for poor readability, although not as acutely as that which comprises text in
+  all caps. An example of this type of email address is adamarmstrong@somewhere.co.uk.
+  Therefore, to improve readability, many email addresses contain mixed case lettering, also known
+  as ‘camel case’. An example of this type of email address is AdamArmstrong@SomeWhere.co.uk.
+  The case of the email address should therefore be preserved as entered.
+                                                            2
+  The Simple Mail Transfer Protocol, RFC 2821 states that unlike the formatting of the domain
+  name, the local-part of the email address should be treated as case-sensitive, and in addition,
+  SMTP implementations should preserve the case of the local-part.
+  In summary, because clinical applications should support the display of any email address, and as
+  email addresses may have mixed case lettering, this guidance recommends that the case of an
+  email address is preserved.
+
+2.1.4.2           Wrapping and Truncation
+  Readability is further enhanced when a contiguous item, such as an email address, can be read in
+  its entirety. If the address is split over two lines, a hyphen will be inserted at the point at which the
+  line breaks. This could potentially cause the reader to think the email address contains the hyphen.
+  This could result in a failed transmission or more severely, a transmission to the wrong person,
+  thereby compromising confidentiality. Similarly, where an email address is not displayed fully but is
+  arbitrarily truncated, the user is left to guess the missing portion, again raising the possibility of
+  failed transmission or transmission to the wrong person.
+
+  2
+   The Internet Engineering Task Force: Simple Mail Transfer Protocol, RFC 2821 {R2}:
+  http://www.ietf.org/rfc/rfc2821.txt
+                                                                                                                      Page 5
+                                Design Guidance – Email Address Input and Display
+                                Prepared by Microsoft, Version 1.0.0.0
+                                Last modified on 25 March 2008
+
+2.1.4.3            Displaying Addresses As Links
+  The probability of sending an email to the wrong person can be reduced by eliminating the need for
+  users to type an email address, as typographic errors can be introduced when an email address is
+  typed. Instead, if valid email addresses are displayed as links, users only need select the required
+  address to launch the default email application. An example of an email address displayed as a link
+  is the use of “mailto:” prepended to an email address, as described in The mailto URL scheme,
+             3
+  RFC 2368
+
+2.1.4.4            Copy and Paste
+  When composing emails, users of clinical applications may wish to be able to copy an email
+  address displayed by one application, and paste it into their preferred email application, letter or
+  other document. In such cases, only displaying addresses as links will not be sufficient; the text
+  needs to be able to be copied. The user can then launch their preferred email application, paste in
+  the email address, and then continue with the task.
+
+2.2        Email Address Input
+  The purpose of the email address input control is to enable the user to enter a single email
+  address. The control is a ‘Text Input Box’ as shown in Figure 1. Typically, it would be preceded by
+  a label as shown in Figure 2. As noted previously, the wording and positioning of the label is
+  outside the scope of this guidance.
+
+  Figure 1: Example of an Email Address Control Without a Label
+
+  Figure 2: Example of an Email Address Control with a Label
+
+2.2.1          Hints, Prompts and Tooltips
+  The input control may provide a hint, prompt, or tooltip. Hints are instructional text placed outside,
+  but adjacent to, the text input box. Prompts are commonly known as watermarks and comprise
+  instructional text placed within the text input box. Tooltips are instructional text that appear when
+  the mouse pointer is placed over the text input box. The wording of hints and prompts will depend
+  on how the control is to be used by the clinical application. A suggestion is to use: ‘e.g.
+  somebody@somewhere.co.uk’. A suggestion for a tooltip is: ‘Enter the Email address’. Examples of
+  hints, prompts, and tooltips are shown in
+  Figure 3, Figure 4 and Figure 5 respectively.
+
+  3
+   The Internet Engineering task Force: The mailto URL scheme, RFC 2368 {R3}:
+  http://www.ietf.org/rfc/rfc2368.txt
+                                                                                                   Page 6
+                                 Design Guidance – Email Address Input and Display
+                                 Prepared by Microsoft, Version 1.0.0.0
+                                 Last modified on 25 March 2008
+
+ Figure 3: Example of an Email Address Control with a Hint
+
+ Figure 4: Example of an Email Address Control with a Prompt
+
+ Figure 5: Example of an Email Address Control with a Tooltip
+
+2.2.2         Guidance
+ ID                     Guideline                                                                                        Status
+ EMA-0010               Provide a single text input box for email address entry                                          Mandatory
+
+ EMA-0011               Permit only one email address to be entered in an email input box                                Mandatory
+
+ EMA-0012               Set the height of the email address input box to the largest character height in the currently   Recommended
+                        active display font, taking the user’s settings into account
+
+ EMA-0013               Do not change the case of any character in the email address as entered by a user                Recommended
+
+ EMA-0014               Do not permit the case to differentiate between local-parts for different users’ email           Recommended
+                        addresses; in other words, when validating a local-part, ignore its case
+
+ EMA-0015               Permit email address input via all the mechanisms supported on a platform such as, but not       Recommended
+                        limited to, typing on a keyboard, copy and paste, and handwriting with a stylus
+
+ EMA-0016               Provide instructional text, for example, a tooltip, advising users of the required format for    Recommended
+                        email addresses
+ Table 4: Guidance for the Input of Email Addresses
+
+2.2.3         Examples of Correct Usage
+  Usage Format                                         Example                                        Comments
+           Correctly sized input box                  See Figure 1                      The email address can be entered
+                                                                                         and read in full
+ Table 5: Correct Email Address Display Examples
+
+                                                                                                                                     Page 7
+                                Design Guidance – Email Address Input and Display
+                                Prepared by Microsoft, Version 1.0.0.0
+                                Last modified on 25 March 2008
+
+2.2.4         Examples of Incorrect Usage
+  Usage Format                                        Example                       Comments
+            Small input box                                                        The length of the box is not adequate
+                                                                                    and an email address cannot be read
+                                                                                    in full, forcing the user to scroll within
+                                                                                    the box
+
+            Tall input box                                                         The height of the box could confuse
+                                                                                    the user who may think that an email
+                                                                                    message is to be entered, when an
+                                                                                    actual email address is required
+
+  Table 6: Incorrect Email Address Display Examples
+
+2.2.5         Rationale
+  This section discusses the reasons underlying the guidance for the email address control.
+
+2.2.5.1           Height and Length of the Email Input Box
+  The height of the input box should be adequate to accommodate a single line, not a paragraph, to
+  indicate that the text that constitutes a message is not to be entered.
+  The length of the box should be sufficient to permit the user to read an email address of usual
+  length, in its entirety. Users will want to check the address they have just entered. This will be a
+  cumbersome task when the input box is too short, as the initial characters will scroll to the left side
+  of the box, and therefore, will not be visible. Users will then be forced to scroll back to the start of
+  the box to reveal the initial characters of the address. To do this, keyboard users will either have to
+  locate and press the left arrow or the HOME key, thereby reducing task efficiency. Precise
+  guidance on lengths is difficult to formulate as the email addresses in question can be allocated by
+  any Internet service provider. However, looking at some leading applications is instructive: in
+            ®                 ®
+  Microsoft Office Outlook 2007, when creating a new contact, the email input box is 51 characters
+                                               ™
+  long; the equivalent box in Windows Live Mail is 34 characters. Designers of clinical applications
+  may be constrained by the screen size available and should decide on a size for the email address
+  input box accordingly.
+
+2.2.5.2           Permissible Characters
+  The Internet Message Format, RFC 2822 {R1} permits in the local-part uppercase and lowercase
+  letters, numbers, a full stop (provided it is surrounded by a letter or number) and the following
+  characters: !, #, $, %, &, ', *, +, -, /, =, ?, ^, _, `, {, |, } and ~.
+  Some permitted characters such as ^, | and ~ are rarely, if ever, used. Users are unlikely to know
+  where these characters are on the keyboard, making the entry of these characters an inefficient
+  task. Their use also makes it difficult to give one’s email address to another person verbally as the
+  names of the #, ^, | and ~ characters, are not widely known. Users of screen readers may not
+  recognise the words for these characters when spoken by the software, introducing further
+  opportunities for error.
+  Email addresses are often shared in handwritten notes in which it would be difficult to distinguish
+  between characters such as – and ~, and between ' and `. The _ (underscore) character is also
+  obscured if the email address is underlined. Donald M Berwick and David E Winickoff’s paper, The
+  truth about doctor's handwriting: a prospective study {R4} has shown that doctors' handwriting is no
+  less legible than that of other executives, and that safety may require not improving writing, but
+  rather replacing it with computerisation and other innovations.
+
+                                                                                                                        Page 8
+                                Design Guidance – Email Address Input and Display
+                                Prepared by Microsoft, Version 1.0.0.0
+                                Last modified on 25 March 2008
+
+  Diacritical marks are the marks made above or below a character to denote an accent for correct
+  pronunciation. An example of the use of diacritics is in the name Pérez-Miñana. The keyboard entry
+  of such marks may not be supported as standard, and therefore may require either special
+  keyboards or the selection from an additional character set, imposing additional costs in either
+  hardware or time and task-efficiency. Additionally, the sharing of such addresses in verbal
+  discourse would be error prone.
+  Notwithstanding the above comments, the scope of this guidance regards the input and display of
+  email addresses only, and not their original allocation. There is a need to support the whole range
+  of email addresses that are already being used, but we do not make any recommendations
+  regarding the characters permissible in an email address.
+
+2.2.5.3           Alternative Designs
+  An alternative design for the email address input control is shown in Figure 6.
+
+  Figure 6: A Rejected Design – Multiple Boxes
+
+  This design was rejected for a number of reasons. It assumes that the domain part can only consist
+  of two parts, forcing the user to guess how to enter common address formats. Additionally, it would
+  make it more cumbersome to enter an email address, as a keyboard user would have to move their
+  hand to the mouse, click into the next text box, and move their hand back to the keyboard to type
+  that part of the address, and so on. It would not be obvious to the user if, or how, such a control
+  supported ‘copy and paste’. Finally, in our research, we found no instance of such a design being
+  used.
+
+                                                                                                  Page 9
+                                Design Guidance – Email Address Input and Display
+                                Prepared by Microsoft, Version 1.0.0.0
+                                Last modified on 25 March 2008
+
+3              DOCUMENT INFORMATION
+
+3.1            Terms and Abbreviations
+    Abbreviation                       Definition
+    FAQ                                Frequently Asked Question
+
+    IMAP                               Internet Message Access Protocol
+
+    ISP                                Internet Service Provider
+
+    ISV                                Independent Software Vendor
+
+    PDA                                Personal Digital Assistant
+
+    POP3                               Post Office Protocol 3
+
+    SMTP                               Simple Mail Transfer Protocol
+
+    UI                                 User Interface
+    Table 7: Terms and Abbreviations
+
+3.2            Nomenclature
+    This section shows how to interpret the different styles used in this document to denote various
+    types of information.
+
+3.2.1            Body Text
+    Text                                                                  Style
+    Code                                                                  Monospace
+
+    Script
+
+    Other markup languages
+
+    Interface dialog names                                                Bold
+
+    Field names
+
+    Controls
+
+    Folder names                                                          Title Case
+
+    File names
+    Table 8: Body Text Styles
+
+3.2.2            Cross References
+    Reference                                                             Style
+    Current document – sections                                           Section number only
+
+    Current document – figures/tables                                     Caption number only
+
+    Other project documents                                               Italics and possibly a footnote
+
+    Publicly available documents                                          Italics with a footnote
+
+    External Web-based content                                            Italics and a hyperlinked footnote
+    Table 9: Cross Reference Styles
+
+                                                                                                               Page 10
+                                  Design Guidance – Email Address Input and Display
+                                  Prepared by Microsoft, Version 1.0.0.0
+                                  Last modified on 25 March 2008
+
+3.3       References
+ Reference Document                                                                                                    Version
+ R1.              The Internet Engineering Task Force: Internet Message Format, RFC 2822                               April 2001
+                  http://www.ietf.org/rfc/rfc2822.txt
+
+ R2.              The Internet Engineering Task Force: Simple Mail Transfer Protocol, RFC 2821                         April 2001
+                  http://www.ietf.org/rfc/rfc2821.txt
+
+ R3.              The Internet Engineering Task Force: The mailto URL scheme, RFC 2368                                 July 1998
+                  http://www.ietf.org/rfc/rfc2368.txt
+
+ R4.              Donald M Berwick, David E Winickoff, The truth about doctor's handwriting: a prospective study BMJ   December
+                  NO 7072, Volume 313                                                                                  1996
+ Table 10: References
+
+                                                                                                                            Page 11
+                             Design Guidance – Email Address Input and Display
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 25 March 2008

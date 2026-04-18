@@ -1,0 +1,2545 @@
+                  Design Guidance
+Displaying Adverse Drug Reaction Risks
+
+
+
+                     Wednesday, 28 January 2009
+                                 Version 1.0.0.0
+
+
+                                    Prepared by
+                                      Microsoft
+                                                                                                                                                   Microsoft
+
+
+
+
+PREFACE
+   Documents replaced by this document
+
+   Document Title                                                                                                                  Version
+   None
+
+
+   Documents to be read in conjunction with this document
+
+   Document Title                                                                                                                  Version
+   Design Guidance – Date Display                                                                                                  2.0
+
+   Design Guidance – Medication Line                                                                                               2.0
+
+   Design Guidance – Displaying Graphs and Tables                                                                                  2.0
+
+   Design Guidance – Terminology – Display Standards for Coded Information                                                         1.0
+
+
+
+
+This document and/or software (“this Content”) has been created in partnership with the National Health Service (NHS) in England. Intellectual Property
+Rights to this Content are jointly owned by Microsoft and the NHS in England, although both Microsoft and the NHS are entitled to independently exercise
+their rights of ownership. Microsoft acknowledges the contribution of the NHS in England through their Common User Interface programme to this Content.
+Readers are referred to www.cui.nhs.uk for further information on the NHS CUI Programme.
+
+All trademarks are the property of their respective companies. Microsoft and Windows are either registered trademarks or trademarks of Microsoft
+Corporation in the United States and/or other countries.
+
+© Microsoft Corporation 2009. All rights reserved.
+
+                                                                                                                                                     Page ii
+                                    Design Guidance – Displaying Adverse Drug Reaction Risks
+                                    Prepared by Microsoft, Version 1.0.0.0
+                                    Last modified on 28 January 2009
+                                                                                                                                                 Microsoft
+
+
+
+
+TABLE OF CONTENTS
+1    Introduction .................................................................................................................................... 1
+    1.1    Definitions of Adverse Drug Reactions ..................................................................................... 1
+    1.2    Risks Versus Events ................................................................................................................. 3
+    1.3    Customer Need......................................................................................................................... 3
+    1.4    Scope ........................................................................................................................................ 4
+     1.4.1      In Scope .............................................................................................................................. 4
+     1.4.2      Out of Scope ....................................................................................................................... 4
+    1.5    Assumptions ............................................................................................................................. 5
+    1.6    Dependencies ........................................................................................................................... 5
+
+2    Guidance Overview ....................................................................................................................... 6
+    2.1    Visual Summary of the Guidance ............................................................................................. 6
+
+3    Guidance Details ............................................................................................................................ 7
+    3.1    Introduction ............................................................................................................................... 7
+    3.2    Principles .................................................................................................................................. 7
+    3.3    Guidelines ................................................................................................................................. 8
+     3.3.1      Structure of Adverse Drug Reaction Risk List..................................................................... 8
+     3.3.2      Content of Adverse Drug Reaction Risk Phrases ............................................................. 13
+     3.3.3      Content of Supporting Data (High-Level Guidance) ......................................................... 17
+     3.3.4      Format of List .................................................................................................................... 19
+     3.3.5      Displaying Dates and Times ............................................................................................. 22
+     3.3.6      Displaying Source of Risk ................................................................................................. 23
+     3.3.7      Displaying Authorship of Risk and Event Phrases ............................................................ 24
+     3.3.8      Displaying Absence of Risk ............................................................................................... 25
+     3.3.9      Displaying that no Decision Support is Available for a Specific Risk ................................ 27
+     3.3.10         Displaying Risks in Narrative Text ................................................................................ 29
+    3.4    Rationale Summary ................................................................................................................ 30
+
+4    Document Information ................................................................................................................ 31
+    4.1    Terms and Abbreviations ........................................................................................................ 31
+    4.2    Definitions ............................................................................................................................... 31
+    4.3    Nomenclature ......................................................................................................................... 31
+     4.3.1      Body Text .......................................................................................................................... 31
+     4.3.2      Cross References.............................................................................................................. 32
+    4.4    References ............................................................................................................................. 32
+
+APPENDIX A            Reference Summary of Guidance ........................................................................... 34
+
+APPENDIX B            Study ID 42: Executive Summary ............................................................................ 37
+
+
+                                                                                                                                                   Page iii
+                                 Design Guidance – Displaying Adverse Drug Reaction Risks
+                                 Prepared by Microsoft, Version 1.0.0.0
+                                 Last modified on 28 January 2009
+                                                                                                                   Microsoft
+
+
+
+APPENDIX C   Study ID 45: Executive Summary ............................................................................ 42
+
+
+
+
+                                                                                                                    Page iv
+                      Design Guidance – Displaying Adverse Drug Reaction Risks
+                      Prepared by Microsoft, Version 1.0.0.0
+                      Last modified on 28 January 2009
+                                                                                                               Microsoft
+
+
+
+
+1          INTRODUCTION
+        Note
+        The example names of companies, organisations, people, places and events depicted in the graphical
+        illustrations are fictitious. No association with any real company, organisation, person, place, or events is
+        intended, or should be inferred.
+
+
+    Adverse drug reactions (ADRs) represent a significant risk to patient safety. This is demonstrated in
+                   1
+    a recent report drawn up by the National Patient Safety Agency (NPSA). The report quotes a study
+    which found that an estimated 6.5% of hospital admissions are due to an adverse drug reaction.
+    Currently, information about a patient’s propensity (that is, risk) for suffering an ADR to a given
+    drug is not recorded or displayed consistently across healthcare systems, which could result in its
+    ambiguous or incomplete communication.
+    This guidance aims to support clear and unambiguous communication of the known ADR risks for a
+    patient which could be appropriate for a wide range of settings throughout the healthcare industry.
+    Clinical software applications that record or display ADR risks must provide sufficient information to
+    allow the user to make good clinical decisions, such as:
+         Whether to prescribe a medication
+         Whether to take additional actions (such as administering the drug in a hospital).
+    The users must also be able to determine whether the patient’s current symptoms are attributable
+    to an ADR.
+    This guidance is written with the assumption that the display of a list of ADR risks would be
+    featured in clinical applications in addition to automatic warning alerts based upon Decision
+    Support Systems (DSS). Therefore, the guidance scope does not cover such DSS alerts and the
+    reader should not assume that the designs in this document would remove the need for such alerts.
+    Another important issue associated with the recording and subsequent display of adverse drug
+    reactions is that of maintaining data quality. In writing this guidance, attempts have been made to
+    ensure that data display requirements do not encourage poor data quality at the point of entry. For
+    example, this guidance does not require the display of data that is unavailable to the clinician who
+    enters the risk. Also, this guidance mandates that the application faithfully reflects certain key data,
+    such as the causative agent of the reaction risk, in the form in which it was entered. The issue of
+    maintaining ADR risk data quality is a theme which will be usefully addressed in any future work
+    addressing user interface design for entering ADR risks.
+
+        Important
+        The visual representations used within this document to display the guidance are illustrative only. They
+        are simplified in order to support understanding of the guidance points. Stylistic choices, such as colours,
+        fonts or icons, are not part of the guidance and, unless otherwise specified, are therefore not mandatory
+        requirements for compliance with the guidance in this document.
+
+
+1.1        Definitions of Adverse Drug Reactions
+    The World Health Organisation (WHO) defines ‘adverse drug reactions’ as “any response to a drug
+    which is noxious and unintended, and which occurs at doses normally used in humans for
+    prophylaxis, diagnosis, or therapy of disease, or for the modification of physiological function” {R2}.
+
+
+
+    1
+     NHS National Patient Safety Agency, National Reporting and Learning Service, Safety in Doses {R1}:
+    http://www.npsa.nhs.uk/nrls/alerts-and-directives/directives-guidance/safety-in-doses/
+                                                                                                                 Page 1
+                             Design Guidance – Displaying Adverse Drug Reaction Risks
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 28 January 2009
+                                                                                                                Microsoft
+
+
+
+    In other words, in normal cases, the drug itself is not toxic, but for some patients, the drug will
+    provoke a negative physiological response.
+    However, beyond this general notion of what is an adverse drug reaction, there are many
+    sub-definitions and opposing classifications.
+    Many taxonomies categorise adverse drug reaction risks according to whether they are
+    immunologic-mediated or not. Some also make the distinction between Type A (pharmacological)
+    and Type B (hypersensitivity). For example, Figure 1 shows a classification of adverse drug
+                                                   2
+    reactions from the Medical Journal of Australia :
+
+
+
+
+    Figure 1: Classification of Adverse Drug Reactions
+
+    Another report describes how there are multiple sub-groups within the category of immunological
+    reactions alone, the most common being Type 1, or “allergy”, and that immunological reactions only
+                                          3
+    account for 5-10% of adverse reactions .
+    It would be fair to say that most clinicians would not be familiar with such a detailed classification. A
+    national healthcare agency focused on the delivery of IT and infrastructure in the UK categorises
+    adverse drug reactions into three categories:
+         1. Allergic drug reaction
+               A response to a pharmaceutical product to which an individual has become sensitised, in
+               which histamine, serotonin and other vasoactive substances are released, in response to
+               an immune system-mediated reaction.
+               This causes systemic symptoms which can include pruritus, erythema, flushing, urticaria,
+               angio-oedema, nausea, diarrhoea, vomiting, laryngeal oedema, bronchospasm,
+               hypotension, cardiovascular collapse and death.
+
+         2. Adverse drug reaction
+               A response to a pharmaceutical product which is noxious and unintended and which occurs
+               at doses normally used in man for prophylaxis, diagnosis, or therapy of disease or for
+               modification of physiological function.
+
+
+
+
+2 Thien, F. MJA Practice Essentials,2006, Allergy: Drug hypersensitivity {R3}:
+
+http://www.mja.com.au/public/issues/185_06_180906/thi10282_fm.html
+3
+ Riedl, M. and Casillas, A. American Family Physician™, November 1, 2003, Adverse Drug Reactions: Types and Treatment
+Options {R4}: http://www.aafp.org/afp/20031101/1781.html
+                                                                                                                 Page 2
+                                   Design Guidance – Displaying Adverse Drug Reaction Risks
+                                   Prepared by Microsoft, Version 1.0.0.0
+                                   Last modified on 28 January 2009
+                                                                                                      Microsoft
+
+
+
+      3. Drug intolerance
+         An undesirable effect produced by the pharmacological actions of a pharmaceutical product
+         at therapeutic or sub-therapeutic dosages and which prevents the patient from tolerating
+         treatment with that product.
+
+1.2     Risks Versus Events
+ This guidance will take the approach that an adverse drug reaction can be expressed in terms of an
+ actual reaction event or in terms of a future risk to the patient. As will be shown later in the
+ document, this is an important distinction, given that a patient can experience a reaction (event)
+ without the clinician believing that the drug represents a serious future risk; or, conversely, the
+ clinician may wish to record that the patient is at risk of adversely reacting to a given medication,
+ even if the details of any past reaction are not known. For example, the patient may tell the clinician
+ that they are allergic to penicillin, but are not able to recall any specific reaction event to justify this
+ risk. The clinician may therefore wish to record this as a risk and not an event. Obviously, the
+ confusion of ‘risk’ and ‘event’ at this point could be dangerous as future readers of the risk
+ information could place undue confidence in the risk if they think that the clinician has witnessed a
+ reaction in the patient.
+ Therefore, this guidance distinguishes between the risk of a future reaction and the event of past
+ reaction, but acknowledges that these two sets of data are intimately linked and that this should be
+ reflected in the user interface.
+
+1.3     Customer Need
+ Avoiding known adverse reactions to drugs is a well-recognised and important goal within the
+ healthcare industry. Communicating the risk of a drug to a specific patient is an important step in
+ achieving this.
+ To achieve this communication, the user must be able to:
+       Check if the patient is believed to be at risk of suffering adverse reactions if they are
+        administered one or more drugs, or if there is a stated absence of risks for that patient
+       Decide if one or more adverse drug reactions should influence the current clinical decision
+       Predict what additional actions should be taken in response to the risk of one or more
+        adverse drug reactions
+ In order to prevent the administration of drugs known to be dangerous to a patient, care must be
+ taken to ensure that clinicians are provided with sufficient information to:
+       Identify the presence or confirm the positive absence of adverse drug reactions
+       Determine the previous outcomes (including reaction) of the drug being administered
+       Form an opinion on future outcomes if the drug is again administered
+
+
+
+
+                                                                                                       Page 3
+                       Design Guidance – Displaying Adverse Drug Reaction Risks
+                       Prepared by Microsoft, Version 1.0.0.0
+                       Last modified on 28 January 2009
+                                                                                                                                      Microsoft
+
+
+
+
+1.4       Scope
+1.4.1         In Scope
+ Guidance Area                             Details
+ Structure of list                         Guidance on how the list is structured and ordered.
+
+ Content of risk phrase                    Guidance on the information that needs to be included in the expression of an adverse drug
+                                           reaction risk.
+                                           The information is prioritised: some information must be immediately visible, whereas other
+                                           information can be available upon interrogation by the user (for example, a click away).
+
+ Content of supporting events,             Guidance on the supporting information that may be featured to justify the risk phrases,
+ including previous adverse reaction       including adverse reaction events. This guidance addresses content at a high level rather
+ events (high level)                       than at a detailed level.
+
+ Format of list                            Guidance on how to format the words and phrases within the list, including tabular
+                                           arrangement, punctuation and text formatting.
+
+ Justification of risks                    Guidance on how to display justification of risks. This information may be encoded or may be
+                                           free text, and may include details of the reaction events that support the expression of a risk.
+                                           The guidance outlines the types of information that should be available, but without
+                                           specifying the precise structure or content of the information.
+
+ Displaying dates and times                Guidance on which dates and times to display, where and how to display them.
+
+ Displaying source of risk                 Guidance on how to communicate the source of the risk, such as whether a clinician
+                                           witnessed a reaction or the patient recounted a risk or event.
+
+ Displaying authorship of risk             Guidance on communicating the author of a risk, including their name, role and location.
+
+ Communicating absence of risks            Guidance on communicating where no risks have been recorded, including:
+                                            Where a positive absence has been recorded (for example, ‘no known drug allergies’)
+                                            Where the patient has not been asked
+                                            Where information is simply not available
+
+ No Decision Support                       Guidance on communicating where a risk will not trigger Decision Support mechanisms,
+                                           including alerts, because the risk is either not encoded (that is, it is free text) or because the
+                                           causative agent in the risk is not included in the Decision Support reference list.
+
+ Displaying risks in narrative text        Guidance on how to display risk phrases as part of narrative text, as opposed to in a
+                                           list/table.
+ Table 1: In Scope
+
+1.4.2         Out of Scope
+ Guidance Area                             Details
+ Content and structure of adverse drug Guidance does not cover the content or structure of the adverse drug reaction events that
+ reaction event details                support the risk phrases. It will not specify what detailed information must be included in the
+                                       description of a reaction event.
+                                           However, the guidance will cover how to show reaction event summaries and will use
+                                           examples of detailed reaction event descriptions to show how events may be displayed as
+                                           justification for the risks that they support.
+
+ System-initiated adverse drug reaction Guidance does not cover adverse drug reaction warnings and alerts.
+ warning and alert messages
+
+ Dealing with long lists of adverse drug Guidance does not cover how to deal with long lists of adverse drug reaction risks.
+ reaction risks
+
+
+
+                                                                                                                                        Page 4
+                                 Design Guidance – Displaying Adverse Drug Reaction Risks
+                                 Prepared by Microsoft, Version 1.0.0.0
+                                 Last modified on 28 January 2009
+                                                                                                                                          Microsoft
+
+
+
+
+ Guidance Area                              Details
+ Displaying an abbreviated status of a      Guidance does not cover how to display an abbreviated status of a patient’s ADR risks, such
+ patient’s ADR risks                        as an entry on a patient’s identification banner.
+ Table 2: Out of Scope
+
+
+1.5        Assumptions
+ ID        Assumption
+ A1        The structured terminology used as exemplars for this guidance will be SNOMED CT®4 and the NHS Dictionary of Medicines
+           + Devices (dm+d)5.
+
+ A2        Appropriate subsets within SNOMED CT {R5} and dm+d {R6} are available.
+
+ A3        The application will be able to recognise that the encoded terms 'allergy to penicillin' and 'intolerance to penicillin' are
+           subtypes of 'propensity to adverse reaction to penicillin'.
+ Table 3: Assumptions
+
+
+1.6        Dependencies
+ ID        Dependency
+ D1        The availability of appropriate data sets, for example, SNOMED CT {R5} subsets.
+
+ D2        The following design guidance documents (changes in these documents may affect the current design guidance given for
+           displaying adverse drug reaction risks):
+            Design Guidance – Date Display {R7}
+            Design Guidance – Medication Line {R8}
+            Design Guidance – Displaying Graphs and Tables {R9}
+            Design Guidance – Terminology – Display Standards for Coded Information {R10}
+
+ D3        Certain guidelines are dependent upon the fact that the medication terminology used contains the same length terms as the
+           current version of the dm+d {R6}.
+ Table 4: Dependencies
+
+
+
+
+ 4
+     SNOMED CT® {R5}: http://ihtsdo.org/
+ 5
+     NHS Dictionary of Medicines and Devices (dm+d) {R6}: http://195.97.218.30/dmd_download.htm
+                                                                                                                                           Page 5
+                               Design Guidance – Displaying Adverse Drug Reaction Risks
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 28 January 2009
+                                                                                                                                                  Microsoft
+
+
+
+
+2            GUIDANCE OVERVIEW
+
+2.1          Visual Summary of the Guidance
+    The following section provides a diagrammatic representation of the design guidance, emphasising
+    the process flow and introducing where in the flow the various guidance areas apply.
+    Figure 2 provides an overview of the ADR display, in this case shown as a list (views are discussed
+    later in this document):
+
+    Visual Summary                                                                               Areas of Guidance
+                                                                                                 3.3.1 Structure of Adverse Drug Reaction Risk
+                                                                                                 List
+
+                                                                                                 3.3.2 Content of Adverse Drug Reaction Risk
+                                                                                                 Phrases
+                                                                                                 3.3.4 Format of List
+                                                                                                 3.3.8 Displaying Absence of Risk
+                                                                                                 3.3.9 Displaying that no Decision Support is Available for
+                                                                                                 a Specific Risk
+
+                                                                                                 3.3.1 Structure of Adverse Drug Reaction Risk
+                                                                                                 List
+
+                                                                                                 3.3.3 Content of Supporting Data (High-Level
+                                                                                                 Guidance)
+                                                                                                 3.3.5 Displaying Dates and Times
+
+                                                                                                 3.3.6 Displaying Source of Risk
+                                                                                                 3.3.7 Displaying Authorship of Risk and Event
+                                                                                                 Phrases
+
+                                                                                                 3.3.1 Structure of Adverse Drug Reaction Risk
+                                                                                                 List
+
+
+
+
+    Figure 2: Diagrammatic Overview of the Structure of the Adverse Drug Reaction Risk Display
+
+         Note
+         Section 3.3.10, Displaying Risks in Narrative Text, is not featured in this diagram. That section shows how
+         to apply the guidelines to a narrative text format.
+
+
+
+
+                                                                                                                                                     Page 6
+                                   Design Guidance – Displaying Adverse Drug Reaction Risks
+                                   Prepared by Microsoft, Version 1.0.0.0
+                                   Last modified on 28 January 2009
+                                                                                                     Microsoft
+
+
+
+
+3         GUIDANCE DETAILS
+
+3.1       Introduction
+    The guidance in this document covers the structure of the list used to display the adverse drug
+    reaction risks, the content of the risk phrases, the display of supporting event phrases and the
+    display of sufficient provenance information and appropriate formatting.
+    The guidance in this document is based upon a programme of research, including:
+        A Web-based survey of clinicians
+        One-to-one interviews with a range of healthcare professionals
+        An opening risk assessment with clinicians
+        A closing risk assessment with clinicians
+
+3.2       Principles
+    The following key principles inform the guidance in this document:
+        Display sufficient content to allow users to act appropriately
+        Minimise content in order to reduce the risk of misleading the user:
+              Where the meaning of content is ambiguous
+              Where the content is irrelevant to the users’ decision-making needs
+        Distinguish different types of clinical phrases, where they have radically different meanings,
+         for example:
+              Distinguish expressions of future risk from expressions of past events
+              Distinguish different types of phrase by distinct styles of content, labelling and location
+        Distinguish individual clinical phrases from one another, for example, through visual format
+        Describe substances in a common, unambiguous terminology (where possible)
+        Describe substances at an appropriate level, in order to help the user act appropriately
+        Order lists appropriately
+        User must be able to easily access justification for expressions of future risk, where
+         justifying information is available
+        User must be able to easily return to high-level information after viewing detailed
+         information
+        Clearly communicate the provenance of clinical phrases, where appropriate
+
+
+
+
+                                                                                                       Page 7
+                         Design Guidance – Displaying Adverse Drug Reaction Risks
+                         Prepared by Microsoft, Version 1.0.0.0
+                         Last modified on 28 January 2009
+                                                                                                                       Microsoft
+
+
+
+
+3.3     Guidelines
+3.3.1     Structure of Adverse Drug Reaction Risk List
+ This section relates to the structure of the list that communicates the risk of adverse drug reactions
+ if the patient is administered certain drugs, or a stated absence of known risks. The main principle
+ is that there are multiple levels of information which are revealed sequentially, upon request by the
+ clinician.
+ The initial view (‘Level 1’) contains the core information that is required by a clinician in order to
+ identify the causative agent (namely, what medication to avoid) and what reactions the patient has
+ had in the past.
+ The second view (‘Level 2’) contains information that supports the core information, primarily
+ providing the justification and provenance of the core information. The second level view could also
+ provide a repository for other links to relevant entries elsewhere in the patient's record.
+
+                                                                                                                Evidence
+  ID         Description                                                                          Conformance
+                                                                                                                Rating
+  ADR-0001   Feature multiple levels of display: an immediate view (‘Level 1’) containing the Mandatory         High
+             risk phrase (comprising the causative agent and any past reactions) and a set of
+             other views (‘Level 2’) that are not immediately visible and contain supporting
+             events data, if such event data and linkages exist.
+
+  ADR-0002   Feature a mechanism that allows the user to access relevant items within the         Mandatory     High
+             ‘Level 2’ view from individual risks in the ‘Level 1’ view, if such event data and
+             linkages exist.
+
+  ADR-0003   Feature a mechanism that allows the user to return to the ‘Level 1’ list.            Mandatory     High
+
+  ADR-0004   Link each risk phrase in the ‘Level 1’ view to one or more related event phrases     Mandatory     High
+             in the ‘Level 2’ view, if such event data and linkages exist.
+
+  ADR-0005   In the ‘Level 1’ view, the causative agent column should be displayed at the far     Mandatory     Medium
+             left-hand side of the table.
+
+  ADR-0006   In the ‘Level 1’ view, the past reactions column should be displayed to the right    Mandatory     Medium
+             of the causative agent column.
+
+  ADR-0007   Feature a mechanism that allows the user to access further details from the          Recommended   Low
+             ‘Level 2’ line items, if such event data and linkages exist.
+
+  ADR-0008   Arrange the list according to a consistent (default) order.                          Mandatory     High
+
+  ADR-0009   Order the list alphabetically on the generic medication name (causative agent).      Recommended   Low
+
+
+
+
+                                                                                                                        Page 8
+                         Design Guidance – Displaying Adverse Drug Reaction Risks
+                         Prepared by Microsoft, Version 1.0.0.0
+                         Last modified on 28 January 2009
+                                                                                                                                  Microsoft
+
+
+
+
+Usage Examples
+This figure shows the various levels of information required to express a set of adverse drug reaction risks for a single patient. Level
+1 is the initial view, and the one that clinicians use to check if a given medication could cause an adverse drug reaction. At this point,
+they may not decide to view any further information.
+However, they may indeed wish to view further information that justifies the risk, possibly to find out more details about the reaction,
+to discover the form or route of the medication that caused the reaction or to identify the provenance of the risk. In which case, they
+would select the risk in question and activate a control which reveals detailed information about the risk, including links to appropriate
+data in the wider record (Level 2).
+They can then choose to view further details about any of those Level 2 entries.
+
+
+                                                                                                                          Level 1
+
+
+
+
+                                                                                                                           Level 2
+
+
+
+
+                                                                                                            Level 2: details
+
+
+
+   Figure 3: Diagrammatic Overview Showing Structure of ADR Risk List
+
+
+
+
+   Figure 4: Example of Level 1 View
+
+
+
+
+                                                                                                                                    Page 9
+                            Design Guidance – Displaying Adverse Drug Reaction Risks
+                            Prepared by Microsoft, Version 1.0.0.0
+                            Last modified on 28 January 2009
+                                                                                                                       Microsoft
+
+
+
+
+Figure 5: Example of Level 2 View
+
+
+
+
+Figure 6: Example of Level 2 Details View
+
+
+
+
+Figure 7: Provide Clear and Appropriate Navigation Back to the List (Highlighted in this Diagram by the Red Outline)
+
+
+
+
+Figure 8: The Core Information Should Contain the Medication Term and the Patient's Past Reactions
+
+
+
+
+Figure 9: Order the List Alphabetically by Medication (Highlighted in this Diagram by the Red Outline)
+
+
+
+
+                                                                                                                       Page 10
+                          Design Guidance – Displaying Adverse Drug Reaction Risks
+                          Prepared by Microsoft, Version 1.0.0.0
+                          Last modified on 28 January 2009
+                                                                                                                                     Microsoft
+
+
+
+
+        Figure 10: Do Not Feature the Causative Agent in the Right-Hand Column
+
+
+
+
+        Figure 11: Do Not List the Risks in a Non-Alphabetical Fashion (that is, Randomly or by Date)
+
+
+
+
+        Figure 12: Do Not Merge Data Types in the Line
+
+    Rationale
+    Desk research:
+    Secondary research has led to the conclusion that:
+         Logically, events (such as reaction events and risks) must be kept as separate phrases. For example, this is demonstrated in
+          the NHS Connecting for Health (NHS CFH) SCG Guidance paper Representation of Allergies and Adverse Reaction
+          Information Using NHS Message Templates6. A risk could exist without a reaction event, such as when a patient knows that
+          they are allergic to a drug but cannot remember any details of the reaction they had experienced (if they had indeed
+          experienced a reaction). Conversely, a reaction event could be recorded, but without the clinician feeling the need to indicate
+          that there is an accompanying future risk, although this would be out of the current design scope. Also, there can be multiple
+          past reactions to a single risk and, potentially, multiple risks associated with a single event. The risk phrase is a terse summary
+          to alert future prescribers, whereas the recording of a reaction event will take a whole clinical encounter to record, including
+          elements such as history, examination, diagnosis and plan. In all, this evidence suggests the need to separate clinical risk
+          phrases from clinical event phrases.
+
+
+
+
+6
+  NHS Connecting for Health document SCG Guidance on the Representation of Allergies and Adverse Reaction
+Information Using NHS Message Templates {R11}:
+http://www.connectingforhealth.nhs.uk/systemsandservices/data/scg/publications/SCG0001.pdf
+                                                                                                                                      Page 11
+                                  Design Guidance – Displaying Adverse Drug Reaction Risks
+                                  Prepared by Microsoft, Version 1.0.0.0
+                                  Last modified on 28 January 2009
+                                                                                                                                  Microsoft
+
+
+
+
+    The severity of the risk and the certainty that the patient suffers from this risk can be misleading when relating to future risks, as
+     opposed to actual reaction events. For example, this is demonstrated in the NHS CFH paper on adverse drug reaction
+     propensity {R11}. However, it also suggested that legacy data may feature phrases about adverse drug reactions and their
+     associated risks which include the expression of severity and/or certainty. In these cases, it may be necessary to communicate
+     this information in relation to the risk phrase, but not to hinder the key risk. By separating the risk phrases from the supporting
+     events phrases, we can allow the expression of severity and/or certainty to remain as details in an event phrase, such as a
+     'Risk identified' event (displayed in Level 2 details), but without affecting the headline risk phrase.
+    If a patient’s record has a reaction event phrase, then it should, in most cases, also have one corresponding risk phrase.
+     However, if a patient’s record has a risk phrase, a corresponding reaction event phrase is not required. For example, this is
+     expressed in the NHS CFH paper on adverse drug reaction propensity {R11}.
+User research:
+    Clinicians felt the categorisation of adverse drug risks, in this case 'allergy', 'intolerance' and 'adverse drug reaction', are
+     misleading and confusing. Indeed, when asked to categorise risks, based upon reaction evidence, there was clear variation
+     between clinicians' categorisations, further supporting the notion that these categories are too ambiguous and open to
+     misinterpretation to be used in a meaningful way.
+    The research showed that certain attributes that could be used to order the list, such as severity, certainty or adverse reaction
+     type were open to subjective interpretation to such a degree as to be misleading. Given that currently there does not tend to be
+     electronic lists of ADR risks, there is also no recognised convention on ordering these risks (see APPENDIX B).
+     Therefore, in the absence of any priorities, alphabetical ordering by medication is an arbitrary, but not misleading order. Also, it
+     makes it easier to search against risks for a medication, as the user can match the first letters of the target medication against
+     the first letters of the medications in the list. This would also help to check for risky medications during prescribing (see
+     APPENDIX C).
+Hazard risk analysis summary:
+From our patient safety risk assessment analyses we identified a number of potential hazards, including the following key risks which
+are mitigated by the design:
+    Potential hazards:                                                  Mitigations:
+     If there is no single source in the record for adverse drug        The structure allows for a single list of adverse drug reaction
+      reaction risk information, the clinician may miss reaction          risk information, which could link events from various parts of
+      risks                                                               the record
+     If a clinician only has access to the risk phrase, but does        Provide access from the risk phrase to a second level of
+      not understand why it has been recorded (that is, its               supporting event information
+      justification), there is a risk that the clinician cannot fully
+      interpret it
+     If finding the detail about reaction events involves hunting  The structure links the risk phrase to justificatory phrases,
+      in the notes certain details may be missed                     such as event details (where available) in order to provide the
+                                                                     clinician with easy access to the details that support the
+                                                                     phrase
+     If the allergic reaction varied in severity between events,        The structure allows multiple reactions of varying severities to
+      any severity associated with the risk phrase could be               be linked to a single risk phrase
+      misleading
+
+
+
+
+                                                                                                                                   Page 12
+                            Design Guidance – Displaying Adverse Drug Reaction Risks
+                            Prepared by Microsoft, Version 1.0.0.0
+                            Last modified on 28 January 2009
+                                                                                                                        Microsoft
+
+
+
+
+3.3.2        Content of Adverse Drug Reaction Risk Phrases
+      Note
+      It is intended that guidance on the entry of the causative agent will be addressed in future research.
+
+
+                                                                                                                 Evidence
+ ID           Description                                                                          Conformance
+                                                                                                                 Rating
+ ADR-0010     Display the causative agent, which comprises a single medication, excipient or       Mandatory     High
+              drug class.
+
+ ADR-0011     Display the causative agent in the immediate view (‘Level 1’).                       Mandatory     High
+
+ ADR-0012     The causative agent should be displayed in the same text in which it was             Recommended   Medium
+              recorded.
+              This may be typically the Virtual Therapeutic Moiety (VTM) or drug class name,
+              or, less commonly, the Trade Family (TF) name or the name of a medication
+              excipient.
+
+ ADR-0013     Do not feature two or more risk phrases that contain the same causative agent.       Mandatory     High
+
+ ADR-0014     The display must be able to handle both encoded and unencoded data relating          Mandatory     High
+              to the causative agent.
+
+ ADR-0015     Where possible, the causative agent should be displayed as encoded data.             Recommended   High
+
+ ADR-0016     Do not display information about the form, route or dosage of the medication in      Recommended   Medium
+              the Level 1 view.
+
+ ADR-0017     In Level 1 view, display a description of any linked past reactions, if available.   Mandatory     Medium
+
+ ADR-0018     Communicate descriptions of past reactions as key words, ideally only one or         Recommended   Medium
+              two per reaction, although this will depend upon the available data.
+
+ ADR-0019     Where information about the past reactions for a given ADR risk is not known,        Recommended   Low
+              communicate that this information is not known.
+
+ ADR-0020     The display must be able to handle multiple past reactions for a single causative Mandatory        Medium
+              agent.
+
+ ADR-0021     For a given risk, the display should be able to distinguish between those            Recommended   Medium
+              reactions which occurred simultaneously and those which occurred on different
+              occasions, that is, in separate clinical episodes.
+
+ ADR-0022     Where multiple reactions occurred for the same reaction event (that is,              Recommended   Low
+              simultaneously), display the character ‘+’ in between them or the word ‘AND’ in
+              capital letters.
+              For example, if the patient experienced a rash and nausea at the same time, the
+              words ‘rash + nausea’ would be displayed, or ‘rash AND nausea’.
+
+ ADR-0023     Where multiple reactions occurred for different reaction events (that is,            Recommended   Medium
+              separated in time), punctuate them with a comma.
+
+ ADR-0024     Clearly label the causative agents.                                                  Mandatory     High
+
+ ADR-0025     Label the causative agents ‘Drug / substance’ for example, as a column header.       Recommended   Medium
+
+ ADR-0026     Clearly label the past reactions.                                                    Mandatory     High
+
+ ADR-0027     Label the past reactions ‘Past reactions’.                                           Recommended   High
+
+ ADR-0028     Clearly label the whole list.                                                        Mandatory     High
+
+ ADR-0029     Label the list ‘Adverse drug reaction risks’.                                        Recommended   Medium
+
+
+
+                                                                                                                          Page 13
+                            Design Guidance – Displaying Adverse Drug Reaction Risks
+                            Prepared by Microsoft, Version 1.0.0.0
+                            Last modified on 28 January 2009
+                                                                                                                      Microsoft
+
+
+
+
+Usage Examples
+The examples in this section demonstrate how to arrange and format the adverse drug reaction risk phrase (Level 1).
+
+
+
+   Figure 13: Feature the Medication Term plus Summary Descriptions of Past Reaction Events
+
+
+
+
+  Figure 14: Display the Risk Phrases Vertically Stacked in a List View
+
+
+
+
+  Figure 15: Where Medication is Expressed as Unencoded Text, Feature it in Normal Weight Text
+
+
+
+
+   Figure 16: Display a Summary of Past Reactions in the Level 1 View
+
+
+
+
+   Figure 17: Provide a Clear Label for Overall Risk List
+
+
+
+
+   Figure 18: Provide Clear Labels for Data Columns
+
+                                                                                                                      Page 14
+                               Design Guidance – Displaying Adverse Drug Reaction Risks
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 28 January 2009
+                                                                                                                                  Microsoft
+
+
+
+
+   Figure 19: Do Not Categorise Adverse Drug Reaction Risks in the Level 1 View of the Risk Phrases
+
+Rationale
+General:
+ Research outlined in this Rationale section showed that categorisations of adverse drug reaction risks should be eschewed in
+  favour of displaying a summary of past reactions (see APPENDIX B and APPENDIX C).
+ Gradings of severity, risk or certainty should also be avoided. In the absence of a universally defined scale, gradings of severity are
+  subjective and open to misinterpretation. Also, the severity of a reaction can vary over time, meaning that the current severity
+  grading may not hold for future reactions. The level of risk posed by a medication is even more difficult for a clinician to calculate:
+  not only can the reaction severity change between exposures, but also the probability that a patient will react or not on subsequent
+  exposures is incalculable, given that subsequent reactions to a drug allergy are idiosyncratic and therefore no one can calculate
+  the probability of their recurrence. Also, expressions such as 'Low risk' can imply that the patient is unlikely to react, when in fact
+  this is not meant by the author.
+ The causative agent of an ADR risk will typically be an active agent or an excipient of a medication. In the majority of cases, the
+  causative agent will be expressed either as a generic drug name (VTM) or a drug class. However, in addition to being able to
+  record a risk in terms of an excipient, there are some cases where a VTM cannot be specified and the drug risk must be expressed
+  as a Trade Family (TF) name, such as in the cases of Gaviscon and dioralyte.
+Desk research:
+Secondary research has led to the conclusion that:
+ Categorisations of adverse drug reactions are done in a variety of ways and that there is little consistency throughout the
+  healthcare industry (see APPENDIX B).
+ Clinicians find it very hard to determine the precise aetiology of a reaction. For example, a pseudo allergic reaction may be
+  clinically indistinguishable from Type 1 (allergic) reactions {R4}.
+ Reactions to a given medication can vary over time in a single patient. They could have a mild reaction one time and the next time
+  suffer a heavy reaction, or vice versa. Also ratings of severity are highly dependent upon context, so much so that they could be
+  used quite inconsistently between different clinical situations or between different clinical authors (see APPENDIX B).
+ Analysis of paper artefacts, such as drug charts and other forms, in addition to documentation about hospital policies, has revealed
+  that clinicians are often required to record a summary of the nature of the reaction in visually prominent places, such as on the front
+  of a drug chart or at the front of clinical notes.
+ Displaying risk phrases indicates that causative agent codes should not be duplicated. For example, this is demonstrated in the
+  NHS CFH paper on adverse drug reaction propensity {R11}.
+ Ideally, risk phrases should not be modified with certainty or severity. For example, this is demonstrated in the NHS CFH paper on
+  adverse drug reaction propensity {R11}. However, this article does recognise the fact that there may be legacy data in which
+  certainty and/or severity has been recorded. Also, the problem with legacy data is that it may not be clear whether it refers to an
+  event or a risk. Therefore, in these cases, the safest option is to bring this data forward unchanged, but as an event (in the Level 2
+  view), with the medication displayed as the risk phrase. In this way, the expression of certainty or severity is not displayed at the
+  Level 1, risk phrase, view.
+ If the required drug cannot be found in the appropriate terminology, then systems should be able to record ADR risks as free text,
+  although free text should never be the default setting. For example, this is demonstrated in the NHS CFH paper on adverse drug
+  reaction propensity {R11}.
+
+
+
+
+                                                                                                                                  Page 15
+                              Design Guidance – Displaying Adverse Drug Reaction Risks
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 28 January 2009
+                                                                                                                                 Microsoft
+
+
+
+
+User research:
+ The majority of clinicians interviewed and surveyed, after being shown a variety of alternatives, indicated that the safest information
+  to display is the causative agent, usually the medication, and a brief summary of past reactions. Any further information they
+  deemed to be more likely to cause confusion, be misread or be misinterpreted (see APPENDIX C).Clinicians indicated that the
+  categorisation of adverse drug risks ('allergy', 'intolerance' and 'adverse drug reaction') is misleading and confusing. Indeed, when
+  asked to categorise risks, based upon reaction evidence, there was clear variation between clinicians, further supporting the notion
+  that these categories are too ambiguous and open to misinterpretation to be used in a meaningful way (see APPENDIX C). User
+  research showed a lack of consistency between clinicians regarding what constitutes an 'intolerance' as opposed to an 'adverse
+  drug reaction' or a 'drug allergy' (see APPENDIX C).Clinicians indicated that it was important to display the reaction. This
+  information they felt was 'crucial' to the interpretation of the risk. Indeed, this notion is supported by further workshops we
+  conducted in which clinicians indicated that they would expect key reaction words, such as 'anaphylaxis' to be immediately visible
+  and prominent. A number of clinicians indicated that whenever they hear or read phrases regarding allergies, they will initially
+  enquire about the nature of the past reaction(s). Also, seeing the reaction may be helpful in ways that the author may not have
+  anticipated. For example, a vasovagal response to an injection may be more likely to be attributed to needle anxiety than to an
+  actual adverse drug reaction (see APPENDIX C). Given a variety of choices, including displaying the past reactions in the ’Level 2’
+  view, clinicians deemed it safer to display a summary of past reactions in the immediately visible ’Level 1’ view (see APPENDIX C).
+ Given a choice of a largely unstructured narrative description of past reactions or a terser 'key words' summary of past reactions,
+  clinicians chose the latter, for reasons of readability and lack of distracting clutter (see APPENDIX C).
+ It was suggested in the study that the system should indicate where reactions occurred simultaneously. The use of the word ‘AND’
+  in uppercase is used by a number of concepts in SNOMED CT {R5} to denote multiple independent concepts occurring
+  simultaneously (see APPENDIX C).
+Hazard Risk analysis summary:
+From our Patient Safety Risk Assessment analyses we identified a number of potential hazards, including the following key risks which
+are mitigated by the design:
+Potential hazards:                                                 Design mitigation:
+ Given the variety of interpretations of their meaning,            Avoid categorising adverse drug reactions at the level of risk
+  categorising adverse drug reactions into types, such as            expression. If known (or suspected), categorisations can be made
+  ‘allergy’ and ‘intolerance’, may negatively influence the          in the event description, such as observation or diagnosis events
+  clinicians’ interpretation of the risk
+ Severity of risk is often subjective and can be misleading as  Avoid displaying a severity for the risk. However, severity of a
+  reactions may vary, even for a single patient                   past reaction can be communicated when describing a past
+ Severity of a risk may be missing, which could lead to          reaction
+   incorrect assumptions about its severity
+ In the absence of indications of severity relating to the risk    Provide a high-level summary of the patient’s past reactions to a
+  phrase, there is a risk that the clinician cannot understand       medication (if known)
+  the potential impact of administering a drug
+
+ If only the generic drug name is displayed, the clinician may  Allow the system to display excipients of drugs in addition to VTM
+  not be able to identify that the patient is allergic to an      (generic) and TF (brand) names
+  excipient of particular brand
+
+
+
+
+                                                                                                                                 Page 16
+                             Design Guidance – Displaying Adverse Drug Reaction Risks
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 28 January 2009
+                                                                                                                                      Microsoft
+
+
+
+
+3.3.3          Content of Supporting Data (High-Level Guidance)
+                                                                                                                                   Evidence
+ ID              Description                                                                                        Conformance
+                                                                                                                                   Rating
+ ADR-0030        In Level 2, feature at least one event phrase, preferably an encoded expression, if                Mandatory      High
+                 such event data is available and has been linked to the risk data.
+
+ ADR-0031        In those instances where information about a reaction event is not known, feature an Recommended                  Medium
+                 entry comprising other justification, such as reference to a patient’s assertion of their
+                 ADR condition. This may comprise free text.
+
+ ADR-0032        Supporting data may comprise information which is not directly associated with a                   Recommended    Medium
+                 recorded reaction event, such as a patient’s account of their allergy history.
+
+ Usage Examples
+ The figures below show the progression of possible table views which show how the user could access supporting data. The
+ supporting data shown here includes the entry of the risk information, an entry outlining the actual reaction which led to the clinician
+ deciding that the drug was a risk and an entry relating to a clinician confirming the risk after asking the patient. All these entries include
+ details of when and where the data was entered, and by whom.
+
+
+
+
+      Figure 20: Allow the Clinician to Quickly and Easily Access Supporting Justification Event Information in the Level 2 View
+
+ In this example, clicking on the risk phrase (Level 1) reveals the supporting event phrases (Level 2).
+
+
+
+
+                                                                                                                                          Page 17
+                                  Design Guidance – Displaying Adverse Drug Reaction Risks
+                                  Prepared by Microsoft, Version 1.0.0.0
+                                  Last modified on 28 January 2009
+                                                                                                                                              Microsoft
+
+
+
+
+The figures below show the sequence of possible table designs which allow the user to view further information about a given
+supporting data entry, in this case the identification of the risk. In this case, this further information comprises free text describing the
+patient’s account of the history of their penicillin allergy. This is an example of supporting information that is not relating to a direct
+account of a recorded event.
+
+
+
+
+   Figure 21: Display of Further Details , Where Appropriate, such as a Description of an Account Given by the Patient about their Allergy History
+
+Rationale
+General:
+ It is important that justification which does not relate to a past reaction event is also accessible from the adverse drug reaction risk
+  as this can be important as well. This information will typically be entered at the point of identifying and recording the risk. The
+  clinician may have identified a risk based upon a patient’s testimony, but the patient cannot remember the reaction event; they
+  simply know that they have an allergy. In this case it will be important that the clinician can record that they believe that the patient
+  has an ADR because of what the patient has told them. A justification entry will also be important if the clinician has edited an
+  existing risk. For example, they may have modified the causative agent for a given risk after the patient had been exposed to it with
+  no harmful effects. In this case, the clinician may now believe that the original reaction was caused by another agent (or possibly a
+  more specific instance of the listed agent) and must also record why they are modifying the risk.
+ Possibly there is a need to visually distinguish event items (such as diagnosis of a reaction) from non-event items (such as
+  identification of a risk). There may also be a need to be able to filter out certain events, depending on how many are linked with the
+  risk. However, this is not covered by the current guidance, but could be usefully addressed by further research
+User research:
+ Clinicians indicated that, in certain cases, they need to be able to access the details of the supporting evidence for a given risk
+  phrase if they are to be able to properly interpret it (see APPENDIX C).
+Hazard Risk analysis summary:
+From our Patient Safety Risk Assessment analyses we identified a number of potential hazards, including the following key risks which
+are mitigated by the design:
+   Potential hazard:                                                        Design mitigation:
+    In the absence of indications of severity relating to the risk          Provide access from the risk phrase to a second level of
+     phrase, there is a risk that the clinician cannot understand             supporting event information, in which the patient’s past
+     the potential impact of administering a drug                             reactions (and associated severities) are described
+
+
+
+                                                                                                                                               Page 18
+                               Design Guidance – Displaying Adverse Drug Reaction Risks
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 28 January 2009
+                                                                                                                                       Microsoft
+
+
+
+
+       If the only the generic drug name is displayed, the clinician        Provide access from the risk phrase to a second level of
+        may not be able to identify factors which could have                  supporting event information, which may include fuller details
+        influenced the nature of the reaction, such as the dose and           about the medication which caused the reaction, including
+        other excipients of the specific drug the patient had taken           brand name, dosage and route
+       If information about the route of the drug is not available the  Provide access from the risk phrase to a second level of
+        clinician may not be able to identify (i) if the severity of the  supporting event information, which may include fuller details
+        reaction has been mediated by the route; or (ii) that the         about the medication which caused the reaction, including
+        patient is in fact allergic to a constituent of a drug rather     brand name, dosage and route
+        than the active ingredient
+
+
+
+
+3.3.4          Format of List
+                                                                                                                                Evidence
+ ID               Description                                                                                 Conformance
+                                                                                                                                Rating
+ ADR-0033         In the ‘Level 1’ view the medication column must be able to expand to a default             Mandatory         High
+                  width of at least 44 characters, allowing for a maximum two-line wrap.
+                           Note
+                           Where a medication wraps onto a second row, it should not split any
+                           words. The new row should occur at a space in the phrase.
+
+ ADR-0034         In the ‘Level 1’ view, the data should be displayed in a tabular format.                    Recommended       High
+
+ ADR-0035         Feature the ‘Level 2’ supporting events data in a tabular format.                           Recommended       Low
+
+ ADR-0036         Follow the guidance featured in the Medication Line design guidance {R8} which              Mandatory         High
+                  addresses how to format medication names.
+
+ ADR-0037         In the ‘Level 1’ view, feature all encoded medication names (causative agent) in            Mandatory         High
+                  bold and in lower case.
+
+ ADR-0038         Feature all unencoded (that is, written in free text) medication names in normal            Recommended       Low
+                  weight and in lower case.
+
+ ADR-0039         Feature light shading on alternate rows in the tables.                                      Recommended       High
+
+ ADR-0040         Feature a highlight colour for hover-over of lines.                                         Mandatory         High
+
+ ADR-0041         Do not feature black triangles as navigation controls.                                      Mandatory         High
+
+ Usage Examples
+
+
+
+
+      Figure 22: Feature the Risk Phrases in a Tabular Format (Emphasised in this Diagram by the Red Lines)
+
+
+
+
+                                                                                                                                       Page 19
+                                  Design Guidance – Displaying Adverse Drug Reaction Risks
+                                  Prepared by Microsoft, Version 1.0.0.0
+                                  Last modified on 28 January 2009
+                                                                                                                             Microsoft
+
+
+
+
+Figure 23: Feature the Supporting Event Phrases in a Tabular Format (Emphasised in this Diagram by the Red Lines)
+
+
+
+
+Figure 24: Allow for a Width of at Least 44 Characters in the Medication List, with a Single Line of Wrapping also Allowed
+
+
+
+
+Figure 25: Do Not Split a Word when Wrapping
+
+
+
+
+Figure 26: Alternate Lines with a Faint Banding and Lines
+
+
+
+
+Figure 27: Display Selected Line with a Coloured Highlight
+
+
+
+
+                                                                                                                             Page 20
+                            Design Guidance – Displaying Adverse Drug Reaction Risks
+                            Prepared by Microsoft, Version 1.0.0.0
+                            Last modified on 28 January 2009
+                                                                                                                                       Microsoft
+
+
+
+
+    Figure 28: Do Not Merge Data Types by Avoiding Distinct Tabular Columns
+
+
+
+
+    Figure 29: Do Not Feature Black Triangles as Navigation Controls (Highlighted in this Diagram by a Red Outline)
+
+Rationale
+Desk research
+     Research into the lengths of drug names (in terms of characters) has shown that the maximum length of medication labels
+      (specifically VTM and TF labels) is 88 characters long. Just over 98% have 44 characters or less, whereas 95% have 34
+      characters or less. There may names which are not VTM or TF which have longer length labels, such as for drug excipients, but
+      not only will the expression of these be much rarer it will be less critical to have their full labels in view; in the case of VTM, often
+      it is the last few letters of the label which indicate the family to which the drug belongs, but we have no evidence to suggest that
+      this is true of drug excipients or drug classes.
+     Other design guidance has indicated that one must display generic medication labels, comprising dm+d terms, in bold, lower
+      case text {R8}.
+     Other design guidance has indicated that SNOMED CT encoded text must be displayed in bold, and that un-encoded text can be
+      left in normal weight. {R10}.
+     Other design guidance has indicated that it is easier to read along rows if they feature alternate light banding. {R9}.
+     Inverted black triangles are used to indicate when new drugs and vaccines are first marketed and healthcare professionals
+      should report (‘Yellowcard’) all suspected ADRs which occur as a result of drugs marked with the black triangle, regardless of the
+      severity of the reaction. For this reason, this symbol should not be used for other purposes, such as to indicate a ‘reveal’ or ‘drop-
+      down’ action {R12}.
+User research
+     User research showed that clinicians found it clearer and safer to read risks arranged into a tabular rather than sentence-based
+      structure. Reasons included that the data was easier to scan, simpler, less likely to be misread and key information, such as the
+      medication and critical data, such as anaphylaxis, stands out more prominently (see APPENDIX C).
+
+
+
+
+                                                                                                                                        Page 21
+                               Design Guidance – Displaying Adverse Drug Reaction Risks
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 28 January 2009
+                                                                                                                                                  Microsoft
+
+
+
+
+3.3.5          Displaying Dates and Times
+                                                                                                                                         Evidence
+ ID              Description                                                                                    Conformance
+                                                                                                                                         Rating
+ ADR-0042        Feature a date for each discrete event item in the ‘Level 2’ view. This includes               Mandatory                Medium
+                 record-entry events, such as ‘risk identified’ or ‘risk confirmed’.
+
+ ADR-0043        Do not feature dates in the ‘Level 1’ view.                                                    Mandatory                Medium
+
+ ADR-0044        For each event item listed in Level 2, display, as a default, the date of entry,               Recommended              Medium
+                 unless, at the point of entry, a different date has been specified (such as the
+                 actual date on an event).
+
+ ADR-0045        Allow for the display of partial dates, where appropriate (in Level 2).                        Recommended              Medium/
+
+ Usage Examples
+
+
+
+
+      Figure 30: Display a Date, or a Time if Appropriate, for each of the Supporting Event List Items (Highlighted in this Diagram by a Red Outline)
+
+
+
+
+      Figure 31: Display a Partial Date, if that Is What Has Been Entered (Highlighted in this Diagram by a Red Outline)
+
+ Rationale
+ General:
+ There may be a number of dates associated with any given risk phrase. Indeed, there may be multiple reaction event dates associated
+ with a single risk phrase. Providing any single date at the level of risk phrase, even if it is well labelled, can lead to misinterpretation
+ and incorrect assumptions. For example, if the date were ‘risk identified’ or ‘last confirmed’ the clinician could wrongly assume that that
+ was also the date of the reaction event. If the date was the date of the reaction, the clinician could think that this was also the date that
+ the risk was first identified, which could also be incorrect. When displaying dates, it would be safer to display all the key dates
+ simultaneously, in order to reduce the risk of misinterpretation. Therefore, we recommend that a single date should not be displayed at
+ the risk phrase level. Dates should be shown at the 'event' level, including the event of identifying the risk.
+
+
+
+
+                                                                                                                                                   Page 22
+                                  Design Guidance – Displaying Adverse Drug Reaction Risks
+                                  Prepared by Microsoft, Version 1.0.0.0
+                                  Last modified on 28 January 2009
+                                                                                                                                                Microsoft
+
+
+
+
+ User research:
+       Research found that simply providing a date in the risk phrase level view (Level 1) can be problematic, as clinicians may interpret
+        it in a number of ways, and the predominant understanding is that it means the date of last reaction, rather than when the risk
+        was first identified or last confirmed (see APPENDIX B and APPENDIX C).
+       In tests, clinicians indicated that they thought that displaying multiple dates at Level 2 was safer than showing one or more dates
+        at Level 1. It should be pointed out that, although this solution was most popular, there was some mixed opinion (see APPENDIX
+        B).
+ Hazard Risk analysis summary:
+ From our Patient Safety Risk Assessment analyses, we identified a number of potential hazards, including the following key risks
+ which are mitigated by the design:
+      Potential hazard:                                                       Design mitigation:
+       Featuring a date next to the risk phrase can be misleading  Do not feature the date in the risk phrase level (Level 1)
+        as clinicians may assume it is the date of a reaction taking
+        place, whereas, in fact, it is the date when the risk has been
+        identified
+
+
+
+
+3.3.6          Displaying Source of Risk
+                                                                                                                                          Evidence
+ ID               Description                                                                                  Conformance
+                                                                                                                                          Rating
+ ADR-0046         For each ‘source’ description, feature the ‘source' who first articulated the                Mandatory                  Medium
+                  information (for example, ‘Patient’, ‘Doctor’, ‘Carer’)
+
+ ADR-0047         For each ‘source’ description, feature the encounter or situation in which the               Recommended                Low
+                  event took place (for example, ‘Past Medical History’, ‘Admissions Triage’)
+
+ Usage Examples
+
+
+
+
+      Figure 32: Display the Source of the Information for each Event Phrase (Level 2) (Highlighted in this Diagram by the Red Outline)
+
+ Rationale
+ User research:
+ Clinicians will look for the source of the risk information as this may influence their interpretation of the risk. For example, they will
+ assign greater confidence if the source of the risk is an allergist or pharmacist (see APPENDIX B).
+ Hazard Risk analysis summary:
+ From our Patient Safety Risk Assessment analyses, we identified a number of potential hazards, including the following key risks
+ which are mitigated by the design:
+      Potential hazard:                                                       Design mitigation:
+       If the source of the risk is not known, the clinician may give  Indicate the source of the risk phrase
+        it undue credibility or inversely may underestimate the
+        legitimacy of the phrase
+
+                                                                                                                                                Page 23
+                                  Design Guidance – Displaying Adverse Drug Reaction Risks
+                                  Prepared by Microsoft, Version 1.0.0.0
+                                  Last modified on 28 January 2009
+                                                                                                                                                Microsoft
+
+
+
+
+3.3.7          Displaying Authorship of Risk and Event Phrases
+                                                                                                                                         Evidence
+ ID               Description                                                                                    Conformance
+                                                                                                                                         Rating
+ ADR-0048         For each event phrase, feature the name of the clinician who recorded the event.               Mandatory               High
+
+ ADR-0049         For each event phrase, feature the role of the clinician who recorded the event (for Mandatory                         Medium
+                  example, ‘Nurse’, ‘F2’, ‘Registrar’).
+
+ ADR-0050         For each event phrase, feature the location in which the event was recorded (for               Recommended             High
+                  example, ‘City Hospital’). This may be included in the 'further details' sections.
+
+ Usage Examples
+
+
+
+
+      Figure 33: Display the Authors of the Event Information, Including the Event of Identifying the Risk
+
+
+
+
+      Figure 34: Allow the Clinician to Access Information about the Location in which the Event Took Place (Highlighted in this Diagram by the Red
+      Outline)
+
+ Rationale
+ General:
+ Displaying the authors of the event phrases, including the author s of the risk phrase (that is, the clinician involved in the ‘event’ of
+ identifying the risk) both adds legitimacy and accountability for the information and also allows the reader to contact the author if there
+ is a question about the risk.
+
+
+
+
+                                                                                                                                                Page 24
+                                  Design Guidance – Displaying Adverse Drug Reaction Risks
+                                  Prepared by Microsoft, Version 1.0.0.0
+                                  Last modified on 28 January 2009
+                                                                                                                       Microsoft
+
+
+
+
+3.3.8          Displaying Absence of Risk
+                                                                                                                 Evidence
+ ID               Description                                                                      Conformance
+                                                                                                                 Rating
+ ADR-0051         Where the clinician has checked if the patient has any adverse drug reaction     Mandatory     Medium
+                  risks and has concluded that there are none, the system should display ‘No
+                  known adverse drug reaction risks’.
+
+ ADR-0052         Where the system displays ‘No known adverse drug reaction risks’, it should      Mandatory     Medium
+                  also display the date and time when this phrase was recorded.
+
+ ADR-0053         Where the system displays ‘No known adverse drug reaction risks’, it should      Recommended   Medium
+                  also display provenance information relating to the author of the phrase, such
+                  as the name, role and, possibly, location of the author.
+
+ ADR-0054         Where no clinician has checked if the patient has any adverse drug risks, the    Mandatory     Low
+                  system should display ‘Risk status unknown’.
+
+ Usage Examples
+
+
+
+
+      Figure 35: Display the Message 'No known adverse drug reaction risks' Where Appropriate
+
+
+
+
+      Figure 36: Display the Message 'Risk status unknown’ Where Appropriate
+
+
+
+
+      Figure 37: Do Not Feature Just a Blank Box
+
+
+
+
+                                                                                                                          Page 25
+                                Design Guidance – Displaying Adverse Drug Reaction Risks
+                                Prepared by Microsoft, Version 1.0.0.0
+                                Last modified on 28 January 2009
+                                                                                                                                   Microsoft
+
+
+
+
+    Figure 38: Do Not Feature the Text 'None'
+
+Rationale
+General:
+Arguably, the definite indication of no adverse drug reactions is less reliable where a clinician does not see a patient often. Clinicians,
+though, do see a need to indicate no adverse drug reactions. However, this view is held more strongly in hospital and acute care
+rather than general practice. The general opinion is that the communication of ‘no known adverse drug reactions’ does not obviate the
+need to regularly ask the patient if they have any such risks. Yet, seeing such an entry authored by a pharmacist a few hours earlier
+may be useful for someone who is about to administer a medication. This suggests the need for a distinction between positive
+absence and unknown statuses, and for the display of provenance, including the date and time and the author’s name and role.
+Desk research:
+Secondary research has led to the conclusion that:
+     Within the healthcare industry, often the positive absence of ADR risks is expressed with the words “No Known Drug Allergy”,
+      which gives us confidence that the similar “No Known Adverse Drug Reaction risks” will be understood (see the documents Audit
+      of Drug Allergy Documentation7, Policy for the Documentation of Allergy Status8, Accuracy of drug allergy document: have we
+      improved our practice? {R15}, and Strategies to Improve medical Record Documentation of Allergies and Adverse Reaction 9).
+      However, the exact use of this term varies between different parts of the organisation, and so there is a strong need to provide
+      common guidance for its usage (see APPENDIX B).
+User research:
+     Clinicians indicated that the distinction between positive absence and unknown absence needs to be explicit (see APPENDIX C)
+     Clinicians indicated that the message 'No known adverse drug reaction' is clearer and safer than displaying a blank field.
+      However, it must be noted that most of the clinicians came from a UK hospital and acute care culture where it they are expected
+      to record positive absence of ADR risks(see APPENDIX C).
+     Clinicians indicated that the author of the 'No known adverse drug reaction' and the date of this phrase are important. For
+      example, if a pharmacist made the phrase recently, the message carries more weight than a less recent assertion made by a
+      less qualified person (see APPENDIX C).
+     When presented with ‘null state’ conditions, clinicians misinterpreted the phrase ‘Risk status unknown’ significantly less than ‘No
+      recorded adverse drug reactions’, and also felt that the former phrase was safer than the latter (see APPENDIX C)
+
+
+
+
+7
+ Bedford General Hospital, Audit of Drug Allergy Documentation {R13}:
+http://www.londonpharmacy.nhs.uk/educationandtraining/prereg/pfizerProjectAwards2008/Rupam%20Purohit%20Bedford%
+20general%20Hospital.doc
+8
+ Department of Health, Social Services and Public Safety (Northern Ireland), Policy for the Documentation of Allergy Status
+{R14}: http://www.dhsspsni.gov.uk/policy_allergy.pdf
+9
+ Harvard Pilgrim Health Care, Strategies to Improve medical Record Documentation of Allergies and Adverse Reactions
+{R16}: https://www.harvardpilgrim.org/pls/portal/docs/PAGE/PROVIDERS/MEDMGMT/MEDICALRECORDS/
+IMPROVEMENT_STRATEGIES.PDF
+                                                                                                                                    Page 26
+                               Design Guidance – Displaying Adverse Drug Reaction Risks
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 28 January 2009
+                                                                                                                              Microsoft
+
+
+
+
+ Hazard Risk analysis summary:
+ From our Patient Safety Risk Assessment analyses, we identified a number of potential hazards, including the following key risks
+ which are mitigated by the design:
+    Potential hazards:                                              Design mitigation:
+     If the clinician mistakes an expression of unknown         Explicitly distinguish positive absence with unknown presence
+      presence or absence with an expression of known             or absence
+      absence, they may wrongly assume that the patient does
+      not have any adverse drug reaction risks, and may be less
+      inclined to check
+
+
+
+
+3.3.9        Displaying that no Decision Support is Available for a Specific
+             Risk
+ The list mechanism described in this document is one way of communicating adverse drug reaction
+ risks in a clinical software system. However, we envisage that it will be supplemented by a decision
+ support service, which monitors medications being entered during the process of prescription or
+ medications administration. If the medication matches a medication featured in the ADR list, the
+ decision support service will trigger an alert message, warning the clinician that they are about to
+ give the patient a drug to which they have a risk of ADR.
+ However, there may be circumstances where a medication that has been entered as a risk does
+ not trigger decision support alerts. It could be that the medication name does not match anything in
+ the structured terminology upon which the decision support is based (for example, obsolete or
+ foreign drug names may not trigger an alert).
+ Also, even when using a structured terminology such as SNOMED CT {R5} and dm+d {R6} for
+ recording causative agents, not all substances may be checked as part of a decision support
+ system; any given decision support system will typically only check against a subset of the whole
+ list.
+ In these cases, it is important that:
+
+      1. The clinician habitually checks the ADR risk list prior to prescription.
+
+      2. The system highlights to the clinician that the medication risk will not trigger an alert.
+ If the clinician is expecting decision support, in the absence of an alert, they may assume that a
+ medication is not a risk, even if they see it in the list. Therefore it is imperative to indicate where
+ decision support does not apply.
+ Providing such a feature can also educate the clinicians more generally about the limits of decision
+ support and how they should only use it in conjunction with a high level of human vigilance.
+ Currently the use and role of decision support is an unfamiliar concept to many working with the
+ healthcare industry, and especially in hospital and acute care, primarily because it is not widely
+ implemented at the moment.
+
+
+
+
+                                                                                                                               Page 27
+                             Design Guidance – Displaying Adverse Drug Reaction Risks
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 28 January 2009
+                                                                                                                                 Microsoft
+
+
+
+
+                                                                                                                          Evidence
+ID               Description                                                                                Conformance
+                                                                                                                          Rating
+ADR-0055         If, upon displaying the risks, the term describing the medication will not trigger Mandatory             Medium
+                 decision support the system should communicate this (for example, if the term is
+                 not expressed in structured terminology or if the term is not in the decision
+                 support system subset).
+
+ADR-0056         Communicate the fact that a medication will not trigger decision support next to           Recommended   Medium
+                 the medication label.
+
+ADR-0057         Communicate the potential lack of a decision support service by displaying                 Recommended   Low
+                 either an icon with a hover-over message and/or appropriate text (depending
+                 upon space constraints).
+
+Usage Examples
+
+
+
+
+     Figure 39: Example Icon with Hover-Over which Communicates that an Alert will not be Triggered for that Medication
+
+          Note
+          The guidance does not extend to specifying the actual icon, which has been chosen here for illustration and not instruction.
+
+
+
+
+     Figure 40: Do not Provide a General Message about the Non-Availability of Decision Support Outside the List Area
+
+Rationale
+Desk research:
+There is a concern that that decision support may not be fully supported by a standardised ADR risk representation, potentially
+because the causative agent chosen by the user may not always be one which has the capability to trigger the Decision Support. For
+example, this is outlined by the NHS in the document Representation in Electronic Patient Records of Allergic Reactions, Adverse
+Reactions, and Intolerance of Pharmaceutical Products {R17}.
+User research:
+In the research, we explored alternative designs, such as groupings and subheadings within the list, but participants indicated that a
+warning, either in text or as an icon, might be the safest option (see APPENDIX C).
+Other research:
+Discussions in workshops with clinicians revealed that there could be many instances where the clinician will need to record the name
+of a foreign drug or a drug that may now be obsolete, hence where the clinician may not know the generic ingredients for these drugs.
+It could be that the patient half-remembers the name of a drug to which they report having had a reaction, and the clinician decides to
+note the name of the drug, even though it does not exactly match an encoded term, such as a term in SNOMED CT or dm+d.
+
+
+                                                                                                                                   Page 28
+                                Design Guidance – Displaying Adverse Drug Reaction Risks
+                                Prepared by Microsoft, Version 1.0.0.0
+                                Last modified on 28 January 2009
+                                                                                                                                Microsoft
+
+
+
+
+ Hazard Risk analysis summary:
+ From our Patient Safety Risk Assessment analyses, we identified a number of potential hazards, including the following key risks
+ which are mitigated by the design:
+      Potential hazard:                                                     Design mitigations:
+       If foreign or obsolete drug names do not match a common           Medications expressed in unencoded text should be formatted
+        structured terminology, decision support systems will not          differently to encoded terminology: normal weight rather than
+        be able to raise an alert if the clinician tries to administer     bold weight
+        the risky drug. The clinician may incorrectly assume that           Medications expressed in unencoded terminology should carry
+        they can go ahead with the administration                           a warning that decision support will not be triggered
+
+
+
+
+3.3.10         Displaying Risks in Narrative Text
+ This section addresses the display of adverse drug reaction risk information outside of a highly
+ structured format. There may be a number of situations where a full table is not appropriate, for
+ example, because there is not sufficient room or because a table would break the flow of the text.
+ Examples of such situations include where the risks are expressed in a referral letter or as part of a
+ clinical summary.
+ Although ‘narrative text’ describes text which is not arranged in a table, this type of text does share
+ a number of common guidelines with the tabular text.
+
+                                                                                                                         Evidence
+ ID             Description                                                                         Conformance
+                                                                                                                         Rating
+ ADR-0058 Maintain a structured format to the display of risk phrases in narrative text, as         Recommended          Medium
+          opposed to in a list.
+
+ ADR-0059 Display risk phrases on successive lines rather than displaying them in a                 Recommended          Medium
+          continuous line.
+
+ ADR-0060 Provide information about the causative agent (medication) in a narrative text            Mandatory            High
+          expression of an adverse drug reaction risk.
+
+ ADR-0061 Provide information about the past reactions in the narrative text.                       Mandatory            High
+
+ ADR-0062 Ensure that the text indicates that the medication relates a risk of adverse drug
+                                                                                                    Mandatory            High
+          reaction.
+
+ Usage Examples
+
+
+
+
+      Figure 41: Feature Some Structure in the Narrative Text
+
+
+
+
+      Figure 42: Do Not Display Risks as Part of a Block of Text
+
+
+
+
+                                                                                                                                  Page 29
+                                  Design Guidance – Displaying Adverse Drug Reaction Risks
+                                  Prepared by Microsoft, Version 1.0.0.0
+                                  Last modified on 28 January 2009
+                                                                                                                                  Microsoft
+
+
+
+
+ Rationale
+ Desk research:
+ In our desk research, which included a look at a range of artefacts that contained reference to adverse drug reaction risks, we
+ discovered a number of instances in which these risks are documented, including discharge forms and referral letters. Our solution
+ should have some flexibility, given the variety of space available and the way in which the surrounding text is written. However, we
+ identified a small set of guidelines, based upon the list view, which need to be followed in order to preserve a clear and consistent
+ message (see APPENDIX B).
+ User research:
+ We compared the relative clarity and associated patient safety of displaying the risks as a long continuous block of text or in more
+ structured solutions. Participants indicated that the structured formatting is clearer and safer (see APPENDIX C).
+
+
+
+
+3.4      Rationale Summary
+ User research provided most of the rationale for this design guidance. Importantly, it revealed that:
+       Display risk categorisations are misleading and confusing
+       Past reactions must be displayed with the risk phrases
+ Design guidance work done prior to the creation of this document also provided rationale for the
+ guidance, including the specification of the causative agent and the split between risk and event.
+
+
+
+
+                                                                                                                                  Page 30
+                              Design Guidance – Displaying Adverse Drug Reaction Risks
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 28 January 2009
+                                                                                                                                   Microsoft
+
+
+
+
+4              DOCUMENT INFORMATION
+
+4.1            Terms and Abbreviations
+    Abbreviation                       Definition
+    ADR                                Adverse Drug Reaction
+
+    CUI                                Common User Interface
+
+    dm+d                               dictionary of medicines + devices (NHS)
+
+    DSS                                Decision Support Systems
+
+    NPSA                               National Patient Safety Agency
+
+    NHS                                National Health Service
+
+    NHS CFH                            NHS Connecting for Health
+
+    SNOMED CT                          Systematized Nomenclature of Medicine – Clinical Terms
+
+    TF                                 Trade Family
+
+    VTM                                Virtual Therapeutic Moiety
+
+    WHO                                World Health Organisation
+    Table 5: Terms and Abbreviations
+
+
+4.2            Definitions
+    Term                                Definition
+    Current best practice               Current best practice is used rather than best practice, as over time best practice guidance may
+                                        change or be revised due to changes to products, changes in technology, or simply the additional
+                                        field deployment experience that comes over time.
+    Table 6: Definitions
+
+
+4.3            Nomenclature
+    This section shows how to interpret the different styles used in this document to denote various
+    types of information.
+
+4.3.1             Body Text
+    Text                                                                 Style
+    Code                                                                 Monospace
+
+    Script
+
+    Other markup languages
+
+    Interface dialog names                                               Bold
+
+    Field names
+
+    Controls
+
+    Folder names                                                         Title Case
+
+    File names
+    Table 7: Body Text Styles
+
+                                                                                                                                   Page 31
+                                  Design Guidance – Displaying Adverse Drug Reaction Risks
+                                  Prepared by Microsoft, Version 1.0.0.0
+                                  Last modified on 28 January 2009
+                                                                                                                             Microsoft
+
+
+
+
+4.3.2        Cross References
+ Reference                                                              Style
+ Current document – sections                                            Section number only
+
+ Current document – figures/tables                                      Caption number only
+
+ Other project documents                                                Italics and possibly a footnote
+
+ Publicly available documents                                           Italics with a footnote
+
+ External Web-based content                                             Italics and a hyperlinked footnote
+ Table 8: Cross Reference Styles
+
+
+4.4       References
+ Reference         Document                                                                                           Version
+ R1.               Safety in doses: medication safety incidents in the NHS, NHS National Patient Safety Agency,       2007
+                   National Reporting and Learning Service
+                   www.npsa.nhs.uk/nrls/alerts-and-directives/directives-guidance/safety-in-doses/
+
+ R2.               Requirements for adverse reaction reporting. Geneva: Author, World Health Organization             1975
+
+ R3.               Thien, F., Practice Essentials, Allergy: Drug hypersensitivity, Medical Journal of Australia       2006
+                   http://www.mja.com.au/public/issues/185_06_180906/thi10282_fm.html
+
+ R4.               Riedl, M. and Casillas, Adverse Drug Reactions: Types and Treatment Options, A. American Family 01 Nov 2003
+                   Physician
+                   http://www.aafp.org/afp/20031101/1781.html
+
+ R5.               SNOMED CT
+                   http://www.ihtsdo.org/
+
+ R6.               NHS Dictionary of Medicines and Devices (dm+d)                                                     2.3
+                   http://195.97.218.30/dmd_download.htm
+
+ R7.               Design Guidance – Date Display                                                                     2.0
+
+ R8.               Design Guidance – Medication Line                                                                  2.0
+
+ R9.               Design Guidance – Displaying Graphs and Tables                                                     2.0
+
+ R10.              Design Guidance – Terminology – Display Standards for Coded Information                            1.0
+
+ R11.              Rae Long and Steve Bentley, SCG Guidance on the Representation of Allergies and Adverse            1.0
+                   Reaction Information Using NHS Message Templates, NHS Connecting for Health
+                   http://www.connectingforhealth.nhs.uk/systemsandservices/data/scg/publications/SCG0001.pdf
+
+ R12.              Reporting Adverse Drug Reactions: A guide for healthcare professionals, British Medical            04 May 2006
+                   Association
+                   http://www.bma.org.uk/health_promotion_ethics/drugs_prescribing/AdverseDrugReactions.jsp
+
+ R13.              Audit of Drug Allergy Documentation, Bedford General Hospital
+                   http://www.londonpharmacy.nhs.uk/educationandtraining/prereg/pfizerProjectAwards2008/Rupam%
+                   20Purohit%20Bedford%20general%20Hospital.doc
+
+ R14.              Policy for the Documentation of Allergy Status, Department of Health, Social Services and Public
+                   Safety (Northern Ireland)
+                   http://www.dhsspsni.gov.uk/policy_allergy.pdf
+
+ R15.              Nzuma, F.S., Accuracy of drug allergy document: have we improved our practice? Royal Brompton      Mar 2007
+                   & Harefield NHS Trust
+                   http://www.londonpharmacy.nhs.uk/educationandtraining/prereg/pfizerProjectAwards2007/Farirai%2
+                   0Sally%20Nzuma%20Royal%20Brompton%20and%20Harefield%20NHS%20Trust.pdf
+
+                                                                                                                             Page 32
+                               Design Guidance – Displaying Adverse Drug Reaction Risks
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 28 January 2009
+                                                                                                                       Microsoft
+
+
+
+
+Reference        Document                                                                                         Version
+R16.             Strategies to Improve medical Record Documentation of Allergies and Adverse Reactions, Harvard
+                 Pilgram Health Care
+                 https://www.harvardpilgrim.org/pls/portal/docs/PAGE/PROVIDERS/MEDMGMT/MEDICALRECORD
+                 S/IMPROVEMENT_STRATEGIES.PDF
+
+R17.             Peter Horsfield, Representation in Electronic Patient Records of Allergic Reactions, Adverse
+                 Reactions, and Intolerance of Pharmaceutical Products, NHS
+Table 9: References
+
+
+
+
+                                                                                                                       Page 33
+                            Design Guidance – Displaying Adverse Drug Reaction Risks
+                            Prepared by Microsoft, Version 1.0.0.0
+                            Last modified on 28 January 2009
+                                                                                                                            Microsoft
+
+
+
+
+APPENDIX A                         REFERENCE SUMMARY OF GUIDANCE
+ Reference   Section      Description
+ ADR-0001    3.3.1        Feature multiple levels of display: an immediate view (‘Level 1’) containing the risk phrase (comprising
+                          the causative agent and any past reactions) and a set of other views (‘Level 2’) that are not
+                          immediately visible and contain supporting events data, if such event data and linkages exist.
+
+ ADR-0002    3.3.1        Feature a mechanism that allows the user to access relevant items within the ‘Level 2’ view from
+                          individual risks in the ‘Level 1’ view, if such event data and linkages exist.
+
+ ADR-0003    3.3.1        Feature a mechanism that allows the user to return to the ‘Level 1’ list.
+
+ ADR-0004    3.3.1        Link each risk phrase in the ‘Level 1’ view to one or more related event phrases in the ‘Level 2’ view, if
+                          such event data and linkages exist.
+
+ ADR-0005    3.3.1        In the ‘Level 1’ view, the causative agent column should be displayed at the far left-hand side of the
+                          table.
+
+ ADR-0006    3.3.1        In the ‘Level 1’ view, the past reactions column should be displayed to the right of the causative agent
+                          column.
+
+ ADR-0007    3.3.1        Feature a mechanism that allows the user to access further details from the ‘Level 2’ line items, if such
+                          event data and linkages exist.
+
+ ADR-0008    3.3.1        Arrange the list according to a consistent (default) order.
+
+ ADR-0009    3.3.1        Order the list alphabetically on the generic medication name (causative agent).
+
+ ADR-0010    3.3.2        Display the causative agent, which comprises a single medication, excipient or drug class.
+
+ ADR-0011    3.3.2        Display the causative agent in the immediate view (‘Level 1’).
+
+ ADR-0012    3.3.2        The causative agent should be displayed in the same text in which it was recorded.
+                          This may be typically the Virtual Therapeutic Moiety (VTM) or drug class name, or, less commonly, the
+                          Trade Family (TF) name or the name of a medication excipient.
+
+ ADR-0013    3.3.2        Do not feature two or more risk phrases that contain the same causative agent.
+
+ ADR-0014    3.3.2        The display must be able to handle both encoded and unencoded data relating to the causative agent.
+
+ ADR-0015    3.3.2        Where possible, the causative agent should be displayed as encoded data.
+
+ ADR-0016    3.3.2        Do not display information about the form, route or dosage of the medication in the Level 1 view.
+
+ ADR-0017    3.3.2        In Level 1 view, display a description of any linked past reactions, if available.
+
+ ADR-0018    3.3.2        Communicate descriptions of past reactions as key words, ideally only one or two per reaction,
+                          although this will depend upon the available data.
+
+ ADR-0019    3.3.2        Where information about the past reactions for a given ADR risk is not known, communicate that this
+                          information is not known.
+
+ ADR-0020    3.3.2        The display must be able to handle multiple past reactions for a single causative agent.
+
+ ADR-0021    3.3.2        For a given risk, the display should be able to distinguish between those reactions which occurred
+                          simultaneously and those which occurred on different occasions, that is, in separate clinical episodes.
+
+ ADR-0022    3.3.2        Where multiple reactions occurred for the same reaction event (that is, simultaneously), display the
+                          character ‘+’ in between them or the word ‘AND’ in capital letters.
+                          For example, if the patient experienced a rash and nausea at the same time, the words ‘rash +
+                          nausea’ would be displayed, or ‘rash AND nausea’.
+
+ ADR-0023    3.3.2        Where multiple reactions occurred for different reaction events (that is, separated in time), punctuate
+                          them with a comma.
+
+ ADR-0024    3.3.2        Clearly label the causative agents.
+
+
+                                                                                                                            Page 34
+                       Design Guidance – Displaying Adverse Drug Reaction Risks
+                       Prepared by Microsoft, Version 1.0.0.0
+                       Last modified on 28 January 2009
+                                                                                                                             Microsoft
+
+
+
+
+Reference   Section      Description
+ADR-0025    3.3.2        Label the causative agents ‘Drug / substance’ for example, as a column header.
+
+ADR-0026    3.3.2        Clearly label the past reactions.
+
+ADR-0027    3.3.2        Label the past reactions ‘Past reactions’.
+
+ADR-0028    3.3.2        Clearly label the whole list.
+
+ADR-0029    3.3.2        Label the list ‘Adverse drug reaction risks’.
+
+ADR-0030    3.3.3        In Level 2, feature at least one event phrase, preferably an encoded expression, if such event data is
+                         available and has been linked to the risk data.
+
+ADR-0031    3.3.3        In those instances where information about a reaction event is not known, feature an entry comprising
+                         other justification, such as reference to a patient’s assertion of their ADR condition. This may comprise
+                         free text.
+
+ADR-0032    3.3.3        Supporting data may comprise information which is not directly associated with a recorded reaction
+                         event, such as a patient’s account of their allergy history.
+
+ADR-0033    3.3.4        In the ‘Level 1’ view the medication column must be able to expand to a default width of at least 44
+                         characters, allowing for a maximum two-line wrap.
+                                  Note
+                                  Where a medication wraps onto a second row, it should not split any words. The new row
+                                  should occur at a space in the phrase.
+
+ADR-0034    3.3.4        In the ‘Level 1’ view, the data should be displayed in a tabular format.
+
+ADR-0035    3.3.4        Feature the ‘Level 2’ supporting events data in a tabular format.
+
+ADR-0036    3.3.4        Follow the guidance featured in the document Design Guidance – Medication Line {R8} which
+                         addresses how to format medication names.
+
+ADR-0037    3.3.4        In the ‘Level 1’ view, feature all encoded medication names (causative agent) in bold and in lower
+                         case.
+
+ADR-0038    3.3.4        Feature all unencoded (that is, written in free text) medication names in normal weight and in lower
+                         case.
+
+ADR-0039    3.3.4        Feature light shading on alternate rows in the tables.
+
+ADR-0040    3.3.4        Feature a highlight colour for hover-over of lines.
+
+ADR-0041    3.3.4        Do not feature black triangles as navigation controls.
+
+ADR-0042    3.3.5        Feature a date for each discrete event item in the ‘Level 2’ view. This includes record-entry events,
+                         such as ‘risk identified’ or ‘risk confirmed’.
+
+ADR-0043    3.3.5        Do not feature dates in the ‘Level 1’ view.
+
+ADR-0044    3.3.5        For each event item listed in Level 2, display, as a default, the date of entry, unless, at the point of
+                         entry, a different date has been specified (such the actual date on an event).
+
+ADR-0045    3.3.5        Allow for the display of partial dates, where appropriate (in Level 2).
+
+ADR-0046    3.3.6        For each ‘source’ description, feature the ‘source' who first articulated the information (for example,
+                         ‘Patient’, ‘Doctor’, ‘Carer’).
+
+ADR-0047    3.3.6        For each ‘source’ description, feature the encounter or situation in which the event took place (for
+                         example, ‘Past Medical History’, ‘Admissions Triage’).
+
+ADR-0048    3.3.7        For each event phrase, feature the name of the clinician who recorded the event.
+
+ADR-0049    3.3.7        For each event phrase, feature the role of the clinician who recorded the event (for example, ‘Nurse’,
+                         ‘F2’, ‘Registrar’).
+
+                                                                                                                              Page 35
+                      Design Guidance – Displaying Adverse Drug Reaction Risks
+                      Prepared by Microsoft, Version 1.0.0.0
+                      Last modified on 28 January 2009
+                                                                                                                                    Microsoft
+
+
+
+
+Reference        Section        Description
+ADR-0050         3.3.7          For each event phrase, feature the location in which the event was recorded (for example, ‘City
+                                Hospital’). This may be included in the 'further details' sections.
+
+ADR-0051         3.3.8          Where the clinician has checked if the patient has any adverse drug reaction risks and has concluded
+                                that there are none, the system should display ‘No known adverse drug reaction risks’.
+
+ADR-0052         3.3.8          Where the system displays ‘No known adverse drug reaction risks’, it should also display the date and
+                                time when this phrase was recorded.
+
+ADR-0053         3.3.8          Where the system displays ‘No known adverse drug reaction risks’, it should also display provenance
+                                information relating to the author of the phrase, such as the name, role and, possibly, location of the
+                                author.
+
+ADR-0054         3.3.8          Where no clinician has checked if the patient has any adverse drug risks, the system should display
+                                ‘Risk status unknown’.
+
+ADR-0055         3.3.9          If, upon displaying the risks, the term describing the medication will not trigger decision support the
+                                system should communicate this (for example, if the term is not expressed in structured terminology or
+                                if the term is not in the decision support system subset).
+
+ADR-0056         3.3.9          Communicate the fact that a medication will not trigger decision support next to the medication label.
+
+ADR-0057         3.3.9          Communicate the potential lack of a decision support service by displaying either an icon with a hover-
+                                over message and/or appropriate text (depending upon space constraints).
+
+ADR-0058         3.3.10         Maintain a structured format to the display of risk phrases in narrative text, as opposed to in a list.
+
+ADR-0059         3.3.10         Display risk phrases on successive lines rather than displaying them in a continuous line.
+
+ADR-0060         3.3.10         Provide information about the causative agent (medication) in a narrative text expression of an
+                                adverse drug reaction risk.
+
+ADR-0061         3.3.10         Provide information about the past reactions in the narrative text.
+
+ADR-0062         3.3.10         Ensure that the text indicates that the medication relates a risk of adverse drug reaction.
+Table 10: Reference Summary of Guidance
+
+
+
+
+                                                                                                                                    Page 36
+                            Design Guidance – Displaying Adverse Drug Reaction Risks
+                            Prepared by Microsoft, Version 1.0.0.0
+                            Last modified on 28 January 2009
+                                                                                                  Microsoft
+
+
+
+
+APPENDIX B                      STUDY ID 42: EXECUTIVE SUMMARY
+
+B.1    Abstract
+ The UK National Health Service (NHS) Common User Interface (CUI) programme is a partnership
+ between Microsoft® and NHS Connecting for Health (NHS CFH), which is part the NHS National
+ Programme for Information Technology (NPfIT).
+ As part of CUI, the Clinical Applications and Patient Safety (CAPS) project has the goal of ensuring
+ that software applications used by the NHS enhance patient safety. To achieve this, CAPS
+ provides software developers with user interface design guidelines derived through a user-centric
+ development process that includes explicit patient-safety evaluations.
+ This summary describes key findings from initial qualitative research carried out in August 2008 by
+ the CUI CAPS team on Adverse Drug Reaction Risks (ADR Risks). These findings are a subset
+ from a larger internal report prepared for the CUI CAPS ADR Risks team.
+ Purpose:
+ To understand current practice and hazards for ADR Risk display, to understand the purpose
+ behind ADR Risk display in clinical contexts, and to gain clinical feedback on early design
+ concepts. With the overall aim of providing design requirements for ADR Risk display.
+ Method:
+ Interviews: semi-structured telephone interviews with 12 Healthcare Professionals (HCPs),
+ incorporating wireframe illustrations of early design concepts. Literature search: analysis of existing
+ NHS CFH documentation on Allergies / ADR Risks and external references on Allergy / ADR Risk
+ documentation.
+
+B.2    Research Objectives
+ To gain an understanding of:
+      1. Current paper and electronic practices for documenting ADR Risks (such as allergies) in a
+         variety of clinical contexts
+      2. Current advantages and disadvantages with these practices, in particular known and
+         potential patient safety hazards with electronic display of ADR Risks
+      3. What purpose the documentation of ADR Risks has in clinical contexts
+      4. The potential impact of, and hazards associated with, implementing the existing NHS CFH
+         recommendations on ADR Risk data structure for electronic records, such as by the
+         categorisation of ADR Risks
+      5. Clinical feedback on specific design areas of ADR Risk display, such as the display of the
+         nature of reaction and stating positive absence
+
+B.3    Research Design
+ Interviews were semi-structured and incorporated early design concepts for ADR Risk display.
+ These concepts were wireframe designs based on existing NHS CFH and CUI work, and were
+ used as a means to stimulate discussion around key areas. Interviews were carried out by
+ telephone and lasted one hour. Detailed notes from the interviews were qualitatively analysed
+ using thematic coding.
+
+
+
+
+                                                                                                  Page 37
+                      Design Guidance – Displaying Adverse Drug Reaction Risks
+                      Prepared by Microsoft, Version 1.0.0.0
+                      Last modified on 28 January 2009
+                                                                                                                        Microsoft
+
+
+
+ The literature analysis was based on:
+        NHS CFH documentation on Allergy / ADR data structures provided by the CUI NHS CFH
+         Specific Audience
+        Previous ADR Risks groundwork done by the CUI project and NHS CFH
+        Material collected during previous CUI research – not specific to ADR Risks
+        External literature found through the internet
+
+B.4      Results
+B.4.1         Participant Description
+ 12 participants were interviewed separately. Each had either volunteered through the NHS CFH
+ Event Management System signup (EMS) or had been contacted by the CUI having taken part in
+ previous CUI work. Five out of 12 respondents had previously taken part in CUI clinical
+ engagement for other work areas. Table 12: Interview Participants shows a summary of the
+ participants’ profiles:
+
+ Session                  Job Role          Speciality        Level             Site              Computer Experience
+ 303                      Nurse             Renal             Consultant        Teaching hospital Med
+                                            (outpatients)
+
+ 304                      Pharmacist        Management        Assc Director     Teaching hospital Med / High
+
+ 305                      Pharmacist        Research          Junior            Teaching hospital Med
+
+ 306                      Doctor            On rotation       F2                DGH               Med / High
+
+ 307                      General           GP                Senior            GP                High
+                          Practitioner
+                          (GP)
+
+ 308                      Doctor            Paediatrics       Assc Specialist   DGH               Med
+                                                                                (Foundation)
+
+ 309                      Pharmacist        EPR               Senior            Teaching          Med
+                                                                                Hospital
+
+ 310                      Doctor            Care of the       ST3               DGH               Med
+                                            Elderly                             (Foundation)
+
+ 311                      Nurse /           Critical Care /   Sister            Teaching          Low / Med
+                          Change            change                              Hospital
+                          Facilitator       management
+
+ 312                      Pharmacist        Research          Senior (Prof)     Teaching          High
+                                                                                Hospital
+
+ 313                      Doctor            Accident and   F2                   Teaching          Med
+                                            Emergency (A&E                      Hospital
+                                            / on rotation
+
+ 314                      Doctor            A&E / on rotation F1                Teaching          High
+                                                                                Hospital
+ Table 11: Interview Participants
+
+ All participants were clinical staff who had experience of viewing and recording ADR Risks as part
+ of their work (usually as ‘drug allergies’). The majority of participants were from acute secondary
+ care, with one participant from general practice and none from community care. The 11 secondary
+ care participants were from eight different trusts, with diverse geographical locations.
+
+                                                                                                                        Page 38
+                                    Design Guidance – Displaying Adverse Drug Reaction Risks
+                                    Prepared by Microsoft, Version 1.0.0.0
+                                    Last modified on 28 January 2009
+                                                                                               Microsoft
+
+
+
+ Most participants had used some kind of electronic patient record, which meant they had
+ experience of electronic display of some kind of ADR Risk list. The majority also had
+ medium-to-high computer experience, where high experience included items such as being familiar
+ with spreadsheet calculation functions and having an understanding of databases.
+
+B.4.2       Example Current Practice
+     Many kinds of clinical staff will be viewing and recording patient’s ADR Risk status and
+      details
+     ADR Risks currently may be recorded on a large range of documents: drug charts, the body
+      of the medical notes, warning sticker on front of medical notes, wristbands, bed notices,
+      handover sheets, discharge forms, and so on
+     The proximal reasons for a clinician viewing / recording ADR Risks are that they are trying
+      to understand now OR document so that someone else (or themselves) can understand
+      later:
+            What caused the reaction?
+            Exactly what reaction did it cause?
+            What was the mechanism that linked the agent to the reaction?
+     The ultimate reasons a clinician may be viewing or recording ADR Risks are to:
+            Know what you or someone else should not be prescribing / dispensing / administering
+             now or in the future
+            Know what you CAN prescribe / dispense / administer now or in the future
+            Know whether the potential risk of giving the agent again is outweighed by the benefit
+            Know what other treatment might be required if the supposed causative agent were to
+             be given again (for example, increased monitoring)
+
+B.4.3       Example Known and Potential Hazards
+     Currently, finding the detail about a patient’s allergies (ADR Risks) involves hunting in the
+      notes, which is time consuming and error-prone, meaning information that would support,
+      refute or add detail to a risk is missed
+     Over cautious marking of a patient as allergic to an agent limits future therapeutic choice,
+      which can have negative consequences for the patient and the healthcare organisation
+     Excessive false positive ADR Risk documenting can lead clinicians to ignore allergy
+      documentation
+     Summaries of the nature of reaction may hide important detail and lead staff to make
+      incorrect assumptions. ‘Rash’ in particular is problematic
+     The nature of reaction is often not documented for a risk
+     The nature of past reactions may not be a good predicator of the nature of future reactions,
+      especially when surrounding contextual information is not available
+     Staff may incorrectly assume that a previous administration of an agent without an adverse
+      reaction means that the agent could not be the cause of a subsequent reaction. Whereas
+      the initial administration could have been when sensitization to the agent occurred
+
+
+
+
+                                                                                                Page 39
+                      Design Guidance – Displaying Adverse Drug Reaction Risks
+                      Prepared by Microsoft, Version 1.0.0.0
+                      Last modified on 28 January 2009
+                                                                                                     Microsoft
+
+
+
+
+B.4.4     Key Findings per Design Area
+ Categorisation of Risk
+ Participants did not have a shared understanding of the terms: ADR, intolerance and allergy.
+ Participants were not familiar with having to categorise a reaction into allergy / intolerance / ADR.
+ 10 out of 12 participants had concerns about the validity and safety of being forced to categorise
+ when documenting ADR Risks or about seeing these categories when subsequently viewing the
+ risks.
+
+ Causative Agent
+ The most useful piece of information in an ADR Risk is the causative agent.
+ When trying to determine the causative agent for a reaction, clinicians would usually require access
+ to a large range of information, much of which is not often available to them.
+
+ Nature of Reaction
+ Currently it is good practice to document the nature of reaction with the ADR Risk.
+ Participants differed over whether it was possible to summarise the nature of reaction safely in a
+ word or short phrase. They also differed over whether in an electronic display it was necessary to
+ always display the nature of reaction when viewing the ADR Risk.
+ The nature of reaction was generally used to interpret the ‘severity’ of the reaction. However some
+ participants pointed out problems with assuming a ‘severity’ of future risk based on short
+ descriptions and past reactions.
+
+ Threshold of Documentation
+ Though the majority of participants would document all reactions possibly caused by drugs, some
+ felt that what you documented would vary due to factors such as: ‘significance’ of reaction, seniority
+ of staff and where you were documenting the risk.
+
+ Generalising Risks
+ The generalising of risks is seen as currently problematic as staff may not know what class a drug
+ belongs to, or how the reaction may generalise. Therefore there is the danger of mistakenly
+ generalising, or mistakenly not generalising, a reaction.
+
+ Positive Absence
+ Though a variety of terms were currently used (NKDA, NKA, nil known), all secondary care
+ participants were familiar with the concept of documenting positive absence.
+
+ Modification
+ All participants felt it should be possible to ‘remove’ or deprecate a risk from the active ADR Risk
+ List in certain situations. However, all felt that subsequent readers of the ADR Risk List should be
+ aware of these ‘removed’ items.
+
+ Event / Risk Propensity Distinction
+ Participants who had used GP systems were familiar with the distinction between events and risk
+ propensity, and felt it was useful. Other participants were less clear about the distinction, but felt it
+ was similar to structures sometimes used in paper notes.
+
+
+
+                                                                                                      Page 40
+                       Design Guidance – Displaying Adverse Drug Reaction Risks
+                       Prepared by Microsoft, Version 1.0.0.0
+                       Last modified on 28 January 2009
+                                                                                              Microsoft
+
+
+
+
+Dates
+Many participants were confused by the dates presented in the design concepts, which could be
+interpreted as the date of: first reaction, diagnosis, documentation or review / confirmation.
+
+Certainty that Agent Caused Reaction
+All participants understood the concept ‘probably caused by’, most found it familiar, but only some
+felt it was useful, as only in a minority of cases would the causative agent be certain.
+
+
+
+
+                                                                                               Page 41
+                     Design Guidance – Displaying Adverse Drug Reaction Risks
+                     Prepared by Microsoft, Version 1.0.0.0
+                     Last modified on 28 January 2009
+                                                                                                Microsoft
+
+
+
+
+APPENDIX C                       STUDY ID 45: EXECUTIVE SUMMARY
+
+C.1    Abstract
+ The UK National Health Service (NHS) Common User Interface (CUI) programme is a partnership
+ between Microsoft® and NHS Connecting for Health (NHS CFH), which is part the NHS National
+ Programme for Information Technology (NPfIT).
+ As part of CUI, the Clinical Applications and Patient Safety (CAPS) project has the goal of ensuring
+ that software applications used by the NHS enhance patient safety. To achieve this, CAPS
+ provides software developers with user interface design guidelines derived through a user-centric
+ development process that includes explicit patient-safety evaluations.
+ This summary describes key findings from user research carried out in September 2008 by the CUI
+ CAPS team on the display of Adverse Drug Reaction Risks (ADR Risks). These findings are a
+ subset from a larger internal report prepared for the CUI CAPS ADR Risks team.
+ Purpose:
+ To gain clinical feedback on design concepts for displaying ADR Risks in electronic systems.
+ Method:
+ Interviews: structured interviews with 13 Healthcare Professionals (HCPs) eliciting HCP
+ preferences and qualitative feedback on design alternatives. Online survey: survey with 56 HCPs
+ eliciting HCP preferences and qualitative feedback on a subset of the design alternatives used in
+ interview.
+ Key Results:
+ Based on clinician preference and rationale:
+       Do not categorise risks into allergy / ADR / intolerance
+       Display a succinct summary of past reactions in the risk statement, clarifying that they are
+        past reactions
+       Position the causative agent first in the risk statement
+       Do not display dates at the top level, as long as they are easily accessible
+       Allow immediate access to the information on supporting events
+
+C.2    Research Objectives
+ To gather HCP design preferences, qualitative feedback and possible patient safety hazards of CUI
+ ADR Risk display designs.
+ Focusing on the areas of:
+       Risk categorisation
+       Displaying the nature of reaction
+       Inclusion criteria of an ADR Risk List
+       Sort orders
+       Headings
+       Dates
+       Layout
+
+
+                                                                                                Page 42
+                       Design Guidance – Displaying Adverse Drug Reaction Risks
+                       Prepared by Microsoft, Version 1.0.0.0
+                       Last modified on 28 January 2009
+                                                                                                         Microsoft
+
+
+
+        Positive absence and null states
+        Levels below the risk statement
+        Drug class
+        Representing an ADR Risk as narrative
+        Decision Support absence
+
+C.3     Research Design
+ Interviews were structured, lasted one hour and carried out in person or by telephone. Participants
+ were taken through wireframe design alternatives for each area of investigation and asked for
+ preference based on patient safety criteria. Other qualitative feedback was elicited covering
+ rationale for preference, design fit with current and best practice, design understandability and any
+ potential hazards resulting from the designs. Detailed notes from the interviews were qualitatively
+ analysed using thematic coding.
+ Online surveys covered a subset of the interview’s design areas and similarly elicited HCP
+ preferences for design alternatives, with the option to record rationale for preference and other
+ qualitative feedback. The survey was distributed by NHS CFH to NHS employees who had signed-
+ up to participate through the NHS CFH Events Management System (NHS CFH EMS) or who had
+ provided their contact details as part of previous CUI work. Recipients were able to forward the
+ survey to colleagues. No remuneration was supplied for completing the survey. The survey took
+ 20-40 minutes to complete.
+
+C.4     Results
+C.4.1      Participant Description
+ Interviews
+ 13 participants were interviewed separately. Each had either volunteered through the NHS CFH
+ EMS signup or had been recruited by an HCP who had volunteered. Three out of 13 respondents
+ had previously taken part in CUI clinical engagement for other work areas.
+ Table 12: Interview Participants shows a summary of the participants’ profiles:
+
+ Session          Job Role        Specialty     Level         Site                 Computer Experience
+ 329              Nurse           Emergency     Senior        Walk-in centre       Low / Med
+                  Practitioner
+
+ 330              Nurse           Emergency     Senior        Walk-in centre       Med / High
+                  Practitioner
+
+ 331              Nurse           Emergency     Senior        Walk-in centre       Low / Med
+                  Practitioner
+
+ 332              Nurse           Emergency     Senior        Walk-in centre       Low / Med
+                  Practitioner
+
+ 333              Nurse           Emergency     Senior        Walk-in centre       Med / High
+                  Practitioner
+
+ 334              Nurse             Emergency   Senior        Teaching Hospital    High
+                  Practitioner / IT
+                  Lead
+
+ 335              Nurse           Emergency     Senior        Teaching Hospital    Med
+                  Practitioner
+
+                                                                                                         Page 43
+                        Design Guidance – Displaying Adverse Drug Reaction Risks
+                        Prepared by Microsoft, Version 1.0.0.0
+                        Last modified on 28 January 2009
+                                                                                                                    Microsoft
+
+
+
+
+Session                  Job Role           Specialty     Level          Site                 Computer Experience
+341                      Doctor             Emergency     SpR            Teaching Hospital    Med / High
+
+336                      Doctor             GP            7 years GP     GP                   Med / High
+
+337                      Doctor             GP trainee    SpR            GP / Hospital        Med / High
+
+338                      Research           Renal         Senior         Teaching Hospital    Med
+                         Nurse
+
+339                      Doctor             Palliative    SpR            DGH / Hospice        Med
+                                            care / GP
+                                            trainee
+
+340                      Doctor             GP            17 years GP    GP                   Med / High
+Table 12: Interview Participants
+
+All participants were clinical staff who had experience of viewing and recording ADR Risks as part
+of their work (usually as ‘drug allergies’). The majority of participants were from acute secondary
+care, with three participants from general practice and none from community care. The 10
+secondary care participants were from four different trusts, with diverse geographical locations.
+All participants had used some kind of electronic patient record, which meant they had experience
+of electronic display of some kind of ADR Risk List. The majority had medium computer
+experience, where high experience includes items such as being familiar with spreadsheet
+calculation functions and having an understanding of databases.
+
+Online Survey
+56 respondents completed the survey during the seven days that it was live. Table 13: Survey
+Respondents shows a summary of the respondents’ profiles:
+
+Role                               Respondents n=56
+Ward Manager                       2%
+
+Midwife                            2%
+
+Other Nurse                        7%
+
+Junior Doctor                      19%
+
+General Practitioner               12%
+
+Medical Consultant                 9%
+
+Other Doctor                       2%
+
+Anaesthetist                       2%
+
+Physiotherapist                    2%
+
+Allied Health Professional         2%
+
+Pharmacist                         25%
+
+Healthcare Informatician           2%
+
+Healthcare Manager                 5%
+
+Software - Manager                 1%
+
+Other                              9%
+Table 13: Survey Respondents
+
+
+
+                                                                                                                    Page 44
+                                   Design Guidance – Displaying Adverse Drug Reaction Risks
+                                   Prepared by Microsoft, Version 1.0.0.0
+                                   Last modified on 28 January 2009
+                                                                                                  Microsoft
+
+
+
+ Roles that were not represented by survey respondents have been removed from the table.
+ Other respondent descriptions:
+     40% had not taken part in Microsoft Health CUI clinical engagement before
+     76% had worked in NHS for more than five years
+     71% worked in secondary care, 16% worked in general practice
+     75% had created or modified a spreadsheet calculation function, implying a high familiarity
+      with computer use
+     Respondents were from diverse geographical locations
+
+C.4.2       Design Areas
+ Categorising Risks
+     Survey respondents were not able to consistently categorise a reaction into: ADR / allergy /
+      intolerance based on short reaction statements, many also described problems in
+      performing the task
+     Many interviewees struggled to describe the difference between ADR and intolerance
+     Though some interviewees felt risk categorisation might be useful, they felt it was likely to
+      be unreliable
+     The majority of survey respondents and interviewees preferred a design that did not display
+      risk categories. Rationale for preference was that the categorisation was not useful or at
+      least less useful (and familiar) than the nature of reaction
+
+ Displaying the Nature of Reaction
+     The majority of survey respondents and interviewees preferred a design with a reaction
+      shown at the ‘top level’. The presence of reaction information was given as the key reason
+      for preference
+     A succinct summary of the reaction was preferred to longer free-text. However, some
+      concerns were raised about summarising reactions in several words – however this is
+      already widespread current practice and no participants felt it was impossible
+     Showing ‘severe’ reactions only was seen to be problematic. But if a universal distinction
+      can be found, it might be useful to indicate it in some way
+
+ Inclusion Criteria of ADR Risk List
+     There are likely to be differences of opinion about whether an item should be included on a
+      risk list. Issues that therefore need to be addressed are:
+            Dealing with long ADR Risk Lists
+            Dealing with list management where HCPs using the list have diverse perspectives
+            Clear indication about what kinds of item the list does and should contain
+     Some clinical applications are likely to use risk lists that are not limited to ADR Risks
+
+ Sort Order of ADR Risk List
+     Though sorting risk statements by ‘most potential for harm’ might be desirable, objectively
+      determining this for all items would be difficult and possibly misleading
+
+
+
+                                                                                                  Page 45
+                      Design Guidance – Displaying Adverse Drug Reaction Risks
+                      Prepared by Microsoft, Version 1.0.0.0
+                      Last modified on 28 January 2009
+                                                                                             Microsoft
+
+
+
+
+Causative Agent Headings
+   All of the design alternatives for a causative agent column heading were seen as
+    problematic. Alternative suggestions included those often seen on drug charts, for example,
+    ‘Medication / Substance’
+
+Dates
+   Date labels ‘Last Confirmed’ and ‘Risk Identified’ were seen as confusing. Clarification of
+    the risk propensity / event distinction may be necessary with whatever labels are used for
+    dates
+   The majority of survey respondents and interviewees preferred dates to be on-demand
+    rather than continuously displayed at the top level of the risk display, though this was not a
+    strong preference
+
+List Layout
+   Preference and rationale showed that the causative agent should be positioned first in a
+    row, so that it is read first and stands out
+   Preference and rationale showed that the risks should be displayed in columns rather than
+    ‘sentences’
+
+Positive Absence and Null States
+   At least in acute secondary care, stating positive absence was expected, and could include
+    these elements:
+        ‘no known’ (rather than ‘no’)
+        An indication of what is not known
+        Date of risk status last checked
+        Clear access to details of how this was checked
+   Six of 12 interviewees misinterpreted ‘no recorded adverse drug reactions’ as a label for a
+    null state – instead believing it to indicate a positive absence
+
+Levels
+   All interviewees felt that information about supporting events should be immediately
+    accessible from the risk statement. For example, not hidden behind a tab
+
+The Term ‘Risk’
+   Several interviewees misunderstood the term ‘Risk’ believing it to be generic knowledge
+    support information. In addition, reactions based on past events should be clarified as past,
+    rather than statements of the nature of future risk
+
+Drug Class
+   Automatic display of drug class with the risk statement was felt to be unnecessary and
+    potentially misleading as risks with specific medications may not necessarily generalise to
+    the familiar drug categories such as ‘NSAID’
+   Most interviewees did not understand a description of the chemical classification ‘Heteroaryl
+    acid’
+
+
+
+
+                                                                                             Page 46
+                   Design Guidance – Displaying Adverse Drug Reaction Risks
+                   Prepared by Microsoft, Version 1.0.0.0
+                   Last modified on 28 January 2009
+                                                                                            Microsoft
+
+
+
+
+Displaying Risks as Narrative Text
+   Interviewees preferred risks expressed in narrative as structured text (such as bullet points)
+    rather than as prose in a paragraph
+
+
+
+
+                                                                                            Page 47
+                   Design Guidance – Displaying Adverse Drug Reaction Risks
+                   Prepared by Microsoft, Version 1.0.0.0
+                   Last modified on 28 January 2009
+

@@ -1,0 +1,123 @@
+# ISB 1505 - Common User Interface - Patient Banner
+
+## Provenance
+- Source file: `raw/sources/references/nhs-archives/isb-standards/isb-136-patient-banner.html`
+- Extracted text: `derived/extracted-text/archive-support/isb-136-patient-banner.txt`
+- Normalization note: HTML text extraction using a conservative parser; archive boilerplate may remain.
+
+## Extracted Text
+
+ISB 1505 - Common User Interface - Patient Banner - Standards Library - ISB
+
+The Information Standards Board for Health and Social Care (ISB) closed on 31 March 2014.
+Responsibility for the recommendation for approval of information standards has transferred to the Standardisation Committee for Care Information (SCCI).
+
+Information standards continued to be published here until 31 December 2014, after which they are published on the Health and Social Care Information Centre (HSCIC) website.
+
+ skip to content |
+ Skip to navigation
+
+NHS Connecting for Health
+
+Home
+
+Setting The Scene
+
+Developing Standards
+
+Using Standards
+
+Approving Standards
+
+Library
+
+ Search Site
+
+ Advanced Search…
+
+In this section
+
+ Standards Browser
+
+All Standards
+
+Approved
+
+In Development
+
+Withdrawn
+
+ISNs
+
+ISB Schedule
+
+  
+
+The details about this information standard are current at 31 December 2014. To find out whether they remain current after this date please check the SCCI publication pages on the HSCIC website
+
+ You are here:
+ Home
+ →
+ Library
+
+ →
+
+ All Standards
+
+ →
+ ISB 1505
+
+Standard ISB 1505
+
+ Number
+ ISB 1505
+
+ Title
+ Common User Interface - Patient Banner
+
+ Description
+
+This user interface standard specifies the minimum items of information that must be contained in a patient banner, how this information should be grouped, laid out and labelled, the size of the patient banner and where it should be located on computer screens. It applies to user interfaces displayed on desktop or laptop computers.
+
+ Applies To
+
+IT systems that display patient demographics.
+
+ Status
+ Approved
+
+ Sponsor
+
+ Sponsor Organisation
+
+ Owner
+ Joint
+
+ Current Release
+ DSCN 09/2010
+
+Releases
+
+ Date Published
+ Release Number
+ Release Title
+ Stage
+ Link to Documentation
+
+ 13-Jan-2010
+ DSCN 09/2010
+ Initial Standard
+ Implementation
+ Documentation
+
+Contact Us
+
+Site Map
+
+Privacy
+
+Accessibility
+
+FOI
+
+© Copyright ISB

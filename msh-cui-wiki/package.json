@@ -1,0 +1,22 @@
+{
+  "name": "msh-cui-wiki",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "sync-content": "node ./scripts/sync-llm-wiki.mjs",
+    "watch-content": "node ./scripts/watch-llm-wiki.mjs",
+    "dev": "npm run sync-content && concurrently --kill-others-on-fail --names sync,astro --prefix-colors cyan,magenta \"npm:watch-content\" \"astro dev\"",
+    "start": "npm run dev",
+    "build": "npm run sync-content && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/starlight": "^0.38.3",
+    "@pelagornis/page": "^1.2.2",
+    "astro": "^6.0.1",
+    "chokidar": "^5.0.0",
+    "concurrently": "^9.2.1",
+    "sharp": "^0.34.2"
+  }
+}

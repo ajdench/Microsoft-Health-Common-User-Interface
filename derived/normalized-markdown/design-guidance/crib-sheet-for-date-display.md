@@ -1,0 +1,42 @@
+# Crib Sheet for Date Display
+
+## Provenance
+- Source file: `raw/sources/design-guidance/toolkit-bundled-crib-sheets/Crib Sheet for Date Display.pdf`
+- Extracted text: `derived/extracted-text/design-guidance/crib-sheet-for-date-display.txt`
+- Normalization note: machine-cleaned `pdftotext -layout` output; verify against the PDF for edge cases.
+
+## Extracted Text
+
+Date Display Crib Sheet
+ Short Date Format                                              Day of the week First 3 letters, in title
+ for Clinical use                                               case (optional)                                 Unknown
+                                                                 Day 2 digits                                   Not Recorded
+ Ignore the user’s
+ regional settings                                                   Month First 3 letters, in title case       Display null dates using an
+                                                                     Do not include punctuation                 appropriate value
+                                                                     as part of the month
+
+                                                                   Year A 4 digit number                          Mon 06-Jan-1997
+                             Mon 06-Jan-1997                                                                       Tue 05-Jan-2009
+                                     01-Jan-1994                         01-Jan-1994                            Align dates displayed
+                                                                                                                in a vertical column
+                                     DD-Mmm-YYYY                        Use hyphens to separate                 (align left or right)
+                                                                        day, month and year
+
+ Long Date Format                                                                                           Ordinal Numbers
+ for communications
+                             DD Mmmmmmm YYYY
+                                                                                                              th
+ with the patient
+                              5th January 2009                           14 August 1980                     5 January 2009
+                                                                        Use a space to separate             Show ordinal suffixes
+ for screen readers           01 January 1999                           day, month and year                 (st, nd, rd, th)
+ Follow the user’s                                                                                          in lowercase superscript
+ default regional                                                                                           immediately after the day
+                                                                  Year A 4 digit number
+ settings
+                                                          Month Name in full and title case
+
+                                                  Day 2 digits (or Ordinal Numbers)
+
+ Edition 1 – 20th May 2010    © Microsoft Corporation 2010. All rights reserved.

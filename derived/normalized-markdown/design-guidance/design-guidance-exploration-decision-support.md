@@ -1,0 +1,1199 @@
+# Design Guidance Exploration -- Decision Support
+
+## Provenance
+- Source file: `raw/sources/design-guidance/toolkit-bundled-pdfs/Design Guidance Exploration -- Decision Support.pdf`
+- Extracted text: `derived/extracted-text/design-guidance/design-guidance-exploration-decision-support.txt`
+- Normalization note: machine-cleaned `pdftotext -layout` output; verify against the PDF for edge cases.
+
+## Extracted Text
+
+Design Guidance Exploration
+              Decision Support
+
+                Wednesday, 21 May 2008
+                         Version 2.0.0.0
+
+                            Prepared by
+
+ The guidance presented in this document is for community preview and consultation only. Further design and patient safety assessments are
+                                          required to finalise the content as CUI Design Guidance.
+
+PREFACE
+   Documents replaced by this document
+
+   Document Title                                                                                                                  Version
+   None
+
+   Documents to be read in conjunction with this document
+
+   Document Title                                                                                                                  Version
+   Design Guidance – Time Display                                                                                                  1.0.0.0
+
+   Design Guidance – Date Display                                                                                                  2.0.0.0
+
+   Design Guidance Exploration – Search and Prescribe                                                                              1.0.0.0
+
+This document and/or software (“this Content”) has been created in partnership with the National Health Service (NHS) in England. Intellectual Property
+Rights to this Content are jointly owned by Microsoft and the NHS in England, although both Microsoft and the NHS are entitled to independently exercise
+their rights of ownership. Microsoft acknowledges the contribution of the NHS in England through their Common User Interface programme to this Content.
+Readers are referred to www.cui.nhs.uk for further information on the NHS CUI Programme.
+
+All trademarks are the property of their respective companies. Microsoft and Windows are either registered trademarks or trademarks of Microsoft
+Corporation in the United States and/or other countries.
+
+© Microsoft Corporation 2008. All rights reserved.
+
+                                    Design Guidance Exploration – Decision Support
+                                    Prepared by Microsoft, Version 2.0.0.0
+                                    Last modified on 21 May 2008
+
+The guidance presented in this document is for community preview and consultation only. Further design and patient safety assessments are
+                                         required to finalise the content as CUI Design Guidance.
+
+TABLE OF CONTENTS
+1    Introduction .................................................................................................................................... 1
+    1.1    Overview ................................................................................................................................... 1
+    1.2    Area of Focus Description ........................................................................................................ 4
+     1.2.1      Scope .................................................................................................................................. 4
+     1.2.2      Out of Scope ....................................................................................................................... 4
+    1.3    Key Principles ........................................................................................................................... 5
+
+2    Recommendation and Guidance .................................................................................................. 6
+    2.1    Communication of Decision Support Capability ....................................................................... 6
+     2.1.1      How to Display the Overview of Decision Support Capability ............................................. 6
+     2.1.2      How to Display the Detailed Level of Decision Support Capability ..................................... 8
+    2.2    Information Window Anatomy................................................................................................. 10
+     2.2.1      Guidance ........................................................................................................................... 10
+     2.2.2      Benefits and Rationale ...................................................................................................... 14
+     2.2.3      Confidence Level............................................................................................................... 15
+    2.3    Choice Lists with Preferences ................................................................................................ 15
+     2.3.1      Guidance ........................................................................................................................... 15
+     2.3.2      Benefits and Rationale ...................................................................................................... 19
+     2.3.3      Confidence Level............................................................................................................... 19
+    2.4    Unprompted Notifications (System-Generated Alerts) ........................................................... 19
+     2.4.1      Guidance ........................................................................................................................... 19
+     2.4.2      Benefits and Rationale ...................................................................................................... 25
+     2.4.3      Confidence Level............................................................................................................... 25
+    2.5    Next Steps .............................................................................................................................. 25
+
+3    Document Information ................................................................................................................ 27
+    3.1    Terms and Abbreviations ........................................................................................................ 27
+    3.2    Definitions ............................................................................................................................... 27
+    3.3    Nomenclature ......................................................................................................................... 27
+     3.3.1      Body Text .......................................................................................................................... 27
+     3.3.2      Cross References.............................................................................................................. 27
+    3.4    References ............................................................................................................................. 28
+
+                                 Design Guidance Exploration – Decision Support
+                                 Prepared by Microsoft, Version 2.0.0.0
+                                 Last modified on 21 May 2008
+
+The guidance presented in this document is for community preview and consultation only. Further design and patient safety assessments are
+                                         required to finalise the content as CUI Design Guidance.
+
+1           INTRODUCTION
+    This document presents design exploration and early design guidelines for Decision Support,
+    covering the areas:
+         Communication of decision support capability
+         Display of choice lists with preferences and display
+         Interaction with unprompted notifications
+    The objective of this document is to describe the area of focus, provide guidance and
+    recommendations, and explain the rationale behind the guidance and recommendations.
+    This initial investigation is a concise piece of work, based around the three areas listed above.
+    Further research, user testing, patient safety assessment and supplier participation are required to
+    define the final guidance.
+    During this investigative work, consideration has been given to the wider research material
+    available within this domain. Research references of such material include:
+         Kensaku Kawamoto et al, 2005, Information in practice, Improving clinical practice using
+          clinical decision support systems: a systematic review of trials to identify features critical to
+                          1
+          success, BMJ
+         Amit X Garg et al, 2005, Effects of Computerized Clinical Decision Support Systems on
+                                                                 2
+          Practitioner Performance and Patient Outcomes, JAMA
+
+1.1         Overview
+    This document is intended for the use by anyone whose role includes screen design,
+    implementation, or assessment of a clinical application. This document can therefore be used as
+    guidance for the specification of user interfaces for decision support systems.
+    Conceptually (as illustrated in Figure 1), knowledge and decision support can use a general
+    messaging capability to deliver communication in a healthcare environment. The context in which
+    the decision support operates is closely linked to the user’s role, organisation, speciality and care
+    setting. It is also linked to the electronic patient record (EPR) for which care is being recorded in.
+    The clinical application functions, such as medication management, investigations, knowledge
+    support and decision support, will utilise the messaging framework to communicate between
+    components. In this context, decision support is one of the components that form the clinical
+    application.
+    Figure 1 illustrates components that can be defined individually as follows:
+         User Context – The current role and situation in which the user is operating
+         Electronic Patient Record (EPR) – The record of the patient’s medical and demographic
+          information
+         Clinical Functionality – The services offered by the application
+
+    1
+      Kensaku Kawamoto et al, 2005, Information in practice, Improving clinical practice using clinical decision support systems:
+    a systematic review of trials to identify features critical to success, BMJ {R1}:
+    http://www.bmj.com/cgi/content/abstract/330/7494/765
+    2
+     Amit X Garg et al, 2005, Effects of Computerized Clinical Decision Support Systems on Practitioner Performance and
+    Patient Outcomes, JAMA {R2}:
+    http://jama.ama-assn.org/cgi/content/abstract/293/10/1223
+                                                                                                                                   Page 1
+                              Design Guidance Exploration – Decision Support
+                              Prepared by Microsoft, Version 2.0.0.0
+                              Last modified on 21 May 2008
+
+The guidance presented in this document is for community preview and consultation only. Further design and patient safety assessments are
+                                         required to finalise the content as CUI Design Guidance.
+
+        Knowledge Support – The service that provides information to the user in the relevant
+         context
+        Decision Support – The service that provides system alerts, defined by locally-configured
+         rules
+        User Information – The information that includes the user’s role, responsibilities,
+         demographics, access rights, and so on
+        Alert Log – The information captured for the alert audit trail
+        Clinical Alerting – Generation of alerts in response to a change in the information available
+        Messaging Service – The functionality used to pass the messages, alerts and messaging of
+         other events between different components of a clinical application
+
+  Figure 1: Context of Knowledge and Decision Support within the Application
+
+  The degree and extent of decision support within the messaging framework may be dependent on
+  many factors, including:
+        The user’s role
+        The user’s organisation
+        The user’s speciality
+        The user’s current care setting
+
+                                                                                                                                   Page 2
+                                 Design Guidance Exploration – Decision Support
+                                 Prepared by Microsoft, Version 2.0.0.0
+                                 Last modified on 21 May 2008
+
+The guidance presented in this document is for community preview and consultation only. Further design and patient safety assessments are
+                                         required to finalise the content as CUI Design Guidance.
+
+  The user interface for Knowledge and Decision Support contains a set of fundamental elements
+  that provide a mechanism for informing the user of important, relevant information, notifications and
+  alerts for a specific patient within areas such as medication management and clinical testing, as
+  illustrated in Figure 2.
+
+  Figure 2: Decision Support Components
+
+  This document provides guidance and recommendations for the following aspects of decision
+  support design within a clinical application:
+        Communication of decision support capability
+         The communication to the user that decision support is currently active/inactive during the
+         user’s current session within a clinical application.
+        Display of choice lists with preferences
+         Allowing choice from a set of graded recommendations of activities in a patient situation.
+        Display and interaction with system-generated alerts
+         An alert relevant to this patient generated in response to a change in the information
+         available.
+  Decision support is driven by a module which manages the logic of alerts, notifications,
+  recommendations and relevant actions.
+  Alerts inform the user of a situation that requires attention. There are two alert levels:
+        Priority
+        High Priority
+
+                                                                                                                                   Page 3
+                               Design Guidance Exploration – Decision Support
+                               Prepared by Microsoft, Version 2.0.0.0
+                               Last modified on 21 May 2008
+
+The guidance presented in this document is for community preview and consultation only. Further design and patient safety assessments are
+                                         required to finalise the content as CUI Design Guidance.
+
+1.2       Area of Focus Description
+1.2.1         Scope
+  This document considers decision support within the context of an individual patient record.
+  The area of focus for this guidance, within the context of an individual patient record, is:
+        Communication of decision support capability
+        Display of choice lists with preferences and display
+        Interaction with unprompted notifications
+
+1.2.2         Out of Scope
+  The following areas are out of scope for this guidance:
+        Forwarding, referring and escalating an alert
+        Design for a clinician’s Home page
+        Handling alerts when a clinician is outside a patient’s EPR
+        Handling notification messages, such as ‘Test results are back’
+        The user's ability to turn elements of decision support on/off
+        Inserting any actions required as a result of an alert
+        A state transition model to define alert transition
+        Additional ‘monitoring conditions’ to be put in place, to ensure the safety of any particular
+         decision
+        A library of icons for alerts and notifications
+        An audit trail of an alert
+        Logging of an alert
+        Rating of an alert
+        Overriding an alert
+        The messaging framework
+        Viewing when an alert has been raised
+        Viewing the priority of an alert (which can change over a period of time)
+        Local configuration of clinical rules
+        Triggers for alerts (locally configurable)
+        Knowledge authoring of priority levels and context for an alert
+        Configuration of alerts (managed through the configuration of the clinical application)
+
+                                                                                                                                   Page 4
+                              Design Guidance Exploration – Decision Support
+                              Prepared by Microsoft, Version 2.0.0.0
+                              Last modified on 21 May 2008
+
+The guidance presented in this document is for community preview and consultation only. Further design and patient safety assessments are
+                                         required to finalise the content as CUI Design Guidance.
+
+1.3       Key Principles
+  Underlying the guidance provided in section 2 are a set of key principles for decision support within
+  a clinical application, some of which are listed below:
+        There are two types of communication in decision support: informing and recommending
+        When an informed or recommended act occurs, it is recorded in the EPR
+        For alerts, the aim is to combine multiple axes of importance, such as criticality and
+         urgency, into one axis of priority
+        For choice lists, the aim is to combine multiple axes into a single scale for preference
+        There needs to be a defined number of priority levels for an alert
+        The significance of the priority levels must be easily understood by the user
+        Recommendations for appropriate actions following an alert will be displayed if they are
+         available from a decision support system
+        Alerts need to be compatible with, and exist within, the messaging framework
+        Explanations will be available for any alert or preference
+        Where explanations refer to an item in a patient record, it must be possible to view that item
+         in its original context
+        Consistency of structure in the display of information
+        The full set of local decision support functionality will be provided when the user logs on
+
+                                                                                                                                   Page 5
+                              Design Guidance Exploration – Decision Support
+                              Prepared by Microsoft, Version 2.0.0.0
+                              Last modified on 21 May 2008
+
+The guidance presented in this document is for community preview and consultation only. Further design and patient safety assessments are
+                                         required to finalise the content as CUI Design Guidance.
+
+2            RECOMMENDATION AND GUIDANCE
+
+2.1          Communication of Decision Support Capability
+    The primary requirement of communicating decision support capability is to inform the users about
+    the different decision support services that are currently available in their clinical application.
+    Decision support capability should be displayed at two levels:
+          Overview
+           Indicates if the decision support services are running as expected (or not as expected).
+          Detailed
+           Indicates the status of every individual decision support service within the clinical
+           application.
+
+2.1.1              How to Display the Overview of Decision Support Capability
+    Figure 3 provides an overview of the decision support capability.
+
+                                                                         Indicates that decision support is running
+                                                                         with full functionality for this local system
+
+                                                                         Indicates that decision support is not
+                                                                         running with full functionality for this local
+                                                                         system. This could be a flashing animation
+
+                                                                         Indicates that decision support is not
+                                                                         running with full functionality for this local
+                                                                         system, and there has been a change since
+                                                                         last viewed. This could be a flashing
+                                                                         animation
+    Figure 3: Overview of the Decision Support Capability
+
+2.1.1.1              Guidance
+          The title of the decision support capability tool should be short so that it occupies the
+           minimum space on the screen (for example, ‘Decision Support’). An icon could be used to
+           suggest decision support capability; however, this still needs to be explored
+          An arrow or chevron should be displayed next to the title to visually suggest that detailed
+           information is available on a click
+          If decision support is running with full functionality for this local system:
+                    The title should be displayed against a neutral colour (for example, grey)
+          If decision support is not running with full functionality for this local system:
+                    The title should be displayed against a colour that captures attention (for example,
+                     orange)
+                    The title could be used as a flashing animation to attract immediate attention
+                    The title should also be supported by an icon to indicate that there has been a change
+                     since last viewed
+
+                                                                                                                                   Page 6
+                                   Design Guidance Exploration – Decision Support
+                                   Prepared by Microsoft, Version 2.0.0.0
+                                   Last modified on 21 May 2008
+
+The guidance presented in this document is for community preview and consultation only. Further design and patient safety assessments are
+                                         required to finalise the content as CUI Design Guidance.
+
+        For every change in availability of a decision support service, a pop-up should be displayed
+         showing a message which summarises the change, as illustrated in Figure 4
+                  The pop-up should appear in close proximity to the title to visually suggest a connection
+                   between the message and the decision support functionality
+                  The pop-up should display the date and time of the change, according to the
+                   documents Design Guidance – Time Display {R3} and Design Guidance – Date Display
+                   {R4}
+                  The pop-up should display a textual description of the change (for example, “Dose
+                   Calculations and Formulary Management are not running”)
+                  The pop-up should visually fade out over a period of time (approximately 5-10
+                   seconds), as it should not obstruct the view of the clinical application
+
+       Figure 4: Example of a Pop-up
+
+2.1.1.2            Example of Correct Usage
+  Table 1 shows an example of correct display of the Decision Support capability within clinical
+  applications.
+
+  Usage Format                                          Example                                    Comments
+
+            Arrow or Chevron next to the title                                                    An arrow or chevron should be
+             within the same box                                                                   displayed next to the title to suggest
+                                                                                                   detailed information is available on a
+                                                                                                   click
+  Table 1: Correct Decision Support Capability Formatting Example
+
+2.1.1.3            Example of Incorrect Usage
+  Table 2 shows an example of incorrect display of Decision Support capability within clinical
+  applications.
+
+  Usage Format                                          Example                                    Comments
+
+            Arrow or Chevron next to the title                                                    Incorrect format for arrow or chevron
+             outside the title box                                                                 display
+  Table 2: Incorrect Decision Support Capability Formatting Example
+
+2.1.1.4            Benefits and Rationale
+        Informs the user as to whether the decision support services are running with full
+         functionality for this local system
+        Better informs the user by flagging a change in the decision support capability via the
+         overview status
+
+2.1.1.5            Confidence Level
+  This guidance is currently classified as ‘Initial Guidance’ with ‘Low’ confidence level. Further
+  usability testing and patient safety assessment is expected, and the guidance will be updated
+  following this usability testing.
+
+                                                                                                                                    Page 7
+                                 Design Guidance Exploration – Decision Support
+                                 Prepared by Microsoft, Version 2.0.0.0
+                                 Last modified on 21 May 2008
+
+The guidance presented in this document is for community preview and consultation only. Further design and patient safety assessments are
+                                         required to finalise the content as CUI Design Guidance.
+
+2.1.2            How to Display the Detailed Level of Decision Support Capability
+  This section defines the guidance for displaying the detailed level of decision support capability to
+  the user. Figure 5 illustrates an example of this.
+
+                                                                                   Use of a green tick and bold text suggests
+                                                                                   the service is available and running
+
+                                                                                   Grey text suggests the service is not
+                                                                                   available
+
+                                                                                   Use of a red cross and bold text suggests
+                                                                                   the service is available but not running
+
+                                                                                   Recognised link to the Help file
+
+                                                                                   Link to configure the state of individual
+                                                                                   services (out of scope for this document)
+
+  Figure 5: Example of How to Display Detailed Level Decision Support Capability
+
+2.1.2.1            Guidance
+  When the arrow or chevron is clicked, the detailed level of decision support capability is displayed.
+  This should capture the following:
+        A list of decision support services (for example, ‘Licensed use of Drug Checking’) should be
+         displayed. This list should:
+                  Be displayed in alphabetical order
+                  Be visually treated to help distinguish between services that are available and not
+                   available. This means that the two states should be obvious to the user when the user
+                   scans through the list
+                  Display available services in black, bold font. The status of the service should be
+                   reinforced with an icon (for example, a green tick)
+                  Display services that are available, but not running, in black, bold font. The status of the
+                   service should be reinforced with an icon (for example, a red cross)
+                  Display unavailable services in light grey, regular font
+                  Display the status of any service in a tooltip (with date and time) according to the
+                   documents Design Guidance – Time Display {R3} and Design Guidance – Date Display
+                   {R4} (for example, ‘This service has been unavailable since 12-Jan-2007; 10:42’)
+
+                                                                                                                                   Page 8
+                                 Design Guidance Exploration – Decision Support
+                                 Prepared by Microsoft, Version 2.0.0.0
+                                 Last modified on 21 May 2008
+
+The guidance presented in this document is for community preview and consultation only. Further design and patient safety assessments are
+                                         required to finalise the content as CUI Design Guidance.
+
+                 Display the Help file when any service is clicked. The Help file should automatically
+                  scroll to the location of the selected service
+        A vertical scroll bar should be introduced if the list grows beyond the designated screen
+         space
+        A link to configure the states of individual services should be provided. This is currently
+         outside the scope of this document
+        A recognised link to the Help file should be provided, which could be an icon (see Figure 6):
+                 The Help file should display information in alphabetical order, in the same way as the
+                  list of services
+                 A brief description of each service should be displayed
+                 The Help file should be accessible through the Help link, as well as by clicking on an
+                  individual service
+                 Where possible, the Help system should be integrated with the generic Help
+
+                                                                                         The user can click on a service/
+                                                                                         Help icon to access Help details
+
+                                                                                         A recognised link to the Help file
+  Figure 6: Example of a Help Glossary                                                   (such as an icon)
+
+                                                                                                                                   Page 9
+                                Design Guidance Exploration – Decision Support
+                                Prepared by Microsoft, Version 2.0.0.0
+                                Last modified on 21 May 2008
+
+The guidance presented in this document is for community preview and consultation only. Further design and patient safety assessments are
+                                         required to finalise the content as CUI Design Guidance.
+
+2.1.2.2            Example of Correct Usage
+  Table 3 shows an example of correct display of the detailed level of the Decision Support capability
+  within clinical applications.
+
+  Usage Format                                          Example                                    Comments
+
+            Displaying available services                                                         Available services should be
+                                                                                                   displayed in black, bold font. The
+                                                                                                   status of the service should be
+                                                                                                   reinforced with an icon (for example,
+                                                                                                   a tick)
+
+            Displaying unavailable services                                                       Unavailable services should be
+                                                                                                   displayed in light grey, regular font
+  Table 3: Correct Detailed Decision Support Capability Formatting Examples
+
+2.1.2.3            Example of Incorrect Usage
+  Table 4 shows an example of incorrect display of the detailed level of Decision Support capability
+  within clinical applications.
+
+  Usage Format                                          Example                                    Comments
+
+            Displaying available services                                                         Incorrect format for displaying available
+                                                                                                   services using a selected check box
+
+            Displaying unavailable services                                                       Incorrect format for displaying
+                                                                                                   unavailable services using an
+                                                                                                   unselected check box
+  Table 4: Incorrect Detailed Decision Support Capability Formatting Examples
+
+2.1.2.4            Benefits and Rationale
+        Allows access to context sensitive Help for the decision support framework
+        Provides information to the user about the local systems’ current availability to support the
+         user’s decision making
+
+2.1.2.5            Confidence Level
+  This guidance is currently classified as ‘Initial Guidance’ with ‘Low’ confidence level. Further
+  usability testing and patient safety assessment is expected, and the guidance will be updated
+  following this usability testing.
+
+2.2        Information Window Anatomy
+  This section describes the anatomy of the decision support information window.
+
+2.2.1          Guidance
+  All information windows should contain the following areas or elements (as illustrated in Figure 7),
+  and this should be consistent across choice lists with preferences and unprompted notifications:
+        Header area
+        Summary area
+        Details area
+        Resizing control
+
+                                                                                                                                     Page 10
+                                 Design Guidance Exploration – Decision Support
+                                 Prepared by Microsoft, Version 2.0.0.0
+                                 Last modified on 21 May 2008
+
+The guidance presented in this document is for community preview and consultation only. Further design and patient safety assessments are
+                                         required to finalise the content as CUI Design Guidance.
+
+                                                                                                  Header area
+
+                                                                                                  Details area (accessed by
+                                                                                                  clicking the ’Details’ tab or
+                                                                                                  the Details… link, available
+                                                                                                  in the ‘Summary Area’)
+
+                                                                                                  Summary area
+
+                                                                                                  Resizing control
+  Figure 7: Anatomy of an Information Window
+
+2.2.1.1           Header Area
+  The information window header is placed at the top of the information window.
+
+2.2.1.2           Summary Area
+  By default, the ‘Summary’ tab of the information window should be selected. This tab should be to
+  the left of the ‘Details’ tab. It should contain the following elements:
+        Icon
+         The icon should be placed to the left of the summary information. There could be several
+         types of icon, where each icon suggests a different type of information. This library of icons
+         does not exist and needs to be explored.
+        Information Summary
+         The summary should be brief and should summarise the details found on the ‘Details’ tab
+         (for example, “There are potential additive hypotensive effects with Lisinopril and
+         Furosemide, a current medication for this patient”).
+        Information Source
+         The source of the information should be displayed in brackets, below the summary.
+        Information Details
+         A textual link to the information details should be displayed below the source. This link
+         should display the same information that is available under the ‘Details’ tab.
+        Actions
+                 By default, the ‘Actions’ label should be displayed with a chevron next to it. This area
+                  should be displayed in a collapsed state by default. The chevron should act as an
+                  interactive element, expanding the Actions when clicked
+                 On expansion, this area should display a list of recommended actions (see Figure 8)
+                 The actions should be displayed in order of preference, with the most preferred first
+                 The preference rating for actions should be visually supported by icons, which should
+                  be placed on the left side of every action. On mouse-over of this icon, a tooltip
+                  explaining the preference should be displayed (for example, ‘High Preference Option’)
+                 An action can be selected by clicking its option button
+
+                                                                                                                                  Page 11
+                                Design Guidance Exploration – Decision Support
+                                Prepared by Microsoft, Version 2.0.0.0
+                                Last modified on 21 May 2008
+
+The guidance presented in this document is for community preview and consultation only. Further design and patient safety assessments are
+                                         required to finalise the content as CUI Design Guidance.
+
+                An action could have multiple sub options, which should be selectable by check boxes
+                 or option buttons. For example, ‘Option 3’ is an action, and the associated options are
+                 ‘Sub Option 1, Sub Option 2 and Sub Option 3’
+                If decision support is not recommending any actions, elements including the label and
+                 the chevron should not be displayed (see Figure 9)
+
+                                                                                                            A placeholder for
+                                                                                                            the preference icon
+
+                                                                                                            Actions area
+                                                                                                            expanded
+
+                                                                                                            Multiple options for
+                                                                                                            an action
+
+            Figure 8: Anatomy of an Information Window – When Decision Support Recommends Actions
+
+                                                                                                            No actions present
+                                                                                                            in this information
+                                                                                                            window
+
+            Figure 9: Anatomy of an Information Window – When Decision Support Does Not Recommend Actions
+
+        Record Response
+         The Record Response button should be enabled at all times. When this button is clicked,
+         the user should be taken to the relevant area of the clinical application to allow them to
+         record a response. This button should be placed before, and to the left of the Dismiss
+         button.
+
+                                                                                                                                   Page 12
+                              Design Guidance Exploration – Decision Support
+                              Prepared by Microsoft, Version 2.0.0.0
+                              Last modified on 21 May 2008
+
+The guidance presented in this document is for community preview and consultation only. Further design and patient safety assessments are
+                                         required to finalise the content as CUI Design Guidance.
+
+        Dismiss
+         The Dismiss button should be enabled at all times. When this button is clicked, the
+         information window should be dismissed. This button should be placed after, and to the
+         right of, the Record Response button.
+
+2.2.1.3           Details Area
+  The details area should be available when the ‘Details’ tab is selected. This tab should be placed
+  after the ‘Summary’ tab. This area should also be available by clicking the Details… link from the
+  ‘Summary’ tab.
+  This area displays the explanation or reasoning behind the information window. It should capture
+  the following information (see Figure 10):
+        A summary of the information
+        Patient-specific information
+        Rationale
+        References
+  Subject to business rules in the decision support system, and elements in the screen that have
+  been derived from the patient record, there should be hyperlinks to go back to the relevant part of
+  the patient record.
+
+                                                                                   Details area (available by selecting the
+                                                                                   ‘Details’ tab or clicking the Details…
+                                                                                   link from the Summary tab)
+
+                                                                                   Hyperlinks to the patient’s record
+
+  Figure 10: Anatomy of an Information Window – Details Area
+
+2.2.1.4           Resizing Control
+  The resizing control should be placed at the bottom right or left corner of the alert box. The user
+  should be able to drag this control to resize the alert box (see Figure 7).
+
+                                                                                                                                  Page 13
+                                Design Guidance Exploration – Decision Support
+                                Prepared by Microsoft, Version 2.0.0.0
+                                Last modified on 21 May 2008
+
+The guidance presented in this document is for community preview and consultation only. Further design and patient safety assessments are
+                                         required to finalise the content as CUI Design Guidance.
+
+2.2.1.5           Example of Correct Usage
+  Table 5 shows an example of correct display of the Decision Support information window within
+  clinical applications.
+
+  Usage Format                                        Example                                      Comments
+
+            Displaying an icon                                                                    The icon should be placed to the left
+                                                                                                   of the summary information
+
+            Showing no actions available                                                          If decision support is not
+                                                                                                   recommending any actions, elements,
+                                                                                                   including the label and chevron,
+                                                                                                   should not be displayed
+
+  Table 5: Correct Decision Support Information Window Formatting Examples
+
+2.2.1.6           Example of Incorrect Usage
+  Table 6 shows an example of incorrect display of the Decision Support information window within
+  clinical applications.
+
+  Usage Format                                        Example                                      Comments
+
+            Displaying an icon                                                                    Incorrect format for displaying an icon
+                                                                                                   within the information window
+
+            Showing no actions available                                                          Incorrect format for displaying no
+                                                                                                   actions recommended
+
+  Table 6: Incorrect Decision Support Information Window Formatting Examples
+
+2.2.2         Benefits and Rationale
+        Provides consistent display of information and reduces the users’ learning curve
+
+                                                                                                                                   Page 14
+                                Design Guidance Exploration – Decision Support
+                                Prepared by Microsoft, Version 2.0.0.0
+                                Last modified on 21 May 2008
+
+The guidance presented in this document is for community preview and consultation only. Further design and patient safety assessments are
+                                         required to finalise the content as CUI Design Guidance.
+
+2.2.3          Confidence Level
+  This guidance is currently classified as ‘Initial Guidance’ with ‘Low’ confidence level. Further
+  usability testing and patient safety assessment is expected, and the guidance will be updated
+  following this usability testing.
+
+2.3        Choice Lists with Preferences
+  Choice lists with preferences provide graded recommendations of activities in a particular patient
+  situation.
+
+2.3.1          Guidance
+        Preferences in a choice list should be represented by icons placed to the left of the
+         appropriate option (see Figure 11)
+        On mouse-over of the preference icon, a summary of the information should be displayed
+         as a tooltip (for further details see section 2.3.1.2.)
+        When the preference icon is clicked, the information window should be displayed as an
+         overlay aligned to the top right side of the choice list, as illustrated in Figure 12
+        If the user clicks on any other area of the screen outside the information window, the
+         information window should close
+        If the user clicks on the Dismiss button, the information window should close
+        If the user clicks on the Record Response button, they should be taken to the relevant
+         area of the clinical application to allow them to record a response
+
+                                                                                                        An icon to suggest
+                                                                                                        preference ratings. The
+                                                                                                        icon should be placed
+                                                                                                        on the left side of the
+                                                                                                        option in the choice list
+
+                                                                                                        The information window
+                                                                                                        is displayed as an
+                                                                                                        overlay, aligned to the
+                                                                                                        top right side of the
+  Figure 11: Example of a Choice List showing the placement of Preferences                              choice list
+
+  Figure 12: Example of an Information Window Displayed as an Overlay
+
+                                                                                                                                  Page 15
+                                Design Guidance Exploration – Decision Support
+                                Prepared by Microsoft, Version 2.0.0.0
+                                Last modified on 21 May 2008
+
+The guidance presented in this document is for community preview and consultation only. Further design and patient safety assessments are
+                                         required to finalise the content as CUI Design Guidance.
+
+2.3.1.1           Icon
+  There should be unique icons to represent the different preferential ratings. However, this library of
+  icons does not exist and needs to be explored.
+
+2.3.1.2           Summary Information on Mouse-Over
+  On mouse-over of the preference icon, a summary of the information should be displayed as a
+  tooltip (see Figure 13). The summary information should identify the reason for the preference (for
+  example, “Potential drug-drug interaction with Furosemide”). The summary information should be
+  brief.
+
+       Note
+       The following medications list examples (Figure 13 and Figure 14) are used here for illustrative purposes
+       only.
+
+                                                                                                       Example of a single
+                                                                                                       summary
+
+  Figure 13: Example of a Single Information Summary
+
+  If there are multiple reasons for a particular preference, display all the information summaries on
+  mouse-over.
+
+                                                                                                       Example of multiple
+                                                                                                       summaries
+
+  Figure 14: Example of Multiple Information Summaries
+
+2.3.1.3           Information Window Anatomy
+  The information window anatomy should essentially follow the guidelines defined in section 2.2,
+  with only the following minor differences:
+        Header Area
+         Should be labelled ‘Explanation’.
+
+                                                                                                                                  Page 16
+                                Design Guidance Exploration – Decision Support
+                                Prepared by Microsoft, Version 2.0.0.0
+                                Last modified on 21 May 2008
+
+The guidance presented in this document is for community preview and consultation only. Further design and patient safety assessments are
+                                         required to finalise the content as CUI Design Guidance.
+
+        Summary Area – Single Summary
+         If any wording in the summary is derived from one or more patient items, it should be linked
+         to that record item in its original context. For example, if the summary says “There are
+         potential additive hypotensive effects with Lisinopril and Furosemide, a current medication
+         for this patient”, then ‘Furosemide’ should be a hyperlink (see Figure 15) which, when
+         clicked, should display the current medications list in conjunction with the alert box. This
+         interactive behaviour has not been detailed and needs to be explored.
+
+                                                                                                  If the summary refers to any
+                                                                                                  record item of the patient,
+                                                                                                  this reference should be
+                                                                                                  linked to that record item
+
+            Figure 15: Example of a Summary Area
+
+        Summary Area – Multiple Summaries
+         If there are multiple summaries for the same option, display all the summaries within the
+         same information window as illustrated in Figure 16. Actions for multiple summaries should
+         be consolidated as a single list in the actions area. Explanations for multiple summaries
+         should be consolidated in the explanation area.
+
+                                                                                                  This is how multiple pieces
+                                                                                                  of information for the same
+                                                                                                  option should be displayed
+
+            Figure 16: Example of a Summary Area – Multiple Pieces of Information
+
+                                                                                                                                  Page 17
+                               Design Guidance Exploration – Decision Support
+                               Prepared by Microsoft, Version 2.0.0.0
+                               Last modified on 21 May 2008
+
+The guidance presented in this document is for community preview and consultation only. Further design and patient safety assessments are
+                                         required to finalise the content as CUI Design Guidance.
+
+2.3.1.4            Example of Correct Usage
+  Table 7 shows an example of correct display of choice lists with preferences within clinical
+  applications.
+
+  Usage Format                                         Example                                     Comments
+
+            Displaying an icon                                                                    The preference rating icon should be
+                                                                                                   placed to the left side of the option in
+                                                                                                   the choice list
+
+            Displaying multiple information                                                       If there are multiple reasons for a low
+             summaries                                                                             preferential rating, on mouse-over all
+                                                                                                   information summaries should be
+                                                                                                   listed as bullet points
+
+            Displaying details of multiple                                                        If there are multiple summaries for the
+             information summaries                                                                 same preferential rating, display all
+                                                                                                   the summaries within the same
+                                                                                                   information window
+
+  Table 7: Correct Formatting Examples of Choice Lists with Preferences
+
+2.3.1.5            Example of Incorrect Usage
+  Table 8 shows an example of incorrect display of choice lists with preferences within clinical
+  applications.
+
+  Usage Format                                         Example                                     Comments
+
+            Displaying an icon                                                                    Do not display the icon to the right of
+                                                                                                   the choice list
+
+                                                                                                                                     Page 18
+                                 Design Guidance Exploration – Decision Support
+                                 Prepared by Microsoft, Version 2.0.0.0
+                                 Last modified on 21 May 2008
+
+The guidance presented in this document is for community preview and consultation only. Further design and patient safety assessments are
+                                         required to finalise the content as CUI Design Guidance.
+
+  Usage Format                                          Example                                    Comments
+
+            Displaying multiple information                                                       Do not display the multiple
+             summaries                                                                             summaries without bullet points
+
+            Displaying multiple information                                                       Do not divide the information into
+                                                                                                   individual information windows
+
+  Table 8: Incorrect Formatting Example of Choice Lists with Preferences
+
+2.3.2          Benefits and Rationale
+        By providing the preferred options at an early stage in the process, disruption to the
+         workflow is minimised
+
+2.3.3          Confidence Level
+  This guidance is currently classified as ‘Initial Guidance’ with ‘Low’ confidence level. Further
+  usability testing and patient safety assessment is expected, and the guidance will be updated
+  following this usability testing.
+
+2.4        Unprompted Notifications (System-Generated Alerts)
+  An ‘Alert’ is a notification that is relevant to the patient, and is generated in response to a change in
+  the information available.
+
+2.4.1          Guidance
+2.4.1.1            Alert Behaviour
+  This section details the interactive behaviour of system-generated alerts.
+        In the context of a clinical application, there should be an indicator for system-generated
+         alerts. This indicator could be represented by an icon
+        The indicator icon should clearly indicate the state it represents, as detailed in section
+         2.4.1.2
+        When a new alert appears, a pop-up should be displayed in close proximity to the indicator
+         icon (see Figure 17). This pop-up should capture the status, date and time of the alert in its
+         header, according to the documents Design Guidance – Time Display {R3} and Design
+         Guidance – Date Display {R4}. The pop-up should also capture the alert icon and
+         description. The pop-up should fade out over a period of time (approximately 5-10
+         seconds), as it should not obstruct the view of the clinical application
+        If the user clicks on the pop-up, the system should display the alert container
+
+                                                                                                                                   Page 19
+                                 Design Guidance Exploration – Decision Support
+                                 Prepared by Microsoft, Version 2.0.0.0
+                                 Last modified on 21 May 2008
+
+The guidance presented in this document is for community preview and consultation only. Further design and patient safety assessments are
+                                         required to finalise the content as CUI Design Guidance.
+
+        When the indicator icon is clicked, the system should display the alert container, which lists
+         all the active system-generated alerts for this patient. The alerts should be grouped by
+         status and stacked in reverse chronological order
+        There should be two types of alert status: High Priority and Priority. All ‘Priority’ alerts
+         should be displayed in a collapsed state by default, where only the alert header is visible.
+         All ‘High Priority’ alerts should be displayed in an expanded state by default, where the alert
+         details are visible (see Figure 18). The group of ‘High Priority’ alerts should be placed
+         above the group of ‘Priority’ alerts
+        The user should be able to collapse and expand every alert by clicking on the alert header
+        If the number of alerts increases beyond the designated screen space of the alert container,
+         a vertical scroll bar should be introduced to accommodate all the alerts. This holds true
+         even if the expanded alerts need to take up additional vertical screen space
+
+            Figure 17: Example of a High Priority Alert Pop-Up
+
+                                                                                      All ‘High Priority’ alerts should be
+                                                                                      displayed in an expanded state by
+                                                                                      default
+
+                                                                                      All ‘Priority’ alerts should be
+                                                                                      displayed in a collapsed state by
+                                                                                      default
+
+                                                                                      Users should be able to
+                                                                                      collapse/expand an alert by
+                                                                                      clicking on the alert header area
+
+            Figure 18: Example of Different Default States for High/Priority Alerts
+
+2.4.1.2           Alert Icon
+  There should be unique icons to represent the different states of the indicator icon. There should
+  also be unique icons to represent the different types of system-generated alerts. However, this
+  library of icons does not currently exist and needs to be explored in the future.
+  The indicator icon should suggest the following states (as illustrated in Table 9):
+        No active alerts
+        One or more active Priority alert which has not been viewed
+        One or more active Priority alert which has been viewed
+
+                                                                                                                                  Page 20
+                                 Design Guidance Exploration – Decision Support
+                                 Prepared by Microsoft, Version 2.0.0.0
+                                 Last modified on 21 May 2008
+
+The guidance presented in this document is for community preview and consultation only. Further design and patient safety assessments are
+                                         required to finalise the content as CUI Design Guidance.
+
+         One or more High Priority active alert and a possible number of Priority alerts which have
+          not been viewed
+         One or more High Priority active alert and a possible number of Priority alerts which have
+          been viewed
+
+  Exemplar Representation Icon Description
+  of Icon
+                                          Icon suggests there are no active alerts
+
+                                          Icon suggests there is one or more active Priority alert which has not been viewed
+
+                                          Icon suggests there is one or more active Priority alert which has been viewed
+
+                                          Icon suggests there is one or more High Priority active alert and a possible number of Priority
+                                          alerts which have not been viewed
+
+                                          Icon suggests there is one or more High Priority active alert, and a possible number of Priority
+                                          alerts, which have been viewed
+
+  Table 9: States of the Indicator Icon
+
+  Icons could represent different types of system-generated alerts. The different types of system-
+  generated alerts need to be defined.
+
+2.4.1.3             Alert Summary
+  There should be two types of an alert summary for system-generated alerts. The first appears as a
+  pop-up for a new alert (as illustrated in Figure 17). The second is displayed as the alert header
+  when an alert is in a collapsed state in the alert container (as illustrated Figure 18).
+  The alert summary in the pop-up should display the alert status, date and time, according to the
+  documents Design Guidance – Time Display {R3} and Design Guidance – Date Display {R4}. The
+  summary should also display the alert icon and identify the reason for the alert (for example, “The
+  potassium level is 7.7 mmol”). The alert summary should be brief.
+  The summary in the header should display the alert status, date and time, according to the
+  documents Design Guidance – Time Display {R3} and Design Guidance – Date Display {R4}.
+
+                                                                                                                                       Page 21
+                                   Design Guidance Exploration – Decision Support
+                                   Prepared by Microsoft, Version 2.0.0.0
+                                   Last modified on 21 May 2008
+
+The guidance presented in this document is for community preview and consultation only. Further design and patient safety assessments are
+                                         required to finalise the content as CUI Design Guidance.
+
+2.4.1.4           Alert Window Anatomy
+  The alert window anatomy should essentially follow the guidelines defined in section 2.2 with minor
+  differences:
+        Header Area
+         Should capture the alert status (for example, High Priority), date and time of the alert
+         according to the documents Design Guidance – Time Display {R3} and Design Guidance –
+         Date Display {R4} (as illustrated in Figure 19).
+        Summary Area
+                 If the alert summary refers to any record item of the patient, this reference should be
+                  linked to that record item. For example if the alert summary says “The potassium level
+                  is 7.7 mmol”. “Potassium level” should be a hyperlink which, when clicked, should
+                  display the patient’s potassium level details along with the other Urea and Electrolyte
+                  (U&E) results
+                 The resizing control should not be present for an individual alert box
+        Alerts Container Area
+                 This area should contain all the active system-generated alerts in context for this patient
+                  (as illustrated in Figure 20)
+                 The alerts should be stacked in reverse chronological order
+                 If the number of alerts increases beyond the designated screen space of the alert
+                  container, a vertical scroll bar should be introduced
+                 The resizing control should be available here. On resizing the container area, all the
+                  alerts in the container should also get resized
+                 The minimum dimensions of the alert container and information window should be fixed
+
+                                                                                        The alert header area
+                                                                                        should capture the status,
+                                                                                        date and time of the alert
+
+  Figure 19: Anatomy of a System-Generated Alert
+
+                                                                                                                                  Page 22
+                                Design Guidance Exploration – Decision Support
+                                Prepared by Microsoft, Version 2.0.0.0
+                                Last modified on 21 May 2008
+
+The guidance presented in this document is for community preview and consultation only. Further design and patient safety assessments are
+                                         required to finalise the content as CUI Design Guidance.
+
+                                                                                        Alert container which stacks
+                                                                                        all the system generated
+                                                                                        alerts, grouped by status, in
+                                                                                        reverse chronological order
+
+  Figure 20: Example of an Alert Container
+
+2.4.1.5            Example of Correct Usage
+  Table 3 shows an example of correct display of system generated alerts within clinical applications.
+
+  Usage Format                                       Example                                       Comments
+
+            Display of High Priority and Priority                                                 All ‘High Priority’ alerts should be
+             alerts                                                                                displayed in an expanded state by
+                                                                                                   default, where the alert details are
+                                                                                                   visible. All ‘Priority’ alerts should be
+                                                                                                   displayed in a collapsed state by
+                                                                                                   default, where only the alert header
+                                                                                                   details are visible
+
+                                                                                                                                      Page 23
+                                 Design Guidance Exploration – Decision Support
+                                 Prepared by Microsoft, Version 2.0.0.0
+                                 Last modified on 21 May 2008
+
+The guidance presented in this document is for community preview and consultation only. Further design and patient safety assessments are
+                                         required to finalise the content as CUI Design Guidance.
+
+  Usage Format                                        Example                                      Comments
+
+            Stacking High Priority and Priority                                                   The alerts should be grouped by
+             alerts                                                                                status and stacked in reverse
+                                                                                                   chronological order. The group of
+                                                                                                   ‘High Priority’ alerts should be placed
+                                                                                                   above the group of ‘Priority’ alerts
+
+  Table 10: Correct Formatting Examples of System Generated Alerts
+
+2.4.1.6           Example of Incorrect Usage
+  Table 4 shows an example of incorrect display of system generated alerts within clinical
+  applications.
+
+  Usage Format                                        Example                                      Comments
+
+            Display of High Priority and Priority                                                 Do not display ‘High Priority’ alerts in
+             alerts                                                                                a collapsed state by default
+
+                                                                                                                                     Page 24
+                                Design Guidance Exploration – Decision Support
+                                Prepared by Microsoft, Version 2.0.0.0
+                                Last modified on 21 May 2008
+
+The guidance presented in this document is for community preview and consultation only. Further design and patient safety assessments are
+                                         required to finalise the content as CUI Design Guidance.
+
+  Usage Format                                         Example                                     Comments
+
+            Stacking High Priority and Priority                                                   Do not mix the status of alerts
+             alerts
+
+  Table 11: Incorrect Formatting Examples of System Generated Alerts
+
+2.4.2         Benefits and Rationale
+        System-generated alerts inform the user about a situation which requires attention
+        Interruption of important care processes is minimised because system-generated alerts are
+         designed to demand attention without modal behaviour
+
+2.4.3         Confidence Level
+  This guidance is currently classified as ‘Initial Guidance’ with ‘Low’ confidence level. Further
+  usability testing and patient safety assessment is expected, and the guidance will be updated
+  following this usability testing.
+
+2.5        Next Steps
+  In order to progress this work further, the following aspects of decision support require
+  consideration and investigation:
+        Carry out further research, user testing and patient safety assessments
+        Handling of multi-patient alerts when a clinician is not in a patient’s record
+        Design a library of icons for alerts and the display of preferences
+        Ability to turn elements of the decision support capability window on/off
+        Extend this guidance to have multiple patient views
+        Work with the software and application providers to refine the guidance
+        The header information for system-generated alerts should be explored further to
+         accommodate summary information of the alert
+        Research into how to summarise an alert to make it meaningful
+
+                                                                                                                                     Page 25
+                                Design Guidance Exploration – Decision Support
+                                Prepared by Microsoft, Version 2.0.0.0
+                                Last modified on 21 May 2008
+
+The guidance presented in this document is for community preview and consultation only. Further design and patient safety assessments are
+                                         required to finalise the content as CUI Design Guidance.
+
+        Design for the ‘look-ahead scroll bar’ to suggest the number of system-generated alerts that
+         are behind the scroll bar
+        Placement of the system-generated alerts container within a clinical application
+
+                                                                                                                                  Page 26
+                              Design Guidance Exploration – Decision Support
+                              Prepared by Microsoft, Version 2.0.0.0
+                              Last modified on 21 May 2008
+
+The guidance presented in this document is for community preview and consultation only. Further design and patient safety assessments are
+                                         required to finalise the content as CUI Design Guidance.
+
+3              DOCUMENT INFORMATION
+
+3.1            Terms and Abbreviations
+    Abbreviation                        Definition
+    EPR                                 Electronic Patient Record
+
+    TPN                                 Total parenteral nutrition
+
+    U&E                                 Urea and Electrolyte
+    Table 12: Terms and Abbreviations
+
+3.2            Definitions
+    Term                                 Definition
+    Pop-up                               Within this document, a pop-up is a feature that behaves like a small window, and fades in and out
+                                         of the current clinical application over a period of time.
+    Table 13: Definitions
+
+3.3            Nomenclature
+    This section shows how to interpret the different styles used in this document to denote various
+    types of information.
+
+3.3.1            Body Text
+    Text                                                                  Style
+    Code                                                                  Monospace
+
+    Script
+
+    Other markup languages
+
+    Interface dialog names                                                Bold
+
+    Field names
+
+    Controls
+
+    Folder names                                                          Title Case
+
+    File names
+    Table 14: Body Text Styles
+
+3.3.2            Cross References
+    Reference                                                             Style
+    Current document – sections                                           Section number only
+
+    Current document – figures/tables                                     Caption number only
+
+    Other project documents                                               Italics and possibly a footnote
+
+    Publicly available documents                                          Italics with a footnote
+
+    External Web-based content                                            Italics and a hyperlinked footnote
+    Table 15: Cross Reference Styles
+
+                                                                                                                                     Page 27
+                                  Design Guidance Exploration – Decision Support
+                                  Prepared by Microsoft, Version 2.0.0.0
+                                  Last modified on 21 May 2008
+
+The guidance presented in this document is for community preview and consultation only. Further design and patient safety assessments are
+                                         required to finalise the content as CUI Design Guidance.
+
+3.4        References
+  Reference Document                                                                                                        Version
+  R1.              Kensaku Kawamoto et al, Information in practice, Improving clinical practice using clinical decision
+                   support systems: a systematic review of trials to identify features critical to success, BMJ, 14 March
+                   2005
+                   http://www.bmj.com/cgi/content/abstract/330/7494/765
+
+  R2.              Amit X Garg et al, Effects of Computerized Clinical Decision Support Systems on Practitioner
+                   Performance and Patient Outcomes, JAMA; March 9, 2005
+                   http://jama.ama-assn.org/cgi/content/abstract/293/10/1223
+
+  R3.              Design Guidance – Time Display                                                                           1.0.0.0
+
+  R4.              Design Guidance – Date Display                                                                           2.0.0.0
+  Table 16: References
+
+                                                                                                                                  Page 28
+                               Design Guidance Exploration – Decision Support
+                               Prepared by Microsoft, Version 2.0.0.0
+                               Last modified on 21 May 2008

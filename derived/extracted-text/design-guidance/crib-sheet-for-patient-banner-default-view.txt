@@ -1,0 +1,48 @@
+  Patient Banner Default View Crib Sheet
+              Use this display and
+                                              1. Name (family name, given name, title)             2. Date of Birth           3. Gender            4. NHS Number
+             tabbing order (1 to 4):             No Labels
+
+ centred     uppercase    comma title case       parentheses
+vertically
+
+
+   CHANDRASEKHAR, Subramanyan (Mr)                                      Born 14-Jul-1945 (61y) Gender Male         NHS No. 129 728 7652
+
+
+  Address 340 Gloucester R...     Phone and email 020 8123 4567                                                       A Known allergies
+
+                                                                                                                                                      Provide expand
+                                                                                           Allergy Propensity (optional)                              and collapse
+                                Contact Details
+                                                                                                                                                      capability
+                                Display as much as possible of the                          Reserve the fifth section
+  Do not display a              address and phone number in a                               of Zone 2 for the display
+  photograph in the                                                                         of allergy propensity
+  Patient Banner                single line, displaying an ellipsis to
+                                show incomplete display                                     information
+
+                                         Left-aligned                                                Label                        Label       Label
+      Preferred Name
+If available, display below
+               family name        CHANDRASEKHAR, Subramanyan (Mr)
+                                                                                                    Born 14-Jul-1945 (61y)      Gender Male   NHS No. 129 728 7652
+               Label              Preferred name Rama
+
+               Label              Address 340 Gloucester R... Phone and email 020 8123 4567                                                   A Known allergies
+
+
+                                                                                Display Age
+  Labels                                                                       without a label               Use one of these labels for the allergies section
+  Use the labels shown                                       Label                                            A Known allergies                 Emphasise these
+  Use formatting to give more                                                                                                                   2 labels compared
+                                                                                 Unique Icon                  A No Known allergies
+  emphasis to data than labels                                       that gives greater emphasis                                                to the 2 below
+                                                                                                              A Allergies not recorded
+  Do not use unnecessary punctuation                                             Unique Icon
+                                                                                                              A Allergies unavailable
+  in label text or add a colon after it                              that gives reduced emphasis
+
+
+      Edition 1 – 20th May 2010           © Microsoft Corporation 2010. All rights reserved.
+

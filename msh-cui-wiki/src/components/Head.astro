@@ -1,0 +1,71 @@
+---
+const { head } = Astro.locals.starlightRoute;
+---
+
+{head.map(({ tag: Tag, attrs, content }) => <Tag {...attrs} set:html={content} />)}
+
+<script is:inline>
+  (() => {
+    const getNavBucket = (pathname) => {
+      if (pathname.startsWith('/derived/inventories/')) return 'Inventories';
+      if (
+        pathname.startsWith('/wiki/source-notes/') ||
+        pathname.startsWith('/raw/metadata/') ||
+        pathname.startsWith('/raw/manifests/')
+      ) {
+        return 'Sources';
+      }
+      if (pathname.startsWith('/wiki/overview/')) return 'Overview';
+      return 'Wiki';
+    };
+
+    const applyHeaderNavState = () => {
+      const activeBucket = getNavBucket(window.location.pathname);
+
+      document.querySelectorAll('.page-nav-link').forEach((element) => {
+        const label = element.textContent?.trim() ?? '';
+        element.classList.toggle('active', label === activeBucket);
+      });
+    };
+
+    const applyTocOverflowState = () => {
+      document.querySelectorAll('.page-toc-sticky').forEach((element) => {
+        const hasOverflow = element.scrollHeight > element.clientHeight + 1;
+        element.classList.toggle('toc-has-scrollbar', hasOverflow);
+      });
+    };
+
+    const scheduleApply = () =>
+      requestAnimationFrame(() =>
+        requestAnimationFrame(() => {
+          applyHeaderNavState();
+          applyTocOverflowState();
+        })
+      );
+
+    const bindObservers = () => {
+      scheduleApply();
+
+      if (window.__mshTocResizeObserver) {
+        window.__mshTocResizeObserver.disconnect();
+      }
+
+      const resizeObserver = new ResizeObserver(() => applyTocOverflowState());
+      document.querySelectorAll('.page-toc-sticky').forEach((element) => resizeObserver.observe(element));
+      window.__mshTocResizeObserver = resizeObserver;
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', bindObservers, { once: true });
+    } else {
+      bindObservers();
+    }
+
+    document.addEventListener('astro:page-load', scheduleApply);
+    window.addEventListener('resize', () => {
+      applyHeaderNavState();
+      applyTocOverflowState();
+    }, { passive: true });
+    window.addEventListener('pageshow', bindObservers);
+  })();
+</script>

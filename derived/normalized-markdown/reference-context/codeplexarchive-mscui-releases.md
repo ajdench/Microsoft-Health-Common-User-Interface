@@ -1,0 +1,563 @@
+# Microsoft Health Common User Interface - CodePlex Archive releases page
+
+## Provenance
+- Source file: `raw/sources/references/secondary/codeplexarchive-tabs/releases.html`
+- Extracted text: `derived/extracted-text/reference-context/codeplexarchive-mscui-releases.txt`
+- Normalization note: HTML text extraction using a conservative parser; boilerplate and navigation chrome may remain.
+
+## Extracted Text
+
+Release 8.2.51.000
+
+Status: Stable
+
+Modified: 28.05.2010 8:23:55 -07:00
+
+This is version 8.2 of the Microsoft® Health Common User Interface Control Toolkit. This release includes code updates to controls as listed below.
+
+*Controls Updated in this Release*
+
+* PatientBanner (ASP.NET control)
+This version fixes an issue with the ASP.NET PatientBanner control, where the control's height was increasing if the control width had not been explicitly set and the browser window was then repeatedly resized.
+
+*Software Prerequisites*
+
+The CUI Controls Toolkit is designed for use with Microsoft® Visual Studio® 2008. If you are using Microsoft® Visual Studio® 2010 please see the information at [url:http://www.global-webnet.net/blogengine/post/2009/11/11/Migrating-CUI-from-VS2008-to-VS2010.aspx].
+
+*Files*
+
+_MSCUI.msi_
+Release of the CUI Toolkit including full source code for all controls, sample web site, sample WinForms application, test framework and help files.
+
+_MSCUI-NoSource.msi_
+Release of the CUI Toolkit containing compiled binaries and help files only.
+
+_Microsoft.Cui.Zip_
+Release of the CUI Toolkit in zip format including full source code for all controls, sample web site, sample WinForms application and test framework.
+
+MSCUI.msi
+
+MSCUI-NoSource.msi
+
+Microsoft.Cui.Zip
+
+Readme.htm
+
+Release 8.0.200.000
+
+Status: Stable
+
+Modified: 25.02.2010 3:36:28 -08:00
+
+This is version 8.0 of the Microsoft® Health Common User Interface Control Toolkit. The scope and requirements of this release are based on materials produced from extensive consultation with patient safety experts, clinicians, user interface designers and application developers. This release includes new controls, and code updates to controls, in Microsoft® Silverlight™ 3 and Windows® Presentation Foundation (WPF), as listed below.
+
+*Controls Delivered in this Release*
+
+* SearchAndPrescribe (new WPF and Microsoft® Silverlight™ controls)
+* Timeline (new WPF and Microsoft® Silverlight™ controls)
+
+*Software Prerequisites*
+
+The CUI Controls Toolkit is designed for use with Microsoft® Visual Studio® 2008. If you are using Microsoft® Visual Studio® 2010 please see the information at [url:http://www.global-webnet.net/blogengine/post/2009/11/11/Migrating-CUI-from-VS2008-to-VS2010.aspx].
+
+*Files*
+
+_MSCUI.msi_
+Release of the CUI Toolkit including full source code for all controls, sample web site, sample WinForms application, test framework and help files.
+
+_MSCUI-NoSource.msi_
+Release of the CUI Toolkit containing compiled binaries and help files only.
+
+_Microsoft.Cui.Zip_
+Release of the CUI Toolkit in zip format including full source code for all controls, sample web site, sample WinForms application and test framework.
+
+MSCUI.msi
+
+MSCUI-NoSource.msi
+
+Microsoft.Cui.Zip
+
+Readme.htm
+
+Release 7.0.217.000
+
+Status: Stable
+
+Modified: 29.01.2010 8:02:28 -08:00
+
+This is version 7.0 of the Microsoft® Health Common User Interface Control Toolkit. The scope and requirements of this release are based on materials produced from extensive consultation with patient safety experts, clinicians, user interface designers and application developers. This release includes new controls, and code updates to controls, in Microsoft® Silverlight™ 3 and Windows® Presentation Foundation (WPF), as listed below.
+
+*Controls Delivered in this Release*
+
+* DateLabel (new WPF and Microsoft® Silverlight™ controls)
+* TimeLabel (new WPF and Microsoft® Silverlight™ controls)
+
+* AddressLabel (updated WPF and Microsoft® Silverlight™ controls)
+* ContactLabel (updated WPF and Microsoft® Silverlight™ controls)
+* GenderLabel (updated WPF and Microsoft® Silverlight™ controls)
+* Graphing (updated WPF and Microsoft® Silverlight™ controls)
+* IdentifierLabel (updated WPF and Microsoft® Silverlight™ controls)
+* MedicationsListView (updated WPF and Microsoft® Silverlight™ controls)
+* NameLabel (updated WPF and Microsoft® Silverlight™ controls)
+* PatientBanner (updated WPF and Microsoft® Silverlight™ controls)
+* SingleConceptMatching (updated WPF and Microsoft® Silverlight™ controls)
+
+*NOTE:* Version 7.0.217.000 replaces the previously issued version 7.0.185.000. Version 7.0.217.000 fixes an issue with the Graphing control. The upper X-axis was not rendering tick marks for each time interval.
+
+*Software Prerequisites*
+
+The CUI Controls Toolkit is designed for use with Microsoft® Visual Studio® 2008. If you are using Microsoft® Visual Studio® 2010 please see the information at [url:http://www.global-webnet.net/blogengine/post/2009/11/11/Migrating-CUI-from-VS2008-to-VS2010.aspx].
+
+*Files*
+
+_MSCUI.msi_
+Release of the CUI Toolkit including full source code for all controls, sample web site, sample WinForms application, test framework and help files.
+
+_MSCUI-NoSource.msi_
+Release of the CUI Toolkit containing compiled binaries and help files only.
+
+_Microsoft.Cui.Zip_
+Release of the CUI Toolkit in zip format including full source code for all controls, sample web site, sample WinForms application and test framework.
+
+MSCUI.msi
+
+MSCUI-NoSource.msi
+
+Microsoft.Cui.Zip
+
+Readme.htm
+
+Release 7.0.185.000
+
+Status: Stable
+
+Modified: 15.10.2009 7:26:49 -07:00
+
+This is version 7.0 of the Microsoft® Health Common User Interface Control Toolkit. The scope and requirements of this release are based on materials produced from extensive consultation with patient safety experts, clinicians, user interface designers and application developers. This release includes new controls, and code updates to controls, in Microsoft® Silverlight™ 3 and Windows® Presentation Foundation (WPF), as listed below.
+
+*Controls Delivered in this Release*
+
+* DateLabel (new WPF and Microsoft® Silverlight™ controls)
+* TimeLabel (new WPF and Microsoft® Silverlight™ controls)
+
+* AddressLabel (updated WPF and Microsoft® Silverlight™ controls)
+* ContactLabel (updated WPF and Microsoft® Silverlight™ controls)
+* GenderLabel (updated WPF and Microsoft® Silverlight™ controls)
+* Graphing (updated WPF and Microsoft® Silverlight™ controls)
+* IdentifierLabel (updated WPF and Microsoft® Silverlight™ controls)
+* MedicationsListView (updated WPF and Microsoft® Silverlight™ controls)
+* NameLabel (updated WPF and Microsoft® Silverlight™ controls)
+* PatientBanner (updated WPF and Microsoft® Silverlight™ controls)
+* SingleConceptMatching (updated WPF and Microsoft® Silverlight™ controls)
+
+*NOTE:* Version 7.0.185.000 replaces the previously issued version 7.0.178.001. Version 7.0.185.000 fixes an issue with the WPF PatientBanner caused by invalid URIs for paths to image resources, as described here http://mscui.codeplex.com/WorkItem/View.aspx?WorkItemId=8901.
+
+*Files*
+
+_MSCUI.msi_
+Release of the CUI Toolkit including full source code for all controls, sample web site, sample WinForms application, test framework and help files.
+
+_MSCUI-NoSource.msi_
+Release of the CUI Toolkit containing compiled binaries and help files only.
+
+_Microsoft.Cui.Zip_
+Release of the CUI Toolkit in zip format including full source code for all controls, sample web site, sample WinForms application and test framework.
+
+MSCUI.msi
+
+MSCUI-NoSource.msi
+
+Microsoft.Cui.Zip
+
+Readme.htm
+
+Release 7.0.178.001
+
+Status: Stable
+
+Modified: 30.09.2009 3:29:42 -07:00
+
+This is version 7.0 of the Microsoft® Health Common User Interface Control Toolkit. The scope and requirements of this release are based on materials produced from extensive consultation with patient safety experts, clinicians, user interface designers and application developers. This release includes new controls, and code updates to controls, in Microsoft® Silverlight™ 3 and Windows® Presentation Foundation (WPF), as listed below.
+
+*Controls Delivered in this Release*
+
+* DateLabel (new WPF and Microsoft® Silverlight™ controls)
+* TimeLabel (new WPF and Microsoft® Silverlight™ controls)
+
+* AddressLabel (updated WPF and Microsoft® Silverlight™ controls)
+* ContactLabel (updated WPF and Microsoft® Silverlight™ controls)
+* GenderLabel (updated WPF and Microsoft® Silverlight™ controls)
+* Graphing (updated WPF and Microsoft® Silverlight™ controls)
+* IdentifierLabel (updated WPF and Microsoft® Silverlight™ controls)
+* MedicationsListView (updated WPF and Microsoft® Silverlight™ controls)
+* NameLabel (updated WPF and Microsoft® Silverlight™ controls)
+* PatientBanner (updated WPF and Microsoft® Silverlight™ controls)
+* SingleConceptMatching (updated WPF and Microsoft® Silverlight™ controls)
+
+*Files*
+
+_MSCUI.msi_
+Release of the CUI Toolkit including full source code for all controls, sample web site, sample WinForms application, test framework and help files.
+
+_MSCUI-NoSource.msi_
+Release of the CUI Toolkit containing compiled binaries and help files only.
+
+_Microsoft.Cui.Zip_
+Release of the CUI Toolkit in zip format including full source code for all controls, sample web site, sample WinForms application and test framework.
+
+MSCUI.msi
+
+MSCUI-NoSource.msi
+
+Microsoft.Cui.Zip
+
+Readme.htm
+
+Release 6.6.43.000
+
+Status: Stable
+
+Modified: 02.04.2009 5:34:13 -07:00
+
+This is version 6.6 of the Microsoft® Health Common User Interface Control Toolkit. The scope and requirements of this release are based on materials produced from extensive consultation with patient safety experts, clinicians, user interface designers and application developers. This release includes new controls, and code updates to controls, in Microsoft® Silverlight™ 2 and Windows® Presentation Foundation (WPF), as listed below.
+
+*Controls Delivered in this Release*
+
+* AddressLabel (updated WPF and Microsoft® Silverlight™ controls)
+* ContactLabel (updated WPF and Microsoft® Silverlight™ controls)
+* GenderLabel (updated WPF and Microsoft® Silverlight™ controls)
+* Graphing (updated WPF and Microsoft® Silverlight™ controls)
+* IdentifierLabel (updated WPF and Microsoft® Silverlight™ controls)
+* MedicationsListView (updated WPF and Microsoft® Silverlight™ controls)
+* NameLabel (updated WPF and Microsoft® Silverlight™ controls)
+* PatientBanner (updated WPF and Microsoft® Silverlight™ controls)
+* SingleConceptMatching (new WPF and Microsoft® Silverlight™ controls)
+
+*Files*
+
+_MSCUI.msi_
+Release of the CUI Toolkit including full source code for all controls, sample web site, sample WinForms application, test framework and help files.
+
+_MSCUI-NoSource.msi_
+Release of the CUI Toolkit containing compiled binaries and help files only.
+
+_Microsoft.Cui.Zip_
+Release of the CUI Toolkit in zip format including full source code for all controls, sample web site, sample WinForms application and test framework.
+
+MSCUI.msi
+
+MSCUI-NoSource.msi
+
+Microsoft.Cui.Zip
+
+Readme.htm
+
+6.5.128.000
+
+Status: Stable
+
+Modified: 11.02.2009 10:06:58 -08:00
+
+This is version 6.5 of the Microsoft® Health Common User Interface Control Toolkit. The scope and requirements of this release are based on materials produced from extensive consultation with patient safety experts, clinicians, user interface designers and application developers. This release includes new controls, and code updates to controls, in Microsoft® Silverlight™ 2 and Windows® Presentation Foundation (WPF), as listed below.
+
+*Controls Delivered in this Release*
+
+* Graphing (new WPF and Microsoft® Silverlight™ controls)
+* MedicationsListView (updated WPF and Microsoft® Silverlight™ controls)
+
+*Files*
+
+_MSCUI.msi_
+Release of the CUI Toolkit including full source code for all controls, sample web site, sample WinForms application, test framework and help files.
+
+_MSCUI-NoSource.msi_
+Release of the CUI Toolkit containing compiled binaries and help files only.
+
+_MSCui.Toolkit.zip_
+Release of the CUI Toolkit in zip format including full source code for all controls, sample web site, sample WinForms application and test framework.
+
+MSCUI.msi
+
+MSCUI-NoSource.msi
+
+Microsoft.Cui.Zip
+
+Readme.htm
+
+6.4.13.000
+
+Status: None
+
+Modified: 23.10.2008 8:47:28 -07:00
+
+This is version 6.4 of the Microsoft® Health Common User Interface Control Toolkit. The scope and requirements of this release are based on materials produced from extensive consultation with patient safety experts, clinicians, user interface designers and application developers. This release includes the code update of the controls listed below for Microsoft® Silverlight™ 2 and Windows® Presentation Foundation (WPF).
+
+*Silverlight and WPF Controls Updated in this Release*
+
+* AddressLabel
+* ContactLabel
+* GenderLabel
+* IdentifierLabel
+* MedicationsListView
+* NameLabel
+* PatientBanner
+
+*NOTE:* Version 6.4.13.000 replaces the previously issued version 6.4.7.000. Version 6.4.13.000 includes fixes to the sample pages for the MedicationsListView (Silverlight) and PatientBanner (Silverlight) controls. These fixes correct a bug in the event handlers that trigger the display of an alert dialog.
+
+*Files*
+
+_MSCUI.msi_
+Release of the CUI Toolkit including full source code for all controls, sample web site, sample WinForms application, test framework and help files.
+
+_MSCUI-NoSource.msi_
+Release of the CUI Toolkit containing compiled binaries and help files only.
+
+_MSCui.Toolkit.zip_
+Release of the CUI Toolkit in zip format including full source code for all controls, sample web site, sample WinForms application and test framework.
+
+MSCUI.msi
+
+MSCUI-NoSource.msi
+
+MSCui.Toolkit.Zip
+
+readme.htm
+
+6.4.7.000
+
+Status: None
+
+Modified: 16.10.2008 8:03:40 -07:00
+
+This is version 6.4 of the Microsoft® Health Common User Interface Control Toolkit. The scope and requirements of this release are based on materials produced from extensive consultation with patient safety experts, clinicians, user interface designers and application developers. This release includes the code update of the controls listed below for Microsoft® Silverlight™ 2 and Windows® Presentation Foundation (WPF).
+
+*Silverlight and WPF Controls Updated in this Release*
+* AddressLabel
+* ContactLabel
+* GenderLabel
+* IdentifierLabel
+* MedicationsListView
+* NameLabel
+* PatientBanner
+
+*Note on Version Numbers*
+
+Version 6.4 is the release directly after version 1.5. We have undertaken an exercise to align our internal and external version numbers.
+
+*Files*
+
+_MSCUI.msi_
+Release of the CUI Toolkit including full source code for all controls, sample web site, sample WinForms application, test framework and help files.
+
+_MSCUI-NoSource.msi_
+Release of the CUI Toolkit containing compiled binaries and help files only.
+
+_MSCui.Toolkit.zip_
+Release of the CUI Toolkit in zip format including full source code for all controls, sample web site, sample WinForms application and test framework.
+
+MSCui.Toolkit.Zip
+
+Readme.htm
+
+MSCUI.msi
+
+MSCUI-NoSource.msi
+
+1.5.0.000
+
+Status: None
+
+Modified: 15.10.2008 2:30:48 -07:00
+
+This is the 1.5 release of the Microsoft® Health Common User Interface Toolkit. The scope and requirements of this release are based on materials produced from extensive consultation with patient safety experts, clinicians, user interface designers and application developers. Includes new controls in Windows® Presentation Foundation (WPF) and Microsoft® Silverlight™ as listed below.
+
+*Controls Delivered in this Release*
+* AddressLabel (WPF and Microsoft® Silverlight™)
+* ContactLabel (WPF and Microsoft® Silverlight™)
+* GenderLabel (WPF and Microsoft® Silverlight™)
+* IdentifierLabel (WPF and Microsoft® Silverlight™)
+* NameLabel (WPF and Microsoft® Silverlight™)
+* PatientBanner (WPF and Microsoft® Silverlight™)
+
+*Files*
+
+_MSCUI.msi_
+Release of the CUI Toolkit including full source code for all controls, sample web site, sample WinForms application, test framework and help files.
+
+_MSCUI-NoSource.msi_
+Release of the CUI Toolkit containing compiled binaries and help files only.
+
+_MSCui.Toolkit.zip_
+Release of the CUI Toolkit in zip format including full source code for all controls, sample web site, sample WinForms application and test framework.
+
+MSCui.Toolkit.Zip
+
+Readme.rtf
+
+MSCUI.msi
+
+MSCUI-NoSource.msi
+
+1.4.0.000
+
+Status: None
+
+Modified: 12.06.2008 6:29:15 -07:00
+
+This is the 1.4 release of the Microsoft® Health Common User Interface Toolkit. The scope and requirements of this release are based on materials produced from extensive consultation with patient safety experts, clinicians, user interface designers and application developers. This release includes the code update of a control for Microsoft® Silverlight™ 2 Beta 2 as listed below.
+
+*Controls Updated in this Release*
+* Medications
+** MedicationsListView (Microsoft® Silverlight™)
+
+*Files*
+
+_MSCUI.msi_
+Release of the CUI Toolkit including full source code for all controls, sample web site, sample WinForms application, test framework and help files.
+
+_MSCUI-NoSource.msi_
+Release of the CUI Toolkit containing compiled binaries and help files only.
+
+_MSCui.Toolkit.zip_
+Release of the CUI Toolkit in zip format including full source code for all controls, sample web site, sample WinForms application and test framework.
+
+MSCui.Toolkit.Zip
+
+Readme.rtf
+
+MSCUI.msi
+
+MSCUI-NoSource.msi
+
+1.3.0.000
+
+Status: None
+
+Modified: 07.05.2008 12:23:54 -07:00
+
+This is the 1.3 release of the Microsoft® Health Common User Interface Toolkit. The scope and requirements of this release are based on materials produced from extensive consultation with patient safety experts, clinicians, user interface designers and application developers. This release includes a new control in Windows® Presentation Foundation (WPF) and Microsoft® Silverlight™ as listed below.
+
+*Files*
+
+_MSCUI.msi_
+Release of the CUI Toolkit including full source code for all controls, sample web site, sample WinForms application, test framework and help files.
+
+_MSCUI-NoSource.msi_
+Release of the CUI Toolkit containing compiled binaries and help files only.
+
+_MSCui.Toolkit.zip_
+Release of the CUI Toolkit in zip format including full source code for all controls, sample web site, sample WinForms application and test framework.
+
+*Controls Delivered in this Release*
+* *Medications*
+** MedicationsListView (WPF and Microsoft® Silverlight™)
+
+*Controls Removed in this Release*
+* *MedicationNameLabel*, *MedicationLine*, and *MedicationGrid*
+** Replaced with the MedicationsListView control. These AJAX controls have been deprecated in this release because they no longer conform to the latest Design Guidance. Rather than update these AJAX controls, it was decided that a brand new version should be built using WPF and Silverlight. The code for the old AJAX controls is still available in the MSI and ISVs are free to modify this if they wish; however these controls no longer conform to the latest Design Guidance
+
+MSCui.Toolkit.Zip
+
+Readme.rtf
+
+MSCUI.msi
+
+MSCUI-NoSource.msi
+
+1.2.68.000
+
+Status: None
+
+Modified: 24.01.2008 8:40:46 -08:00
+
+This is the 1.2 release of the Microsoft® Health Common User Interface Toolkit. The scope and requirements of this release are based on materials produced from extensive consultation with patient safety experts, clinicians, user interface designers and application developers. This release includes a number of major bug fixes, updates to existing controls and a new ASP.NET control as listed below.
+
+*Files*
+
+_MSCUI.msi_
+Release of the CUI Toolkit including full source code for all controls, sample web site, sample WinForms application, test framework and help files.
+
+_MSCUI-NoSource.msi_
+Release of the CUI Toolkit containing compiled binaries and help files only.
+
+_Patient Banner Design Guidance.pdf_
+Revised version of the Patient Banner Design Guidance, providing an up-to-date list of references and their respective links.
+
+*Controls Updated in this Release*
+* *TimeSpanInputBox*
+** While computing the age, the time will be subtracted from the "From" property value rather than adding time to the "To" property value
+* *DateInputBox*
+** All parts of the DateInputBox functionality can be accessed through keyboard
+** Styling support added to all the parts of the drop down in the calendar
+* *TimeInputBox*
+** All parts of the TimeInputBox functionality can be accessed through keyboard
+* *Patient Banner*
+** Display patient information of varying lengths by the use of wrapping or truncation with ellipsis
+** Support the use of keyboard to access all the functionality
+** Support the use of high contrast theme for display
+** Support mouse click action on selected data items in the Patient Banner
+*Breaking Changes*
+* *NhsDate*
+** IsAddInstruction has been renamed to IsAddValid
+** method Parse has been replaced by ParseExact
+** method TryParse has been replaced by TryParseExact
+* *NhsTime*
+** The method Parse has been replaced by ParseExact
+** The method TryParse has been replaced by TryParseExact
+** Added method IsAddValid
+*Controls Delivered in this Release*
+* *Date and time*
+** MonthCalendar(ASP.NET)
+
+MSCUI.msi
+
+ReadMe.rtf
+
+MSCUI-NoSource.msi
+
+Design Guidance – Patient Banner.pdf
+
+1.0.114.000
+
+Status: None
+
+Modified: 13.07.2007 9:02:36 -07:00
+
+This is the first Community Technology Preview (CTP) release of the Microsoft® Health Common User Interface Toolkit. The scope and requirements of this release are based on pre-release materials produced from extensive consultation with patient safety experts, clinicians, user interface designers and application developers.
+
+*Files*
+_MSCUICTP.msi_
+CTP release of the CUI Toolkit including full source code for all controls, sample web site, sample WinForms application, test framework and help files.
+
+_MSCUICTP-NoSource.msi_
+CTP release of the CUI Toolkit containing compiled binaries and help files only.
+
+*Note*
+1.0.114.000 is a patch release that is identical to 1.0.108.004 except for a number of corrected hyperlinks that were needed because of a change in the URL of SNOMED that occurred shortly before the initial release.
+
+MSCUICTP.msi
+
+MSCUICTP-NoSource.msi
+
+ReadMe.rtf
+
+1.0.108.004
+
+Status: None
+
+Modified: 13.07.2007 9:00:14 -07:00
+
+This is the first Community Technology Preview (CTP) release of the Microsoft® Health Common User Interface Toolkit. The scope and requirements of this release are based on pre-release materials produced from extensive consultation with patient safety experts, clinicians, user interface designers and application developers.
+
+*Files*
+_MSCUICTP.msi_
+CTP release of the CUI Toolkit including full source code for all controls, sample web site, sample WinForms application, test framework and help files.
+
+_MSCUICTP-NoSource.msi_
+CTP release of the CUI Toolkit containing compiled binaries and help files only.
+
+MSCUICTP.msi
+
+MSCUICTP-NoSource.msi
+
+ReadMe.rtf

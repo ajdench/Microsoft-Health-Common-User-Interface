@@ -1,0 +1,44 @@
+# Crib Sheet for Non UK Address Input
+
+## Provenance
+- Source file: `raw/sources/design-guidance/toolkit-bundled-crib-sheets/Crib Sheet for Non UK Address Input.pdf`
+- Extracted text: `derived/extracted-text/design-guidance/crib-sheet-for-non-uk-address-input.txt`
+- Normalization note: machine-cleaned `pdftotext -layout` output; verify against the PDF for edge cases.
+
+## Extracted Text
+
+Non-UK Address Input Crib Sheet
+ Non-UK Address Input
+
+                                                                Left-align input fields
+
+                                                Country                                           Set the height of each text input
+                                                                                                  box to the largest character
+                                                  Line 1                                          height in the currently active
+                                                                                                  display font, taking the user’s
+  Provide these text                              Line 2                                          settings into account
+  input boxes,
+  displayed vertically,                           Line 3
+  in this order,                                                                                              Country combo box
+  with these labels                               Line 4                                                      Use an editable drop-down
+                                                                                                              combo box for country names
+                                            Town / City
+
+                                           Postal Code                         Find Postcode                           Country
+
+                                                                                                                                 Afghanistan
+                                 Place labels on the                                                   Use the list of           Aland Islands
+                                  left and right-align                                                 country names in          Albania
+                                                                                                       ISO 3166-1                Algeria
+                                                                                                                                 American Samoa
+     Q           W           E
+                                                                                                       Display the country       Andorra
+                                              Permit input via all                                                               Angola
+                                              mechanisms                                               names left-aligned
+         A           S                                                                                                           Anguilla
+                                              supported by the                                         and in alphabetic
+                                                                                                       order                     Antarctica
+             Z           X
+                                              platform                                                                           Antigua and Barbuda
+
+ Edition 1 – 20th May 2010                   © Microsoft Corporation 2010. All rights reserved.

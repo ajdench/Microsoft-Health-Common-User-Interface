@@ -1,0 +1,8 @@
+BuildProcessTemplates
+DefaultTemplate.11.1.xaml
+
+DefaultTemplate.xaml
+
+LabDefaultTemplate.11.xaml
+
+UpgradeTemplate.xaml

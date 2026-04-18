@@ -1,0 +1,1238 @@
+# Design Guidance -- Terminology -- Elaboration
+
+## Provenance
+- Source file: `raw/sources/design-guidance/toolkit-bundled-pdfs/Design Guidance -- Terminology -- Elaboration.pdf`
+- Extracted text: `derived/extracted-text/design-guidance/design-guidance-terminology-elaboration.txt`
+- Normalization note: machine-cleaned `pdftotext -layout` output; verify against the PDF for edge cases.
+
+## Extracted Text
+
+Design Guidance
+Terminology – Elaboration
+
+            Thursday, 5 July 2007
+                  Version 1.0.0.0
+
+                      Prepared by
+
+This document and/or software (“this Content”) has been created in partnership with the National Health Service (NHS) in England. Intellectual Property Rights
+to this Content are jointly owned by Microsoft and the NHS in England, although both Microsoft and the NHS are entitled to independently exercise their rights of
+ownership. Microsoft acknowledges the contribution of the NHS in England through their Common User Interface programme to this Content. Readers are
+referred to www.cui.nhs.uk for further information on the NHS CUI Programme.
+
+All trademarks are the property of their respective companies. Microsoft and Windows are either registered trademarks or trademarks of Microsoft Corporation in
+the United States and/or other countries.
+© Microsoft Corporation 2007. All rights reserved.
+
+                                    Design Guidance – Terminology – Elaboration
+                                    Prepared by Microsoft, Version 1.0.0.0
+                                    Last modified on 5 July 2007
+
+TABLE OF CONTENTS
+1    Introduction .......................................................................................................................................... 1
+    1.1    Overview ......................................................................................................................................... 1
+    1.2    Area of Focus ................................................................................................................................. 3
+
+2    Recommendation and Guidance ........................................................................................................ 5
+    2.1    Elaboration with Free Text .............................................................................................................. 7
+     2.1.1      Additional Text........................................................................................................................... 8
+     2.1.2      Text Remaining Unstructured ................................................................................................. 10
+    2.2    Elaboration with SNOMED-CT Attributes ..................................................................................... 15
+     2.2.1      Matching SNOMED-CT Attributes Within Additional Free Text .............................................. 15
+     2.2.2      Warning of Important Unconfirmed Elaboration ...................................................................... 19
+     2.2.3      Mandatory SNOMED-CT Qualification ................................................................................... 21
+    2.3    Elaboration with Additional Values ............................................................................................... 26
+     2.3.1      Identifying Values Within Text ................................................................................................. 27
+     2.3.2      Templates ................................................................................................................................ 29
+
+3    Document Information ...................................................................................................................... 34
+    3.1    Terms and Abbreviations .............................................................................................................. 34
+    3.2    Definitions ..................................................................................................................................... 34
+    3.3    Nomenclature ............................................................................................................................... 34
+     3.3.1      Body Text ................................................................................................................................ 34
+     3.3.2      Cross References.................................................................................................................... 35
+    3.4    References ................................................................................................................................... 35
+
+                                 Design Guidance – Terminology – Elaboration
+                                 Prepared by Microsoft, Version 1.0.0.0
+                                 Last modified on 5 July 2007
+
+1            INTRODUCTION
+    This document provides guidance and recommendations with rationale for aspects of Terminology user
+    interfaces related to Terminology Elaboration.
+    This document should be read in conjunction with the following Design Guidance:
+           Design Guidance – Terminology – Matching {R1}
+           Design Guidance – Terminology – Display Standards for Coded Information {R2}
+
+1.1          Overview
+    This document is for anyone whose role includes screen design, implementation or assessment of a
+    clinical application, and who is involved in creating or evaluating terminology user interfaces.
+    Terminology user interfaces operate within a note-taking environment. These environments fall into
+    three categories (as illustrated in Figure 1 and described below), each of which requires different
+    guidance:
+           Forms
+                  The user makes notes by selecting boxes and choosing options, not by entering text.
+                  An encoding interface is not needed. The clinical codes should be embedded within the
+                   form itself or derived from combinations of entries in the form.
+           Single concept matching
+                  The user makes notes by typing the note for a single concept (such as 'asthma'), and the
+                                                  1
+                   system returns SNOMED-CT® {R3} matches. The user can then choose an appropriate
+                   match, refine the concept, then elaborate it with a combination of free text, qualifying
+                   SNOMED-CT attributes (such as 'severe'), and numerical values.
+                  Encoding interfaces require components to match and elaborate SNOMED-CT concepts.
+           Text parser matching
+                  The user makes notes by writing unconstrained text, while the system matches words and
+                   phrases against the SNOMED-CT database, or a constrained subset of the database, and
+                   displays the matches. The user then has the option to do one of the following:
+                      Confirm that they want to encode these SNOMED-CT expressions
+                      Browse alternative matches
+                      Refine a selected match
+                      Leave the note un-encoded, in which case it will be saved as unstructured text rather
+                       than as a SNOMED-CT expression
+                  Encoding interfaces require components to identify and match SNOMED-CT concepts, as
+                   well as build post-coordinated SNOMED-CT expressions, based upon attribute
+                   relationships, from within the text. The interface must also be able to identify terms and
+                   relationships from additional informational models in order to support accurate and
+                   comprehensive clinical noting.
+
+    1
+        SNOMED-CT: http://www.snomed.org/
+                                                                                                          Page 1
+                             Design Guidance – Terminology – Elaboration
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 5 July 2007
+
+Figure 1 illustrates forms (left), single concept matching (centre) and text parser matching (right).
+
+          The user enters key                                                          As the user types in
+          words and the system                                                         notes, the system
+          returns matches, which                                                       suggests SNOMED-CT
+          the user can elaborate.                                                      matches.
+
+Figure 1: Styles of Encoding
+
+A possible fourth hybrid category could be defined where forms may include areas where single
+concept matching or text parser is used.
+Medical language is full of abbreviations and jargon, some of which have more than one meaning. By
+encoding clinical statements, they can be shared unambiguously. This should improve patient safety by
+reducing confusion, or errors, due to ambiguity in clinical notes.
+Encoding also opens up important opportunities, such as:
+      Filtering context specific views of medical records in order to improve searching
+      Unambiguously sharing clinical statements between clinicians in different disciplines or
+       institutions
+      Using decision support mechanisms, based on codes within clinical statements, to enhance
+       patient safety
+      Auditing clinical activity by using codes to locate and report on specific types of information
+       within patient records
+      Researching clinical practice or outcomes by extracting codes from electronic patient records
+SNOMED-CT is used in this Design Guidance as the terminology for encoding clinical statements.
+
+                                                                                                         Page 2
+                               Design Guidance – Terminology – Elaboration
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 5 July 2007
+
+1.2    Area of Focus
+ This document describes the elaboration of a SNOMED-CT expression, which could be a single
+ pre-coordinated or post-coordinated expression comprising multiple concepts. Often, encoding an
+ individual SNOMED-CT expression on its own will not provide sufficient meaning to match what the
+ clinician wishes to express. In these cases, the concept requires some elaboration.
+ Elaboration could be as simple as adding some unstructured text to the expression to give the
+ expression further meaning. Obviously the scope for future data manipulation is limited with free text
+ elaboration. However, in order to give the clinician the freedom and flexibility to express their notes in a
+ comprehensive and accurate manner, this type of elaboration is essential. Free text elaboration could
+ be achieved by finding a SNOMED-CT expression and adding text to it (as in a single concept
+ matching approach). Alternatively it could be done by matching a SNOMED-CT expression from within
+ a passage of text, and leaving some of the text itself un-encoded, but at the same time associated with
+ the encoded expression. The current Design Guidance deals with the former, for the latter see Design
+ Guidance – Terminology – Matching {R1}.
+ Another type of elaboration involves post-coordinating a SNOMED-CT attribute (such as a qualifier)
+ with the selected SNOMED-CT expression. This could be done by the system offering the user certain
+ SNOMED-CT qualifiers to add to the selected expression. As we shall indicate, this should be limited to
+ instances where this qualification is mandatory. This type of elaboration could also be achieved by the
+ user typing in further notes for a selected SNOMED-CT expression, and the system offering
+ SNOMED-CT matches that coordinate with the expression from within these notes.
+ Examples of common qualifiers include the attribute ‘Severity’, which has values such as ‘Severe’,
+ ‘Mild’ and ‘Moderate’. An example of potential mandatory attribute could be ‘Laterality’, of which the
+ common values are ‘Left’ and ‘Right’, and which would apply to any relevant body structure concept.
+ All attribute relationships should be conformant with the published Context Model, and ideally further
+ constrained appropriate (that is, sensible) sanctioning. Conforming to sanctioned relationships should
+ optimise system behaviour.
+ A third type of elaboration involves the user adding or selecting numerical (or date and time) values for
+ a SNOMED-CT expression. Given the importance of numerical values (such as measurements and
+ timings) to clinical noting, the system must give the user every opportunity to record these values in
+ their notes, and must sometimes actively encourage users to add these values. These values, and
+ their relationships with SNOMED-CT expressions, are not modelled in the SNOMED-CT terminology,
+ and will rely on an additional informational model of clinical statements. These may be expressions of
+ time, such as ‘for 3 days’, or quantities plus their units, such as ‘42 mmol/l’ for blood sugar level.
+
+                                                                                                        Page 3
+                       Design Guidance – Terminology – Elaboration
+                       Prepared by Microsoft, Version 1.0.0.0
+                       Last modified on 5 July 2007
+
+The area of elaboration is highlighted in the User Interaction Model, shown in Figure 2.
+
+Figure 2: User Interaction Model
+
+                                                                                            Page 4
+                               Design Guidance – Terminology – Elaboration
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 5 July 2007
+
+2         RECOMMENDATION AND GUIDANCE
+    Despite the wide scope of the terminology, individual SNOMED-CT concepts on their own will often not
+    be sufficient to accurately and comprehensively reflect the encounter which the clinician is trying to
+    express. There are three main areas that are covered in this guidance:
+        Elaboration with free text
+        Elaboration with SNOMED-CT attributes
+        Elaboration with additional values
+    The first area concerns adding unstructured free text to a note, in order to give the SNOMED-CT
+    concept a more qualified and accurate meaning.
+    The second area requires a form of ‘post-coordination’, or joining together, of existing SNOMED-CT
+    concepts, in order to express a synthesised meaning. In the Design Guidance, we explore, in
+    particular, where post-coordination is used to qualify or contextualise a given concept.
+    The third area involves adding structured data and relationships that will often need to be modelled
+    outside of the SNOMED-CT terminology.
+
+    Notional Clinical Record
+    The guidance outlined in this Design Guidance is based upon assumptions about the composition of a
+    clinical record. We assume in our ‘notional clinical record’ that the following rules will apply.
+    A single clinical record may comprise one or more ‘notes’ plus some contextual information, such as a
+    heading (for example, ’past medical history’).
+    A note will comprise of one of these:
+        A pre-coordinated SNOMED-CT expression
+        A post-coordinated SNOMED-CT expression
+        A free text (non-SNOMED-CT) expression
+    In addition, each of these SNOMED-CT expressions may have a set of appropriate axis modifiers
+    associated with it. These values may be:
+        Default values
+        User selected values
+    In addition each of the SNOMED-CT expressions may have the following associated with it:
+        Non-SNOMED-CT numerical or time values, for example, reading measurements
+        Free text
+    We will not allow:
+        Numerical values to be recorded as values rather than free text if they are not associated with
+         an encoded SNOMED-CT expression
+        More than one expression to be saved, except in those instances where multiple concepts
+         comprise a single ‘composite’
+
+                                                                                                       Page 5
+                         Design Guidance – Terminology – Elaboration
+                         Prepared by Microsoft, Version 1.0.0.0
+                         Last modified on 5 July 2007
+
+Within each record entry there may be multiple ‘notes’, each of which comprise combinations of a
+SNOMED-CT expression, numerical/time values and free text. See Figure 3 and Figure 4.
+
+Figure 3: Structure of Notional Clinical Record Entry
+
+Figure 4: Example of Notional Clinical Record Entry Structure
+
+                                                                                                    Page 6
+                                Design Guidance – Terminology – Elaboration
+                                Prepared by Microsoft, Version 1.0.0.0
+                                Last modified on 5 July 2007
+
+2.1       Elaboration with Free Text
+ Despite the range and depth of SNOMED-CT, there may be many instances where expressing the
+ specific nuance of what the clinician wants to say cannot be done by only encoding SNOMED-CT
+ concepts. Also, the conceptual relationships required to articulate a statement may be lacking in the
+ released SNOMED-CT data and may not be covered by additional information models at the system’s
+ disposal. In these cases, the clinician may want to choose a SNOMED-CT concept and elaborate it
+ with ‘free’ text; that is, text that remains un-encoded at the point of saving the record. This might
+ include non-clinical information, such as indicating the professions of a patient’s parents.
+ Unstructured free text can be associated with a SNOMED-CT expression in both the single concept
+ matching and text parser matching approaches.
+ As outlined in Figure 5, there are a number of functional areas in the standard ‘encoding dialog’, which
+ is used in both the single concept matching and text parser matching approaches.
+
+ Figure 5: Functional Areas of Encoding Dialog
+
+                                                                                                     Page 7
+                                Design Guidance – Terminology – Elaboration
+                                Prepared by Microsoft, Version 1.0.0.0
+                                Last modified on 5 July 2007
+
+2.1.1            Additional Text
+  In the single concept matching approach, the user is presented with a text input field, labelled
+  ‘Additional text’. In addition to selecting a SNOMED-CT concept match, they may also type in free
+  unstructured text, which will be associated with the concept. The additional text input field is featured
+  within the encoding dialog, immediately below the list of SNOMED-CT matches.
+  The user selects the best match from the list of possible matches, and then types the free text into the
+  additional text field, as illustrated in Figure 6 and Figure 7.
+
+  Figure 6: Selecting a Concept Match
+
+                                                                         Once the user has chosen a concept match, an
+                                                                         ‘additional text’ box appears, into which the user may
+                                                                         type elaborating text.
+
+  Figure 7: Entering Additional Text to Elaborate the Concept
+
+2.1.1.1            Guidance
+  The system:
+        Must allow the user to add free, unstructured text to a SNOMED-CT match selection
+                  Must appropriately label the input field for adding free unstructured text
+                  Should locate the additional text field in a position that is visible to the user when they are
+                   viewing the SNOMED-CT matches
+
+                                                                                                                                  Page 8
+                                 Design Guidance – Terminology – Elaboration
+                                 Prepared by Microsoft, Version 1.0.0.0
+                                 Last modified on 5 July 2007
+
+2.1.1.2           How to Use the Design Guidance
+  Usage Format                                           Example                                    Comments
+
+           Align the additional text field with the     See Figure 5                               This should allow the user to scan down
+            field displaying the list of matches                                                    to the additional text field easily
+
+           Provide an additional text field for all     See Figure 7                               This is a universal feature that could
+            definition/elaboration dialogs in the                                                   apply to all concepts
+            ‘Code and Elaborate’ environment
+
+           Retain the additional text until the user    n/a                                        Although text notes may apply to one
+            selects a code or closes the search                                                     concept, but not to another, users may
+            dialog                                                                                  be writing a lot of notes and using a
+                                                                                                    concept as a ‘hook’ to hang the notes
+                                                                                                    onto. Therefore, they will want the
+                                                                                                    system to retain the unstructured text
+                                                                                                    even if they change concept
+  Table 1: How to Use the Design Guidance
+
+2.1.1.3           How Not to Use the Design Guidance
+  Usage Format                                           Example                                    Comments
+
+           Do not locate the additional text field in
+            the flyout area
+
+           Do not allow users to apply their own        Users should not be able to apply          Additional formatting would obstruct the
+            formatting to text in the additional text    styles, such as bold, or highlighting to   communication of confirmed or
+            field                                        text in the additional text field          encodable text
+
+           Do not provide an additional text field      n/a                                        It would be confusing to offer two places
+            for the ‘text parser’ approach to                                                       to add unstructured text notes
+            encoding
+  Table 2: How Not to Use the Design Guidance
+
+2.1.1.4           Benefits and Rationale
+  In the single concept matching approach, the additional text field must be located close to the matches
+  list (and therefore, the selected SNOMED-CT match to which the elaboration will apply).
+  We had looked at featuring the additional text field in the flyout which, when tested, was understood.
+  However, locating it in the flyout can appear strange, especially when the flyout is moving as the
+  mouse moves down the list.
+  Featuring the additional text field in the same area as the list of matches does require an additional
+  user action, namely single-clicking on the desired SNOMED-CT match (which turns the highlight grey)
+  before clicking in the additional text field to write elaboration text. Alternatively, the user may write the
+  text before selecting the list item, if they wish. However, despite a possible additional user action, it
+  does make the process clearer.
+  Featuring the additional text below the selected match communicates that the text belongs to the
+  match, and is an elaboration of the match. It also follows the more typical task order, which would be to
+  select a match and then elaborate it.
+
+                                                                                                                                              Page 9
+                               Design Guidance – Terminology – Elaboration
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 5 July 2007
+
+2.1.1.5           Confidence Level
+
+  High
+        Must allow the user to add free, unstructured text to a SNOMED-CT match selection
+                 Must appropriately label the input field for adding free unstructured text
+                 Should locate the additional text field in a position that is visible to the user when they are
+                  viewing the SNOMED-CT matches
+
+2.1.2            Text Remaining Unstructured
+  In the text parser approach to matching, free text can be associated with a SNOMED-CT expression by
+  not encoding text that falls within the expression envelope marquee. This may be the user’s choice not
+  to confirm a potential match for encoding (that is, by not selecting the appropriate check box), or it
+  might be because the text cannot be matched with SNOMED-CT concepts (or data from additional
+  information modelling).
+  In the example shown in Figure 8 (below), the user has typed in ‘Unable to grip properly’, from which
+  the system has matched the concept ‘Unable to grip’ (ConceptID 284258001). The remaining text
+  cannot be matched, but still falls within the user defined expression envelope (there are no full stops or
+  carriage returns between ‘Unable to grip’ and ‘properly’) and the system has not associated the text
+  ‘properly’ with any other matched concepts.
+  The text ‘properly’ appears in the suggested matching area, indented to the SNOMED-CT concept. It
+  also features a special icon (currently undefined, but in this example, a ‘pencil’ icon has been shown) to
+  distinguish it from the potential SNOMED-CT matches. Any free text will be displayed in this position
+  (that is, below and indented to the SNOMED-CT expression).
+  If the free text is divided into two separate strings, these will be displayed as two bullets (that is, they
+  would comprise two separate lines, each with an icon). For example, if the user had typed in ‘David
+  unable to grip properly’, the system would display the concept match ‘Unable to grip’ and below this it
+  would feature one line containing the text ‘David’ and another line containing the text ‘properly’.
+
+  Figure 8: System Matching the Concept: Unable to Grip
+
+                                                                                                             Page 10
+                                Design Guidance – Terminology – Elaboration
+                                Prepared by Microsoft, Version 1.0.0.0
+                                Last modified on 5 July 2007
+
+If the user clicks on a suggested match label, the system will display the associated free text below the
+list of matches, again with the special icon, as shown in Figure 9. This is in the same position as the
+additional text field in the single concept matching approach.
+
+Figure 9: Clicking a Match Label to Use the Encoding Dialog
+
+If the user does not want the free text to be associated with the SNOMED-CT expression, they can
+either delete the text from the note altogether or they can adjust the marquee boundaries by dragging
+the appropriate yellow handle with the mouse. As shown in Figure 10, when the user moves the mouse
+over one of the yellow marquee handles, two directional arrows appear on the handle to further
+communicate to the user that they can drag the handle. When the user has dragged the handle so that
+the marquee no longer contains the text ‘properly’, the text disappears from the suggested match area.
+The text ‘properly’ would then have its own marquee.
+
+Figure 10: Adjusting the Expression Envelope (Marquee) Boundaries
+
+                                                                                                    Page 11
+                               Design Guidance – Terminology – Elaboration
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 5 July 2007
+
+  Conversely, the user may also drag the boundary handles so that they include text that was not
+  previously associated with a matched expression. The user, for example, may want to associate
+  multiple sentences with a single matched expression.
+
+2.1.2.1       Guidance
+  The system:
+      Must allow the user to associate free text with SNOMED-CT expressions in the text parser
+       approach to matching
+      Must define ‘free text’ as any text that cannot be matched, either with a SNOMED-CT
+       expression or another modelled expression (such as expressions of time or measurement
+       readings)
+      Must assume that free text is associated with a SNOMED-CT expression if it falls within the
+       ‘expression envelope’, which itself is defined by (i) proximity, that is, if the text is immediately
+       adjacent to the SNOMED-CT matched text, and by (ii) user-defined boundaries, such as full
+       stops and carriage returns
+      Should display the free text in the same area as the suggested match in the left-hand
+       confirmation pane
+             Must distinguish the free text from the matched text
+                 Could feature an icon to communicate that it is free text, rather than matched text
+                 Could indent the free text and display it below the matched text, to show that the free
+                  text ‘belongs’ to the matched expression
+      Should allow the user to read the free text while they are viewing the possible SNOMED-CT
+       matches
+             Should display the free text below the list of possible SNOMED-CT matches
+      Must allow the user to ‘un-associate’ the free text from the matched expression
+             Should allow the user to delete the free text
+             Should allow the user to manipulate the expression envelope boundaries, in order to move
+              the free text outside of the expression envelope, and thus disassociate it from the matched
+              expression
+             Should, conversely, allow the user to associate free text with a matched expression by
+              manipulating the marquee boundaries, that is, dragging the boundaries so that they include
+              text that was not already in the expression envelope
+
+                                                                                                        Page 12
+                       Design Guidance – Terminology – Elaboration
+                       Prepared by Microsoft, Version 1.0.0.0
+                       Last modified on 5 July 2007
+
+2.1.2.2           How to Use the Design Guidance
+  Usage Format                                         Example                                   Comments
+
+           Must feature an appropriate icon next to We have shown a pencil icon, but we
+            the free text in the suggested match     believe a better icon can be created
+            area
+
+           Provide an appropriate ToolTip that   Drag the handles to include or exclude
+            appears when the user moves the       text in the expression”
+            mouse over the handles of the marquee
+            boundaries
+  Table 3: How to Use the Design Guidance
+
+2.1.2.3           How Not to Use the Design Guidance
+  Usage Format                                         Example                                   Comments
+
+           In the text parser approach to matching, Providing an additional text field in the   In the text parser approach to matching,
+            allowing users to edit additional text   encoding dialog in the text parser          the user must only be able to edit
+            anywhere but in the text input area      approach.                                   additional text in one area, otherwise
+                                                                                                 the interaction may become confusing.
+  Table 4: How Not to Use the Design Guidance
+
+2.1.2.4           Benefits and Rationale
+  The approach outlined in this guidance is a very natural and unobtrusive way of allowing the user to
+  associate free text elaboration with SNOMED-CT concepts. In fact, the user is doing what they would
+  do anyway: writing their notes in sentences. As the sentences commonly define the expression
+  envelopes and, in many cases, sentences are self-contained units of meaning, this approach does not
+  require the user to do any unnatural action to associate this text (in most cases).
+  Where the user needs to associate free text that sits outside of the expression window, they must
+  stretch the marquee around this additional text. Again, the notion of stretching a marquee around
+  objects that one wants to include in the marquee is an intuitive action, akin to encircling notes that
+  belong together. Clinicians confirmed that this approach is clear and understandable in usability
+  testing. The mouse-over arrows (and ToolTip) reinforce the communication of this action.
+  However, there are a few open issues that remain with this parsing approach. For example, the
+  clinician may enter a contextual modifier that applies to more than one expression, as in the note
+  “Father has suffered heart failure. He also has arthritis”. In this example, the modifier ‘Father’ should
+  apply to both the expression of ‘heart failure’ and ‘arthritis’. Under certain contextual headings (see
+  Design Guidance –Terminology – Matching {R1} for details of contextual headings), the system could
+  apply the modifier to all subsequent expressions until the user enters another modifier. Further rules
+  may need to be developed and tested to overcome these specific issues.
+
+                                                                                                                                      Page 13
+                               Design Guidance – Terminology – Elaboration
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 5 July 2007
+
+2.1.2.5      Confidence Level
+
+  High
+      Must allow the user to associate free text with SNOMED-CT expressions in the text parser
+       approach to matching
+      Must define ‘free text’ as any text that cannot be matched, either with a SNOMED-CT
+       expression or another modelled expression (such as expressions of time or measurement
+       readings)
+      Should display the free text in the same area as the suggested match in the left-hand
+       confirmation pane
+      Must distinguish the free text from the matched text
+      Could feature an icon to communicate that it is free text, rather than matched text
+      Could indent the free text and display it below the matched text, to show that the free text
+       ‘belongs’ to the matched expression
+      Should allow the user to delete the free text
+
+  Medium
+      Must assume that free text is associated with a SNOMED-CT expression if it falls within the
+       ‘expression envelope’, which itself is defined by (i) proximity, that is, if the text is immediately
+       adjacent to the SNOMED-CT matched text, and by (ii) user-defined boundaries, such as full
+       stops and carriage returns
+      Must allow the user to ‘un-associate’ the free text from the matched expression
+      Should allow the user to manipulate the expression envelope boundaries, in order to move the
+       free text outside of the expression envelope, and thus disassociate it from the matched
+       expression
+      Should, conversely, allow the user to associate free text with a matched expression by
+       manipulating the marquee boundaries, that is, dragging the boundaries so that they include text
+       that was not already in the expression envelope
+
+  Low
+      Should allow the user to read the free text while they are viewing the possible SNOMED-CT
+       matches
+      Should display the free text below the list of possible SNOMED-CT matches
+
+                                                                                                        Page 14
+                       Design Guidance – Terminology – Elaboration
+                       Prepared by Microsoft, Version 1.0.0.0
+                       Last modified on 5 July 2007
+
+2.2       Elaboration with SNOMED-CT Attributes
+ The requirement for additional elaboration may arise because, on its own, the concept is missing some
+ important qualification. For example, a diagnosis of ‘gastroenteritis’ could have different implications,
+ depending upon the suspected severity of the disorder. The clinician may want to qualify this
+ diagnosed disorder as being ‘mild’. Likewise, the clinician may want to specify that a patient’s asthma
+ is ‘on-going’ rather than being a new episode.
+ As with other areas of the Terminology UI, the design primarily adopts a user-led approach. That is to
+ say, the user gets what they enter. This principle applies for most qualifier attributes in this design. The
+ user will only be offered matches for qualifier attributes that they have typed in themselves. This will
+ apply to both the single concept matching approach and the text parser matching approach.
+ This document will focus on how the user may add qualifiers to a SNOMED-CT match using the single
+ concept matching approach.
+ One exception to this ‘user-led’ principle of qualifier matching is when attributes are deemed
+ ‘mandatory’, or are at least strongly recommended. A plausible example is laterality. This could apply
+ to a body structure or a procedure that is defined in part by a body structure. In these situations, many
+ clinical organisations will require the user to enter the laterality at the point of encoding. In this case,
+ the system will actively offer the selection choices to the user, bearing in mind that ‘Not specified’ and
+ ‘Both’ are both legitimate choices.
+
+2.2.1        Matching SNOMED-CT Attributes Within Additional Free Text
+ In the single concept matching approach, the user may need to add structured qualification to a
+ SNOMED-CT concept. This is especially important if the user is offered a field for free text entry, as
+ there will be a temptation to qualify the matched concept with free text, and some of this free text
+ qualification could be very important to the meaning of the note.
+ Therefore, the design matches attributes from within the free text, in a similar manner to the text parser
+ approach. Unlike the text parser approach, the user can only enter one expression at a time, although
+ the expression could comprise a SNOMED-CT concept plus multiple qualifiers.
+ In the example shown in Figure 11, the user has found matches for the word ‘asthma’ and selects the
+ concept ‘Asthma’, by a single click. They then click in the additional text input field, and start typing
+ some additional qualifying text.
+
+ Figure 11: Selecting a SNOMED-CT Match Using a Single Click
+
+                                                                                                        Page 15
+                              Design Guidance – Terminology – Elaboration
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 5 July 2007
+
+As the user is typing in the additional text, the system is matching individual words (or strings of words)
+against SNOMED-CT attributes for the concept ‘Asthma’. When it identifies a match, it highlights it in
+blue and displays the match above the additional text field, along with a check box for the user to
+confirm the match, as shown in Figure 12.
+
+                                                                               The system matches
+                                                                               the attribute ‘Mild’ from
+                                                                               the additional text.
+
+Figure 12: System Identifying a Match from Additional Qualifying Text
+
+As the user moves the mouse over the label ‘Mild’, the area around it changes colour to signify that it is
+clickable, as shown in Figure 13.
+
+                                                                             The user moves the mouse over the
+                                                                             attribute match label, which causes it to
+                                                                             turn orange and ‘clickable’.
+
+Figure 13: Label Changing Colour on Hover
+
+                                                                                                                         Page 16
+                               Design Guidance – Terminology – Elaboration
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 5 July 2007
+
+  The user clicks on the label to reveal other possible attribute matches for the word ‘Mild’, but decides
+  that the top selection is the best match as shown in Figure 14.
+
+                                                                                   Clicking on the attribute match opens up
+                                                                                   a list of possible matches. In this case,
+                                                                                   there is only one match.
+
+  Figure 14: Displaying Possible Matches after Clicking on the Label
+
+  The user then selects the check box, and the attribute match becomes confirmed for encoding upon
+  saving the note to record as shown in Figure 15.
+
+                                                                               Having selected the confirmation check
+                                                                               box, the match becomes bold (and
+                                                                               highlighted in grey in the ‘Additional text’
+                                                                               input field).
+
+  Figure 15: Additional Text after Selecting the Check Box
+
+2.2.1.1            Guidance
+  The system:
+        Must allow the user to type in notes that the system can match against SNOMED-CT matches
+         that have attribute relationships with the selected SNOMED-CT concept, which are defined by
+         the Concept Model (which specifies allowable relationships, including those in the Context
+         Model) or an external information model.
+                  Should make the noting clear and efficient by using the same field for both the additional
+                   text and the input for attributes
+                  Should re-use the mechanisms for matching the text parser, namely: highlighting, bolding,
+                   featuring a confirmation check box, and featuring a control for viewing alternative matches
+
+                                                                                                                              Page 17
+                                 Design Guidance – Terminology – Elaboration
+                                 Prepared by Microsoft, Version 1.0.0.0
+                                 Last modified on 5 July 2007
+
+       Note
+       Relationships needed for clinical noting are defined by an external information model which does not exist in
+       the SCT, Concept or Context Models. An example would be the relationships between measurement values
+       (that is, quantity and unit values) and the appropriate SNOMED-CT concepts.
+
+2.2.1.2           How to Use the Design Guidance
+  Usage Format                                         Example                                   Comments
+
+           Allow the matching of multiple concepts, The system could match ‘Severe’ and
+            if they are all attributes of the base-  ‘Sudden onset’ when the base-concept
+            concept                                  is ‘Asthma’
+
+           Allow users to browse related concepts     The user may wish to see what other
+            of an attribute                            levels of severity there are to choose
+                                                       from
+  Table 5: How to Use the Design Guidance
+
+2.2.1.3           How Not to Use the Design Guidance
+  Usage Format                                         Example                                   Comments
+
+           Matching concepts that are not             Matching the concept ‘Foot’ if the user
+            attributes of the base-concept (which is   has selected the concept ‘Fever’ in the
+            selected in the main list of matches)      list above
+  Table 6: How Not to Use the Design Guidance
+
+2.2.1.4           Benefits and Rationale
+  This approach is a good example of the user-led principle of elaboration or, in other words, the user will
+  type in what they want up-front.
+  Previous designs which featured a few elaboration settings displayed in drop-down list boxes in the
+  flyout confused users who did not understand why these settings were being offered to them. They
+  wondered why they were being offered selections for severity or episodicity, but not for other ways of
+  adding description to the concept. Also, some users thought that they must select from the fields if they
+  were being offered to them, which was incorrect and could lead to a lot of unnecessary encoding.
+  The display of lists of options that naturally belong in a logical order, but which are unordered in the
+  SNOMED-CT database, can be confusing and misleading if they are left unordered. For example, in a
+  list of severity ratings, the user would expect them to be arranged in a list of increasing or decreasing
+  severity. However, the metadata to order these concepts in a meaningful way has not been created.
+  The user-led approach removes the need for such metadata in this instance.
+  Consistent use of highlighting and matching labels with the text parser approach to matching will
+  reduce the need for learning between the two approaches. The benefits and rationale for these
+  mechanisms are covered in detail in the relevant sections of the following documents:
+        Design Guidance – Terminology – Matching {R1}
+        Design Guidance – Terminology – Display Standards for Coded Information {R2}
+
+                                                                                                                Page 18
+                               Design Guidance – Terminology – Elaboration
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 5 July 2007
+
+2.2.1.5            Confidence Level
+
+  Low
+        Must allow the user to type in notes that the system can match against SNOMED-CT matches
+         that have attribute relationships with the selected SNOMED-CT concept
+                  Should make the noting clear and efficient by using the same field for both the additional
+                   text and the input for attributes
+                  Should re-use the mechanisms for matching the text parser, namely: highlighting, bolding,
+                   featuring a confirmation check box, and featuring a control for viewing alternative matches
+  We have not tested the use of the additional text field in this way.
+
+2.2.2            Warning of Important Unconfirmed Elaboration
+  If users are allowed to type in free text, the system must identify important words that can modify the
+  meaning of the concept. If the user has typed in a word in the additional text field that is recognised to
+  be an axis modifier, such as negation or a relation to the patient (meaning that the other family member
+  is suffering from the disorder rather than the patient themselves), the system may offer this to the user
+  in the same way as for the qualifier, namely with a highlight and a check box.
+  However, if the user fails to confirm the encoding of this axis modifier, the system should warn the user
+  that they have not done so, and offer them a quick control to confirm it.
+  In the example shown in Figure 16, the user has typed that the patient’s mother had asthma. The
+  clinician could be trying to communicate that both the user and their mother have asthma, or they could
+  mean that only the patient’s mother is known to have asthma.
+
+  Figure 16: Presenting a Control for Confirming an Axis Modifier in Additional Text for Encoding
+
+                                                                                                          Page 19
+                                  Design Guidance – Terminology – Elaboration
+                                  Prepared by Microsoft, Version 1.0.0.0
+                                  Last modified on 5 July 2007
+
+  When the user tries to save the note by clicking ‘OK’, the system displays a warning, as shown in
+  Figure 17, that they have not confirmed that it is the patient’s mother and not necessarily the patient
+  that has asthma. The system will offer the user the choice of confirming this or leaving the note as it is
+  (which has the meaning that the patient has asthma and so does their mother).
+
+                                                                                     The user has tried to save the note
+                                                                                     without confirming the axis modifier
+                                                                                     match (‘Mother’).
+
+  Figure 17: System Requesting Confirmation of Who Has Asthma
+
+2.2.2.1           Guidance
+  The system:
+        Must attempt to identify axis modifiers, such as negation, in the additional text notes and
+         present them for confirmation in the same way as for the qualifier values
+        Must warn the user if they try to save the note without confirming the axis modifier
+        Should offer the user a quick control for confirming the axis modifier
+       Note
+       In order for this approach to work well, the high risk trigger words should be identified in SNOMED-CT itself.
+
+2.2.2.2           How to Use the Design Guidance
+  Usage Format                                         Example                                   Comments
+
+           Clearly outline the problem and the way See text in Figure 17
+            in which the user may resolve the
+            problem
+  Table 7: How to Use the Design Guidance
+
+2.2.2.3           How Not to Use the Design Guidance
+  Usage Format                                         Example                                   Comments
+
+           Present the user with an array of          Do not offer users the choice of ‘Yes’,
+            options in the warning message.            ‘No’ and ‘Cancel’
+  Table 8: How Not to Use the Design Guidance
+
+                                                                                                                            Page 20
+                               Design Guidance – Terminology – Elaboration
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 5 July 2007
+
+2.2.2.4       Benefits and Rationale
+  It is important to alert users to ‘dangerous’ elaboration words that the user may expect the system to
+  act on (such as negation). The guidance outlined here allows the user flexibility to type in what they
+  want, but forces them to attend to any critical elaboration. Words that match with axis modification
+  concepts are particularly dangerous as they fundamentally change the meaning of the expression.
+  Qualifier values do not need these warning messages.
+  The design allows the user to type in axis modifiers in the text entry fields, but will not present these
+  modifiers (even the default ‘soft’ settings of these values) unless the user has typed them in. Previous
+  designs featured a fly-out that displayed fields for axis modifier concept values, but users found them
+  confusing. For example, featuring the text ‘the patient currently has this finding’ was not understood by
+  clinicians.
+
+2.2.2.5       Confidence Level
+
+  High
+       Must warn the user if they try to save the note without confirming the axis modifier
+
+  Medium
+       Must attempt to identify axis modifiers, such as negation, in the additional text notes and
+        present them for confirmation in the same way as for the qualifier values
+       Should offer the user a quick control for confirming the axis modifier
+
+2.2.3      Mandatory SNOMED-CT Qualification
+  The guidance shows how some qualification could be communicated as mandatory by the user
+  interface. The best example of this is laterality, that is, whether a body structure or a procedure or
+  finding that is partly defined by a body structure is the left or right instance of that body structure. For
+  example, if the user types in ‘Fracture of radius’, it will be important to know whether this refers to the
+  patient’s left radius, right radius or both. This has important implications for levels of patient safety.
+  In the example shown in Figure 18, the user has selected ‘Fracture of radius’ in the single concept
+  matching approach.
+  The flyout for the concept contains a drop-down list from which the user must select the laterality of the
+  radius, or state that they do not know which side the affected radius is on. The drop-down is coloured
+  yellow to grab the user’s attention, and the user cannot click ‘OK’ to save the note until they have
+  selected a choice from the drop-down list.
+  Please note that if the user has typed laterality into the additional text field and has confirmed the
+  match, the drop-down list box will disappear and the ‘OK’ will be enabled.
+
+                                                                                                           Page 21
+                        Design Guidance – Terminology – Elaboration
+                        Prepared by Microsoft, Version 1.0.0.0
+                        Last modified on 5 July 2007
+
+                                                                                The mandatory field is highlighted in
+                                                                                yellow.
+
+Figure 18: Example of a Mandatory Qualifier Field in the Single Concept Matching Approach
+
+The implementation of mandatory qualifier fields also applies to the text parser approach. In the
+example shown in Figure 19, the user has typed in ‘Fracture of radius’ and the system has matched
+this with the SNOMED-CT concept ‘Fracture of radius’. However, the system does not enable the
+check box for confirming the encoding of the phrase. Instead, when the user moves the mouse over
+the concept match area, the system displays a warning message, telling the user to specify whether
+the radius is on the left, right or both (or unknown).
+
+                                                                                             A message is displayed to warn the user
+                                                                                             that they must choose from the
+                                                                                             mandatory selection field prior to
+                                                                                             confirming the match.
+
+                                                                                             The check box is disabled until the user
+                                                                                             has made a selection.
+
+Figure 19: Concept that Requires a Statement of Laterality
+
+                                                                                                                                        Page 22
+                               Design Guidance – Terminology – Elaboration
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 5 July 2007
+
+At this point, the user could add the word ‘left’ (or ‘right’, or ‘both’) in the text input area. Alternatively,
+they could click on the match in the left-hand pane, which would reveal the qualifier drop-down list as
+illustrated in Figure 20.
+
+Figure 20: Displaying the Field for Selecting Laterality
+
+Selecting the laterality from the list box enables the confirmation check box. Also, at this point, the
+background of the qualifier’s drop-down turns from yellow to white as shown in Figure 21.
+
+                                                                                   Selecting from a mandatory
+                                                                                   field changes its background
+                                                                                   from yellow to white.
+
+Figure 21: Selecting a Qualifier Value, Enabling the Confirmation Checkbox
+
+                                                                                                              Page 23
+                                 Design Guidance – Terminology – Elaboration
+                                 Prepared by Microsoft, Version 1.0.0.0
+                                 Last modified on 5 July 2007
+
+  Figure 22 shows that when the user confirms the match, the qualifier value is displayed in the match
+  and is rendered in the text input area. Please note that the check box for the qualifier value is selected,
+  but is disabled to prevent the user from removing the qualifier, but leaving the base concept confirmed.
+  If the user wants to change the laterality setting, they must un-confirm the base concept (that is,
+  ‘Fracture of radius’) before clicking on it and changing the setting in the match’s flyout.
+
+                                                                           Selecting the check box confirms the
+                                                                           match, which emboldens the matches and
+                                                                           changes the background/highlight to grey.
+
+  Figure 22: Confirmed Match with Qualifier
+
+2.2.3.1            Guidance
+  The system:
+        Must disable the control for confirming a match (text parser matching approach) or the control
+         for saving the note (single concept matching approach) if there is a mandatory qualifier that
+         remains unresolved
+        Must provide a control for selecting the mandatory qualifier
+                  Could feature a drop-down list box
+                  Should associate the control with the individual match
+                        Should feature the control in the match’s flyout
+        Must communicate to the user that they must select the mandatory qualifier in order to
+         confirm/save the note
+                  Should feature a warning message in the suggested match area (in the left-hand pane) that
+                   appears when the user moves the mouse over the area
+                  Should feature the words ‘Please specify’ in the mandatory qualifier selection control
+                  Should make the mandatory qualifier selection control sufficiently prominent
+                        Could feature the mandatory qualifier selection control in yellow, until the user selects
+                         an option from it
+
+                                                                                                                       Page 24
+                                 Design Guidance – Terminology – Elaboration
+                                 Prepared by Microsoft, Version 1.0.0.0
+                                 Last modified on 5 July 2007
+
+        Must not allow the user to un-confirm the mandatory qualifier value independently from the
+         base concept
+
+       Note
+       The identification of mandatory elaboration would imply the creation of appropriate metadata.
+
+2.2.3.2           How to Use the Design Guidance
+  Usage Format                                         Example                                      Comments
+
+           Highlight the mandatory elaboration with See Figure 20
+            a bright colour
+
+           Provide a hover-over message that          The message could read “You must
+            indicates that the field is mandatory      select from this list to be able to encode
+                                                       ‘name of the concept’”
+
+           Feature the text ‘Please specify’ within   See Figure 20
+            the initial view of the selection field
+
+           Provide a key that communicates how        See Figure 20
+            mandatory fields are displayed
+  Table 9: How to Use the Design Guidance
+
+2.2.3.3           How Not to Use the Design Guidance
+  Usage Format                                         Example                                      Comments
+
+           Do not allow users to encode a term        n/a
+            without selecting all its mandatory fields
+  Table 10: How Not to Use the Design Guidance
+
+2.2.3.4           Benefits and Rationale
+  Preventing users from encoding a concept without selecting a mandatory field forces the user to select
+  it (if they want to encode the concept). A bright background in the mandatory field will grab the user’s
+  attention, and the asterisk icon with the key at the foot of the dialog would make it explicit that the field
+  is mandatory. This asterisk and footnote will be more important if there are multiple fields in the flyout,
+  for example, if there are values to enter
+  Another good place to communicate that there are mandatory fields for the user to complete is near to
+  the confirmation control in the suggested matches area, as this area is also used to display warning
+  messages about similar matches.
+
+                                                                                                               Page 25
+                               Design Guidance – Terminology – Elaboration
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 5 July 2007
+
+2.2.3.5       Confidence Level
+
+  High
+       Must provide a control for selecting the mandatory qualifier
+             Could feature a drop-down list box
+             Should associate the control with the individual match
+                 Should feature the control in the match’s flyout
+       Must not allow the user to un-confirm the mandatory qualifier value independently from the
+        base concept
+       Must communicate to the user that they must select the mandatory qualifier in order to
+        confirm/save the note
+
+  Medium
+       Must disable the control for confirming a match (text parser matching approach) or the control
+        for saving the note (single concept matching approach) if there is a mandatory qualifier that
+        remains unresolved
+       Should feature the words ‘Please specify’ in the mandatory qualifier selection control
+       Should make the mandatory qualifier selection control sufficiently prominent
+             Could feature the mandatory qualifier selection control in yellow, until the user selects an
+              option from it
+
+  Low
+             Should feature a warning message in the suggested match area (in the left-hand pane) that
+              appears when the user moves the mouse over the area
+
+2.3       Elaboration with Additional Values
+  There will be additional values that SNOMED-CT does not contain, but which will be crucial to creating
+  a meaningful note. These may be time values, such as months, hours or dates (there are some
+  codable dates in SNOMED-CT; the system would need to distinguish expressions of date that are
+  codable in SNOMED-CT from those which are not); or values for an observable entity reading, such as
+  temperature or blood pressure.
+  The system must be able to recognise these values and any specified units from within the user’s
+  typed notes, and where there are not appropriate units identified, the system must suggest an
+  appropriate default unit. The relationships between the concepts and the value, plus the values
+  themselves, must be taken from an external information model if they are not present in SNOMED-CT
+  itself.
+
+                                                                                                       Page 26
+                       Design Guidance – Terminology – Elaboration
+                       Prepared by Microsoft, Version 1.0.0.0
+                       Last modified on 5 July 2007
+
+2.3.1        Identifying Values Within Text
+ It will be important for the clinician to be able to type numerical values into their notes, and for the
+ system to recognise these values and to associate them with the correct concept. These values are not
+ modelled in SNOMED-CT, and will be derived from an external information model, but the system must
+ ensure that, from the user’s point of view, the interaction appears seamless.
+ It is also important that the system can derive the appropriate measurement unit, based upon the
+ numbers and the concept (SNOMED-CT or non-SNOMED-CT) with which they are associated. It is
+ also crucial that the system can validate the numbers, for example, to avoid decimal points in the
+ wrong place, or the user entering too few digits. We would expect to employ an information model that
+ contained information about the formats and ranges of the measurement types covered.
+ The design will allow the user to type values into the text input area. In the example shown in Figure
+ 23, the user types in a temperature of ’39.8°C’. Meanwhile, the system has matched the text
+ ‘Temperature’ with the SNOMED-CT observable entity concept, ‘Body temperature’. Drawing from an
+ appropriate information model, the system recognises that, for the concept of ‘Body temperature’, the
+ figure ’39.8’ falls within a range that would imply that this was a measurement taken in degrees
+ centigrade. In its match, therefore, the system adds the unit, ‘°C’. It also inserts the temperature value
+ after the SNOMED-CT match, with an equals (‘=’) sign between concept and value.
+
+ Figure 23: Entering Text that Contains Measurement Values
+
+                                                                                                       Page 27
+                               Design Guidance – Terminology – Elaboration
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 5 July 2007
+
+  If the user expands the encoding dialog for the match, the system presents fields in the flyout for the
+  value and the value’s unit, pre-populated with ’39.8’ and ‘°C’ respectively as shown in Figure 24. If the
+  user were to change the figure or the unit, this would be reflected in the suggest match label in the left
+  pane and, if the user confirmed the match, in the final rendered text.
+
+  Figure 24: Selecting the Match to Display Value and Unit Fields in the Flyout
+
+2.3.1.1            Guidance
+  The system:
+        Must identify values and units from within the notes
+        Should suggest default units for measurement values
+        Must display the values and units it has identified back to the user for the user’s confirmation
+        Should allow the user to adjust the values and units in the expanded encoding dialog
+
+       Note
+       Quantity and unit values, and their relationships with appropriate SNOMED-CT concepts, in the main, will
+       require additional information model data.
+
+2.3.1.2            How to Use the Design Guidance
+  Usage Format                                               Example              Comments
+
+            Deduce the appropriate unit and display See Figure 23
+             this with the value
+  Table 11: How to Use the Design Guidance
+
+                                                                                                              Page 28
+                                  Design Guidance – Terminology – Elaboration
+                                  Prepared by Microsoft, Version 1.0.0.0
+                                  Last modified on 5 July 2007
+
+2.3.1.3           How Not to Use the Design Guidance
+  Usage Format                                          Example                                 Comments
+
+           Interpret a full stop character as a full   39.8 should not be interpreted by the
+            stop if it has digits immediately both      system as two sentences
+            sides of it.
+  Table 12: How Not to Use the Design Guidance
+
+2.3.1.4           Benefits and Rationale
+  This approach allows users to enter values as part of their typing in notes in a narrative format. In this
+  way, the entry of values should not require additional actions to the typing of the user’s text-based
+  notes. However, the validation mechanism is important, and users should be warned if the values fall
+  outside of recognised ranges or formats.
+  User testing has shown that users understand and accept this approach.
+
+2.3.1.5           Confidence Level
+
+  High
+        Must identify values and units from within the notes
+        Must display the values and units it has identified back to the user for the user’s confirmation
+
+  Medium
+        Should allow the user to adjust the values and units in the expanded encoding dialog
+
+2.3.2         Templates
+  In addition to the system identifying values and units from with the clinician’s notes, the system should
+  also encourage users to enter values in response to matching certain concepts that are associated with
+  or require certain values.
+  In the example shown in Figure 25 (below), the user has selected the SNOMED-CT concept match
+  ‘Body temperature’ within the single concept matching approach. The system identifies that this
+  concept is associated with temperature readings, and that the default unit is degrees centigrade. It
+  therefore presents two fields, one for value, the other for unit (which, in this case, is set by default to
+  ‘°C’). The value field has a validation process triggered upon the focus leaving the field. Failure to meet
+  the validation criteria will trigger an ‘error’ message which will tell the user to change the value if they
+  wish to confirm the concept. For example, if the user types in 398 (instead of 39.8), the system would
+  launch an error message, inviting the user to correct the figure.
+
+                                                                                                           Page 29
+                               Design Guidance – Terminology – Elaboration
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 5 July 2007
+
+                                                                              Fields for entering quantity
+                                                                              and unit values.
+
+Figure 25: Displaying Fields in the Flyout for Entering Measurement Values
+
+Typing a figure into the ‘Temperature value’ field will automatically select its confirmation check box.
+On the other hand, if the user selects the confirmation check box, but does not enter a value, the
+system will launch a warning message when the user clicks the ‘OK’ button.
+Figure 26 (below) illustrates the text parser matching approach. The system identifies the match for
+‘Blood pressure’ in the clinician’s notes, and recognises it as an opportunity for the entry of values. The
+system tags the expression with a yellow mark in the lower right-hand corner of the marquee.
+
+                                                                               The system marks the
+                                                                               concept matches that have
+                                                                               associated values templates
+                                                                               with a triangle in the corner
+                                                                               of the marquee.
+
+Figure 26: Identifying an Opportunity for Entry of Values
+
+                                                                                                               Page 30
+                                Design Guidance – Terminology – Elaboration
+                                Prepared by Microsoft, Version 1.0.0.0
+                                Last modified on 5 July 2007
+
+When the user moves the focus to the relevant expression, the system displays a floating dialog into
+which the user can enter blood pressure values, as shown in Figure 27 (below). Additionally, in the
+suggested match area (highlighted in yellow in the left-hand pane) the system displays a message
+encouraging the user to enter values for the blood pressure reading (‘You should enter values’). At this
+point, if the user wishes to enter values, they have the choice of:
+      Clicking on the match label (‘Blood pressure’) and entering the values into the encoding dialog
+       flyout
+      Entering the values into the floating dialog in the text input area (in the right-hand pane)
+      Typing the values directly into the text input area
+
+                                                        Moving the focus to the concept
+                                                        opens the template dialog, into which
+                                                        the user may type in the appropriate
+                                                        values.
+
+Figure 27: Dialog Box for Entering Values
+
+The case of ‘Blood pressure reading’ also highlights an instance of a ‘composite’ expression, where
+multiple concepts are combined to form a single output unit. Real world concepts (for example, BP
+120/80 mmHg) are often expressed quite differently in SNOMED-CT (in this case, as a combination of
+diastolic and systolic blood pressure). Although the atomic components of these relationships are
+found in SNOMED-CT, the relationships are not. Therefore, the relationships which create the
+composites may need to be modelled outside of SNOMED-CT, in an external information model.
+
+                                                                                                      Page 31
+                               Design Guidance – Terminology – Elaboration
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 5 July 2007
+
+  Figure 28: Example of a Composite of Three Concepts ('Blood Pressure Reading')
+
+2.3.2.1           Guidance
+  The system:
+        Should identify where matched concepts are associated with or require values
+        Should encourage users to enter values where appropriate
+                 Could provide fields into which users can enter these values
+                 Could provide a process whereby it marks those expressions which could require values
+                  and display a floating dialog when the focus moves to these expressions
+        Should pre-populate the template with any values it has identified during the text parsing
+         process
+        Should identify elements of composites and communicate them as a single composite (in
+         addition to the individual elements), such as ‘Blood pressure’
+        Should be able to recognise composite values entered alongside a concept
+        Should encourage users to enter in further values that comprise the composite by offering entry
+         fields where appropriate
+
+       Note
+            Quantity and unit values, and their relationships with appropriate SNOMED-CT concepts, in the main, will
+             require additional information model data.
+            Composites do not exist in the SNOMED-CT Concept Model. Expressing these relationships requires
+             metadata.
+
+2.3.2.2           How to Use the Design Guidance
+  Usage Format                                            Example                  Comments
+
+            Offer default units                          See Figure 27
+
+  Table 13: How to Use the Design Guidance
+
+2.3.2.3           How Not to Use the Design Guidance
+  Usage Format                                            Example                  Comments
+
+            Offer default values                         n/a                      This could lead to the system encoding
+                                                                                   values that the user had not entered
+  Table 14: How Not to Use the Design Guidance
+
+2.3.2.4           Benefits and Rationale
+  Offering appropriate entry fields for composite values could assist users in their workflow. Validation of
+  the measurements should help to prevent errors, and is therefore important for patient safety. The
+  system should offer the flexibility to the user of either typing the values into the main notes, or adding
+  the values at the point of confirming the note (that is, in the expanded encoding dialog).
+  These templates have been presented to clinicians in usability tests, and clinicians have responded
+  positively to them, saying that they understood what they are for and that they would be useful.
+
+                                                                                                                       Page 32
+                                   Design Guidance – Terminology – Elaboration
+                                   Prepared by Microsoft, Version 1.0.0.0
+                                   Last modified on 5 July 2007
+
+2.3.2.5       Confidence Level
+
+  High
+      Should identify where matched concepts are associated with or require values
+      Should encourage users to enter values where appropriate
+             Could provide fields into which users can enter these values
+
+  Medium
+      Could provide a process whereby it marks those expressions which could require values and
+       display a floating dialog when the focus moves to these expressions
+
+                                                                                             Page 33
+                       Design Guidance – Terminology – Elaboration
+                       Prepared by Microsoft, Version 1.0.0.0
+                       Last modified on 5 July 2007
+
+3              DOCUMENT INFORMATION
+
+3.1            Terms and Abbreviations
+    Abbreviation                        Definition
+    FSN                                 Fully Specified Name
+
+    SCT                                 Systematised Nomenclature of Medicine-Clinical Terms
+
+    SNOMED-CT                           Systematised Nomenclature of Medicine-Clinical Terms
+
+    UI                                  User Interface
+    Table 15: Terms and Abbreviations
+
+3.2            Definitions
+    Term                                 Definition
+    Context Model                        A model that specifies relationships relating to semantic context that has been defined outside of
+                                         the SNOMED-CT Concept Model
+    Table 16: Definitions
+
+3.3            Nomenclature
+    This section shows how to interpret the different styles used in this document to denote various types
+    of information.
+    All content subject to completion, agreement or verification is denoted with highlighting.
+
+3.3.1            Body Text
+    Text                                                                   Style
+    Code                                                                   Monospace
+
+    Script
+
+    Other markup languages
+
+    Interface dialog names                                                 Bold
+
+    Field names
+
+    Controls
+
+    Folder names                                                           Title Case
+
+    File names
+    Table 17: Body Text Styles
+
+                                                                                                                                              Page 34
+                                  Design Guidance – Terminology – Elaboration
+                                  Prepared by Microsoft, Version 1.0.0.0
+                                  Last modified on 5 July 2007
+
+3.3.2        Cross References
+ Reference                                                        Style
+ Current document – sections                                      Section number only
+
+ Current document – figures/tables                                Caption number only
+
+ Other project documents                                          Italics and possibly a footnote
+
+ Publicly available documents                                     Italics with a footnote
+
+ External Web-based content                                       Italics and a hyperlinked footnote
+ Table 18: Cross Reference Styles
+
+3.4       References
+ Reference          Document                                                                           Version
+ R1.                Design Guidance – Terminology – Matching                                           1.0.0.0
+
+ R2.                Design Guidance – Terminology – Display Standards for Coded Information            1.0.0.0
+
+ R3.                SNOMED-CT:
+                        http://www.snomed.org/
+ Table 19: References
+
+                                                                                                                 Page 35
+                                Design Guidance – Terminology – Elaboration
+                                Prepared by Microsoft, Version 1.0.0.0
+                                Last modified on 5 July 2007

@@ -1,0 +1,206 @@
+{
+  "title": "Archived NHS Digital Health CUI guidance downloads (2016 archive capture)",
+  "retrieved_on": "2026-04-17",
+  "source_category": "direct guidance",
+  "retrieval_status": "retrieved",
+  "origin_chain": [
+    {
+      "kind": "archive_page",
+      "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545/http:/systems.digital.nhs.uk/data/cui/uig",
+      "local_path": "raw/sources/references/nhs-archives/2016-systems-digital-cui-uig.html",
+      "note": "Archived NHS Digital guidance index page listing downloadable PDFs, a ZIP bundle, and a PPT deck."
+    }
+  ],
+  "files": [
+    {
+      "title": "Patient identification documents zip file",
+      "original_url": "http://systems.digital.nhs.uk/data/cui/uig/patident.zip",
+      "local_path": "raw/sources/design-guidance/nhs-archived-guidance-2016/patident.zip",
+      "source_type": "zip",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Retrieved from the UK Government Web Archive after passing the human verification gate.",
+      "sha256": "d33db4fea2ca0a760b28b10e8be6a75f87ef0f0cd2327557a51e60880ed138ed"
+    },
+    {
+      "title": "Telephone Number Input and display - QIG",
+      "original_url": "http://systems.digital.nhs.uk/data/cui/uig/teleqig.pdf",
+      "local_path": "raw/sources/design-guidance/nhs-archived-guidance-2016/teleqig.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Retrieved from the UK Government Web Archive after passing the human verification gate.",
+      "sha256": "be09659c75ee4fdeb8d81363cfd0d6ae1d85de3a0d8e9f75d753ea9b5759fa26"
+    },
+    {
+      "title": "NHS Number input and display - QIG",
+      "original_url": "http://systems.digital.nhs.uk/data/cui/uig/inputdisplayqig.pdf",
+      "local_path": "raw/sources/design-guidance/nhs-archived-guidance-2016/inputdisplayqig.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Retrieved from the UK Government Web Archive after passing the human verification gate.",
+      "sha256": "b3e93088870c30958a14c07d45b1a001c64f62875697301ce29cf8aa8cdb814e"
+    },
+    {
+      "title": "Sex and current Gender Input and Display - QIG",
+      "original_url": "http://systems.digital.nhs.uk/data/cui/uig/sexqig.pdf",
+      "local_path": "raw/sources/design-guidance/nhs-archived-guidance-2016/sexqig.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Retrieved from the UK Government Web Archive after passing the human verification gate.",
+      "sha256": "9c1245fd725713c28b3710b09befc46c9ea6e0667666971899790f6af83b6095"
+    },
+    {
+      "title": "Address Input and display - QIG",
+      "original_url": "http://systems.digital.nhs.uk/data/cui/uig/addressqig.pdf",
+      "local_path": "raw/sources/design-guidance/nhs-archived-guidance-2016/addressqig.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Retrieved from the UK Government Web Archive after passing the human verification gate.",
+      "sha256": "735ef651ff66579c9cb9764232fc783621ac0886a5eae915658dd7fe25a759ea"
+    },
+    {
+      "title": "Date and Time Input - QIG",
+      "original_url": "http://systems.digital.nhs.uk/data/cui/uig/datetimeqig.pdf",
+      "local_path": "raw/sources/design-guidance/nhs-archived-guidance-2016/datetimeqig.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Retrieved from the UK Government Web Archive after passing the human verification gate.",
+      "sha256": "47f8c53b4e2b3d5c55b3ad25e87adf4f39979571da33b0d0a266bf61069ed820"
+    },
+    {
+      "title": "Date and time display - QIG",
+      "original_url": "http://systems.digital.nhs.uk/data/cui/uig/datetimedispqig.pdf",
+      "local_path": "raw/sources/design-guidance/nhs-archived-guidance-2016/datetimedispqig.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Retrieved from the UK Government Web Archive after passing the human verification gate.",
+      "sha256": "f9312d8c9a8bb79833f24ae9ef4f1d160a63b8f6d103bb1660aef5f182fa52a3"
+    },
+    {
+      "title": "Patient Name Input and Display - QIG",
+      "original_url": "http://systems.digital.nhs.uk/data/cui/uig/patnamedispqig.pdf",
+      "local_path": "raw/sources/design-guidance/nhs-archived-guidance-2016/patnamedispqig.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Retrieved from the UK Government Web Archive after passing the human verification gate.",
+      "sha256": "fe3f0b6fb4cf76b2277031c98e505b27fe1d8cb2f44e74d5a58a829cc6dfec82"
+    },
+    {
+      "title": "Medication line quick implementation guide",
+      "original_url": "http://systems.digital.nhs.uk/data/cui/uig/medlineqig.pdf",
+      "local_path": "raw/sources/design-guidance/nhs-archived-guidance-2016/medlineqig.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Retrieved from the UK Government Web Archive after passing the human verification gate.",
+      "sha256": "093fe61de06630dc16ffe53a4ceaab542ebf98a7e0dcc6a4c19649557726425b"
+    },
+    {
+      "title": "Medication list quick implementation guide",
+      "original_url": "http://systems.digital.nhs.uk/data/cui/uig/medlistqig.pdf",
+      "local_path": "raw/sources/design-guidance/nhs-archived-guidance-2016/medlistqig.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Retrieved from the UK Government Web Archive after passing the human verification gate.",
+      "sha256": "08ce2f70ab7d166ee988cbdd2809f2272e02057cd3ef3d5fc1cc24146d6f5517"
+    },
+    {
+      "title": "Noting with graphics",
+      "original_url": "http://systems.digital.nhs.uk/data/cui/uig/notinggraphics.pdf",
+      "local_path": "raw/sources/design-guidance/nhs-archived-guidance-2016/notinggraphics.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Retrieved from the UK Government Web Archive after passing the human verification gate.",
+      "sha256": "dc3954a2284b287002c1f20864b5d01d3a5f9d731b856575562ee6d6c31c3b0f"
+    },
+    {
+      "title": "Terminology - Disambiguation and error correction",
+      "original_url": "http://systems.digital.nhs.uk/data/cui/uig/disambig.pdf",
+      "local_path": "raw/sources/design-guidance/nhs-archived-guidance-2016/disambig.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Retrieved from the UK Government Web Archive after passing the human verification gate.",
+      "sha256": "d68a28464dd4576587453770c3be35a027c47a71233f48658210c5d6900da1d2"
+    },
+    {
+      "title": "Terminology - Post coordination",
+      "original_url": "http://systems.digital.nhs.uk/data/cui/uig/termpostcoord.pdf",
+      "local_path": "raw/sources/design-guidance/nhs-archived-guidance-2016/termpostcoord.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Retrieved from the UK Government Web Archive after passing the human verification gate.",
+      "sha256": "fa5b7a9ba1747826eb571c394593903697512499946ad131582ceffdc44f7b3d"
+    },
+    {
+      "title": "Introduction to handover presentation",
+      "original_url": "http://systems.digital.nhs.uk/data/cui/uig/handpresintro.pdf",
+      "local_path": "raw/sources/design-guidance/nhs-archived-guidance-2016/handpresintro.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Retrieved from the UK Government Web Archive after passing the human verification gate.",
+      "sha256": "dcceec8b99b007fa4861cf45f351e6769e4f2c5c12e48ef67f3bc1d1f9833540"
+    },
+    {
+      "title": "Introduction to handover",
+      "original_url": "http://systems.digital.nhs.uk/data/cui/uig/handoverintro.pdf",
+      "local_path": "raw/sources/design-guidance/nhs-archived-guidance-2016/handoverintro.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Retrieved from the UK Government Web Archive after passing the human verification gate.",
+      "sha256": "bf2a8bbe5d683f07cb28e3ab6f64b9b3a04070c1781574d7c63e9a61e0b7422e"
+    },
+    {
+      "title": "Keyboard shortcuts",
+      "original_url": "http://systems.digital.nhs.uk/data/cui/uig/keyshorts.pdf",
+      "local_path": "raw/sources/design-guidance/nhs-archived-guidance-2016/keyshorts.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Retrieved from the UK Government Web Archive after passing the human verification gate.",
+      "sha256": "6ee3764da54b03137bf9fcc8f8278fbd8b8415325e3480dd1db69160ded75e62"
+    },
+    {
+      "title": "Care pathways conceptual modelling",
+      "original_url": "http://systems.digital.nhs.uk/data/cui/uig/carepathways.pdf",
+      "local_path": "raw/sources/design-guidance/nhs-archived-guidance-2016/carepathways.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Retrieved from the UK Government Web Archive after passing the human verification gate.",
+      "sha256": "ecf40c209e28a022edcda71d4e56d92e19fcb1b2a7f22e1f6df2384acfbde28d"
+    },
+    {
+      "title": "Decision support summary",
+      "original_url": "http://systems.digital.nhs.uk/data/cui/uig/decsupportsumm.ppt",
+      "local_path": "raw/sources/design-guidance/nhs-archived-guidance-2016/decsupportsumm.ppt",
+      "source_type": "ppt",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Retrieved from the UK Government Web Archive after passing the human verification gate.",
+      "sha256": "f16611a28c12bb808f00767231d67e56abeddc1cf6f20d4d1a20105073578d22"
+    },
+    {
+      "title": "Handover requirements spreadsheet",
+      "original_url": "http://systems.digital.nhs.uk/data/cui/uig/cuidesignguide.pdf",
+      "local_path": "raw/sources/design-guidance/nhs-archived-guidance-2016/cuidesignguide.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Retrieved from the UK Government Web Archive after passing the human verification gate.",
+      "sha256": "b8e87e2539a8a7aa4577216f7a3270b1f81ed8a6a07aa0942c33977dd32e8d8b"
+    }
+  ]
+}

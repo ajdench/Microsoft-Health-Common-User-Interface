@@ -1,0 +1,3660 @@
+# Design Guidance -- Clinical Noting in Forms -- Admissions Clerking
+
+## Provenance
+- Source file: `raw/sources/design-guidance/toolkit-bundled-pdfs/Design Guidance -- Clinical Noting in Forms -- Admissions Clerking.pdf`
+- Extracted text: `derived/extracted-text/design-guidance/design-guidance-clinical-noting-in-forms-admissions-clerking.txt`
+- Normalization note: machine-cleaned `pdftotext -layout` output; verify against the PDF for edge cases.
+
+## Extracted Text
+
+Design Guidance
+Clinical Noting in Forms: Admissions Clerking
+
+                            Tuesday, 22 September 2009
+                                        Version 1.0.0.0
+
+                                           Prepared by
+
+PREFACE
+   Documents replaced by this document
+
+   Document Title                                                                                                                  Version
+   None
+
+   Documents to be read in conjunction with this document
+
+   Document Title                                                                                                                  Version
+   Design Guidance – Displaying Adverse Drug Reaction Risks                                                                        1.0.0.0
+
+   Design Guidance – Terminology – Matching                                                                                        1.0.0.0
+
+   Design Guidance – Terminology – Elaboration                                                                                     1.0.0.0
+
+   Design Guidance – Terminology – Display Standards for Coded Information                                                         1.0.0.0
+
+   Design Guidance – Date Display                                                                                                  2.0.0.0
+
+   Design Guidance – Date and Time Input                                                                                           2.0.0.0
+
+This document and/or software (“this Content”) has been created in partnership with the National Health Service (NHS) in England. Intellectual Property
+Rights to this Content are jointly owned by Microsoft and the NHS in England, although both Microsoft and the NHS are entitled to independently exercise
+their rights of ownership. Microsoft acknowledges the contribution of the NHS in England through their Common User Interface programme to this Content.
+Readers are referred to www.cui.nhs.uk for further information on the NHS CUI Programme.
+All trademarks are the property of their respective companies. Microsoft and Windows are either registered trademarks or trademarks of Microsoft
+Corporation in the United States and/or other countries.
+
+© Microsoft Corporation 2009. All rights reserved.
+
+                                    Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                                    Prepared by Microsoft, Version 1.0.0.0
+                                    Last modified on 22 September 2009
+
+TABLE OF CONTENTS
+1    Introduction ....................................................................................................................................1
+    1.1    Customer Need .........................................................................................................................2
+    1.2    Scope ........................................................................................................................................3
+     1.2.1      In Scope...............................................................................................................................4
+     1.2.2      Out of Scope ........................................................................................................................4
+    1.3    Assumptions..............................................................................................................................5
+    1.4    Dependencies ...........................................................................................................................6
+
+2    Admissions Clerking Guidance Overview ...................................................................................7
+    2.1    Rationale Summary ..................................................................................................................7
+    2.2    Summary of Guidance ..............................................................................................................9
+
+3    Entering a List of Note Entries....................................................................................................11
+    3.1    Introduction .............................................................................................................................11
+    3.2    Principles .................................................................................................................................11
+    3.3    Guidelines ...............................................................................................................................12
+     3.3.1      Entering the Clinical Concept ............................................................................................13
+     3.3.2      Dealing with ‘Match Not Found’ .........................................................................................19
+     3.3.3      Entering Additional Details ................................................................................................20
+     3.3.4      Editing and Deleting Entries ..............................................................................................25
+
+4    Revealing and Hiding Sections of a Set of Data .......................................................................28
+    4.1    Introduction .............................................................................................................................28
+    4.2    Principles .................................................................................................................................28
+    4.3    Guidelines ...............................................................................................................................29
+     4.3.1      Accessing Hidden Fields ...................................................................................................29
+     4.3.2      Communicating That There Are Hidden Fields .................................................................30
+     4.3.3      Hiding Fields ......................................................................................................................32
+     4.3.4      Displaying Hierarchically Nested Fields ............................................................................34
+
+5    Required Fields ............................................................................................................................37
+    5.1    Introduction .............................................................................................................................37
+    5.2    Principles .................................................................................................................................37
+    5.3    Guidelines ...............................................................................................................................38
+     5.3.1      Proactively Indicating Required Fields ..............................................................................38
+     5.3.2      Reactively Indicating Required Fields That Have Been Missed ........................................39
+
+6    Displaying Previous Values ........................................................................................................42
+    6.1    Introduction .............................................................................................................................42
+    6.2    Principles .................................................................................................................................42
+
+                                 Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                                 Prepared by Microsoft, Version 1.0.0.0
+                                 Last modified on 22 September 2009
+
+     6.3      Guidelines ...............................................................................................................................43
+      6.3.1        Displaying Previous Values ...............................................................................................43
+      6.3.2        Contextual Attributes to Display for Previous Values ........................................................45
+
+7     Automatic Calculations Data ......................................................................................................47
+     7.1      Introduction .............................................................................................................................47
+     7.2      Principles .................................................................................................................................48
+     7.3      Guidelines ...............................................................................................................................48
+      7.3.1        Displaying Calculated Values ............................................................................................48
+      7.3.2        Displaying Scores Where Values Are Missing ..................................................................52
+
+8     Adding Free Text ..........................................................................................................................54
+     8.1      Introduction .............................................................................................................................54
+     8.2      Principles .................................................................................................................................54
+     8.3      Guidelines ...............................................................................................................................55
+      8.3.1        Add New Free Text ............................................................................................................55
+      8.3.2        Edit Free Text ....................................................................................................................58
+      8.3.3        Required or Recommended Free Text Field .....................................................................60
+
+9     General Form Designs .................................................................................................................61
+     9.1      Introduction .............................................................................................................................61
+     9.2      Principles .................................................................................................................................61
+     9.3      Guidelines ...............................................................................................................................61
+      9.3.1        Use of Standard Fields ......................................................................................................61
+      9.3.2        Labels and Prompts ...........................................................................................................64
+
+10         Document Information .............................................................................................................66
+     10.1          Terms and Abbreviations ...................................................................................................66
+     10.2          Definitions ..........................................................................................................................66
+     10.3          Nomenclature ....................................................................................................................67
+      10.3.1           Body Text.......................................................................................................................67
+      10.3.2           Cross References ..........................................................................................................68
+     10.4          References ........................................................................................................................68
+
+                                    Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                                    Prepared by Microsoft, Version 1.0.0.0
+                                    Last modified on 22 September 2009
+
+1         INTRODUCTION
+    This document provides guidance for the design of User Interface (UI) controls that enable clinical
+    noting, specifically in the area of acute admissions clerking. It describes the area of focus, lists
+    mandatory and recommended guidance points with usage examples and explains the rationale
+    behind the guidance.
+    In recent years, admissions clerking pro-forma standards have been the focus of the UK-based
+    Royal College of Physicians’ (RCP) Health Informatics Unit (HIU), culminating in the 2008 release
+    of record-keeping standards on the topic (see A Clinician’s Guide to Record Standards – Part 2
+    {R1}). Typically, in acute care, the admissions clerking form has been the starting point for
+    documenting the patient’s stay in hospital. In some hospitals, this clerking form will become the
+    cover-sheet for the patient’s progress notes. During the patient’s hospital stay, the admissions
+    clerking documentation is often used as the first point of reference for clinicians unfamiliar with the
+    patient, with sections such as the ‘presenting complaint’ and ‘Past Medical History’ sections
+    providing an important overview of the patient.
+    From an electronic UI design perspective, the admissions clerking pro-forma standards raise a
+    number of interesting challenges. There are some categories of data implied under the RCP
+    standard headings that may be best handled as a small set of fixed choices from which the clinician
+    may choose one or more; whereas other data entry items require the flexibility of free text or a
+    combination of choices and free text. Some of the data entry items imply lists of summarised
+    clinical situations, observations or opinions, such as the patient’s ‘Past Medical History’. These may
+    require the input of some structured data, including dates, durations and encoded clinical concepts,
+    which may help future data queries, but may also need some flexible noting, such as free text
+    entry.
+    Therefore, the admissions clerking form serves as a good exemplar for a set of wider clinical noting
+    user interface issues. The aim of the current guidance is to highlight some of the more general
+    issues and solutions involved in electronic clinical noting and form completion, but specifically
+    within the context of admissions clerking. To this end, the structure of the current guidance
+    document does not mirror the structure of the RCP admissions clerking pro-forma (see Hospital
+    Admission Pro-forma Headings and Definitions {R2}), nor do the illustrations featured within the
+    guidance show a complete admissions clerking form. Designers and developers who wish to
+    develop an electronic admissions clerking interface should use the current guidance when
+    addressing some of the individual UI elements that may comprise the form, but the overall structure
+    of and navigation through the form is outside of the current scope. Conversely, there are some
+    aspects of the current guidance that can apply to other areas of clinical noting, for example, to a
+    discharge form or an interface for recording examination notes.
+
+                                                                                                       Page 1
+                          Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                          Prepared by Microsoft, Version 1.0.0.0
+                          Last modified on 22 September 2009
+
+ To indicate their relative importance, each guideline in this document is ranked by Conformance
+ and by Evidence Rating. Table 1 defines those terms:
+
+ Term                  Definition
+ Conformance           Indicates the extent to which you should follow the guideline when defining your UI implementation. There are
+                       two levels:
+                        Mandatory – An implementation should follow the guideline
+                        Recommended – An implementation is advised to follow the guideline
+
+ Evidence Rating       Summarises the strength of the research defining the guideline and the extent to which it mitigates patient safety
+                       hazards. There are three ratings (with example factors used to determine the appropriate rating):
+                        Low:
+                            Does not mitigate specific patient safety hazards
+                            User research findings unclear and with few participants
+                            Unreferenced usability principles indicate the design is not significantly better than alternatives
+                        Medium:
+                            Mitigates specific patient safety hazards
+                            User research findings clear but with few participants
+                            References old authoritative guidance (for example, from the UK-based National Patient Safety Agency
+                             (NPSA), Institute for Safe Medication Practices (ISMP) or World Health Organization (WHO)) that is
+                             potentially soon to be superseded
+                            Referenced usability principles indicate the design is significantly better than alternatives
+                        High:
+                            Mitigates specific patient safety hazards
+                            User research findings clear and with a significant number of participants
+                            References recent authoritative guidance (for example, from NPSA, ISMP or WHO)
+                            Referenced usability principles indicate the design is significantly better than alternatives
+ Table 1: Conformance and Evidence Rating Definitions
+
+      Note
+      Refer to section 10.2 for definitions of the specific terminology used in this document.
+
+1.1       Customer Need
+ The delivery of safe and efficient patient care requires accurate and complete clinical noting that
+ does not compromise other aspects of clinical welfare.
+ Clinical noting data should be partly or completely structured using an accepted clinical coding
+ method so that data may be retrieved and re-used quickly and safely. It is generally true that an
+ item of clinical data, having being entered once, will then be retrieved many times over. Therefore,
+ effort must be made to ensure that on a range of levels the data supports browsing and searching,
+ and the assembly of subsets of data into sensible context-specific views. The ability of the UI to
+ ‘slice and dice’ data is very important, given the fact that an electronic screen often offers less
+ space than its paper equivalent, and because navigation through the data is often less convenient
+ and intuitive than physically flipping through a stack of paper notes. In the absence of true machine
+ intelligence, this can only be achieved effectively if some of the data is encoded and that sufficient
+ structure is captured during noting. This requirement for structured data encoding may increase the
+ time and effort needed to initially record notes, but it should lead to larger efficiencies during the
+ retrieval and update of these notes. Capturing encoded data, while simultaneously capturing, but
+ separating out details of its associated context, means that a single data item can be safely
+ retrieved in a range of different ways.
+
+                                                                                                                                    Page 2
+                               Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 22 September 2009
+
+ For example, the following data recorded as a block of narrative text may be accurate and
+ complete, but can only be viewed in one way, namely as a block of text:
+       ‘Previously had gangrene (toes on left foot) and ketoacidosis (both last year), diabetes type 1
+       for past 22 years – poor glycaemic control, poor insulin compliance.
+ However, by recording it as follows, as separate encoded statements, the clinician may be able to
+ run a query to find out, for example, whether the patient has suffered from gangrene in the past or
+ find out when the patient was first diagnosed with asthma:
+       Gangrene – toes left foot, occurred March-2008
+       Ketoacidosis, occurred March-2008
+       Diabetes type 1 – from 1987 (approx) – poor glycaemic control, poor insulin compliance
+ It is important to note that the context in which each of these statements has been recorded is very
+ important to interpreting them in a safe manner. For example, if readers of a note that a patient had
+ gangrene did not know the date of the gangrene and/or the context in which it was written (namely
+ ‘Past Medical History’), they could wrongly think that the patient had gangrene at the time of writing
+ the note, which could obviously affect any subsequent thinking about their care.
+ Against this requirement for structured encoded noting, however, we must consider the context and
+ environment in which the clinicians have to complete the form. Training grade doctors, in particular,
+ face great time pressures and at certain points the clinical noting is of secondary importance to
+ actually providing care to the patient. Often they will only have time to write very brief notes, often
+ incorporating shorthand and, if presented with an electronic system, they will follow ‘the path of
+ least resistance’, in that they will choose those options which allow them to do the noting in the
+ shortest time possible, while still accurately documenting the clinical situation.
+
+1.2     Scope
+ In the context of the data that needs to be captured as part of Admissions Clerking (as defined in
+ the RCP Admissions Clerking Standard, Hospital Admission Pro-forma Headings and Definitions
+ {R2}), the guidance produced in this document will address the following Clinical Noting areas:
+       Entering a list of note entries
+       Revealing and hiding sections of a set of data fields
+       Indicating required fields
+       Displaying previous values
+       Automatic calculations
+       Adding free text
+       General form designs
+ It is recognised that there are a number of potential approaches to entering clinical data into an
+ electronic system. For example, the style of entry could range from one that is highly rigid and
+ structured, through to one that is fluid and flexible, such as allowing the clinician to type in or hand
+ write free text. Which style is appropriate may depend in part upon the situation in which the
+ clinician is making the notes or upon the data requirements (for example, should the data be highly
+ structured and encoded).
+ The current guidance focuses upon a style that is semi-structured, allowing some of the flexibility of
+ free-text entry, but also imposing some structure in the form of fixed-choice data selection controls.
+ This is deemed the most appropriate approach given the usage requirements and the level of
+ technological sophistication that is currently available.
+
+                                                                                                    Page 3
+                       Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                       Prepared by Microsoft, Version 1.0.0.0
+                       Last modified on 22 September 2009
+
+ However, this does not aim to prohibit future development of data entry controls that feature a more
+ flexible or, indeed, more constrained style, as long as the usage requirements are satisfied and
+ mandatory guidelines are followed.
+
+1.2.1         In Scope
+ Table 2 lists the functional areas covered in this guidance:
+
+ In Scope Item                      Details
+ Entering a list of note entries    How to enable the clinician to enter lists of information quickly and safely
+
+ Revealing or hiding sections of    How to show that further fields for capturing related data are available for a particular type of data
+ a set of data
+
+ Required fields                    How you indicate that data must be entered into a particular section or field on the form
+
+ Displaying previous values         For example, how to show previously taken Blood Pressure reading(s) when recording a current
+                                    reading for the same patient
+
+ Automatic calculations             How to distinguish between data which has been entered by the user from data that has been
+                                    automatically calculated by the system. Also how to indicate the source of the data used in an
+                                    automatically calculated field, such as Body Mass Index (BMI)
+
+ Adding free text                   How to enable the clinician to add free text notes to any item on the form
+
+ General form designs               How to employ standard controls in a form
+ Table 2: In Scope Requirements
+
+ Also considered was the notion of how to communicate certain default contextual information to the
+ clinician as they are recording notes. For example, such ‘soft defaults’ could include that a clinical
+ statement applies to the patient as opposed to another family member, unless stated otherwise.
+ Another default could be that a problem represents a new rather than an ongoing clinical episode.
+ However, following early design analysis, the conclusion was that such ‘soft defaults’ could be
+ captured and communicated through the use of section headings and choice of clinical terms
+ entered by the clinician.
+ For example, if the clinician were to record the phrase ‘Family history of asthma’, it is clear that the
+ clinical statement applies to other family members, rather than necessarily to the patient. Likewise,
+ if the clinician enters ‘asthma’ under the heading ‘Family history’, the clinical statement does not
+ necessarily apply to the patient, but instead applies to members in their family.
+
+1.2.2         Out of Scope
+ This section defines areas that are not covered in this guidance. Although there may be specific
+ risks associated with these areas that are not addressed in this guidance, it is likely that the
+ principles in this guidance will extend to admissions clerking in many of the areas listed below.
+ Table 3 lists the subject areas that are not covered in this guidance:
+
+ Out of Scope Item                               Details
+ Entering frequencies                            Entering the frequency with which clinical events occur, such as ‘weekly’ or ‘three times
+                                                 a day’.
+
+ Summarising multiple occurrences of a           Instead of entering multiple occurrences of a clinical situation multiple times into the
+ clinical situation                              form, the clinician can just enter the term once and record next to it how many times it
+                                                 occurred. For example, instead of recording ‘myocardial infarction, 1994’, ‘myocardial
+                                                 infarction 1998’, record ‘myocardial infarction x 2, 1994, 1998’.
+
+ Entering tabular data                           Entering data into cells in a table.
+
+                                                                                                                                      Page 4
+                               Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 22 September 2009
+
+ Out of Scope Item                               Details
+ Displaying edit history                         For each item of data, display:
+                                                  If it has been edited (after having been saved to record)
+                                                  The previous versions of the edits
+                                                  The relevant context of the edits, such as the date and author of the edit
+
+ Browsing terminology hierarchy                  Allowing the clinician to browse for SNOMED CT terms by navigating through its
+                                                 hierarchical structure. For example, the clinician could select ‘fracture of forearm’, and
+                                                 then browse down to a more specific instance of the term, such as ‘fracture of radius’.
+
+ Manipulating subsets (R4 guidance update)       Allowing the clinician to choose which subsets the system searches when they enter
+                                                 clinical phrases to be matched against SNOMED CT terms.
+
+ Linking between concepts                        Allowing the clinician to indicate links between concepts. For example, linking a
+                                                 patient’s diabetes with their ketoacidosis.
+
+ ‘Free text parsing’                             Allowing the clinician to enter text from which the system matches SNOMED CT
+                                                 expressions.
+ Table 3: Out of Scope Requirements
+
+      Note
+      Listing an item as out of scope does not classify it as unimportant. Project time and resource constraints
+      inevitably restrict what can be in scope for a particular release. It is possible that items out of scope for
+      this release may be considered for a future release.
+
+1.3       Assumptions
+ ID       Assumption
+ A1       The structured terminology used for this guidance will be SNOMED CT.
+
+ A2       Appropriate subsets within SNOMED CT will be available.
+
+ A3       This guidance applies to computer-screen-based applications that allow dynamically changing screen views, linked into a
+          database. It does not apply to mobile devices, electronic paper or voice-recognition software although some of the principles
+          that apply in the current guidance could also apply to applications delivered by those types of mechanism.
+
+ A4       The RCP standards addressing record keeping in acute admissions will be applied to the creation of a pro-forma (A
+          Clinician’s Guide to Record Standards – Part 2 {R1} and Hospital Admission Pro-forma Headings and Definitions {R2}).
+
+ A5       The data fields and options populating the form will be provided by an appropriate clinical authority.
+
+ A6       The clinician records the data in front of the patient or soon afterwards at a workstation.
+
+ A7       Suppliers who implement this guidance in their designs should also follow relevant national or international accessibility
+          standards and guidelines. For further details see Design Guidance – Accessibility Principles {R3}.
+ Table 4: Assumptions
+
+                                                                                                                                       Page 5
+                              Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 22 September 2009
+
+1.4      Dependencies
+ ID       Dependency
+ D1       The availability of appropriate data sets, for example, SNOMED CT subsets and clinical content service archetypes.
+
+ D2       The following design guidance documents (changes in these documents may affect the current guidance):
+           Design Guidance – Terminology – Matching
+           Design Guidance – Terminology – Elaboration
+           Design Guidance – Terminology – Display Standards for Coded Information
+           Design Guidance – Date and Time Input
+           Design Guidance – Date Display
+           Design Guidance – Displaying Adverse Drug Reaction Risks
+           Design Guidance – Recording Adverse Drug Reaction Risks
+ Table 5: Dependencies
+
+                                                                                                                                Page 6
+                            Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                            Prepared by Microsoft, Version 1.0.0.0
+                            Last modified on 22 September 2009
+
+2         ADMISSIONS CLERKING GUIDANCE OVERVIEW
+    As outlined in section 1, the current guidance addresses a set of data entry UI mechanisms that
+    can be employed in the context of completing an admissions clerking form. In doing so, it will show
+    not only how to feature standard UI fields, but also how to employ some specialised data entry field
+    structures. In this way, the admissions clerking form is used simply as an exemplar that illuminates
+    a set of wider clinical noting user interface challenges.
+    The guidance covers a range of data entry situations relevant to admissions clerking, starting with
+    how to record a list of clinical note entries quickly and easily, such as is needed when writing a
+    ‘Past Medical History’ (see section 3). The sections that follow section 3 then address a number of
+    other issues associated with form entry.
+    The use of standard fields is covered in section 9 and is largely drawn from well established UI
+    style guidance, and therefore was not the subject of any design analysis.
+       Note
+       The guidance in that section does not prohibit the use of non-standard controls; instead, it demonstrates
+       how standard controls should be used, if the designer chooses to use them.
+
+    Throughout the various sections, the current document will indicate to which of the RCP
+    admissions clerking headings the specific guidance can apply, because data items with the various
+    RCP headings will demand different entry mechanisms. For example, the guidance that addresses
+    the entry of a list of note entries can be applied to the RCP ‘Past Medical History’ and ‘Problem list’
+    headings. For a more thorough discussion of the use of RCP headings, see A Clinician’s Guide to
+    Record Standards – Part 2 {R1}.
+       Important
+       The visual representations used within this document to display the guidance are illustrative only. They
+       are simplified in order to support understanding of the guidance points. Stylistic choices, such as colours,
+       fonts or icons are not part of the guidance and unless otherwise specified are not mandatory requirements
+       for compliance with the guidance in this document.
+
+2.1       Rationale Summary
+    The rationale for the current guidance draws on several pieces of evidence.
+    Research:
+        Secondary research:
+               Existing guidelines and standards
+               UI best practice
+               Clinical noting practice
+        Primary research:
+               Interviews with healthcare professionals, including doctors
+               A series of usability tests where we iteratively updated our designs (implemented in a
+                set of prototypes) and tested them, a process often labelled Rapid Iterative Test
+                Evaluation (RITE). Each design underwent up to five iterations, with a range of
+                clinicians participating in each set of tests
+        Regular consultation with experts:
+               A panel of clinical experts
+               A technical audience (developers)
+
+                                                                                                              Page 7
+                          Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                          Prepared by Microsoft, Version 1.0.0.0
+                          Last modified on 22 September 2009
+
+Usability Principles (see APPENDIX A for details on these principles):
+    Nielsen’s usability heuristics
+    Shneiderman’s eight golden rules of interface design
+    ISO 9241: Characteristics of presented information (taken from ISO 9241-10: 1996
+     Ergonomic requirements for office work with visual display terminals (VDTs) -- Part 10:
+     Dialogues principles {R8})
+Existing Standards:
+    BS ISO 9241-14:1997 Ergonomic requirements for office work with visual display terminals
+     (VDTs) -- Part 14: Menu dialogues {R5}
+    BS ISO 9241-17:1998 Ergonomic requirements for office work with visual display terminals
+     (VDTs) -- Part 17: Form-filling dialogues {R6}
+    BS ISO 9241-12:1999 Ergonomic requirements for office work with visual display terminals
+     (VDTs) -- Part 12: Presentation of information {R7}
+    BS ISO 9241-10:1996 Ergonomic requirements for office work with visual display terminals
+     (VDTs) -- Part 10: Dialogues principles {R8}
+Evolving Standards:
+    Design Guidance – Date Display {R11}
+    Design Guidance – Date and Time Input {R12}
+    Design Guidance – Terminology – Matching {R13}
+    Design Guidance – Terminology – Elaboration {R14}
+    Design Guidance – Terminology – Display Standards for Coded Information {R15}
+    Design Guidance – Recording Adverse Drug Reaction Risks {R16}
+    Design Guidance – Displaying Adverse Drug Reaction Risks {R17}
+
+                                                                                               Page 8
+                    Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                    Prepared by Microsoft, Version 1.0.0.0
+                    Last modified on 22 September 2009
+
+2.2       Summary of Guidance
+ Table 6 summarises the content of this document by outlining each area of guidance (along with a
+ cross reference to the relevant section) and providing a visual example to illustrate how it might be
+ implemented.
+       Notes
+        Table 6 lists possible clerking data to which the guidelines may apply. These are not intended to be
+            exhaustive. The guidance may apply to other data which is not outlined in the table.
+        Design illustrations are best viewed on a screen in colour.
+
+ Areas of Guidance                     Visual Summary
+ Section 3 – Entering a list of note
+ entries
+
+ Possible clerking data:
+  Past Medical History
+  Problem list
+
+ Section 4 – Revealing and Hiding
+ Sections of a Set of Data
+
+ Possible clerking data:
+  Observations/ findings
+       Cardiovascular system
+       Respiratory system
+       Abdomen
+       Genitourinary
+       Nervous system
+       Musculoskeletal system
+       Skin
+
+                                                                                                          Page 9
+                               Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 22 September 2009
+
+Areas of Guidance                     Visual Summary
+Section 5 – Required Fields
+
+Possible clerking data:
+ Presenting complaint
+ History of presenting complaint
+
+Section 6 – Displaying Previous
+Values
+
+Possible clerking data:
+ Vital signs
+
+Section 7 – Automatic
+Calculations Data
+
+Possible clerking data:
+ Glasgow Coma Scale
+ BMI
+ Vital signs
+ Duration/date
+
+Section 8 – Adding Free Text
+
+Possible clerking data:
+ Observations/ findings
+    Cardiovascular system
+    Respiratory system
+    Abdomen
+    Genitourinary
+    Nervous system
+    Musculoskeletal system
+    Skin
+
+Section 9 – General Form Designs
+
+Possible clerking data:
+ Any of the data areas
+
+Table 6: Summary of Guidance
+
+                                                                                                 Page 10
+                               Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 22 September 2009
+
+3         ENTERING A LIST OF NOTE ENTRIES
+
+3.1       Introduction
+    These design guidelines address the creation of any list that comprises brief notes about a set of
+    clinical situations, where efficiency and accuracy are prioritised over capturing detail.
+    This guidance applies to situations where the clinician is making a list of clinical items, such as
+    problems or procedures, where each clinical note entry is summarised in a concise, but accurate
+    format.
+    The designs shown in this guidance aim to allow a clinician to quickly and safely make a list of
+    entries.
+    The basic guidelines can apply to the following, amongst other areas:
+        Past medical history
+        Problem list
+        Summary of procedures
+        Action list
+    In some of the cases, further customisation may be required, but the basic guidelines will apply to
+    all of them.
+    The following list outlines the main user requirements for the feature addressed by the guidance in
+    this section. These user requirements were elicited following discussions with a panel of expert
+    clinicians and a series of interviews with training grade doctors:
+        User must be able to enter text and match an appropriate SNOMED CT concept in the
+         context of the admissions clerking form
+        User must be able to match multiple SNOMED CT concepts sequentially under a single
+         heading or subheading within the admissions clerking form
+        User must be able to elaborate a single concept (or post-coordinated expression ) with free
+         text
+        User must be able to delete matched concepts within the form before it is committed to the
+         record
+        Users must be aware of the fixed choice attribute options available to them when they are
+         entering free text, for example for selecting laterality of a body site
+        User must be encouraged to select or enter encoded options, where possible
+        If appropriate, allow users to specify duration and dates for a concept
+
+3.2       Principles
+    The following key principles inform the guidance in this section:
+        Improving speed of entry whist maintaining accurate data:
+              The list could be fairly long and therefore speed, in addition to accuracy, is a key factor.
+              Unlike other situations, such as during a detailed physical examination, the UI will not
+               require the clinician to enter a lot of detail, structured or otherwise.
+              Instead, the emphasis is on capturing the main clinical details and moving on to the
+               next entry as quickly as possible.
+
+                                                                                                       Page 11
+                         Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                         Prepared by Microsoft, Version 1.0.0.0
+                         Last modified on 22 September 2009
+
+       Encourage structured (encoded) data entry:
+            Given the potential reuse of the data (for example, during the patient’s hospital stay),
+             capturing the accurate meaning of the clinical entries plus any relevant context is
+             essential to avoid its later misinterpretation, which could compromise the care delivered
+             to the patient.
+            Therefore, the designs also encourage structured (encoded) data entry in order to
+             ensure accurate, unambiguous data entry.
+       Arrange entries so that they are easy to scan visually. As clinicians are building up a list,
+        which could be ordered chronologically or otherwise, it will be necessary for them to scan
+        this as they are entering it, in order to:
+            Maintain an ordered ‘picture’ in their mind
+            Ensure that they have not missed or duplicated anything
+       Screen design heuristics:
+            Flexibility and efficiency of use
+            Aesthetic and minimalist design
+            Error prevention
+
+3.3     Guidelines
+ The guidelines in this section are based around the following actions:
+       Entering the clinical concept
+       Entering additional details
+       Editing the main clinical concept or the additional details
+       Deleting an entry
+ This assumes a distinction between the main clinical concept and its additional details. Our
+ research (see APPENDIX B) has shown that clinicians understand this distinction, in the specific
+ context of entering a ‘Past Medical History’ list, and find it intuitive to enter one or two words which
+ describe the clinical situation and then add some further details associated with that situation.
+ Also, our analyses showed that it would be more efficient and intuitive for clinicians to enter the
+ additional details for a concept immediately after entering it, rather than entering all the main
+ concepts followed by all their associated details. This ordering was shown to be intuitive in the user
+ testing (see APPENDIX B) we later conducted.
+ In the context of the current guidance, editing the concept and/or its additional details would only be
+ done before the data was committed to record and shared with other clinicians. This editing could
+ be done, for example, if the patient told the clinician some additional facts or corrected details
+ during the course of the noting, or if the clinician decided immediately after writing an entry that it
+ would be better expressed in a different manner. Therefore, this guidance is not covering the action
+ of updating data.
+ Likewise, guidance relating to deleting entries in the list would only apply to data that had not yet
+ been committed to record.
+ Editing and deletion of data after it has been committed to record, and thus potentially seen by
+ other clinicians, may also require a tight system of audit which itself could require warnings and
+ other relevant interface controls. However, these situations are not covered in the current guidance.
+ It is assumed in this guidance that the clinician will be recording multiple entries sequentially.
+ Finally, this guidance only addresses the action of entering data and the display of data during its
+ entry. It does not cover how the data should be displayed at a later time.
+                                                                                                      Page 12
+                       Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                       Prepared by Microsoft, Version 1.0.0.0
+                       Last modified on 22 September 2009
+
+3.3.1       Entering the Clinical Concept
+ The first action that the clinician will perform will be to enter a clinical concept into the list, prior to
+ entering associated details.
+ This guidance includes:
+       Entering and encoding the clinical concept
+       Entering and encoding the next clinical concept
+       Displaying common matches (where appropriate)
+       Handling ‘match not found’
+
+                                                                                                              Evidence
+ ID           Guideline                                                                         Conformance
+                                                                                                              Rating
+ Entering the Clinical Concept
+ CNA-0010     Provide a mechanism into which the user can type in list of clinical phrases      Mandatory     High
+              while the system returns matched terms from the appropriate terminology
+
+ CNA-0020     Provide a single field into which the user can type a clinical term (search       Recommended   High
+              entry field)
+
+ CNA-0030     Provide a visible cursor in the search entry field when the field is in focus     Mandatory     High
+              (without a matched term)
+
+ CNA-0040     Do not display associated fields, such as an ‘Additional text’ field, until the   Recommended   High
+              user has searched for and selected a clinical term
+
+ CNA-0050     Progressively match terms as the user types in text                               Recommended   High
+
+ CNA-0060     Allow search results to be displayed as they are matched against the text         Recommended   Medium
+              entered by the user
+                       Note
+                       This may mean that the list needs to reorder itself.
+
+ CNA-0070     If the search facility features progressive matching, do not feature a search     Recommended   High
+              button
+
+ CNA-0080     If the search facility does not feature a search button, feature a search icon    Recommended   High
+              instead (for example, a magnifying glass)
+
+ CNA-0090     If there is a significant delay between the user triggering the matching      Recommended       High
+              process and the system returning matches, provide an indication that there is
+              search activity occurring until matches are returned
+                       Note
+                       Any time period longer than a second could be defined as a
+                       significant delay.
+
+ CNA-0100     Indicate that search activity is occurring by providing an animation              Recommended   Medium
+
+ CNA-0110     Display the activity animation in a position that is prominent, but that does     Recommended   High
+              not visually obstruct the search facility
+
+ CNA-0120     Provide sufficient contrast (shading and/or colour) in order to ensure that the Recommended     Low
+              search entry field is sufficiently prominent
+
+ CNA-0130     Label the search entry field with appropriate instructional text (for example,  Mandatory       High
+              inform the user that there will be further fields appearing into which they may
+              add additional details)
+
+                                                                                                                     Page 13
+                          Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                          Prepared by Microsoft, Version 1.0.0.0
+                          Last modified on 22 September 2009
+
+CNA-0140    Feature a prompt within the search entry field                                       Recommended   Medium
+
+CNA-0150    Provide additional prompting text which communicates what the user should            Recommended   High
+            do
+
+CNA-0160    Display additional prompting text immediately below the search entry field in        Recommended   Medium
+            a low prominence text size and colour
+
+CNA-0170    Provide an example in the additional prompting text of what the user can             Recommended   High
+            type into the search entry field
+
+CNA-0180    Do not display multiple search entry fields simultaneously in a single list,         Recommended   Medium
+            except where the user has gone back in to edit a matched term
+
+CNA-0190    Left-align the search entry field                                                    Recommended   Medium
+
+CNA-0200    Ensure that the search entry field can display 32 characters’ simultaneously         Recommended   High
+                     Note
+                     Use the character ‘M’ as the standard character width.
+
+CNA-0210    Create a list of common matches from within the clinical terminology                 Recommended   High
+            (SNOMED CT) against which the user can search for matches
+
+CNA-0220    During the searching process, visually distinguish the common matches from Recommended             High
+            the remaining matches
+
+CNA-0230    Display the common matches above the remaining matches                               Recommended   High
+                     Notes
+                     This guideline is a workaround in the absence of a terminology
+                     service that can provide well-ranked matching.
+                     Common matches should be determined by the relevant clinical
+                     authority.
+
+CNA-0240    Provide labels that distinguish common matches from the remaining matches Recommended              High
+
+CNA-0250    Visually distinguish prompt text in the field from data typed into the field         Mandatory     High
+
+CNA-0260    Distinguish prompt text in the field by displaying it in grey italic text            Recommended   High
+
+CNA-0270    Do not feature example data in the prompt text in the field                          Recommended   Medium
+
+CNA-0280    If the field features an in-field prompt, ensure that this prompt is still visible   Mandatory     High
+            when the cursor moves into the field (but disappears when text is typed into
+            the field)
+
+CNA-0290    After the user has selected a matched term, automatically move the focus to Recommended            High
+            the next field in the tab order
+
+CNA-0300    After the user has selected a matched term, display the term in bold text            Recommended   High
+
+CNA-0310    After the user has selected a matched term, do not truncate it                       Mandatory     High
+
+Entering Next Clinical Concept
+CNA-0320    Just after the user has selected a matched term, automatically display a new Recommended           Medium
+            field for entering the next list entry
+
+CNA-0330    Next entries will be displayed directly below the preceding entry                    Recommended   High
+
+                                                                                                                      Page 14
+                         Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                         Prepared by Microsoft, Version 1.0.0.0
+                         Last modified on 22 September 2009
+
+Usage Examples
+                                                                                        Example of the selected search entry
+
+                                                                                       field with a visible cursor (CNA-0020,
+                                                                                        CNA-0030)
+
+                                                                                        Example of incorrect display of
+
+                                                                           
+                                                                                        additional attributes prior to matching
+                                                                                        with a clinical term (CNA-0040)
+
+                                                                                        Example of progressive matching, with
+
+                                                                           
+                                                                                        animation in place of the search icon,
+                                                                                        and indicating ‘Searching’ within the
+                                                                                        results field (CNA-0050, CNA-0060,
+                                                                                        CNA-0070, CNA-0080, CNA-0090,
+                                                                                        CNA-0100, CNA-0110)
+
+Close up on the animation:
+
+                                                                                        Example of a shaded area surrounding
+
+                                                                            
+                                                                                        the search field, with in-field prompt
+                                                                                        text as the label and instructional text
+                                                                                        below the field (CNA-0120, CNA-0130,
+                                                                                        CNA-0140, CNA-0150, CNA-0160,
+                                                                                        CNA-0170, CNA-0190)
+
+                                                                                        Example of incorrectly displaying
+
+                                                                              
+                                                                                        multiple search fields prior to matching
+                                                                                        any clinical terms (CNA-0180)
+
+                                                                                                                         Page 15
+                             Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 22 September 2009
+
+                                                           Example showing ‘Common matches’
+                                                           and ’All matches’ within a progressive
+
+                                                          search (CNA-0210, CNA-0220,
+                                                           CNA-0230, CNA-0240)
+
+                                                           Example of in-field prompt text within
+
+                                               
+                                                           the search field in grey, italic text and
+                                                           with the cursor (CNA-0250, CNA-0260,
+                                                           CNA-0280)
+
+                                                           Example showing a matched term in
+
+                                               
+                                                           bold and the addition of a new search
+                                                           field below (CNA-0320, CNA-0330)
+
+                                                                                            Page 16
+Design Guidance – Clinical Noting in Forms: Admissions Clerking
+Prepared by Microsoft, Version 1.0.0.0
+Last modified on 22 September 2009
+
+Alternative Technology Implementation
+The designs illustrating the guidance preceding this example assume a Web-based solution (such as a rich Internet application) in
+which the control largely behaves in the same way as a list control in a desktop application. However, the guidance could also apply if
+one was using a technology for desktop applications (such as Windows Forms).
+
+                                                                                                     In this case, we would recommend
+
+                                                                                       
+                                                                                                     providing an automatic pop-up window
+                                                                                                     for capturing the associated attribute
+                                                                                                     details, including duration and
+                                                                                                     additional free text, which would
+                                                                                                     populate part of the list.
+
+Example of a Windows Forms version of the entry mechanism, featuring a pop-up window
+instead of an expanding area below the search field
+
+Rationale
+Design Analysis:
+During the design analysis we considered several ways in which a clinician could enter a list of clinical statements quickly and easily.
+The design implied by the guidance above has the following advantages:
+ Provides clinicians with the flexibility to enter as many list items as they need
+ Minimises the number of key presses that the clinician needs to perform
+ Maintains the visual focus, so that a clinician can intuitively attend to the entry fields
+A key usability principle is to minimise the visual clutter so that a clinician’s attention is focused upon the most appropriate field (see
+APPENDIX A). Therefore, the design does not show any further associated fields until the main concept has been entered. Also, as
+soon as the clinician has selected a term, the focus should move automatically to the next field, in order to minimise the number of key
+presses that the clinician must make and to ensure that the process flows smoothly. Finally, the design only features one single entry
+field at a time (except where the clinician has gone back to edit a previously entered item). This is to prevent confusion as to which
+field the clinician should enter data into, which could result in delays.
+In addition to the field label (in-field prompt), the design provides additional instructional text, given that clinicians may not be aware of
+what to do during their initial use of the form. This was supported by the user testing (see APPENDIX B).
+The design shows the list entry items vertically stacked, rather than oriented horizontally, because items are easier to scan down when
+vertically stacked (see the Guide to Presentation of tables and graphs {R10}).
+
+                                                                                                                                       Page 17
+                              Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 22 September 2009
+
+Desk Research:
+The mechanism for SNOMED CT matching, including the entry field size and the visual display used for distinguishing common
+matches with other matches are based upon previous Microsoft Health Common User Interface (CUI) guidance. For example, the
+width of the search entry field (32 characters) was determined in Design Guidance – Terminology – Matching {R13}, based upon
+analysis of the lengths of SNOMED CT terms. Additionally, the display of the encoded term is also drawn from previous Microsoft
+Health CUI guidance (see Design Guidance – Terminology – Display Standards for Coded Information {R15}).
+The use of ‘common’ items is sometimes used in existing paper forms in order to provide quicker entry and prompting (for example, in
+Hospital Admission Pro-forma Headings and Definitions {R2}). This feature is also supported by an international standard, which
+states that if the “frequency of option use is known (or can be determined) and option groups are small (eight or less), the most
+frequently used options should be placed first” in a menu (see Menu dialogues {R5}).
+In a recent paper outlining principles for effective clinical decision support, the authors referenced research that suggested clinicians’
+satisfaction with a clinical system markedly declines if the time taken to provide system feedback exceeds one second. The authors
+therefore suggested ‘subsecond screen flips’ (see Ten Commandments for Effective Clinical Decision Support: Making the Practice of
+Evidence-based Medicine a Reality {R4}). This supports the need for an animation to appear if the screen change exceeds one
+second {R4}. The need for “timely and perceptible feedback” associated with “normal task performance” which is “non-intrusive” and
+does not “distract the user from the task” is also supported by international standards (see User guidance {R9}). Another standard
+indicates that “if the system response to option execution” is delayed, “an indication should be provided to the user that the system is
+processing the request” {R5}. This standard defines a delay as being “more than 3 s[econds] after initiation” {R5}, although the current
+guidance authors argue that the need to reduce frustration on the part of the clinician would point to providing the indication quicker
+than 3 seconds.
+International standards also recommend that prompts (“user guidance information”) should be “readily distinguishable from other
+displayed information” and that such messages “should provide the user with specific information relative to the task context rather
+than generic messages” {R9}. It also states that such text “should not disrupt the user’s task and the continuation of the dialogue”
+{R9}.
+The need for a visible cursor is also underlined by a relevant standard, which states that “cursor position should always be clearly
+visible if it is within the currently displayed portion of the form” (see Form-filling dialogues {R6}).
+User Research:
+A series of iterative usability tests (see APPENDIX B) showed that:
+ Failure to provide a visible cursor encourages unnecessary mouse clicks and causes confusion
+ Some clinicians would try to (incorrectly) type in a full sentence into the search entry field, prior to the introduction of progressive
+  matching and prompting text
+ Where progressive matching had been implemented, providing a search button confuses clinicians
+ Failure to provide an indication of search activity leads to unnecessary mouse clicks and user frustration
+ Initially, clinicians can find it difficult to find the search entry field if it is not sufficiently prominent in relation to other fields
+ Clinicians expected a list of common ‘Past Medical History’ matches and found it difficult to find a common match when there was
+  no separate list of common matches
+Speed is a priority factor when completing an admissions clerking form. The UI should be geared towards reducing the time that it
+takes to return matched results
+Hazard Risk Analysis Summary:
+   Potential Hazards:                                                         Mitigations:
+    Clinician tries to enter text that does not match the encoding  Provide progressive matching and instructional text
+     terminology
+    Mechanism is so time consuming that the clinician does not  Minimise number of user actions, such as number of
+     have sufficient time to complete the form                    keystrokes
+
+                                                                                                                                               Page 18
+                                Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                                Prepared by Microsoft, Version 1.0.0.0
+                                Last modified on 22 September 2009
+
+3.3.2        Dealing with ‘Match Not Found’
+ This section addresses how the UI should behave, and what options it should offer, if clinicians
+ cannot find the term for which they are searching. This guidance has implications beyond the scope
+ of entering a list, and could apply to any matching of encoded terminology.
+
+                                                                                                                              Evidence
+ ID               Guideline                                                                             Conformance
+                                                                                                                              Rating
+ CNA-0340         Clearly indicate when no matches have been found                                      Mandatory             High
+
+ CNA-0350         Provide a control that allows the user to retain the unencoded text in the form       Mandatory             High
+
+ CNA-0360         Provide a message that instructs users to try to select a more general term, but      Recommended           Medium
+                  which also instructs them that if they cannot find anything that is appropriate,
+                  then they are to activate the control that retains the unencoded text
+
+ CNA-0370         In the message, communicate to the user that retaining the unencoded text is          Recommended           Medium
+                  not recommended
+
+ CNA-0380         Display the message in the same location as the results would otherwise be            Recommended           High
+                  displayed
+
+ CNA-0390         If the user activates the control that retains the unencoded text, display the text   Recommended           High
+                  in normal weight
+
+ Usage Examples
+                                                                                                        Example showing ‘No matches
+
+                                                                                                       found’ within the results field
+                                                                                                        (CNA-0340, CNA-0350, CNA-0360,
+                                                                                                        CNA-0370, CNA-0380)
+
+                                                                                                        Example showing an unmatched
+
+                                                                                       
+                                                                                                        term, identified as unencoded by
+                                                                                                        not being bold (CNA-0390)
+
+ Rationale
+ Design Analysis:
+ Given that the encoding terminology is not infinite, nor is complex post-coordination possible given the current technological limitations,
+ there will be occasions where clinicians will want to match a single term that does not exist in the terminology. In this case, it will be
+ necessary to provide a mechanism that allows them to save the text, but not as an encoded term.
+ User Research:
+ Clinicians who were shown a design (see APPENDIX B) that illustrates this guidance understood what it meant and what they should
+ do.
+
+                                                                                                                                     Page 19
+                              Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 22 September 2009
+
+ Hazard Risk Analysis Summary:
+      Potential Hazards:                                                 Mitigations:
+       Clinicians select a sub-optimal term because they cannot          Allow users to enter the exact phrase they seek, but as free
+        find the exact term that they seek                                 text
+       Clinicians do not make an entry because they cannot find          Allow users to enter the exact phrase they seek, but as free
+        the exact term that they seek                                      text
+       Clinicians choose to save free text, when there is an             Provide progressive matching
+        acceptable term available in the terminology                      Provide a message that warns that saving free text is not
+                                                                           recommended and that entries are monitored for data quality
+
+3.3.3         Entering Additional Details
+ In addition to entering an encoded concept, it is often necessary to record some additional details,
+ for example dates, durations and free text to elaborate the description of the situation. In the
+ context of admissions clerking, this guidance focuses upon entering the duration and dates of the
+ clinical situation that is being summarised, in addition to entering free text which elaborates the
+ main concept. However, this guidance could also apply to other attribute fields, depending upon the
+ clinical noting need.
+       Note
+       In this context, the term ‘attribute’ refers to a concept which in some way further describes, characterises
+       or contextualises another concept. For example, ‘severe’ could be an attribute of ‘gastroenteritis’, as could
+       the date on which it occurred.
+
+ This guidance includes:
+        Entering duration and/or date(s)
+        Entering free text elaboration
+        Entering other structured attributes (including additional fields for capturing context-specific
+         or concept-specific attribute data)
+        Matching SNOMED CT qualifiers
+
+                                                                                                                            Evidence
+ ID               Guideline                                                                            Conformance
+                                                                                                                            Rating
+ Associated Attribute Fields (General)
+ CNA-0400         Provide a mechanism which allows the user to type in attribute data associated       Mandatory            High
+                  with the clinical phrases which they are entering
+
+ CNA-0410         As soon as the user has selected a suitable matched term, automatically display      Recommended          High
+                  the associated attribute fields
+
+ CNA-0420         Upon the user selecting the matched term, display corresponding attributes fields Recommended             Medium
+                  plus a field for entering additional text
+
+ CNA-0430         Slightly indent the attributes and free text field                                   Recommended          Medium
+
+ CNA-0440         Feature labels for all the corresponding attributes and additional text fields       Mandatory            High
+
+ CNA-0450         Display associated attribute field labels as in-field prompt text                    Recommended          Medium
+
+ CNA-0460         Present important structured data fields before the additional text field in the     Recommended          Medium
+                  tabbing order
+
+ CNA-0470         Upon moving the focus away from the associated attribute fields, the attribute       Recommended          High
+                  fields become hidden
+
+                                                                                                                                   Page 20
+                               Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 22 September 2009
+
+CNA-0480   Upon hiding the associated attribute fields, display the data in these fields              Recommended   High
+           entered to the right of the main concept
+
+CNA-0490   If the width of the displayed associated attribute data exceeds the width available Recommended          High
+           to the right of the main concept, wrap the text
+
+CNA-0500   Ensure that the user can navigate through the fields using keyboard tabbing, both Recommended            High
+           forwards and backwards
+
+Entering Duration and/or Dates
+CNA-0510    In the case of the ‘Past Medical History’, allow the user to enter the duration           Mandatory     High
+           and/or dates when the clinical situation occurred
+
+CNA-0520   Provide an entry field into which the user can type the duration and/or dates              Recommended   High
+
+CNA-0530   Provide suggested matches immediately below the ‘Duration and/or date(s)’ field, Recommended             High
+           as the user types in the field, which the user can select in order to populate the
+           field
+
+CNA-0540   Ensure that matches are only returned when:                                                Recommended   High
+               A minimum number of letters have been entered
+               The matched terms are sufficiently similar to the input text
+           See Design Guidance – Terminology – Matching {R13} for further details about
+           matching.
+
+CNA-0550   Do not feature a drop-down control button in the 'Duration and/or Dates' field             Recommended   High
+
+CNA-0560   Allow the user to type in text descriptions of duration and date(s) (for example,          Recommended   High
+           ‘past’, ‘last’, ‘for’, ‘during’)
+
+CNA-0570   Ensure that the UI can recognise and match a set of simple duration and date               Recommended   High
+           ‘natural language’ constructs
+                     Note
+                     In this instance, ‘natural language’ refers to words which give a temporal
+                     context to dates and durations, such as ‘past’, ‘last’ or ‘for’. Additionally,
+                     natural language terms could also include approximate periods of time,
+                     such as ‘summer’ or ‘Christmas’.
+
+CNA-0580   If there is an exact match between the user’s input text and a matched duration            Recommended   High
+           or date construct, automatically select the match
+
+CNA-0590   After a match has been made, the UI should display a confirmation of the                   Recommended   High
+           duration and/or date(s) in terms of a formal structure, such as:
+            Start date or time
+            End date or time
+            Duration
+
+CNA-0600   Label the various categories of duration and date displayed in the confirmation,           Recommended   High
+           such as:
+            ‘From’
+            ‘To’
+            ‘For’
+
+CNA-0610   Display the duration and/or date(s) confirmation display to the right of the input         Recommended   Medium
+           field
+
+CNA-0620   Where appropriate, indicate where duration and date data are approximate (for              Recommended   High
+           example, if the user writes ‘past 10 years’, a start date of ‘1999’ would be
+           assumed to be approximate, and should feature the suffix ‘approximate’ in
+           parentheses)
+
+                                                                                                                           Page 21
+                        Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                        Prepared by Microsoft, Version 1.0.0.0
+                        Last modified on 22 September 2009
+
+CNA-0630    Provide access to a control for selecting duration and/or dates from a menu or            Recommended          Low
+            similar mechanism
+
+CNA-0640    The display-version of the associated attribute data should be formatted thus:            Recommended          Medium
+             Arrange horizontally (that is, in a line or multiple wrapped lines)
+             Separate each chunk of data with a semi colon
+             Display calculated or encoded data in bold text
+             Display the calculated confirmation of the duration and/or date(s) data, and
+              not the user-matched text
+            Do not provide a label for the additional text
+
+Entering Additional Free Text
+CNA-0650    Provide a field into which the user can enter additional free text                        Mandatory            High
+
+CNA-0660    If there is a dedicated additional free text field, ensure that it is clearly labelled,   Mandatory            High
+            for example, ‘Enter additional text’)
+
+CNA-0670    Ensure that the 'Additional free text' field is a minimum two lines high                  Mandatory            High
+
+Matching SNOMED CT Qualifiers
+CNA-0680    Where post-coordination is possible between the main matched concept and                  Recommended          Medium
+            qualifier text in the additional text field, offer these text matches as potential
+            encoded terms (for example, ‘severe’)
+
+CNA-0690    Offer the user the option of encoding post-coordinated qualifier terms by          Recommended                 Medium
+            providing a check box immediately adjacent to the additional text field, where the
+            check box is labelled with the term’s label (such as its 'preferred term' or
+            'synonym' label)
+
+Entering Other Associated Attributes
+CNA-0700    Where clinically appropriate, provide fields to select other associated attributes        Recommended          Medium
+            (for example, ‘Current active problem’, ‘Laterality’)
+
+CNA-0710    Ensure that the tabbing order of the dialog matches the left-to-right and                 Mandatory            High
+            top-to-bottom order of the dialog
+
+Usage Examples
+                                                                                                      Example showing the automatic
+
+                                                                                  
+                                                                                                      display of the additional attribute
+                                                                                                      fields after a term has been
+                                                                                                      encoded, with in-field prompts
+                                                                                                      within each additional field
+                                                                                                      (CNA-0410, CNA-0420,
+                                                                                                      CNA-0430, CNA-0440, CNA-0450)
+
+                                                                                                      Example showing ‘natural
+                                                                                                      language’ input of duration and/or
+
+                                                                                                     dates (CNA-0570, CNA-0510,
+                                                                                                      CNA-0520, CNA-0540, CNA-0550,
+                                                                                                      CNA-0560)
+
+                                                                                                                                  Page 22
+                         Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                         Prepared by Microsoft, Version 1.0.0.0
+                         Last modified on 22 September 2009
+
+                                                                                                     Example showing where the user
+                                                                                                     can enter additional text to support
+
+                                                                                                    the matched term (CNA-0650,
+                                                                                                     CNA-0660, CNA-0670)
+
+                                                                                                     Example showing:
+
+                                                                                 
+                                                                                                      Duration and dates
+                                                                                                       confirmation displayed to the
+                                                                                                       right of the date input field
+                                                                                                       (CNA-0590, CNA-0600,
+                                                                                                       CNA-0610)
+                                                                                                      Post-coordination with the
+                                                                                                       matched term in the form of
+                                                                                                       check boxes to the right-hand
+                                                                                                       side of the additional text field
+                                                                                                       (CNA-0680, CNA-0690)
+
+Note About Keyboard Navigation
+
+The example below highlights where each tab stop lands on each additional attribute.
+Scrolling away using the arrow keys automatically reduces this row, taking the user to the next row. Tabbing within this row takes the
+user through all of the tab stops and, once completed within this row, moves the user to the next tab stop, which is the encoded term of
+the next row (or potentially the search field, depending where the user is within the list).
+Using the arrow keys, the user can navigate up and down the list of encoded terms or to the blank row to enter a new problem.
+Each encoded row contains two tab stops in the collapsed view (as shown in the example below):
+ The encoded term
+ The summary of entered information
+Pressing ENTER on either of these tabs will enable those interactions allowing the user to make changes or enter new information.
+After the user opens a row by either pressing ENTER or by clicking on the row, the attribute fields account for two further tab stops:
+ ‘Date and/or duration’
+ ‘Enter additional text’
+                                                                                                     .
+
+                                                                                                                                  Page 23
+                             Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 22 September 2009
+
+Rationale
+Design Analysis:
+The current designs were chosen:
+ For speed of use: the number of tab and click actions have been minimised
+ Because the current arrangement draws the clinician’s attention to the fields: they are located immediately below the previous one,
+  which is an intuitive location to look for the next field
+Visually communicating a visual hierarchy between the fields, for example by indenting those lower in the hierarchy, can indicate that
+the associated attribute fields ‘belong’ to the main concept.
+Locating the duration and/or date field before the additional text field is suggested in order to encourage clinicians not to enter
+duration and/or date information as free text.
+Analysis of SNOMED CT indicates that single concepts are often not sufficient on their own to express realistic clinical statements.
+Therefore, a field for recording additional free text is required in addition to the main concept field.
+The design should be ‘expandable’ to be able to feature fields for other attributes, depending upon the concept matched, such as
+‘laterality’ (that is, whether the relevant body site is on the left, right, both or neither), as some attributes may be very important for the
+safe communication of the clinical concept.
+Desk Research:
+Relevant ISO guidance states that ‘all fields should be clearly and unambiguously labelled to describe what kind of content should be
+entered’ (see Form-filling dialogues {R6}) and that these labels must be ‘distinctive’ in relation to data or instructions, for example,
+using visual cues such as position, font or colour, and that these visual cues should be applied consistently throughout the form.
+Therefore, provide sufficient labelling of the fields. These labels can be in-field ‘prompts’, as defined in the Microsoft Windows User
+Experience Interaction Guidelines {R21}.
+Previous Microsoft Health CUI guidance on terminology matching and elaboration demonstrates the need for an additional text field to
+complement the single concept matching field. It also demonstrates how qualifier concepts, such as severity, can be matched within
+the additional text field (See Design Guidance – Date and Time Input {R12} and Design Guidance – Terminology – Matching {R13}).
+Style guidance for established UIs indicates that the free text field must be a minimum of two lines high and that a vertical scroll bar
+appears after the clinician’s typed entry exceeds the visible space (see Essential guide to user interface design {R20}).
+The need to allow the clinician to complete the entry fields just using the keyboard is supported by relevant international standards
+indicate that “the need for users to switch between different input devices when filling in a form should be minimized” {R6}. Another
+standard also states that “if a keyboard is available, a keyboard method for selecting and executing options should be provided in
+addition to the pointing device method” {R5}.
+User Research:
+Previous Microsoft Health CUI user research, addressing the input of adverse drug reaction risks, has shown that clinicians did not
+understand a control whereby the clinician can select a matched term and then type in additional text within the same field. In that set
+of test, the clinicians also tended to want to click into the next input field below, rather than the one adjacent (see Design Guidance –
+Terminology – Display Standards for Coded Information {R15}).
+In recent research (see APPENDIX B), clinicians indicated that they felt that the designs lacked order and felt too time consuming,
+even though they were using them quickly and without errors. Therefore, the current designs feature the associated attribute fields
+close together, well-aligned and slightly indented from the main concept in order to imply that they hierarchically ‘belong’ to the main
+concept.
+As part of recent research (see APPENDIX B), interviews with clinicians indicated that, while writing the ‘Past Medical History’ they
+often record dates and durations, where known and where relevant. However, these interviews and the subsequent usability testing
+showed that these date and durations are often recorded in a more colloquial and approximate manner than the more formal way often
+required for the electronic input of dates and durations. For example, they may write ‘past 10 years’ or simply ’during childhood’.
+Therefore, the design allows for this type of input. During the user testing, a more formal method of date and duration capture was
+evaluated that used calendar boxes, which was understandable and usable, but that some clinicians indicated would be too
+complicated and ‘fussy’ for noting as part of the ‘Past Medical History’.
+User testing (see APPENDIX B) showed that the ‘suggested matches’ design of the date entry field was understood and easily used
+by clinicians, although it did suggest the need to ensure that if there is a perfect match between the input text and the matched date or
+duration item, then the item should be selected automatically. This was because the clinicians did not always scroll down and select
+from the list. Clinicians tended to appreciate the ‘confirmation display of their ‘natural language’ input in terms of the more formal
+‘Start’, ‘End’ and ‘Duration’.
+User testing (see APPENDIX B) also revealed that providing a button which initiates a ‘drop-down’ list on the ‘duration and/or date(s)’
+field encourages clinicians to click on the button without typing anything in.
+
+                                                                                                                                        Page 24
+                              Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 22 September 2009
+
+ Hazard Risk Analysis Summary:
+      Potential Hazards:                                       Mitigations:
+       Start-date automatically calculated from an             Indicate that a date is approximate if it has been derived from words
+        entered duration falsely implies a precision that is     such as ‘past 22 years’ or ‘10 years ago’. Feature the date at an
+        not correct                                              appropriate level of detail, depending upon the user's input
+       If the system encodes free-text durations entered  Convert durations provided in free-text format into standard format
+        by the clinician, and the system sorts data by date, where at least two of the following values are recorded:
+        records with encoded free-text duration dates may     Start date
+        not show correctly in the sorted list
+                                                              End date
+                                                                   Duration
+
+3.3.4         Editing and Deleting Entries
+ This section focuses upon the actions of editing and deleting entries in a list. These are obviously
+ important, given the fact that clinicians may need to go back and change the document during the
+ process of writing it: they may remember relevant details later in the process of writing, or maybe, if
+ they are noting at the same time as clerking the patient, the patient may correct themselves or
+ remember further details after a clinical situation has been noted. Anecdotal evidence suggests that
+ patients often forget diseases or conditions that only become apparent when their drug history is
+ taken.
+       Note
+       The guidance below does not account for situations where the notes have been saved to the patient’s
+       record and the information has been effectively shared with the wider health team. In those cases, any
+       edits or deletions must be accompanied by a rigorous auditing mechanism, given the dangers and legal
+       implications involved in changing aspects of a patient record.
+
+ This guidance addresses:
+        Editing the main concept
+        Editing additional details
+        Deleting entries
+
+                                                                                                                            Evidence
+ ID                Guideline                                                                           Conformance
+                                                                                                                            Rating
+ CNA-0720          Allow the user to edit either the main concept, the associated additional details   Mandatory            High
+                   or both, if the entry has not already been saved
+
+ CNA-0730          Ensure that the user can edit the main concept and the associated additional        Mandatory            High
+                   details independently of each other
+
+ CNA-0740          If the user hovers the mouse pointer over the main concept, visually indicate       Recommended          High
+                   that it can be clicked (for example, shade the area with a yellow gradient upon
+                   hover-over)
+
+ CNA-0750          If the user hovers the mouse pointer over the summarised associated additional Recommended               High
+                   details, visually indicate that the area can be clicked (for example, shade the
+                   area with a yellow gradient upon hover-over)
+
+ CNA-0760          If the user clicks on the main concept, open up the list of results for the text that Recommended        High
+                   had originally been input
+
+ CNA-0770          If the user clicks on the summarised associated additional details, open up the     Recommended          High
+                   dialog area, with the fields populated with the data entered by the user
+
+                                                                                                                                   Page 25
+                               Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 22 September 2009
+
+CNA-0780   If the user is editing the main concept and decides to delete it (for example,    Mandatory          High
+           using backspace) and then leaves the field, the UI should treat this action as an
+           intended deletion and should behave correspondingly.
+
+CNA-0790   Provide a control for deleting an entry                                         Mandatory            High
+
+CNA-0800   Provide a delete button located to the right of the entry line                  Recommended          Medium
+
+CNA-0810   The control for deleting an entry will simultaneously delete both the main      Recommended          High
+           concept and its associated additional details
+
+CNA-0820   When the user clicks the ‘delete’ button, provide an appropriate confirmation   Recommended          High
+           message and options to either continue with or cancel the delete
+                    Note
+                    This feature could be replaced by a well-designed 'undo' system.
+                    Please refer to the 'Rationale' section for details.
+
+Usage Examples
+                                                                                           Example showing a clicked delete
+
+                                                                                          control, which automatically
+                                                                                           displays a message to request
+                                                                                           confirmation of deleting the entry
+                                                                                           (CNA-0790, CNA-0800, CNA-0820)
+
+                                                                                           Example showing the date and
+                                                                                           duration field being edited
+
+                                                                                          independently from the other
+                                                                                           associated fields (CNA-0720)
+
+                                                                                           Example showing the main concept
+
+                                                                                          when hovered over, visually
+                                                                                           indicating the clickable area
+                                                                                           (CNA-0750)
+
+                                                                                                                       Page 26
+                       Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                       Prepared by Microsoft, Version 1.0.0.0
+                       Last modified on 22 September 2009
+
+Rationale
+Design Analysis:
+It is logical that the main concept and its associated attributes can be edited independently. That is, it should be possible to edit the
+clinical concept without editing the associated attribute details and vice versa.
+Regarding the deletion of entries, although during the user research clinicians made it clear that they would like a set of 'confirmation'
+options if they clicked on the delete button, an argument could be made that, if the UI provides a clearly visible and easy-to-use system
+of 'undo' and the visual design is such that it is immediately obvious when an entry disappears, then this 'confirmation' could be
+avoided. The disadvantage of such a 'confirmation' could be that it becomes annoying to a clinician if they keep having to confirm
+deletions during what is a time-pressured activity. However, currently this is the safest default option that the current guidance authors
+have considered.
+Desk Research:
+The visual cue for indicating that a display field can be clicked in order for it to become editable is used elsewhere in Microsoft Health
+CUI guidance (see Design Guidance – Terminology – Matching {R13}) and this standard colour and shading is used in the 2007
+Microsoft® Office System.
+User Research:
+This mechanism was tested and clinicians used it correctly (see APPENDIX B). They found it natural to click on the associated
+attribute details in order to edit them.
+During the early design iterations, participants were provided with a control for deleting an entry. Although they could clearly see how
+to delete an entry, participants indicated that there should be a 'confirmation' message which contained a set of options to either go
+ahead with the deletion or to cancel it, as they were worried they could delete an entry by accident. Indeed, one participant had deleted
+an entry by accident in a previous task without initially realising he had done, and he indicated that a confirmation message would
+have been useful.
+It is worth noting that the researchers did not test an 'undo' function, nor did they explore other ways of ensuring that the visual design
+made it very clear if something had been deleted. In further discussions with clinicians following the testing, the issue was raised that
+the confirmation dialog box could be annoying to frequent users, but no alternative designs have been tested.
+
+                                                                                                                                     Page 27
+                             Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 22 September 2009
+
+4         REVEALING AND HIDING SECTIONS OF A SET OF DATA
+
+4.1       Introduction
+    In this section, the guidance explores how to hide and reveal sections of a form. This will be an
+    important feature in clinical noting, given the vast array of potential data entry fields in contrast to
+    the limited number of fields that any given clinician will require in the case of a specific patient.
+    Simply presenting all the possible fields and allowing the clinician to pick and choose which ones to
+    complete would be prohibitive in terms of the clinician’s time and effort, not to mention the negative
+    impact on the clinician’s satisfaction with the system: imagine having to scroll through twenty fields
+    to get to the field that one wants. It would be overwhelming and fields could be missed or not found.
+    Therefore, some fields should be hidden when the clinician first views the form.
+    The current guidance is limited to traditional form designs and does not explore in detail complex
+    navigational structures. Instead, it seeks to show how a form can be expanded and contracted to
+    reveal sections of data-entry fields.
+    This guidance demonstrates how a form can be expanded and contracted in a basic manner. It
+    does not prohibit other more complex navigational structures in forms. The research showed that
+    clinicians understood and could use this basic mechanism for revealing and hiding data fields. But,
+    it also showed that, where there were a lot of data fields, clinicians felt that this basic form design
+    could be laborious and time consuming to use (see APPENDIX B). Therefore, this guidance should
+    be used only in situations where a traditional form design is deemed appropriate.
+    The user requirements for this section of the guidance are:
+         Ensure that in a given view, the UI can filter out optional data fields in a set of data, until the
+          point at which the user requests them or they are triggered by the UI (contingent upon data
+          entered or selected)
+         Provide a control for revealing optional data fields
+         Ensure that users are aware of the type of data fields that they are able to access (prior to
+          them accessing them)
+         Allow users to hide optional data fields that have not been completed
+         Do not allow users to hide data fields that have been completed, unless the data is
+          summarised elsewhere. The default view will be that the data that has been recorded by the
+          user is always visible
+
+4.2       Principles
+    The following key principles inform the guidance in this section:
+         Screen design heuristics:
+               User control and freedom
+               Visibility of system status
+               Consistency and standards
+         A clinician dealing with an individual patient in a given clinical situation is likely to only need
+          to complete a proportion of the possible fields available
+         Do not present all possible data entry fields to a clinician at any one time
+         Help clinicians to quickly find the fields that they need to complete
+         Reduce visual distractions to the clinician’s current task
+
+                                                                                                        Page 28
+                          Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                          Prepared by Microsoft, Version 1.0.0.0
+                          Last modified on 22 September 2009
+
+4.3      Guidelines
+ This guidance comprises four main areas:
+       Communicating that there are more hidden fields
+       Accessing hidden fields
+       Hiding fields
+       Displaying hierarchically nested sets of fields
+
+4.3.1        Accessing Hidden Fields
+ The UI must allow the clinician to quickly and easily access hidden fields.
+
+                                                                                                                             Evidence
+ ID               Guideline                                                                          Conformance
+                                                                                                                             Rating
+ CNA-0830         The UI must be capable of limiting the visible data entry fields to a proportion   Mandatory               High
+                  of the total number data fields available
+
+ CNA-0840         Provide a visible control for revealing hidden fields                              Recommended             High
+
+ CNA-0850         The user must be able to access hidden fields.                                     Mandatory               High
+
+ CNA-0860         Clearly distinguish the 'reveal' control from data entry controls                  Recommended             Medium
+
+ CNA-0870         Provide a shading around the control                                               Recommended             Medium
+
+ CNA-0880         Where appropriate, automatically reveal fields dependent upon a data               Recommended             Medium
+                  selection
+
+ Usage Examples
+                                                                                                     Example of a control for revealing
+
+                                                                                      
+                                                                                                     hidden fields ('Further details')
+                                                                                                     (CNA-0840, CNA-0860, CNA-0870)
+
+ Rationale
+ Design Analysis:
+ The design allows flexibility in revealing hidden fields by providing two types of mechanism.
+ The first mechanism reveals fields when the clinician selects a data item (namely, selecting that the patient’s Cardiovascular System
+ (CVS) is not normal upon examination). This optimises the speed of entry: the clinician does not need to select the data item and then
+ activate another control in order to reveal further fields. This mechanism also has the advantage of encouraging the clinician to fill in
+ fields that naturally follow on from an indication of abnormal examination results. In other words, the system is encouraging the
+ clinician to say how the CVS was not normal upon examination.
+ The second mechanism (‘Further details: CVS examination’) is a dedicated field for opening the further details. This allows the clinician
+ to view the further details without having to answer whether the CVS was normal or not. Clinicians may want to scan ahead to see
+ what options will be available to them. Additionally, they may want to complete some of the hidden fields in order to conclude if the
+ CVS can be deemed normal or not.
+ Also, the second mechanism is visually distinct from the data entry fields, which should make it easier for the clinician to scan down
+ the form and find the hidden fields more easily than having to work out which data selections automatically reveal hidden fields.
+
+                                                                                                                                    Page 29
+                              Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 22 September 2009
+
+ Desk Research:
+ The mechanism for revealing the hidden fields has precedence in a number of existing applications, some of which will be very familiar
+ to clinicians. A good example is the ‘+’ button in Microsoft Outlook, a popular desktop email application.
+ Additionally, the automatic revealing of fields through a data selection is a common feature on many desktop and Web applications,
+ many of which will be familiar to clinicians.
+ Indeed this feature is recommended by relevant international standards which state that ““if/then” interdependency rules among entry
+ fields” should either be avoided or should “automatically be handled by the system by constraining user choices and visible fields”. In
+ this way the form hides fields until a data selection logically implies that these fields should be completed and the UI automatically
+ reveals the fields {R6}. A further standard also supports the notion of hiding options that are not relevant to the user at a given point in
+ time, which states that if “information concerning unavailable options is not required for the task”, then “only options available to the
+ user should be presented” {R5}.
+ User Research:
+ Testing (see APPENDIX B) revealed that just making a data selection was not sufficient and that the dual route to revealing fields was
+ necessary in order to be usable. Participants indicate that they did not want to be forced to make a data selection in order to see what
+ fields could be made available to them. However, they did understand how to open fields automatically by selecting ‘No’ (for the field
+ ‘CVS normal on examination’)
+
+4.3.2        Communicating That There Are Hidden Fields
+ The first requirement for revealing hidden fields is to communicate to the clinician that there are
+ hidden fields which may be revealed. If the UI does not communicate that there are hidden fields,
+ then the clinician may not be aware that such fields exist and may not find them. The existence of
+ the fields should be communicated along with a brief description of what topic the fields cover.
+ This section addresses how this should be done in a basic manner, which conforms to traditional
+ electronic form design (for details of traditional electronic form designs, see Essential guide to user
+ interface design {R20}).
+
+                                                                                                                                 Evidence
+ ID                  Guideline                                                                          Conformance
+                                                                                                                                 Rating
+ CNA-0890            The UI must communicate if there are hidden fields which the user can              Mandatory                High
+                     potentially access.
+
+ CNA-0900            Provide a prompt or label for all controls that reveal hidden fields               Recommended              High
+
+ CNA-0910            Locate the prompt or label in a prominent and appropriate position                 Recommended              High
+
+ CNA-0920            Locate the prompt next to the control that reveals the fields                      Recommended              High
+
+ Usage Examples
+                                                                                                        Example of prompts indicating
+
+                                                                                       
+                                                                                                        there are further fields
+                                                                                                        (CNA-0900, CNA-0910,
+                                                                                                        CNA-0920)
+
+                                                                                                                                        Page 30
+                              Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 22 September 2009
+
+                                                              Example of a 'reveal' control
+
+                                                             (CNA-0900, CNA-0910,
+                                                              CNA-0920, CNA-0840, CNA-0860,
+                                                              CNA-0870)
+
+                                                              Example of a data selection that
+
+                                            
+                                                              automatically reveals further fields
+                                                              (CNA-0880)
+
+                                                                                           Page 31
+Design Guidance – Clinical Noting in Forms: Admissions Clerking
+Prepared by Microsoft, Version 1.0.0.0
+Last modified on 22 September 2009
+
+                                                                                                          Example of a poor control for
+
+                                                                                           
+                                                                                                          revealing hidden fields ('Open').
+                                                                                                          This does not sufficiently
+                                                                                                          communicate what fields are
+                                                                                                          hidden behind it.
+                                                                                                          Also, the 'No' selection does not
+                                                                                                          feature a prompt indicating that it
+                                                                                                          will automatically reveal fields.
+                                                                                                          (CNA-0900, CNA-0910,
+                                                                                                          CNA-0920)
+
+ Rationale
+ Design Analysis:
+ The design ensures that any control that reveals further fields is adequately labelled and that the clinician is made aware of what will
+ happen if they activate the control. In the examples above, there are two types of control.
+ The first control reveals the fields when the clinician selects data item (namely, selecting that the patient’s CVS is not normal upon
+ examination). In this case, a prompt by the side of the data label (‘No’) explains that selecting the data option will automatically open
+ the details section. Care has been taken to ensure that the prompt is sufficiently prominent, but does not interfere with the clinician’s
+ understanding of the data label (‘No’).
+ The second control is a dedicated field for opening the further details. In this case, the control itself is labelled with a description which
+ indicates that this control is associated with further details and a phrase that summarises the fields found in these further details (for
+ example, ‘CVS examination’).
+ User Research:
+ Testing (see APPENDIX B) revealed that clinicians need to have a label prompting them that there are further data entry fields
+ available. Without the additional text prompt next to the ‘No’ selection of the field ‘CVS normal on examination’, participants could not
+ immediately identify that there were additional fields available, nor how to access them.
+ Hazard Risk Analysis Summary:
+    Potential Hazards:                                                Mitigations:
+     The clinician does not realise there are additional fields       Visually indicate that further data entry fields are available
+      available into which to populate data
+
+4.3.3        Hiding Fields
+ Upon opening a section of fields, the clinician may decide not to enter any details into that section,
+ and then hide those fields again, in order to focus on other fields.
+ This will be an important action as, if the clinician cannot hide fields after opening them, the form
+ could become overwhelming and unwieldy.
+ This section of the guidance addresses how sections of fields can be hidden. It is worth noting that
+ the solutions explored in this section are limited in that they do not explore how a section of fields
+ can be hidden even if data has been entered into one or more of its fields. The designs shown in
+ the current guidance assume the safest default position; namely that if a section contains any data
+ entered by the clinician, it cannot be hidden. Also, the current design guidance does not explore the
+ automatic hiding of data fields, which could, if a safe solution is found, improve the clinician's
+ experience by reducing the numbers of actions required.
+ Future design research could identify a safe solution that allows fields to be hidden, manually or
+ automatically, even if data has been entered into them, but this is not covered in the current design
+ guidance.
+
+                                                                                                                                         Page 32
+                               Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 22 September 2009
+
+                                                                                                                               Evidence
+ID                Guideline                                                                           Conformance
+                                                                                                                               Rating
+CNA-0930          Provide a visible control for hiding fields                                         Recommended              Medium
+
+CNA-0940          Clearly distinguish the 'hide' control from data entry controls                     Recommended              Medium
+
+CNA-0950          Provide a shading around the ‘hide’ control                                         Recommended              Medium
+
+CNA-0960          Do not allow users to hide fields into which they have entered data                 Recommended              Medium
+
+CNA-0970          Disable the 'hide' control when the fields to be hidden have data entered into      Recommended              Medium
+                  them
+
+CNA-0980          Provide a prompt or label for all controls that hide fields                         Recommended              High
+
+CNA-0990          Locate the prompt or label in a prominent and appropriate position                  Recommended              High
+
+CNA-1000          Locate it next to the control that hides the fields                                 Recommended              Medium
+
+CNA-1010          Provide a label for the control that summarises what the fields it reveals will     Recommended              Medium
+                  capture
+
+Usage Examples
+                                                                                                      Example of a control that is used to
+
+                                                                                    
+                                                                                                      both open and close a set of fields
+                                                                                                      (the ‘Further details’ check box)
+                                                                                                      (CNA-0930, CNA-0940)
+
+Rationale
+Design Analysis:
+The design allows the clinician to hide the fields by using the same controls as were used to reveal them. In this way a consistency of
+usage can be maintained and it is easy for the clinician to find the ‘hide’ control after revealing a section. Also, this means that, if the
+clinician is simply browsing the form, they can check what fields are found in a hidden section and can then hide them again without
+having to change the focus or move the mouse.
+In the absence of a safe solution for hiding sections that contain fields in which the clinician has entered data, the safest default
+guideline is to prohibit the hiding of sections that contain data. This means that the ‘hide’ control will be disabled once the clinician has
+entered data into the section. It also means that, once the section is open, although the clinician may select an alternative data option
+to the one which automatically revealed the section, the section will not hide automatically if data has been entered.
+Desk Research:
+The use of a ‘–’ button is widely used in a number of existing, familiar applications, some of which will be very familiar to clinicians,
+including Microsoft Outlook.
+Relevant standards also indicate that ‘Coding techniques should be used to indicate different states of graphical objects’ (see
+Form-filling dialogues {R6}). This control shows two states:
+ ‘revealed, with the option to hide’
+ ‘hidden with the option to reveal’.
+Hazard Risk Analysis Summary:
+     Potential Hazards:                                                  Mitigations:
+      Clinician hides a section that contains data and does not          Do not allow the user to hide fields that contain data (entered
+       see that data when he or she reviews what they have                 by the same user)
+       entered.
+
+                                                                                                                                      Page 33
+                              Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 22 September 2009
+
+4.3.4       Displaying Hierarchically Nested Fields
+ Where there is a section of fields that is located within another section, it may be important to
+ communicate the hierarchical structure so that clinicians can easily orientate where they are in the
+ form and to understand which fields will be hidden if they activate a given ‘Hide’ control. Failure to
+ adequately communicate which fields will be hidden by activating a ‘hide’ control could result in
+ confusion on the part of the clinician and accidental hiding of relevant fields.
+ This section of the guidance addresses how to communicate that one set of fields is ‘nested’ within
+ another.
+
+                                                                                                               Evidence
+ ID              Guideline                                                                       Conformance
+                                                                                                               Rating
+ CNA-1020        Clearly communicate which fields have been opened by a reveal control           Recommended   Medium
+
+ CNA-1030        Provide a common shading between the reveal control (which is                   Recommended   Medium
+                 appropriately labelled) and the fields it reveals
+
+ CNA-1040        Ensure that the shading is sufficiently light in order to maintain a good       Recommended   Medium
+                 contrast of the foreground elements (the data fields) against their
+                 background (for example, 25% grey screening)
+
+ CNA-1050        Ensure that the font sizes used in the fields and in the reveal control label   Recommended   Medium
+                 are consistent
+
+                                                                                                                   Page 34
+                        Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                        Prepared by Microsoft, Version 1.0.0.0
+                        Last modified on 22 September 2009
+
+Usage Examples
+                                                                               Example of visually distinguishing
+
+                                                        
+                                                                               hierarchical sections (CNA-1020,
+                                                                               CNA-1030, CNA-1040, CNA-1050)
+
+                                                                                                          Page 35
+                 Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                 Prepared by Microsoft, Version 1.0.0.0
+                 Last modified on 22 September 2009
+
+                                                                   
+                                                                                                 Example of a form that does not
+                                                                                                 visually distinguish nested
+                                                                                                 sections, for example by shading
+                                                                                                 (CNA-1030, CNA-1040, CNA-
+                                                                                                 1050)
+
+Rationale
+Design Analysis:
+Shading is an unobtrusive mechanism for indicating grouping of screen elements. Likewise, indenting is a conventional way of
+indicating a hierarchical nesting of items.
+Desk Research:
+There are many examples of the use of shading to imply grouping in both desktop and Web applications. Literature on the topic
+supports the notion of using shading to emphasise grouping. For example, see Essential guide to user interface design {R20}. This
+same literature also supports the notion of keeping the shading light enough to maintain a good contrast.
+User Research:
+Testing (see APPENDIX B) revealed that clinicians understood the visual grouping of sections. They showed evidence of being able to
+tell which fields had just been revealed and which belonged to which section.
+
+                                                                                                                               Page 36
+                            Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                            Prepared by Microsoft, Version 1.0.0.0
+                            Last modified on 22 September 2009
+
+5         REQUIRED FIELDS
+
+5.1       Introduction
+    In clinical noting, as in most data entry tasks, there will be data fields that the relevant authority will
+    deem to be necessary for the data author to address; that is, they must provide a selection or enter
+    text for that field. These fields are often referred to as ‘required’ fields and must be completed in
+    order for the data to be successfully saved to the record.
+    The current guidance is limited to situations where:
+         Only a proportion of the total available fields are ‘required’
+         There is a linear sequence of fields (and an accompanying tabbing order)
+         Logically, the clinician can complete fields further in the sequence without having completed
+          a required field
+         Clinicians need some degree of flexibility when completing the form
+    Where these conditions do not apply, other solutions may be applied that do not feature the
+    designs outlined in this section.
+    The user requirements for this section of the guidance are:
+         The UI must be able to indicate to the user that one or more data fields are required
+         Ensure that users are aware if they have 'missed' one or more required fields
+                Note
+                'Missed' is defined in terms of the user addressing other fields that are positioned later in the
+                tabbing order.
+
+5.2       Principles
+    The following key principles inform the guidance in this section:
+         Screen design heuristics:
+                 Visibility of system status
+                 Flexibility and efficiency of use
+                 User control and freedom
+                 Match between system and the real world
+                 Recognition rather than recall
+         Do not overly restrict clinicians’ freedom to complete the form in the way they want
+         Do not obstruct the clinician’s primary tasks
+         Ensure that the clinician is aware of which fields are required and which are not
+         Do not rely upon clinicians to remember which field(s) they have missed
+
+                                                                                                                    Page 37
+                             Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 22 September 2009
+
+5.3     Guidelines
+ This guidance comprises two main areas:
+       Proactively indicating required fields
+       Reactively indicating required fields that have been missed
+
+5.3.1       Proactively Indicating Required Fields
+ When clinicians are faced with a set of fields, some of which are required, the UI must distinguish
+ ‘up front’ which ones are required and which are not.
+ This ‘proactive’ indication of required fields contrasts with a ‘reactive’ indication of required fields
+ that have been missed. ‘Reactive’ is when the UI indicates an uncompleted required field only
+ when the clinician attempts to move on. Reactive indication of required fields is discussed in the
+ next guidance section.
+
+                                                                                                                          Evidence
+ ID           Guideline                                                                              Conformance
+                                                                                                                          Rating
+ CNA-1060     The UI must make clear the distinction between fields which are required and           Mandatory            High
+              fields which are optional
+
+ CNA-1070     Provide ‘proactive’ visual indications of which fields are required to be              Mandatory            High
+              completed
+
+ CNA-1080     Feature a red asterisk next to those fields which must be completed                    Recommended          High
+
+ CNA-1090     Feature the asterisks next to each field rather than for a whole section               Recommended          High
+
+ CNA-1100     If in-line asterisks are to be used to indicate required fields, provide a key on the Mandatory             High
+              same page or dialog as the indicators
+
+ CNA-1110     Feature the asterisk immediately to the right of the field label                       Recommended          High
+
+ CNA-1120     If in-line asterisks are to be used to indicate required fields, place each asterisk   Mandatory            High
+              in a consistent location (in relation to the field labels)
+
+ CNA-1130     Keep the ‘required’ indication visible, even after the user has entered                Recommended          Medium
+              information into the field
+
+ Usage Examples
+                                                                                                     Example showing visual indications
+
+                                                                                                    of required fields within a form
+                                                                                                     (CNA-1070, CNA-1080, CNA-1090,
+                                                                                                     CNA-1100, CNA-1110, CNA-1120,
+                                                                                                     CNA-1130)
+
+                                                                                                                                 Page 38
+                          Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                          Prepared by Microsoft, Version 1.0.0.0
+                          Last modified on 22 September 2009
+
+ Rationale
+ Design Analysis
+ Indicating a characteristic of a data field, such as whether its completion is required, is best communicated ‘in line’ with the field itself,
+ rather than, for example, providing some kind of look up reference elsewhere. Red asterisks are good because they are sufficiently
+ prominent to be seen, but are not so overly-prominent that they hinder the clinicians’ understanding of the fields and their labels.
+ The location of the asterisk to the immediate right of the label means that, if the fields are located to the right of the label and the labels
+ are therefore right-aligned, the asterisks will be aligned on a vertical plane, thus making it easy for the clinician to scan down and see
+ which fields are required.
+ Desk Research:
+ Analysis of relevant international standards on this topic indicates that if ‘a form contains both required and optional fields within a
+ functional or logical grouping of fields, required fields should be positioned first unless such positioning is inappropriate to the user’s
+ task’ (see Form-filling dialogues {R6}) Also, the standards indicate that ‘[r]equired and optional entry fields should be presented so that
+ the difference between them should be immediately perceptible to any user’ {R6}.
+ The red asterisk design is indicated as a strong convention in screen design in relevant literature (see Forms that work {R23}).
+ User Research:
+ Testing showed that clinicians immediately understood the 'red asterisk' convention.
+ Hazard Risk Analysis Summary:
+      Potential Hazards:                                                  Mitigations:
+       Clinician misses a field, thus providing an incomplete             Provide mechanisms that warn the user that required fields
+        clerking form, which could mean that vital data is missing          have not been completed
+        from the patient's record
+
+5.3.2         Reactively Indicating Required Fields That Have Been Missed
+ In addition to ‘proactively’ indicating required fields, and if the clinician is to be allowed some
+ flexibility in the order in which they complete the form, the UI must also warn the clinician where
+ they have missed out any required fields.
+ In this case, the term ‘missed’ refers to a situation where the clinician has not completed a required
+ field and has moved the focus to a point beyond the field in the tabbing order.
+ This guidance has been written with the assumption that, at any specific point in the completion of
+ the form, the required fields may not be visible. For example, in a form comprising ten pages, the
+ clinician might be viewing page 8, although there is a required field that they have missed on
+ page 2. Therefore, a mechanism may be required to indicate the fields that are required, which is
+ not in-line with these required fields.
+
+                                                                                                                                   Evidence
+ ID              Guideline                                                                                 Conformance
+                                                                                                                                   Rating
+ CNA-1140        Provide ‘reactive’ indications of required fields that the user has missed                Recommended             High
+
+ CNA-1150        If the user moves the focus to a field that is further along in the order than an         Recommended             Medium
+                 empty required field, the system should communicate to the user that the required
+                 field has been missed
+
+ CNA-1160        Feature a yellow shading in those required fields which have been 'missed'                Recommended             Medium
+
+ CNA-1170        Do not solely rely upon shading to communicate missed fields                              Recommended             High
+
+ CNA-1180        Provide non-visible labels associated with missed fields that also communicate            Recommended             Medium
+                 that the fields have been missed
+
+ CNA-1190        Provide a (non-modal) message that communicates to the users that they have               Recommended             High
+                 missed a required field
+
+ CNA-1200        Ensure that this message does not obstruct the user from filling in any field on the      Recommended             High
+                 screen
+
+                                                                                                                                          Page 39
+                               Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 22 September 2009
+
+CNA-1210       The message should list all the required fields which have been missed                    Recommended             High
+
+CNA-1220       The message should remain in view even when the relevant fields are not in view           Recommended             High
+
+CNA-1230       The message could provide links which will navigate the screen to the relevant            Recommended             Medium
+               required fields (by scrolling the page)
+
+CNA-1240       Provide a suitable heading for the message, which appropriately expresses how             Recommended             High
+               important it is to complete the fields (for example, ‘required’, ‘mandatory’,
+               ‘recommended’)
+
+CNA-1250       Do not hide required fields under tabs or in a collapsed view                             Recommended             Medium
+
+Usage Examples
+                                                                                                         Example showing further visual
+
+                                                                                                        indication of missed required fields
+                                                                                                         (CNA-1140, CNA-1160)
+
+                                                                                                         Example showing a panel
+
+                                                                                                        (‘Required Fields’) indicating which
+                                                                                                         fields have been missed and the
+                                                                                                         section in the form where they can
+                                                                                                         be found. Clicking on a missed
+                                                                                                         field scrolls to it (CNA-1190,
+                                                                                                         CNA-1200, CNA-1210)
+
+Rationale
+Design Analysis:
+The design aims to provide a warning, but not one that overly distracts the clinician or that forces the clinician to complete all required
+fields before moving to the next field in the form.
+This solution also warns the clinician of the existence of missed required fields before reaching the point of submitting the whole form.
+This approach aims to avoid the situation where the clinician tries to activate the submission of the form and is then presented with a
+list of fields that they must complete. It could be that the clinician has not allowed for the time it would take to go back and complete
+those fields and therefore has to abandon the form in an unsubmitted state. Communicating that required fields have been missed
+immediately after they have been missed enables the clinician to allow for time to complete these fields.
+This solution provides navigation (for example, by automatic scrolling) back to the missed fields. It also communicates to the clinician
+where in the form the missed fields are, through the use of headings in the side panel.
+Finally, the solution also provides a clear in-line indication of missed fields in order to immediately inform the clinician of a missed field.
+As the clinician’s attention will be focused upon the field area anyway, this in-line visual communication will be the most immediate.
+The yellow shading shown in the example allows for a sufficient contrast with dark foreground text, but is also sufficiently prominent.
+User Research:
+Research (see APPENDIX B) showed a positive response to this side panel approach, although some participants did not notice it
+immediately, as they focused upon the red asterisk instead. Therefore, the shading solution was added, which clinicians saw and
+understood immediately.
+
+                                                                                                                                        Page 40
+                              Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 22 September 2009
+
+Hazard Risk Analysis Summary:
+  Potential Hazards:                                                 Mitigations:
+   If clinicians are forced to complete required fields at the end of  Encourage users to complete required fields as they
+    the admissions clerking process, rather than as they go along.       progress through the form, although without forcing them to
+    Risk that clinicians are forced to close the form without saving     do so
+    it because they do not have time to go back and search for the
+    fields which are missing data
+   If clinicians are unable to skip past required fields whilst      Indicate to users that a missed field is required whilst
+    populating the form with data                                      allowing them to progress and navigate through the form
+
+                                                                                                                            Page 41
+                            Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                            Prepared by Microsoft, Version 1.0.0.0
+                            Last modified on 22 September 2009
+
+6          DISPLAYING PREVIOUS VALUES
+
+6.1        Introduction
+    At the point of entering new data about a patient, it may be useful for the clinician to be able to see
+    any previous instances of the same type of data. For example, if the clinician is about to enter the
+    patient’s pulse rate, it could be useful to see the previous pulse rate entries for that patient.
+    This contextual information may influence the clinician’s actions:
+         They may change line of questioning or examination that they perform with the patient.
+            Obviously this is only applicable if the clinician is entering the notes at the same time as the
+            examination.
+         They may search for other data from the patient’s record in order to help their interpretation
+          of the data. For example, they may access the patient’s vital signs chart in order to see the
+          full trend of the data.
+    Therefore, it will be useful to display the last few values of a type of data as the clinician is about to
+    enter a new value.
+        Note
+        This feature is not intended to replace the graphical display of a full set of values; instead it is only aiming
+        to provide a limited window onto the most recent values.
+
+    Moreover, this guidance focuses upon the display of numerical values. Potentially this guidance
+    could apply to other types of data, such as descriptions of illnesses, but this has not been explored
+    in the designs nor in the research, and therefore any application of this guidance to non-numerical
+    data must be accompanied by further design and testing in order to ensure patient safety.
+    The user requirements for this section of the guidance are:
+         Ensure that the user can access a sequence of recent values when entering the current
+          value into a field (for example, the last three values)
+         Ensure that the dates and/or times of the previous values are clearly indicated when they
+          are being displayed
+         Ensure that the order in which the previous values have been recorded is clearly evident to
+          the user
+         Indicate that the data displayed may only be a proportion of the total data available
+         Link to historical data or a graphical representation
+
+6.2        Principles
+    The following key principles inform the guidance in this section:
+         Screen design heuristics:
+                Recognition rather than recall
+                Aesthetic and minimalist design
+         Do not obstruct the clinician’s primary tasks
+         Values must be displayed with sufficient context to be meaningful and unambiguous
+         Provide the clinician with sufficient context which may influence what questions they ask
+
+                                                                                                                  Page 42
+                            Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                            Prepared by Microsoft, Version 1.0.0.0
+                            Last modified on 22 September 2009
+
+6.3     Guidelines
+ This section addresses how to display the previous values at the point at which the clinician is
+ about to enter a new value. In the current designs, this point is defined as the point at which the
+ focus moves into the relevant field.
+ In the examples shown below, the number of previous values shown has been set at three.
+ However, this is an arbitrary number, and the guidance urges that the number of previous values
+ shown be determined by an appropriate clinical authority, which accounts for the specific clinical
+ contexts.
+
+6.3.1       Displaying Previous Values
+ This guidance area is focused on how to make previous values known to the clinician in a way that
+ aids the clinician without detracting from the process of recording the new data values.
+
+                                                                                                             Evidence
+ ID           Guideline                                                                        Conformance
+                                                                                                             Rating
+ CNA-1260     Upon moving the focus to the data field, display a number of the most            Recommended   High
+              recent previous values for that data, where such values exist
+
+ CNA-1270     If there are no previous values for a field, do not show previous values         Recommended   Low
+
+ CNA-1280     Display the previous values as the user is typing the current value              Recommended   High
+
+ CNA-1290     Display the previous values in a dialog which appears on top of the form         Recommended   Medium
+              and remains open as the focus is in the associated entry field
+                       Note
+                       Although this guideline does not specify the exact mechanism to
+                       display these values, developers may consider a pop-up or a
+                       floating palette design for this dialog.
+
+ CNA-1300     Limit the number of previous values up to an agreed number. The number           Recommended   Medium
+              should be determined by the relevant clinical authority and should remain
+              consistent.
+                       Note
+                       The illustrations featured in the current guidance assume that the
+                       agreed number of previous values to display is three.
+
+ CNA-1310     Display the previous values as a vertical stack                                  Recommended   Medium
+
+ CNA-1320     Display the previous values immediately above the relevant field                 Recommended   Medium
+
+ CNA-1330     Left-align the values with the digits in the entry field                         Recommended   Medium
+
+ CNA-1340     Display the previous values in bold                                              Recommended   Medium
+
+ CNA-1350     Display the previous values in an appropriate format (and to an appropriate      Recommended   Medium
+              decimal place)
+
+ CNA-1360     In all situations, display the previous values according to a consistent order   Recommended   High
+
+ CNA-1370     Display the previous values on the far left of the previous values dialog        Recommended   Medium
+
+ CNA-1380     Ensure that the previous values are not displayed as a column in the middle Recommended        Medium
+              of the additional contextual information
+
+ CNA-1390     If the previous numerical values are displayed immediately above the             Recommended   Low
+              relevant field, show them in ascending order of numerical value
+
+                                                                                                                    Page 43
+                          Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                          Prepared by Microsoft, Version 1.0.0.0
+                          Last modified on 22 September 2009
+
+CNA-1400   If the previous values cannot be displayed immediately above the relevant       Recommended                 Low
+           field, then show them immediately horizontally adjacent
+
+CNA-1410   Clearly label the previous values                                               Recommended                 High
+
+CNA-1420   Ensure that the previous values are visually distinct from the entry field by   Recommended                 Low
+           displaying them on a different colour background
+
+CNA-1430   Ensure that the background to the previous values is in a low-saturation,       Recommended                 Low
+           muted colour, such as a pastel shade
+
+Usage Examples
+                                                                                           Example of an indication of previous
+
+                                                                                          values (CNA-1260, CNA-1290,
+                                                                                           CNA-1310, CNA-1320, CNA-1330,
+                                                                                           CNA-1340, CNA-1390, CNA-1410,
+                                                                                           CNA-1420, CNA-1430)
+
+                                                                                           Example of indication of previous
+
+                                                                            
+                                                                                           values, shown immediately adjacent
+                                                                                           (CNA-1400)
+
+                                                                               
+                                                                                           Example of 'previous values' which are
+                                                                                           not vertically stacked (CNA-1320)
+
+                                                                                           Example where the 'previous values'
+
+                                                                                          are hidden in the middle of the dialog
+                                                                                           (CNA-1370, CNA-1380)
+
+                                                                                                                              Page 44
+                      Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                      Prepared by Microsoft, Version 1.0.0.0
+                      Last modified on 22 September 2009
+
+                                                                                                    Example where the 'previous values'
+                                                                                                    are located away from the relevant data
+                                                                                                    entry field (CNA-1320)
+
+                                                                                                   Example of an overly prominent
+
+                                                                                                   'previous values' dialog (CNA-1430)
+
+ Rationale
+ Design Analysis:
+ This design displays the previous values in a sufficiently prominent position, aligning the values with the input area so that the clinician
+ can quickly look up the values.
+ Desk Research:
+ The relevant desk research indicates that “different visual coding” should be used between “user entries, defaults, and previously
+ entered data” (see Form-filling dialogues {R6}). This supports the notion of displaying the previous values on a different background
+ from the entry field.
+ User Research:
+ Research (see APPENDIX B) showed that those clinicians who saw this design believed that it was a good idea, as long as they could
+ also access a graphical view of the data as well.
+
+6.3.2        Contextual Attributes to Display for Previous Values
+ In addition to displaying the previous values, there is a requirement to display information about the
+ context in which the previous values were recorded. This provides valuable meaning about the
+ values, and reduces the likelihood that they are misinterpreted; a value without a date or time is
+ fairly meaningless.
+
+                                                                                                                               Evidence
+ ID               Guideline                                                                           Conformance
+                                                                                                                               Rating
+ CNA-1440         If the UI displays previous values for a data item, display the dates of each       Mandatory                High
+                  previous value
+
+ CNA-1450         If the UI displays previous values for a data item and if more than one value       Mandatory                High
+                  was observed on the same day, display the times of each previous value
+
+ CNA-1460         Ensure that the unit of the values is displayed                                     Recommended              High
+
+ CNA-1470         Display the unit only once, next to the title label                                 Recommended              High
+
+                                                                                                                                      Page 45
+                              Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 22 September 2009
+
+Usage Examples
+                                                                                                     Feature the dates and times of each
+
+                                                                                                    previous value (CNA-1440,
+                                                                                                     CNA-1450, CNA-1470)
+
+                                                                                   
+                                                                                                     Do not just feature the previous
+                                                                                                     values without date/time context
+                                                                                                     (CNA-1440)
+
+Rationale
+Design Analysis:
+Providing sufficient context is very important. If dates and times are not shown, clinicians may assume the wrong intervals between the
+values, which could negatively affect their interpretation.
+Desk Research:
+Relevant standards documentation states that “symbols or units should be displayed as an additional label when it is required by the
+user for interpretation of the data” (see Form-filling dialogues {R6}). This standard is referring to data entry fields, but this could also
+apply to the display of previously entered values displayed in the context of data entry. The standards also indicate that the unit can be
+added once to a “column label” if the display allows it, which is an efficient way of communicating the unit and which is featured in the
+current design {R6}.
+User Research:
+Research (see APPENDIX B) showed that clinicians understood the design.
+Hazard Risk Analysis Summary:
+   Potential Hazards:                                            Mitigations:
+    If the clinician assumes the previous values shown           Show the dates (and times, if multiple readings from the same day)
+     are all taken on the same date as the first value             that the reading was taken along with the reading itself
+     displayed
+    If the clinician assumes the previous values shown           Show the dates (and times, if multiple readings from the same day)
+     are equally spaced in time                                    that the reading was taken along with the reading itself
+
+                                                                                                                                    Page 46
+                             Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 22 September 2009
+
+7         AUTOMATIC CALCULATIONS DATA
+
+7.1       Introduction
+    Within clinical noting, there will be many occasions where values, such as scores, can be
+    automatically calculated by the system in order to reduce the clinician’s workload. For example, a
+    Body Mass Index (BMI) score could be instantly calculated by the system, thus saving the clinician
+    the vital seconds it would take them to manually calculate the score.
+    This feature becomes more important where the scoring system is more complex and there is more
+    room for errors to be made. Calculating an early warning score is an example where the
+    calculations are more complex and where the implications of miscalculation could be quite
+    dangerous.
+    Other situations where values could be automatically calculated include the calculation of an end
+    date, if the start date and duration have been entered by the clinician. This would prevent the entry
+    of inconsistent data, which could happen if the clinician were to enter all three data.
+    The guidance outlined in this section applies only to use in traditional form design. It does not
+    preclude different displays in other more innovative clinical noting interfaces. Also, the features
+    relating to displaying details of a score only apply where a score has been calculated. Such a
+    feature may not be necessary. For example, where an end date has been calculated from a start
+    date and duration, this calculation would be fairly obvious and would not require further
+    explanation.
+    The second half of this guidance addresses another important feature: communicating to the
+    clinician that a score has been calculated, but owing to missing data, the system has had to make
+    assumptions about the value of the missing data. This can be useful in that it could encourage the
+    clinician to enter this missing data. It is also useful in those situations where a ‘partial’ score is more
+    informative to the clinician than no score.
+    The user requirements for this section of the guidance are:
+         Ensure that the user is aware when a value has been calculated by the system rather than
+          having been entered by the user
+         Communicate to the user the data that has been used to calculate the automatically
+          calculated value
+         Communicate both the field labels and the values of the data which contribute to the
+          calculated value
+         Provide sufficient information to communicate the location of data items used in the
+          calculation (for example, in the form, in the record)
+         Provide a mechanism that allows the user to easily access the data that has been used to
+          calculate the automatically calculated value
+         Allow the user to identify where there are missing values that affect the calculation of a
+          derived value
+         Ensure that the UI can cope with both simple and complex calculations
+
+                                                                                                         Page 47
+                          Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                          Prepared by Microsoft, Version 1.0.0.0
+                          Last modified on 22 September 2009
+
+7.2     Principles
+ The following key principles inform the guidance in this section:
+       Screen design heuristics:
+             Visibility of system status
+             Consistency and standards
+             Help and documentation
+       Clinicians must be aware of the relationship between values that they have entered and
+        values that have been calculated
+       Clinicians must be able to easily find out more information about a value, if appropriate and
+        available
+
+7.3     Guidelines
+ This guidance comprises two main areas:
+       Displaying calculated values
+       Displaying scores where values are missing
+
+7.3.1        Displaying Calculated Values
+ In this section, the guidance addresses the mechanisms required to distinguish calculated values
+ from user-entered values. It also addresses how the UI can communicate how the value was
+ calculated and, importantly, which input values contributed to the calculated value (including an
+ indication of where these entry fields are located).
+ This is particularly important as it not only provides meaning to the calculated value, but it also
+ teaches the clinician which values must be entered in order for the system to calculate the value. It
+ also helps clinicians to go back and check the input values if they want to question the calculated
+ value.
+ Further details about the calculated value, which could typically be a score, could also be
+ displayed. For example, in the case of displaying an early warning score or a Glasgow Coma Scale
+ score, the UI could also show the normal value ranges and any other ranges available.
+
+                                                                                                                  Evidence
+ ID           Guideline                                                                             Conformance
+                                                                                                                  Rating
+ CNA-1480     The UI must make clear the distinction between values which have been directly        Mandatory     High
+              entered by the user and values which have been calculated by the system
+
+ CNA-1490     Display calculated values in bold                                                     Recommended   Medium
+
+ CNA-1500     Do not display calculated values in an editable field                                 Recommended   Medium
+
+ CNA-1510     Where appropriate, provide text that briefly explains the meaning of the calculated   Recommended   High
+              value (for example, if the value is a score, indicate the clinical meaning of the
+              score)
+
+ CNA-1520     Where appropriate, provide access to details of:                                      Recommended   High
+               Which values entered by the user have contributed to the calculation
+               Which other values have contributed to the calculation
+               In which fields and under which headings were the values entered
+               The scoring system applied (if appropriate)
+               Link(s) to further details about the calculation (if appropriate)
+
+                                                                                                                         Page 48
+                            Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                            Prepared by Microsoft, Version 1.0.0.0
+                            Last modified on 22 September 2009
+
+CNA-1530   Provide a label to the calculated value that, when it is in focus, reveals the          Recommended          Medium
+           calculation details and links
+
+CNA-1540   Moving the focus onto the calculated value label (for example, by clicking on it)  Recommended               Medium
+           opens a dialog that appears over the form and contains the calculation details and
+           links
+                    Note
+                    Although this guideline does not specify the exact mechanism to display
+                    these values, developers may consider a pop-up or a floating palette
+                    design for this dialog.
+
+CNA-1550   Ensure that the 'calculated values' dialog is appropriately labelled                    Recommended          High
+
+CNA-1560   Moving the focus away from the calculated value label closes the dialog                 Recommended          Low
+
+CNA-1570   Visually communicate that the label will reveal further details when in focus (for      Recommended          Medium
+           example, when it is clicked)
+
+CNA-1580   Provide the application’s visual standard for denoting a link for the label in order to Recommended          Medium
+           communicate that it can be clicked to reveal details of the scoring
+
+CNA-1590   Upon hover-over, the label should visually change to indicate that it will perform an Recommended            Medium
+           action (namely, reveal details of the calculation) when clicked
+
+CNA-1600   Provide a button that opens further details of the calculation (if such details are     Recommended          Medium
+           available). This button will automatically be in focus when the dialog is open
+
+CNA-1610   Where appropriate, provide visual indications in-line with the fields that led to the   Recommended          High
+           calculation (for example, 'out-of-normal-range' icons)
+
+Usage Examples
+                                                                                                   Example of a calculated value
+
+                                                                                  
+                                                                                                   (‘Early warning score’) (CNA-1490,
+                                                                                                   CNA-1510, CNA-1520, CNA-1530,
+                                                                                                   CNA-1610)
+
+                                                                                                                               Page 49
+                           Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                           Prepared by Microsoft, Version 1.0.0.0
+                           Last modified on 22 September 2009
+
+                                                              Example of a calculated value
+
+                                                
+                                                              highlighted upon hover-over
+                                                              (CNA-1530, CNA-1570,
+                                                              CNA-1580, CNA-1590)
+
+                                                              Example of a calculated value with
+
+                                              
+                                                              its details revealed (CNA-1540,
+                                                              CNA-1550, CNA-1600)
+
+                                                              Close up of an example of a
+
+                                                             calculated value details panel
+                                                              (CNA-1600)
+
+                                                              Example of 'in-line' indications of
+
+                                              
+                                                              'out of range' using red circle icons
+                                                              (CNA-1610)
+
+                                                                                           Page 50
+Design Guidance – Clinical Noting in Forms: Admissions Clerking
+Prepared by Microsoft, Version 1.0.0.0
+Last modified on 22 September 2009
+
+                                                                                         
+                                                                                                       Example of a calculated value
+                                                                                                       displayed in an entry-field
+                                                                                                       (CNA-1500)
+
+                                                                                                       Example of a calculated value
+                                                                                                       without any labels (CNA-1540)
+
+                                                                                       
+                                                                                                       Example of a calculated value
+                                                                                                       without a text description of what it
+
+                                                                                                      means (CNA-1510)
+
+                                                                                                       Example where the details of the
+
+                                                                                                      calculated value are shown all the
+                                                                                                       time (CNA-1520)
+
+Rationale
+Design Analysis:
+This design provides a solution where the calculated value is unobtrusive, but clearly discernible.
+Desk Research:
+Best practice analysis showed that there is no one way in which applications display calculated values. The convention of displaying
+the calculated value in a non-editable entry field box is used elsewhere in software applications.
+Relevant standards documentation indicates that users “should be able to easily distinguish between fields that can be modified and
+those that cannot ("read-only" fields) by appropriate coding” {R6}. It goes on to state that “entry fields and read-only fields should be
+visually distinct” and that “user-entered data should be distinguishable from system-generated data in entry fields” {R6}.
+User Research:
+Clinicians understood (see APPENDIX B) that the value was calculated and that they should click on the label to find more
+information.
+
+                                                                                                                                    Page 51
+                             Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 22 September 2009
+
+ Hazard Risk Analysis Summary:
+      Potential Hazards:                                                 Mitigations:
+       If the calculation method employed is not obvious (for            Where appropriate, provide access to the type of scoring
+        example, type of Early Warning Score) clinicians may               system applied
+        misinterpret the calculated value
+
+7.3.2         Displaying Scores Where Values Are Missing
+ In certain situations, an automatic calculation, such as a score, can and should be calculated even
+ if there are values missing that would ideally contribute to the calculated score.
+ In these situations, one option would be to indicate that the score cannot be calculated owing to
+ missing values. Where it is deemed useful to do so, the UI should indicate that a score could not be
+ calculated and allow the clinician to access a dialog that specifies where the relevant data entry
+ fields can be found.
+ However, another option will be to calculate the score by substituting the missing values with
+ assumed (default) values, while clearly communicating that values are missing. A default value
+ could be, for example, the value representing ‘normal’ as part of an early warning score.
+ As often only some values of the potential full set will be known, it is important to be able to display
+ partial scores in some situations.
+
+                                                                                                                         Evidence
+ ID                Guideline                                                                           Conformance
+                                                                                                                         Rating
+ CNA-1620          Where appropriate, display a score where only some of the necessary values          Recommended       Low
+                   are known
+                           Note
+                           There may be occasions where it is definitely not appropriate to display
+                           a partially calculated value, such as BMI. The suitability of showing a
+                           particular partial score should be determined by the appropriate clinical
+                           authority.
+
+ CNA-1630          If a score has been calculated which makes assumptions about missing values, Mandatory                High
+                   the UI must clearly communicate this to the user
+
+ CNA-1640          Where the UI displays a score with missing values, clearly indicate where           Recommended       Low
+                   values have been assumed
+
+ CNA-1650          Where a score cannot be calculated and it s deemed necessary to communicate Recommended               Low
+                   this to the user, provide a message which communicates this to the user and
+                   which provides a link to further details
+
+ CNA-1660          Where there are missing values, allow the user to access details of where the       Recommended       Low
+                   relevant fields can be found, so that the user can enter the missing data, if
+                   known
+
+ CNA-1670          In the 'calculated values' dialog indicate which values are missing and where       Recommended       Low
+                   their corresponding entry fields can be found in the form
+
+                                                                                                                                Page 52
+                              Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 22 September 2009
+
+Usage Examples
+                                                                                                      Example of a partially calculated
+
+                                                                                
+                                                                                                      score indication (CNA-1620,
+                                                                                                      CNA-1640)
+
+                                                                                                      Example where a score cannot be
+
+                                                                                
+                                                                                                      shown and the user has accessed
+                                                                                                      further details (CNA-1640)
+
+                                                                                                          Note
+                                                                                                          Accessing further details could
+                                                                                                          reveal information such as
+                                                                                                          normal value ranges
+                                                                                                          (CNA-1670)
+
+Rationale
+Design Analysis:
+There are occasions where a score can be calculated even though there are missing values, but where it is still clinically valuable to
+display the score, but with assumed values. However, it is vital to communicate that there are missing values, as the score could be
+misinterpreted if this is not understood. For example, the clinician could see a 'normal' score and think that the patient is well, even
+though if he or she added another constituent to the score it would push the score to a 'warning' level.
+Hazard Risk Analysis Summary:
+   Potential Hazards:                                    Mitigations:
+    If the clinician believes the calculated value       Do not show a partial score on its own. Instead, show the score with a
+     shown is based upon all data being present            label indicating that it is only a partial score and that values are missing
+     when this is not the case
+    If the clinician is unable to determine which        Where appropriate, provide access to details of:
+     fields have been taken into account (including           Which values entered by the user have contributed to the calculation
+     items not selected) for the calculation the
+                                                              Which other values have contributed to the calculation
+     meaning may be misinterpreted
+                                                              In which fields and under which headings were the values entered
+
+                                                                                                                                   Page 53
+                             Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 22 September 2009
+
+8         ADDING FREE TEXT
+
+8.1       Introduction
+    Completing an electronic admissions clerking form will be a relatively, if not completely, new
+    experience for many clinicians, and an argument can be made that, in many circumstances
+    selecting from fixed-choice options cannot match the extent of expression that is afforded by noting
+    on paper. The relevant authorities may regularly increase the range of the fixed-choice options but,
+    in the near future, it is unlikely that these fixed-choice options will be able to express all that the
+    clinician wishes to express. There must be scope for the clinician to supplement the fixed-choice
+    options and encoded matches with free text.
+    The clinician could wish to add free text to any fixed-choice option, and the interface should allow
+    them to do this. This feature is addressed in the current section of the guidance.
+    This section of the guidance comprises four main areas:
+        Add free text
+        Display free text
+        Edit free text
+        Required or recommended free text fields
+    The user requirements for this section of the guidance are:
+        Allow the user to add free text to any fixed-choice or encoded data field in the form
+        Display any associated free text in a location that is visible and clearly associated with its
+         data item
+        Allow the user to delete the free text, but only before it has been committed to the record
+        Allow the user to edit the free text
+        Delete the free text if the user deletes the associated data item
+        Warn the user before deleting any free text
+        Allow the free text to remain if the user changes the data item
+
+8.2       Principles
+    The following key principles inform the guidance in this section:
+        Match the flexibility of expression that clinicians currently have on paper
+        Screen design heuristics:
+               Match between system and the real world
+               User control and freedom
+               Flexibility and efficiency of use
+
+                                                                                                     Page 54
+                          Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                          Prepared by Microsoft, Version 1.0.0.0
+                          Last modified on 22 September 2009
+
+8.3     Guidelines
+8.3.1       Add New Free Text
+ The approach taken by this guidance regarding adding new free text is to allow the clinician to
+ enter the free text at the same point (or rather, just after) selecting from a fixed-choice data field or
+ entering and selecting an encoded term. It is intuitive to feature the entry of free text ‘in-line’ with
+ the fixed-choice data field it is elaborating.
+
+                                                                                                            Evidence
+ ID           Guideline                                                                       Conformance
+                                                                                                            Rating
+ General
+ CNA-1680     Provide a mechanism that allows the user to add free text to a fixed choice     Mandatory     High
+              selection
+
+ CNA-1690     The entry control mechanism will comprise a pop-up dialog box featuring a       Recommended   High
+              single text field
+
+ CNA-1700     In the free text entry mechanism, provide a control that allows the user to     Recommended   High
+              clear the free text from within the text field
+
+ Revealing the Text Field
+ CNA-1710     Reveal the control for activating this mechanism where any of the following     Recommended   High
+              situations exist:
+               When the user has moved the focus to a fixed-choice data control
+               At the point that the user has selected from a fixed-choice data field
+               Upon mouse-over of the associated control or the location of the 'add
+                free text' control
+
+ CNA-1720     Do not display the associated free text field until after the user has selected Recommended   High
+              from the fixed-choice control or selected a matched term
+
+ CNA-1730     The control will feature in the normal tabbing order                            Recommended   High
+
+ CNA-1740     Move the focus to this control immediately after the user has selected from     Recommended   Medium
+              a list box
+
+ CNA-1750     Hide the control:                                                               Recommended   Medium
+               By default
+               When the user has moved the focus away from either the control itself
+                or the associated fixed-choice data field
+
+ Text Field Size
+ CNA-1760     If the user is expected to be able to type in multiple lines in a text field,   Recommended   High
+              ensure that the height of a free text field is a minimum of two lines
+
+ CNA-1770     Do not feature a horizontal scroll bar                                          Recommended   High
+
+ CNA-1780     When the text that the user is typing exceeds the visible area in the text      Recommended   High
+              field, provide a vertical scroll bar
+
+ Displaying Free Text
+ CNA-1790     Display free text immediately to the right of the associated fixed-choice       Recommended   Medium
+              control
+
+ CNA-1800     If there is insufficient space immediately to the right of the associated       Recommended   Medium
+              fixed-choice control, display the free text immediately below the
+              fixed-choice control
+                                                                                                                   Page 55
+                          Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                          Prepared by Microsoft, Version 1.0.0.0
+                          Last modified on 22 September 2009
+
+CNA-1810   Do not hide the free text that the user has entered, if the associated control   Mandatory                  High
+           is in view
+
+CNA-1820   Feature the free text within a faint marquee that also surrounds the             Recommended                Medium
+           associated fixed-choice control
+
+Usage Examples
+                                                                                            Example of a text field appearing when
+
+                                                                         
+                                                                                            data has been selected and the field is
+                                                                                            in focus (CNA-1680, CNA-1710,
+                                                                                            CNA-1740)
+
+                                                                                            Example of a text field opening and the
+                                                                                            user typing in text (CNA-1740,
+                                                                                            CNA-1700, CNA-1760)
+
+                                                                       
+
+                                                                                                                              Page 56
+                       Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                       Prepared by Microsoft, Version 1.0.0.0
+                       Last modified on 22 September 2009
+
+                                                          Example of free text being displayed
+                                                          next to the field (CNA-1750, CNA-1790)
+
+                                           
+                                                          Example of free text fields being
+
+                                                         displayed always (CNA-1690)
+
+                                                          Alternative implementation of guidance:
+                                                          the text entry field appears next to the
+                                                          entry field rather than as a pop-up. If
+                                                          the user tabs away from the field, the
+                                                          text remains as read-only text
+
+                                          
+
+                                                                                              Page 57
+Design Guidance – Clinical Noting in Forms: Admissions Clerking
+Prepared by Microsoft, Version 1.0.0.0
+Last modified on 22 September 2009
+
+ Rationale
+ Design Analysis:
+ The design provides a solution where the text fields are sufficiently hidden so that the clinician is not overwhelmed by a cluttered
+ screen design, but which are sufficiently prominent so that the clinician knows how to enter the text. This solution provides a control
+ which is close to the data entry field to which it applies.
+ The guidance allows for both a pop-up design and a design in which a field appears in the form. The latter approach requires less
+ keystrokes or mouse-clicks, but could require a dynamic form in which entry fields move down to accommodate the field as it is
+ revealed.
+ User Research:
+ Research (see APPENDIX B) showed that clinicians understood this solution and indicated that they would be able to easily use it,
+ although some had an initial problem with seeing the control for adding the text.
+ Hazard Risk Analysis Summary:
+      Potential Hazards:                                                Mitigations:
+       If the clinician enters information for which a specific data       Where appropriate, position free text fields after the
+        entry field exists into the free-text field, valuable                fixed-choice fields or the search entry field to encourage the
+        information that could be encoded may be omitted                     user to enter the fixed-choice data first
+
+8.3.2         Edit Free Text
+ After clinicians have added some free text to a fixed-choice data field, they must be allowed to go
+ back and change that text before they save the form to the patient record. It could be that they have
+ made a mistake, or that they have discovered some new information from the patient. It could be
+ that they are new to the form and have typed some free text which is better recorded as a
+ fixed-choice data item later in the form. Whatever the reason, the clinician must be able to quickly
+ and easily edit this data.
+ The approach adopted by the current guidance combines the control for editing the free text with
+ the field for displaying the free text, in order to make the action of editing intuitive to the clinician.
+
+                                                                                                                               Evidence
+ ID                Guideline                                                                             Conformance
+                                                                                                                               Rating
+ CNA-1830          Allow the user to edit free text that they have entered, as long as this is done      Mandatory             High
+                   before the data has been submitted to the patient record
+
+ CNA-1840          Allow the user to edit the free text by clicking on it, which reopens the entry       Recommended           High
+                   control
+
+ CNA-1850          Highlight the free text area upon mouse-over (for example, in yellow)                 Recommended           High
+
+                                                                                                                                      Page 58
+                               Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 22 September 2009
+
+Usage Examples
+                                                                                                      Example of free text being edited
+                                                                                                      (CNA-1830, CNA-1840,
+                                                                                                      CNA-1850)
+
+                                                                              
+
+                                                                                                      Close-up view of the text entry
+
+                                                       
+                                                                                                      field (CNA-1830)
+
+Rationale
+Design Analysis:
+The editing mechanism reuses the entry mechanism and does not require any further buttons. Clicking on the displayed text to edit it is
+an intuitive action.
+Desk Research:
+The action of hovering over or moving the mouse onto the displayed text to reveal a button is one used elsewhere in the Microsoft
+Health CUI designs (for example, see Design Guidance – Terminology – Matching {R13}) and which is also used in the Microsoft
+Office System 2007.
+The guidance suggests that the free text area should be highlighted upon mouse-over to indicate that it can be clicked (to edit it). This
+is supported by relevant international standards documentation, which states that “consistent feedback should be provided to the user
+to identify the selected option”, including “highlighting” the “selected or active option” (see Menu dialogues {R5}).
+User Research:
+User research (see APPENDIX B) showed that clinicians understood that they could edit free text by clicking on it.
+
+                                                                                                                                  Page 59
+                             Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 22 September 2009
+
+8.3.3        Required or Recommended Free Text Field
+ If the clinician is required to add some free text or, at least, is encouraged to do so, the free text
+ field should be made immediately visible to the clinician. That is to say, in those situations where it
+ is recommended that the clinician should type in some free text, do not require the clinician to
+ perform an action for it to appear.
+
+                                                                                                                               Evidence
+ ID                    Guideline                                                                           Conformance
+                                                                                                                               Rating
+ CNA-1860              Where free text is required or recommended, provide a free text field in the        Recommended         High
+                       form
+
+ CNA-1870              Where free text is required or recommended, but is contingent upon the user         Recommended         Medium
+                       making a specific data selection, reveal a free text field in the form (for
+                       example, when the user makes an ‘other, please specify’ selection)
+
+ Usage Examples
+                                                                                                           Example of a recommended
+
+                                                                                      
+                                                                                                           text fields which is immediately
+                                                                                                           visible (CNA-1860)
+
+ Rationale
+ Design Analysis:
+ Consistent with other guidelines in this document, required fields should not be initially hidden (see section 5.3.1)
+ Desk Research:
+ A brief check of best practice shows that this is a conventional way of displaying text fields.
+ User Research:
+ Clinicians understood (see APPENDIX B) this design and had no problems entering data into such fields.
+
+                                                                                                                                      Page 60
+                              Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 22 September 2009
+
+9          GENERAL FORM DESIGNS
+
+9.1        Introduction
+    In this section, the guidelines presented are based upon standard UI practice and should be
+    followed by developers who are planning to employ standard data entry fields in their application.
+    These guidelines are not exclusive to the healthcare informatics industry but have been chosen
+    because they are applicable to healthcare applications.
+
+9.2        Principles
+    The following key principles inform the guidance in this section:
+          Consistency
+          Minimal design
+
+9.3        Guidelines
+    In this section, the guidelines focus upon:
+          How to use standard fields, such as check boxes and radio buttons
+          How to provide labels and prompts
+
+9.3.1          Use of Standard Fields
+    These guidelines address how standard fields, including radio buttons, check boxes and drop-down
+    list boxes should be implemented in a form.
+
+                                                                                                                Evidence
+    ID           Guideline                                                                        Conformance
+                                                                                                                Rating
+    Radio Buttons
+    CNA-1880     A group of radio buttons should contain at least two items and a maximum of Recommended        High
+                 seven plus or minus two
+
+    CNA-1890     List radio button options in a logical order, such as grouping highly-related Mandatory        High
+                 options together or placing most common options first. In the absence of any
+                 common or logical ordering, consider alphabetical order
+
+    CNA-1900     Ensure that within radio button sets which feature the same options, feature     Recommended   High
+                 the options in a consistent order
+
+    CNA-1910     Where possible, align radio buttons vertically, not horizontally                 Recommended   High
+
+    CNA-1920     If radio buttons are used to dynamically display other controls related to the   Mandatory     High
+                 selected control, provide additional accessibility mitigation to indicate that
+                 further fields have appeared
+
+    CNA-1930     Make the first option in a group of radio buttons the default option             Recommended   High
+
+    CNA-1940     Avoid nesting radio buttons with other radio buttons or check boxes              Recommended   Medium
+
+                                                                                                                       Page 61
+                            Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                            Prepared by Microsoft, Version 1.0.0.0
+                            Last modified on 22 September 2009
+
+Check Boxes
+CNA-1950      For check boxes, the meaning of the cleared state must be the                       Mandatory                     High
+              unambiguous opposite of the selected state (for example, ‘on’ or ‘off’)
+
+CNA-1960      Only use check boxes to toggle an option ‘on’ or ‘off’ or to select or deselect     Recommended                   High
+              an item
+
+CNA-1970      In a group of check boxes, each check box should be independent of all the          Mandatory                     High
+              others, unless interdependency is clearly indicated
+
+CNA-1980      Aim to keep the number of check boxes to 10 or fewer                                Recommended                   High
+
+CNA-1990      List check box options in a logical order, such as grouping highly-related   Mandatory                            High
+              options together or placing most common options first. In the absence of any
+              common or logical ordering, consider alphabetical order
+
+CNA-2000      Where possible, align check boxes vertically, not horizontally                      Recommended                   High
+
+CNA-2010      If check boxes are used to dynamically display other controls related to the        Mandatory                     High
+              selected control, provide additional accessibility mitigation to indicate that
+              further fields have appeared
+
+CNA-2020      Label every check box                                                               Mandatory                     High
+
+Drop-Down Lists
+CNA-2030      Do not feature a list box if:                                                       Mandatory                     High
+               Missing one or more of the options in the list has important implications
+                for patient safety
+               There are a small number of options and there is space to display them
+                as radio buttons
+               The list label is not understood by all relevant users and the list is used
+                infrequently
+
+CNA-2040      Arrange list items in a logical order, such as grouping highly-related options      Mandatory                     High
+              together or placing most common options first. In the absence of any
+              common or logical ordering, consider alphabetical order
+
+CNA-2050      Place options that represent either ‘none’ or ‘all’ at the beginning of the list,   Recommended                   High
+              regardless of the sort order of the remaining items
+
+Usage Examples
+                                                                                                  Example of a set of radio buttons
+
+                                                                                                 (CNA-1880, CNA-1890, CNA-1910,
+                                                                                                  CNA-1930)
+
+                                                           
+                                                                                                  Example of a check box (CNA-1950,
+                                                                                                  CNA-1960)
+
+                                                                                                  Example of a drop-down list box
+
+                                                                                                 (CNA-2030)
+
+                                                                                                  In this example, the ordering should
+
+                                              
+                                                                                                  be clinically logical (that is, in order of
+                                                                                                  severity), but instead it is in
+                                                                                                  alphabetical order (CNA-2040)
+
+                                                                                                                                     Page 62
+                          Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                          Prepared by Microsoft, Version 1.0.0.0
+                          Last modified on 22 September 2009
+
+                                                                                                   In this example, the various sets of
+
+                                                                                                  radio buttons feature different ordering
+                                                                                                   (CNA-1900)
+
+                                                                                                   In this case, radio buttons would be
+
+Rationale
+                                                                                                  more appropriate (CNA-2030)
+
+Desk Research:
+These designs are support by key style guides in the software industry (for example, see Windows User Experience Interaction
+Guidelines {R21} and Apple Human Interface Guidelines, User Experience {R22}).
+Some style guides indicate that it is possible to have a ‘mixed choice’ selection option in check boxes whereby, in addition to the
+selected and cleared states, a ‘mixed’ state indicates that the option is set for some, but not all objects. However, in an area of
+technology where ambiguity is to be avoided, such as healthcare IT, such a mixed state is to be avoided.
+Relevant international guidance supports these guidelines, including:
+    “If the user must select a small number of values” then “screen buttons should be considered” {R6}
+    “If a conventional ordering (that is, in general usage) for options is possible, options should be placed in that order.” {R6}
+    “If the frequency cannot be determined or the groups are large and users know the name of the desired option, options should be
+     placed in alphabetical order.” {R6}
+User Research:
+In user research (see APPENDIX B), all clinicians understood how to use these controls.
+
+                                                                                                                                      Page 63
+                             Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 22 September 2009
+
+9.3.2       Labels and Prompts
+ These guidelines address how labels and text prompts should be implemented in a standard form.
+
+                                                                                                                   Evidence
+ ID            Guideline                                                               Conformance
+                                                                                                                   Rating
+ CNA-2060      Unless there is reason not to do so, use sentence-style                 Recommended                 Medium
+               capitalisation, that is to begin the sentence with a capital and then
+               use lower case text unless there is cause to do otherwise
+
+ CNA-2070      For a group of check boxes, aim to keep the label length about the      Recommended                 Medium
+               same for all labels
+
+ CNA-2080      Use positive phrasing                                                   Recommended                 Medium
+
+ CNA-2090      Where necessary, provide text prompts in order to instruct users as     Recommended                 High
+               to the type of data they should enter in a field
+
+ CNA-2100      Write the prompt in italic grey text                                    Recommended                 High
+
+ CNA-2110      Prompt text should not be editable                                      Mandatory                   High
+
+ CNA-2120      If there is sufficient space, feature the text prompt immediately below Recommended                 Medium
+               or to the right of the field
+
+ CNA-2130      If space is limited, feature an in-field text prompt                    Recommended                 High
+
+ CNA-2140      Allow the in-field text prompt to remain upon the focus moving to the Recommended                   Medium
+               field
+
+ CNA-2150      Remove the in-field text prompt upon data being entered into or         Recommended                 High
+               selected in the field
+
+ CNA-2160      Do not feature examples in the in-field prompt text                     Recommended                 High
+
+ Usage Examples
+                                                                                             If space is limited, feature an in-field
+
+                                                                                            text prompt (CNA-2130)
+
+                                                                                  
+                                                                                             Distinguish the input text from the
+                                                                                             prompt text (CNA-2100)
+
+                                                                                            Do not feature the prompt the same
+                                                                                             weight as the input text (CNA-2100)
+
+                                                                                  
+                                                                                             Remove the in-field text prompt upon
+                                                                                             data being entered into the field
+                                                                                             (CNA-2150)
+
+                                                                                            Do not feature examples in the in-
+                                                                                             field prompt text (CNA-2160)
+
+                                                                                                                              Page 64
+                         Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                         Prepared by Microsoft, Version 1.0.0.0
+                         Last modified on 22 September 2009
+
+Rationale
+Desk Research:
+This guidance is supported by key style guides in the software industry (for example, see Windows User Experience Interaction
+Guidelines {R21} and Apple Human Interface Guidelines, User Experience {R22}).
+The notion of providing prompts which “indicate implicitly” or “explicitly” the “types of input that will be accepted by the dialogue” is
+outlined in the relevant international standards documentation {R9}. The use of positive phrasing is supported by the relevant
+international standard which states that such prompts “should be worded as positive statements to emphasize 'what to do' rather than
+'what to avoid'. However, negating statements should be used for denoting exceptions to rules or to emphasize a point” {R9}. The
+standards go on to emphasise the importance of providing specific prompts under certain conditions, such as where users “are
+unfamiliar with the system and will need information on how to proceed” and where the task requirements are such that the “user
+inputs should be guided”, such as where the “task requires sequenced steps”, where the task is “complicated” or where there is a
+“need to minimize errors” {R9}.
+Regarding the use of capital letters, the standards documentation states that “to facilitate readability, text field labels should begin with
+an upper-case letter. The rest of the label should contain lower-case (small) letters, except for cases where the label is a logo, an
+acronym, or where language convention requires each word in the label to begin with a capital letter” {R6}.
+
+                                                                                                                                      Page 65
+                              Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 22 September 2009
+
+10        DOCUMENT INFORMATION
+
+10.1 Terms and Abbreviations
+ Abbreviation               Definition
+ BMI                        Body Mass Index
+
+ CUI                        Common User Interface
+
+ CVS                        Cardiovascular System
+
+ HIU                        Health Informatics Unit
+
+ ISMP                       Institute for Safe Medication Practices
+
+ NHS                        National Health Service
+
+ NHS CFH                    NHS Connecting for Health
+
+ NPSA                       National Patient Safety Agency
+
+ PMH                        Past Medical History
+
+ RCP                        Royal College of Physicians
+
+ RITE                       Rapid Iterative Testing Evaluation
+
+ SNOMED CT                  Systematized Nomenclature of Medicine Clinical Terms
+
+ UI                         User Interface
+
+ WHO                        World Health Organization
+ Table 7: Terms and Abbreviations
+
+10.2 Definitions
+ Term                    Definition
+ Conformance             In the guidance tables, indicates the extent to which you should follow the guideline when defining your UI
+                         implementation. There are two levels:
+                          Mandatory – An implementation should follow the guideline
+                          Recommended – An implementation is advised to follow the guideline
+
+ Current best practice Current best practice is used rather than best practice, as over time best practice guidance may change or be
+                       revised due to changes to products, changes in technology, or simply the additional field deployment
+                       experience that comes over time.
+
+ Entry field             Type of field in which data is entered. Entry fields may be optional fields or required fields.
+
+                                                                                                                                  Page 66
+                               Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 22 September 2009
+
+ Term                     Definition
+ Evidence Rating          In the guidance tables, summarises the strength of the research defining the guideline and the extent to which
+                          it mitigates patient safety hazards. There are three ratings (with example factors used to determine the
+                          appropriate rating):
+                           Low:
+                              Does not mitigate specific patient safety hazards
+                              User research findings unclear and with few participants
+                              Unreferenced usability principles indicate the design is not significantly better than alternatives
+                           Medium:
+                              Mitigates specific patient safety hazards
+                              User research findings clear but with few participants
+                              References old authoritative guidance (for example, from the UK-based National Patient Safety Agency
+                               (NPSA), Institute for Safe Medication Practices (ISMP) or World Health Organization (WHO)) that is
+                               potentially soon to be superseded
+                              Referenced usability principles indicate the design is significantly better than alternatives
+                           High:
+                              Mitigates specific patient safety hazards
+                              User research findings clear and with a significant number of participants
+                              References recent authoritative guidance (for example, from NPSA, ISMP or WHO)
+                              Referenced usability principles indicate the design is significantly better than alternatives
+
+ Field                    Area on a screen display in which data is entered or presented.
+
+ Form                     Structured display with labelled fields that the user reads, fills in, selects entries for (for example, through
+                          choice buttons or radio buttons) or modifies.
+
+ Label                    Short descriptive title for an entry or read-only field, table, control or object.
+
+ Navigation               Ability to move from field to field within a form, to proceed forward and backward through a form and move
+                          from form to form.
+
+ Optional field           Field that not necessarily needs to be filled in or modified by the user.
+
+ Read-only field          Field that contains data that cannot be modified by the user.
+
+ Required field           Field that must be completed by the user if it does not already have a value.
+ Table 8: Definitions
+
+10.3 Nomenclature
+ This section shows how to interpret the different styles used in this document to denote various
+ types of information.
+
+10.3.1         Body Text
+ Text                                                                      Style
+ Code                                                                      Monospace
+
+ Script
+
+ Other markup languages
+
+ Interface dialog names                                                    Bold
+
+ Field names
+
+ Controls
+
+                                                                                                                                         Page 67
+                               Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 22 September 2009
+
+ Text                                                                Style
+ Folder names                                                        Title Case
+
+ File names
+ Table 9: Body Text Styles
+
+10.3.2        Cross References
+ Reference                                                           Style
+ Current document – sections                                         Section number only
+
+ Current document – figures/tables                                   Caption number only
+
+ Other project documents                                             Italics and possibly a footnote
+
+ Publicly available documents                                        Italics with a footnote
+
+ External Web-based content                                          Italics and a hyperlinked footnote
+ Table 10: Cross Reference Styles
+
+10.4 References
+ Reference Document                                                                                             Version
+ R1.              Royal College of Physicians (Health Informatics Unit): A Clinician’s Guide to Record Standards 2008
+                  – Part 2: Standards for the structure and content of medical records and communications when
+                  patients are admitted to hospital, October 2008
+
+ R2.              Royal College of Physicians (Health Informatics Unit): Hospital Admission Pro-forma Headings 1.0
+                  and Definitions, April 2008
+
+ R3.              Design Guidance – Accessibility Principles                                                    1.0.0.0
+
+ R4.              Bates, et al: Ten Commandments for Effective Clinical Decision Support: Making the Practice   2003
+                  of Evidence-based Medicine a Reality, Journal of the American Medical Informatics
+                  Association, Vol. 10 Number 6 Nov / Dec 2003
+
+ R5.              British Standards Institute, BS EN ISO 9241-14: 1997 Ergonomic requirements for office work   1997
+                  with visual display terminals (VDTs) -- Part 14: Menu dialogues
+
+ R6.              British Standards Institute, BS EN ISO 9241-17: 1998 Ergonomic requirements for office work   1998
+                  with visual display terminals (VDTs) -- Part 17: Form-filling dialogues
+
+ R7.              British Standards Institute, BS EN ISO 9241-12: 1999 Ergonomic requirements for office work   1999
+                  with visual display terminals (VDTs) -- Part 12: Presentation of information
+
+ R8.              British Standards Institute, BS EN ISO 9241-10: 1996 Ergonomic requirements for office work   1996
+                  with visual display terminals (VDTs) -- Part 10: Dialogues principles
+
+ R9.              British Standards Institute, BS EN ISO 9241-13: 1999 Ergonomic requirements for office work   1999
+                  with visual display terminals (VDTs) -- Part 13: User guidance
+
+ R10.             British Standards Institute, BS 7581:1992 Guide to Presentation of tables and graphs          1992
+
+ R11.             Design Guidance – Date Display                                                                2.0.0.0
+
+ R12.             Design Guidance – Date and Time Input                                                         2.0.0.0
+
+ R13.             Design Guidance – Terminology – Matching                                                      1.0.0.0
+
+ R14.             Design Guidance – Terminology – Elaboration                                                   1.0.0.0
+
+ R15.             Design Guidance – Terminology – Display Standards for Coded Information                       1.0.0.0
+
+                                                                                                                          Page 68
+                               Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 22 September 2009
+
+Reference Document                                                                                                 Version
+R16.             Design Guidance – Recording Adverse Drug Reaction Risks                                           1.0.0.0
+
+R17.             Design Guidance – Displaying Adverse Drug Reaction Risks                                          1.0.0.0
+
+R18.             Nielsen, J: Usability Engineering, 1993                                                           1993
+
+R19.             Shneiderman, B: Designing the User Interface – Strategies for Effective Human-Computer            Third Edition
+                 Interaction, 1998
+
+R20.             Galitz, W.O: Essential guide to user interface design. An introduction to GUI design principles   1997
+                 and techniques, 1997
+
+R21.             Windows User Experience Interaction Guidelines                                                    2008
+
+R22.             Apple Human Interface Guidelines: User Experience                                                 2008
+
+R23.             Jarrett, Caroline: Forms that work                                                                2009
+Table 11: References
+
+                                                                                                                                   Page 69
+                             Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 22 September 2009
+
+APPENDIX A                      USABILITY PRINCIPLES
+ The following usability principles have been applied through this guidance document. They are
+ well-recognised principles within the user experience domain.
+
+A.1    Nielsen’s Usability Heuristics
+ See Usability Engineering {R18} for more information on these principles:
+           Visibility of system status
+           Match between system and the real world
+           User control and freedom
+           Consistency and standards
+           Error prevention
+           Recognition rather than recall
+           Flexibility and efficiency of use
+           Aesthetic and minimalist design
+           Help users recognise, diagnose, and recover from errors
+           Help and documentation
+
+A.2    Shneiderman’s Eight Golden Rules of Interface Design
+ See Designing the User Interface – Strategies for Effective Human-Computer Interaction {R19} for
+ more information on these principles:
+           Strive for consistency
+           Enable frequent users to use shortcuts
+           Offer informative feedback
+           Design dialogs to yield closure
+           Offer error prevention and simple error handling
+           Permit easy reversal of actions
+           Support internal locus of control
+           Reduce short-term memory load
+
+A.3    ISO 9241: Characteristics of Presented Information
+ See Ergonomic requirements for office work with visual display terminals (VDTs) -- Part 10:
+ Dialogues principles {R8} for more information on these principles:
+           Clarity (the information content is conveyed quickly and accurately)
+           Discriminability (the displayed information can be distinguished accurately)
+           Conciseness (users are given only the information necessary to accomplish the task)
+           Consistency (the same information is presented in the same way throughout the
+            application, according to the user’s expectation)
+           Detectability (the user’s attention is directed towards information required)
+
+                                                                                               Page 70
+                      Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                      Prepared by Microsoft, Version 1.0.0.0
+                      Last modified on 22 September 2009
+
+   Legibility (information is easy to read)
+   Comprehensibility (meaning is clearly understandable, unambiguous, interpretable and
+    recognisable)
+
+                                                                                   Page 71
+              Design Guidance – Clinical Noting in Forms: Admissions Clerking
+              Prepared by Microsoft, Version 1.0.0.0
+              Last modified on 22 September 2009
+
+APPENDIX B                      STUDY ID 34: EXECUTIVE SUMMARY
+
+B.1     Abstract
+ The UK National Health Service (NHS) Common User Interface (CUI) Programme is a partnership
+                  ®
+ between Microsoft and NHS Connecting for Health (NHS CFH), which is part the NHS National
+ Programme for Information Technology (NPfIT).
+ As part of CUI, the Clinical Applications and Patient Safety (CAPS) project has the goal of ensuring
+ that software applications used by the NHS enhance patient safety. To achieve this, CAPS
+ provides software developers with user interface design guidelines derived through a user-centric
+ development process that includes explicit patient-safety evaluations.
+ This summary describes key findings from user research carried out in April 2009 by the CUI CAPS
+ team on the clinical noting required for hospital admissions clerking.
+ Purpose:
+ To hone a set of designs in terms of their usability that would then form the basis for user interface
+ design guidelines for admissions clerking. Over the series of iterations, the Design Team aimed to
+ reduce the number of errors being made by the clinical participants and to improve the designs’
+ ease of, and suitability for, use in a clinical environment.
+ Method:
+ Over a series of five stages of usability testing, the Design Team iteratively tested the prototypes,
+ quickly analysed the data and updated the designs in response to the findings.
+ Key Results:
+ Key findings included:
+       The need for progressive matching of clinical concepts
+       The need to capture durations in a colloquial format
+       The need for common matches to be distinguished when searching for clinical concepts
+
+B.2     Research Objectives
+ The objectives of the research were to test a set of design features based on the following areas:
+       General form design (standard controls)
+       Entering summary lists
+       Required fields
+       Durations
+       Displaying calculated values
+       Displaying previous values
+       Adding free text
+ The research was intended to result in a final set of designs plus a list of any outstanding issues
+ that could not be resolved during the test period.
+
+                                                                                                  Page 72
+                      Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                      Prepared by Microsoft, Version 1.0.0.0
+                      Last modified on 22 September 2009
+
+B.3     Research Design
+ Rapid Iterative Testing and Evaluation (RITE) testing: 13 sessions (15 participants), plus pilot
+ testing, with Health Care Professionals (HCPs) working within the UK National Health Service
+ (NHS). Prototypes embodying the potential guidelines were constructed in a range of media:
+                  ®
+       Microsoft Silverlight™
+                  ®
+       Microsoft Expression Blend™
+                  ®                      ®                                                   ®
+       Microsoft Office PowerPoint slides featuring static designs created in Microsoft Office
+             ®
+        Visio with some animation
+ The test sessions were grouped into five sequential stages. Largely, participant allocation to each
+ stage was determined by the location of the testing; for example, all the participants tested in
+ Birmingham City Hospital were part of Stage Three. Before each stage in the testing, the
+ prototypes were updated (if necessary), based upon the findings of the previous stage.
+ Participants were tested individually, with the exception of two sessions where participants doubled
+ up and addressed the component tasks in turn.
+ In each test session, the participant was given a set of typical clinical noting tasks to perform using
+ the various prototypes, with one prototype per task:
+       Where the prototype was interactive, the participant was asked to perform the task by using
+        the keyboard and/or the mouse.
+       Where the prototype was not interactive, the researcher presented it screen-by-screen and
+        asked the participant what they understood and what they would do next at each stage in
+        the screen flow.
+ The tasks were presented in the form of brief written scenarios that set the scene and gave the
+ participant goals to achieve with the prototype. After each task, the participant would be asked
+ questions about their experience of the prototype, including how suitable they thought the design
+ would be in a real clinical situation.
+ Following each stage in the testing, the researcher collaborated with the Design Team in analysing
+ the findings and planning updates to be implemented before the next testing stage. In this way, the
+ prototypes were incrementally improved over the five stages, with these changes being tested at
+ each subsequent stage.
+ In the case of the ‘entry of summary list’ design, alternative designs were presented to the
+ participant as part of the post-task discussion. However, this was the only exception: in all other
+ cases, alternative designs were not tested or discussed.
+ If a prototype was deemed sufficiently capable of enabling the participant to perform the task easily
+ and without error, it was dropped from the testing. This was because of time constraints: stopping
+ tests on a successful prototype released time for tests on a previously untested prototype.
+
+B.4     Results
+B.4.1      Participant Description
+ 15 participants took part in the user research, although in two cases participants ‘doubled up’,
+ taking it in turns to perform user tasks (marked as 7a/7b and 12a/12b in Table 12). In total, testing
+ took part in six different hospitals throughout London, the South East and the West Midlands. The
+ participants had varying levels of IT experience, although everyone had a basic level of computer
+ proficiency, and all used computers to varying degrees in a clinical context.
+
+                                                                                                    Page 73
+                       Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                       Prepared by Microsoft, Version 1.0.0.0
+                       Last modified on 22 September 2009
+
+Each participant had either volunteered through the NHS CFH Events Management System (EMS)
+signup or had been recruited by an HCP who had volunteered. None of the respondents had
+previously taken part in CUI clinical engagement for other work areas
+Table 12 shows a summary of the participants’ profiles:
+
+#        Job Role         Specialty                     Level        Site                       Computer Experience
+1        Doctor           Plastic surgery               Y4 Registrar Royal Free Hospital        High: HTML, ASP, SQL, developed
+                                                                                                in-house mini-EPR
+
+2        Health Care      MAU                           Band 2       Basingstoke and North      Low: Sage, Email, Internet (four
+         Assistant                                                   Hampshire Hospital         hours a week)
+
+3        Nurse            MAU                           RGN          Basingstoke and North      Low: Pathology results, Internet
+                                                                     Hampshire Hospital         shopping, ECDL
+
+4        Nurse            Pain                          Band 7       Basingstoke and North      Medium: Email, recording statistics
+         Practitioner                                                Hampshire Hospital         for clinics, booking, National Audit
+                                                                                                database, Hospital PMS
+
+5        Doctor           Medicine                      FY2          Basingstoke and North      Unknown
+                                                                     Hampshire Hospital
+
+6        Nurse (Pain      Pain                          Band 6       Basingstoke and North      Medium: Hospital intranet, Microsoft®
+         Sister)                                                     Hampshire Hospital         Office Outlook®, blood results, PMS
+                                                                                                system, Google™, Microsoft® Office
+                                                                                                Excel®, record data for audits
+
+7a       Ward             Surgical Assessment Unit      Band 7       Birmingham City Hospital   Medium: iSoft® Lorenzo® RCM
+         Manager                                                                                (transferring patients, scanning
+                                                                                                notes). Microsoft® Office Word,
+                                                                                                Excel, PowerPoint, Internet
+
+7b       Nurse            Surgical Assessment Unit      Band 6       Birmingham City Hospital   Medium: Lorenzo RCM (transferring
+                                                                                                patients, scanning notes). Word,
+                                                                                                Excel, Microsoft® Office
+                                                                                                PowerPoint®, Internet
+
+8        Nurse            Medicine MSSU                 Band 7       Birmingham City Hospital   Medium: ICM – patient finder,
+                                                                                                results, discharge, the Microsoft®
+                                                                                                Office System
+
+9        Doctor           Poisons                       FY2          Birmingham City Hospital   High: In-house ICM, Web client
+                                                                                                (clinical data archive), x-rays.
+                                                                                                previous professional IT experience
+
+10       Nurse            A&E                           Band 7       Birmingham City Hospital   Low: IPM Lorenzo PAS, x-rays
+
+11       Doctor           Rotating: Cardiology,         FY1          Whipps Cross               Medium: In-house blood system,
+                          Neurology, Breast Surgery                                             PACS (Agfa®), PAS, Excel,
+                          (current)                                                             GraphPad Prism®, email, Microsoft
+                                                                                                Office
+
+12a      Doctor           Rotating:                     FY1          Royal London Hospital      Medium: CRS, EPR, PACS, Word,
+                          Diabetes, General Medicine,                                           PPT, Internet, email
+                          Elderly, Cardiovascular
+
+12b      Doctor           Rotating:                     FY1          Royal London Hospital      Medium: CRS, EPR, PACS, Word,
+                          General Medicine,                                                     PPT, Internet, email
+                          Endocrinology
+
+13       Doctor           ICU                           FY1          Homerton                   n/a
+Table 12: Testing Participants
+
+                                                                                                                              Page 74
+                                 Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                                 Prepared by Microsoft, Version 1.0.0.0
+                                 Last modified on 22 September 2009
+
+B.4.2    Key Findings
+     Clinicians understood how to enter observation data into a form using standard controls,
+      such as drop-downs and radio buttons
+     However, clinicians felt that it would be too time-consuming to enter data in this way
+     Clinicians understood how to reveal hidden fields with the check box control and/or by
+      selecting a data item, as long as there is sufficient labelling and prompts
+     Clinicians may try to enter too much information into a search field (such as for Past
+      Medical History (PMH)) unless there is progressive matching
+     Clinicians do not want to navigate to a tab in order to enter a duration or date
+     Clinicians quickly learn how to type in data into the ‘natural language’ ‘duration/date(s)’ field
+     Clinicians find it unclear and time-consuming to search a long list of search results for a
+      fairly common clinical concept
+     Some clinicians find a ‘Current problem’ field ambiguous and unclear, whereas others find it
+      easy to understand
+     If the ‘Current problem’ field is located immediately below the additional text field, the
+      clinician may not notice it
+     Clinicians want to be able to reorder a summary list (such as a PMH)
+     Faced with a ‘search’ or ‘drop-down’ button alongside a search entry field (or combo box),
+      some clinicians may click the button without entering any text.
+     Clinicians understand red asterisks mean that a field is required
+     Clinicians understand the usefulness of providing a right-hand panel that indicates missed
+      fields, but some clinicians do not notice it: clinicians find it easier to notice in-line
+      indications, such as yellow shading in the missed fields
+     Clinicians expected in-line indications for the data that contributed to a calculated value,
+      where appropriate (in this case, where the values are ‘out-of-range’)
+     Clinicians need the label to be visually distinct in order to know that they can click on it to
+      find further information about the calculation. However, after they realise that further
+      information about the calculation may be available, they indicate that clicking on the label is
+      intuitive
+     Clinicians expect the same ‘auto-complete’ mechanism in a date dialog as is employed in
+      the summary list entry control, which allows the entry of words such as ‘past’
+     Clinicians found the button for adding free text to be insufficiently prominent
+     Clinicians expect to be able to access a graphical representation of previous values
+
+B.4.3    Conclusions
+     Although the guidance should clearly show how standard controls should be used in
+      electronic forms, further work should be done to make the process more intuitive and less
+      time-consuming
+     In order to simply reveal fields on a form, provide a check box control in addition to
+      providing a mechanism that automatically reveals fields when a certain data item is
+      selected
+     Provide progressive matching where technology supports it
+     In the control for entering summary lists, do not hide fields behind a tab
+
+                                                                                                   Page 75
+                     Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                     Prepared by Microsoft, Version 1.0.0.0
+                     Last modified on 22 September 2009
+
+       Provide a ‘natural language’ entry field which matches duration and date phrases and
+        numbers as they are entered, and provide a ‘play back’ of what they have entered in a more
+        formal structure
+       Distinguish common matches in the search results
+       If a ‘Current problem’ field is to be featured, locate it next to the ‘duration/date(s)’ field
+       Provide a feature to reorder the summary list
+       Do not feature a search button if the matching is done progressively. Feature a search icon
+        where appropriate
+       Do not feature a drop-down button in the ‘duration/date(s)’ entry field
+       Feature red asterisks next to the labels of required fields
+       Shade required fields in yellow where they have been missed by the clinician (that is, where
+        the clinician has moved the focus to a field that is after the required field in the tabbing
+        order)
+       Provide a right-hand panel that lists missed fields in addition to in-line indications of missed
+        fields
+       Where appropriate, feature in-line indications of values that contribute to a calculated score
+       Ensure that the label of the calculated score visually communicates that it can be clicked
+       Ensure that the button for adding free text is sufficiently prominent
+       In a previous values dialog, provide access to a graphical representation of previous values
+
+B.5     Design Iterations: Findings and Design Updates
+ Table 13 to Table 19 describe the design iterations in each area of testing, including the findings
+ and changes made in each case. The left-hand columns indicate the number of design iterations
+ performed.
+ Table 13 describes the design iterations for entering summary lists:
+
+ Iteration Headline Findings and Comments                                                  Changes
+ 1         Too time consuming                                                              Remove ‘attribute’ tabs: feature
+           Don’t always want to add a date                                                 ‘duration/dates’ and ‘current problem’ fields
+                                                                                           in the same area as the additional text field
+           Wants to write everything in ‘additional text’
+                                                                                           Provide ‘natural’ date input
+           Wants to be able to add natural terms that are how he would write them
+           Clinician does not like systems that require codes or exact text
+
+ 2         Clinicians tried to enter everything in the first field                         Improve visual appearance, including
+           Clinicians tried to type all information in the ‘additional text’ field         removing fields from around the calculated
+                                                                                           date
+           Too many search results returned
+           Time consuming/too much detail required/over-complicated
+           It is strange separating the concept from its details, but it does make sense
+           More emphasis on date rather than details
+           ‘Current problem’ is ambiguous
+           Want to be able to sort by date
+           Depending upon the situation, either the ‘natural language’ or the calculated
+           date would be most appropriate in the final display
+
+                                                                                                                                 Page 76
+                            Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                            Prepared by Microsoft, Version 1.0.0.0
+                            Last modified on 22 September 2009
+
+Iteration Headline Findings and Comments                                                      Changes
+3            Need to indicate that dates are approximate                                      Remove date drop-down button
+             Clinician tries to select from date drop-down without typing                     Remove frames
+             Clinician finds it hard to find the ‘next’ entry field
+             Clinician cannot find items at the top of the list
+             Must be able to use familiar nomenclature
+             Not hard, but long-winded
+             SNOMED CT limitations – “gangrenous toes”
+             Did not notice ‘Current problem’ check box
+
+4            Entered ‘ketoacidosis’ as part of the ‘diabetes’ entry                           Provide ‘progressive’ matching
+             Too many results returned                                                        Provide a common matches ‘shortlist’
+             Would expect a shortlist of common matches
+             Typed in the duration/date(s), but did not select it
+             Did not understand the ‘Current problem’ field
+
+5            Clinician confused as to whether to type into the search field or click on the   Replace the ‘Search’ button with a non-
+             button                                                                           clickable icon
+             Missed the ‘Current problem’ field                                               Remove the ‘Current problem’ field
+             Would like to enter a problem and then, below it, list the associated            Improved alignment and slightly indented
+             complications                                                                    the attribute fields.
+             Clinicians claimed that the data entry process seemed ‘time consuming’,
+             although they did complete the tasks quickly and without major problems
+             Types in date, but does not select it
+             Colours and alignment are not good
+             Wants to be able to change the order (for example. by ‘drag and drop’)
+             Some shorthand not recognised in the SNOMED CT search
+Table 13: Entering Summary Lists
+
+Table 14 describes the design iterations for required fields:
+
+Iteration Headline Findings and Comments                                                      Changes
+1            Red asterisks are very clear and understandable
+             Indifferent to the side panel
+             Expect such validation upon clicking the final ‘Submit’
+
+2            Red asterisks are very clear and understandable
+
+3            Did not notice the right-hand side panel                                         Replace right-hand panel with in-line
+                                                                                              indication of having missed a field: yellow
+                                                                                              shading in the field
+
+4            Did not notice the red asterisks                                                 Reintroduced the right-hand panel
+Table 14: Required Fields
+
+                                                                                                                                   Page 77
+                              Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 22 September 2009
+
+Table 15 describes the design iterations for displaying automatic calculations:
+
+Iteration Headline Findings and Comments                                                    Changes
+1            Expected visual cues for ‘out-of-range’ values
+             Label/value do not seem ‘clickable’
+
+2            Expected visual cue for ‘out-of-range’ values                                  Added visual cues for ‘out-of-range’ values
+             Over-complicated
+             Alerts are not sufficiently obvious
+
+3            Lots of comments relating to EWS alerts rather than calculated values          Replaced the ‘calculated’ icon with an
+             Some clinicians needed prompting to click on the label to find more            underline for the label
+             information
+             Generally participants had no problems with understanding what was
+             calculated and what had been entered, and found it intuitive to click on an
+             item to find further information
+
+4            Clinician would expect a standard action plan to appear if they click on the
+             ‘details of scoring’ button
+Table 15: Displaying Automatic Calculations
+
+Table 16 describes the design iterations for entering durations:
+
+Iteration Headline Findings and Comments                                                    Changes
+1            Limited applicability
+             Concerns over spurious accuracy
+             Would like ‘asap’ option
+
+2            Would expect to use shorthand                                                  Provide auto-complete
+             Would like auto-complete                                                       Allow the entry of words such as ‘past’
+             Concerns over spurious accuracy
+             Expects to be able to enter ‘past 22 years’
+             Limited in expression, in that you cannot express frequency
+
+3            Limited applicability: this concept “falls between two stools”
+Table 16: Entering Durations
+
+Table 17 describes the design iterations for general form design (including revealing fields):
+
+Iteration Headline Findings and Comments                                                    Changes
+1            Would expect to type a single line, for example ‘HS 1+2+0=Clear, Otherwise Implemented the progressive disclosure
+             normal’
+             Does not think ‘Not examined’ is a good default
+             Wants progressive disclosure of fields
+
+2            Free text would easier than making selections
+             Might not know that there are fields for further details
+             Negative statements are useful
+
+                                                                                                                                 Page 78
+                               Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 22 September 2009
+
+Iteration Headline Findings and Comments                                                Changes
+3            Free text would be easier than making selections
+             Want drawings/annotations
+             Clinician does not realise they should click ‘No’ for further details
+             Buttons are too small
+             Must be able to use familiar nomenclature
+
+4            Need the ability to add free text
+             Text is too small
+             Laborious: would prefer tick boxes
+Table 17: General Form Design
+
+Table 18 describes the design iteration for adding free text:
+
+Iteration Headline Findings and Comments                                                Changes
+1            Clinician expected to be able to find what they wanted to enter as fixed
+             choice widgets
+             Button was not sufficiently prominent
+Table 18: Adding Free Text
+
+Table 19 describes the design iteration for displaying previous values:
+
+Iteration Headline Findings and Comments                                                Changes
+1            Clinicians liked this feature and would find it useful
+             Seeing a graph would be more useful
+Table 19: Displaying Previous Values
+
+                                                                                                  Page 79
+                                Design Guidance – Clinical Noting in Forms: Admissions Clerking
+                                Prepared by Microsoft, Version 1.0.0.0
+                                Last modified on 22 September 2009

@@ -1,0 +1,45 @@
+# Crib Sheet for Calendar Date Input
+
+## Provenance
+- Source file: `raw/sources/design-guidance/toolkit-bundled-crib-sheets/Crib Sheet for Calendar Date Input.pdf`
+- Extracted text: `derived/extracted-text/design-guidance/crib-sheet-for-calendar-date-input.txt`
+- Normalization note: machine-cleaned `pdftotext -layout` output; verify against the PDF for edge cases.
+
+## Extracted Text
+
+Calendar Date Input Crib Sheet
+Calendar Input                                                                       Provide access to the calendar
+                                                                                     control via a calendar icon                           Follow guidance
+                                      05-Sep-2007                                    Place the calendar icon                               for Date Display
+                                                                                     within the input field
+
+                Display the appropriate
+                value in the Free-Text field                                                                   Allow the calendar to be closed by clicking
+                                                                                                               away or clicking on the calendar icon
+                following selection of a date
+
+                   Month allow a month to be                                                                   Year allow a year to be selected
+                   selected independently and                                                                  independently and use styling or a
+                   use styling or a button to               05-Sep-2007
+                                                                                                               button to show that it can be selected
+                   show that it can be selected             < September >                   < 2007 >
+                                                             Mon   Tue   Wed   Thu    Fri    Sat   Sun
+
+                                                             27    28    29    30     31      1    2
+                  Show Days of the week                      3     4     5     6      7       8    9 Select a month or year by         Provide access to relevant
+                                                             10    11    12    13     14     15    16 clicking in the header or select instructional text and ensure
+                                                             17    18    19    20     21     22    23 a day by clicking on a date      that months and years have
+                                                             24    25    26    27     28     29    30                                  descriptive tooltips
+                Provide a visual indication                                                           from the calendar below.
+                                                             31    1     2     3      4       5    6
+                of the current date
+                                                              Today                           Close
+
+                     Provide a button for                                                                       Provide a link or button
+                     entering today’s date                                                                      to close the control
+
+                                                                 Ensure that the control can
+                                                                 be operated effectively
+                                                                 using the keyboard
+
+ Edition 1 – 20th May 2010      © Microsoft Corporation 2010. All rights reserved.

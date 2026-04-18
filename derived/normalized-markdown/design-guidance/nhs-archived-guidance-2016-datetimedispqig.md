@@ -1,0 +1,500 @@
+# Date and time display - QIG
+
+## Provenance
+- Source file: `raw/sources/design-guidance/nhs-archived-guidance-2016/datetimedispqig.pdf`
+- Extracted text: `derived/extracted-text/design-guidance/nhs-archived-guidance-2016-datetimedispqig.txt`
+- Normalization note: machine-cleaned `pdftotext -layout` output; verify against the PDF for edge cases.
+
+## Extracted Text
+
+Date and Time Display
+Quick Implementation Guide
+
+Edition 1
+22nd April 2010
+
+                             Copyright ©2013 Health and Social Care Information Centre
+
+Contents
+
+Introduction                                                                                                               2
+
+Date Display                                                                                                               3
+    Short Date Format                                                                                                      5
+    Long Date Format                                                                                                       6
+
+Time Display                                                                                                               8
+    Duration Display                                                                                                     11
+
+This document was prepared for NHS Connecting for Health which ceased to exist on 31 March 2013. It may
+contain references to organisations, projects and other initiatives which also no longer exist. If you have
+any questions relating to any such references, or to any other aspect of the content, please contact
+cuistakeholder.mailbox@hscic.gov.uk
+
+Copyright:
+You may re-use this information (excluding logos) free of charge in any format or medium, under the terms
+of the Open Government Licence. To view this licence, visit nationalarchives.gov.uk/doc/open-government-
+licence or email psi@nationalarchives.gsi.gov.uk.
+
+1                                                                    Copyright ©2013 Health and Social Care Information Centre
+
+                                                                                                     Guidance
+
+Introduction
+     Checking a date, time or duration is a small but vital and extremely frequent aspect of
+     clinical care. Health care professionals may encounter a variety of formats for displaying
+     those values. Such ambiguities can lead to misinterpretation, with clear implications for
+     patient safety.
+
+    Therefore, it is essential to implement a consistent format for the display of dates, times
+    and duration across clinical systems.
+
+     Important
+     Although it contains all of the guidance points, this document omits supporting
+     information and is therefore not intended as a substitute for the full NHS CUI
+     documents Date Display1 and Time Display2. Refer to those documents for the
+     definitive statement of the design guidance in this area.
+     The visual representations used to display the guidance are illustrative only. Stylistic
+     choices (for example, display font used), unless otherwise specified, are not part of the
+     guidance and are therefore not mandatory requirements.
+
+1
+    Design Guide Entry – Date Display (v5.0.0.0)
+
+2
+    Design Guide Entry – Time Display (v4.0.0.0)
+
+                                                            Copyright ©2013 Health and Social Care Information Centre   2
+
+Guidance
+
+Date Display
+
+           14-Aug-1980     D+Ta-0002
+
+                           Display the month textually,
+                           not numerically
+            month
+                           Mandatory
+
+                           D+Ta-0003
+
+                           Display the month with only
+                           the first letter in capitals
+                           Mandatory
+
+                           D+Ta-0008
+
+                           When displaying the month,
+                           do not include any
+                           punctuation, such as a full
+                           stop
+                           Mandatory
+
+                           D+Ta-0004
+           14-Aug-1980     Display the year value
+                           numerically using four digits
+                           Mandatory
+                    year
+
+                           D+Ta-0005
+           01-Jan-1994     Align dates when displaying
+                           dates in a vertical column, as
+           06-Jan-1997
+                           in a table
+           21-Feb-1997     Recommended
+
+           28-Mar-1999
+
+           14-Aug-2001
+
+3                                      Copyright ©2013 Health and Social Care Information Centre
+
+                                                                       Guidance
+
+Date Display
+
+            Mon Monday      D+Ta-0016
+
+                            When displaying the day of
+            Tue Tuesday     the week, use one of the
+           Wed Wednesday    illustrated abbreviations
+                            Recommended
+            Thu Thursday
+
+             Fri Friday
+
+             Sat Saturday
+
+            Sun Sunday
+
+                            D+Ta-0017
+
+                            Displaying the day of the week
+          Tue 05-Jan-2009
+                            is optional but when
+                            displayed, it must be placed
+      day of the week       immediately before the day
+                            value, with a single space
+                            separating the permitted
+                            abbreviated form of the day,
+                            from the day value
+                            Recommended
+
+                            D+Ta-0022
+
+          Unknown           Display null date using an
+                            appropriate value (for example
+                            ‘Unknown’ or ‘Not recorded’)
+          Not recorded
+                            Mandatory
+
+                              Copyright ©2013 Health and Social Care Information Centre   4
+
+Guidance
+
+Date Display
+
+Short Date Format
+
+                                       D+Ta-0006
+                 01-Jan-1999
+                                       Display dates using the short
+                 Tue 05-Jan-2009       date format in all instances of
+                                       clinical usage affecting patient
+                 14-Aug-1980           treatment, including patient
+                                       identification
+                 DD-Mmm-YYYY
+                                       Mandatory
+
+                   hyphens
+
+     D+Ta-0009                         D+Ta-0010
+
+     Use a single hyphen to            When using the short date
+     separate the day and month,       format, ignore the user’s regional
+     and the month and year            settings
+     Mandatory                         Mandatory
+
+                                       D+Ta-0018
+                 14-Aug-1980           Display the day value using
+                                       two digits (values less than 10
+                                       should appear with a zero in
+                 day
+                                       the first position)
+                                       Mandatory
+
+                                       D+Ta-0007
+    Jan January         Jul July       Display the month as a three
+                                       letter abbreviation, as
+    Feb February       Aug August
+                                       illustrated, with May being
+    Mar March          Sep September   displayed in full
+                                       Mandatory
+    Apr April          Oct October
+
+    May May            Nov November
+
+    Jun June           Dec December
+
+5                                                  Copyright ©2013 Health and Social Care Information Centre
+
+                                                                          Guidance
+
+Date Display
+
+Long Date Format
+
+                              D+Ta-0011
+           01 January 1999
+                              Use the long date format
+            th
+           5 January 2009     when communicating with the
+                              patient
+           14 August 1980
+                              Mandatory
+           DD Month YYYY
+                              D+Ta-0014
+
+                              When using the long date
+                              format, follow the user’s
+                              default regional settings
+                              ignoring any changes made
+                              by the user to these default
+                              settings
+                              Mandatory
+
+                              D+Ta-0015
+
+                              Use the long date format
+                              when interacting with screen
+                              readers
+                              Recommended
+
+           01 January 1999    D+Ta-0019
+
+                              Display the day value using
+                              two digits (values less than 10
+           day
+                              should appear with a zero in
+                              the first position, unless the
+           1st January 1999   day value is displayed in
+                              ordinal form)
+                              Mandatory
+           day
+
+                                 Copyright ©2013 Health and Social Care Information Centre   6
+
+Guidance
+
+Date Display
+
+Long Date Format
+
+                                          D+Ta-0020
+                    st               rd
+             st 1                rd 3     When displaying the day value
+                                          as an ordinal number, the
+            nd 2nd               th 4th
+                                          suffix used must be one of
+                                          those illustrated
+                                          Mandatory
+
+       ordinal number
+                                          D+Ta-0021
+
+                                          When displaying the day
+             st
+            1 January 1999                value as an ordinal number,
+                                          the two-letter suffix must be
+                                          displayed in lower case and
+                                          as a superscript immediately
+                                          after the number
+                                          Mandatory
+
+                                          D+Ta-0012
+
+            01 January 1999               Display the month name in full
+                                          Mandatory
+                  month
+
+                                          D+Ta-0013
+            01 January 1999               Use a single whitespace to
+                                          separate the day and month,
+            space        space
+                                          and the month and year
+                                          Mandatory
+
+7                                                     Copyright ©2013 Health and Social Care Information Centre
+
+                                                                               Guidance
+
+Time Display
+
+                                    D+Tb-0001
+                       23:54        Display time using the 24-hour
+                                    clock only
+                                    Mandatory
+
+                                    D+Tb-0002
+                       04:28        Display an exact time as HH:mm
+                                    Mandatory
+
+                                    D+Tb-0032
+         04:28                      Provide indication to the user
+                                    that the 24-hour clock is in use
+                 24-hour clock      Mandatory
+
+                                    D+Tb-0003
+         09:43:22      15:55:03     Display hours using two digits
+                                    (values less than 10 should
+                                    appear with a zero in the first
+        hours        hours
+                                    position)
+                                    Mandatory
+
+                                    D+Tb-0004
+         09:43:22      15:55:03
+                                    Display minutes using two digits
+                                    (values less than 10 should
+          minutes      minutes
+                                    appear with a zero in the first
+                                    position)
+                                    Mandatory
+
+                                    D+Tb-0005
+
+         09:43:22      15:55:03     Display seconds as two digits
+                                    (values less than 10 should
+                                    appear with a zero in the first
+            seconds       seconds   position)
+                                    Mandatory
+
+                                       Copyright ©2013 Health and Social Care Information Centre   8
+
+Guidance
+
+Time Display
+
+           09:43:22      15:55:03     D+Tb-0006
+
+                                      Separate the hours and
+                                      minutes with a colon
+           colon         colon
+                                      Mandatory
+
+                                      D+Tb-0007
+           09:43:22      15:55:03     Separate the minutes and
+                                      seconds with a colon
+              colon           colon   Mandatory
+
+                                      D+Tb-0008
+       Tue 05-Jan-2009 09:43:22       Separate date and time values
+                                      with a white space
+                      space           Mandatory
+
+                                      D+Tb-0009
+                         00:00        Display midnight as 00:00
+                                      Mandatory
+
+                                      D+Tb-0010
+
+                                      Display the last minute in the
+                         23:59        day as 23:59
+                                      Mandatory
+
+                                      D+Tb-0011
+                   Unknown            Display null times using an
+                                      appropriate value, for example,
+                   Not recorded       ‘Unknown’ and ‘Not recorded’
+                                      Mandatory
+
+9                                                 Copyright ©2013 Health and Social Care Information Centre
+
+                                                                             Guidance
+
+Time Display
+
+                   15:55:03     D+Tb-0012
+
+                                Display seconds only if
+                                required
+                                Recommended
+
+                                D+Tb-0013
+          From 06:23 to 08:23   Display time ranges as two
+                                adjacent time displays, each
+                                identified by a contextually
+                                appropriate label, such as,
+                                ‘From’ and ‘To’
+                                Recommended
+
+                                D+Tb-0014
+               Approx 02:00     Precede the display of an
+                                approximate time value with
+                                the word ‘Approx’
+                                Mandatory
+
+                                D+Tb-0015
+
+                                Display the time value using
+                                the guidance for exact time
+                                Mandatory
+
+                                D+Tb-0016
+               Approx 13:00     Leave a space between the
+                                ‘Approx’ and the HH element
+                                of the time display
+                   space
+                                Mandatory
+
+                                  Copyright ©2013 Health and Social Care Information Centre   10
+
+Guidance
+
+Duration Display
+
+      y years           hr hours      D+Tb-0017
+
+                                      Display durations using the
+     m months          min minutes    illustrated values, as
+     w weeks           sec seconds
+                                      appropriate
+                                      Mandatory
+      d days
+                                      D+Tb-0033
+
+                                      Ensure the illustrated minimal
+                                      set of abbreviations is
+                                      supported
+                                      Mandatory
+
+                                      D+Tb-0018
+                4hr 32min 16sec       Use whole numbers for time
+                                      duration, for example,1, 5, 60.
+                                      Do not use decimals or
+                                      fractions, for example, 0.5,
+                                      1.5, ¾
+                                      Mandatory
+
+                                      D+Tb-0034
+                   8hrs 5mins         Allow the set of duration unit
+                                      abbreviations to be extended
+                                      appropriately, for example,
+                                      ‘hrs’ as well as ‘hr’. Ensure
+                                      that any additions are unique
+                                      within the entire set
+                                      Recommended
+
+                                      D+Tb-0026
+       8hr 10sec                      Omit zero-valued units from
+                                      the display
+      Above for a duration of eight   Mandatory
+      hours and ten seconds, the
+      minutes are omitted
+
+11                                                Copyright ©2013 Health and Social Care Information Centre
+
+                                                                                    Guidance
+
+Duration Display
+
+                    8hrs 5mins          D+Tb-0027
+
+                                        Display duration values and
+                                        their respective units as pairs,
+               no space between         with no intervening
+                values and units
+                                        whitespace between
+                                        Mandatory
+
+                                        D+Tb-0028
+
+                    8hrs 5mins          Use a white space as the
+                                        separator when displaying a
+                                        duration composed of more
+                      space             than one unit
+                                        Mandatory
+
+                                        D+Tb-0029
+
+               5y 5m 5d 5min 55sec      Display time duration units in
+                                        decreasing order of
+Years, months, days, minutes, seconds   significance
+                                        Mandatory
+
+                                        D+Tb-0030
+               Approx 2hr 40min         Precede the display of an
+                                        approximate duration value
+                                        with the word ‘Approx’
+                                        Mandatory
+
+                                        D+Tb-0031
+               Approx 2hr 40min         Leave a white space between
+                                        the ‘Approx’ and the first
+                                        element of an approximate
+                   space
+                                        duration value
+                                        Mandatory
+
+                                         Copyright ©2013 Health and Social Care Information Centre   12

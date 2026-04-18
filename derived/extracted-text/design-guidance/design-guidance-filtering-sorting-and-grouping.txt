@@ -1,0 +1,2904 @@
+        Design Guidance
+Filtering Sorting and Grouping
+
+
+
+                 Friday, 27 March 2009
+                       Version 1.0.0.0
+
+
+                           Prepared by
+                            Microsoft
+                                                                                                                                                   Microsoft
+
+
+
+
+PREFACE
+   Documents replaced by this document
+
+   Document Title                                                                                                                  Version
+   None
+
+
+   Documents to be read in conjunction with this document
+
+   Document Title                                                                                                                  Version
+   Design Guidance – Displaying Graphs and Tables                                                                                  2.0.0.0
+
+   Design Guidance – Date Display                                                                                                  2.0.0.0
+
+   Design Guidance – Time Display                                                                                                  2.0.0.0
+
+   Design Guidance – Date and Time Input                                                                                           2.0.0.0
+
+   Design Guidance – Medications Management – Medications Views                                                                    2.0.0.0
+
+   Design Guidance – Accessibility Checklist                                                                                       1.0.0.0
+
+   Design Guidance – Accessibility Principles                                                                                      1.0.0.0
+
+
+
+
+This document and/or software (“this Content”) has been created in partnership with the National Health Service (NHS) in England. Intellectual Property
+Rights to this Content are jointly owned by Microsoft and the NHS in England, although both Microsoft and the NHS are entitled to independently exercise
+their rights of ownership. Microsoft acknowledges the contribution of the NHS in England through their Common User Interface programme to this Content.
+Readers are referred to www.cui.nhs.uk for further information on the NHS CUI Programme.
+
+All trademarks are the property of their respective companies. Microsoft and Windows are either registered trademarks or trademarks of Microsoft
+Corporation in the United States and/or other countries.
+
+© Microsoft Corporation 2009. All rights reserved.
+
+                                                                                                                                                     Page ii
+                                    Design Guidance – Filtering Sorting and Grouping
+                                    Prepared by Microsoft, Version 1.0.0.0
+                                    Last modified on 27 March 2009
+                                                                                                                                                  Microsoft
+
+
+
+
+TABLE OF CONTENTS
+1    Introduction .................................................................................................................................... 1
+    1.1    Definitions ................................................................................................................................. 1
+    1.2    Customer Need......................................................................................................................... 1
+    1.3    Scope ........................................................................................................................................ 2
+     1.3.1      Limitations ........................................................................................................................... 2
+     1.3.2      In Scope .............................................................................................................................. 2
+     1.3.3      Out of Scope ....................................................................................................................... 2
+    1.4    Assumptions ............................................................................................................................. 3
+    1.5    Dependencies ........................................................................................................................... 4
+
+2    Guidance Overview, ...................................................................................................................... 5
+    2.1    Summary of Guidance .............................................................................................................. 5
+
+3    Guidance Details ............................................................................................................................ 8
+    3.1    Introduction ............................................................................................................................... 8
+    3.2    Principles .................................................................................................................................. 8
+    3.3    Common Features .................................................................................................................... 8
+     3.3.1      Filtering ................................................................................................................................ 9
+     3.3.2      Sorting ............................................................................................................................... 10
+    3.4    Data Display ........................................................................................................................... 10
+    3.5    Guidelines – Controls ............................................................................................................. 11
+    3.6    Guidelines – Filtering .............................................................................................................. 13
+     3.6.1      Entering and Removing Filter Criteria ............................................................................... 13
+     3.6.2      Entering Multiple Criteria ................................................................................................... 17
+     3.6.3      Attribute Selection Control ................................................................................................ 20
+     3.6.4      Operator Selection Control ................................................................................................ 21
+     3.6.5      Value Entry Control ........................................................................................................... 22
+     3.6.6      Permitted Operators .......................................................................................................... 23
+     3.6.7      Multiple Operators – Component Filter Expression .......................................................... 25
+     3.6.8      Removing Filters ............................................................................................................... 26
+     3.6.9      Displaying Results ............................................................................................................. 27
+     3.6.10         Filter Notification............................................................................................................ 29
+    3.7    Guidelines – Sorting ............................................................................................................... 31
+     3.7.1      Display ............................................................................................................................... 31
+     3.7.2      Attribute Selection Control ................................................................................................ 35
+     3.7.3      Sort Indicator ..................................................................................................................... 37
+     3.7.4      Sort Order Manipulation .................................................................................................... 38
+     3.7.5      Removing Sort................................................................................................................... 41
+     3.7.6      Progressive Sort ................................................................................................................ 42
+    3.8    Guidelines – Grouping ............................................................................................................ 44
+                                                                                                                                                    Page iii
+                                 Design Guidance – Filtering Sorting and Grouping
+                                 Prepared by Microsoft, Version 1.0.0.0
+                                 Last modified on 27 March 2009
+                                                                                                                                               Microsoft
+
+
+
+4    Document Information ................................................................................................................ 46
+    4.1    Terms and Abbreviations ........................................................................................................ 46
+    4.2    Definitions ............................................................................................................................... 46
+    4.3    Nomenclature ......................................................................................................................... 47
+     4.3.1      Body Text .......................................................................................................................... 47
+     4.3.2      Cross References.............................................................................................................. 48
+    4.4    References ............................................................................................................................. 48
+
+APPENDIX A            User Research Executive Summary ....................................................................... 49
+    PART I      Abstract ............................................................................................................................. 49
+    PART II         Research Objectives ..................................................................................................... 49
+    PART III        Research Design ........................................................................................................... 50
+    PART IV         Results .......................................................................................................................... 50
+
+
+
+
+                                                                                                                                                 Page iv
+                                 Design Guidance – Filtering Sorting and Grouping
+                                 Prepared by Microsoft, Version 1.0.0.0
+                                 Last modified on 27 March 2009
+                                                                                                                                         Microsoft
+
+
+
+
+1               INTRODUCTION
+    This document provides guidance for the design of application functionality to filter, sort and group
+    any clinical data within a single patient record displayed in a tabular form. It describes the area of
+    focus, lists mandatory and recommended guidance points with usage examples, and explains the
+    rationale behind the guidance.
+    The application of filtering, sorting and grouping covers a very broad range of functionality for a
+    given data set. The functionality for these complex areas is set out in section 1.1. This design
+    guidance covers only a limited area, as defined by the scope in section 1.3.
+
+1.1             Definitions
+    Table 1 defines some of the key terms used throughout this document whose meaning is borne out
+    by the user research conducted during the development of this guidance:
+
+    Term                 Definition
+    Filtering            The selection of a subset of data so as to focus on the data that is relevant to the task at hand (in this case, the
+                         clinical task). The application of each filter criterion specifies a subset of data to keep in view.
+
+    Sorting              To arrange elements of a sequence according to some criterion, such as alphabetically (A to Z), or numerically (1,
+                         2, 3...). A clinical example is: 'Show me all the medications this patient has ever been prescribed, in alphabetic
+                         order of medicine name'.
+
+    Grouping             To arrange elements of a collection into different categories. A clinical example is: 'Show me all of the patient’s
+                         current and past medicines, grouped separately by Type such as Antibiotics '.
+    Table 1: Key Definitions
+
+         Important
+         The visual representations used within this document to display the guidance are illustrative only. They
+         are simplified in order to support understanding of the guidance points. Stylistic choices, such as colours,
+         fonts or icons are not part of the guidance and, unless otherwise specified, are not mandatory
+         requirements for compliance with the guidance in this document.
+
+
+1.2             Customer Need
+    Health care staff are routinely required to assimilate vast amounts of clinical patient data, gathered
+    from different sources, such as from labs. In some settings, such as intensive therapy units (ITUs),
+    a lot of patient data may be collected over a very short period of time. In a general practice (GP)
+    setting, patient data typically accumulates over many years. In all cases, health care staff need to
+    analyse and interpret data so as to identify the key indicators and relationships.
+    In secondary care, clinical processes are still often paper-based. However, there are no universally
+    accepted standards relating to paper-based processes, which results in varying formats. In
+    contrast, in primary care, clinical systems have made huge inroads into GP practices. These
+    systems must address other concerns, for example the problem that computer screens are not
+    capable of displaying a foldable chart that can be easily expanded to see a long (and wide) table of
+    data.
+    Whatever the care setting, clinical systems must provide functionality, such as filtering, sorting and
+    grouping, to aid in the analysis and interpretation of information. It is acknowledged that, at times,
+    there is a requirement to present data that is already filtered and presented in an optimal fashion so
+    that clinicians are not required to perform further data manipulation. Where filtering, sorting and
+    grouping are required, there is a need to support this functionality in a consistent manner across all
+    clinical applications. The availability of such functionality in common non-clinical applications, such
+    as email readers and spreadsheets, means that many standards are already in place and
+    increasingly used by clinicians either at home or while performing administrative tasks.
+                                                                                                                                           Page 1
+                                  Design Guidance – Filtering Sorting and Grouping
+                                  Prepared by Microsoft, Version 1.0.0.0
+                                  Last modified on 27 March 2009
+                                                                                                   Microsoft
+
+
+
+ To mitigate any risk of a clinician misinterpreting a subset of data, system design must ensure that,
+ where appropriate, the user is notified that a subset of data is displayed on a computer screen and
+ not the complete set of data.
+
+1.3       Scope
+ This section sets out the items that are in and out of scope in this design guidance.
+
+1.3.1        Limitations
+ A very constrained subset of possible functionality in the areas of filtering, sorting and grouping has
+ been considered in the development of this guidance. To the same extent, this guidance will only
+ work with a subset of the kinds of data which will be typical. The limitations to functionality and data
+ sets are described below.
+ For the purposes of generating this generic guidance around filtering, sorting and grouping
+ functionality, it has been assumed that guidance published for any specific data types, such as
+ medications, will be considered in the development of those systems.
+
+1.3.2        In Scope
+ The following items are in scope:
+       Single patient record data accessed using computerised clinical systems in all care settings
+        (medications lists and test results were used in the development of this guidance)
+       Homogenous data sets in a tabular form, where each data set appears in a row with
+        columns displaying the attributes of each data item. The tables have no empty cells and the
+        data items in each row are for the same time point and not a time range.
+ These aspects are illustrated Figure 1:
+
+
+
+
+ Figure 1: Example In-Scope Tabular Layout
+
+1.3.3        Out of Scope
+ This section details items that are:
+       Out of scope for this guidance
+       Items not or only partially tested
+ We consider that the inclusion of these two lists correctly identifies a requirement for additional
+ guidance when certain features or functionality are being included in designs.
+ The following items are out of scope:
+       Tables containing heterogeneous data sets, data in time ranges or empty cells and where
+        the data is ordered horizontally (that is, where the first entry in each row states the name of
+        the attribute and the remaining cells in the row display the attribute’s values). These
+        aspects are illustrated in Figure 2
+
+                                                                                                       Page 2
+                               Design Guidance – Filtering Sorting and Grouping
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 27 March 2009
+                                                                                                                               Microsoft
+
+
+
+       User interface (UI) aspects relating to a data view (such as default column widths, the
+        default order of columnar display and the Look-Ahead Scroll Bar as defined in the
+        document Design Guidance – Medications Management – Medications Views {R1})
+       UI functions that manipulate the data view (such as resizing a table or moving columns
+        within a table)
+       Choosing which columns or attributes to view
+       Specific and system-defined sort orders, groups and filters (because these depend on the
+        data and on care settings and are externally generated)
+       Saving filter criteria for later use
+       Data entry and editing
+       Data comparison
+       Range values are out of scope when mixed with continuous data
+ Figure 2 illustrates the kind of tabular layout that is out of scope:
+
+
+
+
+ Figure 2: Example Out of Scope Tabular Layout
+
+ The following items are not, or are only partially, tested:
+       Multi-patient records
+       Clinical Noting and Patient Lists
+       The unstructured (that is, free text) part of the patient record
+       Images
+       Mixed data types (that is, data types that are discrete or continuous that have a floor value
+        but which the test cannot be precise about, such as those which represent certain test
+        results, for example, ‘<7’)
+
+1.4       Assumptions
+ ID       Assumption
+ A1       The target audience comprises health care staff who need to view and analyse patient data within a single record
+
+ A2       A single user is logged on to the clinical application
+
+ A3       The format and database in which the underlying data is stored does not constrain, or is not relevant to, the data
+          manipulation functions, namely filtering, sorting and grouping
+ Table 2: Assumptions
+
+
+
+
+                                                                                                                                Page 3
+                               Design Guidance – Filtering Sorting and Grouping
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 27 March 2009
+                                                                                                                          Microsoft
+
+
+
+
+1.5      Dependencies
+ ID       Dependency
+ D1       Formats for displaying dates are dependent on the document Design Guidance – Date Display {R2}
+
+ D2       Formats for displaying times are dependent on the document Design Guidance – Time Display {R3}
+
+ D3       Formats for entry of dates and times are dependent on the document Design Guidance – Date and Time Input {R4}
+
+ D4       Formats for displaying tables are dependent on the document Design Guidance – Displaying Graphs and Tables {R5}
+ Table 3: Dependencies
+
+
+
+
+                                                                                                                            Page 4
+                            Design Guidance – Filtering Sorting and Grouping
+                            Prepared by Microsoft, Version 1.0.0.0
+                            Last modified on 27 March 2009
+                                                                                                                     Microsoft
+
+
+
+
+2         GUIDANCE OVERVIEW,
+
+2.1       Summary of Guidance
+    Table 4 provides excerpts of the guidance illustrations and identifies where in the guidance they are
+    found:
+
+    Visual Summary                                                          Areas of Guidance
+                                                                            3.5 Guidelines – Controls
+
+
+                                                                            3.6.1 Entering and Removing Filter Criteria
+                                                                            3.6.8 Removing Filters
+
+
+
+
+                                                                            3.6.2 Entering Multiple Criteria
+
+
+
+
+                                                                            3.6.3 Attribute Selection Control
+
+
+
+
+                                                                            3.6.4 Operator Selection Control
+                                                                            3.6.6 Permitted Operators
+
+
+
+
+                                                                                                                          Page 5
+                         Design Guidance – Filtering Sorting and Grouping
+                         Prepared by Microsoft, Version 1.0.0.0
+                         Last modified on 27 March 2009
+                                                                                                            Microsoft
+
+
+
+
+Visual Summary                                                      Areas of Guidance
+                                                                    3.6.5 Value Entry Control
+
+
+
+
+                                                                    3.6.7 Multiple Operators – Component Filter
+                                                                    Expression
+
+
+
+
+                                                                    3.6.9 Displaying Results
+                                                                    3.6.10 Filter Notification
+
+
+
+
+                                                                    3.7.1 Display
+                                                                    3.7.4 Sort Order Manipulation
+                                                                    3.7.5 Removing Sort
+
+
+
+
+                                                                                                              Page 6
+                 Design Guidance – Filtering Sorting and Grouping
+                 Prepared by Microsoft, Version 1.0.0.0
+                 Last modified on 27 March 2009
+                                                                                                                      Microsoft
+
+
+
+
+Visual Summary                                                                    Areas of Guidance
+                                                                                  3.7.2 Attribute Selection Control
+
+
+
+
+                                                                                  3.7.3 Sort Indicator
+
+
+
+
+                                                                                  3.7.6 Progressive Sort
+
+
+
+
+                                                                                  3.8 Guidelines – Grouping
+
+
+
+
+Table 4: Summary of Guidance
+
+
+
+
+                                                                                                                       Page 7
+                               Design Guidance – Filtering Sorting and Grouping
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 27 March 2009
+                                                                                                     Microsoft
+
+
+
+
+3         GUIDANCE DETAILS
+
+3.1       Introduction
+    The guidance provided in this document is based upon a programme of research, including:
+        One-to-one interviews with six health care professionals
+        An opening risk assessment with eight clinicians
+        Discussions and consultations with health care professionals
+        Evaluation of medications-related hazards
+        A Web-based survey of 13 clinicians, administrative staff, and independent software
+         vendors
+        A closing risk assessment with six clinicians
+
+3.2       Principles
+    The following key principles inform the guidance:
+        Endeavouring to ensure the data manipulation functions of filtering, sorting and grouping
+         are patient-safe
+        Where appropriate, applying UI standards and conventions from non-clinical application
+         software to the design of clinical applications
+        Promoting consistent use of filtering, sorting and grouping for all users across clinical
+         applications and care settings
+        Grounding the development of generic guidance in clinically validated scenarios and data
+        Minimising opportunities for human error
+
+3.3       Common Features
+    This document provides guidance on the application of filtering, sorting and grouping. This section
+    addresses those attributes common to each of those functions, namely data types, filtering
+    operators and sort orders.
+    The different ways in which data can be filtered or sorted depends on the characteristics of the data
+    being processed. This section:
+        Describes the two classes of data values
+        Lists the data types in each of these classes
+        Identifies the permitted filter operators and sort orders for each data type
+    Data can be considered to have either discrete values or continuous values. Within these classes
+    of values, data is classified into distinct data types. The relevance of these value classes and data
+    types differs depending on whether you are performing filtering or sorting actions.
+
+
+
+
+                                                                                                      Page 8
+                         Design Guidance – Filtering Sorting and Grouping
+                         Prepared by Microsoft, Version 1.0.0.0
+                         Last modified on 27 March 2009
+                                                                                                                 Microsoft
+
+
+
+
+3.3.1         Filtering
+ When filtering data, the clinical requirement is to select a subset of data so as to focus on the data
+ that is relevant to the task at hand. Therefore, the filtering task is one of framing a query that acts
+ on the values of data (for example, whether a value is greater than a threshold or whether a
+ reading was taken after a certain date). To facilitate the framing of unambiguous queries, a set of
+ query operators is required for each class of data.
+ For filtering, Table 5 lists the different data types associated with discrete and continuous data
+ values, and the permitted filter operators that can be safely applied to them:
+
+ Value Type           Data Type                                     Permitted Filter Operators
+ Discrete             Integers                                      less than
+                                                                    less than or equal to
+                                                                    equal to
+                                                                    greater than or equal to
+                                                                    greater than
+                      Ordered set of symbols                        less than
+                                                                    less than or equal to
+                                                                    equal to
+                                                                    greater than or equal to
+                                                                    greater than
+                      Unordered set of symbols (such as diagnosis   equals
+                      or problem)
+                      String (free text)                            equals
+                      Date                                          on
+                                                                    before
+                                                                    on or before
+                                                                    after
+                                                                    on or after
+                                                                    between (to include both the stated dates)
+ Continuous           Real numbers                                  less than
+                                                                    greater than
+                      Date and time                                 before
+                                                                    after
+                                                                    between (to include both the stated dates)
+ Table 5: Permitted Filter Operators by Data Type
+
+      Note
+      The operators permitted for discrete numbers and for continuous numbers differ:
+       Discrete numbers are whole numbers. They do not contain decimals or fractions. Therefore, this
+            guidance permits the use of the equality operator on discrete numbers
+       Continuous numbers are numbers expressed using decimals, such as 6.5 and 6.499. The precision
+            with which such numbers are stored on computers makes it mathematically inaccurate to ask whether
+            a continuous value is exactly equal to another. Therefore, this guidance prohibits the use of the
+            equality operator on continuous numbers
+
+
+
+
+                                                                                                                  Page 9
+                                 Design Guidance – Filtering Sorting and Grouping
+                                 Prepared by Microsoft, Version 1.0.0.0
+                                 Last modified on 27 March 2009
+                                                                                                                                          Microsoft
+
+
+
+
+3.3.2         Sorting
+ For sorting, Table 6 lists the different data types associated with discrete and continuous data
+ values and the sort orders applicable to them:
+
+ Value Type           Data Type                                  Sort Order
+ Discrete             Integers                                   Implicit     Ascending
+                                                                              Descending
+
+                      Ordered set of symbols                     Explicit     Supplied by Independent Software Vendor (ISV)
+                                                                              For example, severity values ‘normal’, ‘mild’, ‘severe’, ‘fatal’, or
+                                                                              responsiveness values ‘Alert’, ‘Responds to voice’, ‘Responds
+                                                                              to pain’, ‘Unresponsive’ (AVPU designations)
+
+                      Unordered set of symbols (such as          Implicit     Alphabetic
+                      diagnosis or problem)                                   Reverse alphabetic
+
+                      String (free text)                         Implicit     Alphabetic
+                                                                              Reverse alphabetic
+
+                      Date                                       Implicit     Chronological
+                                                                              Reverse chronological
+
+ Continuous           Real numbers                               Implicit     Ascending
+                                                                              Descending
+
+                      Date and time                              Implicit     Chronological
+                                                                              Reverse chronological
+ Table 6: Permitted Sort Orders by Data Type
+
+
+3.4       Data Display
+ In this document, usage examples show data displays to demonstrate the application of the
+ guidelines. These usage examples show elements of full blood count data. However, the examples
+ present only a small number of attributes of the full blood count data on the basis that the user has
+ already chosen to remove all other data for blood test results. The user can be regarded as having
+ done this using a ‘column chooser’ function (such as that shown in Figure 3, which is provided for
+ illustrative purposes only) resulting in the display of a table (such as shown in Figure 4):
+
+
+
+
+ Figure 3: Using a 'Column Chooser' Dialog Box to Select the Blood Count Data to View
+
+                                                                                                                                          Page 10
+                                 Design Guidance – Filtering Sorting and Grouping
+                                 Prepared by Microsoft, Version 1.0.0.0
+                                 Last modified on 27 March 2009
+                                                                                                                              Microsoft
+
+
+
+
+ Figure 4: Initial Data Display
+
+ Figure 4 therefore shows the initial data display that is the starting point for the examples of
+ filtering, sorting and grouping described in this document.
+       Note
+       As discussed in section 1.3.3, table manipulation such as the ‘column chooser’ is out of scope of this
+       guidance. It is referenced here to explain the context for later illustrations: namely, that the tabular data
+       displayed in the usage examples has been selected by the user before filtering and sorting begins.
+
+
+3.5        Guidelines – Controls
+ This section describes how to initiate the filtering, sorting and grouping functionality. Two methods
+ for accessing the functions are described:
+        Buttons in a toolbar accompanying the table
+        Context menus
+ In addition to the buttons and context menus, compliance with Microsoft Health CUI accessibility
+ guidance {R10, R11} requires that keyboard commands are also provided. These are also likely to
+ be required by those users who make frequent use of the filtering, sorting and grouping
+ functionality. Keyboard tab orders should apply to the constituents of a dialog box, but not to the
+ toolbar.
+ Additional methods for accessing the functionality, such as using other application toolbars or the
+ keyboard, are not described in this guidance.
+       Note
+       The toolbar illustrations only show the controls that are discussed in this guidance, and therefore do not
+       reflect all possible implementations of toolbar controls within clinical applications.
+
+
+                                                                                                                       Evidence
+ ID               Description                                                                          Conformance
+                                                                                                                       Rating
+ FSG-0001         Provide controls for filtering, sorting and grouping, and lay out the controls or menu Recommended   Medium
+                  items in that order, (that is, first filtering, then sorting and finally grouping)
+
+ FSG-0002         Label the controls ‘Filter’, ‘Sort’ and ‘Group by’ respectively                      Recommended     High
+
+ FSG-0003         Provide keyboard commands to access the filtering, sorting and grouping              Mandatory       High
+                  functionality
+
+ FSG-0004         Provide multiple entry points to initiate filtering, sorting and grouping, such as   Recommended     Medium
+                  through a toolbar, context menu (right mouse click), keyboard commands and
+                  direct mouse initiation through right click
+
+
+
+
+                                                                                                                              Page 11
+                                  Design Guidance – Filtering Sorting and Grouping
+                                  Prepared by Microsoft, Version 1.0.0.0
+                                  Last modified on 27 March 2009
+                                                                                                                                           Microsoft
+
+
+
+
+   Usage Examples
+                                                                                                   The controls in the toolbar are displayed in
+                                                                                                   the correct order. Additional optional items
+                                                                                                   are not shown in this illustration
+
+                                                                                                   The controls in the toolbar are not displayed
+                                                                                                   in the correct order
+
+
+
+
+                                                                                                   An example of a fragment of a context menu
+                                                                                                   displayed on the click of a right mouse
+                                                                                                   button, when positioned on a header cell
+
+
+
+
+       Figure 5: An Example of a Context Menu
+
+   Rationale
+   In this guidance we recommend the terms ‘sort’ and ‘filter’ because of user research with clinicians that has shown that the terms ‘sort’
+   and ‘filter’ are understood correctly and so may safely be used in clinical applications. While the term ‘sorting’ was preferred by 7 of the
+   13 respondents, ‘ordering’ was a close second, and ‘organising’ a poor third. User research also found that the term ‘filtering’ was
+   preferred by 9 of the 13 respondents, ‘removing’ and ‘searching’ shared equal position for a distant second.
+   From the user research conducted during the development of this guidance, it became apparent that while familiarity with sorting was
+   very high, this was less so with filtering. By placing the button that initiates filtering in a prominent position, users are more likely to
+   employ this powerful technique.
+   Existing guidance, provided in the document Design Guidance – Medications Management – Medications Views {R1}, has already
+   mandated the label for the grouping control to be ‘Group by’. The recommended layout reflects clinicians’ usual workflow, which would
+   be first to filter a long table of data, and then to sort or group it. Hence in this guidance, we recommend, but do not mandate, that the
+   terms be listed in the order of ‘filtering’, then ‘sorting’, followed by ‘grouping’. The respective controls are thus laid out in that order from
+   left to right, which is also the natural reading pattern of clinical applications users in England (who have a cultural disposition to read
+   from top-to-bottom and left-to-right) whether reading a printed page or a computer screen1. The same order is reflected in the context
+   menu in Figure 7
+
+
+
+
+1 Koyani et al, Research-Based Web Design and Usability Guidelines, U.S. Department of Health and Human Services {R6}:
+
+http://www.usability.gov/pdfs/guidelines.html
+                                                                                                                                            Page 12
+                                 Design Guidance – Filtering Sorting and Grouping
+                                 Prepared by Microsoft, Version 1.0.0.0
+                                 Last modified on 27 March 2009
+                                                                                                       Microsoft
+
+
+
+
+3.6        Guidelines – Filtering
+ Filtering is the selection of a subset of data so as to focus on a subset of data that is relevant to the
+ task at hand (in this case, the clinical task). The application of each filter criterion specifies a subset
+ of data to keep in view. This section applies that action to clinical data.
+
+3.6.1          Entering and Removing Filter Criteria
+ This section provides guidance relating to the entering and removing of filter criteria.
+ The filter dialog box, shown in Figure 6, facilitates the specification of both single and multiple
+ filters. This section provides guidance on the layout and specification of the filter dialog box when
+ applying a single filter criterion. Please refer to section 3.6.2 for guidance relating to building
+ multiple filter criteria within the filter dialog box.
+ It is possible to set a single filter directly by use of the header cell’s context menu (as shown in
+ Figure 6).
+
+
+
+
+ Figure 6: Filter Dialog Box
+
+ As Figure 6 illustrates, this guidance refers to a filter, or a filter criterion, as the combination of the
+ following:
+        An attribute (such as ‘WCC’) specified in an Attribute Selection Control (a control enabling
+         the user to select a particular filter attribute)
+        An operator (such as ‘greater than’) specified in an Operator Selection Control (a control
+         enabling the user to select a particular filter operator)
+        A value (such as ’11.0’) specified in a Value Entry Control (a control enabling the user to
+         select a particular filter value)
+
+
+
+
+                                                                                                        Page 13
+                               Design Guidance – Filtering Sorting and Grouping
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 27 March 2009
+                                                                                                                             Microsoft
+
+
+
+
+                                                                                                                      Evidence
+ID         Description                                                                                  Conformance
+                                                                                                                      Rating
+FSG-0005   Support the filtering of data according to user-specified filter criteria                    Mandatory     High
+
+FSG-0006   Avoid splitting the filter criterion line onto multiple lines                                Recommended   Medium
+
+FSG-0007   Split the filter criterion line only if absolutely necessary, splitting it in such a manner Recommended    Low
+           as to keep the operator entry control and the value input control together
+
+FSG-0008   Include the name of the table on which the filters are to be applied, in the title of        Recommended   Medium
+           the filter dialog box
+
+FSG-0009   Display a label above the first filter criterion, concatenating the strings ‘Filter to       Recommended   Medium
+           show rows of’, X and ‘where:’ in which X is the name that can be applied to each
+           row of data in the table, for example 'full blood count', and is likely to be the title of
+           the table
+
+FSG-0010   Provide a label only above the first filter criterion                                        Recommended   Medium
+
+FSG-0011   Permit filtering by any of the columns (that is, by attributes) displayed in the table       Mandatory     Medium
+           whether in view or off screen
+
+FSG-0012   Permit entry of a single filter criterion directly in an attribute’s header cell, only       Recommended   Low
+           permitting filtering by one attribute at a time
+
+FSG-0013   Do not display data in mixed units, such as metric and imperial units, in the same           Mandatory     Medium
+           table
+
+FSG-0014   Display the unit measurement in the header row to provide clarity on the data                Recommended   Medium
+           presented in the column
+
+FSG-0015   Do not permit the filter dialog box to grow to a size beyond the size of the screen          Mandatory     Low
+
+FSG-0016   In the default view of the filter dialog box, show one line for entry of a filter criterion Recommended    Medium
+           consisting of a set of the following controls, in this order:
+            Attribute Selection Control
+            Operator Selection Control
+            Value Entry Control
+
+FSG-0017   Provide the following buttons: ‘Preview’, ‘OK’ and ‘Cancel’                                  Recommended   Medium
+
+FSG-0018   Upon the user selecting ‘Preview’, execute the filters and update the data display Recommended             Low
+           accordingly, without any additional confirmation dialog box, and without closing the
+           dialog box
+
+FSG-0019   Upon the user selecting ‘OK’, close the dialog box, execute the filters, and update          Recommended   High
+           the data display accordingly, without any additional confirmation dialog box
+
+FSG-0020   Upon the user selecting ‘Cancel’, close the dialog box, and restore the display to           Recommended   High
+           show that data displayed when the filter function was initiated, without any
+           additional confirmation dialog box
+
+FSG-0021   Pre-populate the fields in the dialog box with the current filter criterion in operation, Recommended      Low
+           where appropriate
+
+
+
+
+                                                                                                                             Page 14
+                          Design Guidance – Filtering Sorting and Grouping
+                          Prepared by Microsoft, Version 1.0.0.0
+                          Last modified on 27 March 2009
+                                                                                                                Microsoft
+
+
+
+
+Usage Examples
+
+
+
+
+                                                                                  Initiating filtering by entering
+                                                                                  criteria directly in the header cell of
+                                                                                  the attribute by which data is to be
+                                                                                  filtered. The operator selection and
+                                                                                  Value Entry Controls are displayed
+                                                                                  on selecting the Filter option from
+                                                                                  the header cell’s context-menu
+
+
+
+  Figure 7: Entering a Filter Directly in a Header Cell
+
+
+
+
+                                                                                  Initial display of the dialog box
+                                                                                  showing the default state of
+                                                                                  buttons when no criterion has
+                                                                                  been entered; only the Cancel
+                                                                                  button is enabled
+
+
+
+
+                                                                                  All buttons become enabled when
+                                                                                  one filter criterion has been
+                                                                                  entered in full
+
+
+
+
+                                                                                  Display a label above the first filter
+                                                                                  criterion
+
+
+
+
+                                                                                  The title bar in this dialog box does
+                                                                                  not include the name of the table
+
+
+
+
+                                                                                                                 Page 15
+                               Design Guidance – Filtering Sorting and Grouping
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 27 March 2009
+                                                                                                                                      Microsoft
+
+
+
+
+Rationale
+In user research, clinicians were asked whether, when specifying a filter, they wanted to specify what data should be kept in view or
+what should be removed from view. All the thirteen respondents said they would want to specify what data should be kept in view but
+eight said that, on occasion, they would want to be able to specify what data should be removed from view. The filter dialog box
+reflects this bias. It makes it straightforward to specify the data that should be kept in view. However, the converse can also be
+specified, though the user is burdened with framing the query appropriately. An alternative approach would be to provide the capability
+to specify how the clinical application should interpret the filter criteria, such as by providing two radio buttons. These could be labelled
+‘Filter to keep in view’ and ‘Filter to remove from view’ respectively. Such an approach would remove the cognitive load required to
+frame the complementary query, but it would add to the complexity of the dialog box, arguably unnecessarily for an occasional task
+only needed by a few users.
+Previewing Filtered Results:
+Fewer users are familiar with filtering data than with sorting data. Yet, as it is an important technique available to the clinician already
+overloaded with patient data, it seems worthwhile to encourage its use in applicable circumstances. The ‘Preview’ function enables a
+user to explore the application of a filter, by applying temporary, that is exploratory, filters. The filter dialog box and table can be
+positioned so as not to overlap, and different filters can be applied to understand how they act to change the displayed data. Finally,
+the user can commit to a filter (by clicking the OK button), or can choose to leave the display unchanged (by clicking the Cancel
+button).
+Data Units:
+This guidance recommends including units within the column header row. However, it is also acknowledged that the inclusion of units
+requires space within the cell that is a limitation when subject matter text also appears within the same cell. The display of units
+arguably consumes screen space in a filter dialog box, where the name of the attribute and criterion are important not the units. A
+clinician knows the units, and does not need to see them for the task at hand, namely filtering. However, when specifying a filter
+criterion that must span a range (for example, 200 mg to 1 g), units may become necessary, though there is a risk with displaying data
+in mixed units in a column. There is also a risk with displaying unfamiliar units in a column (for example, 1000 mg instead of 1 g). As
+this has not been explored in the development of this guidance, we do not make recommendations on the display of units except to
+include a prohibition on mixing imperial and metric units in the same table column.
+Previewing Filtered Data:
+The ‘preview’ function enables a user to explore the application of a filter by applying temporary (that is, exploratory) filters. The filter
+dialog box can be positioned so as not to overlap the data and different sort orders applied to understand how they act to change the
+displayed data. Finally, the user can commit to a filter (by clicking the OK button), or can choose to leave the display unchanged (by
+clicking the Cancel button).
+
+
+
+
+                                                                                                                                       Page 16
+                              Design Guidance – Filtering Sorting and Grouping
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 27 March 2009
+                                                                                                                                 Microsoft
+
+
+
+
+3.6.2       Entering Multiple Criteria
+ This section provides guidance on the entering of multiple filter criteria. Section 3.6.1 provides
+ guidance on the layout and specification of the filter dialog box, together with the application of a
+ single filter criterion. The filter dialog box design also enables a user to enter multiple filter criteria.
+
+                                                                                                                          Evidence
+ ID          Description                                                                             Conformance
+                                                                                                                          Rating
+ FSG-0022    Permit multiple filters to be applied concurrently                                      Recommended          Low
+
+ FSG-0023    Provide a button to add an additional filter criterion, labelling this button ‘Add’     Recommended          Medium
+
+ FSG-0024    Move the ‘Add’ button down one line when it is pressed, displaying the required         Recommended          Medium
+             boxes for entry of a filter criterion (as described in FSG-0008) in the line previously
+             occupied by the ‘Add’ button
+
+ FSG-0025    Display the ‘Add’ button immediately below the last filter criterion and left-aligned   Recommended          Medium
+             with it
+
+ FSG-0026    Provide radio buttons to select between the two ways of applying multiple filters,      Mandatory            Medium
+             namely between a logical AND and a logical OR
+
+ FSG-0027    Make the option for the logical OR the default selection and place this option first    Mandatory            High
+             in the list of radio buttons
+
+ FSG-0028    Label the radio button denoting the logical AND: ‘All must be true’ or 'Match All'      Recommended          High
+
+ FSG-0029    Label the radio button denoting the logical OR: ‘Any of which are true’ or 'Match       Recommended          High
+             Any'
+
+ Usage Examples
+
+
+
+
+                                                                                                     Shows correct use and location of
+                                                                                                     ‘Add’ button used to insert
+                                                                                                     additional filter criterion
+
+
+
+
+                                                                                                     Shows correct display of the radio
+                                                                                                     buttons, which appear after two
+                                                                                                     criteria have been entered in full
+
+
+
+
+                                                                                                                                 Page 17
+                           Design Guidance – Filtering Sorting and Grouping
+                           Prepared by Microsoft, Version 1.0.0.0
+                           Last modified on 27 March 2009
+                                                                               Microsoft
+
+
+
+
+                                                   The default selection is on the
+                                                   incorrect radio button (the user has
+                                                   not changed the default selection,
+                                                   as the cursor is positioned on the
+                                                   Add button, indicating the user
+                                                   has just entered two criteria, and is
+                                                   about to enter a third)
+
+
+
+
+                                                   Radio buttons are incorrectly
+                                                   displayed when only a single
+                                                   criterion has been entered.
+                                                   Additionally, an invalid operator,
+                                                   namely ‘equal to’, has been
+                                                   selected whereas it should not
+                                                   have been offered to the user as it
+                                                   is not a valid operator for
+                                                   continuous values
+
+
+
+
+                                                   The radio buttons are correctly
+                                                   labelled
+
+
+
+
+                                                   This design does not provide the
+                                                   user with the capability to specify
+                                                   how multiple filters are to be
+                                                   applied as no radio buttons are
+                                                   present
+
+
+
+
+                                                                                Page 18
+Design Guidance – Filtering Sorting and Grouping
+Prepared by Microsoft, Version 1.0.0.0
+Last modified on 27 March 2009
+                                                                                                                                           Microsoft
+
+
+
+
+                                                                                                             This example shows the following
+                                                                                                             incorrect uses:
+                                                                                                             1. The title is incorrect
+                                                                                                             2. The radio button labels are
+                                                                                                                incorrect
+                                                                                                             3. Each filter criterion is
+                                                                                                                incorrectly preceded with a
+                                                                                                                label
+                                                                                                             4. Neither label is correct
+                                                                                                             5. The ‘Add’ button is in the wrong
+                                                                                                                location
+
+
+
+Rationale
+Default Selection of a Radio Button:
+In the user research, we asked respondents what data they would expect to see when multiple filters were applied, and no radio
+buttons were provided to choose between a logical OR and a logical AND operation. No respondent said that the behaviour would be
+a logical OR. One remarked that ‘there is no AND before the second filter row’, implying that this is what they expected, and another
+remarked that OR is the ‘expected behaviour’. When shown a filter dialog box design that featured radio buttons to force a selection,
+health care staff said they preferred this as it made the behaviour ‘much clearer’. Finally, all respondents interpreted the labels
+accompanying the radio buttons correctly, including those who had stated that filtering was not a task they had knowingly done before.
+As the World Wide Web has become pervasive, Web standards and best practices relating to the UI have become the norm and set
+user expectations. It is instructive to be informed by these standards and comply with them, unless there are clear reasons from a
+patient safety perspective not to do so.
+RFC 1866, on HTML 22, and the World Wide Web Consortium (W3C) on HTML 43, state:
+     "At all times, exactly one of the radio buttons in a set is checked. If none of the <INPUT> elements of a set of radio buttons
+     specifies `CHECKED', then the user agent must check the first radio button of the set initially."
+The internationally recognised UI expert, Jakob Nielsen states on useit.com4:
+     “Always offer a default selection for radio button lists. By definition, radio buttons always have exactly one option selected, and you
+     therefore shouldn't display them without a default selection. (Checkboxes, in contrast, often default to having none of the options
+     selected.) If users might need to refrain from making a selection, you should provide a radio button for this choice, such as one
+     labelled "None". Offering users an explicit, neutral option to click is better than requiring the implicit act of not selecting from the list,
+     especially because doing the latter violates the rule of always having exactly one option chosen.”
+This suggests that when using radio buttons, always provide a default. The decision on which radio button should be the default was
+made on the basis of which option is likely to display more data in most cases. This is the logical OR option.
+
+
+
+
+2
+    Berners-Lee & Connolly, Hypertext Markup Language - 2.0 {R7}: http://www.ietf.org/rfc/rfc1866.txt
+3
+    W3C Recommendations, Control types – radio buttons {R8}: http://www.w3.org/TR/html4/interact/forms.html#radio
+4
+    Jackob Nielsen’s Alertbox, Checkboxes vs. Radio Buttons {R9}: http://www.useit.com/alertbox/20040927.html
+                                                                                                                                           Page 19
+                                Design Guidance – Filtering Sorting and Grouping
+                                Prepared by Microsoft, Version 1.0.0.0
+                                Last modified on 27 March 2009
+                                                                                                                               Microsoft
+
+
+
+
+3.6.3        Attribute Selection Control
+ This section provides guidance on the use of the Attribute Selection Control. The Attribute
+ Selection Control in the filter dialog box enables the user to select a particular attribute from the
+ data set to which the filtering will be applied.
+
+                                                                                                                         Evidence
+ ID            Description                                                                         Conformance
+                                                                                                                         Rating
+ FSG-0030      Only permit attributes displayed in the table to be entered in the Attribute Selection Recommended        Low
+               Control
+
+ FSG-0031      Display the attribute names as menu items in the Attribute Selection Control menu, Recommended            Low
+               listing them in the same order in the menu as they are displayed in the table
+
+ Usage Examples
+
+
+
+
+                                                                                                   Attribute Selection Control menu
+                                                                                                   items listed in the same order as in
+                                                                                                   the currently displayed table
+
+
+
+
+ Rationale
+ In the user research, we presented the respondents with some example filter dialog boxes populated with some sample data. The filter
+ dialog box contained the Attribute Selection Control, as well as the Operator Selection Control and the Value Entry Control, as shown
+ in the usage example. We asked the respondents to explain what results they would expect after the filter was applied. Only one
+ respondent replied incorrectly which, given the number of correct responses, suggests that this method of setting out filter criteria
+ assists a user in understanding what filter results will be achieved by using the filter dialog box.
+
+
+
+
+                                                                                                                               Page 20
+                             Design Guidance – Filtering Sorting and Grouping
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 27 March 2009
+                                                                                                                                Microsoft
+
+
+
+
+3.6.4        Operator Selection Control
+ This section provides guidance on the use of the Operator Selection Control. The Operator
+ Selection Control in the filter dialog box enables the user to select an operator relevant to the data
+ to which the filter is being applied. The inclusion of the Operator Selection Control enables a user
+ not only to search against an attribute, but to also narrow the filter to a value range.
+
+                                                                                                                          Evidence
+ ID            Description                                                                         Conformance
+                                                                                                                          Rating
+ FSG-0032      Ensure that only operators relevant to the attributes are displayed                 Recommended            Low
+
+ FSG-0033      Display an Operator Selection Control when the user selects the ‘Filter’ menu item Recommended             Low
+               from the header cell’s context menu
+
+ Usage Examples
+
+
+
+
+                                                                                                   Operator Selection Control
+                                                                                                   showing operator relevant to
+                                                                                                   selected attribute
+
+
+
+
+                                                                                                   The valid operators are displayed
+                                                                                                   for a real, that is, continuous data
+                                                                                                   type. The optional mathematical
+                                                                                                   symbols have also been added
+
+
+
+
+ Rationale
+ In the user research, we presented the respondents with some example filter dialog boxes populated with some sample data. The filter
+ dialog box contained the Operator Selection Control, as well as the Attribute Selection Control and the Value Entry Control, as shown
+ in the usage example. We asked the respondents to explain what results they would expect after the filter was applied. Only one
+ respondent replied incorrectly which, given the number of correct responses, suggests that this method of setting out filter criteria
+ assists a user in understanding what filter results will be achieved by using the filter dialog box.
+
+
+
+
+                                                                                                                                Page 21
+                             Design Guidance – Filtering Sorting and Grouping
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 27 March 2009
+                                                                                                                                Microsoft
+
+
+
+
+3.6.5        Value Entry Control
+ This section provides guidance on the use of the Value Entry Control within the filter dialog box.
+ The Value Entry Control in the filter dialog box enables the user to select a particular filter value
+ relevant to the attribute and operator previously selected within the filter dialog box. The value entry
+ data is taken directly from the data upon which the filter is being applied.
+
+                                                                                                                          Evidence
+ ID            Description                                                                            Conformance
+                                                                                                                          Rating
+ FSG-0034      Display a Value Entry Control when the user selects the ‘Filter’ menu item from the Recommended            Low
+               header cell’s context menu
+
+ FSG-0035      Display a Value Entry Control that is appropriate to the selected attribute (for       Mandatory           Low
+               example, when filtering by date, display a date input control, or when filtering by an
+               integer, display an integer input control)
+
+ FSG-0036      Upon the user selecting ‘between’ in the Operator Selection Control, provide two       Mandatory           Low
+               Value Entry Controls that are appropriate to the attribute currently selected in the
+               Attribute Selection Control, positioning the Value Entry Controls immediately after
+               the Operator Selection Control
+
+ Usage Examples
+
+
+
+
+                                                                                                           Value Entry Control showing
+                                                                                                           data appropriate to the
+                                                                                                           selected attribute
+
+
+
+
+                                                                                                           Value Entry Control showing
+                                                                                                           two fields for completion
+                                                                                                           due to inclusion of ‘between’
+                                                                                                           in the Operator Selection
+                                                                                                           Control
+
+
+
+ Rationale
+ In the user research, we presented the respondents with some example filter dialog boxes populated with some sample data. The filter
+ dialog box contained the Value Entry Control, as well as the Attribute Selection Control and the Operator Selection Control, as shown
+ in the usage example. We asked the respondents to explain what results they would expect after the filter was applied. Only one
+ respondent replied incorrectly which, given the number of correct responses, suggests that this method of setting out filter criteria
+ assists a user in understanding what filter results will be achieved by using the filter dialog box.
+
+
+
+
+                                                                                                                                Page 22
+                             Design Guidance – Filtering Sorting and Grouping
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 27 March 2009
+                                                                                                                                      Microsoft
+
+
+
+
+3.6.6         Permitted Operators
+ The filtering functionality can be applied on a number of different data types. Accordingly, the filter
+ dialog box must be flexible enough to vary in layout according to the data type in question. When
+ combining multiple filter expressions, logical operators are required to connect the filters being
+ applied.
+ Before progressing to the guidance, it is important to clarify the use and impact of logical operators
+ when combining multiple filter expressions. In particular, the role of the logical operators ‘AND’ and
+ ‘OR’ needs to be understood. Table 7 defines their meaning:
+
+ Logical Operator                 Definition
+ AND                              Returns True if all of its component filter expressions are true. Returns False if any of the component
+                                  filter expressions are false
+
+ OR                               Returns True if any of its component filter expressions are true. Returns False if all of its component
+                                  expressions are false
+ Table 7: Definition of AND and OR
+
+                                                                                                                                Evidence
+ ID             Description                                                                              Conformance
+                                                                                                                                Rating
+ FSG-0037       When the Operator Selection Control is selected from the header cell, permit the         Recommended            Low
+                inclusion of 'custom' as an operator
+
+ FSG-0038       Display the filter dialog box when ‘custom’ is selected from the Operator Selection      Recommended            Low
+                Control in the header cell
+
+ FSG-0039       Permit the following operators when filtering by date, labelling them with the same      Recommended            Medium
+                names:
+                 ‘on’
+                 ‘before’
+                 ‘after’
+                 ‘on or before’
+                 ‘on or after’
+                 ‘between’
+
+ FSG-0040       Permit the following operators when filtering by ‘date and time’, labelling them with Recommended               Low
+                the same names:
+                 ‘before’
+                 ‘after’
+                 ‘between’
+
+ FSG-0041       Permit the following filtering operators for all numeric data, labelling them with the   Recommended            Medium
+                same name:
+                 ‘less than’
+                 ‘greater than’
+
+ FSG-0042       For numeric data of type integer, additionally permit the operator ‘equal to’,           Recommended            Medium
+                labelling it with the same name
+
+ FSG-0043       For numeric data, optionally append the characters ‘<’, ‘=’ or ‘>’ to supplement the     Recommended            Low
+                menu items in the Operator Selection Control, as appropriate
+
+ FSG-0044       Support filtering of integers by providing the permitted filter operators:               Recommended            Medium
+                 ‘less than’
+                 ‘less than or equal to’
+
+
+                                                                                                                                      Page 23
+                                Design Guidance – Filtering Sorting and Grouping
+                                Prepared by Microsoft, Version 1.0.0.0
+                                Last modified on 27 March 2009
+                                                                                                                                   Microsoft
+
+
+
+            ‘equal to’
+            ‘greater than or equal to’
+            ‘greater than’
+
+FSG-0045   Support filtering of ordered sets of symbols by providing the permitted filter             Recommended           Medium
+           operators:
+            ‘less than’
+            ‘less than or equal to’
+            ‘equal to’
+            ‘greater than or equal to’
+            ‘greater than’
+
+FSG-0046   Support filtering of unordered set of symbols (such as diagnosis or problem) by            Recommended           Medium
+           providing the permitted filter operator ‘equals’
+
+FSG-0047   Support filtering of the strings data type (free text) by providing the permitted filter   Recommended           Medium
+           operator ‘equals’
+
+FSG-0048   Support filtering of the date data type by providing the permitted filter operators:       Recommended           Medium
+            ‘on’
+            ‘before’
+            ‘on or before’
+            ‘after’
+            ‘on or after’
+            ‘between’
+
+FSG-0049   Support filtering of real numbers by providing the permitted filter operators ‘less        Recommended           Medium
+           than’ and ‘greater than’
+
+FSG-0050   Support filtering of the date and time data type by providing the permitted filter         Recommended           Medium
+           operators ‘before’, ‘after’ and ‘between’
+
+FSG-0051   Permit the user to choose between two ways of applying multiple filter                     Recommended           High
+           expressions, namely between a logical AND and a logical OR
+
+FSG-0052   Do not permit a logical NOT operator                                                       Recommended           Medium
+
+FSG-0053   Permit only one kind of logical operator to act between all the component filter           Recommended           High
+           expressions, at any one time
+
+Usage Examples
+
+
+
+                                                                                                      The valid operators are displayed
+                                                                                                      for a real number data type in this
+                                                                                                      instance, numeric data. The
+                                                                                                      optional mathematical symbols
+                                                                                                      have also been added
+
+
+
+
+                                                                                                                                   Page 24
+                           Design Guidance – Filtering Sorting and Grouping
+                           Prepared by Microsoft, Version 1.0.0.0
+                           Last modified on 27 March 2009
+                                                                                                                                     Microsoft
+
+
+
+
+ Rationale
+ Logical Connective Operators:
+ When applying multiple filter expressions, a decision on how to apply the filters must be made. For example, should the data set
+ resulting from the application of each filter be intersected, such as in a logical AND, and only the resulting data be displayed? Or,
+ should the union of all the data be displayed, such as in a logical OR? Should the user be asked to make this choice? If so, how
+ should these options be explained clearly? A further complexity is the difference between formal logic and everyday English. In
+ conversational English, when someone says, for example, ‘Show me books by author A and by author B’ they intend the word ‘and’ to
+ be interpreted as a logical OR.
+ Filtering has been defined as the removal of data from view, and use of the NOT operator effectively introduces a double negative.
+ Filters with multiple criteria in which one or more also included the NOT operator would be difficult for users to interpret and to predict
+ the correct behaviour making it harder for the user to ensure it has been specified correctly.
+ Filter Operators:
+ The permitted filter operators were chosen after much discussion with clinicians, and with patient safety foremost in mind. The
+ permitted operators differ for real and integer numbers. Real, or continuous, numbers are those numbers that are expressed using
+ decimals, such as 6.5 and 6.499. The precision with which such numbers are stored on computers makes it mathematically inaccurate
+ to ask whether a continuous value is exactly equal to another. In this guidance we therefore prohibit the use of the equality operator on
+ real numbers. Integer, or discrete, numbers are whole numbers and do not contain decimals, nor do they describe fractions. The
+ equality operator is permitted on integers. Table 5 indicates the permitted filter operators by data type.
+
+
+
+3.6.7        Multiple Operators – Component Filter Expression
+ This section provides guidance on the combined use of operators within the filter dialog box. There
+ are two instances when this may occur:
+       For certain data (indicated through use of the Operator Selection Control), it may be
+        necessary to create a single component filter expression with multiple values (for example,
+        when the filter operator uses ‘between’ such as when selecting dates)
+       It is also possible to use more than one component filter expression on the same attribute
+ This section provides guidance on presenting combined operators within the same dialog box using
+ an example of date.
+
+                                                                                                                               Evidence
+ ID             Description                                                                              Conformance
+                                                                                                                               Rating
+ FSG-0054       Permit the creation of a component filter expression with two values when the user Recommended                 Medium
+                selects a filter operator using ‘between’
+
+ FSG-0055       Permit the use of more than one component filter expression on the same attribute Recommended                  Low
+
+ FSG-0056       Provide the ability for a user to apply more than one filter criteria on the same        Recommended           Low
+                attribute by adding another complete expression in the filter dialog and selecting
+                the same attribute in both criteria
+
+ Usage Examples
+
+
+                                                                                                         Selecting ‘Date’ and then
+                                                                                                         ‘between’ has correctly created a
+                                                                                                         component filter expression with
+                                                                                                         two value entry controls displayed
+
+
+
+
+                                                                                                                                      Page 25
+                              Design Guidance – Filtering Sorting and Grouping
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 27 March 2009
+                                                                                                                                         Microsoft
+
+
+
+
+                                                                                                           Correctly showing the inclusion of
+                                                                                                           two component filter expressions
+                                                                                                           as required
+
+
+
+
+                                                                                                           Two Operator Selection Controls
+                                                                                                           have been incorrectly included on
+                                                                                                           one line
+
+
+
+
+ Rationale
+ A user is able to set up this filter using the same filter dialog box presentation as tested in user research. At times, it is necessary to
+ apply a filter against data within a particular range. This functionality may be achieved by creating a component filter expression using
+ a range comparison operator, such as ‘between’, within the Operator Selection Control. Upon selection of the component filter
+ expression, the user is automatically presented with two value entry controls that ensure a range is entered. It is possible to combine
+ two or more filter component filter expressions within a filter. The ability to enhance the filter through use of the existing filter dialog box
+ will avoid any confusion brought about by additional fields or functional requirements. When the user wishes to apply more than one
+ filter expression on the same attribute, this is achieved by adding another component expression in the filter dialog and selecting the
+ same attribute in both expressions.
+
+
+
+3.6.8        Removing Filters
+ This section provides guidance on the functionality requirements behind removing a filter criterion,
+ or all filter criteria, from the filter dialog box.
+
+                                                                                                                                  Evidence
+ ID             Description                                                                                Conformance
+                                                                                                                                  Rating
+ FSG-0057       Provide the capability to remove all filters in one action                                 Recommended            High
+
+ FSG-0058       Provide a dedicated button on each filter criterion line adjacent to the data entry        Mandatory              Low
+                points to remove filters individually in the dialog box
+
+ FSG-0059       Label the button to remove an individual filter: ‘Remove’                                  Recommended            Medium
+
+ FSG-0060       Label the button to remove all filters in one action: ‘Remove All filters’                 Recommended            Medium
+
+ FSG-0061       During single filter operation, clear the attribute and Operator Selection Controls Recommended                   Low
+                and the Value Entry Control when the corresponding ‘Remove’ button on the same
+                filter criterion line is pressed
+
+ FSG-0062       During the application of multiple filters, remove the controls when the                   Recommended            Low
+                corresponding ‘Remove’ button on the same filter criterion line is pressed
+
+ FSG-0063       Clear all attribute and Operator Selection Controls and all Value Entry Controls           Recommended            Low
+                when the ‘Remove filters’ button is pressed
+
+
+
+
+                                                                                                                                         Page 26
+                               Design Guidance – Filtering Sorting and Grouping
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 27 March 2009
+                                                                                                                                       Microsoft
+
+
+
+
+ Usage Examples
+
+
+
+                                                                                                            In addition to being able to remove
+                                                                                                            all filters in one action, it is
+                                                                                                            possible to remove filters
+                                                                                                            individually
+
+
+
+
+                                                                                                            There is no button to remove an
+                                                                                                            individual filter
+
+
+
+
+ Rationale
+ User research evaluated candidate terms for removing a filter, namely ‘remove’, ‘clear’, ‘default’, ‘reset’, ‘empty’ and ‘undo’. There was
+ no particular preference amongst ‘remove’, ‘clear’, and ‘default’ but a spread across all three. As ’default’ can imply system defaults or
+ prefilled values, it was rejected. None of the thirteen respondents found ‘reset’, ‘empty’ and ‘undo’ acceptable.
+ The placement of the button to remove all filters was also evaluated, and feedback was divided between placing it adjacent to the
+ Filter button in the toolbar, and placing it in the filter notification area. No respondent wanted to see the function in the context menu,
+ suggesting that this should never be provided as the only way to access a function. All filters can also be removed in the place where
+ they were originally specified, namely the filter dialog box, which also provides a means for selectively removing individual filters.
+
+
+
+3.6.9        Displaying Results
+ This section provides guidance on the display of filtered data. The guidance relates to filtered-in
+ and filtered-out data.
+ In addition to displaying the filtered data, there is a need to display the criteria on which the filtered
+ data are based. The user will have entered these criteria in the filter dialog box, or in the operator
+ entry control directly in an attribute’s header cell, as described in section 3.6.3.
+
+                                                                                                                                  Evidence
+ ID             Description                                                                                   Conformance
+                                                                                                                                  Rating
+ FSG-0064       On filtering, do not display filtered-out data in the filtered view                           Mandatory           Medium
+
+ FSG-0065       Provide access to the data filtered in, data filtered out and all original data following     Recommended         Medium
+                the application of the filter criteria
+
+ FSG-0066       Provide access to the data that has been removed from view upon filtering                     Recommended         Medium
+
+ FSG-0067       Provide access to the complete data originally displayed before filtering                     Recommended         Medium
+
+ FSG-0068       Provide access to categories of filtered data using a set of tab headers across the top Recommended               Medium
+                of the data set
+
+ FSG-0069       Do not support access to categories of filtered data using a set of links from a panel        Recommended         Medium
+                or tabs on the left-hand-side of the table
+
+
+
+
+                                                                                                                                        Page 27
+                               Design Guidance – Filtering Sorting and Grouping
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 27 March 2009
+                                                                                               Microsoft
+
+
+
+
+Usage Examples
+
+
+
+
+                                                                    Data that should have been
+                                                                    removed is incorrectly displayed
+                                                                    as grey text
+
+
+
+
+                                                                    Access to categories of data is
+                                                                    correctly provided by the use of
+                                                                    tabs across the top of the data.
+                                                                    The filter results are correctly
+                                                                    shown in a tab labelled ‘Data
+                                                                    Filtered In’
+
+
+
+
+                                                                    The data removed by the action
+                                                                    of the filters is easily accessible
+                                                                    in the tab labelled ‘Data Filtered
+                                                                    Out’
+
+
+
+
+                                                                    Categories of filtered data are
+                                                                    incorrectly accessed using a set
+                                                                    of links from a panel on the
+                                                                    left-hand side. Additionally, the
+                                                                    links are labelled incorrectly
+
+
+
+
+                                                                                               Page 28
+                 Design Guidance – Filtering Sorting and Grouping
+                 Prepared by Microsoft, Version 1.0.0.0
+                 Last modified on 27 March 2009
+                                                                                                                                       Microsoft
+
+
+
+
+ Rationale
+ Data Display:
+ There was no clear consensus amongst survey respondents as to how the outcome of filtering should be displayed. None of the
+ clinicians who responded to the survey thought it safe from a patient safety perspective to remove data entirely from view; either
+ preferring to see it in a fainter text, or separately such as in another tab. Hence, in this guidance, we recommend that access be
+ provided to the data removed from view. One clinician also commented that it was “useful to have original data present”. Guidance
+ partially mitigates the risk that the user may act on incomplete data by ensuring users always have access to the data removed and to
+ the original data.
+ We evaluated a design which included filtered out data in grey text, and one user remarked “What’s the point in applying the filter if you
+ then show everything?” whereas another said it was “useful to have all the data present on the same page”. Interview data from three
+ users also suggest that none wanted to see the data in a fainter grey text.
+ We also evaluated a tabbed design to provide access to filtered-out data and the original data in addition to the filtered data. This
+ facilitates easy perusal of both the filtered in and filtered out data and helps the user understand the outcome of filtering. One
+ respondent was noted to say “...it should be easy to get back to the full list of results to ensure patient safety”. The tabbing function
+ also provides a tab to return to the original data set that assists this respondent’s concern.
+ None of the respondents liked the design showing the links to the different tabs on the left-hand side, as this design consumes
+ disproportionately more screen space than other designs at the expense of displaying data.
+
+
+
+3.6.10       Filter Notification
+ This section provides guidance on the notification to be present within the filter results. The
+ notification provides a user with detail about the filter criteria that has been applied to the data
+ leading to the results shown.
+
+                                                                                                                                 Evidence
+ ID               Description                                                                               Conformance
+                                                                                                                                 Rating
+ FSG-0070         Display notification of the filters in operation in a prominent position, using visual    Mandatory            High
+                  design to ensure the notification is seen by the user
+
+ FSG-0071         Ensure the filter notification area is always attached to the corresponding table         Recommended          Low
+
+ FSG-0072         Do not display notification of the filters in operation below the table                   Mandatory            High
+
+ FSG-0073         Prefix the filter notification with the text: ‘Data filtered to show’                     Recommended          High
+
+ FSG-0074         Provide visual indication that data is being occluded by the dialog box, if               Recommended          Low
+                  appropriate, for example, by giving the dialog box a translucent background
+
+ Usage Examples
+
+
+
+
+                                                                                            The filter dialog box has the primary focus
+                                                                                            on-screen and has a translucent background to
+                                                                                            indicate the presence of information it is
+                                                                                            occluding
+
+
+
+
+                                                                                                                                        Page 29
+                               Design Guidance – Filtering Sorting and Grouping
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 27 March 2009
+                                                                                                                                            Microsoft
+
+
+
+
+                                                                                             The filter criteria are correctly displayed:
+                                                                                             1. In a notification area
+                                                                                             2. In a prominent position, adjacent to the table
+                                                                                             3. Including the capability to remove all filters is
+                                                                                                provided in the same notification
+                                                                                             4. Notification starts with the text ‘Data filtered
+                                                                                                to show’
+
+
+   Figure 8: Filtered-In Data Displayed with Correct Features
+
+
+
+
+                                                                                             The filter criteria notification is incorrectly
+                                                                                             positioned below the table
+
+
+
+
+Rationale
+Notification:
+We evaluated alternative designs that displayed the criteria in a notification area that was placed either above or below the table.
+Figure 8 correctly presents filter criteria in a notification area in a prominent position adjacent to the table. Additionally, the same
+notification provides the capability to remove all filters. This meets stated user needs, as noted by a respondent, who said that it
+“seems to be most universally useful application, when thinking about trying to apply this function to a diverse range of scenarios”.
+Another respondent noted that “it should be evident that the filter is applied”. Therefore, when displaying data after filters have been
+applied, there is a need to ensure that the user is always aware that the displayed data is a filtered subset.
+To mitigate the risk that the notification is not seen, it must not be placed in peripheral view but in a prominent position. All respondents
+to the survey were in agreement that a notification below the table was not acceptable. Whereas clinicians were divided between
+displaying the notification above the table or in the tab labels, all the ISVs were against the latter, probably due to valid implementation
+concerns. There is also a risk that the filter criteria in the notification area are mistaken for the normal range of an attribute. To mitigate
+this risk, ensure that the notification states clearly that the information displayed in the notification area refer to filter criteria, such as by
+using the text ‘Data filtered to show’ (as recommended in FSG-0055).
+There is a risk that the user may be called away after having applied filters. On returning to view the data, they may have forgotten that
+they are looking at a filtered subset of patient data, and furthermore they may not notice the status notification, subconsciously
+blanking it out of their mind. To mitigate this, we discussed the use of animation, triggered after a period of inactivity. In this approach
+we discussed animating the filter animation area. Any user activity such as a mouse movement, mouse click or key press would stop
+the animation. Another option, which was not evaluated but which is likely to be implemented in clinical systems, is to close the user
+session without saving the filter criteria and filtered views. Animation was perceived to be acceptable to the users we consulted.
+Occluding Information:
+A risk with dialog boxes is that by occluding part of the screen, they hide patient data. Furthermore, the clinician may not be aware that
+this is occurring, especially when only part of the data is occluded. This risk is mitigated partially in this guidance by the
+recommendation that the dialog box is translucent. The clinician is then provided with a visual cue of information under the dialog box,
+directly in the focus of their attention and not in a peripheral area of the screen.
+
+
+
+
+                                                                                                                                               Page 30
+                               Design Guidance – Filtering Sorting and Grouping
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 27 March 2009
+                                                                                                                               Microsoft
+
+
+
+
+3.7       Guidelines – Sorting
+ Sorting is the action of arranging elements of a sequence of data through the use of a sort
+ operation applicable to the data set. This section describes guidance on sorting clinical data (for
+ example, showing a list of medications prescribed to a particular patient within a specified
+ timeframe). Single and multiple (that is, progressive) sorts are discussed.
+ The section also describes the sort dialog box in which the user-specified sort operation is
+ performed, as shown in Figure 9:
+
+
+
+
+ Figure 9: Sort Dialog Box
+
+
+
+3.7.1         Display
+ This section provides guidance relating to the presentation of the sort dialog box and initial data
+ presentation.
+
+                                                                                                                        Evidence
+ ID              Description                                                                              Conformance
+                                                                                                                        Rating
+ FSG-0075        Support the sorting of data according to a user-specified sort operation                 Mandatory     High
+
+ FSG-0076        Display a sort dialog box for entry of one or more attributes by which data is to be     Recommended   Medium
+                 sorted
+
+ FSG-0077        Display a label above each sort operation (for example, ‘sort X by…’ in which X is       Recommended   Medium
+                 the name that can be applied to the particular sort operation)
+
+ FSG-0078        Include the name of the table from which data is to be sorted in the title of the sort   Recommended   Medium
+                 dialog box
+
+ FSG-0079        Do not permit the sort dialog box to grow to a size beyond the size of the screen        Mandatory     Low
+
+ FSG-0080        Avoid splitting the sort operation line                                                  Recommended   Medium
+
+ FSG-0081        Provide the following buttons: ‘Preview’, ‘OK’ and ‘Cancel’                              Recommended   Medium
+
+ FSG-0082        Upon the user selecting ‘Preview’, execute the sort and update the data display          Recommended   Low
+                 accordingly without any additional confirmation dialog box and without closing the
+                 dialog box
+
+ FSG-0083        Upon the user selecting ‘OK’, close the dialog box, execute the sort and update the Recommended        High
+                 data display accordingly without any additional confirmation dialog box
+
+ FSG-0084        Upon the user selecting ‘Cancel’, close the dialog box, and restore the display to       Recommended   High
+                 show that data displayed when the sort function was initiated without any
+                 additional confirmation dialog box
+
+                                                                                                                               Page 31
+                               Design Guidance – Filtering Sorting and Grouping
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 27 March 2009
+                                                                                                                                  Microsoft
+
+
+
+
+FSG-0085   By default, where date is present within the dataset, the data should be sorted and Recommended                  Medium
+           displayed using the most recent data first (that is, at the top of the table)
+
+FSG-0086   Pre-populate the fields in the sort dialog box with the current sort operation in use     Recommended            Low
+
+FSG-0087   Permit applying sort order by clicking directly in an attribute’s header cell, only       Recommended            Low
+           permitting sorting by one attribute at a time
+
+FSG-0088   Do not display data in mixed units, such as metric and imperial units, in the same        Mandatory              Medium
+           table
+
+FSG-0089   Display the unit measurement in the header row to provide clarity on the data             Recommended            Medium
+           presented in the column
+
+Usage Examples
+
+
+
+
+                                                                                            The initial display of the sort dialog box
+
+
+
+
+                                                                                            Sort dialog box with one attribute entered
+
+
+
+
+                                                                                            Sort dialog box with two attributes entered
+
+
+
+
+                                                                                                                                   Page 32
+                         Design Guidance – Filtering Sorting and Grouping
+                         Prepared by Microsoft, Version 1.0.0.0
+                         Last modified on 27 March 2009
+                                                                                        Microsoft
+
+
+
+
+                                                   Incorrect presentation of the sort dialog box
+                                                   as no radio buttons are present below the
+                                                   first attribute
+
+
+
+
+                                                   Incorrect presentation of the sort dialog box
+                                                   as no label is present above the attribute
+                                                   being sorted
+
+
+
+
+                                                   The attribute, namely ‘Date and Time’,
+                                                   correctly showing the default position,
+                                                   where date should be sorted and displayed
+                                                   using the most recent data first
+
+
+
+
+                                                   The attribute ‘WCC’ header row is correctly
+                                                   shown with the right click sort option
+                                                   selected
+
+
+
+
+                                                                                        Page 33
+Design Guidance – Filtering Sorting and Grouping
+Prepared by Microsoft, Version 1.0.0.0
+Last modified on 27 March 2009
+                                                                                                                                 Microsoft
+
+
+
+
+Rationale
+Sorting:
+We asked respondents to imagine that they wanted to see a patient medications list with the most recently prescribed medication at
+the top of the list and the other medications listed sequentially underneath, based on the time they were prescribed. Most respondents
+recognised the term ‘sorting’ as being applied to this functionality.
+Previewing Sorted Data:
+The ‘preview’ function enables a user to explore the application of a user-specified sort order by applying a temporary (that is,
+exploratory) sort operation. The sort dialog box can be positioned so as not to overlap the data and different sort orders applied to
+understand how they act to change the displayed data. Finally, the user can commit to a sort operation (by clicking the OK button) or
+can choose to leave the display unchanged (by clicking the Cancel button).
+Data Units:
+This guidance recommends including units within the column header row. However, it is also acknowledged that the inclusion of units
+requires space within the cell that is a limitation when subject matter text also appears within the same cell. The display of units
+arguably consumes screen space in a sort dialog box, where the name of the attribute and operation are important not the units. A
+clinician knows the units, and does not need to see them for the task at hand, namely sorting. However, when specifying a sort
+operation that must span a range (for example, 200 mg to 1 g), units may become necessary, though there is a risk with displaying
+data in mixed units in a column. There is also a risk with displaying unfamiliar units in a column (for example, 1000 mg instead of 1 g).
+As this has not been explored in the development of this guidance, we do not make recommendations on the display of units, except
+to include a prohibition on mixing imperial and metric units in the same table column.
+Direct Manipulation in a Header Cell:
+All respondents to the survey knew to click in a column’s header cell to sort (and reverse sort) the table. A small number of
+respondents said they expected to have to click on the sort indicator itself, whereas most thought they could click anywhere inside the
+header cell.
+
+
+
+
+                                                                                                                                  Page 34
+                             Design Guidance – Filtering Sorting and Grouping
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 27 March 2009
+                                                                                                                                   Microsoft
+
+
+
+
+3.7.2       Attribute Selection Control
+ This section describes the Attribute Selection Control. The Attribute Selection Control in the sort
+ dialog box enables the user to select a particular sort attribute.
+
+                                                                                                                             Evidence
+ ID          Description                                                                              Conformance
+                                                                                                                             Rating
+ FSG-0090    Display the label ‘1 - Sort X by:‘ above the first Attribute Selection Control, where X Recommended             Medium
+             is the name that can be applied to each row of data in the table, for example
+             'medications', and is likely to be the title of the table
+
+ FSG-0091    Display the label ‘N – Then, within Y, sort by:‘ above the second and subsequent         Recommended            Medium
+             Attribute Selection Controls, where N is the number of the Attribute Selection
+             Control in the list of controls in the dialog box, and Y is the name of the attribute
+             selected in the immediately preceding control
+
+ FSG-0092    Pre-populate the Attribute Selection Controls in the sort dialog box with the current Recommended               Medium
+             attributes governing sorting, where appropriate
+
+ FSG-0093    Display the attribute names as menu items in the Attribute Selection Control menu, Recommended                  Medium
+             listing them in the same order in the menu as they are displayed in the table, and
+             then adding any attributes that are not displayed
+
+ FSG-0094    Provide a button to add an additional Attribute Selection Control, labelling this        Recommended            Medium
+             button ‘Add’
+
+ FSG-0095    Move the ‘Add’ button down one line when it is pressed, displaying a new Attribute Recommended                  Medium
+             Selection Control in the line previously occupied by the ‘Add’ button
+
+ FSG-0096    Display the ‘Add’ button immediately below the last Attribute Selection Control and Recommended                 Medium
+             left-aligned with it
+
+ FSG-0097    Permit sorting by any of the columns displayed in the table (that is, by attribute)      Mandatory              Medium
+             whether in view or off screen
+
+ FSG-0098    Permit a user to add a column not previously displayed                                   Mandatory              Medium
+
+ Usage Examples
+
+
+
+
+                                                                                             The attribute selection menu showing menu
+                                                                                             items formed by first listing the attributes in
+                                                                                             order as displayed in the data table
+                                                                                             (namely WCC to MCV), and then listing the
+                                                                                             items not displayed in the table (MCH and
+                                                                                             onwards)
+
+
+
+
+                                                                                                                                    Page 35
+                           Design Guidance – Filtering Sorting and Grouping
+                           Prepared by Microsoft, Version 1.0.0.0
+                           Last modified on 27 March 2009
+                                                                                                                                 Microsoft
+
+
+
+
+                                                                                            The Attribute Selection Control incorrectly
+                                                                                            showing a free text field for completion
+
+
+
+
+                                                                                            A new column, Neutrophils, has been
+                                                                                            added to the right side of the table (through
+                                                                                            the sort dialog box), causing the WCC
+                                                                                            column to scroll off the left side. A
+                                                                                            horizontal scroll indicator has appeared
+                                                                                            below to indicate these changes to the
+                                                                                            display and the scroll bar is positioned on
+                                                                                            the right side. Finally, the rows have been
+                                                                                            sorted by the values in the new column
+                                                                                            (Neutrophils), as correctly indicated by the
+                                                                                            sort indicator
+Figure 10: Data Display After Sorting by a Hitherto Undisplayed Attribute
+
+Rationale
+During user testing, respondents indicated that they would like to be able to sort against data shown on screen and also against data
+not currently on screen. Therefore, we recommend including all attributes within the sort dialog box to assist the user with this
+requirement.
+Sorting by an Attribute not Currently Displayed:
+The survey asked users whether they would need to sort the table by an attribute that was not currently displayed. In our example, we
+proposed sorting by Neutrophils. When asked how they would go about performing such a sorting operation, half the respondents said
+they would first add the required Neutrophils column (using a mechanism as set out above). They went on to say that it would be
+acceptable for the new column to be added to the table, displayed at one end and for a horizontal scroll bar to appear (if appropriate)
+indicating that a column had been added. One user commented that this was acceptable “as long as it is obvious you need to scroll to
+see more data”. Another user commented that this “blocks other data being seen on the screen”, alluding to a patient-safety concern,
+as can be seen in Figure 10 where the WCC column has scrolled off the screen.
+This guidance does not mandate that a horizontal scroll bar must be provided, leaving it open to the developers of clinical applications
+to provide suitable visual indication of the appearance of data and of the removal of other data. Scrolling vertically is unavoidable for
+most medical data sets and the mitigation of the associated hazards using the Look-Ahead Scroll Bar has been discussed in the
+document Design Guidance – Medications Management – Medications Views {R1}). An additional horizontal scroll bar tends not to be
+looked upon favourably by users of non-clinical applications. However, it may well be unavoidable for certain data sets that normally
+contain many attributes that it is not possible to collapse or merge (such as blood results).
+
+
+
+
+                                                                                                                                  Page 36
+                             Design Guidance – Filtering Sorting and Grouping
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 27 March 2009
+                                                                                                                                     Microsoft
+
+
+
+
+3.7.3       Sort Indicator
+ This section describes guidance on the sort indicators, including guidance relating to the location
+ of, and detail on, their presentation.
+
+                                                                                                                              Evidence
+ ID          Description                                                                               Conformance
+                                                                                                                              Rating
+ FSG-0099    Display a sort indicator in the header cell of the column(s) by which data is sorted,     Mandatory              High
+             to indicate the attribute(s) by which the data is sorted, and the relevant sort order
+
+ FSG-0100    The sort indicator must have an up-down direction indicator, so it may be displayed Mandatory                    High
+             in two different orientations as appropriate
+
+ FSG-0101    Provide a definition and a means to access the definition (for example, by a              Recommended            Medium
+             tooltip), explaining the meaning of the sort indicator
+
+ FSG-0102    Display the sort indicator in a fixed position in relation to the other contents of the   Recommended            Medium
+             column’s header cell
+
+ Usage Examples
+
+
+
+
+                                                                                              An example sort indicator (shown in green
+                                                                                              circle)
+
+
+
+
+                                                                                              An example showing an alternative sort
+                                                                                              indicator (shown in green circle)
+
+
+
+
+                                                                                              This shows the inconsistent positioning of
+                                                                                              the sort indicators (that is, one underneath
+                                                                                              the field header and the other to the right of
+                                                                                              the field header, as shown in red circles)
+
+
+
+
+                                                                                                                                     Page 37
+                           Design Guidance – Filtering Sorting and Grouping
+                           Prepared by Microsoft, Version 1.0.0.0
+                           Last modified on 27 March 2009
+                                                                                                                                     Microsoft
+
+
+
+
+ Rationale
+ During user testing, respondents stated that the presence of a triangle within the attribute header cell denoted a particular sort order
+ present. We asked respondents how they would reverse a sort order in the sample data and received positive responses that this
+ would be achieved by clicking directly on the “arrow in the date box” and “click on the triangle icon”. It is therefore recommended to
+ include a sort indicator to provide an immediate visual indication of a sort order. Section 3.7.6 provides detail on Progressive Sort
+ using the sort indicator.
+
+
+
+3.7.4        Sort Order Manipulation
+ This section describes guidance on sort order manipulation.
+
+                                                                                                                              Evidence
+ ID             Description                                                                            Conformance
+                                                                                                                              Rating
+ FSG-0103       Do not use the following labels for sort orders in a sort dialog box:                  Recommended            High
+                 ‘Ascending’
+                 ‘Descending’
+                 ‘Chronological’
+                 ‘Reverse Chronological’
+
+ FSG-0104       Use the following words in labels in the sort dialog box when describing sort          Recommended            High
+                orders, as appropriate:
+                 ‘Newest’
+                 ‘Latest’
+                 ‘Most Recent’
+                 ‘Oldest’
+                 ‘Largest’
+                 ‘Greatest’
+                 ‘Smallest
+                 ‘First’
+                 ‘on top’
+
+ FSG-0105       Support the sorting of integers by providing the implicit sort orders:                 Recommended            High
+                 Ascending
+                 Descending
+
+ FSG-0106       Support the sorting of ordered sets of symbols by providing explicit sort orders as    Recommended            High
+                provided by the ISV (for example, by severity values or by AVPU designations).
+                Severity values:
+                 Normal
+                 Mild
+                 Severe
+                 Fatal
+                AVPU designations:
+                 Alert
+                 Responds to voice
+                 Responds to pain
+                 Unresponsive
+
+
+
+
+                                                                                                                                     Page 38
+                               Design Guidance – Filtering Sorting and Grouping
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 27 March 2009
+                                                                                                                                    Microsoft
+
+
+
+
+FSG-0107   Support the sorting of unordered sets of symbols (such as diagnosis or problem)             Recommended           High
+           by providing the implicit sort orders:
+            Alphabetic
+            Reverse alphabetic
+
+FSG-0108   Support the sorting of strings (free text) by providing the implicit sort orders:           Recommended           High
+            Alphabetic
+            Reverse alphabetic
+
+FSG-0109   Support the sorting of dates by providing the implicit sort orders:                         Recommended           High
+            Chronological
+            Reverse Chronological
+
+FSG-0110   Support the sorting of real numbers by providing the implicit sort orders:                  Recommended           High
+            Ascending
+            Descending
+
+FSG-0111   Support the sorting of date and time by providing the implicit sort orders:                 Recommended           High
+            Chronological
+            Reverse Chronological
+
+FSG-0112   Provide an ISV specified sort order for ordinal data types, where appropriate               Recommended           High
+
+FSG-0113   Provide an ISV specified sort order for continuous data that includes symbolic              Recommended           Low
+           values (for example, ‘<10’)
+
+FSG-0114   Use an alphabetic sort order where a data type does not have an intrinsic sort              Recommended           Low
+           order and where none has been provided
+
+FSG-0115   Use the following labels in the sort dialog box when describing sort orders for             Recommended           High
+           textual data: ‘A – Z’ or ‘Z – A’, as appropriate
+
+Usage Examples
+
+
+
+
+                                                                                               Example correctly supporting the sorting of
+                                                                                               medications and date by radio buttons
+                                                                                               setting out sort orders
+
+
+
+
+                                                                                                                                    Page 39
+                         Design Guidance – Filtering Sorting and Grouping
+                         Prepared by Microsoft, Version 1.0.0.0
+                         Last modified on 27 March 2009
+                                                                                                                                 Microsoft
+
+
+
+
+Rationale
+Sorting Control and Labels:
+When asked which terms best described sort orders for dates, ‘most recent’ and ‘least recent’ were rated highly by health care staff,
+while ‘chronological’ and ‘reverse chronological’ was rated highly by independent software vendors. Other sets of terms such as
+‘newest and oldest’ and ‘ascending and descending’ were marginally less popular. For numerical data, the two most popular labels for
+sort orders were ‘ascending and descending’ and ‘highest to lowest’. In addition to user preference, there is a need to select a label
+that is likely to be widely understood by health care staff and that is not wasteful of screen space.
+Therefore, this guidance recommends these labels when describing sort orders in the sort dialog box:
+ ‘Most Recent’ and ‘Oldest’ for dates
+ ‘Largest’ and ‘Smallest’ for numerical data
+ ‘A – Z’ and ‘Z – A’ for textual data
+ An appropriate label for a range of numerical data (for example, ‘0 – 9’ and ‘9 – 0’)
+Sort Orders and Ordinal Data:
+Numerical data, and dates, can each be easily arranged by their inherent order. Numerical data can be sorted in increasing and
+decreasing order, and dates in chronological and reverse chronological order. An example of ordinal data is ‘AVPU’, designed for use
+in paediatrics. It is used similarly to the Glasgow Coma Score (GCS) to assess patient responsiveness. The letters A, V, P and U
+indicate a patient's condition as follows:
+ A = Alert
+ V = Responds to voice
+ P = Responds to pain
+ U = Unresponsive
+As can be seen, the letters have an inherent order, from most alert to least alert. This is an example of ordinal data where alphabetical
+ordering would not be acceptable but where a sort order has to be provided to the clinical application. Table 6 lists sort orders for
+various data types.
+
+
+
+
+                                                                                                                                  Page 40
+                             Design Guidance – Filtering Sorting and Grouping
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 27 March 2009
+                                                                                                                                  Microsoft
+
+
+
+
+3.7.5       Removing Sort
+ This section provides guidance on how to remove a sort order. This functionality relates to the
+ removal of both individual and all sort operations from the sort dialog box.
+
+                                                                                                                           Evidence
+ ID          Description                                                                            Conformance
+                                                                                                                           Rating
+ FSG-0116    Provide a capability to remove an individual operation from the sort dialog box        Recommended            Medium
+
+ FSG-0117    Provide a capability to remove all of the sort operations entered in the sort dialog   Recommended            High
+             box in one action
+
+ FSG-0118    Label the button to remove an individual sort operation ‘Remove’                       Recommended            Medium
+
+ FSG-0119    Label the button to remove all sort operations in one action: ‘Remove All’             Recommended            Medium
+
+ FSG-0120    During single sort operation, clear the Attribute Control and related operators when Recommended              Low
+             the corresponding ‘Remove’ button on the same filter operation line is pressed
+
+ Usage Examples
+
+
+
+
+                                                                                                    In addition to being able to remove
+                                                                                                    all sort operations in one action, it
+                                                                                                    is possible to remove a sort
+                                                                                                    operation individually
+
+
+
+
+                                                                                                    There is no button to remove an
+                                                                                                    individual sort operation
+
+
+
+
+                                                                                                                                  Page 41
+                           Design Guidance – Filtering Sorting and Grouping
+                           Prepared by Microsoft, Version 1.0.0.0
+                           Last modified on 27 March 2009
+                                                                                                                                        Microsoft
+
+
+
+
+ Rationale
+ User research evaluated candidate terms for removing a filter, namely ‘remove’, ‘clear’, ‘default’, ‘reset’, ‘empty’ and ‘undo’. There was
+ no particular preference amongst ‘remove’, ‘clear’, and ‘default’ but a spread across all three. As ’default’ can imply system defaults or
+ prefilled values, it was rejected. None of the thirteen respondents found ‘reset’, ‘empty’ and ‘undo’ acceptable. We recommend that
+ this respondent data is also applied to the sorting function.
+ The placement of the button to remove all filters was also evaluated, and feedback was divided between placing it adjacent to the
+ Filter button in the toolbar, and placing it in the filter notification area. No respondent wanted to see the function in the context menu,
+ suggesting that this should never be provided as the only way to access a function. All filters can also be removed in the place where
+ they were originally specified, namely the filter dialog box, which also provides a means for selectively removing individual filters.
+ Again, we recommend that this respondent feedback is applied to the sorting function.
+
+
+
+3.7.6          Progressive Sort
+ This section describes guidance on the progressive sort function (that is, where data is sorted by
+ more than one attribute at the same time).
+
+                                                                                                                                  Evidence
+ ID               Description                                                                               Conformance
+                                                                                                                                  Rating
+ FSG-0121         Permit progressive sorting                                                                Mandatory             Medium
+
+ FSG-0122         In the case of a progressive sort, in addition to displaying the sort indicator in the    Recommended           Medium
+                  appropriate header cells, also display the number for the rank of each attribute in
+                  the set of attributes by which the data is sorted, displaying ‘1’ for the primary
+                  attribute, ‘2’ for the secondary attribute, and so on
+
+ FSG-0123         Ensure display of the number for the rank in a progressive sort indicator is not      Mandatory                 Medium
+                  accidentally visually associated with other information displayed in the same cell or
+                  in adjacent cells
+
+ Usage Examples
+
+
+
+
+                                                                                                   This illustrates the correct display of the
+                                                                                                   outcome of a progressive sort, showing the
+                                                                                                   sort indicator with a number that indicates
+                                                                                                   the sequence of the attributes in the
+                                                                                                   application of the progressive sort
+
+
+      Figure 11: A Progressive Sort of a Medications List
+
+
+
+
+                                                                                                   This illustrates the incorrect display of the
+                                                                                                   outcome of a progressive sort, showing the
+                                                                                                   sort indicator without a number that
+                                                                                                   indicates the sequence of the attributes in
+                                                                                                   the application of the progressive sort
+
+
+
+
+                                                                                                                                         Page 42
+                                  Design Guidance – Filtering Sorting and Grouping
+                                  Prepared by Microsoft, Version 1.0.0.0
+                                  Last modified on 27 March 2009
+                                                                                                                                  Microsoft
+
+
+
+
+                                                                                             This shows the incorrect display of the
+                                                                                             outcome of a progressive sort: the number
+                                                                                             indicating the sequence of the attributes in
+                                                                                             the application of the progressive sort is
+                                                                                             incorrectly shown inside the sort indicator
+
+
+
+
+Rationale
+Progressive Sort:
+‘Progressive sort’ is applied where multiple rows contain a column with the same value present (for example, all on the same date). It
+is then possible to sort those rows with a sort operation applied to another column. One respondent commented that “compound sort
+orders are too complex for the average user”. Progressive sort is useful in those limited cases where application of the first sort does
+not adequately differentiate the data. When the Medications List View is sorted by ‘Drug Details’, medication lines with the same drug
+details would be displayed in no particular date order.
+If one were instead to sort first by ‘Drug Details’ and then, within those results, by ‘Start Date’, the resulting display shows the
+medications sorted alphabetically and then by date, as shown in Figure 11. Here, ‘Drug Details’ can be considered the primary sort,
+and ‘Start Date’ the secondary sort:
+Progressive Sort Indicator:
+When data is sorted by more than one attribute, display as many sort indicators as attributes used to govern the sort. Additionally, it is
+important to indicate the position each attribute occupied in the sorting sequence. For the example shown in Figure 11, the correct
+numbers are ‘1’ for the primary sort (Drug Details) and ‘2’ for the secondary sort (Start Date). User research found that an equal
+number of health care staff wanted to see a number in the header cell as those that did not. One participant remarked: “This kind of
+‘double sort’ is completely new for clinicians....I am not sure which would be safer. But somewhere it needs to state clearly this data is
+sorted first by date and then the medication is sorted alphabetically”. The sort number represents the position of an attribute in the
+sorting sequence and there was a marginal, but not statistically significant, preference for the number to be placed adjacent to, but not
+within, the sort indicator. Because the header cell may have other numeric information, such as the normal range, it is important to
+ensure that there is no confusion causing misreading of either the sort indicator or the normal range.
+
+
+
+
+                                                                                                                                   Page 43
+                             Design Guidance – Filtering Sorting and Grouping
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 27 March 2009
+                                                                                                                              Microsoft
+
+
+
+
+3.8    Guidelines – Grouping
+ This section describes guidance on grouping. This is a sorting operation, where data is organised
+ primarily into clusters instead of a sequential order.
+ Grouping is particularly useful where one wants to view all data sharing the value of a certain
+ attribute, such as all tests ordered by a certain clinician. Grouping is initiated by use of the grouping
+ control on the toolbar, as discussed in section 3.5.
+
+                                                                                                                       Evidence
+ ID         Description                                                                          Conformance
+                                                                                                                       Rating
+ FSG-0124   Display clear and prominent headings for each group within the table                 Recommended           High
+
+ FSG-0125   When the user scrolls data, maintain a visible display of the current group heading Recommended            Low
+            that applies to the data on screen and avoid the heading scrolling out of view
+
+ FSG-0126   Do not display groups in separate tabs                                               Recommended           Low
+
+ FSG-0127   Permit each group to be expanded and collapsed individually                          Recommended           High
+
+ FSG-0128   Provide an icon to indicate the state of the group, that is, whether it is expanded or Recommended         High
+            collapsed
+
+ FSG-0129   Permit the user to swap between the expanded and collapsed states by clicking on Recommended               High
+            the icon
+
+ FSG-0130   Initially, display all groups in the expanded state                                  Recommended           Low
+
+ FSG-0131   Provide the capability to remove grouping by selecting the menu item ‘None’ from     Recommended           Medium
+            the grouping control
+
+ FSG-0132   Provide the capability to initiate grouping by selecting the required group from a   Recommended           High
+            menu displayed in the grouping control
+
+ FSG-0133   Retain the column sort order (if any) when grouping is applied                       Recommended           Medium
+
+ FSG-0134   Provide ‘null’ groups (where necessary) to support the display of data that does     Recommended           Low
+            not have a value for the attribute being used for grouping
+
+ Usage Examples
+
+
+                                                                                                 Initiation of the grouping
+                                                                                                 functionality from the toolbar
+
+
+
+
+                                                                                                 Groups are displayed correctly
+                                                                                                 within the table. Each group has a
+                                                                                                 title and an accompanying icon.
+                                                                                                 The icons clearly show which
+                                                                                                 groups can be expanded and
+                                                                                                 which can be collapsed
+
+
+
+
+                                                                                                                              Page 44
+                          Design Guidance – Filtering Sorting and Grouping
+                          Prepared by Microsoft, Version 1.0.0.0
+                          Last modified on 27 March 2009
+                                                                                                                                        Microsoft
+
+
+
+
+                                                                                                           Groups are displayed in tabs. This
+                                                                                                           prohibits all data being viewed
+                                                                                                           together and potentially
+                                                                                                           necessitates much movement
+                                                                                                           between tabs. Additionally, this is a
+                                                                                                           non-standard UI style for
+                                                                                                           displaying groups
+
+
+
+
+                                                                                                           Groups are displayed with links on
+                                                                                                           the left-hand side wasting valuable
+                                                                                                           screen space that could be better
+                                                                                                           utilised to display patient data
+
+
+
+
+Rationale
+The display of groups in individual tabs has the advantage that, where a data set comprises different lists that cannot be displayed
+vertically, they can be easily displayed alongside each other. For example, medications fall into classes and could be presented by
+class type. These lists have different column headings, therefore they cannot easily be laid out vertically because new column
+headings would need to be inserted as required. Also, where data in each of the lists are for the same time point, the lists need to be
+seen alongside each other and not one above the other. The tabbed approach partially facilitates this desired view. Additionally, as
+reported by one respondent to the survey, the tabs “resemble how the results are stored in paper files”.
+However, while supporting a user’s familiar pattern of use is a desirable aim, the tabbed approach has disadvantages. It does not
+permit all the data to be seen in one list, limiting the application of additional functions (such as filtering on the complete data set). If, in
+the tabbed approach, the user were to apply a filter when looking at one tab, it is not clear how the other tabs should be changed. If
+filtering was applied before grouping, and the outcome displayed in tabs, the subsequent grouping would create an additional set of
+tabs. Also, if the application itself was using tabs, there could be multiple levels that would potentially be very confusing for a user.
+
+
+
+
+                                                                                                                                         Page 45
+                              Design Guidance – Filtering Sorting and Grouping
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 27 March 2009
+                                                                                                                                           Microsoft
+
+
+
+
+4            DOCUMENT INFORMATION
+
+4.1          Terms and Abbreviations
+    Abbreviation                       Definition
+    AVPU                               Alert, Voice, Pain, Unresponsive
+
+    CAPS                               Clinical Applications and Patient Safety`
+
+    CUI                                Common User Interface
+
+    GCS                                Glasgow Coma Score
+
+    GP                                 General Practitioner
+
+    Hb                                 Hemoglobin
+
+    HCP                                Health Care Professional
+
+    ISV                                Independent Software Vendor
+
+    ITP                                Information Technology Professional
+
+    ITU                                Intensive Therapy Unit
+
+    MCH                                Mean Corpuscular Hemoglobin
+
+    MCHC                               Mean Corpuscular Hemoglobin Concentration
+
+    MCV                                Mean Corpuscular Volume
+
+    NHS                                National Health Service
+
+    NHS CFH                            NHS Connecting for Health
+
+    NPfIT                              National Programme for Information Technology
+
+    PCV                                Packed Cell Volume
+
+    Pit                                Platelet
+
+    RBC                                Red Blood Cell
+
+    UI                                 User Interface
+
+    WCC                                White Cell Count
+    Table 8: Terms and Abbreviations
+
+
+4.2          Definitions
+    Term                                Definition
+    AND                                 Returns True if all of its component filter expressions are true. Returns False if any of the
+                                        component filter expressions are false
+
+    Attribute Selection Control         A control in the filter dialog and sort dialog boxes that enables the user to select a particular filter or
+                                        sort attribute.
+
+    Current best practice               Current best practice is used rather than best practice, as over time best practice guidance may
+                                        change or be revised due to changes to products, changes in technology, or simply the additional
+                                        field deployment experience that comes over time.
+
+    Component filter expressions        Selected criteria built around a logical operator.
+
+
+
+
+                                                                                                                                            Page 46
+                                  Design Guidance – Filtering Sorting and Grouping
+                                  Prepared by Microsoft, Version 1.0.0.0
+                                  Last modified on 27 March 2009
+                                                                                                                                      Microsoft
+
+
+
+
+ Term                              Definition
+ Filtering                         The removal of data from view, so as to focus on a subset of data that is relevant to the task at
+                                   hand (in this case, the clinical task). The application of each filter criterion specifies a subset of data
+                                   to keep in view.
+
+ Filter Operators                  Operators that can be applied to both discrete and continuous data values in the filter dialog box.
+
+ Grouping                          To arrange elements of a collection into different categories. A clinical example is: 'Show me all of
+                                   the patient’s current and past medicines, grouped separately by Type such as Antibiotics and so
+                                   on'.
+
+ Logical Connective Operators      These operators are provided to unite logical data sets within the filter or sort criterion.
+
+ Operator Selection Control        A control in the filter dialog box that enables the user to select a particular filter operator.
+
+ OR                                A logical operator. Returns True if any of its operands are true. Returns False if all of its operands
+                                   are false.
+
+ Progressive Sort                  A type of sort where data is sorted by more than one attribute at a time.
+
+ Sorting                           To arrange elements of a sequence according to some criterion, such as alphabetically (A to Z), or
+                                   numerically (1, 2, 3...). A clinical example is: 'Show me all the medications this patient has ever
+                                   been prescribed, in alphabetic order of medicine name'.
+
+ Value Entry Control               A control in the filter dialog box that enables the user to select a particular filter value.
+ Table 9: Definitions
+
+
+4.3          Nomenclature
+ This section shows how to interpret the different styles used in this document to denote various
+ types of information.
+
+4.3.1          Body Text
+ Text                                                                   Style
+ Code                                                                   Monospace
+
+ Script
+
+ Other markup languages
+
+ Interface dialog names                                                 Bold
+
+ Field names
+
+ Controls
+
+ Folder names                                                           Title Case
+
+ File names
+ Table 10: Body Text Styles
+
+
+
+
+                                                                                                                                      Page 47
+                              Design Guidance – Filtering Sorting and Grouping
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 27 March 2009
+                                                                                                                            Microsoft
+
+
+
+
+4.3.2        Cross References
+ Reference                                                         Style
+ Current document – sections                                       Section number only
+
+ Current document – figures/tables                                 Caption number only
+
+ Other project documents                                           Italics and possibly a footnote
+
+ Publicly available documents                                      Italics with a footnote
+
+ External Web-based content                                        Italics and a hyperlinked footnote
+ Table 11: Cross Reference Styles
+
+
+4.4       References
+ Reference        Document                                                                                        Version
+ R1.              Design Guidance – Medications Management – Medications Views                                    2.0.0.0
+
+ R2.              Design Guidance – Date Display                                                                  2.0.0.0
+
+ R3.              Design Guidance – Time Display                                                                  2.0.0.0
+
+ R4.              Design Guidance – Date and Time Input                                                           2.0.0.0
+
+ R5.              Design Guidance – Displaying Graphs and Tables                                                  2.0.0.0
+
+ R6.              Research-Based Web Design and Usability Guidelines – Koyani et al – U.S. Department of Health
+                  and Human Services
+                  http://www.usability.gov/pdfs/guidelines.html
+
+ R7.              Hypertext Markup Language - 2.0 – Berners–Lee & Connolly – Network Working Group                1995
+                  http://www.ietf.org/rfc/rfc1866.txt
+
+ R8.              17.2.1 Control types – radio buttons – HTML 4.01 Specification – W3C Recommendations            1999
+                  http://www.w3.org/TR/html4/interact/forms.html#radio
+
+ R9.              Checkboxes vs. Radio Buttons – Jakob Nielsen’s Alertbox                                         2004
+                  http://www.useit.com/alertbox/20040927.html
+
+ R10.             Design Guidance – Accessibility Checklist                                                       1.0.0.0
+
+ R11.             Design Guidance – Accessibility Principles                                                      1.0.0.0
+ Table 12: References
+
+
+
+
+                                                                                                                            Page 48
+                               Design Guidance – Filtering Sorting and Grouping
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 27 March 2009
+                                                                                                    Microsoft
+
+
+
+
+APPENDIX A                       USER RESEARCH EXECUTIVE SUMMARY
+
+PART I ABSTRACT
+ The UK National Health Service (NHS) Common User Interface (CUI) programme is a partnership
+ between Microsoft® and NHS Connecting for Health (NHS CFH), which is part the NHS National
+ Programme for Information Technology (NPfIT).
+ As part of CUI, the Clinical Applications and Patient Safety (CAPS) project has the goal of ensuring
+ that software applications used by the NHS enhance patient safety. To achieve this, CAPS
+ provides software developers with user interface design guidelines derived through a user-centric
+ development process that includes explicit patient-safety evaluations.
+ This summary describes the results of an online survey completed by 13 people including six
+ Health Care Professionals (HCPs) and seven Health Care Information Technology Professionals
+ (ITPs). All respondents were experienced with current computer based sorting behaviours. Two of
+ the HCPs were not experienced with computer based filtering.
+ Purpose: to assess first iteration static wireframe design options for filtering, sorting and grouping
+ lists within patient records. Method: to elicit user preferences, understandings and patient safety
+ expertise through multiple choice questions.
+ Sorting results:
+      Preference for labelling date and numeric sort orders
+      Having the sort order of progressive sorts labelled with a number
+      Adding sort variables to show in the list display
+      Scrolling the screen to show recently added sort variables
+ Filtering results:
+      More respondents found filter-in rather than filter-out useful
+      Most respondents want to choose how filter criteria are combined (AND/OR)
+      No clearly preferred design for filter results display
+      More HCPs identified a tab-based filter results display design as patient safe
+      Respondents preferred models for feedback that a filter is applied where the feedback is
+       placed above the list and close to the filter remove mechanism.
+ Grouping results: a within-lists display of group was more popular than other designs.
+
+
+PART II RESEARCH OBJECTIVES
+ This research study was designed to gather HCP preferences and patient safety assessments of
+ low fidelity wireframe design options for filtering, sorting and grouping lists within patient records.
+ The specific objectives were to identify:
+     1. Appropriate UI terminology for referring to sorting and filtering activities.
+     2. An effective design to convey the outcomes of progressive sorts.
+     3. User expectations and preferences for sorting by variables within a software application
+        data-model that are not displayed on screen by default.
+     4. A design that effectively conveys the impact of combining filter criteria.
+                                                                                                     Page 49
+                       Design Guidance – Filtering Sorting and Grouping
+                       Prepared by Microsoft, Version 1.0.0.0
+                       Last modified on 27 March 2009
+                                                                                                                     Microsoft
+
+
+
+       5. How to safely enable the user to know what data has been filtered out and how to re-access
+          that data.
+
+
+PART III                        RESEARCH DESIGN
+ An on-line survey was used to collate responses to gray-scale wireframe static designs. Survey
+ questions were piloted and refined during 3 consecutive interviews with 3 HCP. These interviews
+ ensured that the designs, data and questions were sufficiently realistic and could be understood by
+ HCP. Multiple choice questions were used to collect clear quantitative data. Choice options were
+ systematically randomised per respondent to remove any response biasing due to option ordering.
+ Each multiple choice question was accompanied by an open-text box inviting the respondent to
+ describe the reasons for their choice. CFH distributed the survey to NHS employees that had
+ signed-up to participate via the CFH Events Management System. Recipients were able to forward
+ the survey to colleagues. No remuneration supplied for completing the survey. The survey took 20-
+ 40 minutes to complete.
+
+
+PART IV                         RESULTS
+ Respondent description
+                                                                                 th                     th
+ Thirteen people completed the survey between and Friday the 18 and Monday 27 October.
+ Respondents had worked for the NHS for diverse time-frames from less than 1 year to between 25
+ and 19yrs and were based in diverse geographical locations. Respondents were predominantly
+ Hospital based employees (8/13) and included four Junior Doctors, no nurses, no General
+ Practitioners, no community based HCP and no health care administrative staff. Seven
+ respondents were Information Technology Professionals (ITP), three of whom had no direct
+ experience of employment within the NHS. Table 13: Respondent Descriptions, below, provides a
+ summary of individual respondents job roles, NHS employment, workplace and main work location.
+
+ Respondent Job Role                                      Years employed in      Workplace             Location
+ Identifier                                               the NHS
+ p1                Anaesthetist                           20-24 years            Hospital              South West England
+
+ p2                Junior Doctor                          1-4 years              Hospital              London
+
+ p3                Junior Doctor                          1-4 years              Hospital              London
+
+ p4                Junior Doctor                          1-4 years              Hospital              London
+
+ p5                Junior Doctor (Specific Audience)      1-4 years              Hospital              London
+
+ p6                Medical Consultant                     5-9 years              ISV, also clinician   South West England
+
+ p7                Healthcare IT manager                  25-29 years            Hospital              Yorkshire and Humber
+
+ p8                Senior Information Manager             20-24 years            Hospital              Yorkshire and Humber
+
+ p9                Software - analyst / advisor           10-14 years            ISV                   Nationwide
+
+ p10               Software - analyst / advisor           Less than 1 year       Microsoft ISV         London
+
+ p11               Software - analyst / advisor           Not applicable         ISV                   Other
+
+ p12               Software - UI designer / researcher    Not applicable         Hospital IT           South West England
+
+ p13               Software - Technical Architect         Not applicable         ISV                   North West England
+ Table 13: Respondent Descriptions
+
+
+
+                                                                                                                      Page 50
+                              Design Guidance – Filtering Sorting and Grouping
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 27 March 2009
+                                                                                                                                                Microsoft
+
+
+
+A set of standardised CUI project questions to assess respondents’ computer skills indicated that
+all respondents had installed or downloaded a program onto a computer. Two of the six HCP (p5
+and p6) had experience of installing an operating system and changing a registry key. Three of the
+six HCP had written software code (p1, p5 and p6).
+
+UI terminology for sorting and filtering activities
+Sorting and filtering are appropriate terms for referring to the planned UI activities. Respondents
+were experienced with computer based sorting and filtering and identified preferences for sort-order
+descriptors.
+All respondents reported having previously sorted a list on a computer, were able to identify which
+criteria (date) a list was sorted by and described a successful way to reverse the sort order, for
+example:
+                                     click on date and see if it would reverse for me (p2)
+             Click on the date arrow and it would arrange the list from least to most recent. (p3)
+The term ‘Sorting’ was selected by respondents as the most popular word to describe a clinically
+based definition of sorting. Two other words were selected, ‘Ordering’ by 4 or the IT professionals
+and ‘Organising’ by 2 of the HCP.
+When selecting from nine pairs of options the two most popular date sort order descriptors are
+      1. ‘Most recent’ and ‘Least recent’ (6/13).
+      2. ‘Chronological’ and ‘Reverse chronological’ (6/13) including one HCP.
+The two most popular numeric sort-order descriptors are
+      1. ‘Ascending and Descending’ (8/13), and
+      2. ‘Highest to Lowest’ (7/13) including half of the HCP (3/6).
+Eleven respondents reported having experience of using a computer to filter information.
+Respondents predominantly selected the word ‘Filtering’ (9/13) from a list of 9 options to describe
+the act of filtering. The three people that did not select the word filtering were one HCP that
+selected the word ‘Removing’ and two ITPs that selected the word ‘Showing’.
+
+Conveying the outcome of progressive sorts
+Respondents (7/13) preferred design options that indicated the sort-order with a number. Error!
+Reference source not found. was the most popular design (4/13). Several (3/13) respondents
+indicated that the sort order would be obvious from the table contents and selected Figure 1.
+
+
+
+
+Figure 12: Sort columns are indicated by a triangle in the column header
+
+
+
+
+Figure 13: Sort columns are indicated by a triangle in the column header. The order of the sort is indicated by a number adjacent to the triangle
+
+
+
+
+Figure 14: Sort columns are indicated by a triangle in the column header. The order of the sort is indicated by a number within the triangle
+
+
+
+
+                                                                                                                                                    Page 51
+                                Design Guidance – Filtering Sorting and Grouping
+                                Prepared by Microsoft, Version 1.0.0.0
+                                Last modified on 27 March 2009
+                                                                                                     Microsoft
+
+
+
+
+Expectations and preferences for sorting by variables not currently
+displayed
+All the HCP (6/13) expected data relevant to their current analysis to already be displayed in the
+list. Two HCP explicitly stated that they would not try to sort by a variable that was not already
+showing in the list. The majority (10/13) of respondents wanted the variable that is used to sort the
+list to be displayed in a column within the list. In cases where the sort-order selected was based on
+data not currently shown in the list respondents (9/13) considered it acceptable to add the column
+and shift the view of the table to show the just-select sort-order.
+
+Conveying the impact of combining filter criteria
+The majority of respondents preferred the design to provide them with a choice of combining filter
+criteria using a logical AND or a logical OR.
+All 13 respondents agreed that it is useful to filter a list within a patient record by specifying the
+items of interest that they want to keep in the view. The majority of respondents (8/13) agreed that
+it is useful to filter a list within a patient record by specifying the information that they want to
+remove from view. Specifying what a filter should remove was viewed as a less frequently needed
+activity than specifying what a filter shows.
+No respondents expected the combined filter in Error! Reference source not found. to show
+esults that include either a Urea value greater than 6.5 or a CRP value greater than 15. i.e. a
+logical OR was not expected. No respondents wanted the filter to show results to combine filters
+
+
+
+
+with a logical OR.
+Figure 15: Filter Criteria Dialog Box (indicative illustration of study materials, not guidelines)
+
+When subsequently shown Error! Reference source not found. all respondents were able to
+predict that the result of selecting an ‘all must be true’ filter was that the filter showed both a Urea
+value greater than 6.5 and a CRP value greater than 15. Most respondents (8/13) preferred the
+Error! Reference source not found. design because it made the action ‘much clearer’ (p3) and
+provided them with a choice on how to combine the individual filters.
+
+
+
+
+                                                                                                     Page 52
+                                  Design Guidance – Filtering Sorting and Grouping
+                                  Prepared by Microsoft, Version 1.0.0.0
+                                  Last modified on 27 March 2009
+                                                                                                     Microsoft
+
+
+
+
+Figure 16: Filter Criteria Dialog Box (indicative illustration of study materials, not guidelines)
+
+Safely indicating the existence of filtered-out data and how to
+re-access it
+Respondents preferred designs where an indicator that data has been filtered-out, a status
+message, is above the data list columns headers.
+There was no clear design option preferred by the HCP for safely indicating the existence of
+filtered-out data. None of the HCP believed that completely removing the data from view was a
+patient safe option while this was the option preferred by some ITPs (3/7).
+No-one wanted a status message at the bottom of the application window. The most popular
+locations for a status message were a text-message placed above the column headings or using 3
+horizontal tabs above the column headings one showing the results of applying the filter, one
+showing the remaining list contents, ’ and one showing all the original list contents.
+The most popular design option to remove a filter was the use of a button either within a status
+message or adjacent to the ‘Filter’ button in the toolbar.
+
+
+
+
+                                                                                                     Page 53
+                                  Design Guidance – Filtering Sorting and Grouping
+                                  Prepared by Microsoft, Version 1.0.0.0
+                                  Last modified on 27 March 2009
+

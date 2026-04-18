@@ -1,0 +1,1190 @@
+# Design Groundwork Exploration -- Truncation of Clinical Terms
+
+## Provenance
+- Source file: `raw/sources/design-guidance/toolkit-bundled-pdfs/Design Groundwork Exploration -- Truncation of Clinical Terms.pdf`
+- Extracted text: `derived/extracted-text/design-guidance/design-groundwork-exploration-truncation-of-clinical-terms.txt`
+- Normalization note: machine-cleaned `pdftotext -layout` output; verify against the PDF for edge cases.
+
+## Extracted Text
+
+Truncation of Clinical Terms
+Design Groundwork Exploration
+
+Monday, 25 January 2010
+Version 1.0.0.0
+
+Prepared by
+
+                          The ideas presented in this document are for community preview and consultation only.
+                 Further design and patient safety assessments are required to finalize the content as CUI Design Guidance.
+
+This document and/or software (“this Content”) has been created in partnership with the National Health Service (NHS) in England. Intellectual Property Rights to this Content
+are jointly owned by Microsoft and the NHS in England, although both Microsoft and the NHS are entitled to independently exercise their rights of ownership. Microsoft
+acknowledges the contribution of the NHS in England through their Common User Interface programme to this Content. Readers are referred to www.cui.nhs.uk for further
+information on the NHS CUI Programme.
+
+All trademarks are the property of their respective companies. Microsoft and Windows are either registered trademarks or trademarks of Microsoft Corporation in the United
+States and/or other countries. SNOMED CT is a registered trademark of the International Health Terminology Standards Development Organisation.
+
+© Microsoft Corporation 2010. All rights reserved.
+
+Executive Summary
+ Problem
+   • Truncation of text is already widely used in information rich views in both non-
+     clinical and clinical software
+   • Truncated clinical terms may be more prone to misinterpretation and mis-
+     selection than terms displayed in full
+   • An assessment of the patient safety risks of alternatives to truncation is needed
+     to inform future design decisions
+ Scope
+   • This study focuses on truncation of the text of clinical terms displayed in a
+     selection list, with a brief look at truncation of terms in a summary view
+ Headline Findings
+   • Truncation of clinical terms should be avoided where possible
+   • Truncated clinical terms may introduce more patient safety risks than terms
+     displayed in full
+   • In most cases, clinical terms should be displayed in full in a list with a vertical
+     scroll bar
+   • Truncation may be relevant in specific contexts, types of information, tasks or
+     views
+   • It is unlikely that a set of generic rules for truncation can be defined
+ 25 January 2010                          Microsoft                                   Slide 2
+
+Table of Contents
+ •    Executive Summary
+ •    Table of Contents
+ •    Problem Statement
+ •    Scope Statement
+ •    Process Overview
+ •    About this design consultation
+ •    Design Exploration
+ •    Themes
+
+ 25 January 2010                       Microsoft   Slide 3
+
+Problem Statement
+ Customer need
+ • Effectively display lists of clinical terms when UI space is
+   limited
+ • Review the potential for generic guidance for the
+   truncation of clinical terms in any context
+ User experience goals
+ • Support the user task of selecting a clinical term from a list
+   as part of the process of encoding
+ • Suggest mitigations for patient safety risks associated with
+   hidden text and mis-selection in lists
+
+ 25 January 2010               Microsoft                          Slide 4
+
+Scope Statement
+ In Scope
+ • How to truncate coded clinical terms displayed in a selection list
+       – Exploration and research limited to SNOMED CT®
+ •    How to truncate coded clinical terms displayed in a list or table
+       – Limited feedback based on evolving work in the Display of Clinical Statements Workstream
+ •    How to access the full text of a truncated clinical term
+       – Limited feedback based on evolving work in the Display of Clinical Statements Workstream
+
+ Out of Scope
+ • Truncation of coded clinical terms in scenarios not listed above
+ • Truncation of user interface elements (such as menu items and window titles)
+ • Truncation of other information, such as medications (apart from those
+    displayed as coded clinical terms), patient names and dates
+ • Truncation of non-encoded clinical terms
+ • Truncation of post coordinated coded clinical terms
+ • Using approved acronyms or abbreviations to shorten text
+ • Truncation of free text
+
+ 25 January 2010                               Microsoft                                       Slide 5
+
+Process Overview
+ Scoping and Research
+ •    Review of UK National Health Service (NHS) NHS CFH Rules for the Display of Coded Clinical Data
+ •    Review of truncation in a small number of clinical and non-clinical applications
+ •    Review of NHS Connecting for Health (NHS CFH) analysis of SNOMED CT
+ •    Review of UI principles for avoiding truncation
+
+ Risk Assessments
+ • Preparation of scenario and design alternatives
+ • Reporting findings
+ Design Exploration
+ •    Design exploration for truncating in selection lists
+ •    Design exploration for truncating in views that summarise clinical statements
+
+ User Research
+ •    Risk assessment of designs in interviews with six participants
+ •    Reporting user research findings
+
+ 25 January 2010                                  Microsoft                                        Slide 6
+
+About this design consultation
+ The purpose of the document is to summarize the current learning that has been
+ achieved in the design and research process to date. This is articulated primarily in
+ terms of the features that comprise the preferred current design. These design
+ features aggregate into seven themes.
+
+ For each theme we illustrate a few design points with images of the current design,
+ plus an indication of some of the alternatives we have been considering. We then
+ summarise the key design points, including some that haven’t been illustrated, plus
+ the rationale for choosing these points. We end each theme by outlining the proposed
+ next steps and future exploration.
+
+ 25 January 2010                          Microsoft                                      Slide 7
+
+     DESIGN EXPLORATION
+
+25 January 2010   Microsoft   Slide 8
+
+Design Exploration
+                   Introduction
+
+                   Theme 1     Avoiding the need for truncation
+
+                   Theme 2     Truncation points
+
+                   Theme 3     Fragmenting words
+
+                   Theme 4     Dynamic versus static truncation
+
+                   Theme 5     Truncation markers
+
+                   Theme 6     Identical truncated terms
+
+                   Theme 7     Access to full text for truncated terms
+
+                   All illustrations use current SNOMED CT terms.
+
+ 25 January 2010                                     Microsoft           Slide 9
+
+Introduction – what is truncation?
+    In this document, the word ‘truncation’ is used to refer to the removal of a
+    section of text in order to fit the remainder into a smaller space
+
+    Although this document focuses on
+    truncation, the use of truncation
+    must be compared to obscuring                  Obscured text
+    text and thus both are reviewed
+
+    Truncated text
+
+  25 January 2010                      Microsoft                             Slide 10
+
+Introduction – truncation in non-clinical applications
+    Truncation is widely used in both clinical and non-clinical applications
+    Text is truncated at the end or in the (approximate or exact) ‘middle’
+    depending on context
+
+                                                                 A list of emails truncated at the end
+         A list of files truncated in the ‘middle’
+
+               Truncation of text is generally used when text is limited to
+               single lines in dynamic width spaces so the truncated text
+               changes as the width is changed. Words are usually
+               fragmented to make best use of the available space
+
+  25 January 2010                                    Microsoft                                           Slide 11
+
+Introduction – truncation in clinical applications
+    Truncation is a popular solution to solving the need to display long terms in
+    information-rich views, especially when that information is presented in
+    tabular form                                          Truncated Text with an Ellipsis
+
+          Terms cut short by                                  Horizontal and Vertical Scroll Bars
+          the edge of the list
+
+                                 Truncation of medications
+
+  25 January 2010                                 Microsoft                                   Slide 12
+
+Introduction – lengths of SNOMED CT terms
+                   18,000
+
+                   16,000
+                                                   Truncation is a popular
+                   14,000                          solution to the problem
+                                                   of displaying long terms
+                   12,000
+
+ Number of Terms
+                   10,000
+                                                  In a selection list 40
+                                                  characters wide, about
+                    8,000
+                                                  1 in 10 SNOMED CT
+                    6,000
+                                                  terms would need to be
+                                                  truncated
+                    4,000
+
+                    2,000
+
+                       0
+                              1
+                              7
+                             13
+                             19
+                             25
+                             31
+                             37
+                             43
+                             49
+                             55
+                             61
+                             67
+                             73
+                             79
+                             85
+                             91
+                             97
+                            103
+                            109
+                            115
+                            121
+                            127
+                            133
+                            139
+                            145
+                            151
+                            157
+                            163
+                            169
+                            175
+                            181
+                            187
+                            193
+                            199
+                            205
+                            211
+                            217
+                            223
+                            229
+                            235
+                            241
+
+                              Term Lengths (number of characters)
+            25 January 2010                 Microsoft                         Slide 13
+
+   Theme 1
+
+   AVOIDING the need for TRUNCATION
+
+25 January 2010    Microsoft          Slide 14
+
+Avoiding the need for truncation – wrapping
+    Wrapping ensures that all items are displayed in full. If each item in a list can
+    be scrolled into view so that the whole term is visible, then each term can
+    be reviewed easily before a selection is made
+
+                                                                      Patient Safety Risks
+                                                                      Many of the patient safety risks
+                                                                      that were recorded for truncation
+        You could select from this list
+        without needing to [click on
+                                                                      of terms in a selection list can be
+        one to] review the full term                                 mitigated by wrapping text and
+               User Comment             When SNOMED terms are        providing a vertical scroll bar
+                                         long, there’s all the more
+                                        reason to see them in full
+                                              User Comment
+
+  25 January 2010                                      Microsoft                                      Slide 15
+
+Avoiding the need for truncation – scrolling
+  Truncation of clinical terms may not be appropriate for some tasks. For example,
+  when the task is browsing (rather than searching for a known term), the list may
+  be presented as a tree
+
+  Truncation makes it difficult to browse items in a tree
+
+                                                            When browsing a tree, a horizontal scroll bar may
+                                                            be more appropriate (than truncation) since it
+                                                            provides more immediate access to full terms
+
+  25 January 2010                                     Microsoft                                           Slide 16
+
+Avoiding the need for truncation – grouping
+    Groups help to break the list down into smaller chunks and reduce the
+    number of list items that need to be reviewed
+
+  25 January 2010                    Microsoft                              Slide 17
+
+Avoiding the need for truncation
+Summary
+  1.     Wrapping
+            a) Ensures that all items are displayed in full (with the help of a vertical scroll bar)
+            b) When long words wrap, it can create a lot of unused space on the right of the text
+            c) When wrapping, rules may be needed to keep associated elements such as numbers and
+               units together
+  2.     If summaries can be created that are meaningful, it may be possible to provide
+         higher level summary views that can then be used to drill down a subset of the
+         detail that can then be displayed in full (without truncation)
+  3.     Approved acronyms and abbreviations can be used to shorten some structured
+         text entries
+  4.     Groups add structure and can be used to hide the text in each list item that is
+         implied by the group it is in
+  5.     Modifying search processes and supporting filtering may help users to work with
+         shorter lists in which truncation is not necessary
+  6.     Showing or hiding certain types of information (or labels in a chart view) may
+         simplify the view and leave more room for other information to be displayed
+         with minimum truncation
+
+  25 January 2010                                Microsoft                                       Slide 18
+
+Avoiding the need for truncation
+  Emerging Recommendations              Evidence
+
+  Use truncation as a last resort and   • Tasks associated with both summary views and
+  only when truncated terms are the       selection lists are not well supported when truncation
+  exception rather than the rule          of terms is a common occurrence
+                                        • There are many patient safety risks (such as
+                                          misinterpretation and missing the presence of
+                                          truncated text) associated with the interpretation of
+                                          truncated terms
+
+  When wrapping encoded text            • When wrapping separates quantities (100) from units
+  ensure that elements such as            (milligrams), there is a risk that, in skim reading, the
+  labels, numbers, units and              wrapped text is guessed rather than actively read.
+  separators are kept together            Preserving them together mitigates this risk
+  where necessary                       • The completion of further work in this area may
+                                          generate a set of more specific recommendations
+
+    Note: Emerging recommendations are at many levels (some high level and generic, others more
+    detailed) and include more than one (mutually exclusive) approach. They need significant
+    further design, research and risk assessment before they can be considered as candidates for
+    future guidance
+
+  25 January 2010                             Microsoft                                        Slide 19
+
+Avoiding the need for truncation
+  Emerging Recommendations            Evidence
+
+  Do not wrap mid-word (thus          • Hyphenating words that are not usually hyphenated may
+  creating word fragments with          create fragments that can be misinterpreted as whole
+  or without hyphens)                   words
+                                      • As above, the wrapped part of a hyphenated word may be
+                                        guessed by the user rather than actively read
+                                      • The completion of further work in this area may identify
+                                        the need for a technical solution to prevent applications
+                                        from taking hyphens as wrapping points by default
+
+  If a list can include items that    • The task of selecting from a list is not well supported if
+  are too long to be displayed in       rapid scrolling is needed and list items must be held in
+  full without scrolling, allow the     short term memory in order to compare between them
+  list to be resized so that it is      and make an appropriate selection
+  possible to see the longest
+  term without scrolling
+
+  25 January 2010                                Microsoft                                      Slide 20
+
+Avoiding the need for truncation
+  Emerging Recommendations            Evidence
+
+  Do not provide a horizontal         • The task of selecting from a list is not well supported if
+  scroll bar in selection lists         rapid scrolling is needed and list items must be held in
+  unless the list can be resized to     short term memory in order to compare between them
+  display all terms in full             and make an appropriate selection
+                                      • Horizontal scrolling does not allow a list to be scrolled so
+                                        that a list item is visible in full
+                                      • Comparing list items is more difficult with a horizontal
+                                        scroll bar unless the differentiating text is at the end of
+                                        each term
+                                      • Horizontal scrolling is a more complex mechanical
+                                        interaction than vertical scrolling when a mouse with a
+                                        scroll wheel is used
+
+  25 January 2010                                Microsoft                                       Slide 21
+
+Avoiding the need for truncation
+Areas / questions for further study
+  • If truncation is being considered, is the design solution the best way
+    of supporting the user task?
+        – For example, if truncation is being considered for selection lists of clinical terms, is
+          a selection list the best mechanism for making that selection?
+  • In which contexts is truncated information sufficiently meaningful
+    to support the tasks of searching and selecting an appropriate term
+    or reviewing a patient using summary views?
+  • There may be some contexts in which truncation is appropriate only
+    for expert users or certain roles and should be avoided for novice
+    users or for other roles
+  • If groups are used in search results, more work is needed to
+    determine whether the structure of the results should be manually-
+    defined or influenced by the search criteria
+  • Emerging recommendations can be used to inform further work on
+    avoiding the need for truncation
+
+  25 January 2010                              Microsoft                                     Slide 22
+
+   Theme 2
+
+   TRUNCATION POINTS
+   If truncation cannot be avoided, where should text truncate?
+
+25 January 2010                        Microsoft                  Slide 23
+
+Truncation points – risks
+    Truncating in the ‘middle’ may create ‘artificially meaningful’ sentences,
+    cause more than one fragmented word and / or affect the space and
+    wrapping behaviour of the truncation marker
+                                                                                               KEY RISK – that the truncation is
+                    A truncation marker might                                                  missed when the truncated text
+                    wrap onto a new line                                                       can be read as a whole sentence
+
+                                                                                When truncation in the middle is
+                    Emergency replacement of aneurysm                           automated, the resultant phrase
+                    ... of aorta to superficial femoral artery                  can be open to mis-interpretation
+
+                Original Text
+                Creation of valved conduit between left ventricle of heart and aorta
+
+                Middle surplus letters if restricting to 60 characters                                   KEY RISK –
+                Creation of valved conduit between left ventricle of heart and aorta                     truncation may
+                Position of ellipsis if fragmented words are allowed                                     create ‘artificial’
+                Creation of valved conduit bet...t ventricle of heart and aorta                          words or sentences
+                                                                                                         that are prone to
+                                                                If a character limit is used and         misinterpretation
+                                                                truncation can fragment words, more
+                                                                than one word might be fragmented
+
+  25 January 2010                                                   Microsoft                                              Slide 24
+
+Truncation points – visibility
+                                                                              KEY RISK – the presence of
+    Truncating at the end is potentially easier to                            truncation may be missed
+    notice and a truncation point at the end is
+    more consistently placed (visually) than a
+                                                                              Creation of valved cardiac
+    truncation point in the ‘middle’. However,                                conduit
+    truncation in the ‘middle’ may be more                                    Revision of valved cardiac
+                                                                              conduit
+    effective and easier to notice when each item                             Creation of valved cardiac
+    is limited to a single line                                               conduit NOS
+                                                                              Other specified creation of
+                                                                              valved cardiac conduit
+           Creation of valved cardiac conduit
+                                                                              Creation of valved con... right
+           Revision of valved cardiac conduit                                 atrium and pulmonary artery
+           Creation of valved cardiac conduit NOS                             Creation of valved conduit b...
+           Other specified creation of valved cardiac conduit                 atrium and ventricle of heart
+           Creation of valved cond... right atrium and pulmonary artery       Correction of tetralogy of Fa...t
+                                                                              ventricular outflow conduit
+           Creation of valved conduit be... atrium and ventricle of heart
+                                                                              Creation of valved conduit
+           Correction of tetralogy of Fall...ht ventricular outflow conduit   be...entricle of heart and aorta
+           Creation of valved conduit bet... ventricle of heart and aorta     Creation of valved conduit b...
+           Creation of valved conduit be...f heart and pulmonary artery       heart and pulmonary artery
+
+  25 January 2010                                           Microsoft                                             Slide 25
+
+Truncation points – manually-defined truncation
+    A set of manually defined truncation points (defined for each term) could
+    ensure that clinical terms are always truncated in acceptable places and that
+    phrases are preserved where necessary
+
+                                                                Emergency replacement of aneurysmal
+                ...it may be appropriate to                    artery of leg ... to common femoral artery
+              truncate the middle of some
+             terms and the ends of others 
+                       User Comment                             Emergency replacement of aneurysmal
+                                                                artery ... to superficial femoral artery
+
+                                                                           When these examples are created
+                                                                           manually, it’s natural to preserve
+                      Consider using SNOMED’s hierarchy                   phrases but how does a computer
+                     (or logical model) to determine what                  know where to truncate?
+                        can and can’t be truncated and
+                        potentially where to truncate 
+                                 User Comment
+
+  25 January 2010                                   Microsoft                                                   Slide 26
+
+Truncation points – summary views
+    A summary view (containing clinical terms) is not effective if the information
+    within it is truncated
+                                                                                  Truncation is not effective
+             History of Current Condition                                         when used in a view that is
+            Weight loss Weight loss 5 kilograms in 1 month                       intended to be a summary
+                                                                                       User Comment
+            Diarrhoea Diarrhoea 5 times in one day. Liquid green. No ...
+            Shortness of breath Shortness of breath more than usual for ...
+
+             Past Medical History
+                                                                                 KEY RISK – that truncation
+            MI – Myocardial infarction – known absent, past; Stroke - ...        leads to apparent duplication
+            Epilepsy – known absent, past: Rheumatic fever – known ...           and is assumed to be an error
+             Family History
+            Cancer – known absent, person in the family No cancer
+            MI – Myocardial infarction, father, died Father died of MI ...    KEY RISK – that the missing
+                                                                              information is interpreted as
+             Past Surgical History                                            unimportant, or assumptions are
+            Joint injury, Open reduction, Internal fixation 1997 – L ...      made about the missing text
+
+  25 January 2010                                          Microsoft                                             Slide 27
+
+Truncation points – numbers and units
+    Numbers may be separated from associated units when wrapping or
+    truncation is used
+
+               When truncation allows numbers to be fragmented,
+               a number may be missing one or more digits
+
+                    Hind brain contusion with open intracranial wound, with 1-24 hours loss of consciousness
+
+                    Hind brain contusion with open intracranial wound, with 1-2...
+
+                                   If numbers are fragmented, the result
+                                   may be open to misinterpretation                     KEY RISK – that
+                                                                                        truncating numbers or
+                                                                                        units could completely
+                                                                                        change the meaning
+
+  25 January 2010                                            Microsoft                                           Slide 28
+
+Truncation points
+Summary
+  1.     Preserving phrases is difficult to do automatically
+  2.     Fixed character limit
+            a) Can create an artificially large space after the point of truncation
+            b) Not likely to make the best use of the available space
+            c) Could be used to ensure consistent truncation in different contexts but likely to introduce problems in a
+               context where the character limit is less suitable
+  3.     Truncating at the end
+            a) Is potentially easier to notice
+            b) A truncation point at the end is more consistently placed (visually) than a truncation point in the ‘middle’
+               (wrapping rules and whole word or fragmented words)
+
+  4.     Truncating in the ‘middle’
+            a) May create ‘artificially meaningful’ sentences
+            b) May create more than one fragmented word and affects the space and wrapping behaviour of the
+               truncation marker
+            c) May be more effective when limiting to a single line
+
+  5.     More than one truncation point (in a single term or text item)
+            a) May allow phrases or differentiating words to be maintained in view
+            b) Requires sophisticated logic and is more difficult to achieve with a dynamic truncation point
+  6.     A set of approved, manually-defined truncation points could ensure that terms are always
+         truncated in acceptable (and expected) places
+
+  25 January 2010                                         Microsoft                                                  Slide 29
+
+Truncation points
+  Emerging Recommendations              Evidence
+
+  Do not truncate clinical terms        • When a width is fixed, a solution is needed to support
+  when they appear in a list of           access to the full text for truncated terms
+  fixed-width                           • A fixed-width list cannot be resized (even temporarily) to
+                                          reveal the truncated text
+                                        • Any solution for accessing the full text of a truncated term
+                                          is likely to be even less direct (and effective) than scrolling
+
+  Only use truncation in a              • If truncation can be used in a way that supports accurate
+  selection list of clinical terms if     review of a list without accessing the full text, then some
+  the choice of text to truncate is       of the patient safety risks associated with truncated text
+  informed by the data structure          are mitigated
+  or a manually defined means of
+  selecting acceptable text to
+  truncate is available
+
+  25 January 2010                                Microsoft                                         Slide 30
+
+Truncation points
+  Emerging Recommendations           Evidence
+
+  Only use ‘middle truncation’       • ‘Middle’ truncation is used effectively in non-clinical
+  when text is limited to a single     contexts and is therefore likely to be effective in some
+  line                                 clinical contexts (depending on the nature of the
+                                       information)
+                                     • ‘Middle’ truncation may be the best approach for
+                                       summary views that display information in which the end
+                                       of the text is known to be the likely differentiator and no
+                                       actions can be completed on the truncated text that are
+                                       unsafe
+                                     • The completion of further work in this area may generate
+                                       exceptions to this rule, such as ‘don’t use ‘middle’
+                                       truncation for clinical terms’
+
+  25 January 2010                            Microsoft                                       Slide 31
+
+Truncation points
+Areas / questions for further study
+
+  • Determining when to use truncation and
+    where to truncate may be dependent on an
+    analysis of the specific type of information
+    subject to truncation
+  • Emerging recommendations can be used to
+    inform further work on truncation points
+
+  25 January 2010          Microsoft               Slide 32
+
+   Theme 3
+
+   FRAGMENTING WORDS
+
+25 January 2010   Microsoft   Slide 33
+
+Fragmenting words – dynamic width
+    Fragmenting words works best with dynamic truncation – since the
+    truncation point can move one letter at a time as a text area is resized
+
+               KEY RISK - that a word                               Fragmenting words works better when text
+               fragment is interpreted                              is displayed in an area that can be resized
+               as a whole word                                      and truncated at the end of a line
+
+                    Peak expiratory flow rate monitoring usin...                  Peak expiratory flow rate mo...
+                    Peak expiratory flow rate before bronchod...                  Peak expiratory flow rate bef...
+                    Peak expiratory flow rate after bronchodil...                 Peak expiratory flow rate aft...
+                    Empey index                                                   Empey index
+                    Serial peak expiratory flow rate                              Serial peak expiratory flow r...
+                    Peak expiratory flow rate                                     Peak expiratory flow rate
+
+                                                                            Drag & Resize
+
+                    A fragmented word may be more noticeable than
+                    truncated text in which whole words are preserved
+
+  25 January 2010                                             Microsoft                                              Slide 34
+
+Fragmenting words – contexts
+    Truncation rules may need to be different depending on the context since it
+    may be acceptable or even necessary to fragment words in some contexts
+
+  25 January 2010                     Microsoft                            Slide 35
+
+Fragmenting words
+Summary
+ 1.     Fragmenting words works best with dynamic truncation because the truncation
+        point can move one letter at a time as a text area is resized and more of the text
+        is visible than when a whole word is truncated at a time
+ 2.     A fragmented word may be more noticeable than truncated text in which whole
+        words are preserved
+ 3.     A fragmented word might look like a whole word. Similarly, fragmented
+        numbers may be interpreted as whole when it is missing one or more digits
+ 4.     Hyphenation can be used to maximise the quantity of text that can be displayed
+        on each line but creates fragmented words
+ 5.     When words are preserved, there may be greater space at the end of truncated
+        text
+ 6.     In views (such as a timeline, chart or graph) where text cannot wrap onto a new
+        line, it may be more appropriate to truncate and to fragment words in order to
+        preserve as much visible text as possible
+
+ 25 January 2010                           Microsoft                                 Slide 36
+
+Fragmenting words
+ Emerging Recommendations                Evidence
+  Do not truncate such that              • Removal of digits from numbers creates new numbers
+  characters or digits are missing       • Separation of numbers from units may lead to the units
+  from numbers or units                    being guessed
+                                         • Truncation of a unit (such as millilitres) may create or
+                                           imply a different unit (such as milli... or ...litres)
+
+  Do not fragment words when             • For similar reasons that clinical terms should not be
+  truncating text that is displayed in     truncated in fixed-width lists. Ease of access to the full
+  a fixed-width area                       term is important here
+
+ 25 January 2010                               Microsoft                                        Slide 37
+
+Fragmenting words
+Areas / questions for further study
+
+  • Emerging recommendations can be used to
+    inform further work on fragmenting words
+
+  25 January 2010          Microsoft           Slide 38
+
+   Theme 4
+
+    DYNAMIC versus STATIC TRUNCATION
+
+25 January 2010   Microsoft        Slide 39
+
+Dynamic versus static truncation
+    When truncation is dynamic, the truncation point depends on the space
+    available to display the text. When truncation is static, each term is always
+    truncated at the same point in the text, regardless of the space available
+
+                                                                          The point of truncation depends
+      Dynamic – Limited to 2     Creation of valved conduit
+                                 between right ventricle of ...           on the space available
+      lines
+
+      Static - Truncated after   Creation of valved conduit               The truncation point is always the same,
+      60 characters              between right ventricle of
+                                                                          regardless of the space available
+                                 heart ...
+
+                                      25 characters wide
+
+      Dynamic – Limited to 2     Creation of valved conduit between right                When there is more space,
+      lines                      ventricle of heart and pulmonary artery                 more of the text is visible
+
+      Static - Truncated after   Creation of valved conduit between right                The truncation point is consistent
+      60 characters              ventricle of heart ...                                  wherever the term is displayed
+
+                                               50 characters wide
+
+  25 January 2010                                             Microsoft                                                 Slide 40
+
+Dynamic versus static truncation
+    When a space has fixed dimensions, the text will always be truncated at the
+    same point
+
+        KEY RISK - that a clinician familiar
+        with truncation in a specific view,
+        is disoriented when working with
+        a different screen layout
+
+  25 January 2010                              Microsoft                   Slide 41
+
+Dynamic versus static truncation
+    If the width of a selection list can be changed, it may be possible to increase
+    the width until none of the items are truncated. When words can be
+    fragmented, resizing may appear smooth as the text is truncated one letter
+    at a time. Truncating whilst preserving whole words causes whole words to
+    disappear when a width is reduced
+
+                       Peak expiratory flow rate monitoring using diary
+
+                       Peak expiratory flow rate monitoring using ...
+
+                       Peak expiratory flow rate monitoring ...
+
+                       Peak expiratory flow rate monitoring ...
+
+                       Peak expiratory flow rate ...
+
+                       Peak expiratory flow ...
+
+  25 January 2010                                 Microsoft                   Slide 42
+
+Dynamic versus static truncation
+Summary
+  1. When using static truncation, such as truncating after a fixed number of characters
+        a) If an area is a set size, the truncation point will always be the same
+        b) Truncation after a set number of characters may leave a lot of white space (thus not
+           making full use of the available space)
+        c) It may be easier to use more sophisticated methods of indicating truncation when the
+           truncation point is static, since the location of the point at which the text is truncated is
+           more predictable
+  2. When using dynamic truncation, such as number of lines to wrap in a variable
+     width space
+        a) Truncating whole words might create a jerkiness as words are replaced with the
+           truncation marker
+        b) It is more difficult to draw attention to apparent duplicates or text that is open to
+           misinterpretation as a result of the truncation because the truncation point (and thus
+           whether it is duplicated or not) changes
+        c) When truncating within cells, applying truncation to one column may not make best use
+           of space if truncation is not also applied in other columns
+        d) Using a single line limit with a variable width makes it easier to scan a list but it is less
+           effective for selecting from a list when a large number of list items are truncated
+
+  25 January 2010                                Microsoft                                        Slide 43
+
+Dynamic versus static truncation
+  Emerging Recommendations                 Evidence
+
+  Do not use a set number of characters    • A set number of characters is likely to be
+  as a rule for determining an               appropriate to a specific context. Since one of the
+  appropriate truncation point               benefits of using a set truncation point is
+                                             consistency, it becomes irrelevant if the chosen
+                                             point is not effective in all contexts
+
+  Do not provide a horizontal scroll bar   • If it is possible to scroll so that the point of
+  for a view containing terms that are       truncation is off screen, it is more likely that a
+  truncated at a set point                   truncated term is misinterpreted as being whole
+
+  25 January 2010                            Microsoft                                       Slide 44
+
+Dynamic versus static truncation
+Areas / questions for further study
+
+  • Emerging recommendations can be used to
+    inform further work on dynamic versus static
+    truncation
+
+  25 January 2010          Microsoft           Slide 45
+
+   Theme 5
+
+   TRUNCATION MARKERS
+
+25 January 2010   Microsoft   Slide 46
+
+Truncation markers
+    Text markers can be placed at the point of truncation and may be easier to
+    implement than icons or images. Some text markers could be misread as
+    letters or numbers
+                                                                                  Text markers such as “/” or
+           Creation of valved conduit between right atrium and pulmo /            “>” may be easier to notice
+           Creation of valved conduit between atrium and ventricle of /           than an ellipsis but may
+                                                                                  also be misinterpreted as
+           Correction of tetralogy of Fallot using valved right ventricul /       letters or numbers
+           Creation of valved conduit between left ventricle of heart a /
+
+           Creation of valved conduit between right atrium and pulm...
+           Creation of valved conduit between atrium and ventricle ...            Text markers, such as this
+           Correction of tetralogy of Fallot using valved right ventric ...       ellipsis, can be placed at the
+                                                                                  point of truncation and will move
+           Creation of valved conduit between left ventricle of heart ...         with the text if the line wraps
+
+                                                                              KEY RISK - that lack of familiarity
+                                                                              with the concept of truncation
+                                                                              affects the term that is selected
+
+  25 January 2010                                           Microsoft                                                 Slide 47
+
+Truncation markers
+    A sequence of text characters, such as ‘… >>’ or ‘*… /’ may be easier to
+    notice than a text marker such as an ellipsis ‘…’
+
+                    Theconduit
+      Creation of valved greaterbetween
+                                 than left ventricle of ...
+                   character is used in
+      Creation ofsome
+                  valvedSNOMED   betweenleft ventricle of ...
+                         conduit codes
+                     User Comment
+      Creation of valved conduit between left ventricle of ...
+
+      Creation of valved conduit between left ventricle of >>
+
+      Creation of valved conduit between left ventricle of ···
+
+      Creation of valved conduit between left ventricle of /
+
+ KEY Creation
+      RISK – that  some
+               of valved conduit between left ventricle of *...*
+ characters are misread
+ as letters or of
+      Creation numbers
+                  valved conduit between left ventricle of ... /
+
+      Creation of valved conduit between left ventricle of ... >>
+                                                                        Symbols, icons or controls may be
+                                     KEY RISK – that the
+                                                                        more noticeable than an ellipsis
+                                     truncation is not noticed          They may also take up more space
+                                                                        (so more text has to be truncated)
+  25 January 2010                                           Microsoft                                    Slide 48
+
+Truncation markers
+    Icons or controls may distract too much from the text itself, especially if
+    there are many of them in one view
+
+                    13-Oct-2009    1 day diarrhoea.   History of current       13-Oct-2009
+  KEY RISK - that hidden           Liquid ...         condition ...            Dr Sophie Allen
+  information (with any
+                  13-Oct-2009      Shortness of       History of current       13-Oct-2009
+  kind of truncation               breath ...         condition ...            Dr Sophie Allen
+  marker) is assumed   to
+                  13-Oct-2009      No haemoptysis     History of current       13-Oct-2009
+  be unimportant                                      condition ...            Dr Sophie Allen
+                    Past           No history of MI/ Past medical history      13-Oct-2009
+                                   Stroke/ ...       Known absent: Epilepsy    Dr Sophie Allen
+                                   Mild aortic        Past medical history     13-Oct-2009
+                                   stenosis           Aortic stenosis - Mild   Dr Sophie Allen
+                                   No cancer          Family history           13-Oct-2009
+                                                      Known absent: ...        Dr Sophie Allen
+                    2008           Father died of MI Family history            13-Oct-2009
+                    (calculated)   aged 55           Known present: ...        Dr Sophie Allen
+                    1997           L index finger,    Past surgical history    02-Feb-2007
+                                   PIP joint ...      Joint injury, Open ...   Dr Tim Smith
+
+  25 January 2010                                      Microsoft                                 Slide 49
+
+Truncation markers
+    Markers can be placed at the point where text is truncated or in association
+    with the text item
+
+                                                                              A marker may also be placed
+                                                                              such that it is associated with
+                                                                              the text but not part of it
+
+                                  The ellipsis can be placed at the
+                                  point where text is truncated
+
+                    13-Jun-2008        international neuroblastoma pathology          13-Oct-2009
+                                       xxclassification: Favourable histology ...     Dr Sophie Allen
+                    13-Nov-1997        emergency replacement of aneurysmal            16-Jan-1999
+                                       xxbifurcation of aorta by anastomosis ...      Dr Sophie Allen
+
+                    13-Jan-1990        open fracture of forearm, lower end,           16-Jan-2009
+                                       xxunspecified                                  Dr Sophie Allen
+
+                    13-Oct-1987        pancreatic stone                               13-Oct-1987
+                                                                                      Dr Sophie Allen
+
+  25 January 2010                                           Microsoft                                           Slide 50
+
+Truncation markers
+Summary
+  1.     Text markers:
+            a) Ellipses are used in typography to mark omission from speech or writing of a word or words
+               that are superfluous or able to be understood from the context. It is also the term for a set
+               of dots (…) used to indicate such an omission
+            b) A text marker may be easier to implement and to place at the point of truncation than an
+               icon or control
+            c) Text markers, such as ‘>>’ or ‘/’, may be easier to notice than ‘…’ but may also be
+               misinterpreted or mistaken for text
+            d) A sequence of text characters, such as ‘*…*’ or ‘/ … /’, may be easier to notice than a single
+               character such as the ellipsis ‘…’
+            e) Bold or colourful truncation markers may draw attention away from the text
+            f) Placing a space between the text and truncation marker may cause the marker to wrap to
+               the beginning of a new line
+  2.     Symbols, icons and controls:
+            a) May be useful if a control for displaying the full text is to be placed near the truncated text
+            b) May distract too much from the text itself
+            c) A symbol or icon may be more noticeable than an ellipsis
+            d) The use of larger markers or controls may take up more space and result in more text being
+               truncated
+
+  25 January 2010                                   Microsoft                                           Slide 51
+
+Truncation markers
+  Emerging Recommendations                      Evidence
+
+  When text is truncated at the end,            • An ellipsis is more noticeable when displayed at the
+  display (at least) an ellipsis at the point     end of a line of truncated text (than in the ‘middle’)
+  of truncation                                 • Truncation without a truncation marker is easily
+                                                  missed
+                                                • Without a truncation marker truncated text may
+                                                  not be noticed in a dynamic width list in which text
+                                                  is cut off by the right hand edge of the area. If the
+                                                  user does not realise that the area can be resized,
+                                                  the truncation may never be discovered.
+
+  If truncation is used in a selection list,    • Positive feedback in user testing and risk
+  supplement the ellipsis with a symbol           assessments
+  for each truncated list item                  • The completion of further work in this area should
+                                                  include a review of this recommendation since it
+                                                  depends heavily on the contents of the list, the type
+                                                  of task it is designed to support, the type of
+                                                  truncation used and whether it can be resized. A
+                                                  guidance point would need to be more specific than
+                                                  this
+
+  25 January 2010                                 Microsoft                                        Slide 52
+
+Truncation markers
+  Emerging Recommendations                 Evidence
+
+  Do not support the use of the ellipsis   • Derived from the Windows Style Guide
+  as a control (such as a button) for      • The ellipsis is not commonly used as a control so
+  accessing the full text of a truncated     this function is not likely to be sufficiently
+  term                                       discoverable
+
+  25 January 2010                            Microsoft                                      Slide 53
+
+Truncation markers
+Areas / questions for further study
+
+  • A more detailed study of revealing full text in
+    selection lists containing other types of data is
+    needed to determine whether there is a
+    generic approach that can be used in other
+    contexts
+  • Emerging recommendations can be used to
+    inform further work on truncation markers
+
+  25 January 2010          Microsoft              Slide 54
+
+   Theme 6
+
+   IDENTICAL TRUNCATED TERMS
+    Where ‘identical terms’ are ‘apparent duplicates’ created by the truncation
+
+25 January 2010                         Microsoft                                 Slide 55
+
+Identical truncated terms
+    When truncated, some terms may be identical. These apparently duplicate
+    terms can be either marked, consolidated into one item or avoided
+    altogether
+
+  25 January 2010                   Microsoft                           Slide 56
+
+Identical truncated terms
+    If the presence of identical truncated terms in the list is easily avoided by
+    changing the search criteria, a system could suggest words that would
+    reduce the number of duplicates in the search results. A similar approach
+    could be used to avoid the need for truncation altogether
+
+                                                               If there are only a few truncated
+                                                               results, could they automatically
+                                                                expand into the available space
+                                                             (such that they are not truncated)?
+                                                                         User Comment
+
+        Note: Identical truncated terms do not necessarily
+        appear next to one another in the list
+
+  25 January 2010                              Microsoft                                        Slide 57
+
+Identical truncated terms
+Summary
+  1.     When truncation causes identical terms to be displayed in a selection list:
+            a) it may be necessary to draw attention to each
+            b) it may be possible to consolidate them so that they are only displayed once
+  2.     If the presence of identical truncated terms is easily avoided by changing the
+         search criteria, a system could provide prompts to support narrowing the search
+         results
+  3.     An improved search process can support access to shorter lists in which identical
+         terms are much less likely
+  4.     Progressive disclosure can help to mitigate apparent duplicates since they can be
+         expanded in context
+  5.     A rule that requires identical truncated terms to be expanded automatically
+         would create a potentially confusing mixed list with some expanded and others
+         truncated
+  6.     When many terms are truncated, it is more likely that there are similar
+         (truncated) terms in a list, thus increasing the risk of mis-selection even when
+         they are not identical
+
+  25 January 2010                                 Microsoft                                  Slide 58
+
+Identical truncated terms
+  Emerging Recommendations                  Evidence
+  For fixed-width lists, when a list        • An expert user familiar with the list can choose to
+  contains identical truncated terms          re-apply truncation (so this still allows truncation to
+  (and when this can be determined)           be used but only in certain circumstances)
+  display the list without truncation by    • This recommendation is as close as possible to a
+  default                                     rule stating that lists should never contain truncated
+                                              text if they can contain duplicate items (without
+                                              being unnecessarily restrictive). It should be tested
+                                              further
+
+  For fixed-width lists, when it is not     • This recommendation is a reminder that when it is
+  possible for the system to determine        possible for identical truncated terms to appear in a
+  whether a list contains identical           list, a way of mitigating the associated risks is
+  truncated terms, provide a notification     needed
+  warning of the presence of identical
+  truncated terms
+
+  25 January 2010                             Microsoft                                        Slide 59
+
+Identical truncated terms
+Areas / questions for further study
+
+  • Many of the recommendations refer specifically to
+    fixed or dynamic-width lists. This repetition implies
+    that further work is needed to clarify the priorities
+    and the scenarios in which truncation must be
+    excluded
+  • Emerging recommendations can be used to inform
+    further work on identical truncated terms
+
+  25 January 2010           Microsoft                  Slide 60
+
+   Theme 7
+
+   ACCESS to FULL TEXT for truncated terms
+
+25 January 2010       Microsoft              Slide 61
+
+Access to full text for truncated terms
+    When a selection list contains truncated terms, the full term must be easily
+    available to support the task of comparing and making a selection
+
+                                          Full text in a pop-up tooltip
+
+                                    Full text in a fly-out                KEY RISK - clinicians may
+                                                                          select incorrect or sub-
+                                                                          optimal entries, or stop
+                                                                          encoding because they do
+                                                                          not have time to hover
+                                                                          over every possibly
+                                                                          relevant item in the list
+     A fly-out for a selection list takes more space than a
+     tooltip but does not obscure other information in the list
+
+  25 January 2010                            Microsoft                                         Slide 62
+
+Access to full text for truncated terms
+    Progressive disclosure can allow more than one truncated term to be
+    displayed in full without obscuring other information
+
+    Expanding inline is
+   better than a tooltip
+      User Comment
+                             Prefer expansion within the
+                              list to tooltips or fly-outs
+                                     User Comment
+
+  25 January 2010                                       Microsoft         Slide 63
+
+Access to full text for truncated terms
+    A control could be provided that allows all truncated terms in the list to be
+    revealed
+
+  25 January 2010                      Microsoft                              Slide 64
+
+Access to full text for truncated terms
+Summary
+  1.     Fly-outs and pop-ups
+            a) Show the full text in place of or in close proximity to the truncated text
+            b) Hover is used to highlight an item in a selection list (immediately) and
+               display a fly-out (with a delay)
+            c) A fly-out for a selection list takes more space but does not obscure other
+               information in the list
+            d) A tooltip obscures other information in the same list or table
+
+  2.     Expand inline
+            a) Allows more than one item to be displayed in full
+            b) Allows an item to be expanded in context without obscuring other
+               information
+  3.     Expand all truncated terms
+            a) A control could be provided that allows all truncated terms in the list to be
+               expanded, either just this once or as a setting for the search results list
+
+  25 January 2010                            Microsoft                                  Slide 65
+
+Access to full text for truncated terms
+  Emerging Recommendations             Evidence
+
+   If it is possible that a list may   • If a list contains truncated terms, but the user is
+   contain truncated terms, allow        sufficiently familiar with those terms and they are
+   the user to display the list          truncated in places that allow them to be differentiated
+   without truncation                    without revealing the full text, then it may be acceptable
+                                         to work with the truncated list. If the user is not familiar
+                                         with the terms, they may choose (and it is safer for them)
+                                         to view the list without truncation
+
+   If it is possible that a list may   • In many cases, this allows a simple and direct method of
+   contain truncated text, give the      removing the truncation by resizing the list
+   user control over the width of      • Larger lists may be appropriate when reviewing long terms
+   the list
+                                       • When a list is resized, more text is displayed within them
+                                       • This recommendation aims to encourage the provision of
+                                         dynamic-width lists as far as possible until more work is
+                                         completed that can generate more specific
+                                         recommendations or guidance
+
+  25 January 2010                                 Microsoft                                     Slide 66
+
+Access to full text for truncated terms
+  Emerging Recommendations           Evidence
+
+   Ensure that the full text of a    • This recommendation aims to ensure that the full text of a
+   truncated term is displayed and     term is reviewed actively before any action is carried out
+   acknowledged before an action       on the selection
+   can be carried out on the
+   selected term
+
+  25 January 2010                               Microsoft                                   Slide 67
+
+Access to full text for truncated terms
+Areas / questions for further study
+  • Assuming that the need to access full text for a
+    truncated term is expected to be infrequent, are the
+    methods of accessing full text explored here too
+    complex?
+  • When assessing design alternatives for accessing full
+    text, consider the full process including the steps
+    immediately before and after the display of truncated
+    terms
+  • The primary purpose of accessing full text is to support
+    the process of comparing and selecting so there should
+    be a focus on considering mis-selection risks
+  • Emerging recommendations can be used to inform
+    further work on access to full text for truncated terms
+
+  25 January 2010                Microsoft              Slide 68

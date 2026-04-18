@@ -1,0 +1,1354 @@
+# Design Guidance -- Patient Name Input and Display
+
+## Provenance
+- Source file: `raw/sources/design-guidance/toolkit-bundled-pdfs/Design Guidance -- Patient Name Input and Display.pdf`
+- Extracted text: `derived/extracted-text/design-guidance/design-guidance-patient-name-input-and-display.txt`
+- Normalization note: machine-cleaned `pdftotext -layout` output; verify against the PDF for edge cases.
+
+## Extracted Text
+
+Design Guidance
+Patient Name Input and Display
+
+              Thursday, 28 January 2010
+                         Version 2.0.0.0
+
+                            Prepared by
+
+PREFACE
+   Documents replaced by this document
+
+   Document Title                                                                                                                  Version
+   Design Guidance – Patient Name Input and Display                                                                                1.0.0.0
+
+   Documents to be read in conjunction with this document
+
+   Document Title                                                                                                                  Version
+   Design Guidance – Accessibility Principles                                                                                      1.0.0.0
+
+   Design Guidance – Accessibility Checklist                                                                                       1.0.0.0
+
+This document and/or software (“this Content”) has been created in partnership with the National Health Service (NHS) in England. Intellectual Property
+Rights to this Content are jointly owned by Microsoft and the NHS in England, although both Microsoft and the NHS are entitled to independently exercise
+their rights of ownership. Microsoft acknowledges the contribution of the NHS in England through their Common User Interface programme to this Content.
+Readers are referred to www.cui.nhs.uk for further information on the NHS CUI Programme.
+All trademarks are the property of their respective companies. Microsoft and Windows are either registered trademarks or trademarks of Microsoft
+Corporation in the United States and/or other countries.
+
+© Microsoft Corporation 2010. All rights reserved.
+
+                                    Design Guidance – Patient Name Input and Display
+                                    Prepared by Microsoft, Version 2.0.0.0
+                                    Last modified on 28 January 2010
+
+TABLE OF CONTENTS
+1    Introduction ....................................................................................................................................1
+    1.1    Customer Need .........................................................................................................................2
+     1.1.1      Overview ..............................................................................................................................2
+     1.1.2      Eliminating Inconsistencies Across Systems ......................................................................2
+     1.1.3      Simplified User Interface Design and Development ............................................................2
+    1.2    Scope ........................................................................................................................................3
+     1.2.1      In Scope...............................................................................................................................3
+     1.2.2      Out of Scope ........................................................................................................................3
+    1.3    Key Principles ...........................................................................................................................4
+
+2    Recommendations and Guidance ................................................................................................5
+    2.1    Patient Name Display ...............................................................................................................5
+     2.1.1      Guidance .............................................................................................................................5
+     2.1.2      Examples of Correct Usage.................................................................................................6
+     2.1.3      Examples of Incorrect Usage ..............................................................................................6
+     2.1.4      Rationale..............................................................................................................................7
+     2.1.5      Optional Data Fields ..........................................................................................................10
+    2.2    Patient Name Input Data Elements.........................................................................................11
+     2.2.1      Title ....................................................................................................................................11
+     2.2.2      Family Name......................................................................................................................13
+     2.2.3      Given Name .......................................................................................................................15
+     2.2.4      Middle Name(s) .................................................................................................................15
+     2.2.5      Suffix ..................................................................................................................................15
+     2.2.6      Preferred Name .................................................................................................................16
+     2.2.7      Examples of Correct Usage...............................................................................................16
+     2.2.8      Examples of Incorrect Usage ............................................................................................17
+     2.2.9      Rationale............................................................................................................................17
+     2.2.10         Mandatory and Optional fields .......................................................................................18
+    2.3    InForm Input Design ...............................................................................................................18
+     2.3.1      Guidance ...........................................................................................................................19
+     2.3.2      Examples of Correct Usage...............................................................................................19
+     2.3.3      Examples of Incorrect Usage ............................................................................................19
+     2.3.4      Rationale............................................................................................................................20
+    2.4    InLine Input Design .................................................................................................................20
+     2.4.1      Wrapping Behaviour ..........................................................................................................20
+     2.4.2      Guidance ...........................................................................................................................21
+     2.4.3      Examples of Correct Usage...............................................................................................22
+     2.4.4      Examples of Incorrect Usage ............................................................................................22
+     2.4.5      Rationale............................................................................................................................22
+    2.5    Instructional Text .....................................................................................................................23
+     2.5.1      Field Labels .......................................................................................................................23
+                                 Design Guidance – Patient Name Input and Display
+                                 Prepared by Microsoft, Version 2.0.0.0
+                                 Last modified on 28 January 2010
+
+     2.5.2      Prompts .............................................................................................................................24
+     2.5.3      Tooltips ..............................................................................................................................26
+
+3    Document Information .................................................................................................................28
+    3.1    Terms and Abbreviations ........................................................................................................28
+    3.2    Nomenclature ..........................................................................................................................28
+     3.2.1      Body Text...........................................................................................................................28
+     3.2.2      Cross References ..............................................................................................................28
+    3.3    References ..............................................................................................................................29
+
+                                 Design Guidance – Patient Name Input and Display
+                                 Prepared by Microsoft, Version 2.0.0.0
+                                 Last modified on 28 January 2010
+
+1             INTRODUCTION
+    This document describes the design guidance for the display and input of Patient Name data. It
+    describes the area of focus, provides guidance and recommendations, and explains the rationale
+    behind the guidance and recommendations.
+    This document is intended for the use of anyone whose role includes screen design,
+    implementation, or assessment of a clinical application. This document can be used as guidance
+    for the:
+          Specification of an input and display control for Patient Name data in a user interface (UI)
+          Implementation of an input and display control for Patient Name data within an application
+          Assessment of an input and display control for Patient Name data in a clinical application
+           user interface
+         Important
+         The visual representations used within this document to display the guidance are illustrative only. Stylistic
+         choices are not part of this guidance and are therefore not mandatory requirements for compliance with
+         the guidance in this document.
+
+    Figure 1, Figure 2 and Figure 3 show examples of Patient Name display, and the two formats that
+    can be used to accept user input.
+
+    Figure 1: Example of a Patient Name Display
+
+    Figure 2: Example of an InForm Style Patient Name Input Control
+
+    Figure 3: Example of an InLine Style Patient Name Input Control with Prompts
+
+    Table 1 describes the changes made since the previous version of this guidance (Baseline version
+    1.0.0.0 dated 01-Apr-2008):
+
+    Change            IDs              Change Description
+    Deleted                            Reference to storage of material (throughout guidance)
+
+    Modified                           Dependencies and Assumptions reference the UK National Patient Safety Authority (NPSA) standards
+
+                      NID-0005         Avoid truncation of information where possible
+
+                                       Emphasizing UK Government Data Standards Catalogue (GDSC) requirements for title formatting
+                                       (section 2.1.4.2)
+
+                                                                                                                                 Page 1
+                                   Design Guidance – Patient Name Input and Display
+                                   Prepared by Microsoft, Version 2.0.0.0
+                                   Last modified on 28 January 2010
+
+ Change            IDs             Change Description
+                                   Including note relating to Optional Data Fields (section 2.1.5)
+
+                                   Adjusting text to differentiate between Preferred Name and Nick Name (section 2.1.5)
+
+                                   Adjusting text relating to Suffixes (section 2.1.5)
+
+                                   Correction to list of Title options (section 2.2.1)
+
+                   NID-0016        Correction to list of Title options
+
+                                   Correction to list of Title options (section 2.2.1.2)
+
+                                   Correcting field length reference (section 2.2.4)
+
+                   NID-0033        Correcting field length reference
+
+                   NID-0035        Correcting field length reference
+
+                                   Moving Title to optional field (section 2.2.10)
+
+                                   Adjusting text to include NPSA reference (section 2.5.1.4)
+
+ Added                             Additional note clarifying distinction between descriptors and labels (section 2)
+
+                                   NPSA wristband recommendations (section 2.1.4.2)
+
+                   NID-0062        Provide informational prompt by default
+
+                   NID-0063        Occlude informational prompt in the presence of user data
+
+                   NID-0064        Remove default prompt when user enters data
+
+                                   Additional example (Figure 10)
+ Table 1: Changes Since the Last Baseline Version
+
+1.1       Customer Need
+ This section explains why the guidance has been created.
+
+1.1.1        Overview
+ Patient names are displayed in multiple places within a clinical application. One example is in a
+ patient banner where unambiguous Patient Name display enhances patient safety and application
+ usability by:
+       Ensuring the display of the Patient Name in a consistent and clear manner that is easy to
+        read, and clearly distinguishes name elements
+       Ensuring quick and accurate identification of the patient
+
+1.1.2        Eliminating Inconsistencies Across Systems
+ Significant inconsistencies exist in the labelling, inputting, and display of people’s names across
+ various clinical applications. This can result in incorrect identification of patients, leading to safety
+ issues and, potentially, additional staff training. Reduction of inconsistency is therefore an important
+ goal in itself, and the primary aim of this guidance.
+
+1.1.3        Simplified User Interface Design and Development
+ Having a consistent layout and set of values for the input and display of data items in clinical
+ systems makes the design and development of such systems safer, easier and quicker.
+
+                                                                                                                           Page 2
+                               Design Guidance – Patient Name Input and Display
+                               Prepared by Microsoft, Version 2.0.0.0
+                               Last modified on 28 January 2010
+
+1.2      Scope
+ This section defines the scope of this guidance document.
+
+1.2.1         In Scope
+ This guidance is applicable primarily to electronic user interfaces such as those displayed on
+ desktop and laptop computers. However, many of the principles can be applied to paper form
+ design should it be required. The following items are in scope:
+       Defining the valid values for Patient Name display and input
+       Labelling of information, including:
+              Definition of the elements of a Patient Name
+              Definition of the values for each element
+              How items of information are to be labelled; this will cover the label text, positioning and
+               any elements of styling required to differentiate labels visually from data
+       Control layout and structure, in order to achieve:
+              Optimal visibility of the values
+              Easy recognition of the values in the context of the wider clinical application
+              Easy recognition of data type requested for input
+              Reduction of invalid entries
+       Size of input fields, in order to:
+              Avoid wasting screen space
+              Ensure optimal display of entire data items
+
+1.2.2         Out of Scope
+ This section defines areas that are not covered in this guidance. Although there may be specific
+ risks associated with these areas that are not addressed in this guidance, it is likely that the
+ principles in this guidance will extend to the input and display of patient name in many of the areas
+ listed below.
+ The following items are out of scope:
+       Data storage – This guidance does not prescribe the format for storing data that is input or
+        displayed
+       Terms of use – This guidance does not define when an input field or display should be
+        presented within a system
+       Form design – This guidance does not prescribe the correct layout for a form, the
+        navigation around a form, or how these controls should be labelled
+      Note
+      Listing an item as out of scope does not classify it as unimportant. Project time and resource constraints
+      inevitably restrict what can be in scope for a particular release. It is possible that items out of scope for
+      this release may be considered for a future release.
+
+                                                                                                                Page 3
+                          Design Guidance – Patient Name Input and Display
+                          Prepared by Microsoft, Version 2.0.0.0
+                          Last modified on 28 January 2010
+
+1.3     Key Principles
+ The following key principles have shaped the guidance in this document:
+       Display information according to existing standards
+       Minimize opportunities for human error
+       Display sufficient instructional information to support data quality
+       Promote consistency across the mix of users, clinical applications and care settings
+       Support reliable and accurate identification of an individual patient record
+       Minimize opportunities where patient-clinician relationships may be compromised through
+        ambiguity
+
+                                                                                                Page 4
+                       Design Guidance – Patient Name Input and Display
+                       Prepared by Microsoft, Version 2.0.0.0
+                       Last modified on 28 January 2010
+
+2            RECOMMENDATIONS AND GUIDANCE
+    The guidance provided throughout this document is based upon a programme of user research,
+    including:
+          A desk-based research project looking at a range of information entry Web pages and
+           clinical applications
+          A Web-based survey of 41 respondents drawn from Independent Software Vendors (ISVs),
+           healthcare administrative staff and healthcare professionals, including clinicians and
+           community pharmacists
+          A Patient Safety Assessment
+
+         Important
+          The visual representations used within this document to display the guidance are illustrative only.
+               They are simplified in order to support understanding of the guidance points. Stylistic choices, such as
+               colours, fonts or icons are not part of the guidance and unless otherwise specified are not mandatory
+               requirements for compliance with the guidance in this document.
+          This document refers to the various Patient Name inputs using consistent descriptors (‘Family Name’,
+               ‘Given Name’ and so on). This includes the labels used within the visual representations. However,
+               the wording of those labels is not Mandatory but only Recommended (see section 2.5.1). It is
+               recognised that, where applicable and appropriate for the clinical context, implementations may use
+               differently worded labels. An example of alternative descriptors is as used within the UK NHS’s
+               patient wristbands where ‘Family Name’ is replaced with ‘Last Name’ and ‘Given Name’ with ‘First
+               Name’.
+
+2.1          Patient Name Display
+    This section provides guidance for the display of a Patient Name with enough information to
+    distinguish it for identification purposes. Figure 4 illustrates the correct format for displaying a
+    Patient Name (with minimum identification attributes).
+
+    Figure 4: Example of a Patient Name Display with Minimum Attributes for Identification
+
+2.1.1            Guidance
+    ID                     Guideline                                                                                        Status
+    NID-0001               The display must present the Family Name in all uppercase letters to clearly distinguish it      Mandatory
+                           from the Given Name.
+
+    NID-0002               The display must separate the Family Name and Given Name using a comma to further                Mandatory
+                           establish that the Family Name is being placed first.
+
+    NID-0003               The display must include parentheses around the Title to separate and distinguish it from the    Mandatory
+                           other name elements.
+
+    NID-0004               The display must present the name elements strictly in the order shown.                          Mandatory
+
+    NID-0005               The display must present all data for each specified element (Family Name, Given Name and Mandatory
+                           Title) of the Patient Name in full. Avoid truncation of information where possible.
+
+    NID-0006               The display must separate the presentation of Given Name and Title by a single space.            Mandatory
+
+    NID-0007               The display must present the Title element in title case, for example, Sir not SIR, Mr not MR.   Mandatory
+
+    NID-0008               The display must present a single pair of parentheses around the Title element, for example,     Mandatory
+                           (Mr).
+
+                                                                                                                                        Page 5
+                                   Design Guidance – Patient Name Input and Display
+                                   Prepared by Microsoft, Version 2.0.0.0
+                                   Last modified on 28 January 2010
+
+ ID                     Guideline                                                                                           Status
+ NID-0009               The display must allow any free-text (up to 35 characters) to be presented in the Title             Mandatory
+                        element.
+
+ NID-0010               The display must omit a trailing full stop from the Title element (for example, ‘Mr’ not ‘Mr.’).    Mandatory
+
+ NID-0011               The display must allow the Family Name, Given Name and Title elements to present at least           Mandatory
+                        the maximum field sizes specified in this guidance.
+
+ NID-0012               The display must allow for the Family Name and Given Name elements to consist of multiple           Mandatory
+                        components. Components are constituent parts of the name element that combine with other
+                        parts to form the element as a whole. For example, the components of the name
+                        LIDMAN-SUN are LIDMAN and SUN and the components of Mary Jane are Mary and Jane.
+                        Components have the following features:
+                         Family Name components must consist of UPPERCASE alphabetic characters only, for
+                          example, SMITH.
+                         Multiple Family Name components must be separated by a hyphen or a single space, for
+                          example, LIDMAN-SUN-DEWAR or EVANS WEST.
+                         Given Name components must display in title case, for example, Nadejda.
+                         Multiple Given Name components must be separated by a hyphen or a single space, for
+                          example, Anne-Jorun, Nis Bank.
+
+ NID-0013               The display should allow word wrapping to occur in instances where the field length exceeds         Recommended
+                        the width allocated to it on the form. If word wrapping occurs, it should be applied only at the
+                        end of a whole field element or at the end of a field element component, if it comprises
+                        multiple parts (for example, Middle name(s) field).
+
+ NID-0062               By default, include a prompt in the input boxes to indicate to a user the information required      Recommended
+
+ NID-0063               Present the default prompt in an occluded form to prevent confusion with actual data input by Recommended
+                        a user
+
+ NID-0064               Remove the default prompt when a user begins to input data                                          Mandatory
+ Table 2: General Guidance for the Use of Patient Name Input Controls
+
+2.1.2         Examples of Correct Usage
+ Usage Format                                            Examples                                     Comments
+
+           Family Name, Given Name (Title)              TREETAWTCHAIWONG, Lertchai (Sir)             Use this format to display all Patient
+                                                         OLIVER, James (Mr)                           Names within a patient banner.
+                                                         RUTH, Anne (Mrs)
+ Table 3: How to Use the Design Guide Entry
+
+2.1.3         Examples of Incorrect Usage
+ Usage Format                                            Examples                                     Comments
+
+           Family Name Given Name Title                 Duke James Earl Oliver Sir                   This example does not separate any of
+                                                                                                      the name elements, which contain
+                                                                                                      multiple components. It is impossible to
+                                                                                                      determine the Family Name, Given
+                                                                                                      Name and Title.
+
+           Family Name Given Name                       Ruth Jacob                                   This example does not distinguish the
+                                                                                                      Given Name from the Family Name or
+                                                                                                      provide a Title, making it difficult to
+                                                                                                      determine Given Name, Family Name
+                                                                                                      and correct form of address.
+
+                                                                                                                                         Page 6
+                               Design Guidance – Patient Name Input and Display
+                               Prepared by Microsoft, Version 2.0.0.0
+                               Last modified on 28 January 2010
+
+ Usage Format                                     Examples                             Comments
+
+          Family Name Given Name (Title)         James Oliver Jones (Sir)             These examples do not separate the
+                                                  Ito Shu (Mr)                         Given Name from Family Name,
+                                                                                       making it difficult to determine what the
+                                                  Sario Esko (Mrs)
+                                                                                       Given and Family Names actually are.
+
+          Title Family Name                      Mr Oliver                            These examples omit a Given Name
+           Family Name (Title)                    Oliver (Mr)                          element. Without a Given Name,
+                                                                                       identification is difficult.
+
+          Title Given Name                       Mrs Ruth                             These examples omit a Family Name
+           Given Name (Title)                     Ruth (Mrs)                           element. Without a Family Name,
+                                                                                       identification is difficult.
+
+          Family Name, Given Name (Title)        JAMES, OLIVER (SIR)                  These examples show all elements in
+           Given Name, Family Name (Title)        James, Oliver (Sir)                  the same case making it difficult to
+                                                                                       visually separate Given and Family
+                                                                                       Name elements. The comma, however,
+                                                                                       provides a visual cue that Family Name
+                                                                                       appears first.
+
+          Family Name, Given Name, Initials,     OLIVER, James Earl, E, MBE MSc BSc   This example shows too many name
+           Suffix (Title)                         (Sir)                                elements, which hinder rather than aid
+                                                                                       clarity.
+
+          Family Name, Given Name                CHARLIE, Oliver                      This example shows only a Given and
+                                                                                       Family Name. It does not give enough
+                                                                                       information for a Title to be assumed.
+
+          Family Name, Given Name Title          TREETAWTCHAIWONG,                    This example shows a lack of clarity. It
+                                                  Lertchai Sir                         is unclear if the Given Name contains
+                                                                                       two name components or if the second
+                                                                                       component is actually the Title.
+
+          Family Name, GIVENNAME (Title)         TREETAWTCHAIWONG,                    These examples are provided in all
+                                                  LERTCHAI (SIR)                       uppercase, making them difficult to
+                                                                                       read.
+                                                  RUTH, JACOB (MRS)
+ Table 4: How Not to Use the Design Guide Entry
+
+2.1.4        Rationale
+ This recommendation provides the following benefits:
+       Conforms to the person title display guidance and maximum field sizes given in the UK
+                                                        1
+        Government Data Standards Catalogue (GDSC) .
+       Conforms with the proposed UK National ID card, which uses the construct of Family Name
+        first, with Family Name provided in uppercase
+       Ensures a consistent visual representation for Patient Name within the patient banner
+        across clinical applications.
+       Provides a clear and readable format.
+
+ 1
+  Cabinet Office: UK Government Data Standards Catalogue {R3}:
+ http://www.govtalk.gov.uk/gdsc/html/noframes/PersonName-1-1-Release.htm
+                                                                                                                         Page 7
+                               Design Guidance – Patient Name Input and Display
+                               Prepared by Microsoft, Version 2.0.0.0
+                               Last modified on 28 January 2010
+
+      Identifies clearly and uniquely each of the name elements (Family Name, Given Name and
+       Title).
+      Promotes patient safety by enabling doctors, clinicians, health professionals and
+       non-clinical staff to read patients' names quickly and accurately.
+  The recommended layout for Patient Name provides the best format because it lends itself to
+  consistency and clarity, with a clear distinction between individual name elements. This increases
+  patient safety by minimizing the potential for reading error and providing accurate confirmation of
+  the patient's identity.
+  The recommended layout achieves this through:
+      Presentation of the Family Name in all uppercase to clearly distinguish it from the Given
+       Name.
+      Separation of the Family Name and Given Name using a comma to further establish that
+       the Family Name is placed first.
+      Inclusion of parentheses around the Title to separate and distinguish it from the other name
+       elements.
+
+2.1.4.1      Accessibility
+  The recommended format for the Patient Name display should present no barriers to accessibility.
+  Consistent adherence to the Patient Name display format aids accessibility as it makes the name
+  elements (Family Name, Given Name and Title) uniquely identifiable and recognizable whenever
+  they are encountered; both individually, and as part of the entire name. It also makes the name
+  elements distinguishable from other elements. From an accessibility perspective, this means that
+  even when the name is accessed out of context (for example, by a screen reader), it will still be
+  easily recognizable as a name, and that each element of that name can easily be identified. Using
+  distinct name elements in this way also means that users with imperfect vision will still be able to
+  correctly identify them.
+  Screen reader software cannot pronounce highly variable items, such as names, accurately on all
+  occasions. This however should not present any interpretation problems, as each of the name
+  elements will be identifiable and recognizable by consistent use. If pronunciation by the screen
+  reader causes problems, the user can spell out the name, letter by letter, using features of the
+  screen reader software.
+  The Family Name element is presented in all uppercase letters. It is widely recognised that this
+  decreases reading speed for all users, but it can cause particular problems for people with reading
+  difficulties such as Dyslexia. Despite this, displaying the Family Name element in all uppercase is
+  unlikely to present any accessibility problems or reading issues, for the following reasons:
+      The decrease in reading speed caused by all uppercase letters is due to a disruption of the
+       recognition of whole word pattern, which occurs naturally for familiar words when seen
+       using the mixed case representation. Since Family Names are highly variable and many are
+       unusual, they do not fall into the category of known and familiar words, and so will not be
+       affected.
+      Difficulties with reading uppercase letters only occur when it is used extensively. The
+       Family Name element is usually relatively short.
+  As the Family Name is a vital element for patient identification, any slight reduction in reading
+  speed would actually be seen to confer an advantage. The clinician will be more likely to interpret
+  the name correctly, rather than make mistakes caused by false recognition.
+
+                                                                                                  Page 8
+                       Design Guidance – Patient Name Input and Display
+                       Prepared by Microsoft, Version 2.0.0.0
+                       Last modified on 28 January 2010
+
+2.1.4.2           Existing Standards
+  Existing standards for person name display are limited. Government standards focus primarily on
+  the structure of a name, but not on the visual display of the structure. As such, these have been of
+  limited use for defining recommendations.
+  The following sources (as described in more detail below) provide recommendations in relation to
+  name display:
+          UK NPSA standards for naming and identifying patients (Right patient – right care {R1} and
+           Standardising wristbands improves patient safety {R2}).
+          UK Government Data Standards (GDSC)
+          Various Public Sector organizations
+          Academic research
+  UK NPSA Standardising Wristbands Improves Patient Safety
+  The Safer Practice Notice no.24, published 3 July 2007, sets out actions for the UK NHS when
+  using patient wristbands including the core identifiers required on wristbands. From 18 July 2008
+  the patient name descriptors to be used on wristbands are as follows:
+          Last name
+          First name
+  UK Government Data Standards Catalogue (GDSC) {R3}
+  The GDSC defines a data storage standard for name elements as follows:
+          Person Title (35 Characters) – Title in the recommendation
+          Person Given name (35 Characters) – Given name in the recommendation.
+          Person Family name (35 Characters) – Family name in the recommendation
+
+  The UK GDSC also specifies that while the full available range of generally recognized titles is
+  permitted, if any of these titles are used, the value must conform to the specified format, which is
+  an appropriate abbreviated form with no full stop.
+  Public Sector Organisations
+  Name identifiers exist within certain UK public sectors, for example, Passport, National ID card,
+  Driving Licence and Proof of Age ID. There is a lack of consistency across the display standard for
+  these identifiers; however, they all use uppercase letters for the Family name element. This is
+  therefore a common convention that supports our recommendations.
+          The National ID card shows a person’s name as ‘FAMILY NAME Given name’
+          The Passport card shows a person’s name as ‘FAMILY NAME GIVEN NAME’ (displayed
+           on separate lines)
+          The Driving Licence Card shows a person’s name as ‘FAMILY NAME GIVEN NAME
+           MIDDLE NAMES’ (with FAMILY NAME appearing first on a separate line)
+          The Proof of ID card shows a person’s name as ‘GIVEN NAME FAMILY NAME’ (displayed
+           on separate lines)
+  Public sector organizations have many examples of name layouts for forms and lists. These do not
+  show consistency or definitive ‘common practice’. However, most telephone directories (online or
+                                                           ®                         2
+  printed) and CRM databases list Family name first (see BT directory services online ).
+
+  2
+      BT: The Phone Book {R4}: http://www.thephonebook.bt.com/publisha.content/en/search/residential/search.publisha
+                                                                                                                       Page 9
+                             Design Guidance – Patient Name Input and Display
+                             Prepared by Microsoft, Version 2.0.0.0
+                             Last modified on 28 January 2010
+
+ Academic Research
+ There are some academic studies and written recommendations on the subject of reading patterns
+ and pattern recognition. In general, these studies conclude that there are benefits for consistent
+ representation of data in a recognized pattern, as this enhances familiarity and recognition of
+                                                                                     ®
+ component parts. The Developing Quality Technical Information handbook by IBM (2nd Edition)
+ {R6} is one such source.
+ Existing standards for person name display are limited, and no definitive ‘common practice’ or
+ consistency exists. The recommendation for Patient Name display across NHS clinical applications
+ is therefore based on usability research, readability principles and the need for consistency, clarity
+ and easy identification of the patient.
+ This recommendation was adopted on the basis of the following justifications:
+      Promotion of patient safety by presenting the name in a clear and consistent format that
+       allows the clinician to quickly identify the patient
+      Use of an easily readable format
+      Provision of a clear distinction of the elements that are most important for identification and
+       formal communication, that is, Given name, Family name and Title
+
+2.1.5       Optional Data Fields
+ This section gives the rationale behind the inclusion of the optional data fields.
+     Note
+     The optional data fields described in this section are not exclusive. It is acknowledged that from time to
+     time other Patient Name fields may be required. As such circumstances cannot be anticipated, this
+     document provides no specific guidelines. It is up to the applications developer concerned to design an
+     appropriate solution, ensuring that there is no compromise of patient safety.
+
+ Preferred Name also known as ‘nickname’ (Alias, Known As or Requested Name)
+ The UK GDSC includes a Person Requested Name as an element of the Person Name, which is
+ defined as “The name a person wishes to use which is different from the values in Title, Given
+ name(s), Family name and Name Suffix fields”. This would include, for example, a preference to be
+ addressed by middle name rather than Given Name.
+ Where the Preferred name is a name ‘type’ (for example, a desired alias consisting of the minimum
+ data set for a Name) it should be displayed as a full name display control without needing a
+ separate field in an existing data set. However, where the value is more a single Nickname, it can
+ be attached to an existing name control as an optional field, for example, ‘Johnny-Boy’.
+ Suffixes
+ In most cases, the suffix is not needed as it does not serve as a primary means of identifying or
+ addressing the patient and can quickly become too long, taking up valuable space in locations such
+ as the banner (for example, Rt Hon. John Doe, K.G., K.B.E., M.B., B.Chir). The inclusion of such
+ unnecessary data on screen only serves to distract from the important data there.
+ However, there are times when the use of a suffix is important:
+      When relevant for patient identification (for example, ‘Jnr’ or ‘the third (III)’)
+      When related to the correct, formal way to set out a name (for example, in a letter)
+ Although a minimal requirement, this demonstrates a need for the optional use of a suffix. The
+ presence of a check box to select a) “show on screen” or b) “use on letterhead” provides a user
+ with the ability to use where appropriate.
+
+                                                                                                            Page 10
+                        Design Guidance – Patient Name Input and Display
+                        Prepared by Microsoft, Version 2.0.0.0
+                        Last modified on 28 January 2010
+
+ Middle Names and Initials
+ It is considered that middle name or initials are not often required as they:
+       Do not serve as a primary means for identifying or addressing the patient
+       May distract from quickly identifying the key name elements
+       May result in the Patient Name becoming overlong
+ However, they do need to be entered, where known, in the event that the primary identifiers are not
+ sufficient to produce a unique match.
+
+2.2       Patient Name Input Data Elements
+ A Patient Name input control can consist of up to six constituent fields with labels; Title, Family
+ Name, Given Name, Middle name, Suffix, and Preferred name. The minimum data required to
+ make the name useful is considered to be Title, Family Name and Given Name. Middle name(s),
+ Preferred name and Suffix are considered to improve data quality, however they are not
+ mandatory.
+
+2.2.1         Title
+ The Title field is designed as a drop-down combo-box (as shown in Figure 5). This design allows
+ the developer to assist the user in the input of a pre-defined set from a drop-down list, whilst also
+ allowing the flexibility of free-text input to augment the complex list of possible options.
+ Figure 5 displays a Patient Name input control in a default state (for example, an InForm design
+ with prompts and no data entered). Figure 6 displays the Title input element during a simple
+ interaction.
+
+ Figure 5: Example of an InForm Design (All Six Fields are Visible)
+
+ Figure 6: Example of an InForm Design with Title Drop-Down Clicked
+
+                                                                                                   Page 11
+                                 Design Guidance – Patient Name Input and Display
+                                 Prepared by Microsoft, Version 2.0.0.0
+                                 Last modified on 28 January 2010
+
+  The input box should allow a maximum of 35 characters in order to support the recognized data
+  entry requirements. The minimum width of the input box should be decided in accordance with the
+  maximum length of the presets available in the drop-down box but should never be less than four
+  characters (due to a standard requirement being to enter ‘Miss’).
+
+2.2.1.1            Guidance
+  ID                     Guideline                                                                                       Status
+  NID-0014               Input control must allow a maximum of 35 characters.                                            Mandatory
+
+  NID-0015               Minimum visual width of the input box must display four characters.                             Mandatory
+
+  NID-0016                Suggested values are:                                                                          Recommended
+                          ‘Mr’‘Mrs’
+                          ‘Ms’
+                          ‘Dr’
+                          ‘Rev’
+                          ‘Sir’
+                          ‘Lady’
+                          ‘Lord’
+                          ‘Dame’
+                          ‘Other...’
+
+  NID-0017               One value should allow the user to invoke free-text input mode (for example ‘Other...’ in the   Recommended
+                         illustrations).
+
+  NID-0018               Input box should contain a relevant prompt, for example, Mr.                                    Recommended
+
+  NID-0019               Input control should be in the form of a drop-down combo-box.                                   Recommended
+  Table 5: Guidance for the Use of Title in Patient Name Input Controls
+
+2.2.1.2            Other Usage Step-Through of Title Input
+  The last item in the list indicates that free-text entry is possible and therefore assists the user in
+  finding this functionality should they require it (for example, ‘Other...’). The suggested location is at
+  the end of the list because the user has searched the other options and not found what they are
+  looking for.
+  Figure 7, Figure 8 and Figure 9 display this user behaviour in sequential stages:
+
+  Figure 7: Example of where the User Chooses the Other Choice
+
+                                                                                                                                  Page 12
+                                  Design Guidance – Patient Name Input and Display
+                                  Prepared by Microsoft, Version 2.0.0.0
+                                  Last modified on 28 January 2010
+
+ Figure 8: Example of where Focus is Placed Back in the Free-text Entry Box
+
+ Figure 9: Example of where the User Enters a Non-Preset Value
+
+2.2.2         Family Name
+ The Family Name input is in the form of a free-text entry box that accepts a maximum of 35
+ characters. Based upon average name length calculations, it is recommended that the width of the
+ box should never display less than eight characters and should have an optimal display length of
+ 14 characters. At the optimal length, the box should be able to display over 99% of expected values
+ and even at the minimum length, it is expected that over 95% of names will be fully displayed. The
+ Family Name will be entered in the case chosen by the user (as they enter it), however, when the
+ entered value is displayed, it will all be in uppercase.
+ Figure 10 contains two examples of a user entering the Family Name in varieties of lowercase and
+ uppercase. Figure 11 demonstrates that the control will reformat the data consistently to
+ uppercase, when focus leaves the input field.
+
+                                                                                              Page 13
+                                Design Guidance – Patient Name Input and Display
+                                Prepared by Microsoft, Version 2.0.0.0
+                                Last modified on 28 January 2010
+
+  Figure 10: Two Examples of Users Entering Family Name in the Case they Believe is Most Appropriate
+
+  Figure 11: When the User moves to the Next Cell the Family Name Displays in Uppercase
+
+2.2.2.1           Guidance
+  ID                    Guideline                                                                             Status
+  NID-0020              Family Name input must be via a free-text entry box.                                  Mandatory
+
+  NID-0021              Family Name input box must accept a maximum of 35 characters.                         Mandatory
+
+  NID-0022              Family Name input box should be capable of displaying a minimum of eight characters   Recommended
+                        without occlusion.
+
+  NID-0023              Family Name input box should optimally display 14 characters without occlusion.       Recommended
+
+  NID-0024              Family Name input box should contain a relevant prompt in its default state           Recommended
+                        (for example, ‘e.g. SMITH’) in occluded form.
+
+  NID-0025              When displaying a Family Name value, the characters should all be in uppercase.       Recommended
+  Table 6: Guidance for the Use of Family Name in Patient Name Input Controls
+
+                                                                                                                       Page 14
+                                Design Guidance – Patient Name Input and Display
+                                Prepared by Microsoft, Version 2.0.0.0
+                                Last modified on 28 January 2010
+
+2.2.3          Given Name
+  The Given Name input is in the form of a free-text entry box that accepts a maximum of 35
+  characters. Based upon average UK name length calculations, it is recommended that the box be
+  wide enough to display at least eight characters and should have an optimal width of 14 characters.
+  At this optimal width, the box would be able to fully display over 99% of expected values. At the
+  minimum width, it is expected that over 95% will be fully displayed. The Given Name will be entered
+  in the case chosen by the user (as they enter it), however, when the value is displayed, the first
+  character will be in uppercase.
+
+2.2.3.1           Guidance
+  ID                     Guideline                                                                               Status
+  NID-0026               Given Name input must be via a free-text entry box.                                     Mandatory
+
+  NID-0027               Given Name input box must accept a maximum of 35 characters.                            Mandatory
+
+  NID-0028               Given Name input box should be capable of displaying a minimum of eight characters without Recommended
+                         occlusion.
+
+  NID-0029               Given Name input box should optimally display 14 characters without occlusion.          Recommended
+
+  NID-0030               Given Name input box should contain a relevant prompt in its default state              Recommended
+                         (for example, ‘e.g. John’) in occluded form.
+
+  NID-0031               When displaying a Given Name value the first character should be in uppercase.          Recommended
+  Table 7: Guidance for the Use of Given Name in Patient Name Input Controls
+
+2.2.4          Middle Name(s)
+  The Middle name input is in the form of a free-text entry box that accepts a maximum of 100
+  characters. This length has been chosen due to the requirement for this input to accept multiple
+  entries. This maximum allows a significant number of entries (at least 18 of our standard
+  7-character Given Names) to be entered. The Middle name will be entered and displayed in the
+  case chosen by the user (as they enter it).
+
+2.2.4.1           Guidance
+  ID                     Guideline                                                                               Status
+  NID-0032               Middle name input must be via a free-text entry box.                                    Mandatory
+
+  NID-0033               Middle name input box must accept a maximum of 100 characters.                          Mandatory
+
+  NID-0034               Middle name input box should be capable of displaying a minimum of eight characters without Recommended
+                         occlusion.
+
+  NID-0035               Middle name input box should optimally display 7 characters without occlusion.          Recommended
+
+  NID-0036               Middle name input box should contain a relevant prompt in its default state             Recommended
+                         (for example, ‘e.g. David James’) in occluded form.
+  Table 8: Guidance for the Use of Middle Name(s) in Patient Name Input Controls
+
+2.2.5          Suffix
+  The Suffix input is in the form of a free-text entry box that accepts a maximum of 35 characters.
+  There are fewer mandatory requirements for this field because it is rarely used. The entry box
+  should be wide enough to display at least eight characters. The Suffix will be entered and displayed
+  in the case chosen by the user (as they enter it).
+
+                                                                                                                           Page 15
+                                Design Guidance – Patient Name Input and Display
+                                Prepared by Microsoft, Version 2.0.0.0
+                                Last modified on 28 January 2010
+
+2.2.5.1            Guidance
+  ID                     Guideline                                                                                     Status
+  NID-0037               Suffix input must be via a free-text entry box.                                               Mandatory
+
+  NID-0038               Suffix input box must accept a maximum of 35 characters.                                      Mandatory
+
+  NID-0039               Suffix input box should be capable of displaying a minimum of eight characters without        Recommended
+                         occlusion.
+
+  NID-0040               Suffix input box should optimally display 14 characters without occlusion.                    Recommended
+
+  NID-0041               Suffix input box should contain a relevant prompt when in its default state                   Recommended
+                         (for example, ‘e.g. Junior’) in occluded form.
+  Table 9: Guidance for the Use of Suffix in Patient Name Input Controls
+
+2.2.6          Preferred Name
+  The Preferred name input is in the form of a free-text entry box that accepts a maximum of 35
+  characters. The box should be wide enough to display at least eight characters and should have an
+  optimal width of 14 characters. The Preferred name will be entered and displayed in the case
+  chosen by the user (as they enter it).
+
+2.2.6.1            Guidance
+  ID                     Guideline                                                                                     Status
+  NID-0042               Preferred name input must be via a free-text entry box.                                       Mandatory
+
+  NID-0043               Preferred name input box must accept a maximum of 35 characters.                              Mandatory
+
+  NID-0044               Preferred name input box should be capable of displaying a minimum of eight characters        Recommended
+                         without occlusion.
+
+  NID-0045               Preferred name input box should optimally display 14 characters without occlusion.            Recommended
+
+  NID-0046               Preferred name input box should contain a relevant prompt in its default state                Recommended
+                         (for example, ‘e.g. Johnny-Boy’) in occluded form.
+  Table 10: Guidance for the Use of Preferred Name in Patient Name Input Controls
+
+2.2.7          Examples of Correct Usage
+  Usage Format                        Examples                                                             Comments
+
+             Title to accept 35      ‘abcdefghijklmnopqrstuvwxyzABCDEFGHI’                                Required data length for PDS.
+              characters
+
+             Family Name to          ‘abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMN’                           Required data length for PDS.
+              accept 35
+              characters
+
+             Given Name to           ‘abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMN’                           Required data length for PDS.
+              accept 35
+              characters
+
+             Middle name(s) to       ‘abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ Suggested length to allow for
+              accept 100              abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ multiple middle names to be
+              characters              abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ entered.
+                                      abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ
+                                      abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUV’
+
+             Suffix to accept 35 ‘abcdefghijklmnopqrstuvwxyzABCDEFGHI’                                    Required data length for PDS.
+              characters
+
+                                                                                                                                 Page 16
+                                   Design Guidance – Patient Name Input and Display
+                                   Prepared by Microsoft, Version 2.0.0.0
+                                   Last modified on 28 January 2010
+
+ Usage Format                      Examples                                                                   Comments
+
+           Preferred name to      ‘abcdefghijklmnopqrstuvwxyzABCDEFGHI’                                      Suggested field length for a
+            accept 35                                                                                         single nickname style entry.
+            characters                                                                                           Note
+                                                                                                                 A desired full name comes
+                                                                                                                 under a name type rather
+                                                                                                                 than name field.
+
+           Minimum data set                                                                                  This data set has been
+            of; Title, Family                                                                                 identified as the minimum
+            Name, and Given                                                                                   required to ensure data
+            Name                                                                                              quality.
+ Table 11: Examples of Correct Implementation of Patient Name Guidance
+
+2.2.8        Examples of Incorrect Usage
+ Usage        Format                             Examples                  Comments
+
+             Input fields do not display the                              The controls will display during and probably after input.
+              majority (over 95%) of inputs,                               Errors could occur in data recognition and input if the user
+              as required                                                  cannot view the full input values.
+
+             Input fields do not accept the                               Many different systems and recognized bodies have defined
+              required input characters (for                               the maximum limits required for each field that is part of a
+              example, 35 characters for                                   name. These limits need to be supported in order for systems
+              Family Name)                                                 to work together.
+
+             Input control does not control                               Not including all of the minimum data set in an input control
+              all three fields for the minimum                             could compromise patient safety and data quality.
+              data set (Title, Family Name,
+              and Given Name)
+
+             Title drop-down does not have                                The user should be encouraged to give the best quality of
+              an option to encourage the                                   data available. They may not know that free-text entry is
+              user to enter a different entry,                             possible if an alternative option (for example, ‘Other’) is not in
+              if a more applicable one is not                              the list, and simply pick the most applicable one there.
+              in the list
+
+ Table 12: Examples of Incorrect Implementation of Patient Name Guidance
+
+2.2.9        Rationale
+ The lengths of the input values for the Title, Family Name, Given Name and Suffix input fields have
+ been calculated based upon the rationale outlined in the Patient Name display requirements in
+ section 2.1.4. The length of the Middle name(s) input field is a suggestion based upon the
+ requirement for multiple name entries into this field. The length of the Preferred name is based
+ upon the requirement to display a single nickname rather than a full name comprised of multiple
+ elements.
+
+                                                                                                                                       Page 17
+                               Design Guidance – Patient Name Input and Display
+                               Prepared by Microsoft, Version 2.0.0.0
+                               Last modified on 28 January 2010
+
+                                                                                            3
+ The suggested lengths of the input boxes are based on the usability heuristic stating that each
+ “text field should be large enough to accommodate the majority of anticipated entries without
+ scrolling”. The expected values were assessed and applied to the default length size. The minimum
+ sizes took this requirement but also looked at the requirement to restrict the control footprint (space
+ used on a screen) due to factors outside of the control (for example, restricted space on a form).
+
+2.2.10        Mandatory and Optional fields
+ The minimum data set required to safely input a complete patient-safe name is as follows:
+       Family Name
+       Given Name
+ The following fields are optional:
+       Title
+       Middles name(s)
+       Suffix
+       Preferred name
+
+2.3         InForm Input Design
+ The InForm layout is considered the most desirable layout from a patient safety and usability
+ perspective. It should therefore be the default choice for the ISV when developing a Patient Name
+ input control. Figure 12 displays a typical InForm style input control (with all six input fields):
+
+ Figure 12: Example of an InForm Design (All Six Fields Are Visible)
+
+ 3
+  International Organization for Standardization (ISO): BS EN ISO 9241-17:1998 Incorporating Amendment No. 1 {R5}:
+ http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=16889
+                                                                                                                Page 18
+                                Design Guidance – Patient Name Input and Display
+                                Prepared by Microsoft, Version 2.0.0.0
+                                Last modified on 28 January 2010
+
+2.3.1         Guidance
+ ID                     Guideline                                                                                          Status
+ NID-0047               InForm field controls must be aligned on the left edge of the input boxes.                         Mandatory
+
+ NID-0048               InForm field controls (where they exist) must be placed underneath each other in the               Mandatory
+                        following order:
+                         Title
+                         Family Name
+                         Given Name
+                         Middle name(s)
+                         Suffix
+                         Known as
+ Table 13: Guidance for the Use of InForm Design in Patient Name Input Controls
+
+2.3.2         Examples of Correct Usage
+  Usage Format                      Examples                                              Comments
+
+           All input fields are                                                          The InForm control is reported by users to be
+            left aligned                                                                  the preferred design for readability, usability,
+            underneath each                                                               and familiarity purposes.
+            other in the
+            specified order
+
+ Table 14: Correct Patient Name Input InForm Design Examples
+
+2.3.3         Examples of Incorrect Usage
+  Usage Format                      Examples                                              Comments
+
+           Fields are not left                                                           Left aligning the controls aids readability for the
+            aligned to each                                                               user. Not left aligning them makes the control
+            other                                                                         difficult to use and understand.
+
+           Fields not in the                                                             The order of the fields should reflect the
+            correct order                                                                 display and not contradict it. Errors will occur if
+                                                                                          they are different.
+
+ Table 15: Incorrect Patient Name Input InForm Design Examples
+
+                                                                                                                                       Page 19
+                                  Design Guidance – Patient Name Input and Display
+                                  Prepared by Microsoft, Version 2.0.0.0
+                                  Last modified on 28 January 2010
+
+2.3.4         Rationale
+ This control allows the user to input a person name in its constituent parts. It is designed to
+ increase patient safety by encouraging data quality as much as is practicable without losing
+ flexibility.
+ Each individual part is referred to as a field. The minimum data set constitutes those fields that are
+ required to safely identify a patient. The remaining fields can optionally be present in the control (for
+ example, the developer can choose which fields they wish to use).
+ The InForm design is considered to be the most desirable for a majority of users due to familiarity
+ and readability. It should therefore be the first choice of a designer.
+
+2.4       InLine Input Design
+ The InLine style design has the same fields as the InForm control but they are arranged
+ horizontally rather than vertically. Figure 13 displays a typical InLine style control (with all six input
+ fields included). Figure 14 displays how the control should wrap at whole elements, when
+ necessary, and that subsequent rows should align to the left edge of the first input field.
+
+ Figure 13: Example of an InLine Design (With All Six Fields Visible)
+
+ Figure 14: Example of an InLine Design Wrapped onto Two Lines (With All Six Fields Visible)
+
+2.4.1         Wrapping Behaviour
+ The inline control should follow the wrapping behaviour illustrated in Figure 15. The basic principles
+ are:
+       Wrap at whole fields
+       Sentence style wrapping (for example, no alignment other than subsequent lines start at the
+        same point horizontally as the first item in the first line, therefore they are left aligned)
+
+                                                                                                      Page 20
+                                 Design Guidance – Patient Name Input and Display
+                                 Prepared by Microsoft, Version 2.0.0.0
+                                 Last modified on 28 January 2010
+
+ Figure 15: Examples of InLine Wrapping Behaviour (All Six Input Fields are Visible)
+
+2.4.2         Guidance
+ ID                     Guideline                                                                               Status
+ NID-0049               Ensure wrapping only occurs on whole fields.                                            Mandatory
+
+ NID-0050               Correct presentation order is:                                                          Mandatory
+                         Title
+                         Family Name
+                         Given Name
+                         Middle name(s)
+                         Suffix
+                         Known as
+
+ NID-0051               InLine design choice should only be used when InForm has been considered undesirable.   Recommended
+ Table 16: Guidance for the Use of InLine Design in Patient Name Input Controls
+
+                                                                                                                         Page 21
+                                 Design Guidance – Patient Name Input and Display
+                                 Prepared by Microsoft, Version 2.0.0.0
+                                 Last modified on 28 January 2010
+
+2.4.3        Examples of Correct Usage
+  Usage Format                    Examples                                       Comments
+
+           Field input                                                          Fields must not be broken because this can
+            controls only                                                        lead to errors in reading the values and
+            wrapped at                                                           understanding the control.
+            dividing space
+
+           Fields in correct                                                    The user will assume the input and display
+            order, to reinforce                                                  formats will be identical and changing these
+            display format                                                       orders can lead to input error from the user.
+
+ Table 17: Correct Patient Name Input Wrapping and Order Examples
+
+2.4.4        Examples of Incorrect Usage
+  Usage Format                    Examples                                       Comments
+
+           Fields broken                                                        Fields must remain intact to assist the user in
+            across a field                                                       understanding the control and the data.
+
+           Fields in wrong                                                      The order of the control input should assist the
+            order                                                                user in understanding how it will be displayed,
+                                                                                 therefore not confusing the user as to the
+                                                                                 order, for example, Family Name then Given
+                                                                                 Name.
+
+ Table 18: Incorrect Patient Name Input Wrapping and Order Examples
+
+2.4.5        Rationale
+ This control allows the user to input a person name in its constituent parts. It is designed to
+ increase patient safety by encouraging data quality as much as is practicable without losing
+ flexibility.
+ The InLine style should be seen as the second choice for an ISV, when the InForm design has
+ been considered undesirable for a particular form design due to factors such as space and
+ precedent.
+
+                                                                                                                           Page 22
+                              Design Guidance – Patient Name Input and Display
+                              Prepared by Microsoft, Version 2.0.0.0
+                              Last modified on 28 January 2010
+
+2.5         Instructional Text
+  This section explains the instructional text assistance to be considered when constructing the input
+  controls.
+
+2.5.1           Field Labels
+  Each field used to make up the name input control must have a label associated with it to inform
+  the user what is required of them. The location of these labels are related to the layout style of the
+  input control selected by the developer and are displayed in Figure 16 and Figure 17.
+
+  Figure 16: Example of a Label (Title) for a Field in the InForm Style
+
+  Figure 17: Example of a Label (Title) for a Field in the InLine Style
+
+  These are the recommended field labels:
+         Title: "Title"
+         Family Name: "Family Name"
+         Given Name: "Given Name"
+         Middle name: "Middle name(s)"
+         Suffix: "Suffix"
+         Preferred name: "Known as"
+
+2.5.1.1             Guidance
+  ID                       Guideline                                                                 Status
+  NID-0052                 Each field in a name input control must have an associated label.         Mandatory
+
+  NID-0053                 Labels must be programmatically linked to their associated input field.   Mandatory
+
+  NID-0054                 Label values should be:                                                   Recommended
+                            Title: "Title"
+                            Family Name: "Family Name"
+                            Given Name: "Given Name"
+                            Middle name: "Middle name(s)"
+                            Suffix: "Suffix"
+                            Preferred name: "Known as"
+  Table 19: Guidance for the Use of Field Labels in Patient Name Input Controls
+
+                                                                                                              Page 23
+                                   Design Guidance – Patient Name Input and Display
+                                   Prepared by Microsoft, Version 2.0.0.0
+                                   Last modified on 28 January 2010
+
+2.5.1.2            Examples of Correct Usage
+  Usage Format                      Examples                                        Comments
+
+            Correct labelling                                                      Labels are correct for the field associated to
+                                                                                    them.
+
+  Table 20: Correct Patient Name Input Control Label Formatting Examples
+
+2.5.1.3            Examples of Incorrect Usage
+  Usage Format                      Examples                                        Comments
+
+            No label for the                                                       Input controls with more than a single input
+             different input                                                        field require the use of labels to ensure the
+             fields                                                                 user understands what is required.
+
+  Table 21: Incorrect Patient Name Input Control Label Formatting Examples
+
+2.5.1.4            Rationale
+  Controls that consist of multiple input fields require clear labelling to assist the user in
+  understanding what input is required and where.
+  The guidelines follow the UK NPSA standards for naming and identifying patients (Right patient –
+  right care {R1} and Standardising wristbands improves patient safety {R2}).
+
+2.5.2          Prompts
+  The controls could utilize a ‘prompt’ style design to give the clearest indication to the user of what is
+  expected in which input box, without increasing the screen footprint of the design. This is displayed
+  in Figure 18. The prompts should be visible until data is placed inside the control (either by the user
+  or a system). Some suggested default values are:
+        Title: "e.g. Mr"
+        Family Name: "e.g. SMITH"
+        Given Name: "e.g. John"
+        Middle name(s): "e.g. David James"
+        Suffix: "e.g. Junior"
+        Known as: "e.g. Johnny-Boy"
+
+  Figure 18: Example of an Input Control with Prompts
+
+                                                                                                                               Page 24
+                                 Design Guidance – Patient Name Input and Display
+                                 Prepared by Microsoft, Version 2.0.0.0
+                                 Last modified on 28 January 2010
+
+2.5.2.1           Guidance
+  ID                     Guideline                                                                                           Status
+  NID-0055               Each field in a name input control should have an associated prompt.                                Recommended
+
+  NID-0056               Prompts for Family Name should be capitalized.                                                      Recommended
+
+  NID-0057               All prompts except Family Name should have sentence style capitalization.                           Recommended
+
+  NID-0058               Prompt values should be:                                                                            Recommended
+                          Title: "e.g. Mr"
+                          Family Name: "e.g. SMITH"
+                          Given Name: "e.g. John"
+                          Middle name(s): "e.g. David James"
+                          Suffix: "e.g. Junior"
+                          Known as: "e.g. Johnny-Boy"
+
+  NID-0059               Prompts should be lighter in weight and colour than the input text, and italicized.                 Recommended
+  Table 22: Guidance for the Use of Prompts in Patient Name Input Controls
+
+2.5.2.2           Examples of Correct Usage
+  Usage Format                      Examples                                                Comments
+
+             Each input field                                                              The prompt text reinforces the labels as
+              has an associated                                                             instructional text for the user.
+              prompt
+
+             Each prompt text                                                              Prompts are of a lighter colour to inform the
+              is in a lighter                                                               user that it is a prompt and not a valid data
+              colour and                                                                    value.
+              italicized
+
+             Each prompt text                                                              The italicized format reinforces the fact that it
+              is italicized                                                                 is a prompt and not a valid data value.
+
+             Family Name                                                                   The capitalization of the Family Name prompt
+              input field has the                                                           assists the user by reinforcing the Family
+              prompt capitalized                                                            Name format for display.
+
+             Given Name has                                                                The prompts should reinforce the desired entry
+              the prompt with                                                               format and for the UK, an instance of a Given
+              the first letter                                                              Name beginning with a lowercase letter has
+              capitalized                                                                   not been discovered.
+  Table 23: Correct Patient Name Input Control Prompt Formatting Examples
+
+                                                                                                                                        Page 25
+                                 Design Guidance – Patient Name Input and Display
+                                 Prepared by Microsoft, Version 2.0.0.0
+                                 Last modified on 28 January 2010
+
+2.5.2.3            Examples of Incorrect Usage
+  Usage Format                        Examples                                                  Comments
+
+             Prompts are                                                                       Users may incorrectly think that an entry has
+              formatted like a                                                                  been made in the box.
+              real entry
+
+             Family Name                                                                       Users are not informed as to the correct entry
+              input field has the                                                               format of Family Name.
+              prompt not fully in
+              uppercase
+
+             Given Name does                                                                   Users are not informed as to the correct entry
+              not have the                                                                      format of Given Name.
+              prompt with the
+              first letter in
+              uppercase
+  Table 24: Incorrect Patient Name Input Control Prompt Formatting Examples
+
+2.5.3          Tooltips
+  The controls could use tooltips to give the user more verbose instructions than can be achieved in
+  a prompt. Suggested default values are:
+        Title: "Select a Title from the list or simply type in a different Title" (illustrated in Figure 19)
+        Family Name: "Enter the person’s Family Name (surname)"
+        Given Name: "Enter the person’s Given Name (forename or Christian name)"
+        Middle name(s): "Enter the person’s middle name(s)"
+        Suffix: "Enter the person’s suffix (e.g. ‘Junior’ or ‘The Third’)"
+        Known as: "Enter the name a person likes to referred to as"
+
+  Figure 19: Example of a Tooltip Style Instructional Text
+
+2.5.3.1            Guidance
+  ID                      Guideline                                                                                           Status
+  NID-0060                Each field in a name input control should have instructional text (for example, a tooltip).         Recommended
+
+  NID-0061                Tooltip values should be:                                                                           Recommended
+                           Title: "Select a Title from the list or simply type in a different Title"
+                           Family Name: "Enter the person’s Family Name (surname)"
+                           Given Name: "Enter the person’s Given Name (forename or Christian name)"
+                           Middle name(s): "Enter the person’s middle name(s)"
+                           Suffix: "Enter the person’s suffix name (e.g. ‘Junior’ or ‘The Third’)"
+                           Known as: "Enter the name a person likes to referred to as"
+  Table 25: Guidance for the Use of Tooltips in Patient Name Input Controls
+
+                                                                                                                                         Page 26
+                                  Design Guidance – Patient Name Input and Display
+                                  Prepared by Microsoft, Version 2.0.0.0
+                                  Last modified on 28 January 2010
+
+2.5.3.2            Examples of Correct Usage
+  Usage Format                      Examples                                        Comments
+
+            Standard tooltip                                                       Looks and behaves as a conventional tooltip.
+             presentation
+
+            Recommended                                                            Uses the recommended tooltip value.
+             text used
+
+  Table 26: Correct Examples of Formatting Patient Name Input Control Tooltip
+
+                                                                                                                           Page 27
+                                 Design Guidance – Patient Name Input and Display
+                                 Prepared by Microsoft, Version 2.0.0.0
+                                 Last modified on 28 January 2010
+
+3              DOCUMENT INFORMATION
+
+3.1            Terms and Abbreviations
+    Abbreviation                        Definition
+    CUI                                 Common User Interface
+
+    GDSC                                UK Government Data Standards Catalogue
+
+    ISO                                 International Organization for Standardization
+
+    ISV                                 Independent Software Vendor
+
+    NPSA                                UK National Patient Safety Agency
+
+    PDA                                 Personal Digital Assistant
+
+    UI                                  User Interface
+    Table 27: Terms and Abbreviations
+
+3.2            Nomenclature
+    This section shows how to interpret the different styles used in this document to denote various
+    types of information.
+
+3.2.1            Body Text
+    Text                                                                    Style
+    Code                                                                    Monospace
+
+    Script
+
+    Other markup languages
+
+    Interface dialog names                                                  Bold
+
+    Field names
+
+    Controls
+
+    Folder names                                                            title case
+
+    File names
+    Table 28: Body Text Styles
+
+3.2.2            Cross References
+    Reference                                                               Style
+    Current document – sections                                             Section number only
+
+    Current document – figures/tables                                       Caption number only
+
+    Other project documents                                                 Italics and possibly a footnote
+
+    Publicly available documents                                            Italics with a footnote
+
+    External Web-based content                                              Italics and a hyperlinked footnote
+    Table 29: Cross Reference Styles
+
+                                                                                                                 Page 28
+                                  Design Guidance – Patient Name Input and Display
+                                  Prepared by Microsoft, Version 2.0.0.0
+                                  Last modified on 28 January 2010
+
+3.3       References
+ Reference         Document                                                                                   Version
+ R1.               NPSA, Right patient - right care                                                           2004
+                   http://www.npsa.nhs.uk/EasySiteWeb/GatewayLink.aspx?alId=3234
+
+ R2.               NPSA Safer Practice Notice, Standardising wristbands improves patient safety               2007
+                   http://www.npsa.nhs.uk/EasySiteWeb/GatewayLink.aspx?alId=5346
+
+ R3.               Cabinet Office: UK Government Data Standards Catalogue:
+                   http://www.govtalk.gov.uk/gdsc/html/noframes/PersonName-1-1-Release.htm
+
+ R4.               BT: The Phone Book:
+                   http://www.thephonebook.bt.com/publisha.content/en/search/residential/search.publisha
+
+ R5.               International Organization for Standardization: BS EN ISO 9241-17:1998 Incorporating       2.0.0.0
+                   Amendment No. 1
+                   http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=16889
+
+ R6.               Developing Quality Technical Information: A Handbook for Writers and Editors, IBM Press,   2nd Edition
+                   ISBN: 0-13-147749-8
+ Table 30: References
+
+                                                                                                                            Page 29
+                             Design Guidance – Patient Name Input and Display
+                             Prepared by Microsoft, Version 2.0.0.0
+                             Last modified on 28 January 2010

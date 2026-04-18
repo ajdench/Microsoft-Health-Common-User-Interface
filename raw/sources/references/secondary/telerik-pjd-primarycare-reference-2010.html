@@ -1,0 +1,2022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    
+    <meta name="ResourceType" content="Forum" />
+    <meta name="hgurl" content="teststudio" />
+    <meta name="threadAnswered" content="true" />
+        <meta name="threadTag" content="718" />
+    <meta name="lastModified" content="2010-07-27" />
+    <meta name="description" content="Hello, Today i install new Silverlight Runtime 4.0.50524.0 After that Telerik WebUI Test Studio (QA) stopped recognize Silverlight application. Even on http:..." />
+    <link rel="canonical" href="https://www.telerik.com/forums/unable-to-connect-to-silverlight-application-on-http-www-silverlight-net-showcase-page" />
+
+    
+
+
+    <link rel="shortcut icon" href="/forums/favicon.ico?v=e5kLIm-z6JcLdQ3skdToubWbK3sGnQJD179w_r6O3lM" />
+
+
+
+    <title>
+        Unable to connect to Silverlight application. (on http://www.silverlight.net/showcase/ page) in Test Studio | Telerik Forums
+    </title>
+    
+
+    <link rel="preconnect" href="https://stats.g.doubleclick.net" />
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+
+    
+
+    <link rel="stylesheet" href="/forums/bundles/forums.min.css?v=wnA2Hj55sG2USSfH61ZUpi7vtv-eISQGQKFY3_8Y3xQ" />
+
+    <script async src="/forums/bundles/forums.min.js?a=1&amp;v=APaee13IBt3h5erRcPPvjvK6N1o0c3JlAplcc0UlOoE"></script>
+
+    <!-- Google Tag Manager -->
+    
+<script>
+    window.isMobile = function () {
+        var result = false;
+        var matches = [
+            /(Windows Phone(?: OS)?)\s(\d+)\.(\d+(\.\d+)?)/,
+            /(Silk)\/(\d+)\.(\d+(\.\d+)?)/,
+            /(Android|Android.*(?:Opera|Firefox).*?\/)\s*(\d+)\.?(\d+(\.\d+)?)?/,
+            /(iPhone|iPod).*OS\s+(\d+)[\._]([\d\._]+)/,
+            /(iPad).*OS\s+(\d+)[\._]([\d_]+)/,
+            /(MeeGo).+NokiaBrowser\/(\d+)\.([\d\._]+)/,
+            /(webOS)\/(\d+)\.(\d+(\.\d+)?)/,
+            /(BlackBerry|BB10).*?Version\/(\d+)\.(\d+(\.\d+)?)/,
+            /(PlayBook).*?Tablet\s*OS\s*(\d+)\.(\d+(\.\d+)?)/,
+            /(MSIE)\s+(\d+)\.(\d+(\.\d+)?)/,
+            /(tizen).*?Version\/(\d+)\.(\d+(\.\d+)?)/i,
+            /(sailfish).*rv:(\d+)\.(\d+(\.\d+)?).*firefox/i,
+            /(Mobile).*rv:(\d+)\.(\d+(\.\d+)?).*Firefox/
+        ];
+        for (var i = 0; i < matches.length; i++) {
+            result = matches[i].test(window.navigator.userAgent);
+            if (result) {
+                break;
+            }
+        }
+        return result;
+    }
+</script>
+
+<script type="text/plain" class="optanon-category-2">
+        if(isMobile()) {
+            window._gaq = window._gaq || [];
+            window._gaq.push(['_setAccount', "UA-111455-1"],
+            ['_setDomainName', '.telerik.com'],
+            ['_addIgnoredRef', 'telerik.com'],
+            ['_trackPageview']);
+
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = '//stats.g.doubleclick.net/dc.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        }
+</script>
+
+<script type="text/plain" class="optanon-category-1">
+        if(!isMobile()) {
+            (function (w, d, s, l, i) {
+                w[l] = w[l] || [];
+                w[l].push({
+                    'gtm.start': new Date().getTime(),
+                    event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s),
+            dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+            })(window, document, 'script', 'dataLayer', "GTM-6X92");
+        }
+</script>
+
+<script src="https://cdn.cookielaw.org/consent/3dfce4f2-dab6-4128-9f33-df7e0597da82/otSDKStub.js" data-language="en" type="text/javascript" charset="UTF-8" data-domain-script="3dfce4f2-dab6-4128-9f33-df7e0597da82" async></script></th:partial>
+    <!-- End Google Tag Manager -->
+
+    <script>window.$fq = window.$fq || [];</script>
+    
+    
+        
+        <script type="text/javascript">
+            (function() {
+                var userAuthenticated = false;
+
+                window.toggleSort = function() {
+                    $("#answers").toggleClass("disabled");
+                }
+
+                function fetchDataUrl(url) {
+                    return new Promise((resolve, reject) => {
+                        fetch(url)
+                            .then(r => {
+                                if (r.ok) {
+                                    return r.blob();
+                                }
+
+                                return Promise.reject(`Image request failed with ${r.status}`);
+                            })
+                            .then(b => {
+                                var reader = new FileReader();
+                                reader.onload = e => resolve(e.target.result);
+                                reader.readAsDataURL(b);
+                            })
+                            .catch(reason => reject(reason));
+                    });
+                }
+
+                function embedImages(html) {
+                    const $wrapper = $("<div></div>").html(html);
+
+                    const promises = [];
+
+                    $wrapper
+                        .find('img')
+                        .each((ix, img) => {
+                            const src = img.getAttribute("src");
+
+                            $(img).css("cursor", "").removeAttr("loading");
+
+                            if (!src || src.indexOf('//') === 0 || src.indexOf("://") > 0) {
+                                return;
+                            }
+
+                            var p = fetchDataUrl(src).then(dataUrl => img.src = dataUrl).catch(() => img.remove());
+
+                            promises.push(p);
+                        });
+
+                    const result = Promise.all(promises).then(() => $wrapper.html());
+
+                    return result;
+                }
+
+                function initializeSocialShare() {
+                    var $socialShareBox = $("#social-care-box")
+                        , $copyBtn = $("#social-care-box .copyBtn");
+
+                    $socialShareBox.find("ul.social-network-list a").on("click", function(e) {
+                        e.preventDefault();
+                        window.open(this.href, 'newwindow', 'width=550,height=500');
+                    });
+
+                    if (navigator.permissions) {
+                        navigator.permissions.query({ name: "clipboard-write" })
+                            .then(function(result) {
+                                if (result.state == "granted" || result.state == "prompt") {
+                                    $copyBtn.on('click', function() {
+                                        navigator.clipboard.writeText($("#social-care-box .url").val());
+                                        notificationService.success('Link copied to clipboard.');
+                                    });
+                                } else {
+                                    $copyBtn.hide();
+                                }
+                            })
+                            .catch(function() {
+                                $copyBtn.on('click', function() {
+                                    $("#social-care-box .url").prop('disabled', false).select().prop('disabled', true);
+                                    document.execCommand('copy');
+                                    notificationService.success('Link copied to clipboard.');
+                                });
+                            });
+                    }
+
+                    $socialShareBox.on("click", function(e) { e.stopPropagation(); });
+                    $("body").on('click', function() {
+                        if (!$socialShareBox.is(":visible")) {
+                            return true;
+                        }
+
+                        $socialShareBox.toggle();
+                    });
+                }
+
+                function initializeSocialShareHandlers() {
+                    $("a.social-care").on("click", toggleSocialShare);
+                }
+
+                function initializeVoteHandlers() {
+                    $('.vote-touch').off('click').click(toggleVote);
+                    initializeVoteTitles();
+                }
+
+                function initializeVoteTitles() {
+                    $('.vote-touch > .vote.up').parent().prop('title', 'This answer is helpful.');
+                    $('.vote-touch > .vote.down').parent().prop('title', 'This answer is not helpful.');
+
+                    $('.vote-touch > .vote.selected').parent().prop('title', 'Remove your vote for this answer.');
+                    $('.vote-touch.disabled > .vote.up').parent().prop('title', 'You have voted for this answer. To remove your vote click on the down arrow.');
+                    $('.vote-touch.disabled > .vote.down').parent().prop('title', 'You have voted for this answer. To remove your vote click on the up arrow.');
+
+                    $('.vote-touch.disabled.own').prop('title', 'You can\'t vote for your own answer.');
+                }
+
+                function toggleVote() {
+                    var userAuthenticated = false;
+                    if (!userAuthenticated) {
+                        window.location.href = "/login/v2/telerik?returnUrl=https://www.telerik.com/forums/unable-to-connect-to-silverlight-application-on-http-www-silverlight-net-showcase-page";
+                        return;
+                    }
+
+                    var $voteTouch = $(this)
+                        , $voteBtn = $voteTouch.children(".vote")
+                        , isEnalbed = !$voteBtn.parent().hasClass("disabled")
+                        , id = $voteBtn.data("id")
+                        , isUpVote = $voteBtn.hasClass("up")
+                        , isUndoAction = $voteBtn.hasClass("selected")
+                        , $oppositeVoteBtn = $voteTouch.siblings('.vote-touch').children('.vote')
+                        , $score = $voteTouch.siblings(".answer-score")
+                        , $loaderContainer = $('#msg-content-' + id + ' .loader-container')
+                        , request = {
+                            method: "DELETE",
+                            url: '/forums/api/v1/forums/threads/messages/' + id + '/votes/mine',
+                            contentType: "application/json",
+                            success: function() {
+                                var currentScore = Number($score.text())
+                                    , updateDirection = isUndoAction ? -1 : 1
+                                    , updateValue = (isUpVote ? 1 : -1) * updateDirection;
+
+                                $score.text(currentScore + updateValue);
+
+                                $voteBtn.toggleClass("selected");
+                                $oppositeVoteBtn.parent().toggleClass("disabled");
+                                initializeVoteTitles();
+                                $loaderContainer.hide();
+                            },
+                            error: function() {
+                                $loaderContainer.hide();
+                                showDefaultNotificationError();
+                            }
+                        };
+
+                    if (!isEnalbed) {
+                        return;
+                    }
+
+                    if (!isUndoAction) {
+                        request.method = "POST";
+                        request.data = JSON.stringify({ direction: isUpVote ? 1 : -1 });
+                    }
+
+                    $loaderContainer.show();
+                    $.ajax(request).then(function() {
+                        if (!isUndoAction && isUpVote) {
+                            achievementNotificationService.checkForNewAchievements('/forums/api/v1/profile/mine', true);
+                        }
+                    });
+                }
+
+                function toggleSocialShare(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    var isMobile = window.innerWidth < 992;
+
+                    var $this = $(this)
+                        , $box = $("#social-care-box")
+                        , url = $this.data("url")
+                        , title = $this.data("title")
+                        , $titleLabel = $box.find(".title")
+                        , $urlInput = $box.find(".url")
+                        , position = $this.offset()
+                        , top = position.top + $this.outerWidth()
+                        , left = position.left + $this.outerWidth() / 2 - $box.width() / 2;
+
+                    if (window.navigator.share && isMobile) {
+                        window.navigator.share({
+                            url: url
+                        });
+                        return;
+                    }
+
+                    if (isMobile) {
+                        return;
+                    }
+
+                    $urlInput.val($this.data("url"));
+                    $titleLabel.text(title);
+                    $box.show().css({ top: top, left: left });
+                    $urlInput.prop("disabled", false).select().prop("disabled", true).focus();
+
+                    $("ul.social-network-list a").each(function(index, element) {
+                        var $this = $(element)
+                            , shareUrl = $this.data("url").replace("{url}", url);
+
+                        $this.attr("href", shareUrl);
+                    });
+                }
+
+                function showAddCommentForm(button) {
+                    if (!userAuthenticated) {
+                        window.location.href = "/login/v2/telerik?returnUrl=https://www.telerik.com/forums/unable-to-connect-to-silverlight-application-on-http-www-silverlight-net-showcase-page";
+                        return;
+                    }
+
+                    toggleMessageButtons(false);
+
+                    var $button = $(button);
+                    var $form = $button.next();
+
+                    Promise.all([
+                        kendoService.initEditor($form.find('textarea')),
+                        kendoService.initUpload($form.find('.file-input'), $form.find('.file-upload-container'), '#file-template')
+                    ])
+                        .then(function() {
+                            var $textArea = $form.find('textarea');
+                            $textArea.closest("table.k-editor").addClass("sm-editor");
+                            $textArea.data('kendoEditor').value('');
+                            clearValidationErrors($form);
+                            $(button).hide().next().show();
+                        });
+                }
+
+                function hideCommentForm(button) {
+                    toggleMessageButtons(true);
+                    $(button).closest("form").hide().prev().show();
+                    $(button).closest("form").find('textarea').data('kendoEditor').value('');
+                }
+
+                function showEditCommentForm(button) {
+                    toggleMessageButtons(false);
+                    var $container = $(button).closest('.answer-container')
+                    var $form = $container.find('form');
+
+                    var files = $container.find('.attachment')
+                        .map(function() {
+                            var $el = $(this);
+                            return {
+                                id: $el.data('attachmentid'),
+                                name: $el.text().trim(),
+                                size: $el.data('filesize'),
+                                extension: $el.data('extension')
+                            };
+                        });
+
+                    var commentHtml = $container.find('.comment-text').html();
+
+                    Promise.all([
+                        embedImages(commentHtml),
+                        kendoService.initEditor($form.find('textarea')),
+                        kendoService.initUpload($form.find('.file-input'), $form.find('.file-upload-container'), '#file-template', files)
+                    ])
+                        .then(function([html]) {
+                            var $textArea = $form.find('textarea');
+                            $textArea.closest("table.k-editor").addClass("sm-editor");
+
+                            $textArea.data('kendoEditor').value(html);
+
+                            clearValidationErrors($form);
+                            $form.show().prev().hide();
+                        });
+                }
+
+                initializeComments = function() {
+                    $(".btn-comment").off('click').click(function() { showAddCommentForm(this); });
+                    $(".btn-edit-comment").off('click').click(function() { showEditCommentForm(this); });
+
+                    $(".btn-comment-close").off('click').click(function() { hideCommentForm(this); });
+                }
+
+                window.commentSubmitted = function(data, status, xhr) {
+                    if (xhr.status === 202) {
+                        notificationService.success('Your comment has been submitted for review.');
+                    }
+
+                    achievementNotificationService.checkForNewAchievements('/forums/api/v1/profile/mine', true);
+
+                    toggleMessageButtons(true);
+                    $('.btn-subscribe').addClass('subscribed');
+                    initializeComments();
+                }
+
+                window.commentEdited = function(data, status, xhr) {
+                    if (xhr.status === 202) {
+                        notificationService.success('Your comment has been submitted for review.');
+                    }
+
+                    toggleMessageButtons(true);
+                    $('.btn-subscribe').addClass('subscribed');
+                    initializeComments();
+                }
+
+                window.executeRecaptchaValidationFormBeforeRequest = function(xhr) {
+                    const $form = $(this);
+                    let token = $form.data('validation-token');
+                    const containerId = $form.data('recaptcha-container');
+                    const loadingSelector = $form.data('ajax-loading');
+                    $(loadingSelector).show();
+
+                    if (!token) {
+                        recaptchaToken($form, containerId);
+                        return false;
+                    }
+
+                    xhr.setRequestHeader('x-validation-token', $(this).data('validation-token'));
+                    $(loadingSelector).hide();
+                    return true;
+                }
+
+                var tags = null;
+                function initMultiSelectIfPresent($container) {
+                    var multiSelectElement = $container.find('#tag-select')[0];
+
+                    if (!multiSelectElement) {
+                        return Promise.resolve();
+                    }
+
+                    tags = tags || new Promise(function(resolve, reject) {
+                            $.getJSON('/forums/api/v1/forums/22/tags', function(data) {
+                                var result = data.map(function(d) { return { text: d.name, value: d.id } });
+                                resolve(result);
+                            }, reject)
+                    });
+
+                    return tags.then(function(dataSource) {
+                        return kendoService.initMultiSelect(dataSource, multiSelectElement);
+                    })
+                        .then(function() {
+                            var tagIds = $(multiSelectElement).data('tagIds');
+                            $(multiSelectElement).data('kendoMultiSelect').value(tagIds);
+                        });
+                }
+
+                function showEditPostForm(button) {
+                    var $container = $(button)
+                        .closest('.edit-post-popup')
+                        .addClass('open')
+                        .closest('.answer-container');
+
+                    $(button).toggleClass('Btn loader-btn icon');
+
+                    var form = $container.find('.post-edit-form')[0];
+
+                    var textArea = $(form).find('textarea')[0];
+                    var fileInput = $(form).find('.file-input')[0];
+
+                    var files = $container.find('.attachment')
+                        .map(function() {
+                            var $el = $(this);
+                            return {
+                                id: $el.data('attachmentid'),
+                                name: $el.text().trim(),
+                                size: $el.data('filesize'),
+                                extension: $el.data('extension')
+                            };
+                        });
+
+                    const postHtml = $container.find('.msg-content').html();
+
+                    Promise.all([
+                        embedImages(postHtml),
+                        kendoService.initUpload(fileInput, $(form).find('.file-upload-container'), '#file-template', files),
+                        kendoService.initEditor(textArea),
+                        initMultiSelectIfPresent($container)
+                    ])
+                        .then(function([html]) {
+                            clearValidationErrors(form);
+                            $(textArea).data('kendoEditor').value(html);
+                            $(form).show().prev().hide();
+                            $(button).toggleClass('Btn loader-btn icon').closest('.actions-container').hide();
+                            $(".edit-overlay").show();
+                        });
+                }
+
+                function toggleMessageButtons(enabled) {
+                    $('.btn-add-answer,.btn-comment,.btn-accept,.btn-edit-post,.btn-edit-comment').prop('disabled', !enabled)
+                }
+
+                function showAnswerForm() {
+                    if (!userAuthenticated) {
+                        window.location.href = "/login/v2/telerik?returnUrl=https://www.telerik.com/forums/unable-to-connect-to-silverlight-application-on-http-www-silverlight-net-showcase-page";
+                        return;
+                    }
+
+                    toggleMessageButtons(false);
+
+                    $('.btn-add-answer').prop('disabled', true).addClass('Btn loader-btn');
+
+                    var form = $('.answer-form')[0];
+
+                    Promise.all([
+                        kendoService.initEditor($('.answer-form textarea')),
+                        kendoService.initUpload('.answer-form .file-input', '.answer-form .file-upload-container', '#file-template')
+                    ])
+                        .then(function() {
+                            clearValidationErrors(form);
+                            $('.answer-form textarea').data('kendoEditor').value('');
+                            $('.answer-form .file-input').data('kendoUpload').removeAllFiles();
+                            $('.btn-add-answer').prop('disabled', false).removeClass('Btn loader-btn').hide();
+                            $('.answer-form').show();
+                        });
+                }
+
+                function hideAnswerForm(button) {
+                    toggleMessageButtons(true);
+                    $(".edit-overlay").hide();
+                    $(button).closest('.edit-post-popup').removeClass('open');
+                    $(button).closest('.answer-container').find('.actions-container').show();
+                    $(button).closest('form').hide().prev().show();
+                }
+
+                function initializeAnswers() {
+                    $('.btn-add-answer').off('click').click(function() { showAnswerForm(); });
+                    $('.btn-cancel-answer').off('click').click(function() { hideAnswerForm(this); });
+                    $('.btn-edit-post').off('click').click(function() { showEditPostForm(this); });
+                    $("#sortDropdown").off('change').change(function() { $(this).parent().parent().submit(); });
+
+                }
+
+                function scrollToHash(hash) {
+                    var $hash = $(hash);
+
+                    if (!$hash.length) {
+                        return;
+                    }
+
+                    window.scrollTo(0, $hash.offset().top - $navHeight - 30);
+                }
+
+                function initializeLocationHashHandler() {
+                    window.addEventListener("hashchange", function() {
+                        scrollToHash(document.location.hash);
+                    });
+
+                    if (document.location.hash) {
+                        $navHeight = $("#js-tlrk-nav").height();
+                        setTimeout(function() {
+                            scrollToHash(document.location.hash);
+                        }, 1000);
+                    }
+                }
+
+                window.executeAnswerFormBeforeRequest = function(xhr) {
+                    const $answerForm = $('.answer-form');
+                    let token = $answerForm.data('validation-token');
+                    const loaderSelector = $answerForm.data('ajax-loading');
+                    $(loaderSelector).show();
+
+                    if (!token) {
+                        recaptchaToken($answerForm, 'recaptcha-answer-container');
+                        return false;
+                    }
+
+                    xhr.setRequestHeader('x-validation-token', $(this).data('validation-token'));
+                    $(loaderSelector).hide();
+                    return true;
+                }
+
+                async function recaptchaToken($form, containerId) {
+                    const token = await acquireRecaptchaToken(containerId);
+
+                    $form.data('validation-token', token);
+                    $form.submit();
+                }
+
+                window.initializeThreadMessageHandlers = function() {
+                    initializeAnswers();
+                    initializeSocialShareHandlers();
+                    initializeComments();
+                    initializeVoteHandlers();
+                }
+
+                window.postSubmitted = function(data, status, xhr) {
+                    if (xhr.status === 202) {
+                        notificationService.success('Your answer has been submitted for review.');
+                    }
+
+                    achievementNotificationService.checkForNewAchievements('/forums/api/v1/profile/mine', true);
+
+                    initializeThreadMessageHandlers();
+                }
+
+                window.postEdited = function(data, status, xhr) {
+                    if (xhr.status === 202) {
+                        notificationService.success('Your answer has been submitted for review.');
+                    }
+
+                    initializeThreadMessageHandlers();
+                }
+
+                window.questionEdited = function(data, status, xhr) {
+                    if (xhr.status === 202) {
+                        notificationService.success('Your question has been submitted for review.');
+                    }
+
+                    initializeThreadMessageHandlers();
+                }
+
+                $fq.push(function() {
+
+                    initializeSocialShare();
+                    initializeThreadMessageHandlers();
+                    initializeLocationHashHandler();
+
+                    $.get('/forums/api/v1/forums/threads/318594/viewscounter');
+                });
+            })();
+        </script>
+
+        <div id="code-format-window"></div>
+        <script id="code-format-template" type="text/x-custom-template">
+            <div class="code-format-container">
+    <p class="code-format-title u-mt0">Insert Code</p>
+    <div class="u-mt20">
+        <label for="paste-code" class="d-inline-block u-mb10">Type or paste code:</label>
+        <textarea id="paste-code"></textarea>
+    </div>
+
+    <div class="u-mt20">
+        <label for="lang" class="u-dib">Preview language:</label>
+        <div class="dropdown u-ml10 u-mr10">
+            <select id="lang-dropdown"></select>
+        </div>
+        <button id="code-preview" onClick="kendoEditorService.onPreview(event)" class="btn-outline">Preview</button>
+    </div>
+
+    <div id="preview" class="u-mt20"></div>
+
+    <div class="d-flex u-mt20">
+        <button type="button" onClick="kendoEditorService.onInsert(event)" class="btn-accent-sm">Insert code</button>
+        <a href="#" onClick="kendoEditorService.onClose(event)" class="btn-cancel-sm u-ml20">Cancel</a>
+    </div>
+</div>
+        </script>
+
+        <script id="file-template" type="text/x-kendo-template">
+            <div class="file-wrapper">
+    <span class="k-progress"></span>
+    <span class="file-upload-text">#=name#</span>
+    <span class="file-upload-text-muted"> - #: kendoUploadService.getFormattedFilesSize(size) #</span>
+    <strong class="k-upload-status">
+        <button type="button" class="k-button k-upload-action" aria-label="Remove"></button>
+        <button type="button" class="k-button k-upload-action" aria-label="Retry"></button>
+    </strong>
+</div>
+        </script>
+    
+</head>
+<body class="d-flex flex-column">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-6X92"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    
+<link rel="preload" href="https://d6vtbcy3ong79.cloudfront.net/fonts/latest/css/metric.min.css" as="style" media="(min-width: 621px)"><link rel="preload" href="https://d6vtbcy3ong79.cloudfront.net/fonts/latest/metric/Metric-Light.woff2" as="font" crossorigin="anonymous" media="(min-width: 621px)"><link rel="preload" href="https://d6vtbcy3ong79.cloudfront.net/fonts/latest/metric/Metric-Medium.woff2" as="font" crossorigin="anonymous" media="(min-width: 621px)"><link rel="preload" href="https://d6vtbcy3ong79.cloudfront.net/fonts/latest/metric/Metric-Regular.woff2" as="font" crossorigin="anonymous" media="(min-width: 621px)"><link rel="preload" href="https://d6vtbcy3ong79.cloudfront.net/fonts/latest/metric/Metric-Semibold.woff2" as="font" crossorigin="anonymous" media="(min-width: 621px)"><link rel="preload" href="https://d6vtbcy3ong79.cloudfront.net/telerik-navigation/3.7.37/css/index.min.css" as="style"><style id="js-tlrk-nav-inline-styles">.TK-Nav--Loading,.TK-Nav--Loading *{box-sizing:border-box}.TK-Nav--Loading{overflow:hidden;background:#fff;font-family:Metric}.TK-Nav--Loading>.TK-Bar{overflow:hidden;background:#fff}.TK-Nav--Loading .TK-container{max-width:1230px;margin:0 auto;padding:0 30px}.TK-Nav--Loading .TK-TLRK-Brand{margin:0}.TK-Nav--Loading .TK-Dropdown,.TK-Nav--Loading .TK-Nav-Overlay,.TK-Nav--Loading .TK-Print{display:none}.TK-Nav--Loading .TK-Context-Menu,.TK-Nav--Loading .TK-Products-Menu-Item-Button{visibility:hidden}@media only screen and (min-width:1240px){.TK-Nav--Loading,.TK-Nav--Loading>.TK-Bar{height:60px}}@media only screen and (max-width:1239px){.TK-Nav--Loading,.TK-Nav--Loading>.TK-Bar{height:45px}}@media only screen and (max-width:1229px){.TK-Nav--Loading .TK-container{padding:0 20px}}</style><link rel="stylesheet" type="text/css" href="https://d6vtbcy3ong79.cloudfront.net/fonts/latest/css/metric.min.css" id="js-tlrk-nav-metric" class="is-loading" onload="this.classList.remove('is-loading')" onerror="this.classList.remove('is-loading')"><link rel="stylesheet" type="text/css" href="https://d6vtbcy3ong79.cloudfront.net/telerik-navigation/3.7.37/css/index.min.css" id="js-tlrk-nav-styles" class="is-loading" onload="this.classList.remove('is-loading')" onerror="this.classList.remove('is-loading')"><nav id="js-tlrk-nav" class="TK-Nav TK-Nav--Shadow TK-Nav--Loading" data-tlrk-nav-version="3.7.37" data-tlrk-nav-template="nav-test-studio-noa-rel-component"><section class="TK-Bar"><div class="TK-container TK-Bar-container"><figure class="TK-TLRK-Brand"><a href="#skip-to-content" id="js-tlrk-skip-link" class="TK-Skip-Link">skip navigation</a> <a href="/" class="TK-TLRK-Logo" aria-label="Go to Homepage"><svg xmlns="http://www.w3.org/2000/svg" width="18px" height="60" viewBox="0 0 49 60.3"><path fill="#5ce500" d="M11.2 14.9L0 21.3l17.4 10.1v20.1l11.2-6.4c.5-.3.9-1 .9-1.6V24.4L13 14.9c-.5-.3-1.3-.3-1.8 0z"/><path fill="#5ce500" d="M12.1 48.4V34.5L0 41.5zM25 .2c-.5-.3-1.3-.3-1.8 0L10.7 7.4l24.1 13.9v27.9L47.3 42c.5-.3.9-1 .9-1.6V13.6L25 .2z"/></svg></a></figure><ul class="TK-Products-Menu"><li class="TK-Products-Menu-Item TK-Static"><button type="button" class="TK-Products-Menu-Item-Button" aria-label="Product Navigation">Telerik Test Studio <i class="TK-Arrow"></i></button><div id="js-tlrk-nav-dash" class="TK-Dash TK-Dropdown TK-Dropdown--Full TK-Dropdown--White TK-Dropdown---Mobile"><div class="TK-container"><div class="TK-row TK-Border"><div class="TK-col-5"><div class="TK-Bundles TK-BG"><p class="TK-Dash-Title">Product Bundles</p><a href="/devcraft" class="TK-Bundle"><div class="TK-Bundle-Icon TK--Desktop"><svg xmlns="http://www.w3.org/2000/svg" width="210" height="90" fill="none" viewBox="0 0 210 90"><g clip-path="url(#clip0_142_1561)"><rect width="210" height="88" y="-.667" fill="#dcecff" rx="5"/><path fill="#cdd6f9" d="M210 76.233h-44.382v-51.56H210z"/><g clip-path="url(#clip1_142_1561)"><path fill="#2b2bb2" d="M151.069 68.52h44.386v22.646c0 4.716-2.26 8.545-5.044 8.545h-34.298c-2.784 0-5.044-3.83-5.044-8.545zm-.002-40.53h44.386V13.476c0-3.023-2.26-5.477-5.044-5.477h-34.298c-2.784 0-5.044 2.454-5.044 5.477zm-24.998-15.069h-18.411v5.54h18.411z"/><path stroke="#fff" stroke-miterlimit="10" stroke-width="1.12" d="m109.802 14.936 1.766 1.51 1.764-1.51 1.763 1.51 1.766-1.51 1.764 1.51 1.766-1.51 1.766 1.51 1.768-1.51"/><path fill="#5777ea" d="M195.453 18.042h-44.382v58.191h44.382z"/><path stroke="#0357ff" d="M153.458 18.578H96.685v49.269h56.773z"/><path fill="#829dfa" d="M174.664 18.042h-67.006V68.41h67.006z"/><g stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" clip-path="url(#clip2_142_1561)"><path stroke="#fc3" d="m123.571 27.581-9.237-.057"/><path stroke="#fff" d="m117.767 33.647 8.914.057"/><path stroke="#cdffca" d="m132.167 33.722 8.908.051"/><path stroke="#fff" d="m117.733 39.753 18.504.115m5.492.017 29.725.183m-53.761 5.785 13.928.086m5.486.017 31.334.195m-50.782 5.808 29.97.183"/><path stroke="#cdffca" d="m153.121 52.16 29.72.183M117.62 58.06l22.648.142"/><path stroke="#fff" d="m144.338 58.22 23.557.143m4.071.017 15.843.098"/></g></g><g clip-path="url(#clip3_142_1561)"><path fill="#e26841" d="M57.489 47.81c.13.018-1.6-11.25 4.573-15.705 4.566-3.294 9.575-.097 20.417-3.418a41 41 0 0 0 5.953-2.345l2.561 3.895a24.5 24.5 0 0 1-5.337 1.998c-3.373.828-6.246.754-11.493.587-3.725-.12-6.125-.399-9.419.753a11 11 0 0 0-2.13.914c-5.45 3.266-5.252 13.302-5.125 13.32"/><path fill="#e26841" d="M57.305 44.42a12.34 12.34 0 0 1 3.422-6.972c2.582-2.531 5.671-3.041 7.997-3.394 4.924-.747 8.216.375 10.958.795 4.206.644 10.375.132 18.762-5.208l1.109 5.764a34.1 34.1 0 0 1-11.87 3.5c-10.925 1.084-17.198-3.974-24.233-.47-3.163 1.572-5.072 4.178-6.145 5.985"/><path fill="#000" d="M82.257 73.544 92.385 83.76l-8.682 3.5-10.705-11.09V62.161h9.259z"/><path fill="#e26841" d="M87.572 86.964a18.83 18.83 0 0 0-5.576-8.835A18.6 18.6 0 0 0 72.6 73.67h-.003a18.5 18.5 0 0 0-8.382.59 18.6 18.6 0 0 0-7.276 4.24v8.464z"/><path fill="#14254c" d="M72.598 86.964a7.6 7.6 0 0 0-.6-5.074 7.52 7.52 0 0 0-3.666-3.528 7.44 7.44 0 0 0-8.198 1.44 7.6 7.6 0 0 0-1.681 2.411 37 37 0 0 0-1.66 4.75z"/><path fill="#000" d="m56.911 58.307 19.27.058-1.612 15.179 3.8 12.343-21.432.049z"/><path fill="#14254c" d="M75.816 73.542H73.4a16.3 16.3 0 0 1-6.3-1.263 16.5 16.5 0 0 1-5.34-3.6 16.6 16.6 0 0 1-3.57-5.386 16.7 16.7 0 0 1-1.253-6.353V44.873a6.67 6.67 0 0 1 1.928-4.696 6.56 6.56 0 0 1 4.654-1.946h2.417c2.162 0 4.303.43 6.3 1.264a16.5 16.5 0 0 1 5.342 3.599 16.6 16.6 0 0 1 3.569 5.386 16.7 16.7 0 0 1 1.253 6.354V66.9c0 .872-.17 1.736-.501 2.541a6.6 6.6 0 0 1-1.427 2.155 6.6 6.6 0 0 1-2.137 1.44 6.5 6.5 0 0 1-2.52.505z"/><path fill="#e8ab6a" d="M64.375 58.25v-.936c0-2.894 1.14-5.67 3.17-7.717a10.78 10.78 0 0 1 7.651-3.196 10.7 10.7 0 0 1 6.609 2.274 14.7 14.7 0 0 1 .595 4.145v13.57a10.72 10.72 0 0 1-7.203 2.773c-2.87 0-5.622-1.15-7.652-3.196a10.96 10.96 0 0 1-3.17-7.717"/><path stroke="#fff" stroke-miterlimit="10" stroke-width="3.736" d="M74.721 65.125a5.02 5.02 0 0 1-3.562-1.488 5.1 5.1 0 0 1-1.477-3.593"/><path fill="#da7f27" d="M80.086 60.7h-5.209v-9.047z"/><path fill="#14254c" d="M82.4 49.558H61.209v1.27H82.4zm0 5.253H61.209v1.27H82.4zm.002 10.506H65.374v1.27h17.028zm-.002-5.252H61.209v1.27H82.4z"/><path fill="#fff" d="M69 54.154h-1.5a1 1 0 0 1-.717-.3 1.02 1.02 0 0 1-.22-1.113 1.02 1.02 0 0 1 .55-.552 1 1 0 0 1 .387-.078H69c.269 0 .526.108.716.299a1.026 1.026 0 0 1-.328 1.666 1 1 0 0 1-.388.078m11.837 0h-1.5a1 1 0 0 1-.717-.3 1.02 1.02 0 0 1-.297-.722c0-.27.107-.53.297-.722s.448-.299.716-.299h1.502c.268 0 .526.108.716.299a1.026 1.026 0 0 1-.329 1.666 1 1 0 0 1-.388.078"/><path fill="#000" d="M66.486 54.154c.56 0 1.013-.458 1.013-1.022s-.453-1.021-1.013-1.021-1.013.457-1.013 1.021.454 1.022 1.013 1.022m12.154 0c.56 0 1.013-.458 1.013-1.022s-.454-1.021-1.013-1.021c-.56 0-1.013.457-1.013 1.021s.453 1.022 1.013 1.022"/><path fill="#e26841" d="M110.225 81.406c.852.106 1.627.55 2.155 1.232s.765 1.548.66 2.407l-.232 1.913a3.76 3.76 0 0 1-1.204 2.329 3.7 3.7 0 0 1-2.425.959l-5.128.085a3.7 3.7 0 0 1-2.295-.751 3.75 3.75 0 0 1-1.353-2.015l-.622-2.31a3.3 3.3 0 0 1 .587-2.882 3.22 3.22 0 0 1 2.648-1.235l6.926.242q.143.008.283.026"/><path fill="#e26841" d="m100.539 87.046-.682-4.84a1.13 1.13 0 0 0-.381-.702l-.585-.505a1.118 1.118 0 0 0-1.829.627l-1.127 5.42z"/><path fill="#000" d="m8.475 81.297 6.926-.243a3.2 3.2 0 0 1 1.47.3c.46.214.863.534 1.178.935a3.28 3.28 0 0 1 .587 2.882l-.622 2.31a3.75 3.75 0 0 1-1.353 2.014 3.7 3.7 0 0 1-2.295.752l-5.128-.086a3.7 3.7 0 0 1-2.424-.959 3.76 3.76 0 0 1-1.204-2.328l-.232-1.914a3.28 3.28 0 0 1 .66-2.407 3.23 3.23 0 0 1 2.437-1.257"/><path fill="#000" d="m17.88 86.964.68-4.841a1.13 1.13 0 0 1 .383-.703l.584-.505a1.12 1.12 0 0 1 1.83.627l1.127 5.42zm38.564.001.363-2.978a16.3 16.3 0 0 0-.525-6.517 16.2 16.2 0 0 0-3.043-5.774 16.05 16.05 0 0 0-5.063-4.085 15.9 15.9 0 0 0-12.674-.814 16 16 0 0 0-5.536 3.404 16.2 16.2 0 0 0-3.745 5.338 16.3 16.3 0 0 0-1.34 6.398v.027l-.015 5.001z"/><path fill="#8174f2" d="M51.708 43.28a6.37 6.37 0 0 0-3.312-1.773 6.33 6.33 0 0 0-3.727.408l-5.883 2.554a38.5 38.5 0 0 1-19.345 2.974l-1.943-.205.557-10.405.55.142a38.45 38.45 0 0 0 20.456-.34l6.284-1.847a6.33 6.33 0 0 1 4.608.408 6.42 6.42 0 0 1 3.125 3.441l3.798 9.86z"/><path fill="#8174f2" d="M50.701 25.166c.853.001 1.696.17 2.484.5.787.33 1.502.812 2.104 1.42a6.6 6.6 0 0 1 1.406 2.125c.325.795.493 1.646.492 2.505l-.31 16.781-3.611-12.007a6.52 6.52 0 0 0-3.467-3.36 6.44 6.44 0 0 0-4.808-.032l-1.534.604a28.5 28.5 0 0 1-11.739 1.955l-8.275-.377.383-9.908 8.22 1.501a28.5 28.5 0 0 0 11.343-.227l5.897-1.323a6.4 6.4 0 0 1 1.415-.157"/><path fill="#0c1b38" d="M43.991 36.852c-1.6.093-3.167.503-4.61 1.207a12.2 12.2 0 0 0-3.801 2.895 12.3 12.3 0 0 0-2.414 4.142 12.4 12.4 0 0 0-.657 4.758l.68 11.86a11.7 11.7 0 0 0 3.612 7.813 11.52 11.52 0 0 0 7.944 3.183 11.52 11.52 0 0 0 7.978-3.217 11.72 11.72 0 0 0 3.58-7.877l.585-11.863q.015-.306.015-.611c0-3.265-1.286-6.397-3.575-8.705a12.16 12.16 0 0 0-9.337-3.585"/><path fill="#8174f2" d="M56.89 46.588h-24.4v6.235h24.4z"/><path fill="#e7aa6a" d="M48.966 49.75c.752 0 1.474.302 2.006.838.532.537.83 1.264.83 2.023v.684c0 .759-.298 1.486-.83 2.023a2.82 2.82 0 0 1-2.006.838H32.49V49.75z"/><path fill="#e06940" d="M39.038 50.811v5.345H36.28z"/><path fill="#fff" d="M47.222 51.977h-1.466a.996.996 0 0 0-.993 1c0 .552.445 1 .993 1h1.466a.996.996 0 0 0 .993-1c0-.552-.445-1-.993-1"/><path fill="#000" d="M47.906 53.98a.997.997 0 0 0 .992-1.001.997.997 0 0 0-.992-1.002.997.997 0 0 0-.993 1.002.997.997 0 0 0 .993 1m-12.508.001a.997.997 0 0 0 .992-1.001.997.997 0 0 0-.992-1.002.997.997 0 0 0-.993 1.002.997.997 0 0 0 .992 1"/><path fill="#fff" d="M35.247 51.977H33.78a.996.996 0 0 0-.993 1c0 .552.445.999.993.999h1.465a.996.996 0 0 0 .993-1 .996.996 0 0 0-.992-.999"/><path fill="#000" d="M35.93 53.98a.997.997 0 0 0 .993-1.002.997.997 0 0 0-.993-1 .997.997 0 0 0-.993 1 .997.997 0 0 0 .993 1.002"/><path fill="#14254c" d="M36.086 85.932c.073.162.221.52.406 1.033h15.55a39 39 0 0 0-2.256-7.143 7.52 7.52 0 0 0-4.149-3.99 7.43 7.43 0 0 0-5.73.136 7.53 7.53 0 0 0-3.956 4.184 7.62 7.62 0 0 0 .135 5.78"/><path fill="#62de7f" d="M68.085 4.022H25.682c-3.698 0-6.696 3.024-6.696 6.754s2.998 6.753 6.696 6.753h42.403c3.699 0 6.697-3.024 6.697-6.753s-2.998-6.754-6.697-6.754"/><path fill="#62de7f" d="m58.61 22.342-6.548-6.604 6.549-6.604z"/><path fill="#282f89" d="M33.606 7.685h.636v4.17h2.378v.565h-3.014zM38.53 8.89c.246 0 .488.06.706.173.21.099.39.253.522.446.118.184.197.392.23.61q.061.377.05.76H37.53c-.005.3.081.595.246.844a.83.83 0 0 0 .713.318.91.91 0 0 0 .72-.3c.102-.116.177-.254.218-.403h.566a1.2 1.2 0 0 1-.15.422q-.11.213-.283.382c-.18.175-.404.295-.648.348a2 2 0 0 1-.47.052 1.43 1.43 0 0 1-1.084-.469 1.84 1.84 0 0 1-.445-1.313 2 2 0 0 1 .448-1.351 1.48 1.48 0 0 1 1.17-.519m.917 1.528a1.5 1.5 0 0 0-.163-.602.84.84 0 0 0-.79-.42.87.87 0 0 0-.664.29 1.1 1.1 0 0 0-.284.733zm1.346-2.414h.582v.964h.545v.473h-.545v2.254a.25.25 0 0 0 .121.242q.108.042.224.036h.09q.047 0 .111-.008v.455q-.1.03-.206.042a2 2 0 0 1-.232.013.62.62 0 0 1-.545-.208.93.93 0 0 1-.146-.54V9.44h-.46v-.473h.463zm1.76 1.057a.36.36 0 0 0 .268-.199.8.8 0 0 0 .091-.393v-.04l-.008-.04h-.348v-.703h.684v.648a1.36 1.36 0 0 1-.17.701.66.66 0 0 1-.514.33zm1.494 2.276c.006.16.056.313.146.445a.9.9 0 0 0 .754.28c.196.004.39-.044.562-.14a.46.46 0 0 0 .243-.434.37.37 0 0 0-.195-.338 2.3 2.3 0 0 0-.492-.164l-.457-.116a2.2 2.2 0 0 1-.646-.247.73.73 0 0 1-.37-.651 1 1 0 0 1 .35-.793c.266-.213.6-.321.94-.303a1.3 1.3 0 0 1 1.116.458 1 1 0 0 1 .208.625h-.543a.7.7 0 0 0-.137-.358.88.88 0 0 0-.688-.229.8.8 0 0 0-.494.126.39.39 0 0 0-.167.332.41.41 0 0 0 .22.36q.178.1.377.143l.38.093q.437.083.832.294a.78.78 0 0 1 .335.7 1.07 1.07 0 0 1-.347.795 1.47 1.47 0 0 1-1.054.336 1.4 1.4 0 0 1-1.084-.348 1.33 1.33 0 0 1-.34-.866zm4.637-2.37h.545v.597c.08-.163.192-.307.33-.424a.85.85 0 0 1 .66-.247l.13.013v.613a1 1 0 0 0-.188-.016.82.82 0 0 0-.668.282 1 1 0 0 0-.234.65v1.985h-.575zm3.457 3.079a.79.79 0 0 0 .784-.436c.145-.304.217-.636.213-.973.01-.27-.042-.538-.153-.784a.87.87 0 0 0-.837-.477.82.82 0 0 0-.768.403c-.167.299-.25.638-.24.98a1.65 1.65 0 0 0 .24.917.85.85 0 0 0 .76.37m.023-3.179a1.54 1.54 0 0 1 1.119.445 1.74 1.74 0 0 1 .456 1.31 2.25 2.25 0 0 1-.403 1.38 1.46 1.46 0 0 1-1.25.544 1.4 1.4 0 0 1-1.122-.482 1.92 1.92 0 0 1-.415-1.294c-.026-.5.129-.993.437-1.387a1.47 1.47 0 0 1 1.178-.516m3.515 0c.336-.015.668.085.941.284a1.36 1.36 0 0 1 .437.977h-.561a1.05 1.05 0 0 0-.233-.53.74.74 0 0 0-.585-.212.8.8 0 0 0-.786.542c-.11.275-.162.57-.154.867-.01.306.066.61.219.874a.75.75 0 0 0 .684.354.74.74 0 0 0 .567-.22c.151-.17.252-.379.29-.604h.56a1.52 1.52 0 0 1-.482 1.004c-.28.22-.628.332-.982.317a1.3 1.3 0 0 1-1.07-.495 1.9 1.9 0 0 1-.4-1.236 2.1 2.1 0 0 1 .436-1.415 1.42 1.42 0 0 1 1.118-.507m1.875-1.183h.553v2.751l1.477-1.467h.735l-1.31 1.292 1.382 2.16h-.735l-1.068-1.74-.483.444v1.296h-.552zm3.556 0h.648v1.557l-.156 2.05h-.327l-.167-2.05zm0 4.065h.636v.671h-.637z"/></g></g><defs><clipPath id="clip0_142_1561"><path fill="#fff" d="M0 0h210v90H0z"/></clipPath><clipPath id="clip1_142_1561"><path fill="#fff" d="M82.32 7.999h125.957v79H82.32z"/></clipPath><clipPath id="clip2_142_1561"><path fill="#fff" d="M114.057 13.999h77.36v49h-77.36z"/></clipPath><clipPath id="clip3_142_1561"><path fill="#fff" d="M2.975-1.001h110.09v91H2.975z"/></clipPath></defs></svg></div><p class="TK-Bundle-Title TK-Best-Value">DevCraft</p><p class="TK-Bundle-Description">All <strong>Telerik .NET</strong> and <strong>Kendo UI </strong>JavaScript components and AI Tools in one package.</p><ul class="TK-Bundle-list TK--Desktop"><li>MCP Servers (AI Tools)</li><li>Embedded Reporting</li><li>Document Processing Libraries</li><li>SSO Account Sign-in</li></ul></a><a href="/kendo-ui" class="TK-Bundle" data-match-exact-path><div class="TK-Bundle-Icon TK--Desktop"><svg xmlns="http://www.w3.org/2000/svg" width="210" height="90" fill="none" viewBox="0 0 210 90"><g clip-path="url(#clip0_142_1689)"><rect width="210" height="85" y="9.818" fill="#dcecff" rx="5"/><g clip-path="url(#clip1_142_1689)"><path fill="#829dfa" d="M219.429 52.666c10.178 0 18.429-7.584 18.429-16.94s-8.251-16.942-18.429-16.942S201 26.369 201 35.725s8.251 16.941 18.429 16.941"/><path fill="#2d25b8" d="M201.142 35.725h18.429l-13.035-11.982c-3.332 3.063-5.394 7.299-5.394 11.982"/><path fill="#151753" d="m206.536 23.743 13.035 11.982V18.784c-5.095 0-9.702 1.895-13.035 4.959"/></g><g clip-path="url(#clip2_142_1689)"><path stroke="#fff" stroke-miterlimit="10" stroke-width="1.92" d="M107.127 98.727c26.992 0 48.873-21.88 48.873-48.872S134.119.982 107.127.982 58.255 22.863 58.255 49.855s21.88 48.872 48.872 48.872Z"/><path stroke="#829dfa" stroke-miterlimit="10" stroke-width="3.84" d="M88.101 94.88a48.8 48.8 0 0 0 19.026 3.835 48.8 48.8 0 0 0 19.027-3.834 48.9 48.9 0 0 0 15.534-10.478 49 49 0 0 0 10.477-15.534c2.48-5.85 3.835-12.273 3.835-19.026a48.8 48.8 0 0 0-3.835-19.027 48.8 48.8 0 0 0-10.477-15.533M107.127.982a48.8 48.8 0 0 0-19.026 3.835 48.8 48.8 0 0 0-15.534 10.478A49 49 0 0 0 62.09 30.828a48.8 48.8 0 0 0-3.834 19.027 48.8 48.8 0 0 0 3.834 19.026"/><path stroke="#fff" stroke-miterlimit="10" stroke-width="1.92" d="M107.127 84.06c18.892 0 34.206-15.314 34.206-34.205 0-18.892-15.314-34.206-34.206-34.206-18.891 0-34.205 15.314-34.205 34.206 0 18.891 15.314 34.206 34.205 34.206Z"/><path stroke="#62de7f" stroke-miterlimit="10" stroke-width="3.84" d="M82.935 74.047c6.192 6.191 14.74 10.014 24.192 10.014s18.001-3.835 24.192-10.014c6.192-6.192 10.014-14.74 10.014-24.192s-3.834-18-10.014-24.192c-6.191-6.192-14.74-10.014-24.192-10.014"/><path fill="#fff" d="M107.127 70.383c11.338 0 20.529-9.19 20.529-20.528s-9.191-20.529-20.529-20.529-20.528 9.191-20.528 20.529 9.19 20.528 20.528 20.528"/><path fill="#0357ff" d="M98.537 55.346v-2.5q.655.43 1.201.645.547.215 1.201.215.948 0 1.329-.567.39-.565.39-1.875V43.57h2.578v7.998q0 4.473-4.072 4.473-.752 0-1.465-.205-.712-.205-1.162-.489m8.428-.341v-2.52q1.826 1.357 3.916 1.357.996 0 1.582-.322.596-.332.596-1.016 0-.556-.332-.85-.333-.3-1.104-.585l-1.797-.605a7 7 0 0 1-1.25-.528 4.3 4.3 0 0 1-.947-.713 2.9 2.9 0 0 1-.625-1.015 4 4 0 0 1-.205-1.328q0-1.104.596-1.915t1.572-1.2q.976-.401 2.197-.401 2.12 0 3.721.957v2.5q-1.738-1.28-3.643-1.28-.869 0-1.406.313-.537.303-.537.908 0 .538.322.82.332.284 1.045.518l1.914.664q1.553.528 2.275 1.406.733.88.733 2.237 0 1.172-.635 2.012-.635.83-1.67 1.23-1.035.39-2.363.39a8 8 0 0 1-2.207-.292q-1.035-.294-1.748-.742"/></g><g clip-path="url(#clip3_142_1689)"><path fill="#e26841" d="M34.593 71.628q-.202-1.27-.202-2.556c0-9.002 7.359-16.298 16.438-16.298q1.297 0 2.578.2c8.964 1.412 15.078 9.763 13.657 18.65l-4.632 35.251-23.46-2.78-4.376-32.47z"/><path stroke="#14254c" stroke-linecap="round" stroke-miterlimit="10" stroke-width="9.265" d="M12.343 42.893c-.39 1.655-1.221 8.501 2.798 15.133.791 1.3 2.335 4.606 6.952 6.584 6.377 2.734 14.466 1.345 20.685-4.197"/><path fill="#e26841" d="M7.428 24.274 5.23 48.998l14.493 1.481-4.11-25.522-8.188-.683zm22.577-5.318a.88.88 0 0 1 .32-.543l.477-.387a.897.897 0 0 1 1.45.526l.952 5.095a4.16 4.16 0 0 1-1.62 4.11l-3.483 2.588z"/><path fill="#000" d="m65.5 41.763-7.995 1.266v12.135l7.09 10.48 10.58-4.487-9.512-8.267-.167-11.127z"/><path fill="#e26841" d="M44.677 17.783a5.39 5.39 0 0 0-3.668-4.143l-.964-.307c-2.645-.846-4.218-3.538-3.638-6.23L37.939-.05l3.137.198-1.456 5.35c-.73 2.678.718 5.466 3.34 6.437a5.375 5.375 0 0 1 3.527 5.06l-.05 10.267-1.758-9.48z"/><path fill="#e26841" d="M41.668 20.216a5.43 5.43 0 0 0-3.577-2.26l-3.316-.548c-2.452-.407-4.312-2.414-4.512-4.871l-.706-8.752 3.454-.017.179 6.474a5.38 5.38 0 0 0 3.987 5.037l2.335.633a5.4 5.4 0 0 1 3.58 3.137l3.342 8.051-4.769-6.89z"/><path fill="#000" d="M60.018 39.741h-16.83v7.46a4.97 4.97 0 0 1-1.89 3.897l-8.307 6.59 13.57 9.914 12.283-14.718 1.171-13.146z"/><path fill="#14254c" d="M65.5 34.934c0-6.98-5.707-12.638-12.747-12.638h-4.59c-2.816 0-5.1 2.263-5.1 5.054v12.894c0 6.982 5.709 12.643 12.748 12.64h4.591c2.815 0 5.1-2.265 5.097-5.056z"/><path fill="#e9ac6a" d="M58.425 49.091a9.55 9.55 0 0 0 6.348-2.4V34.938c0-1.217-.179-2.425-.527-3.593a9.55 9.55 0 0 0-5.824-1.97c-5.267 0-9.536 4.233-9.536 9.455v.81c0 5.22 4.272 9.452 9.536 9.452z"/><path stroke="#fff" stroke-miterlimit="10" stroke-width=".67" d="M58.78 45.533c-4.41-.081-3.824-3.334-3.824-3.334"/><path fill="#dc7f1b" d="M59.175 33.926v7.837h4.59z"/><path stroke="#14254c" stroke-miterlimit="10" stroke-width=".777" d="M43.443 32.663H64.89m-21.447 4.548H65.5m-17.721 9.103h17.72m-22.056-4.551H65.5"/><path fill="#fff" d="M53.629 34.286h-1.046a.74.74 0 0 0-.741.735v.05c0 .405.332.734.741.734h1.046c.41 0 .741-.329.741-.734v-.05a.74.74 0 0 0-.741-.735m10.403 0h-1.046a.74.74 0 0 0-.741.735v.05c0 .405.332.734.74.734h1.047c.41 0 .74-.329.74-.734v-.05a.74.74 0 0 0-.74-.735"/><path fill="#000" d="M54.017 36.088a.774.774 0 0 0 .776-.77.774.774 0 0 0-.776-.77.774.774 0 0 0-.777.77c0 .425.347.77.776.77m10.239 0a.774.774 0 0 0 .777-.77.774.774 0 0 0-.777-.77.774.774 0 0 0-.777.77c0 .425.348.77.777.77"/><path fill="#e9ac6a" d="m34.678 26.092 17.158.968 45.622-.933 33.009-.909a1.13 1.13 0 0 0 1.102-1.121 1.13 1.13 0 0 0-1.105-1.124l-33.003-.79-45.619-.982-17.158.947v3.941z"/><path fill="#000" d="M99.332 21.933h-1.88a.805.805 0 0 0-.809.802v2.84c0 .443.362.802.809.802h1.88a.805.805 0 0 0 .809-.802v-2.84a.805.805 0 0 0-.809-.802m31.636.665h-1.904a.685.685 0 0 0-.688.683v1.592c0 .377.308.682.688.682h1.904a.685.685 0 0 0 .689-.682V23.28a.685.685 0 0 0-.689-.683m-96.19 3.504v-3.959L4.04 20.85v6.512z"/><path fill="#000" d="M36.313 15.947h-1.52a.653.653 0 0 0-.657.65V31.9c0 .36.294.65.656.65h1.52a.653.653 0 0 0 .657-.65V16.597a.653.653 0 0 0-.656-.65"/><path fill="#e26841" d="M7.946 16.632c-1.42.145-2.455 1.406-2.305 2.815l.158 1.507a2.96 2.96 0 0 0 2.847 2.64l4.096.149a2.965 2.965 0 0 0 2.959-2.118l.533-1.804q.11-.372.102-.758c-.02-1.417-1.195-2.547-2.624-2.527l-5.537.082q-.115 0-.226.014z"/><path fill="#e26841" d="M15.765 19.299a.9.9 0 0 1 .416-.477l.542-.29a.9.9 0 0 1 .43-.108c.496 0 .894.401.894.892l-.023 5.176a4.17 4.17 0 0 1-2.361 3.735l-3.905 1.897 4.01-10.831z"/><path stroke="#1c2f54" stroke-linecap="round" stroke-miterlimit="10" stroke-width="9.265" d="M29.015 47.276c.117 2.718.876 12.524 8.434 19.312 2.543 2.388 3.89 4.099 7.277 4.979 2.15.534 6.885 1.714 11.65-.796a14.54 14.54 0 0 0 6.276-6.739"/><path fill="#e26841" d="M21.83 17.806a2.56 2.56 0 0 0-1.659 3.232l2.692 8.197 7.57-.59.349-9.442a2.5 2.5 0 0 0-.05-.61c-.287-1.389-1.655-2.28-3.053-1.996l-5.566 1.133q-.14.03-.28.073z"/><path fill="#e26841" d="m22.354 27.205-.091 26.586 14.718-3.907-6.422-23.222-8.205.546z"/><path fill="#000" d="m54.575 55.164 10.022 10.48 10.582-4.487-10.684-8.267z"/></g><g clip-path="url(#clip4_142_1689)"><path fill="#fff" d="M185.833 19.59h-8.666c-6.444 0-11.667 5.474-11.667 12.225v9.081c0 6.752 5.223 12.225 11.667 12.225h8.666c6.444 0 11.667-5.473 11.667-12.225v-9.081c0-6.751-5.223-12.225-11.667-12.225"/><mask id="mask0_142_1689" width="33" height="35" x="165" y="19" maskUnits="userSpaceOnUse" style="mask-type:luminance"><path fill="#fff" d="M185.833 19.59h-8.666c-6.444 0-11.667 5.474-11.667 12.225v9.081c0 6.752 5.223 12.225 11.667 12.225h8.666c6.444 0 11.667-5.473 11.667-12.225v-9.081c0-6.751-5.223-12.225-11.667-12.225"/></mask><g mask="url(#mask0_142_1689)"><path fill="#3654dd" d="M172.847 33.059c1.738 0 3.146-1.477 3.146-3.298s-1.408-3.297-3.146-3.297-3.147 1.476-3.147 3.297 1.409 3.298 3.147 3.298"/><path fill="#cdffca" d="m187.9 30.582-12.8 13.51-4.263-4.502-5.337 5.63v10.37h31.997V40.715z"/></g></g><g clip-path="url(#clip5_142_1689)"><path fill="#fff" d="M230.77 59.795h-57.673c-5.985 0-10.837 4.891-10.837 10.925s4.852 10.925 10.837 10.925h57.673c5.985 0 10.837-4.891 10.837-10.925s-4.852-10.925-10.837-10.925" opacity=".5"/><mask id="mask1_142_1689" width="80" height="23" x="162" y="59" maskUnits="userSpaceOnUse" style="mask-type:luminance"><path fill="#fff" d="M230.77 59.795h-57.673c-5.985 0-10.837 4.891-10.837 10.925s4.852 10.925 10.837 10.925h57.673c5.985 0 10.837-4.891 10.837-10.925s-4.852-10.925-10.837-10.925"/></mask><g mask="url(#mask1_142_1689)"><path fill="#829dfa" d="M211.193 71.644a5.6 5.6 0 0 1-1.346-.043 5 5 0 0 1-.294-.057c-2.82-.621-4.669-3.387-7.541-5.164v.025c-1.311-.822-2.833-1.44-4.761-1.555-6.884-.403-9.634 7.527-16.087 7.06-4.859-.35-9.2-8.671-12.4-9.882-3.199-1.209-6.764.002-6.764.002v19.765h57.23V68.501c-3.296.787-4.7 2.852-8.037 3.143"/></g></g></g><defs><clipPath id="clip0_142_1689"><path fill="#fff" d="M0 0h210v90H0z"/></clipPath><clipPath id="clip1_142_1689"><path fill="#fff" d="M201 16.666h37v36h-37z"/></clipPath><clipPath id="clip2_142_1689"><path fill="#fff" d="M58 9.666h102v80H58z"/></clipPath><clipPath id="clip3_142_1689"><path fill="#fff" d="M-.5 1.363h142v98H-.5z"/></clipPath><clipPath id="clip4_142_1689"><path fill="#fff" d="M165.5 19.59h32v36h-32z"/></clipPath><clipPath id="clip5_142_1689"><path fill="#fff" d="M162 59.795h80v22h-80z"/></clipPath></defs></svg></div><p class="TK-Bundle-Title">Kendo UI</p><p class="TK-Bundle-Description">Bundle of AI Tools plus four <strong>JavaScript UI libraries </strong>built natively for jQuery, Angular, React and Vue.</p></a></div><div class="TK-BtnProducts TK--Desktop"><a href="/all-products" class="TK-Dash-Featured-Link">See All Products</a></div></div><div class="TK-col-19 TK-pr30"><div class="TK-row"><div class="TK-col-6"><div class="TK-Dash-Group"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20"><path stroke="#000" stroke-linecap="round" stroke-linejoin="round" d="M3.333 11.667a.833.833 0 0 1-.65-1.359l8.25-8.5a.417.417 0 0 1 .717.384l-1.6 5.016a.833.833 0 0 0 .783 1.125h5.834a.833.833 0 0 1 .65 1.359l-8.25 8.5a.416.416 0 0 1-.717-.384l1.6-5.016a.833.833 0 0 0-.783-1.125z"/></svg><div><p class="TK-Dash-GroupTitle">Kendo UI</p><p class="TK-Dash-GroupDesc">Build JavaScript UI</p></div></div><hr class="TK-Dash-Separator"><div class="TK-row"><div class="TK-col-24 TK-Dash-Col--Indented"><p class="TK-Dash-Title TK--Desktop">Javascript</p><div class="TK-Dash-Links"><a href="/kendo-angular-ui" class="TK-Dash-Link" data-match-exact-path>UI for Angular</a> <a href="/kendo-vue-ui" class="TK-Dash-Link" data-match-exact-path>UI for Vue</a> <a href="/kendo-jquery-ui" class="TK-Dash-Link" data-match-exact-path>UI for jQuery</a> <a href="/kendo-react-ui" class="TK-Dash-Link" data-match-exact-path>KendoReact</a></div></div></div></div><div class="TK-col-12"><div class="TK-Dash-Group"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20"><path stroke="#000" stroke-linecap="round" stroke-linejoin="round" d="M15 13.333 18.333 10 15 6.667m-10 0L1.667 10 5 13.333m7.083-10L7.917 16.667"/></svg><div><p class="TK-Dash-GroupTitle">Telerik</p><p class="TK-Dash-GroupDesc">Build modern .NET business apps</p></div></div><hr class="TK-Dash-Separator"><div class="TK-row"><div class="TK-col-12 TK-Dash-Col--Indented"><div class=""><p class="TK-Dash-Title">.Net Web</p><div class="TK-Dash-Links"><a href="/blazor-ui" class="TK-Dash-Link" data-match-exact-path>UI for Blazor</a> <a href="/aspnet-core-ui" class="TK-Dash-Link" data-match-exact-path>UI for ASP.NET Core</a> <a href="/aspnet-mvc" class="TK-Dash-Link" data-match-exact-path>UI for ASP.NET MVC</a> <a href="/products/aspnet-ajax.aspx" class="TK-Dash-Link" data-match-exact-path>UI for ASP.NET AJAX</a></div><p class="TK-Dash-Title">Cross-Platform</p><div class="TK-Dash-Links"><a href="/maui-ui" class="TK-Dash-Link" data-match-exact-path>UI for MAUI</a></div></div></div><div class="TK-col-12 TK-Dash-Col--IndentedInner"><p class="TK-Dash-Title">Desktop</p><div class="TK-Dash-Links"><a href="/products/winforms.aspx" class="TK-Dash-Link" data-match-exact-path>UI for WinForms</a> <a href="/products/wpf/overview.aspx" class="TK-Dash-Link" data-match-exact-path>UI for WPF</a> <a href="/winui" class="TK-Dash-Link" data-match-exact-path>UI for Win UI</a></div><p class="TK-Dash-Title">Reporting and Documents</p><div class="TK-Dash-Links"><a href="/products/reporting.aspx" class="TK-Dash-Link" data-match-exact-path>Reporting</a> <a href="/report-server" class="TK-Dash-Link" data-match-exact-path>Report Server</a> <a href="/document-processing-libraries" class="TK-Dash-Link" data-match-exact-path>Document Processing Library</a></div></div></div></div><div class="TK-col-6"><div class="TK-Dash-Group"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20"><path stroke="#000" d="m5.853 13.845.08.221.22.08 2.37.855-2.37.855-.22.08-.08.221-.856 2.37-.854-2.37-.08-.22-.221-.08L1.472 15l2.37-.855.22-.08.08-.221.855-2.37zm8.306-7.033.08.203.201.079 4.197 1.656-4.197 1.656-.2.08-.08.202-1.657 4.198-1.655-4.197-.08-.203-.202-.08L6.37 8.75l4.197-1.656.203-.08.079-.202 1.655-4.198zM4.277 2.926l.08.22.22.08 1.455.526-1.455.527-.22.08-.08.22-.527 1.454-.525-1.454-.08-.22-.221-.08-1.451-.525 1.455-.523.742-.266-.338-.338.418-1.156z"/></svg><div><p class="TK-Dash-GroupTitle">AI for Developers & IT</p><p class="TK-Dash-GroupDesc">Ensure AI program success</p></div></div><hr class="TK-Dash-Separator"><div class="TK-row"><div class="TK-col-24 TK-Dash-Col--Indented"><p class="TK-Dash-Title TK--Desktop">AI Coding</p><div class="TK-Dash-Links"><a href="/mcp-servers" class="TK-Dash-Link TK-New" data-match-exact-path>MCP Servers</a> <a href="/ai-components" class="TK-Dash-Link TK-New" data-match-exact-path>AI-Ready Components</a></div><p class="TK-Dash-Title TK--Desktop">AI Engineering</p><div class="TK-Dash-Links"><a href="/ai-observability-platform" class="TK-Dash-Link TK-New" data-match-exact-path>AI Observability</a></div></div></div></div></div><div class="TK-row"><div class="TK-col-24"><div class="TK-Dash-Group"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20"><g stroke="#000" stroke-miterlimit="10" clip-path="url(#clip0_151_4520)"><path d="M17.15 17.865H2.85m.65-9.132 6.5 3.75 6.5-3.75M10 .316v11.693"/></g><defs><clipPath id="clip0_151_4520"><path fill="#fff" d="M0 0h20v20H0z"/></clipPath></defs></svg><div><p class="TK-Dash-GroupTitle">Additional Tools</p><p class="TK-Dash-GroupDesc">Enhance the developer and designer experience</p></div></div><hr class="TK-Dash-Separator"><div class="TK-row"><div class="TK-col-6 TK-Dash-Col--Indented"><p class="TK-Dash-Title">Testing &amp; Mocking</p><div class="TK-Dash-Links"><a href="/teststudio" class="TK-Dash-Link" data-match-exact-path>Test Studio</a> <a href="/products/mocking.aspx" class="TK-Dash-Link" data-match-exact-path>JustMock</a></div></div><div class="TK-col-6 TK-Dash-Col--Indented"><p class="TK-Dash-Title">Debugging</p><div class="TK-Dash-Links"><a href="/fiddler" class="TK-Dash-Link" data-match-exact-path>Fiddler</a> <a href="/fiddler/fiddler-everywhere" class="TK-Dash-Link TK-Dash-Link--Indented" data-match-exact-path>Fiddler Everywhere</a> <a href="/fiddler/fiddler-classic" class="TK-Dash-Link TK-Dash-Link--Indented" data-match-exact-path>Fiddler Classic</a> <a href="/fiddler/fiddler-everywhere-reporter" class="TK-Dash-Link TK-Dash-Link--Indented" data-match-exact-path>Fiddler Everywhere Reporter</a> <a href="/fiddlercore" class="TK-Dash-Link TK-Dash-Link--Indented" data-match-exact-path>FiddlerCore</a></div></div><div class="TK-col-6 TK-Dash-Col--IndentedInner"><p class="TK-Dash-Title">UI/UX Tools</p><div class="TK-Dash-Links"><a href="/themebuilder" class="TK-Dash-Link" data-match-exact-path>ThemeBuilder</a> <a href="/page-templates-and-ui-blocks" class="TK-Dash-Link" data-match-exact-path>Page Templates and Building Blocks</a> <a href="/design-system" class="TK-Dash-Link" data-match-exact-path>Design System Kit</a></div><p class="TK-Dash-Title">CMS</p><div class="TK-Dash-Links"><a href="https://www.progress.com/sitefinity-cms" class="TK-Dash-Link" data-match-exact-path>Sitefinity</a></div></div><div class="TK-col-6 TK-Dash-Col--Indented"><p class="TK-Dash-Title">Free Tools</p><div class="TK-Dash-Links"><a href="/kendo-react-ui/free-react-components" class="TK-Dash-Link">KendoReact Free</a> <a href="https://converter.telerik.com" class="TK-Dash-Link">VB.NET to C# Converter</a> <a href="/teststudio/testing-framework" class="TK-Dash-Link" data-match-exact-path>Testing Framework</a></div></div></div></div></div><div class="TK-BtnProducts TK--Mobile"><hr class="TK-Dash-Separator"><a href="/all-products" class="TK-Dash-Featured-Link">See All Products</a></div></div></div></div></div><div class="TK-Dash-Extension TK--Mobile"></div></li></ul><div class="TK-Drawer" id="js-tlrk-nav-drawer"><ul class="TK-Context-Menu TK-Menu"><li class="TK-Menu-Item"><a href="/teststudio" class="TK-Menu-Item-Link" data-match-exact-path>Overview</a></li><li class="TK-Menu-Item"><button type="button" class="TK-Menu-Item-Button">Solutions <i class="TK-Arrow"></i></button><ul class="TK-Dropdown TK-Dropdown--Gray TK-Dropdown--Small TK-Dropdown--Mobile"><li><a href="/teststudio/functional-testing" class="TK-Dropdown-Link" data-match-exact-path>Functional UI Testing</a></li><li><a href="/teststudio-apis" class="TK-Dropdown-Link" data-match-starts-with-path>RESTful API Testing</a></li><li><a href="/teststudio/load-testing" class="TK-Dropdown-Link" data-match-starts-with-path>Load Testing</a></li><li><a href="/teststudio/test-studio-runtime" class="TK-Dropdown-Link" data-match-starts-with-path>Remote Test Execution</a></li><li><a href="/teststudio/test-automation-solutions-for-the-entire-team" class="TK-Dropdown-Link" data-match-starts-with-path>Agile Teams</a></li><li><a href="/teststudio/web-testing" class="TK-Dropdown-Link" data-match-starts-with-path>Web Test Automation</a></li><li><a href="/teststudio/desktop-testing" class="TK-Dropdown-Link" data-match-starts-with-path>Desktop Test Automation</a></li><li><a href="/teststudio/automated-website-responsive-testing" class="TK-Dropdown-Link" data-match-starts-with-path>Responsive UI Testing</a></li><li><a href="/teststudio/continuous-integration-testing" class="TK-Dropdown-Link" data-match-starts-with-path>Continuous Testing</a></li></ul></li><li class="TK-Menu-Item"><a href="/teststudio/training" class="TK-Menu-Item-Link" data-match-exact-path>Training</a></li><li class="TK-Menu-Item"><button type="button" class="TK-Menu-Item-Button">Resources <i class="TK-Arrow"></i></button><ul class="TK-Dropdown TK-Dropdown--Gray TK-Dropdown--Small TK-Dropdown--Mobile"><li><a href="/support/teststudio" class="TK-Dropdown-Link" data-match-exact-path>Docs and Support</a></li><li><a href="https://docs.telerik.com/teststudio/welcome" class="TK-Dropdown-Link" data-match-exact-path>Documentation</a></li><li><a href="/support/video-courses" class="TK-Dropdown-Link" data-match-exact-path>Virtual Classroom</a></li><li><a href="/blogs/productivity-testing" class="TK-Dropdown-Link" data-match-exact-path>Blogs</a></li><li><a href="/webinars/teststudio" class="TK-Dropdown-Link" data-match-exact-path>Webinars</a></li><li><a href="/whitepapers/teststudio" class="TK-Dropdown-Link" data-match-exact-path>Whitepapers</a></li><li><a href="/about/success-stories" class="TK-Dropdown-Link" data-match-exact-path>Case Studies</a></li><li><a href="https://feedback.telerik.com/teststudio" class="TK-Dropdown-Link" data-match-pattern>Feedback Portal</a></li><li><a href="/account/support-center/contact-us/technical-support?fbp&#x3D;true&amp;pid&#x3D;846&amp;type&#x3D;3&amp;supcId&#x3D;b681c6d1-fc99-0ad6-845d-8f50bd5702fa" class="TK-Dropdown-Link" data-match-exact-path>Technical Support</a></li><li><a href="/support/whats-new/teststudio" class="TK-Dropdown-Link" data-match-exact-path>What’s New</a></li><li><a href="/support/whats-new/teststudio/roadmap" class="TK-Dropdown-Link" data-match-exact-path>Roadmap</a></li><li><a href="/support/whats-new/teststudio/release-history" class="TK-Dropdown-Link" data-match-exact-path>Release Notes</a></li><li><a href="https://www.progress.com/trust-center/test-studio" class="TK-Dropdown-Link" target="_blank" data-match-exact-path>Trust Center</a></li><li><a href="/faqs/automated-testing" class="TK-Dropdown-Link" data-match-exact-path>FAQs</a></li></ul></li><li class="TK-Menu-Item"><a href="/purchase/teststudio" class="TK-Menu-Item-Link" data-match-exact-path>Pricing</a></li></ul><ul class="TK-Aside-Menu"><li class="TK-Aside-Menu-Item TK-Aside-Menu-Button--Search"><a href="/search" class="TK-Aside-Menu-Link js-tlrk-nav-search-link" title="Search" data-match-exact-path><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="15" height="15" viewBox="0 0 512 512" xml:space="preserve"><path d="M504.4,464L378.9,338.5c25.6-34.8,40.8-77.7,40.8-124.2c0-115.7-94.1-209.8-209.8-209.8C94.2,4.5,0,98.6,0,214.3 C0,330,94.2,424.1,209.9,424.1c50.5,0,96.9-17.9,133.1-47.8l124.5,124.5c5.1,5.1,11.8,7.6,18.4,7.6s13.3-2.5,18.4-7.6 C514.6,490.7,514.6,474.2,504.4,464z M52.2,214.3c0-87,70.7-157.7,157.7-157.7s157.7,70.7,157.7,157.7c0,41-15.7,78.3-41.4,106.4 c-0.3,0.3-0.7,0.6-1,0.9c-0.7,0.7-1.3,1.4-1.9,2.2c-28.7,29.7-68.9,48.2-113.4,48.2C122.9,372,52.2,301.3,52.2,214.3z"></path></svg></a></li><li class="TK-Aside-Menu-Item"><a href="https://store.progress.com/shopping-cart" data-empty-url="/purchase.aspx?filter&#x3D;web" class="TK-Aside-Menu-Link js-tlrk-nav-shopping-cart-counter-container" aria-label="Shopping cart" title="Shopping cart" data-match-exact-path><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path d="M11.75 14.5a1 1 0 111-1 1 1 0 01-1 1zm-8.25 0a1 1 0 111-1 1 1 0 01-1 1zm8.18-3H4.25A1.752 1.752 0 012.5 9.75v-8a.25.25 0 00-.25-.25H.75a.75.75 0 010-1.5h1.5A1.752 1.752 0 014 1.75v.75h8.78a1.75 1.75 0 011.72 2.093l-1.1 5.5a1.754 1.754 0 01-1.72 1.407zM4 4v5.75a.25.25 0 00.25.25h7.43a.251.251 0 00.245-.2l1.1-5.5a.251.251 0 00-.245-.3z" transform="translate(.75 .75)"/></svg> <span class="TK-Aside-Menu-Link-Text">Shopping cart</span></a></li><li class="TK-Aside-Menu-Item TK--Not-Auth" id="js-tlrk-nav-not-auth-container"><a href="/account" title="Your Account" class="TK-Aside-Menu-Button TK-tac" data-match-exact-path><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path xmlns="http://www.w3.org/2000/svg" d="M13.75 14.5a.751.751 0 01-.75-.75v-.5a5.75 5.75 0 10-11.5 0v.5a.75.75 0 01-1.5 0v-.5a7.175 7.175 0 011.319-4.159A7.262 7.262 0 014.69 6.476 3.717 3.717 0 013.5 3.75a3.75 3.75 0 117.5 0 3.716 3.716 0 01-1.19 2.726 7.263 7.263 0 013.371 2.615A7.175 7.175 0 0114.5 13.25v.5a.751.751 0 01-.75.75zm-6.5-13A2.25 2.25 0 109.5 3.75 2.253 2.253 0 007.25 1.5z" transform="translate(.75 .75)"/></svg> <span class="TK-Aside-Menu-Button-Text">Login</span></a></li><li class="TK-Aside-Menu-Item TK-bn"><a href="/contact?preselect=test-studio" class="TK-Aside-Menu-Button TK-Button--CTA-Sec" title="Contact Us" data-match-starts-with-path><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path d="M12.75 14.5h-11A1.752 1.752 0 010 12.753v-7.37a.092.092 0 01.005-.026.1.1 0 000-.023.782.782 0 01.01-.093.63.63 0 01.02-.071l.007-.021V5.14a.828.828 0 01.036-.088.673.673 0 01.045-.078.078.078 0 00.009-.02.069.069 0 01.01-.02.1.1 0 01.028-.019.1.1 0 00.019-.015.68.68 0 01.077-.076.124.124 0 00.015-.024.106.106 0 01.019-.016L6.2.354a1.736 1.736 0 012.1 0l5.9 4.431a.1.1 0 01.018.02.118.118 0 00.017.019.591.591 0 01.076.075.109.109 0 00.02.018.1.1 0 01.019.017.077.077 0 01.01.02.088.088 0 00.01.02c.017.026.031.053.045.078a.9.9 0 01.039.1l.007.021a.5.5 0 01.03.164.1.1 0 000 .023.092.092 0 01.005.027v7.37A1.752 1.752 0 0112.75 14.5zM1.5 6.883v5.87a.253.253 0 00.25.247h11a.253.253 0 00.249-.25V6.883L8.3 10.412a1.737 1.737 0 01-2.1 0zM7.25 1.5a.248.248 0 00-.15.053L2 5.383l5.1 3.83a.253.253 0 00.15.052.245.245 0 00.15-.053l5.1-3.829-5.1-3.83a.248.248 0 00-.15-.053z" transform="translate(.75 .75)"/></svg> <span class="TK-Aside-Menu-Button-Text">Contact Us</span></a></li><li class="TK-Aside-Menu-Item TK-bn"><a href="/teststudio/live-demos" class="TK-Button TK-Button--CTA TK-Button--Sec">Request a demo</a> <a href="/try/test-studio-ultimate" class="TK-Button TK-Button--CTA">Try now</a></li></ul></div><div class="TK-Drawer-Extension"></div><div class="TK-Aside TK--Mobile"><ul class="TK-Aside-Menu"><li class="TK-Aside-Menu-Item TK-Aside-Menu-Button--Search"><a href="/search" class="TK-Aside-Menu-Link js-tlrk-nav-search-link" title="Search" data-match-exact-path><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="15" height="15" viewBox="0 0 512 512" xml:space="preserve"><path d="M504.4,464L378.9,338.5c25.6-34.8,40.8-77.7,40.8-124.2c0-115.7-94.1-209.8-209.8-209.8C94.2,4.5,0,98.6,0,214.3 C0,330,94.2,424.1,209.9,424.1c50.5,0,96.9-17.9,133.1-47.8l124.5,124.5c5.1,5.1,11.8,7.6,18.4,7.6s13.3-2.5,18.4-7.6 C514.6,490.7,514.6,474.2,504.4,464z M52.2,214.3c0-87,70.7-157.7,157.7-157.7s157.7,70.7,157.7,157.7c0,41-15.7,78.3-41.4,106.4 c-0.3,0.3-0.7,0.6-1,0.9c-0.7,0.7-1.3,1.4-1.9,2.2c-28.7,29.7-68.9,48.2-113.4,48.2C122.9,372,52.2,301.3,52.2,214.3z"></path></svg></a></li><li class="TK-Aside-Menu-Item"><button type="button" aria-label="Main Navigation" class="TK-Aside-Menu-Button TK-Aside-Menu-Button--Toggle-Drawer" id="js-tlrk-nav-drawer-button"><svg id="menu" viewBox="0 0 100 80" class="WUG-Svg WUG-Svg-Hamburger" width="22" height="16"><line x1="10" y1="40" x2="90" y2="40"></line><line x1="10" y1="40" x2="90" y2="40"></line><line x1="10" y1="40" x2="90" y2="40"></line></svg></button></li></ul></div></div></section><button type="button" class="TK-Nav-Overlay" id="js-tlrk-nav-overlay">close mobile menu</button></nav><script async type="module" src="https://d6vtbcy3ong79.cloudfront.net/telerik-navigation/3.7.37/js/index.min.mjs"></script>
+
+    <div class="u-f1 e2e-content">
+        
+
+
+<div class="header">
+    <div class="container u-pt20 u-pb20">
+        <a class="breadcrumb e2e-forum-breadcrumb-h" href="/forums">
+            <svg xmlns="http://www.w3.org/2000/svg" class="i-arrow-left" viewBox="0 0 10 10">
+	<polygon points="4.44 10 0 5 4.44 0 5.21 0.7 1.85 4.48 10 4.48 10 5.52 1.85 5.52 5.21 9.3 4.44 10" />
+</svg>
+            Telerik Forums
+        </a>
+        <span class="breadcrumb">/</span>
+        <a class="breadcrumb e2e-forum-breadcrumb-f" href="/forums/teststudio">
+            Test Studio
+        </a>
+    </div>
+</div>
+
+
+<div id="thread-details">
+    
+
+<div class="thread-migrated-mob d-block d-lg-none">
+	<div class="container">
+		This is a migrated thread and some comments may be shown as answers.
+	</div>
+</div>
+<div class="sub-header">
+    <div class="container">
+        <div class="u-mt6">
+            <div class="thread-heading">
+                <h1 class="rag-indexable e2e-thread-title u-mr15 u-mob-mr0"><span id="solvedThreadTitle" class="u-dn">[Solved] </span>Unable to connect to Silverlight application. (on http://www.silverlight.net/showcase/ page)</h1>
+                
+            </div>
+        </div>
+
+        <div class="u-mt20 text-light">
+            <svg xmlns="http://www.w3.org/2000/svg" class="i-thread-answers e2e-th-i e2e-thi-ha" viewBox="0 0 16 16">
+	<path d="M1.8,16l2.1-3.23a7,7,0,1,1,5.88,1.1ZM8,.83A6.37,6.37,0,0,0,6.43,1,6.25,6.25,0,0,0,4.67,12.3l.35.24-1.35,2.1,5.91-1.57A6.23,6.23,0,0,0,8,.83ZM5.5,5h6a.5.5,0,0,1,.5.5h0a.5.5,0,0,1-.5.5h-6A.5.5,0,0,1,5,5.5H5A.5.5,0,0,1,5.5,5Zm0,2h5a.5.5,0,0,1,.5.5h0a.5.5,0,0,1-.5.5h-5A.5.5,0,0,1,5,7.5H5A.5.5,0,0,1,5.5,7Zm0,2h3a.5.5,0,0,1,.5.5H9a.5.5,0,0,1-.5.5h-3A.5.5,0,0,1,5,9.5H5A.5.5,0,0,1,5.5,9Z" />
+</svg><span class="u-vam mr-2 e2e-thread-answers">7 Answers</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="i-thread-views" viewBox="0 0 16 16">
+    <path data-name="views 16" d="M8,4C4.17,4,1.05,6.9.19,7.8a.65.65,0,0,0,0,.91h0c.86.89,4,3.8,7.81,3.8s7-2.9,7.81-3.8a.65.65,0,0,0,0-.91h0C15,6.91,11.83,4,8,4Zm0,7.61c-3.31,0-6.15-2.52-7-3.36.86-.84,3.7-3.36,7-3.36s6.15,2.52,7,3.36C14.15,9.09,11.31,11.61,8,11.61ZM5.06,8.25A2.94,2.94,0,1,0,8,5.28a2.94,2.94,0,0,0-2.94,3ZM8.84,6.52A.89.89,0,1,1,8,7.41H8a.88.88,0,0,1,.88-.89Z" />
+</svg><span class="u-vam mr-2 e2e-thread-views">221 Views</span>
+        </div>
+    </div>
+</div>
+<div class="thread-mob-tags d-block d-lg-none">
+    <div class="container">
+            <span class="tag selected u-mr5 u-mb5">
+                General Discussions
+            </span>
+    </div>
+</div>
+
+<div class="container u-pr">
+    <div class="row no-gutters">
+        <div class="thread-migrated d-none d-lg-block e2e-thread-migrated">
+            This is a migrated thread and some comments may be shown as answers.
+        </div>
+        <div class="col-main-content u-mb50">
+            <div class="u-pr30 u-pt30 u-mob-pr0 u-mob-pt20">
+                <div class="row no-gutters mb-5 answer-separator u-mob-bb0">
+                    <div id="318594" class="col answer-container e2e-thread-question">
+                        
+                        <div class="edit-post-popup">
+                            <div class="row no-gutters justify-content-between u-mb10 text-light post">
+                                <div class="col-9 col-sm-10 col-lg-10 messageby-col align-items-start align-content-lg-center">
+                                    <div class="messageby-col achievements-tooltip-zone e2e-msg-author">
+                                        <div class="u-dib"><img alt="" class="user-avatar e2e-avatar" loading="lazy" src="/forums/images/avatarimages/default.gif" /></div>
+                                        <div class="achievements-tooltip-anchor">
+                                            <a class="username d-lg-inline-block d-none e2e-username" href="/forums/profile/74e60660-aef2-4bb3-8c64-19f7e3977c60">Rafal Stasiak</a>
+                                            
+<div class="achievements-tooltip-container e2e-ach-tooltip">
+    <span class="achievements-title e2e-ach-title">Top achievements</span>
+    <div class="row no-gutters d-flex justify-content-between">
+            <div class="col-md-6 u-tac u-mt10 e2e-ach-rank">
+                <img src="/forums/images/forum-gamification/rank-01.svg" 
+                     loading="lazy" width="56" height="56" class="e2e-ach-icon" />
+                <span class="achievement-name u-db e2e-ach-name">Rank 1</span>
+            </div>
+
+    </div>
+</div>
+                                        </div>
+                                    </div>
+                                    <div class="rag-indexable modified d-inline-block d-lg-block e2e-msg-action">
+                                        <a class="username d-lg-none" href="/forums/profile/74e60660-aef2-4bb3-8c64-19f7e3977c60">Rafal Stasiak</a>
+                                        asked on <span class="local-datetime e2e-th-date" data-timestamp="1276509970790"><span class="u-dib">14 Jun 2010,&nbsp;</span><span class="u-dib">10:06 AM</span></span>
+                                    </div>
+                                </div>
+                                <div class="col-auto actions-container">
+                                    
+                                    <a href="#"
+                                       class="social-care e2e-msg-care"
+                                       data-url="https://www.telerik.com/forums/unable-to-connect-to-silverlight-application-on-http-www-silverlight-net-showcase-page#318594"
+                                       data-title="Share this question"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" class="i-care">
+    <path d="M15,13.5a2.5,2.5,0,0,1-5,0,2.62,2.62,0,0,1,.11-.69L5,10a2.42,2.42,0,0,1-1.49.51,2.5,2.5,0,0,1,0-5,2.42,2.42,0,0,1,1.61.61l5-2.78A2.54,2.54,0,0,1,10,2.5,2.5,2.5,0,1,1,12.5,5a2.46,2.46,0,0,1-1.83-.81L5.74,6.9A2.54,2.54,0,0,1,6,8a2.5,2.5,0,0,1-.33,1.22l4.9,2.7A2.49,2.49,0,0,1,15,13.5Z" />
+</svg></a>
+                                </div>
+                            </div>
+                            <div id="msg-content-1232328">
+                                <div>
+                                    
+                                    <div class="rag-indexable pb-3 u-mr20 msg-content e2e-msg-text">Hello,<br>
+<br>
+Today i install new Silverlight Runtime 4.0.50524.0<br>
+After that Telerik WebUI Test Studio (QA) stopped recognize Silverlight application. <br>
+Even on http://www.silverlight.net/showcase/ i got Telerik Web UI message: Unable to connect to Silverlight application.<br>
+I checked that on 2 separate machine (Vista + IE8 and XP + IE7).<br>
+Can you say something about way to resolve that problem?<br>
+<br>
+Best regards. <br>
+<br>
+<br>
+</div>
+                                </div>
+                                
+                                <div id="recaptcha-container-1232328"
+                                     data-size="invisible"
+                                     data-sitekey="6LfV-oYqAAAAANpMyzEl3iTdsS5nx87jkYbZkwaO">
+                                </div>
+                                <div class="loader-container centered" style="display: none">
+                                    <div class="loader"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="answer-separator"></div>
+                        <div class="u-mt10 e2e-question-comments">
+                            
+<div id="comments-1232328" class="u-pr">
+    <div class="u-mt10 u-mb10">
+        <button class="btn-outline oval btn-comment e2e-add-comment">Add a comment</button>
+        <form class="row align-items-center comment-form no-gutters"
+              method="post"
+              action="/forums/unable-to-connect-to-silverlight-application-on-http-www-silverlight-net-showcase-page/comment"
+              data-ajax="true"
+			  data-ajax-begin="executeRecaptchaValidationFormBeforeRequest"
+              data-ajax-update="#comments-1232328"
+              data-ajax-loading="#comments-1232328 .loader-container"
+              data-ajax-success="commentSubmitted"
+              data-ajax-failure="showDefaultNotificationError"
+			  data-recaptcha-container="recaptcha-comment-container-1232328"
+              style="display:none">
+			<div class="col-12 e2e-comment-add-text-wrapper">
+				<textarea 
+						  autocomplete="off" 
+						  data-val="true" 
+						  data-val-htmlrequired="Comment text is required." 
+						  placeholder="Type your comment..."
+						  class="u-db" name="Content" type="text"></textarea>
+				<div class="file-upload-container inline">
+					<input name="attachment" data-val="true" data-val-filesuploaded="Please ensure all files are successfully uploaded." type="file" class="d-none file-input" />
+				</div>
+				<div class="row no-gutters">
+					<span class="field-validation-valid static col-auto e2e-comment-add-val" data-valmsg-for="Content" data-valmsg-replace="true"></span>
+					<span class="field-validation-valid static col-auto u-ml5 e2e-comment-add-val" data-valmsg-for="attachment" data-valmsg-replace="true"></span>
+				</div>
+			</div>
+            <div class="col-auto">
+                <button class="btn-outline btn-submit-comment e2e-comment-add-submit">Submit comment</button>
+            </div>
+            <div class="col-auto u-ml15">
+                <button class="icon btn-comment-close e2e-comment-add-close" type="button">
+                    Cancel
+                </button>
+            </div>
+            <input type="hidden" name="ParentMessageId" value="1232328" />
+        </form>
+		<div id="recaptcha-comment-container-1232328"
+			 data-size="invisible"
+			 data-sitekey="6LfV-oYqAAAAANpMyzEl3iTdsS5nx87jkYbZkwaO">
+		</div>
+    </div>
+	<div class="loader-container centered" style="display:none">
+		<div class="loader"></div>
+	</div>
+</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row no-gutters mt-1 u-mb35 answer-separator u-mob-bb0 answer-stats justify-content-between align-items-center">
+                    <div class="col-auto">
+                        <h2 class="rag-indexable e2e-thread-answers-title">7 Answers<span id="accpetedHeading" class="u-dn">, 1 is accepted</span></h2>
+                    </div>
+                    <div class="col-auto text-light thread-sort-container">
+                        <form method="get"
+                              action="/forums/unable-to-connect-to-silverlight-application-on-http-www-silverlight-net-showcase-page/answers"
+                              autocomplete="off"
+                              data-ajax="true"
+                              data-ajax-update="#thread-details"
+                              data-ajax-loading="#answers-list-loader"
+                              data-ajax-begin="toggleSort"
+                              data-ajax-complete="toggleSort"
+                              data-ajax-success="initializeThreadMessageHandlers"
+                              data-ajax-failure="showDefaultNotificationError">
+                            <span class="d-none d-lg-inline">Sort by</span>
+							<div class="dropdown-sm">
+								<select id="sortDropdown" name="sortBy" class="ml-1 e2e-thread-sort">
+									<option >Score</option>
+									<option selected>Date</option>
+								</select>
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="i-sort">
+	<path id="sort" d="M7.5,5h8a.5.5,0,0,1,.5.5h0a.5.5,0,0,1-.5.5h-8A.5.5,0,0,1,7,5.5H7A.5.5,0,0,1,7.5,5Zm0,2h7a.5.5,0,0,1,.5.5h0a.5.5,0,0,1-.5.5h-7A.5.5,0,0,1,7,7.5H7A.5.5,0,0,1,7.5,7Zm0,2h5a.5.5,0,0,1,.5.5h0a.5.5,0,0,1-.5.5h-5A.5.5,0,0,1,7,9.5H7A.5.5,0,0,1,7.5,9Zm-2,2.67H3.73V4.33H5.5a.5.5,0,0,0,.4-.8L3.4.2a.5.5,0,0,0-.8,0L.1,3.53a.5.5,0,0,0,.4.8H2.27v7.34H.5a.5.5,0,0,0-.4.8L2.6,15.8a.5.5,0,0,0,.8,0l2.5-3.33A.5.5,0,0,0,5.5,11.67Z" />
+</svg>
+							</div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="u-pr">
+                        <div id="1233302" class="row u-mb35 no-gutters answer-separator e2e-thread-message d-block d-lg-flex">
+                            <div class="score-col d-flex d-lg-block u-pr e2e-msg-votes-wrapper">
+                                <div class="vote-touch mb-2 e2e-msg-vote-up-wrapper">
+                                    <div class="vote up e2e-msg-vote-up" data-id="1233302"></div>
+                                </div>
+
+                                <div class="answer-score text-light e2e-msg-votes">0</div>
+
+                                <div class="vote-touch vote-touch-down mt-2 e2e-msg-vote-down-wrapper">
+                                    <div class="vote down e2e-msg-vote-down" data-id="1233302"></div>
+                                </div>
+
+                                <div class="u-mt10 u-tac u-mob-mt0 u-mob-ml10">
+                                    
+                                    
+                                </div>
+                            </div>
+                            <div class="col-lg answer-container u-mob-w100">
+                                <div class="edit-post-popup">
+                                    <div class="row no-gutters justify-content-between u-mb10 text-light align-items-start align-content-lg-center">
+                                        <div class="col-9 col-sm-10 col-lg-10 d-block d-lg-flex messageby-col">
+                                            <div class="achievements-tooltip-zone d-inline d-lg-flex messageby-col e2e-msg-author">
+                                                <div class="u-dib"><img alt="" class="user-avatar e2e-avatar" loading="lazy" src="/forums/images/avatarimages/default.gif" /></div>
+                                                <div class="u-dib achievements-tooltip-anchor">
+                                                    <span class="username e2e-username support-officer-badge">Cody</span>
+                                                    <div class="achievements-tooltip-container e2e-ach-tooltip">
+    <span class="achievements-title e2e-ach-title">Telerik team</span>
+    <div class="row no-gutters d-flex justify-content-between">
+        <div class="col-md-12 u-tac u-mt10 e2e-ach-support">
+            <img src="/forums/images/forum-gamification/support-officer.svg" loading="lazy" width="56" height="56" class="e2e-ach-icon" />
+        </div>
+    </div>
+</div>
+                                                </div>
+                                            </div>
+                                            <div class="rag-indexable modified d-inline d-lg-block e2e-msg-action">
+                                                answered on <span class="local-datetime e2e-th-date" data-timestamp="1276537823723"><span class="u-dib">14 Jun 2010,&nbsp;</span><span class="u-dib">05:50 PM</span></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto actions-container">
+                                            
+                                            <a href="#"
+                                               class="social-care e2e-msg-care"
+                                               data-url="https://www.telerik.com/forums/unable-to-connect-to-silverlight-application-on-http-www-silverlight-net-showcase-page#1233302"
+                                               data-title="Share this answer"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" class="i-care">
+    <path d="M15,13.5a2.5,2.5,0,0,1-5,0,2.62,2.62,0,0,1,.11-.69L5,10a2.42,2.42,0,0,1-1.49.51,2.5,2.5,0,0,1,0-5,2.42,2.42,0,0,1,1.61.61l5-2.78A2.54,2.54,0,0,1,10,2.5,2.5,2.5,0,1,1,12.5,5a2.46,2.46,0,0,1-1.83-.81L5.74,6.9A2.54,2.54,0,0,1,6,8a2.5,2.5,0,0,1-.33,1.22l4.9,2.7A2.49,2.49,0,0,1,15,13.5Z" />
+</svg></a>
+                                        </div>
+                                    </div>
+                                    <div id="msg-content-1233302">
+                                        <div>
+                                            
+                                            <div class="rag-indexable pb-3 u-mr20 msg-content e2e-msg-text">Hi Rafał Stasiak,<br>
+<br>
+Yes there does seem to be a problem connecting to <a href="http://www.silverlight.net/showcase/" rel="ugc">http://www.silverlight.net/showcase/</a>. We'll look into this.<br>
+<br>
+However I am running Vista with SL4 and I'm having no problems connecting to <a href="http://pjd.mscui.net/PrimaryCare.htm" rel="ugc">http://pjd.mscui.net/PrimaryCare.htm</a>&nbsp;or <a href="http://demos.telerik.com/silverlight/#Buttons/FirstLook" rel="ugc">http://demos.telerik.com/silverlight/#Buttons/FirstLook</a>. Could you give those a try and let me know your results?<br>
+<br>
+Do you have a public website of your application I can try connecting to and see if it works here?<br>
+<br>
+All the best,<br>
+Cody<br>
+the Telerik team
+<div style="font-size: 10px; padding-top: 10px"><br>
+Do you want to have your say when we set our development plans? Do you want to know when a feature you care about is added or when a bug fixed? Explore the <a href="http://www.telerik.com/support/pits.aspx" style="color: rgba(128, 128, 128, 1)" rel="ugc">Telerik Public Issue Tracking</a> system and vote to affect the priority of the items. </div></div>
+                                        </div>
+                                        
+                                        <div id="recaptcha-container-1233302"
+                                             data-size="invisible"
+                                             data-sitekey="6LfV-oYqAAAAANpMyzEl3iTdsS5nx87jkYbZkwaO">
+                                        </div>
+                                        <div class="loader-container centered" style="display: none">
+                                            <div class="loader loader-med"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="answer-separator"></div>
+                                <div class="u-mt10 e2e-answer-comments">
+                                    
+<div id="comments-1233302" class="u-pr">
+    <div class="u-mt10 u-mb10">
+        <button class="btn-outline oval btn-comment e2e-add-comment">Add a comment</button>
+        <form class="row align-items-center comment-form no-gutters"
+              method="post"
+              action="/forums/unable-to-connect-to-silverlight-application-on-http-www-silverlight-net-showcase-page/comment"
+              data-ajax="true"
+			  data-ajax-begin="executeRecaptchaValidationFormBeforeRequest"
+              data-ajax-update="#comments-1233302"
+              data-ajax-loading="#comments-1233302 .loader-container"
+              data-ajax-success="commentSubmitted"
+              data-ajax-failure="showDefaultNotificationError"
+			  data-recaptcha-container="recaptcha-comment-container-1233302"
+              style="display:none">
+			<div class="col-12 e2e-comment-add-text-wrapper">
+				<textarea 
+						  autocomplete="off" 
+						  data-val="true" 
+						  data-val-htmlrequired="Comment text is required." 
+						  placeholder="Type your comment..."
+						  class="u-db" name="Content" type="text"></textarea>
+				<div class="file-upload-container inline">
+					<input name="attachment" data-val="true" data-val-filesuploaded="Please ensure all files are successfully uploaded." type="file" class="d-none file-input" />
+				</div>
+				<div class="row no-gutters">
+					<span class="field-validation-valid static col-auto e2e-comment-add-val" data-valmsg-for="Content" data-valmsg-replace="true"></span>
+					<span class="field-validation-valid static col-auto u-ml5 e2e-comment-add-val" data-valmsg-for="attachment" data-valmsg-replace="true"></span>
+				</div>
+			</div>
+            <div class="col-auto">
+                <button class="btn-outline btn-submit-comment e2e-comment-add-submit">Submit comment</button>
+            </div>
+            <div class="col-auto u-ml15">
+                <button class="icon btn-comment-close e2e-comment-add-close" type="button">
+                    Cancel
+                </button>
+            </div>
+            <input type="hidden" name="ParentMessageId" value="1233302" />
+        </form>
+		<div id="recaptcha-comment-container-1233302"
+			 data-size="invisible"
+			 data-sitekey="6LfV-oYqAAAAANpMyzEl3iTdsS5nx87jkYbZkwaO">
+		</div>
+    </div>
+	<div class="loader-container centered" style="display:none">
+		<div class="loader"></div>
+	</div>
+</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="1233839" class="row u-mb35 no-gutters answer-separator e2e-thread-message d-block d-lg-flex">
+                            <div class="score-col d-flex d-lg-block u-pr e2e-msg-votes-wrapper">
+                                <div class="vote-touch mb-2 e2e-msg-vote-up-wrapper">
+                                    <div class="vote up e2e-msg-vote-up" data-id="1233839"></div>
+                                </div>
+
+                                <div class="answer-score text-light e2e-msg-votes">0</div>
+
+                                <div class="vote-touch vote-touch-down mt-2 e2e-msg-vote-down-wrapper">
+                                    <div class="vote down e2e-msg-vote-down" data-id="1233839"></div>
+                                </div>
+
+                                <div class="u-mt10 u-tac u-mob-mt0 u-mob-ml10">
+                                    
+                                    
+                                </div>
+                            </div>
+                            <div class="col-lg answer-container u-mob-w100">
+                                <div class="edit-post-popup">
+                                    <div class="row no-gutters justify-content-between u-mb10 text-light align-items-start align-content-lg-center">
+                                        <div class="col-9 col-sm-10 col-lg-10 d-block d-lg-flex messageby-col">
+                                            <div class="achievements-tooltip-zone d-inline d-lg-flex messageby-col e2e-msg-author">
+                                                <div class="u-dib"><img alt="" class="user-avatar e2e-avatar" loading="lazy" src="/forums/images/avatarimages/default.gif" /></div>
+                                                <div class="u-dib achievements-tooltip-anchor">
+                                                    <a class="username e2e-username" href="/forums/profile/74e60660-aef2-4bb3-8c64-19f7e3977c60">Rafal Stasiak</a>
+                                                    
+<div class="achievements-tooltip-container e2e-ach-tooltip">
+    <span class="achievements-title e2e-ach-title">Top achievements</span>
+    <div class="row no-gutters d-flex justify-content-between">
+            <div class="col-md-6 u-tac u-mt10 e2e-ach-rank">
+                <img src="/forums/images/forum-gamification/rank-01.svg" 
+                     loading="lazy" width="56" height="56" class="e2e-ach-icon" />
+                <span class="achievement-name u-db e2e-ach-name">Rank 1</span>
+            </div>
+
+    </div>
+</div>
+                                                </div>
+                                            </div>
+                                            <div class="rag-indexable modified d-inline d-lg-block e2e-msg-action">
+                                                answered on <span class="local-datetime e2e-th-date" data-timestamp="1276592030663"><span class="u-dib">15 Jun 2010,&nbsp;</span><span class="u-dib">08:53 AM</span></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto actions-container">
+                                            
+                                            <a href="#"
+                                               class="social-care e2e-msg-care"
+                                               data-url="https://www.telerik.com/forums/unable-to-connect-to-silverlight-application-on-http-www-silverlight-net-showcase-page#1233839"
+                                               data-title="Share this answer"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" class="i-care">
+    <path d="M15,13.5a2.5,2.5,0,0,1-5,0,2.62,2.62,0,0,1,.11-.69L5,10a2.42,2.42,0,0,1-1.49.51,2.5,2.5,0,0,1,0-5,2.42,2.42,0,0,1,1.61.61l5-2.78A2.54,2.54,0,0,1,10,2.5,2.5,2.5,0,1,1,12.5,5a2.46,2.46,0,0,1-1.83-.81L5.74,6.9A2.54,2.54,0,0,1,6,8a2.5,2.5,0,0,1-.33,1.22l4.9,2.7A2.49,2.49,0,0,1,15,13.5Z" />
+</svg></a>
+                                        </div>
+                                    </div>
+                                    <div id="msg-content-1233839">
+                                        <div>
+                                            
+                                            <div class="rag-indexable pb-3 u-mr20 msg-content e2e-msg-text">Hello Cody,<br>
+<br>
+Thank you. Both address you gave work perfect.<br>
+<br>
+Unfortunately we do not have a public website of our application.<br>
+<br>
+Bets regards,<br>
+Rafał Stasiak 
+</div>
+                                        </div>
+                                        
+                                        <div id="recaptcha-container-1233839"
+                                             data-size="invisible"
+                                             data-sitekey="6LfV-oYqAAAAANpMyzEl3iTdsS5nx87jkYbZkwaO">
+                                        </div>
+                                        <div class="loader-container centered" style="display: none">
+                                            <div class="loader loader-med"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="answer-separator"></div>
+                                <div class="u-mt10 e2e-answer-comments">
+                                    
+<div id="comments-1233839" class="u-pr">
+    <div class="u-mt10 u-mb10">
+        <button class="btn-outline oval btn-comment e2e-add-comment">Add a comment</button>
+        <form class="row align-items-center comment-form no-gutters"
+              method="post"
+              action="/forums/unable-to-connect-to-silverlight-application-on-http-www-silverlight-net-showcase-page/comment"
+              data-ajax="true"
+			  data-ajax-begin="executeRecaptchaValidationFormBeforeRequest"
+              data-ajax-update="#comments-1233839"
+              data-ajax-loading="#comments-1233839 .loader-container"
+              data-ajax-success="commentSubmitted"
+              data-ajax-failure="showDefaultNotificationError"
+			  data-recaptcha-container="recaptcha-comment-container-1233839"
+              style="display:none">
+			<div class="col-12 e2e-comment-add-text-wrapper">
+				<textarea 
+						  autocomplete="off" 
+						  data-val="true" 
+						  data-val-htmlrequired="Comment text is required." 
+						  placeholder="Type your comment..."
+						  class="u-db" name="Content" type="text"></textarea>
+				<div class="file-upload-container inline">
+					<input name="attachment" data-val="true" data-val-filesuploaded="Please ensure all files are successfully uploaded." type="file" class="d-none file-input" />
+				</div>
+				<div class="row no-gutters">
+					<span class="field-validation-valid static col-auto e2e-comment-add-val" data-valmsg-for="Content" data-valmsg-replace="true"></span>
+					<span class="field-validation-valid static col-auto u-ml5 e2e-comment-add-val" data-valmsg-for="attachment" data-valmsg-replace="true"></span>
+				</div>
+			</div>
+            <div class="col-auto">
+                <button class="btn-outline btn-submit-comment e2e-comment-add-submit">Submit comment</button>
+            </div>
+            <div class="col-auto u-ml15">
+                <button class="icon btn-comment-close e2e-comment-add-close" type="button">
+                    Cancel
+                </button>
+            </div>
+            <input type="hidden" name="ParentMessageId" value="1233839" />
+        </form>
+		<div id="recaptcha-comment-container-1233839"
+			 data-size="invisible"
+			 data-sitekey="6LfV-oYqAAAAANpMyzEl3iTdsS5nx87jkYbZkwaO">
+		</div>
+    </div>
+	<div class="loader-container centered" style="display:none">
+		<div class="loader"></div>
+	</div>
+</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="1234798" class="row u-mb35 no-gutters answer-separator e2e-thread-message d-block d-lg-flex">
+                            <div class="score-col d-flex d-lg-block u-pr e2e-msg-votes-wrapper">
+                                <div class="vote-touch mb-2 e2e-msg-vote-up-wrapper">
+                                    <div class="vote up e2e-msg-vote-up" data-id="1234798"></div>
+                                </div>
+
+                                <div class="answer-score text-light e2e-msg-votes">0</div>
+
+                                <div class="vote-touch vote-touch-down mt-2 e2e-msg-vote-down-wrapper">
+                                    <div class="vote down e2e-msg-vote-down" data-id="1234798"></div>
+                                </div>
+
+                                <div class="u-mt10 u-tac u-mob-mt0 u-mob-ml10">
+                                    
+                                    
+                                </div>
+                            </div>
+                            <div class="col-lg answer-container u-mob-w100">
+                                <div class="edit-post-popup">
+                                    <div class="row no-gutters justify-content-between u-mb10 text-light align-items-start align-content-lg-center">
+                                        <div class="col-9 col-sm-10 col-lg-10 d-block d-lg-flex messageby-col">
+                                            <div class="achievements-tooltip-zone d-inline d-lg-flex messageby-col e2e-msg-author">
+                                                <div class="u-dib"><img alt="" class="user-avatar e2e-avatar" loading="lazy" src="/forums/images/avatarimages/default.gif" /></div>
+                                                <div class="u-dib achievements-tooltip-anchor">
+                                                    <span class="username e2e-username support-officer-badge">Cody</span>
+                                                    <div class="achievements-tooltip-container e2e-ach-tooltip">
+    <span class="achievements-title e2e-ach-title">Telerik team</span>
+    <div class="row no-gutters d-flex justify-content-between">
+        <div class="col-md-12 u-tac u-mt10 e2e-ach-support">
+            <img src="/forums/images/forum-gamification/support-officer.svg" loading="lazy" width="56" height="56" class="e2e-ach-icon" />
+        </div>
+    </div>
+</div>
+                                                </div>
+                                            </div>
+                                            <div class="rag-indexable modified d-inline d-lg-block e2e-msg-action">
+                                                answered on <span class="local-datetime e2e-th-date" data-timestamp="1276624970533"><span class="u-dib">15 Jun 2010,&nbsp;</span><span class="u-dib">06:02 PM</span></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto actions-container">
+                                            
+                                            <a href="#"
+                                               class="social-care e2e-msg-care"
+                                               data-url="https://www.telerik.com/forums/unable-to-connect-to-silverlight-application-on-http-www-silverlight-net-showcase-page#1234798"
+                                               data-title="Share this answer"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" class="i-care">
+    <path d="M15,13.5a2.5,2.5,0,0,1-5,0,2.62,2.62,0,0,1,.11-.69L5,10a2.42,2.42,0,0,1-1.49.51,2.5,2.5,0,0,1,0-5,2.42,2.42,0,0,1,1.61.61l5-2.78A2.54,2.54,0,0,1,10,2.5,2.5,2.5,0,1,1,12.5,5a2.46,2.46,0,0,1-1.83-.81L5.74,6.9A2.54,2.54,0,0,1,6,8a2.5,2.5,0,0,1-.33,1.22l4.9,2.7A2.49,2.49,0,0,1,15,13.5Z" />
+</svg></a>
+                                        </div>
+                                    </div>
+                                    <div id="msg-content-1234798">
+                                        <div>
+                                            
+                                            <div class="rag-indexable pb-3 u-mr20 msg-content e2e-msg-text">Hello Rafał Stasiak,<br>
+<br>
+I have found that by upgrading to the <a href="http://www.telerik.com/automated-testing-tools/account/downloads/internal-builds.aspx?type=1&amp;mvid=2211&amp;pid=740" target="_blank" rel="ugc">latest internal build </a>(2010.1.6.11) the problem appears to be resolved. Can try out this new version?<br>
+<br>
+Regards,<br>
+Cody<br>
+the Telerik team
+<div style="font-size: 10px; padding-top: 10px"><br>
+Do you want to have your say when we set our development plans? Do you want to know when a feature you care about is added or when a bug fixed? Explore the <a href="http://www.telerik.com/support/pits.aspx" style="color: rgba(128, 128, 128, 1)" rel="ugc">Telerik Public Issue Tracking</a> system and vote to affect the priority of the items. </div></div>
+                                        </div>
+                                        
+                                        <div id="recaptcha-container-1234798"
+                                             data-size="invisible"
+                                             data-sitekey="6LfV-oYqAAAAANpMyzEl3iTdsS5nx87jkYbZkwaO">
+                                        </div>
+                                        <div class="loader-container centered" style="display: none">
+                                            <div class="loader loader-med"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="answer-separator"></div>
+                                <div class="u-mt10 e2e-answer-comments">
+                                    
+<div id="comments-1234798" class="u-pr">
+    <div class="u-mt10 u-mb10">
+        <button class="btn-outline oval btn-comment e2e-add-comment">Add a comment</button>
+        <form class="row align-items-center comment-form no-gutters"
+              method="post"
+              action="/forums/unable-to-connect-to-silverlight-application-on-http-www-silverlight-net-showcase-page/comment"
+              data-ajax="true"
+			  data-ajax-begin="executeRecaptchaValidationFormBeforeRequest"
+              data-ajax-update="#comments-1234798"
+              data-ajax-loading="#comments-1234798 .loader-container"
+              data-ajax-success="commentSubmitted"
+              data-ajax-failure="showDefaultNotificationError"
+			  data-recaptcha-container="recaptcha-comment-container-1234798"
+              style="display:none">
+			<div class="col-12 e2e-comment-add-text-wrapper">
+				<textarea 
+						  autocomplete="off" 
+						  data-val="true" 
+						  data-val-htmlrequired="Comment text is required." 
+						  placeholder="Type your comment..."
+						  class="u-db" name="Content" type="text"></textarea>
+				<div class="file-upload-container inline">
+					<input name="attachment" data-val="true" data-val-filesuploaded="Please ensure all files are successfully uploaded." type="file" class="d-none file-input" />
+				</div>
+				<div class="row no-gutters">
+					<span class="field-validation-valid static col-auto e2e-comment-add-val" data-valmsg-for="Content" data-valmsg-replace="true"></span>
+					<span class="field-validation-valid static col-auto u-ml5 e2e-comment-add-val" data-valmsg-for="attachment" data-valmsg-replace="true"></span>
+				</div>
+			</div>
+            <div class="col-auto">
+                <button class="btn-outline btn-submit-comment e2e-comment-add-submit">Submit comment</button>
+            </div>
+            <div class="col-auto u-ml15">
+                <button class="icon btn-comment-close e2e-comment-add-close" type="button">
+                    Cancel
+                </button>
+            </div>
+            <input type="hidden" name="ParentMessageId" value="1234798" />
+        </form>
+		<div id="recaptcha-comment-container-1234798"
+			 data-size="invisible"
+			 data-sitekey="6LfV-oYqAAAAANpMyzEl3iTdsS5nx87jkYbZkwaO">
+		</div>
+    </div>
+	<div class="loader-container centered" style="display:none">
+		<div class="loader"></div>
+	</div>
+</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="1283145" class="row u-mb35 no-gutters answer-separator e2e-thread-message d-block d-lg-flex">
+                            <div class="score-col d-flex d-lg-block u-pr e2e-msg-votes-wrapper">
+                                <div class="vote-touch mb-2 e2e-msg-vote-up-wrapper">
+                                    <div class="vote up e2e-msg-vote-up" data-id="1283145"></div>
+                                </div>
+
+                                <div class="answer-score text-light e2e-msg-votes">0</div>
+
+                                <div class="vote-touch vote-touch-down mt-2 e2e-msg-vote-down-wrapper">
+                                    <div class="vote down e2e-msg-vote-down" data-id="1283145"></div>
+                                </div>
+
+                                <div class="u-mt10 u-tac u-mob-mt0 u-mob-ml10">
+                                    
+                                    
+                                </div>
+                            </div>
+                            <div class="col-lg answer-container u-mob-w100">
+                                <div class="edit-post-popup">
+                                    <div class="row no-gutters justify-content-between u-mb10 text-light align-items-start align-content-lg-center">
+                                        <div class="col-9 col-sm-10 col-lg-10 d-block d-lg-flex messageby-col">
+                                            <div class="achievements-tooltip-zone d-inline d-lg-flex messageby-col e2e-msg-author">
+                                                <div class="u-dib"><img alt="" class="user-avatar e2e-avatar" loading="lazy" src="/forums/images/avatarimages/default.gif" /></div>
+                                                <div class="u-dib achievements-tooltip-anchor">
+                                                    <a class="username e2e-username" href="/forums/profile/c71951ad-fdd3-42d4-a444-3a74c2c60b38">lookin</a>
+                                                    
+<div class="achievements-tooltip-container e2e-ach-tooltip">
+    <span class="achievements-title e2e-ach-title">Top achievements</span>
+    <div class="row no-gutters d-flex justify-content-between">
+            <div class="col-md-6 u-tac u-mt10 e2e-ach-rank">
+                <img src="/forums/images/forum-gamification/rank-01.svg" 
+                     loading="lazy" width="56" height="56" class="e2e-ach-icon" />
+                <span class="achievement-name u-db e2e-ach-name">Rank 1</span>
+            </div>
+
+    </div>
+</div>
+                                                </div>
+                                            </div>
+                                            <div class="rag-indexable modified d-inline d-lg-block e2e-msg-action">
+                                                answered on <span class="local-datetime e2e-th-date" data-timestamp="1280168890063"><span class="u-dib">26 Jul 2010,&nbsp;</span><span class="u-dib">06:28 PM</span></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto actions-container">
+                                            
+                                            <a href="#"
+                                               class="social-care e2e-msg-care"
+                                               data-url="https://www.telerik.com/forums/unable-to-connect-to-silverlight-application-on-http-www-silverlight-net-showcase-page#1283145"
+                                               data-title="Share this answer"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" class="i-care">
+    <path d="M15,13.5a2.5,2.5,0,0,1-5,0,2.62,2.62,0,0,1,.11-.69L5,10a2.42,2.42,0,0,1-1.49.51,2.5,2.5,0,0,1,0-5,2.42,2.42,0,0,1,1.61.61l5-2.78A2.54,2.54,0,0,1,10,2.5,2.5,2.5,0,1,1,12.5,5a2.46,2.46,0,0,1-1.83-.81L5.74,6.9A2.54,2.54,0,0,1,6,8a2.5,2.5,0,0,1-.33,1.22l4.9,2.7A2.49,2.49,0,0,1,15,13.5Z" />
+</svg></a>
+                                        </div>
+                                    </div>
+                                    <div id="msg-content-1283145">
+                                        <div>
+                                            
+                                            <div class="rag-indexable pb-3 u-mr20 msg-content e2e-msg-text">Today I installed the&nbsp; <span style="font-weight: bold">WebUI Test Studio Developer Edition 2010.1 518 Trial</span> version and I am also getting the "Unable to connect to Silverlight application."<br>
+<br>
+Cody's response was "I have found that by upgrading to the <a target="_blank" href="../../account/downloads/internal-builds.aspx?type=1&amp;mvid=2211&amp;pid=740" rel="ugc">latest internal build </a>(2010.1.6.11) the problem appears to be resolved. Can try out this new version?"<br>
+<br>
+Is the trial version newer or older than the build suggested by Cody?</div>
+                                        </div>
+                                        
+                                        <div id="recaptcha-container-1283145"
+                                             data-size="invisible"
+                                             data-sitekey="6LfV-oYqAAAAANpMyzEl3iTdsS5nx87jkYbZkwaO">
+                                        </div>
+                                        <div class="loader-container centered" style="display: none">
+                                            <div class="loader loader-med"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="answer-separator"></div>
+                                <div class="u-mt10 e2e-answer-comments">
+                                    
+<div id="comments-1283145" class="u-pr">
+    <div class="u-mt10 u-mb10">
+        <button class="btn-outline oval btn-comment e2e-add-comment">Add a comment</button>
+        <form class="row align-items-center comment-form no-gutters"
+              method="post"
+              action="/forums/unable-to-connect-to-silverlight-application-on-http-www-silverlight-net-showcase-page/comment"
+              data-ajax="true"
+			  data-ajax-begin="executeRecaptchaValidationFormBeforeRequest"
+              data-ajax-update="#comments-1283145"
+              data-ajax-loading="#comments-1283145 .loader-container"
+              data-ajax-success="commentSubmitted"
+              data-ajax-failure="showDefaultNotificationError"
+			  data-recaptcha-container="recaptcha-comment-container-1283145"
+              style="display:none">
+			<div class="col-12 e2e-comment-add-text-wrapper">
+				<textarea 
+						  autocomplete="off" 
+						  data-val="true" 
+						  data-val-htmlrequired="Comment text is required." 
+						  placeholder="Type your comment..."
+						  class="u-db" name="Content" type="text"></textarea>
+				<div class="file-upload-container inline">
+					<input name="attachment" data-val="true" data-val-filesuploaded="Please ensure all files are successfully uploaded." type="file" class="d-none file-input" />
+				</div>
+				<div class="row no-gutters">
+					<span class="field-validation-valid static col-auto e2e-comment-add-val" data-valmsg-for="Content" data-valmsg-replace="true"></span>
+					<span class="field-validation-valid static col-auto u-ml5 e2e-comment-add-val" data-valmsg-for="attachment" data-valmsg-replace="true"></span>
+				</div>
+			</div>
+            <div class="col-auto">
+                <button class="btn-outline btn-submit-comment e2e-comment-add-submit">Submit comment</button>
+            </div>
+            <div class="col-auto u-ml15">
+                <button class="icon btn-comment-close e2e-comment-add-close" type="button">
+                    Cancel
+                </button>
+            </div>
+            <input type="hidden" name="ParentMessageId" value="1283145" />
+        </form>
+		<div id="recaptcha-comment-container-1283145"
+			 data-size="invisible"
+			 data-sitekey="6LfV-oYqAAAAANpMyzEl3iTdsS5nx87jkYbZkwaO">
+		</div>
+    </div>
+	<div class="loader-container centered" style="display:none">
+		<div class="loader"></div>
+	</div>
+</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="1283306" class="row u-mb35 no-gutters answer-separator e2e-thread-message d-block d-lg-flex">
+                            <div class="score-col d-flex d-lg-block u-pr e2e-msg-votes-wrapper">
+                                <div class="vote-touch mb-2 e2e-msg-vote-up-wrapper">
+                                    <div class="vote up e2e-msg-vote-up" data-id="1283306"></div>
+                                </div>
+
+                                <div class="answer-score text-light e2e-msg-votes">0</div>
+
+                                <div class="vote-touch vote-touch-down mt-2 e2e-msg-vote-down-wrapper">
+                                    <div class="vote down e2e-msg-vote-down" data-id="1283306"></div>
+                                </div>
+
+                                <div class="u-mt10 u-tac u-mob-mt0 u-mob-ml10">
+                                    
+                                    
+                                </div>
+                            </div>
+                            <div class="col-lg answer-container u-mob-w100">
+                                <div class="edit-post-popup">
+                                    <div class="row no-gutters justify-content-between u-mb10 text-light align-items-start align-content-lg-center">
+                                        <div class="col-9 col-sm-10 col-lg-10 d-block d-lg-flex messageby-col">
+                                            <div class="achievements-tooltip-zone d-inline d-lg-flex messageby-col e2e-msg-author">
+                                                <div class="u-dib"><img alt="" class="user-avatar e2e-avatar" loading="lazy" src="/forums/images/avatarimages/default.gif" /></div>
+                                                <div class="u-dib achievements-tooltip-anchor">
+                                                    <span class="username e2e-username support-officer-badge">Cody</span>
+                                                    <div class="achievements-tooltip-container e2e-ach-tooltip">
+    <span class="achievements-title e2e-ach-title">Telerik team</span>
+    <div class="row no-gutters d-flex justify-content-between">
+        <div class="col-md-12 u-tac u-mt10 e2e-ach-support">
+            <img src="/forums/images/forum-gamification/support-officer.svg" loading="lazy" width="56" height="56" class="e2e-ach-icon" />
+        </div>
+    </div>
+</div>
+                                                </div>
+                                            </div>
+                                            <div class="rag-indexable modified d-inline d-lg-block e2e-msg-action">
+                                                answered on <span class="local-datetime e2e-th-date" data-timestamp="1280178791183"><span class="u-dib">26 Jul 2010,&nbsp;</span><span class="u-dib">09:13 PM</span></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto actions-container">
+                                            
+                                            <a href="#"
+                                               class="social-care e2e-msg-care"
+                                               data-url="https://www.telerik.com/forums/unable-to-connect-to-silverlight-application-on-http-www-silverlight-net-showcase-page#1283306"
+                                               data-title="Share this answer"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" class="i-care">
+    <path d="M15,13.5a2.5,2.5,0,0,1-5,0,2.62,2.62,0,0,1,.11-.69L5,10a2.42,2.42,0,0,1-1.49.51,2.5,2.5,0,0,1,0-5,2.42,2.42,0,0,1,1.61.61l5-2.78A2.54,2.54,0,0,1,10,2.5,2.5,2.5,0,1,1,12.5,5a2.46,2.46,0,0,1-1.83-.81L5.74,6.9A2.54,2.54,0,0,1,6,8a2.5,2.5,0,0,1-.33,1.22l4.9,2.7A2.49,2.49,0,0,1,15,13.5Z" />
+</svg></a>
+                                        </div>
+                                    </div>
+                                    <div id="msg-content-1283306">
+                                        <div>
+                                            <div class="row no-gutters u-mb10">
+                                                    <div class="attachment col-12 u-mb10 e2e-msg-att"
+                                                         data-attachmentId="207648"
+                                                         data-filesize=""
+                                                         data-extension=".zip">
+                                                        
+                                                        
+                                                        <span><svg x="0px" y="0px" width="512px" height="512px" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" class="i-file-archive">
+    <path d="M352,32H96c-17.7,0-32,14.3-32,32v384c0,17.7,14.3,32,32,32h320c17.7,0,32-14.3,32-32V128L352,32z M416,448H96V64h64v32h32  v32h-32v32h32v32h-32v32h32v32h-32v32h32v34.7c-18.6,6.6-32,24.4-32,45.3c0,26.5,21.5,48,48,48s48-21.5,48-48  c0-20.9-13.4-38.7-32-45.3V288v-32h32v-32h-32v-32h32v-32h-32v-32h32V96h-32V64h96v96h96V448z M224,368c0,8.8-7.2,16-16,16  s-16-7.2-16-16s7.2-16,16-16S224,359.2,224,368z" />
+</svg></span>
+                                                        
+                                                        <a href="/forums/attachments/207648" target="_blank" class="u-ml10 u-vam e2e-att-name" download>silverlight-connection-draft.zip</a>
+                                                    </div>
+                                            </div>
+                                            <div class="rag-indexable pb-3 u-mr20 msg-content e2e-msg-text">Hi lookin,<br>
+<br>
+The trial version you just installed is older than the internal build I spoke about. You can tell by looking at the version numbers because they represent build numbers which always incremement. So "WebUI Test Studio Developer Edition 2010.1 518 Trial" is build 2010.1.5.18, older than 20101.6.11 (note that version is no longer available).<br>
+<br>
+We just released our Q2 version, which is build 2010.2.7.13. I highly recommend you download and install that version (uninstall what you have first). it is our best most feature rich version to date.<br>
+<br>
+I'm also attaching a document you can use to help troubleshoot Silverlight connection problems. The most common problem is the media type setting for .XAP files on your webserver as <a href="http://www.85turns.com/2008/03/07/register-xap-file-in-iis/" target="_blank" rel="ugc">per this post</a>.<br>
+<br>
+Regards,<br>
+Cody<br>
+the Telerik team
+<div class="forumBaloonTop"></div>
+<div class="forumBaloon">Do you want to have your say when we set our development plans? Do you want to know when a feature you care about is added or when a bug fixed? Explore the <a href="http://www.telerik.com/support/pits.aspx" rel="ugc">Telerik Public Issue Tracking</a> system and vote to affect the priority of the items </div>
+<div class="forumBaloonBottom"></div></div>
+                                        </div>
+                                        
+                                        <div id="recaptcha-container-1283306"
+                                             data-size="invisible"
+                                             data-sitekey="6LfV-oYqAAAAANpMyzEl3iTdsS5nx87jkYbZkwaO">
+                                        </div>
+                                        <div class="loader-container centered" style="display: none">
+                                            <div class="loader loader-med"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="answer-separator"></div>
+                                <div class="u-mt10 e2e-answer-comments">
+                                    
+<div id="comments-1283306" class="u-pr">
+    <div class="u-mt10 u-mb10">
+        <button class="btn-outline oval btn-comment e2e-add-comment">Add a comment</button>
+        <form class="row align-items-center comment-form no-gutters"
+              method="post"
+              action="/forums/unable-to-connect-to-silverlight-application-on-http-www-silverlight-net-showcase-page/comment"
+              data-ajax="true"
+			  data-ajax-begin="executeRecaptchaValidationFormBeforeRequest"
+              data-ajax-update="#comments-1283306"
+              data-ajax-loading="#comments-1283306 .loader-container"
+              data-ajax-success="commentSubmitted"
+              data-ajax-failure="showDefaultNotificationError"
+			  data-recaptcha-container="recaptcha-comment-container-1283306"
+              style="display:none">
+			<div class="col-12 e2e-comment-add-text-wrapper">
+				<textarea 
+						  autocomplete="off" 
+						  data-val="true" 
+						  data-val-htmlrequired="Comment text is required." 
+						  placeholder="Type your comment..."
+						  class="u-db" name="Content" type="text"></textarea>
+				<div class="file-upload-container inline">
+					<input name="attachment" data-val="true" data-val-filesuploaded="Please ensure all files are successfully uploaded." type="file" class="d-none file-input" />
+				</div>
+				<div class="row no-gutters">
+					<span class="field-validation-valid static col-auto e2e-comment-add-val" data-valmsg-for="Content" data-valmsg-replace="true"></span>
+					<span class="field-validation-valid static col-auto u-ml5 e2e-comment-add-val" data-valmsg-for="attachment" data-valmsg-replace="true"></span>
+				</div>
+			</div>
+            <div class="col-auto">
+                <button class="btn-outline btn-submit-comment e2e-comment-add-submit">Submit comment</button>
+            </div>
+            <div class="col-auto u-ml15">
+                <button class="icon btn-comment-close e2e-comment-add-close" type="button">
+                    Cancel
+                </button>
+            </div>
+            <input type="hidden" name="ParentMessageId" value="1283306" />
+        </form>
+		<div id="recaptcha-comment-container-1283306"
+			 data-size="invisible"
+			 data-sitekey="6LfV-oYqAAAAANpMyzEl3iTdsS5nx87jkYbZkwaO">
+		</div>
+    </div>
+	<div class="loader-container centered" style="display:none">
+		<div class="loader"></div>
+	</div>
+</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="1284934" class="row u-mb35 no-gutters answer-separator e2e-thread-message d-block d-lg-flex">
+                            <div class="score-col d-flex d-lg-block u-pr e2e-msg-votes-wrapper">
+                                <div class="vote-touch mb-2 e2e-msg-vote-up-wrapper">
+                                    <div class="vote up e2e-msg-vote-up" data-id="1284934"></div>
+                                </div>
+
+                                <div class="answer-score text-light e2e-msg-votes">0</div>
+
+                                <div class="vote-touch vote-touch-down mt-2 e2e-msg-vote-down-wrapper">
+                                    <div class="vote down e2e-msg-vote-down" data-id="1284934"></div>
+                                </div>
+
+                                <div class="u-mt10 u-tac u-mob-mt0 u-mob-ml10">
+                                    
+                                    
+                                </div>
+                            </div>
+                            <div class="col-lg answer-container u-mob-w100">
+                                <div class="edit-post-popup">
+                                    <div class="row no-gutters justify-content-between u-mb10 text-light align-items-start align-content-lg-center">
+                                        <div class="col-9 col-sm-10 col-lg-10 d-block d-lg-flex messageby-col">
+                                            <div class="achievements-tooltip-zone d-inline d-lg-flex messageby-col e2e-msg-author">
+                                                <div class="u-dib"><img alt="" class="user-avatar e2e-avatar" loading="lazy" src="/forums/images/avatarimages/default.gif" /></div>
+                                                <div class="u-dib achievements-tooltip-anchor">
+                                                    <a class="username e2e-username" href="/forums/profile/c71951ad-fdd3-42d4-a444-3a74c2c60b38">lookin</a>
+                                                    
+<div class="achievements-tooltip-container e2e-ach-tooltip">
+    <span class="achievements-title e2e-ach-title">Top achievements</span>
+    <div class="row no-gutters d-flex justify-content-between">
+            <div class="col-md-6 u-tac u-mt10 e2e-ach-rank">
+                <img src="/forums/images/forum-gamification/rank-01.svg" 
+                     loading="lazy" width="56" height="56" class="e2e-ach-icon" />
+                <span class="achievement-name u-db e2e-ach-name">Rank 1</span>
+            </div>
+
+    </div>
+</div>
+                                                </div>
+                                            </div>
+                                            <div class="rag-indexable modified d-inline d-lg-block e2e-msg-action">
+                                                answered on <span class="local-datetime e2e-th-date" data-timestamp="1280253125947"><span class="u-dib">27 Jul 2010,&nbsp;</span><span class="u-dib">05:52 PM</span></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto actions-container">
+                                            
+                                            <a href="#"
+                                               class="social-care e2e-msg-care"
+                                               data-url="https://www.telerik.com/forums/unable-to-connect-to-silverlight-application-on-http-www-silverlight-net-showcase-page#1284934"
+                                               data-title="Share this answer"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" class="i-care">
+    <path d="M15,13.5a2.5,2.5,0,0,1-5,0,2.62,2.62,0,0,1,.11-.69L5,10a2.42,2.42,0,0,1-1.49.51,2.5,2.5,0,0,1,0-5,2.42,2.42,0,0,1,1.61.61l5-2.78A2.54,2.54,0,0,1,10,2.5,2.5,2.5,0,1,1,12.5,5a2.46,2.46,0,0,1-1.83-.81L5.74,6.9A2.54,2.54,0,0,1,6,8a2.5,2.5,0,0,1-.33,1.22l4.9,2.7A2.49,2.49,0,0,1,15,13.5Z" />
+</svg></a>
+                                        </div>
+                                    </div>
+                                    <div id="msg-content-1284934">
+                                        <div>
+                                            
+                                            <div class="rag-indexable pb-3 u-mr20 msg-content e2e-msg-text">Cody,<br>
+<br>
+Thanks for your help ~ I am no longer getting the "Unable to connect to Silverlight application" error AND I am now successfully recording steps using the WebUI Test Developer Studio interface.&nbsp; Also, the Silverlight Connection document was very helpful...</div>
+                                        </div>
+                                        
+                                        <div id="recaptcha-container-1284934"
+                                             data-size="invisible"
+                                             data-sitekey="6LfV-oYqAAAAANpMyzEl3iTdsS5nx87jkYbZkwaO">
+                                        </div>
+                                        <div class="loader-container centered" style="display: none">
+                                            <div class="loader loader-med"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="answer-separator"></div>
+                                <div class="u-mt10 e2e-answer-comments">
+                                    
+<div id="comments-1284934" class="u-pr">
+    <div class="u-mt10 u-mb10">
+        <button class="btn-outline oval btn-comment e2e-add-comment">Add a comment</button>
+        <form class="row align-items-center comment-form no-gutters"
+              method="post"
+              action="/forums/unable-to-connect-to-silverlight-application-on-http-www-silverlight-net-showcase-page/comment"
+              data-ajax="true"
+			  data-ajax-begin="executeRecaptchaValidationFormBeforeRequest"
+              data-ajax-update="#comments-1284934"
+              data-ajax-loading="#comments-1284934 .loader-container"
+              data-ajax-success="commentSubmitted"
+              data-ajax-failure="showDefaultNotificationError"
+			  data-recaptcha-container="recaptcha-comment-container-1284934"
+              style="display:none">
+			<div class="col-12 e2e-comment-add-text-wrapper">
+				<textarea 
+						  autocomplete="off" 
+						  data-val="true" 
+						  data-val-htmlrequired="Comment text is required." 
+						  placeholder="Type your comment..."
+						  class="u-db" name="Content" type="text"></textarea>
+				<div class="file-upload-container inline">
+					<input name="attachment" data-val="true" data-val-filesuploaded="Please ensure all files are successfully uploaded." type="file" class="d-none file-input" />
+				</div>
+				<div class="row no-gutters">
+					<span class="field-validation-valid static col-auto e2e-comment-add-val" data-valmsg-for="Content" data-valmsg-replace="true"></span>
+					<span class="field-validation-valid static col-auto u-ml5 e2e-comment-add-val" data-valmsg-for="attachment" data-valmsg-replace="true"></span>
+				</div>
+			</div>
+            <div class="col-auto">
+                <button class="btn-outline btn-submit-comment e2e-comment-add-submit">Submit comment</button>
+            </div>
+            <div class="col-auto u-ml15">
+                <button class="icon btn-comment-close e2e-comment-add-close" type="button">
+                    Cancel
+                </button>
+            </div>
+            <input type="hidden" name="ParentMessageId" value="1284934" />
+        </form>
+		<div id="recaptcha-comment-container-1284934"
+			 data-size="invisible"
+			 data-sitekey="6LfV-oYqAAAAANpMyzEl3iTdsS5nx87jkYbZkwaO">
+		</div>
+    </div>
+	<div class="loader-container centered" style="display:none">
+		<div class="loader"></div>
+	</div>
+</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="1284944" class="row u-mb35 no-gutters answer-separator e2e-thread-message d-block d-lg-flex">
+                            <div class="score-col d-flex d-lg-block u-pr e2e-msg-votes-wrapper">
+                                <div class="vote-touch mb-2 e2e-msg-vote-up-wrapper">
+                                    <div class="vote up e2e-msg-vote-up" data-id="1284944"></div>
+                                </div>
+
+                                <div class="answer-score text-light e2e-msg-votes">0</div>
+
+                                <div class="vote-touch vote-touch-down mt-2 e2e-msg-vote-down-wrapper">
+                                    <div class="vote down e2e-msg-vote-down" data-id="1284944"></div>
+                                </div>
+
+                                <div class="u-mt10 u-tac u-mob-mt0 u-mob-ml10">
+                                    
+                                    
+                                </div>
+                            </div>
+                            <div class="col-lg answer-container u-mob-w100">
+                                <div class="edit-post-popup">
+                                    <div class="row no-gutters justify-content-between u-mb10 text-light align-items-start align-content-lg-center">
+                                        <div class="col-9 col-sm-10 col-lg-10 d-block d-lg-flex messageby-col">
+                                            <div class="achievements-tooltip-zone d-inline d-lg-flex messageby-col e2e-msg-author">
+                                                <div class="u-dib"><img alt="" class="user-avatar e2e-avatar" loading="lazy" src="/forums/images/avatarimages/default.gif" /></div>
+                                                <div class="u-dib achievements-tooltip-anchor">
+                                                    <span class="username e2e-username support-officer-badge">Cody</span>
+                                                    <div class="achievements-tooltip-container e2e-ach-tooltip">
+    <span class="achievements-title e2e-ach-title">Telerik team</span>
+    <div class="row no-gutters d-flex justify-content-between">
+        <div class="col-md-12 u-tac u-mt10 e2e-ach-support">
+            <img src="/forums/images/forum-gamification/support-officer.svg" loading="lazy" width="56" height="56" class="e2e-ach-icon" />
+        </div>
+    </div>
+</div>
+                                                </div>
+                                            </div>
+                                            <div class="rag-indexable modified d-inline d-lg-block e2e-msg-action">
+                                                answered on <span class="local-datetime e2e-th-date" data-timestamp="1280253540160"><span class="u-dib">27 Jul 2010,&nbsp;</span><span class="u-dib">05:59 PM</span></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto actions-container">
+                                            
+                                            <a href="#"
+                                               class="social-care e2e-msg-care"
+                                               data-url="https://www.telerik.com/forums/unable-to-connect-to-silverlight-application-on-http-www-silverlight-net-showcase-page#1284944"
+                                               data-title="Share this answer"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" class="i-care">
+    <path d="M15,13.5a2.5,2.5,0,0,1-5,0,2.62,2.62,0,0,1,.11-.69L5,10a2.42,2.42,0,0,1-1.49.51,2.5,2.5,0,0,1,0-5,2.42,2.42,0,0,1,1.61.61l5-2.78A2.54,2.54,0,0,1,10,2.5,2.5,2.5,0,1,1,12.5,5a2.46,2.46,0,0,1-1.83-.81L5.74,6.9A2.54,2.54,0,0,1,6,8a2.5,2.5,0,0,1-.33,1.22l4.9,2.7A2.49,2.49,0,0,1,15,13.5Z" />
+</svg></a>
+                                        </div>
+                                    </div>
+                                    <div id="msg-content-1284944">
+                                        <div>
+                                            
+                                            <div class="rag-indexable pb-3 u-mr20 msg-content e2e-msg-text">Hi lookin,<br>
+<br>
+I am very glad to hear it. Thank you for the update!<br>
+<br>
+Best wishes,<br>
+Cody<br>
+the Telerik team
+<div class="forumBaloonTop"></div>
+<div class="forumBaloon">Do you want to have your say when we set our development plans? Do you want to know when a feature you care about is added or when a bug fixed? Explore the <a href="http://www.telerik.com/support/pits.aspx" rel="ugc">Telerik Public Issue Tracking</a> system and vote to affect the priority of the items </div>
+<div class="forumBaloonBottom"></div></div>
+                                        </div>
+                                        
+                                        <div id="recaptcha-container-1284944"
+                                             data-size="invisible"
+                                             data-sitekey="6LfV-oYqAAAAANpMyzEl3iTdsS5nx87jkYbZkwaO">
+                                        </div>
+                                        <div class="loader-container centered" style="display: none">
+                                            <div class="loader loader-med"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="answer-separator"></div>
+                                <div class="u-mt10 e2e-answer-comments">
+                                    
+<div id="comments-1284944" class="u-pr">
+    <div class="u-mt10 u-mb10">
+        <button class="btn-outline oval btn-comment e2e-add-comment">Add a comment</button>
+        <form class="row align-items-center comment-form no-gutters"
+              method="post"
+              action="/forums/unable-to-connect-to-silverlight-application-on-http-www-silverlight-net-showcase-page/comment"
+              data-ajax="true"
+			  data-ajax-begin="executeRecaptchaValidationFormBeforeRequest"
+              data-ajax-update="#comments-1284944"
+              data-ajax-loading="#comments-1284944 .loader-container"
+              data-ajax-success="commentSubmitted"
+              data-ajax-failure="showDefaultNotificationError"
+			  data-recaptcha-container="recaptcha-comment-container-1284944"
+              style="display:none">
+			<div class="col-12 e2e-comment-add-text-wrapper">
+				<textarea 
+						  autocomplete="off" 
+						  data-val="true" 
+						  data-val-htmlrequired="Comment text is required." 
+						  placeholder="Type your comment..."
+						  class="u-db" name="Content" type="text"></textarea>
+				<div class="file-upload-container inline">
+					<input name="attachment" data-val="true" data-val-filesuploaded="Please ensure all files are successfully uploaded." type="file" class="d-none file-input" />
+				</div>
+				<div class="row no-gutters">
+					<span class="field-validation-valid static col-auto e2e-comment-add-val" data-valmsg-for="Content" data-valmsg-replace="true"></span>
+					<span class="field-validation-valid static col-auto u-ml5 e2e-comment-add-val" data-valmsg-for="attachment" data-valmsg-replace="true"></span>
+				</div>
+			</div>
+            <div class="col-auto">
+                <button class="btn-outline btn-submit-comment e2e-comment-add-submit">Submit comment</button>
+            </div>
+            <div class="col-auto u-ml15">
+                <button class="icon btn-comment-close e2e-comment-add-close" type="button">
+                    Cancel
+                </button>
+            </div>
+            <input type="hidden" name="ParentMessageId" value="1284944" />
+        </form>
+		<div id="recaptcha-comment-container-1284944"
+			 data-size="invisible"
+			 data-sitekey="6LfV-oYqAAAAANpMyzEl3iTdsS5nx87jkYbZkwaO">
+		</div>
+    </div>
+	<div class="loader-container centered" style="display:none">
+		<div class="loader"></div>
+	</div>
+</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    <div id="answers-list-loader" class="loader-container centered" style="display: none">
+                        <div class="loader"></div>
+                    </div>
+                </div>
+
+                <div>
+                    
+                    <button class="btn-accent answer btn-add-answer e2e-thread-answer">Answer this question</button>
+                    <form class="answer-form u-pr"
+                          method="post"
+                          action="/forums/unable-to-connect-to-silverlight-application-on-http-www-silverlight-net-showcase-page/posts?sortBy=Date"
+                          data-ajax="true"
+                          data-ajax-begin="executeAnswerFormBeforeRequest"
+                          data-ajax-update="#thread-details"
+                          data-ajax-loading=".answer-form .loader-container"
+                          data-ajax-success="postSubmitted"
+                          data-ajax-failure="showDefaultNotificationError"
+                          style="display: none">
+                        <div>
+                            <textarea data-val="true" data-val-htmlrequired="Answer text is required." class="kendo-editor" name="Content"></textarea>
+                        </div>
+                        <div class="field-validation-valid static" data-valmsg-for="Content" data-valmsg-replace="true"></div>
+                        <div class="file-upload-container e2e-thread-answer-upload-wrapper">
+                            <div class="content">
+	<div class="d-flex">
+		<div>
+			<svg xmlns="http://www.w3.org/2000/svg" class="i-attachment" viewBox="0 0 40 40">
+    <path d="M20,40A20,20,0,1,1,40,20,20,20,0,0,1,20,40ZM20,1A19,19,0,1,0,39,20,19,19,0,0,0,20,1Zm5.59,27.78a6.19,6.19,0,0,0,1.91-7.61l-3.57-7.54a1,1,0,0,0-1.34-.48,1,1,0,0,0-.47,1.33L25.68,22c.06.14,1.39,3.28-1.24,5.14a3.84,3.84,0,0,1-5.32-.95l-.21-.33L13.27,14.12a1.38,1.38,0,0,1,.65-1.85,1.4,1.4,0,0,1,1.89.42l5.55,11.75a1,1,0,1,0,1.81-.85L17.59,11.78l-.05-.1a3.38,3.38,0,0,0-4.6-1.15A3.37,3.37,0,0,0,11.47,15l5.66,11.76a6.53,6.53,0,0,0,.35.56,5.84,5.84,0,0,0,8.11,1.45Z" />
+</svg>
+		</div>
+		<div class="u-ml20">
+			<div class="file-upload-accent-text d-none d-lg-block">Drag and drop files here or <a href="#" class="upload-opener">browse</a> to attach...</div>
+			<div class="file-upload-accent-text d-lg-none"><a href="#" class="upload-opener">Browse</a> for files to attach...</div>
+			<div class="file-upload-explaination-text">Supported file types: PNG, JPG, JPEG, ZIP, RAR, TXT. Max total file size - 20MB.</div>
+		</div>
+	</div>
+</div>
+
+<input name="attachment" data-val="true" data-val-filesuploaded="Please ensure all files are successfully uploaded." type="file" class="d-none file-input" />
+                        </div>
+                        <div class="field-validation-valid static" data-valmsg-for="attachment" data-valmsg-replace="true"></div>
+                        <div class="u-mt20 row align-items-center">
+                            <div class="col-auto">
+                                <button type="submit" class="btn-accent answer e2e-thread-submit-answer">Submit answer</button>
+                            </div>
+                            <div class="col-auto">
+                                <button type="button" class="btn-cancel-answer e2e-thread-cancel-answer">Cancel</button>
+                            </div>
+                        </div>
+                        <div class="loader-container centered" style="display: none">
+                            <div class="loader"></div>
+                        </div>
+                    </form>
+                    <div id="recaptcha-answer-container"
+                         data-size="invisible"
+                         data-sitekey="6LfV-oYqAAAAANpMyzEl3iTdsS5nx87jkYbZkwaO">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-side-bar list-side-nav thread-sidebar">
+            <div class="u-pl15 u-pt30">
+                <div class="mb-5">
+                    <div class="rag-indexable side-nav-heading u-pb20 e2e-thread-tags-label">Tags</div>
+                        <span class="rag-indexable tag selected mr-1 mb-1 e2e-thread-tag" title="General Discussions">
+                            <span class="e2e-tag-name">General Discussions</span>
+                        </span>
+                </div>
+
+                <div class="side-nav-heading u-pb20 e2e-thread-asked-by-title">Asked by</div>
+                <div class="e2e-thread-asked-by achievements-tooltip-zone d-flex align-items-center">
+                    <div class="u-mr13 u-dib avatar-rank" style="--rank-src: url(&#x27;../images/forum-gamification/sm-rank-01.svg&#x27;)"><img alt="" class="user-avatar e2e-avatar" loading="lazy" src="/forums/images/avatarimages/default.gif" /></div>
+                    <div class="u-dib achievements-tooltip-anchor">
+                        <a class="username e2e-username" href="/forums/profile/74e60660-aef2-4bb3-8c64-19f7e3977c60">Rafal Stasiak</a>
+                        
+<div class="achievements-tooltip-container e2e-ach-tooltip">
+    <span class="achievements-title e2e-ach-title">Top achievements</span>
+    <div class="row no-gutters d-flex justify-content-between">
+            <div class="col-md-6 u-tac u-mt10 e2e-ach-rank">
+                <img src="/forums/images/forum-gamification/rank-01.svg" 
+                     loading="lazy" width="56" height="56" class="e2e-ach-icon" />
+                <span class="achievement-name u-db e2e-ach-name">Rank 1</span>
+            </div>
+
+    </div>
+</div>
+                    </div>
+                </div>
+
+                <div class="mt-5">
+                    <div class="side-nav-heading u-pb20 e2e-thread-answers-by-title">Answers by</div>
+                        <div class="u-mb10 e2e-thread-answers-by achievements-tooltip-zone d-flex align-items-center">
+                            <div class="u-mr13 u-dib avatar-rank" style="--rank-src: url(&#x27;../images/forum-gamification/support-officer.svg&#x27;)"><img alt="" class="user-avatar e2e-avatar" loading="lazy" src="/forums/images/avatarimages/default.gif" /></div>
+                            <div class="u-dib achievements-tooltip-anchor">
+                                <span class="username e2e-username">Cody</span>
+                                <div class="achievements-tooltip-container e2e-ach-tooltip">
+    <span class="achievements-title e2e-ach-title">Telerik team</span>
+    <div class="row no-gutters d-flex justify-content-between">
+        <div class="col-md-12 u-tac u-mt10 e2e-ach-support">
+            <img src="/forums/images/forum-gamification/support-officer.svg" loading="lazy" width="56" height="56" class="e2e-ach-icon" />
+        </div>
+    </div>
+</div>
+                            </div>
+                        </div>
+                        <div class="u-mb10 e2e-thread-answers-by achievements-tooltip-zone d-flex align-items-center">
+                            <div class="u-mr13 u-dib avatar-rank" style="--rank-src: url(&#x27;../images/forum-gamification/sm-rank-01.svg&#x27;)"><img alt="" class="user-avatar e2e-avatar" loading="lazy" src="/forums/images/avatarimages/default.gif" /></div>
+                            <div class="u-dib achievements-tooltip-anchor">
+                                <a class="username e2e-username" href="/forums/profile/74e60660-aef2-4bb3-8c64-19f7e3977c60">Rafal Stasiak</a>
+                                
+<div class="achievements-tooltip-container e2e-ach-tooltip">
+    <span class="achievements-title e2e-ach-title">Top achievements</span>
+    <div class="row no-gutters d-flex justify-content-between">
+            <div class="col-md-6 u-tac u-mt10 e2e-ach-rank">
+                <img src="/forums/images/forum-gamification/rank-01.svg" 
+                     loading="lazy" width="56" height="56" class="e2e-ach-icon" />
+                <span class="achievement-name u-db e2e-ach-name">Rank 1</span>
+            </div>
+
+    </div>
+</div>
+                            </div>
+                        </div>
+                        <div class="u-mb10 e2e-thread-answers-by achievements-tooltip-zone d-flex align-items-center">
+                            <div class="u-mr13 u-dib avatar-rank" style="--rank-src: url(&#x27;../images/forum-gamification/sm-rank-01.svg&#x27;)"><img alt="" class="user-avatar e2e-avatar" loading="lazy" src="/forums/images/avatarimages/default.gif" /></div>
+                            <div class="u-dib achievements-tooltip-anchor">
+                                <a class="username e2e-username" href="/forums/profile/c71951ad-fdd3-42d4-a444-3a74c2c60b38">lookin</a>
+                                
+<div class="achievements-tooltip-container e2e-ach-tooltip">
+    <span class="achievements-title e2e-ach-title">Top achievements</span>
+    <div class="row no-gutters d-flex justify-content-between">
+            <div class="col-md-6 u-tac u-mt10 e2e-ach-rank">
+                <img src="/forums/images/forum-gamification/rank-01.svg" 
+                     loading="lazy" width="56" height="56" class="e2e-ach-icon" />
+                <span class="achievement-name u-db e2e-ach-name">Rank 1</span>
+            </div>
+
+    </div>
+</div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="edit-overlay" style="display: none">
+    </div>
+</div></th:partial>
+    </div>
+
+    <div id="social-care-box" class="e2e-care-box">
+        <div class="arrow"></div>
+        <div class="content">
+            <div class="title u-mb20 e2e-care-title">Share this question</div>
+            <div class="u-mb35">
+                <ul class="social-network-list">
+                    <li><a href="#" data-url="https://www.facebook.com/sharer.php?u={url}" class="e2e-care-fb"><svg x="0px" y="0px" width="512px" height="512px" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" class="i-facebook">
+    <path d="M290,32c-59.8,0-96,32-96,96v64l-66,0v96l66,0v192h96V288h80l14-96l-94,0v-32c0-32,32-32,32-32h62V34.9C376.8,34,318.6,32,290,32L290,32z" />
+</svg></a></li>
+                    <li><a href="#" data-url="https://twitter.com/share?url={url}" class="e2e-care-tw"><svg x="0px" y="0px" width="512px" height="512px" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" class="i-twitter">
+    <path d="M342,64c-50.8,0-91.9,41.2-91.9,91.9c0,7.2,0.8,14.2,2.4,21c-76.4-3.8-144.1-40.4-189.4-96c-7.9,13.6-12.4,29.3-12.4,46.2
+	c0,31.9,16.2,60,40.9,76.5c-15.1-0.5-29.2-4.6-41.6-11.5v1.2c0,44.5,31.7,81.7,73.7,90.1c-7.7,2.1-15.8,3.3-24.2,3.3
+	c-5.9,0-11.7-0.6-17.3-1.6c11.7,36.5,45.6,63.1,85.9,63.8c-31.7,24.5-71.3,39.2-114.3,39.2c-7.4,0-14.8-0.4-22-1.3
+	c40.7,26,89,41.3,140.9,41.3c169.1,0,261.5-140.1,261.5-261.5c0-4-0.1-8-0.2-11.9c18-12.9,33.5-29.1,45.9-47.6
+	c-16.5,7.3-34.2,12.3-52.8,14.5c19-11.4,33.6-29.4,40.4-50.8c-17.8,10.5-37.4,18.2-58.4,22.3C392.3,75.1,368.4,64,342,64z" />
+</svg></a></li>
+                    <li><a href="#" data-url="https://www.linkedin.com/shareArticle?url={url}" class="e2e-care-li"><svg x="0px" y="0px" width="512px" height="512px" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" class="i-linkedin">
+    <path d="M112,32c-26.5,0-48,21.5-48,48s21.5,48,48,48s48-21.5,48-48S138.5,32,112,32z M64,160v288h96V160H64z M192,160v288h96V288c0-32,32-32,32-32s32,0,32,32v160h96V290.9c0-66.5-13.6-130.9-96-130.9c-36.2,0-62.9,32-64,44.9V160L192,160z" />
+</svg></a></li>
+                    <li><a href="#" data-url="https://reddit.com/submit?url={url}" class="e2e-care-re"><svg x="0px" y="0px" width="512px" height="512px" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" class="i-reddit">
+    <path d="M420.3,33c-7,0-14.5,1-22.4,3h-1.7c-12.4,4.8-21.9,12.3-28.8,22.5c-17-7-34-10.4-50.7-10.4c-6.3,0-12.6,0.6-19.1,1.9H296
+	c-8.8,2.1-16.5,5.8-23.3,11s-12.4,11.6-16.6,19.1c-5.3,8.7-8.9,31.3-10.5,41.1c-1.7,9.8-2.6,25-2.6,34.7
+	c-20.9,1.5-41.8,4.5-62.8,9.1s-40.6,11.9-59,21.9c-1.3,0.4-2.5,0.9-3.5,1.3s-2,0.9-2.9,1.3c-6.2-4.5-13-8-20.5-10.6
+	c-7.8-2.6-16.1-3.9-24.9-3.9h-5.8c-8.7,0-16.7,1.6-24.1,4.8s-14.1,7.7-20.3,13.4c-5.8,5.8-10.3,12.2-13.9,19.4
+	C1.7,219.9,0,227.4,0,235.3c0.4,10.8,4.4,21.3,11.8,31.4c5.7,8.3,13.8,15.4,24.3,21.1c-0.5,2.1-0.7,4.4-1,6.8
+	c-0.2,2.5-0.3,4.8-0.3,6.9c0,10,1.5,20,4.5,30.1c3,10.1,7.4,19.4,13.1,28.1c10.9,16.6,24.5,30.5,40.9,41.6
+	c16.4,11,33.8,20.2,52.1,27.2c17.5,6.6,35.5,11.6,54,14.8c18.6,3.3,37.4,5,56.6,5c12.5,0,25.1-0.8,37.5-2.4
+	c12.5-1.6,25-3.7,37.6-6.3c23.2-5.5,45.5-13.9,66.8-25.1s39.4-26,54.3-44.3c17.1-20.5,25.6-43.4,25.6-68.8c0-2.6-0.1-5.1-0.4-7.5
+	c-0.3-2.4-0.5-4.7-0.9-6.8c10-4.9,18.3-11.9,24.9-21.1c7.1-9.6,10.6-20.3,10.6-32v-3c-1.2-13.4-6.8-25.1-16.3-34.9
+	c-9.8-10-21.2-16.7-34.2-20.1h-0.6c-6-1.3-11.6-1.9-16.9-1.9c-14.1-0.2-26.6,3.2-37.4,10.2c-2.3,1.1-5.2,2.8-8.6,5.4
+	c-0.8-0.9-1.8-1.3-2.6-1.3l-0.7-0.6c-18.2-9.6-37.5-16.9-57.7-21.8c-20.1-4.9-40.6-8-61.6-9.3c0-7.7,0.7-34.2,1.8-41.9
+	s3.7-14.8,7.5-21.4c4.9-9.6,13.4-15.1,25.6-16.4h5.8c7.4,0,14.7,1.1,21.7,3c7.1,2,14.1,4.3,21.2,6.9v1.9c0,7.5,1.5,14.2,4.5,20.3
+	c2.9,6,6.9,11.6,11.8,16.5c10.3,10.4,22.8,16.3,37.7,17.5h7.3c14.9,0,28.1-4.8,39.8-14.4c5.3-4.4,9.7-9.6,13.1-15.5s5.5-12.5,6.4-20
+	c0.4-1.3,0.6-3.2,0.6-5.8c0.2-11-3.3-21.4-10.3-30.9c-7.1-9.2-15.8-15.7-26.2-19.5h-0.5C436.7,34.3,429.1,32.9,420.3,33L420.3,33z
+	 M421.5,60.4c7.2,0.1,13.2,2.7,18.3,7.7C446,73,449,79.2,449,86.7V88c-0.8,6.8-3.9,12.7-9.3,17.6c-5.5,4.9-11.9,7.4-19.1,7.4h-1.9
+	c-7.1,0-13.4-2.5-19.4-7.4C393.8,100.9,391,95,391,88v-1.3c0-6.6,2.1-12.1,6.5-16.6c3.8-4.7,8.9-7.7,15.1-8.9c2-0.4,4.4-0.6,7.5-0.6
+	C420.5,60.4,421,60.4,421.5,60.4L421.5,60.4z M256.5,186.1c10,0,20.3,0.5,30.8,1.6c10.6,1.1,20.9,2.7,30.8,4.8l9.9,2.6l10.2,2.6
+	c17.5,4.9,34.1,11.9,49.9,21.1c15.8,9.2,29,20.8,40,34.9c5.1,7.3,9.2,14.9,12.3,23c3.1,8.1,4.6,16.5,4.6,25.3l0,0v7.6
+	c0,2.3-0.4,4.6-1.3,6.7c-2.8,12.4-8.5,24-17.3,34.9c-7.4,10-17,19.2-28.8,27.5c-17.5,11.7-36.4,20.7-56.9,26.9
+	c-20.4,6.2-41.3,10.1-62.7,11.8c-3.6,0.5-7.3,0.6-10.8,0.6h-10.8c-21.3,0-42.4-2.2-63.1-6.6c-20.8-4.4-40.3-11.4-58.6-21l-4.5-2.6
+	l-4.8-2.2c-13-8.3-24.4-17.5-34.5-27.5c-10.2-11.5-17.2-24-21.1-37.4c-1.7-5.2-2.6-11.2-2.6-18.2c0-18.1,5.6-34.2,16.9-48.3
+	c11-14.1,24.4-25.8,40.1-35.2s32.2-16.5,49.7-21.4C200.1,189.9,227.6,186,256.5,186.1L256.5,186.1z M65.7,204h3.2
+	c3.2,0,6.1,0.4,8.8,1.3c2.6,0.9,5.4,1.7,8.4,2.6c-8.7,7-16.5,14.6-23.5,22.7c-6.9,8.1-12.8,17-17.7,26.6c-2.8-2-5.2-4.8-7.4-8.6
+	c-3-3.5-4.5-7.8-4.5-13.1v-2.1c0.7-7.7,4-14.4,10.3-20.2C50.4,207.9,57.9,204.9,65.7,204L65.7,204z M443.3,203.6
+	c6.4,0,12.7,1.5,18.9,4.4c6.1,3.5,10.8,7.8,13.7,13.2c2.1,4.5,3.2,8.6,3.2,12.5c0,5.3-1.2,10.1-3.8,14.4c-2.4,3.6-5,6.7-8,9.2
+	c-4.7-10-10.6-19.1-17.6-27.2c-7-8.1-14.9-15.6-23.6-22.7C431.4,204.8,437.1,203.6,443.3,203.6L443.3,203.6z M335.7,246.8
+	c-3.6,0-7.4,0.7-11.2,1.9c-6.2,2.2-11.2,5.9-15,11.2c-4,4.7-6.1,10.3-6.1,16.9c0,2.4,0.2,4.2,0.6,5.5v0.6c1.3,7.5,5.1,13.1,11.2,17
+	c6.2,4.7,13.2,7,21.1,7c2.5,0,5.5-0.6,9-1.9h0.9c5.6-1.1,11-4.5,16.3-10.2c3.8-5.3,5.8-11.4,5.8-18c0-3-0.6-6.2-2-9.6
+	c-1.6-6.2-5.6-11.3-11.8-15.3C348.6,248.6,342.3,246.8,335.7,246.8L335.7,246.8z M176.9,246.7c-2.6,0-4.7,0.2-6.3,0.7
+	c-5.8,0.9-10.8,3.1-15.2,6.9c-4.4,3.7-7.4,8.3-9.1,13.6c-0.9,1.2-1.3,2.7-1.3,4.1v4.2c0,7,1.9,13.2,5.8,18.6
+	c4.2,5.1,9.6,8.5,16.3,10.2c3,1.2,6.3,1.9,9.9,1.9c8.3,0,15.8-2.8,22.4-8.3c7.1-5.7,10.6-12.8,10.6-21.1v-2c0-7.9-3.3-14.6-9.9-20.1
+	C192.9,249.6,185.2,246.7,176.9,246.7L176.9,246.7z M175.3,340.7c-1.2,0-3.2,0.5-5.7,1.3h-0.8c-2.6,0.8-5,2.7-7.3,5.7
+	c-1.2,2.1-1.9,4.8-1.9,8c0,2.6,0.6,5.2,1.9,8c1.3,2.2,3.2,3.9,5.8,5.1c24.5,15.4,51.4,23.1,80.7,23.1h4.8c14.1,0,27.8-1.3,41-4
+	c13.2-2.7,26.1-6.9,38.5-12.6c1.7-0.9,3.5-1.7,5.4-2.6c1.9-0.8,3.9-1.9,6-3.2c2.2-0.9,4-2.1,5.5-3.8c2.1-2.1,3.3-4.4,3.8-6.8
+	c0.4-0.8,0.7-1.9,0.7-3.2c0-1.3-0.4-3.2-1.3-5.8c-1.3-3.2-3.5-5.4-6.4-6.7c-3.3-1.7-6.2-2.6-8.6-2.6c-2.5,0-5.3,0.6-8,2
+	c-23.2,13-48.6,19.6-76,19.8c-20.4,0-39.5-3.9-57-11.8c-2.5-0.9-5.7-2.9-9.2-6.1c-0.9-0.4-1.8-0.8-2.8-1.3c-1-0.5-2.2-0.9-3.3-1.3
+	C178.4,341.1,176.5,340.6,175.3,340.7L175.3,340.7z" />
+</svg></a></li>
+                </ul>
+            </div>
+            <div class="text-separator u-mb35 u-mt10">
+                <span>or</span>
+            </div>
+            <div class="u-mb20">
+                <input class="url e2e-care-url" type="text" disabled />
+            </div>
+            <button class="btn-outline copyBtn e2e-care-copy">Copy link</button>
+        </div>
+    </div>
+
+    <script type="application/ld+json">
+        {"MainEntity":{"Name":"Unable to connect to Silverlight application. (on http://www.silverlight.net/showcase/ page)","Headline":"Unable to connect to Silverlight application. (on http://www.silverlight.net/showcase/ page)","Url":"/forums/unable-to-connect-to-silverlight-application-on-http-www-silverlight-net-showcase-page","AnswerCount":7,"SuggestedAnswer":[{"Url":"/forums/unable-to-connect-to-silverlight-application-on-http-www-silverlight-net-showcase-page#1233302","Text":"Hi Rafa\u0142 Stasiak,\n\nYes there does seem to be a problem connecting to http://www.silverlight.net/showcase/. We\u0027ll look into this.\n\nHowever I am running Vista with SL4 and I\u0027m having no problems connecting to http://pjd.mscui.net/PrimaryCare.htm\u0026nbsp;or http://demos.telerik.com/silverlight/#Buttons/FirstLook. Could you give those a try and let me know your results?\n\nDo you have a public website of your application I can try connecting to and see if it works here?\n\nAll the best,\nCody\nthe Telerik team\n\nDo you want to have your say when we set our development plans? Do you want to know when a feature you care about is added or when a bug fixed? Explore the Telerik Public Issue Tracking system and vote to affect the priority of the items. ","UpvoteCount":0,"CommentCount":0,"DateCreated":"2010-06-14T17:50:23.723Z","Author":{"Name":"Cody","@context":"https://schema.org","@type":"Person"},"Comment":[],"@context":"https://schema.org","@type":"Answer"},{"Url":"/forums/unable-to-connect-to-silverlight-application-on-http-www-silverlight-net-showcase-page#1233839","Text":"Hello Cody,\n\nThank you. Both address you gave work perfect.\n\nUnfortunately we do not have a public website of our application.\n\nBets regards,\nRafa\u0142 Stasiak \n","UpvoteCount":0,"CommentCount":0,"DateCreated":"2010-06-15T08:53:50.663Z","Author":{"Name":"Rafal Stasiak","@context":"https://schema.org","@type":"Person"},"Comment":[],"@context":"https://schema.org","@type":"Answer"},{"Url":"/forums/unable-to-connect-to-silverlight-application-on-http-www-silverlight-net-showcase-page#1234798","Text":"Hello Rafa\u0142 Stasiak,\n\nI have found that by upgrading to the latest internal build (2010.1.6.11) the problem appears to be resolved. Can try out this new version?\n\nRegards,\nCody\nthe Telerik team\n\nDo you want to have your say when we set our development plans? Do you want to know when a feature you care about is added or when a bug fixed? Explore the Telerik Public Issue Tracking system and vote to affect the priority of the items. ","UpvoteCount":0,"CommentCount":0,"DateCreated":"2010-06-15T18:02:50.533Z","Author":{"Name":"Cody","@context":"https://schema.org","@type":"Person"},"Comment":[],"@context":"https://schema.org","@type":"Answer"},{"Url":"/forums/unable-to-connect-to-silverlight-application-on-http-www-silverlight-net-showcase-page#1283145","Text":"Today I installed the\u0026nbsp; WebUI Test Studio Developer Edition 2010.1 518 Trial version and I am also getting the \u0022Unable to connect to Silverlight application.\u0022\n\nCody\u0027s response was \u0022I have found that by upgrading to the latest internal build (2010.1.6.11) the problem appears to be resolved. Can try out this new version?\u0022\n\nIs the trial version newer or older than the build suggested by Cody?","UpvoteCount":0,"CommentCount":0,"DateCreated":"2010-07-26T18:28:10.063Z","Author":{"Name":"lookin","@context":"https://schema.org","@type":"Person"},"Comment":[],"@context":"https://schema.org","@type":"Answer"},{"Url":"/forums/unable-to-connect-to-silverlight-application-on-http-www-silverlight-net-showcase-page#1283306","Text":"Hi lookin,\n\nThe trial version you just installed is older than the internal build I spoke about. You can tell by looking at the version numbers because they represent build numbers which always incremement. So \u0022WebUI Test Studio Developer Edition 2010.1 518 Trial\u0022 is build 2010.1.5.18, older than 20101.6.11 (note that version is no longer available).\n\nWe just released our Q2 version, which is build 2010.2.7.13. I highly recommend you download and install that version (uninstall what you have first). it is our best most feature rich version to date.\n\nI\u0027m also attaching a document you can use to help troubleshoot Silverlight connection problems. The most common problem is the media type setting for .XAP files on your webserver as per this post.\n\nRegards,\nCody\nthe Telerik team\n\nDo you want to have your say when we set our development plans? Do you want to know when a feature you care about is added or when a bug fixed? Explore the Telerik Public Issue Tracking system and vote to affect the priority of the items \n","UpvoteCount":0,"CommentCount":0,"DateCreated":"2010-07-26T21:13:11.183Z","Author":{"Name":"Cody","@context":"https://schema.org","@type":"Person"},"Comment":[],"@context":"https://schema.org","@type":"Answer"},{"Url":"/forums/unable-to-connect-to-silverlight-application-on-http-www-silverlight-net-showcase-page#1284934","Text":"Cody,\n\nThanks for your help ~ I am no longer getting the \u0022Unable to connect to Silverlight application\u0022 error AND I am now successfully recording steps using the WebUI Test Developer Studio interface.\u0026nbsp; Also, the Silverlight Connection document was very helpful...","UpvoteCount":0,"CommentCount":0,"DateCreated":"2010-07-27T17:52:05.947Z","Author":{"Name":"lookin","@context":"https://schema.org","@type":"Person"},"Comment":[],"@context":"https://schema.org","@type":"Answer"},{"Url":"/forums/unable-to-connect-to-silverlight-application-on-http-www-silverlight-net-showcase-page#1284944","Text":"Hi lookin,\n\nI am very glad to hear it. Thank you for the update!\n\nBest wishes,\nCody\nthe Telerik team\n\nDo you want to have your say when we set our development plans? Do you want to know when a feature you care about is added or when a bug fixed? Explore the Telerik Public Issue Tracking system and vote to affect the priority of the items \n","UpvoteCount":0,"CommentCount":0,"DateCreated":"2010-07-27T17:59:00.16Z","Author":{"Name":"Cody","@context":"https://schema.org","@type":"Person"},"Comment":[],"@context":"https://schema.org","@type":"Answer"}],"Text":"Hello,\n\nToday i install new Silverlight Runtime 4.0.50524.0\nAfter that Telerik WebUI Test Studio (QA) stopped recognize Silverlight application. \nEven on http://www.silverlight.net/showcase/ i got Telerik Web UI message: Unable to connect to Silverlight application.\nI checked that on 2 separate machine (Vista \u002B IE8 and XP \u002B IE7).\nCan you say something about way to resolve that problem?\n\nBest regards. \n\n\n","UpvoteCount":0,"CommentCount":7,"DateCreated":"2010-06-14T10:06:10.79Z","Author":{"Name":"Rafal Stasiak","@context":"https://schema.org","@type":"Person"},"Comment":[],"@context":"https://schema.org","@type":"Question"},"@context":"https://schema.org","@type":"QAPage"}
+    </script>
+    </div>
+    <link rel="stylesheet" type="text/css" href="https://d6vtbcy3ong79.cloudfront.net/telerik-navigation/3.7.37/css/index-footer.min.css"><footer class="TK-Footer" data-tlrk-nav-version="3.7.37" data-tlrk-nav-template="footer-big-abs-component"><div class="TK-container"><div class="TK-row TK-No-Print"><div class="TK-col-8 TK--Footer-Desktop"><div class="TK-Footer-Featured-Item"><div class="TK-Footer-H">Complete .NET Toolbox</div><a href="https://www.telerik.com/devcraft" class="TK-Footer-Featured-Link">Telerik DevCraft</a></div><div class="TK-Footer-Featured-Item"><div class="TK-Footer-H">Complete JavaScript Toolbox</div><a href="https://www.telerik.com/kendo-ui" class="TK-Footer-Featured-Link">Kendo UI</a></div><div class="TK-Footer-Featured-Item"><div class="TK-Footer-H">Complete AI Toolbox</div><a href="https://www.telerik.com/mcp-servers" class="TK-Footer-Featured-Link">MCP Servers</a> <a href="https://www.telerik.com/ai-components" class="TK-Footer-Featured-Link">AI-Ready Components</a></div></div><div class="TK-col-16"><div class="TK-row"><div class="TK-col-6 TK--Footer-Desktop"><div class="TK-Footer-H TK--Footer-Desktop">Get Products</div><ul class="TK-Footer-List"><li class="TK-Footer-List-Item"><a href="https://www.telerik.com/download" class="TK-Footer-Link">Free Trials</a></li><li class="TK-Footer-List-Item"><a href="https://www.telerik.com/purchase.aspx" class="TK-Footer-Link">Pricing</a></li></ul></div><div class="TK-col-6 TK--Footer-Desktop"><div class="TK-Footer-H TK--Footer-Desktop">Resources</div><ul class="TK-Footer-List"><li class="TK-Footer-List-Item"><a href="https://www.telerik.com/developer" class="TK-Footer-Link">Developer Experience Hub</a></li><li class="TK-Footer-List-Item"><a href="https://www.telerik.com/support/demos" class="TK-Footer-Link">Demos</a></li><li class="TK-Footer-List-Item"><a href="https://www.telerik.com/documentation" class="TK-Footer-Link">Documentation</a></li><li class="TK-Footer-List-Item"><a href="https://www.telerik.com/support/whats-new/release-history" class="TK-Footer-Link">Release History</a></li><li class="TK-Footer-List-Item"><a href="https://www.telerik.com/forums" class="TK-Footer-Link">Forums</a></li><li class="TK-Footer-List-Item"><a href="https://www.telerik.com/blogs" class="TK-Footer-Link">Blogs</a></li><li class="TK-Footer-List-Item"><a href="https://www.telerik.com/webinars" class="TK-Footer-Link">Webinars</a></li><li class="TK-Footer-List-Item"><a href="https://www.telerik.com/services" class="TK-Footer-Link">Professional Services</a></li><li class="TK-Footer-List-Item"><a href="https://www.progress.com/partners/partner-locator?Products&#x3D;KendoUI+and+Telerik" class="TK-Footer-Link">Partners</a></li><li class="TK-Footer-List-Item"><a href="https://www.telerik.com/support/video-courses" class="TK-Footer-Link">Virtual Classroom</a></li><li class="TK-Footer-List-Item"><a href="https://www.progress.com/events" class="TK-Footer-Link">Events</a></li><li class="TK-Footer-List-Item"><a href="https://www.telerik.com/faqs" class="TK-Footer-Link">FAQs</a></li></ul></div><div class="TK-col-6 TK--Footer-Desktop"><div class="TK-Footer-H TK--Footer-Desktop">Recognition</div><ul class="TK-Footer-List"><li class="TK-Footer-List-Item"><a href="https://www.telerik.com/about/success-stories" class="TK-Footer-Link">Success Stories</a></li><li class="TK-Footer-List-Item"><a href="https://www.telerik.com/about/testimonials" class="TK-Footer-Link">Testimonials</a></li></ul></div><div class="TK-col-6 TK--Footer-Desktop"><div class="TK-Footer-H TK--Footer-Desktop">Get in touch</div><ul class="TK-Footer-List"><li class="TK-Footer-List-Item"><a href="https://www.telerik.com/contact" class="TK-Footer-Link">Contact Us</a></li><li><ul class="TK-Footer-List--inner"><li class="TK-Footer-List-Item"><a href="tel:+18886790442" class="TK-Footer-Phone-Link u-db">USA: <span class="TK-wsn">+1 888 679 0442</span></a></li><li class="TK-Footer-List-Item"><a href="tel:+441344838186" class="TK-Footer-Phone-Link u-db">UK: <span class="TK-wsn">+44 13 4483 8186</span></a></li><li class="TK-Footer-List-Item"><a href="tel:+914069019447" class="TK-Footer-Phone-Link u-db">India: <span class="TK-wsn">+91 406 9019447</span></a></li><li class="TK-Footer-List-Item"><a href="tel:+35928099850" class="TK-Footer-Phone-Link u-db">Bulgaria: <span class="TK-wsn">+359 2 8099850</span></a></li><li class="TK-Footer-List-Item"><a href="tel:+61370688610" class="TK-Footer-Phone-Link u-db">Australia: <span class="TK-wsn">+61 3 7068 8610</span></a></li></ul></li><li><ul class="TK-Footer-List--inner TK-Footer-List-Horizontal TK-Footer-List-Social"><li class="TK-Footer-List-Horizontal-Item"><a href="https://www.facebook.com/TelerikandKendoUI" title="Facebook" class="TK-Footer-Social-Link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M16 7h-1.924C13.461 7 13 7.252 13 7.889V9h3l-.238 3H13v8h-3v-8H8V9h2V7.077C10 5.055 11.064 4 13.461 4H16zM5 0a5 5 0 00-5 5v14a5 5 0 005 5h14a5 5 0 005-5V5a5 5 0 00-5-5z" fill="#000"/></svg> <span class="TK-Footer-Social-Link-Count TK-fs16">105k+</span></a></li><li class="TK-Footer-List-Horizontal-Item"><a href="https://x.com/telerik" title="X" class="TK-Footer-Social-Link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z" fill="#000"/></svg> <span class="TK-Footer-Social-Link-Count TK-fs16">50k+</span></a></li><li class="TK-Footer-List-Horizontal-Item"><a href="https://www.linkedin.com/company/telerik" title="LinkedIn" class="TK-Footer-Social-Link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M20 19h-3v-5.6c0-3.368-4-3.113-4 0V19h-3V8h3v1.765c1.4-2.586 7-2.777 7 2.476zM6.5 6.732a1.757 1.757 0 01-1.75-1.764A1.757 1.757 0 016.5 3.2a1.758 1.758 0 011.75 1.764A1.757 1.757 0 016.5 6.728zM5 19h3V8H5zM19 0H5a5 5 0 00-5 5v14a5 5 0 005 5h14a5 5 0 005-5V5a5 5 0 00-5-5z" fill="#000" fill-rule="evenodd"/></svg> <span class="TK-Footer-Social-Link-Count TK-fs16">17k+</span></a></li><li class="TK-Footer-List-Horizontal-Item"><a href="https://www.twitch.tv/codeitlive" title="Twitch" class="TK-Footer-Social-Link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 23 24.05"><path d="M1.57.02L0 4.18V20.9h5.75v3.12h3.14l3.13-3.14h4.71L23 14.61V.02zm2.09 2.07h17.25v11.5l-3.66 3.66H11.5l-3.13 3.13v-3.13H3.66zm5.75 10.45h2.09V6.27H9.41zm5.75 0h2.09V6.27h-2.09z" fill="#000"/></svg> <span class="TK-Footer-Social-Link-Count TK-fs16">4k+</span></a></li><li class="TK-Footer-List-Horizontal-Item"><a href="https://www.youtube.com/c/telerik" title="YouTube" class="TK-Footer-Social-Link"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="18.287" viewBox="0 0 26 18.287"><path fill="#010101" d="M25.74 3.945a5.625 5.625 0 0 0-1.034-2.581 3.718 3.718 0 0 0-2.605-1.1c-3.638-.263-9.1-.263-9.1-.263h-.011s-5.458 0-9.1.263a3.719 3.719 0 0 0-2.605 1.1A5.623 5.623 0 0 0 .26 3.945 39.324 39.324 0 0 0 0 8.154v1.972a39.323 39.323 0 0 0 .26 4.208 5.623 5.623 0 0 0 1.033 2.58 4.408 4.408 0 0 0 2.867 1.112c2.08.2 8.84.261 8.84.261s5.463-.008 9.1-.271a3.719 3.719 0 0 0 2.605-1.1 5.625 5.625 0 0 0 1.035-2.582 39.377 39.377 0 0 0 .26-4.208V8.154a39.377 39.377 0 0 0-.26-4.209Zm-15.388 8.6V5.211l6.974 3.665Z"/></svg> <span class="TK-Footer-Social-Link-Count TK-fs16">14k+</span></a></li><li class="TK-Footer-List-Horizontal-Item"><a href="https://github.com/telerik" title="GitHub" class="TK-Footer-Social-Link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12,0A12.047,12.047,0,0,0,0,12,12.455,12.455,0,0,0,9.188,24V20.03a2.889,2.889,0,0,1-3.239-1.441c-.273-.46-.756-.959-1.26-.922l-.124-1.4a2.892,2.892,0,0,1,2.593,1.6,1.555,1.555,0,0,0,.9.772,1.89,1.89,0,0,0,1.181-.1,3.3,3.3,0,0,1,.827-1.691h0C6.942,16.382,5.7,14.724,5.2,13.415a5.506,5.506,0,0,1,.855-5.281A.188.188,0,0,0,6.1,7.989a4.6,4.6,0,0,1,.14-3.073,4.858,4.858,0,0,1,2.663,1l.337.2c.141.084.1.036.238.025A10.182,10.182,0,0,1,12,5.792a10.225,10.225,0,0,1,2.553.363l.109.011c-.01,0,.03-.007.1-.046,2.436-1.476,2.349-.993,3-1.206A4.682,4.682,0,0,1,17.9,7.989c-.071.218,2.112,2.217.9,5.426-.494,1.309-1.74,2.968-4.866,3.434h0a3.086,3.086,0,0,1,.879,2.2V24A12.454,12.454,0,0,0,24,12,12.047,12.047,0,0,0,12,0Z"></path></svg></a></li><li class="TK-Footer-List-Horizontal-Item"><a href="https://discord.gg/pQXvHhjb7e" title="Discord" class="TK-Footer-Social-Link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="19" viewBox="0 0 24 19"><path d="M15.335 0c-.233.416-.444.846-.634 1.285a18.474 18.474 0 0 0-5.48 0c-.186-.44-.4-.87-.634-1.285a19.93 19.93 0 0 0-4.94 1.524C.525 6.154-.32 10.665.1 15.114a19.84 19.84 0 0 0 6.057 3.043c.492-.659.926-1.361 1.298-2.093a13.114 13.114 0 0 1-2.042-.974c.171-.124.338-.254.5-.378a14.208 14.208 0 0 0 12.11 0c.162.134.329.263.5.378-.653.387-1.336.712-2.047.98.372.73.807 1.433 1.298 2.092a19.832 19.832 0 0 0 6.057-3.039c.497-5.16-.85-9.633-3.556-13.594A19.623 19.623 0 0 0 15.34.009L15.335 0zM7.99 12.376c-1.179 0-2.157-1.07-2.157-2.394s.94-2.399 2.152-2.399c1.213 0 2.177 1.08 2.157 2.399-.019 1.319-.95 2.394-2.152 2.394zm7.952 0c-1.184 0-2.153-1.07-2.153-2.394s.94-2.399 2.153-2.399c1.212 0 2.171 1.08 2.152 2.399-.019 1.319-.95 2.394-2.152 2.394z"/></svg></a></li></ul></li></ul></div></div><div class="TK-row TK-row--M2 TK--Footer-Mobile"><div class="TK-col-24"><ul class="TK-Footer-List"><li class="TK-Footer-List-Item"><a href="https://www.telerik.com/contact" class="TK-Footer-Link">Contact Us</a></li><li><ul class="TK-Footer-List--inner TK-Footer-List-Horizontal TK-Footer-List-Social"><li class="TK-Footer-List-Horizontal-Item"><a href="https://www.facebook.com/TelerikandKendoUI" title="Facebook" class="TK-Footer-Social-Link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M16 7h-1.924C13.461 7 13 7.252 13 7.889V9h3l-.238 3H13v8h-3v-8H8V9h2V7.077C10 5.055 11.064 4 13.461 4H16zM5 0a5 5 0 00-5 5v14a5 5 0 005 5h14a5 5 0 005-5V5a5 5 0 00-5-5z" fill="#000"/></svg> <span class="TK-Footer-Social-Link-Count TK-fs16">105k+</span></a></li><li class="TK-Footer-List-Horizontal-Item"><a href="https://x.com/telerik" title="X" class="TK-Footer-Social-Link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z" fill="#000"/></svg> <span class="TK-Footer-Social-Link-Count TK-fs16">50k+</span></a></li><li class="TK-Footer-List-Horizontal-Item"><a href="https://www.linkedin.com/company/telerik" title="LinkedIn" class="TK-Footer-Social-Link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M20 19h-3v-5.6c0-3.368-4-3.113-4 0V19h-3V8h3v1.765c1.4-2.586 7-2.777 7 2.476zM6.5 6.732a1.757 1.757 0 01-1.75-1.764A1.757 1.757 0 016.5 3.2a1.758 1.758 0 011.75 1.764A1.757 1.757 0 016.5 6.728zM5 19h3V8H5zM19 0H5a5 5 0 00-5 5v14a5 5 0 005 5h14a5 5 0 005-5V5a5 5 0 00-5-5z" fill="#000" fill-rule="evenodd"/></svg> <span class="TK-Footer-Social-Link-Count TK-fs16">17k+</span></a></li><li class="TK-Footer-List-Horizontal-Item"><a href="https://www.twitch.tv/codeitlive" title="Twitch" class="TK-Footer-Social-Link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 23 24.05"><path d="M1.57.02L0 4.18V20.9h5.75v3.12h3.14l3.13-3.14h4.71L23 14.61V.02zm2.09 2.07h17.25v11.5l-3.66 3.66H11.5l-3.13 3.13v-3.13H3.66zm5.75 10.45h2.09V6.27H9.41zm5.75 0h2.09V6.27h-2.09z" fill="#000"/></svg> <span class="TK-Footer-Social-Link-Count TK-fs16">4k+</span></a></li><li class="TK-Footer-List-Horizontal-Item"><a href="https://www.youtube.com/c/telerik" title="YouTube" class="TK-Footer-Social-Link"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="18.287" viewBox="0 0 26 18.287"><path fill="#010101" d="M25.74 3.945a5.625 5.625 0 0 0-1.034-2.581 3.718 3.718 0 0 0-2.605-1.1c-3.638-.263-9.1-.263-9.1-.263h-.011s-5.458 0-9.1.263a3.719 3.719 0 0 0-2.605 1.1A5.623 5.623 0 0 0 .26 3.945 39.324 39.324 0 0 0 0 8.154v1.972a39.323 39.323 0 0 0 .26 4.208 5.623 5.623 0 0 0 1.033 2.58 4.408 4.408 0 0 0 2.867 1.112c2.08.2 8.84.261 8.84.261s5.463-.008 9.1-.271a3.719 3.719 0 0 0 2.605-1.1 5.625 5.625 0 0 0 1.035-2.582 39.377 39.377 0 0 0 .26-4.208V8.154a39.377 39.377 0 0 0-.26-4.209Zm-15.388 8.6V5.211l6.974 3.665Z"/></svg> <span class="TK-Footer-Social-Link-Count TK-fs16">14k+</span></a></li><li class="TK-Footer-List-Horizontal-Item"><a href="https://github.com/telerik" title="GitHub" class="TK-Footer-Social-Link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12,0A12.047,12.047,0,0,0,0,12,12.455,12.455,0,0,0,9.188,24V20.03a2.889,2.889,0,0,1-3.239-1.441c-.273-.46-.756-.959-1.26-.922l-.124-1.4a2.892,2.892,0,0,1,2.593,1.6,1.555,1.555,0,0,0,.9.772,1.89,1.89,0,0,0,1.181-.1,3.3,3.3,0,0,1,.827-1.691h0C6.942,16.382,5.7,14.724,5.2,13.415a5.506,5.506,0,0,1,.855-5.281A.188.188,0,0,0,6.1,7.989a4.6,4.6,0,0,1,.14-3.073,4.858,4.858,0,0,1,2.663,1l.337.2c.141.084.1.036.238.025A10.182,10.182,0,0,1,12,5.792a10.225,10.225,0,0,1,2.553.363l.109.011c-.01,0,.03-.007.1-.046,2.436-1.476,2.349-.993,3-1.206A4.682,4.682,0,0,1,17.9,7.989c-.071.218,2.112,2.217.9,5.426-.494,1.309-1.74,2.968-4.866,3.434h0a3.086,3.086,0,0,1,.879,2.2V24A12.454,12.454,0,0,0,24,12,12.047,12.047,0,0,0,12,0Z"></path></svg></a></li><li class="TK-Footer-List-Horizontal-Item"><a href="https://discord.gg/pQXvHhjb7e" title="Discord" class="TK-Footer-Social-Link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="19" viewBox="0 0 24 19"><path d="M15.335 0c-.233.416-.444.846-.634 1.285a18.474 18.474 0 0 0-5.48 0c-.186-.44-.4-.87-.634-1.285a19.93 19.93 0 0 0-4.94 1.524C.525 6.154-.32 10.665.1 15.114a19.84 19.84 0 0 0 6.057 3.043c.492-.659.926-1.361 1.298-2.093a13.114 13.114 0 0 1-2.042-.974c.171-.124.338-.254.5-.378a14.208 14.208 0 0 0 12.11 0c.162.134.329.263.5.378-.653.387-1.336.712-2.047.98.372.73.807 1.433 1.298 2.092a19.832 19.832 0 0 0 6.057-3.039c.497-5.16-.85-9.633-3.556-13.594A19.623 19.623 0 0 0 15.34.009L15.335 0zM7.99 12.376c-1.179 0-2.157-1.07-2.157-2.394s.94-2.399 2.152-2.399c1.213 0 2.177 1.08 2.157 2.399-.019 1.319-.95 2.394-2.152 2.394zm7.952 0c-1.184 0-2.153-1.07-2.153-2.394s.94-2.399 2.153-2.399c1.212 0 2.171 1.08 2.152 2.399-.019 1.319-.95 2.394-2.152 2.394z"/></svg></a></li></ul></li></ul></div></div></div></div><div class="TK-row TK-row--M1"><div class="TK-col-24"><a href="https://www.progress.com" aria-label="Go to Progress.com" class="TK-PRGS-Logo-Footer"><svg xmlns="http://www.w3.org/2000/svg" width="130" height="30" viewBox="0 0 512 120"><path fill="#5ce500" d="M95.52 29.33v51a3.93 3.93 0 0 1-1.78 3.08l-1.67 1-12.72 7.35-8.59 5-1.78 1V42.6L21.23 15 43.91 1.93 46 .74a3.94 3.94 0 0 1 3.56 0L81 18.9l14.51 8.38v2.05zM58.36 48.72l-9.79-5.66-22.91-13.23a4 4 0 0 0-3.56 0L1.77 41.57 0 42.6l34.49 19.91v39.83l20.3-11.73 1.79-1a3.94 3.94 0 0 0 1.78-3.08V48.72zM0 82.43l23.86 13.78V68.63z"></path><path fill="#4b4e52" d="M148.09 27.28h-26v70.48h11.55V70.1h14.57c15.77 0 24.45-7.7 24.45-21.69 0-6.35-2.4-21.12-24.55-21.12m12.78 21.31c0 7.95-4.12 11.19-14.24 11.19h-13v-22.1h14.57c8.56 0 12.71 3.57 12.71 10.91M207 46.41l.87.42-2 10.42-1.35-.42a11.32 11.32 0 0 0-3.34-.51c-10.79 0-11.67 8.59-11.67 19v22.44h-10.64V46h10v6.24c2.73-4.2 6-6.37 10.37-6.9a14.55 14.55 0 0 1 7.76 1.07M233.29 45c-8.42 0-15.16 3.2-19.5 9.27-4.56 6.37-5.23 13.85-5.23 17.74 0 16.36 9.7 26.92 24.73 26.92 18.26 0 24.73-14.71 24.73-27.3 0-7.25-2.15-13.82-6-18.51-4.41-5.31-10.87-8.12-18.7-8.12m0 44.38c-8.37 0-13.57-6.66-13.57-17.37s5.2-17.55 13.57-17.55S247 61.23 247 71.78c0 10.83-5.24 17.56-13.66 17.56m114.55-42.93l.87.42-2 10.42-1.35-.42a11.26 11.26 0 0 0-3.33-.51c-10.78 0-11.66 8.59-11.66 19v22.44h-10.66V46h10v6.24c2.73-4.2 6-6.37 10.37-6.9a14.54 14.54 0 0 1 7.73 1.06m38.4 34.76l-.2.57c-2.23 6.36-7.57 7.7-11.65 7.7-8.09 0-13.3-5.37-13.81-14.09h36.59l.13-1a31.26 31.26 0 0 0 .12-4.12v-.93C396.93 54.78 387.48 45 374 45c-7.9 0-14.37 3.1-18.73 9a30.85 30.85 0 0 0-5.54 18c0 16 9.95 26.74 24.74 26.74 11.45 0 19.33-5.82 22.2-16.38l.33-1.2h-10.7zM361 66.05c.9-7.17 5.81-11.73 12.79-11.73 5.33 0 11.64 3.1 12.52 11.73H361zm-60.7-15.71c-3.45-3.58-8.06-5.39-13.76-5.39-15.69 0-22.83 13.81-22.83 26.63 0 13.16 7.06 26.44 22.83 26.44a18.33 18.33 0 0 0 13.35-5.42c0 2.28-.1 4.45-.16 5.38-.58 8.54-4.68 12.51-12.91 12.51-4.47 0-9.61-1.59-10.6-6l-.22-1h-10.54l.17 1.41c1.1 9.12 9.11 14.79 20.9 14.79 10.34 0 17.7-3.9 21.28-11.26 1.73-3.55 2.6-8.72 2.6-15.37V46h-10.13v4.34zm-13.11 38.15c-3.74 0-12.43-1.69-12.43-17.37 0-10.3 4.87-16.7 12.71-16.7 6.06 0 12.52 4.39 12.52 16.7 0 10.87-4.79 17.37-12.81 17.37m159.67-6.31c0 8.23-6.83 16.53-22.09 16.53-13.5 0-21.53-5.85-22.61-16.45l-.15-1.1h10.52l.21.84c1.29 6.38 7.37 7.72 12.24 7.72 5.34 0 11-1.72 11-6.54 0-2.44-1.59-4.18-4.73-5.16-1.86-.55-4.15-1.2-6.56-1.87-4.16-1.16-8.47-2.38-11.12-3.29-6.56-2.35-10.33-6.93-10.33-12.56 0-10.43 10.16-15.11 20.22-15.11 13.46 0 20.42 5.07 21.3 15.49l.09 1.07H434.5l-.14-.82c-1-6-7-6.9-10.48-6.9-3 0-10 .53-10 5.5 0 2.25 1.93 3.91 5.89 5.06 1.18.33 2.94.78 5 1.31 4.22 1.09 9.48 2.46 12.13 3.37 6.59 2.32 9.93 6.67 9.93 13m49.39 0c0 8.23-6.83 16.53-22.09 16.53-13.5 0-21.53-5.85-22.61-16.45l-.11-1.09H462l.12.74c1.29 6.38 7.37 7.72 12.24 7.72 5.34 0 11-1.72 11-6.54 0-2.44-1.59-4.18-4.72-5.16-1.86-.55-4.15-1.2-6.57-1.87-4.16-1.16-8.46-2.38-11.11-3.29-6.57-2.35-10.33-6.93-10.33-12.56 0-10.43 10.16-15.11 20.22-15.11 13.46 0 20.42 5.07 21.29 15.49l.09 1.07H483.9l-.14-.82c-1-6-7-6.9-10.48-6.9-3 0-9.95.53-9.95 5.5 0 2.25 1.93 3.91 5.89 5.06 1.18.33 2.94.78 5 1.31 4.22 1.09 9.48 2.46 12.13 3.37 6.58 2.32 9.93 6.67 9.93 13m8.43-30.78a7.37 7.37 0 1 1 7.29-7.37 7.23 7.23 0 0 1-7.29 7.37m0-13.49a6.12 6.12 0 1 0 6 6.12 5.91 5.91 0 0 0-6-6.12m-.85 7.49v2.46h-2.17v-7.74h3.62a2.58 2.58 0 0 1 2.86 2.7 2.26 2.26 0 0 1-1.49 2.34l1.77 2.7H506l-1.49-2.46h-.68zm1.21-3.49h-1.21v1.73h1.21a.86.86 0 0 0 1-.85.88.88 0 0 0-1-.89"></path></svg></a></div></div><div class="TK-row"><div class="TK-col-12"><p class="TK-Footer-About">Telerik and Kendo UI are part of Progress product portfolio. Progress is the leading provider of application development and digital experience technologies.</p></div><div class="TK-col-24"><div class="TK-row--M3 TK--Footer-Desktop"><ul class="TK-Footer-List-Horizontal"><li class="TK-Footer-List-Horizontal-Item"><a class="TK-Footer-Link TK-Footer-Link-Horizontal" href="https://www.progress.com/company">Company</a></li><li class="TK-Footer-List-Horizontal-Item"><a class="TK-Footer-Link TK-Footer-Link-Horizontal" href="https://www.progress.com/products">Technology</a></li><li class="TK-Footer-List-Horizontal-Item"><a class="TK-Footer-Link TK-Footer-Link-Horizontal" href="https://www.progress.com/company/awards">Awards</a></li><li class="TK-Footer-List-Horizontal-Item"><a class="TK-Footer-Link TK-Footer-Link-Horizontal" href="https://investors.progress.com/press-releases">Press Releases</a></li><li class="TK-Footer-List-Horizontal-Item"><a class="TK-Footer-Link TK-Footer-Link-Horizontal" href="https://www.progress.com/company/press-coverage">Media Coverage</a></li><li class="TK-Footer-List-Horizontal-Item"><a class="TK-Footer-Link TK-Footer-Link-Horizontal" href="https://www.progress.com/company/careers">Careers</a></li><li class="TK-Footer-List-Horizontal-Item"><a class="TK-Footer-Link TK-Footer-Link-Horizontal" href="https://www.progress.com/company/offices">Offices</a></li></ul></div></div></div><div class="TK-row TK-row--M2 TK--Footer-Mobile"><div class="TK-col-24"><ul class="TK-Footer-List"><li class="TK-Footer-List-Item"><a href="https://www.progress.com/company" class="TK-Footer-Link">Company</a></li><li class="TK-Footer-List-Item"><a href="https://www.progress.com/products" class="TK-Footer-Link">Technology</a></li><li class="TK-Footer-List-Item"><a href="https://www.progress.com/company/awards" class="TK-Footer-Link">Awards</a></li><li class="TK-Footer-List-Item"><a href="https://investors.progress.com/press-releases" class="TK-Footer-Link">Press Releases</a></li><li class="TK-Footer-List-Item"><a href="https://www.progress.com/company/press-coverage" class="TK-Footer-Link">Media Coverage</a></li><li class="TK-Footer-List-Item"><a href="https://www.progress.com/company/careers" class="TK-Footer-Link">Careers</a></li><li class="TK-Footer-List-Item"><a href="https://www.progress.com/company/offices" class="TK-Footer-Link">Offices</a></li></ul></div></div><div class="TK-row"><div class="TK-col-16"><p class="TK-Footer-Copy">Copyright &copy; 2026 Progress Software Corporation and/or its subsidiaries or affiliates. All Rights Reserved.</p><p class="TK-Footer-Copy">Progress and certain product names used herein are trademarks or registered trademarks of Progress Software Corporation and/or one of its subsidiaries or affiliates in the U.S. and/or other countries. See <a href="https://www.progress.com/legal/trademarks" class="TK-Footer-Link-Tiny">Trademarks</a> for appropriate markings. All rights in any other trademarks contained herein are reserved by their respective owners and their inclusion does not imply an endorsement, affiliation, or sponsorship as between Progress and the respective owners.</p></div><div class="TK-col-8 TK-tar"><ul class="TK-Footer-List-Horizontal"><li class="TK-Footer-List-Horizontal-Item TK-Footer-List-Horizontal-Item-Effect"><a href="https://www.telerik.com/about/terms-of-use" class="TK-Footer-Link-Tiny">Terms of Use</a></li><li class="TK-Footer-List-Horizontal-Item TK-Footer-List-Horizontal-Item-Effect"><a href="https://www.telerik.com/feedback" class="TK-Footer-Link-Tiny">Site Feedback</a></li><li class="TK-Footer-List-Horizontal-Item TK-Footer-List-Horizontal-Item-Effect"><a href="https://www.progress.com/legal/privacy-center" class="TK-Footer-Link-Tiny" target="_blank" rel="noopener">Privacy Center</a></li><li class="TK-Footer-List-Horizontal-Item TK-Footer-List-Horizontal-Item-Effect"><a href="https://www.progress.com/trust-center" class="TK-Footer-Link-Tiny" target="_blank" rel="noopener">Trust Center</a></li></ul><div class="TLRK-CCPA"><a href="https://forms.progress.com/ccpa-subscription" target="_blank" rel="nofollow noopener">Do Not Sell or Share My Personal Information</a></div><p class="TK-Footer-Power">Powered by <a href="https://www.progress.com/sitefinity-cms" class="TK-Footer-Link-Tiny">Progress Sitefinity</a></p></div></div></div></footer>
+</body>
+</html>

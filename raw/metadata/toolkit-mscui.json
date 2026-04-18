@@ -1,0 +1,15 @@
+{
+  "title": "rbirkby/mscui toolkit mirror",
+  "original_url": "https://github.com/rbirkby/mscui.git",
+  "retrieved_on": "2026-04-17",
+  "local_path": "raw/sources/toolkit/mscui",
+  "source_category": "toolkit source",
+  "retrieval_status": "retrieved",
+  "trust_notes": [
+    "GitHub mirror rather than an official Microsoft repository.",
+    "Contains source code and bundled sample website artefacts that appear to mirror historical MSCUI assets."
+  ],
+  "hash_basis": {
+    "readme_sha256": "150d56a80b042d1b20c4a07e3a7329078d78554500e967ae439d18fb459ec494"
+  }
+}

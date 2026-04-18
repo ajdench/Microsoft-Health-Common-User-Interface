@@ -1,0 +1,45 @@
+# Crib Sheet for Medication Line Details
+
+## Provenance
+- Source file: `raw/sources/design-guidance/toolkit-bundled-crib-sheets/Crib Sheet for Medication Line Details.pdf`
+- Extracted text: `derived/extracted-text/design-guidance/crib-sheet-for-medication-line-details.txt`
+- Normalization note: machine-cleaned `pdftotext -layout` output; verify against the PDF for edge cases.
+
+## Extracted Text
+
+Medication Line Details Crib Sheet
+ Numbers                                                                         Symbols to Avoid
+                                                                                     Do not use symbols that may be confused      @    |    <    >
+                                                                                                with numbers, including these:
+     DOSE 1 g                    Avoid the need for
+                                 decimal points
+                                                                                                                                  /    \    &    °
+     DOSE 500 mg                 (where possible)
+                                                                                                 Avoid brackets and separators
+                                                                                                                                  ()   []   {}
+                                                                                                    that look like the number 1
+                                Display a leading zero
+     DOSE 0.5 mL                before a decimal point,
+                                and don’t display a trailing
+     0.25 mg per mL             zero (‘0.50’ is incorrect)
+                                                                                 Additional Text Labels and Line Breaks
+                                                                                 When designing for specific contexts, especially those
+                             Use ‘and’ to join two strength                      that need additional text labels and line breaks, display
+                             values in a combination drug                        drug name first and display other attributes (in a different
+                                                                                 order if necessary) from the one illustrated below
+                                   Use ‘in’ rather than ‘/’
+                                   before a fluid quantity
+                                                                                                 salbutamol – metered dose inhaler
+   400 and 57 mg in 5 mL                                                                         STRENGTH 100 micrograms per dose
+                                                                                                 DOSE 2 puffs
+   5,000 units per mL                                                                            ROUTE inhaled
+                                                                                                 every 4 hours as required –
+                                 Use ‘per’ to describe strength                                  maximum 8 puffs in 24 hours
+                                 in a single unit of fluid
+
+                              Use a comma to break up numeric                    When a medication is not displayed as a single line of text
+                              values of one thousand and above                   and the attributes of a medication are listed in a different
+                                                                                 order, use text labels for as many of the illustrated attributes
+                                                                                 as possible
+
+ Edition 1 – 20th May 2010      © Microsoft Corporation 2010. All rights reserved.

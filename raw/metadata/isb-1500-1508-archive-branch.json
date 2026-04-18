@@ -1,0 +1,294 @@
+{
+  "title": "ISB 1500-1508 archive branch and formal release artefacts",
+  "retrieved_on": "2026-04-18",
+  "files": [
+    {
+      "title": "ISB 1500 - Common User Interface - Address Input and Display",
+      "original_url": "http://www.isb.nhs.uk/library/standard/132",
+      "local_path": "raw/sources/references/nhs-archives/isb-standards/isb-132-address-input-and-display.html",
+      "source_type": "html",
+      "source_category": "archive context",
+      "retrieval_status": "retrieved",
+      "sha256": "49cf665d509e7eecd5ead917f1b896ccdb8226147c798d3a37405b093cb0a492"
+    },
+    {
+      "title": "ISB 1503 - Common User Interface - Date Display",
+      "original_url": "http://www.isb.nhs.uk/library/standard/133",
+      "local_path": "raw/sources/references/nhs-archives/isb-standards/isb-133-date-display.html",
+      "source_type": "html",
+      "source_category": "archive context",
+      "retrieval_status": "retrieved",
+      "sha256": "972412b4990bc3b923485df9b57759c61e063ecc3cc14e90cf2404d4d46edb1e"
+    },
+    {
+      "title": "ISB 1507 - Common User Interface - Sex and Current Gender Input and Display",
+      "original_url": "http://www.isb.nhs.uk/library/standard/134",
+      "local_path": "raw/sources/references/nhs-archives/isb-standards/isb-134-sex-and-current-gender-input-and-display.html",
+      "source_type": "html",
+      "source_category": "archive context",
+      "retrieval_status": "retrieved",
+      "sha256": "8fac5670786ca91b55f029e76f0af3f63c100da03f24ebe5f936704cb730d864"
+    },
+    {
+      "title": "ISB 1504 - Common User Interface - NHS Number Input and Display",
+      "original_url": "http://www.isb.nhs.uk/library/standard/135",
+      "local_path": "raw/sources/references/nhs-archives/isb-standards/isb-135-nhs-number-input-and-display.html",
+      "source_type": "html",
+      "source_category": "archive context",
+      "retrieval_status": "retrieved",
+      "sha256": "e55355ec7bc9bd8273545eee83ed8e4b462df6b37fc984d7be51b4ae8e7eba50"
+    },
+    {
+      "title": "ISB 1505 - Common User Interface - Patient Banner",
+      "original_url": "http://www.isb.nhs.uk/library/standard/136",
+      "local_path": "raw/sources/references/nhs-archives/isb-standards/isb-136-patient-banner.html",
+      "source_type": "html",
+      "source_category": "archive context",
+      "retrieval_status": "retrieved",
+      "sha256": "132d134fc6b6c6d926e2392f1ed225a8155380ac1beabca75b209fc6e75ef0a3"
+    },
+    {
+      "title": "ISB 1506 - Common User Interface - Patient Name Input and Display",
+      "original_url": "http://www.isb.nhs.uk/library/standard/137",
+      "local_path": "raw/sources/references/nhs-archives/isb-standards/isb-137-patient-name-input-and-display.html",
+      "source_type": "html",
+      "source_category": "archive context",
+      "retrieval_status": "retrieved",
+      "sha256": "3bd391b9250fa6d2b581b070b5556b2876dcc0f99f4b18666d29f400d617b67f"
+    },
+    {
+      "title": "ISB 1508 - Common User Interface - Telephone Number Input and Display",
+      "original_url": "http://www.isb.nhs.uk/library/standard/138",
+      "local_path": "raw/sources/references/nhs-archives/isb-standards/isb-138-telephone-number-input-and-display.html",
+      "source_type": "html",
+      "source_category": "archive context",
+      "retrieval_status": "retrieved",
+      "sha256": "1e0cfb5effb393f7a55e3c47ee94e314b7e1f180decdea6a8761569802712a72"
+    },
+    {
+      "title": "ISB 1501 - Common User Interface - Time Display",
+      "original_url": "http://www.isb.nhs.uk/library/standard/139",
+      "local_path": "raw/sources/references/nhs-archives/isb-standards/isb-139-time-display.html",
+      "source_type": "html",
+      "source_category": "archive context",
+      "retrieval_status": "retrieved",
+      "sha256": "72f9e479e8a6066e3d0e48a2278f0901a92e34d77d8ccac9b30d0db1c4646933"
+    },
+    {
+      "title": "ISB 1502 - Common User Interface - Date and Time Input",
+      "original_url": "http://www.isb.nhs.uk/library/standard/141",
+      "local_path": "raw/sources/references/nhs-archives/isb-standards/isb-141-date-and-time-input.html",
+      "source_type": "html",
+      "source_category": "archive context",
+      "retrieval_status": "retrieved",
+      "sha256": "a5eb5e0eb633304d54c29f7295f1b6c71d8283ebc06490dcd6ec5e54017acfce"
+    },
+    {
+      "title": "isb-132-address-input-and-display-docs",
+      "original_url": null,
+      "local_path": "raw/sources/references/nhs-archives/isb-standards/docs-pages/isb-132-address-input-and-display-docs.html",
+      "source_type": "html",
+      "source_category": "release metadata",
+      "retrieval_status": "retrieved",
+      "sha256": "cc66082f2b8c83ec14550bb3008fae81bafd3803cb62aacf05e7ba678108b512"
+    },
+    {
+      "title": "isb-133-date-display-docs",
+      "original_url": null,
+      "local_path": "raw/sources/references/nhs-archives/isb-standards/docs-pages/isb-133-date-display-docs.html",
+      "source_type": "html",
+      "source_category": "release metadata",
+      "retrieval_status": "retrieved",
+      "sha256": "4157954e5994e9984b862d9ae9ce2137944d87664222ca283d3b9962d88d207c"
+    },
+    {
+      "title": "isb-134-sex-and-current-gender-input-and-display-docs",
+      "original_url": null,
+      "local_path": "raw/sources/references/nhs-archives/isb-standards/docs-pages/isb-134-sex-and-current-gender-input-and-display-docs.html",
+      "source_type": "html",
+      "source_category": "release metadata",
+      "retrieval_status": "retrieved",
+      "sha256": "66a9942c2b6db881690b5b3f80965287f0c17b697acde386381f62c93f8f1a0f"
+    },
+    {
+      "title": "isb-135-nhs-number-input-and-display-docs",
+      "original_url": null,
+      "local_path": "raw/sources/references/nhs-archives/isb-standards/docs-pages/isb-135-nhs-number-input-and-display-docs.html",
+      "source_type": "html",
+      "source_category": "release metadata",
+      "retrieval_status": "retrieved",
+      "sha256": "3afc776832b354d3fcff8902e7a6b99e5cfc8156f410e6aa9dc15ed340b8a452"
+    },
+    {
+      "title": "isb-136-patient-banner-docs",
+      "original_url": null,
+      "local_path": "raw/sources/references/nhs-archives/isb-standards/docs-pages/isb-136-patient-banner-docs.html",
+      "source_type": "html",
+      "source_category": "release metadata",
+      "retrieval_status": "retrieved",
+      "sha256": "814b7b2f1172664279e19df3f5c53e5ae5a36550bbbbe5164ce48e4fb69f1e83"
+    },
+    {
+      "title": "isb-137-patient-name-input-and-display-docs",
+      "original_url": null,
+      "local_path": "raw/sources/references/nhs-archives/isb-standards/docs-pages/isb-137-patient-name-input-and-display-docs.html",
+      "source_type": "html",
+      "source_category": "release metadata",
+      "retrieval_status": "retrieved",
+      "sha256": "593c32764ac0224a73bf186697d44ad457f8491caac84dd8451801a91a24e628"
+    },
+    {
+      "title": "isb-138-telephone-number-input-and-display-docs",
+      "original_url": null,
+      "local_path": "raw/sources/references/nhs-archives/isb-standards/docs-pages/isb-138-telephone-number-input-and-display-docs.html",
+      "source_type": "html",
+      "source_category": "release metadata",
+      "retrieval_status": "retrieved",
+      "sha256": "7260e16d96ef6793ba6807e43413595f04d60bbae7919be99f155638383e4559"
+    },
+    {
+      "title": "isb-139-time-display-docs",
+      "original_url": null,
+      "local_path": "raw/sources/references/nhs-archives/isb-standards/docs-pages/isb-139-time-display-docs.html",
+      "source_type": "html",
+      "source_category": "release metadata",
+      "retrieval_status": "retrieved",
+      "sha256": "cf2842b5015a0e0ce5d7fc10fdbdaee64c32252889555edb8535479617d98c81"
+    },
+    {
+      "title": "isb-141-date-and-time-input-docs",
+      "original_url": null,
+      "local_path": "raw/sources/references/nhs-archives/isb-standards/docs-pages/isb-141-date-and-time-input-docs.html",
+      "source_type": "html",
+      "source_category": "release metadata",
+      "retrieval_status": "retrieved",
+      "sha256": "34c4503763c6c909fa3f809672e3d649ef29fa9eacaff90fb912d120c5a8090b"
+    },
+    {
+      "title": "isb-132-address-input-and-display-dscn",
+      "original_url": null,
+      "local_path": "raw/sources/references/nhs-archives/isb-standards/dscn-pdfs/isb-132-address-input-and-display-dscn.pdf",
+      "source_type": "pdf",
+      "source_category": "release metadata",
+      "retrieval_status": "retrieved",
+      "sha256": "d521c9925351acb8667b02337133b9f897e31012b73e9eb6ab623bd66a136a44"
+    },
+    {
+      "title": "isb-133-date-display-dscn",
+      "original_url": null,
+      "local_path": "raw/sources/references/nhs-archives/isb-standards/dscn-pdfs/isb-133-date-display-dscn.pdf",
+      "source_type": "pdf",
+      "source_category": "release metadata",
+      "retrieval_status": "retrieved",
+      "sha256": "11bc637a502ae1f09a5a0074116c6d74d57995b25513d3807ed297be860098fe"
+    },
+    {
+      "title": "isb-134-sex-and-current-gender-input-and-display-dscn",
+      "original_url": null,
+      "local_path": "raw/sources/references/nhs-archives/isb-standards/dscn-pdfs/isb-134-sex-and-current-gender-input-and-display-dscn.pdf",
+      "source_type": "pdf",
+      "source_category": "release metadata",
+      "retrieval_status": "retrieved",
+      "sha256": "710b3729a9c79855e02195b69cf85d1b8b1a2d449d25ac4dc0ee6dcf0d733f6f"
+    },
+    {
+      "title": "isb-135-nhs-number-input-and-display-dscn",
+      "original_url": null,
+      "local_path": "raw/sources/references/nhs-archives/isb-standards/dscn-pdfs/isb-135-nhs-number-input-and-display-dscn.pdf",
+      "source_type": "pdf",
+      "source_category": "release metadata",
+      "retrieval_status": "retrieved",
+      "sha256": "159f14ac6bd7b4fc1afdef34c9787b116eaeeedc036adcd594cca43f3945a451"
+    },
+    {
+      "title": "isb-136-patient-banner-dscn",
+      "original_url": null,
+      "local_path": "raw/sources/references/nhs-archives/isb-standards/dscn-pdfs/isb-136-patient-banner-dscn.pdf",
+      "source_type": "pdf",
+      "source_category": "release metadata",
+      "retrieval_status": "retrieved",
+      "sha256": "7b6583ac641dd8f25d5b7b78b452111d830f3bf10ec55b0302464d95bc550277"
+    },
+    {
+      "title": "isb-137-patient-name-input-and-display-dscn",
+      "original_url": null,
+      "local_path": "raw/sources/references/nhs-archives/isb-standards/dscn-pdfs/isb-137-patient-name-input-and-display-dscn.pdf",
+      "source_type": "pdf",
+      "source_category": "release metadata",
+      "retrieval_status": "retrieved",
+      "sha256": "074b0a1ac5acec2ef54c99d866a5a5262e390d4d9440e1c9601738a3bbd0cc3e"
+    },
+    {
+      "title": "isb-138-telephone-number-input-and-display-dscn",
+      "original_url": null,
+      "local_path": "raw/sources/references/nhs-archives/isb-standards/dscn-pdfs/isb-138-telephone-number-input-and-display-dscn.pdf",
+      "source_type": "pdf",
+      "source_category": "release metadata",
+      "retrieval_status": "retrieved",
+      "sha256": "90638c121580b535301b83940317703cb6b0c8c6d33d8dbbff051a00d775df95"
+    },
+    {
+      "title": "isb-139-time-display-dscn",
+      "original_url": null,
+      "local_path": "raw/sources/references/nhs-archives/isb-standards/dscn-pdfs/isb-139-time-display-dscn.pdf",
+      "source_type": "pdf",
+      "source_category": "release metadata",
+      "retrieval_status": "retrieved",
+      "sha256": "178dbe55f3a039c408605bfa101a958289058212950037664b4cc3fff7769fe7"
+    },
+    {
+      "title": "isb-141-date-and-time-input-dscn",
+      "original_url": null,
+      "local_path": "raw/sources/references/nhs-archives/isb-standards/dscn-pdfs/isb-141-date-and-time-input-dscn.pdf",
+      "source_type": "pdf",
+      "source_category": "release metadata",
+      "retrieval_status": "retrieved",
+      "sha256": "8a89475553f4cc1307a9e3a85c55fe0ec5d237627b1c37a779b53a11edc546b8"
+    },
+    {
+      "title": "cuifullsubmission.pdf",
+      "original_url": null,
+      "local_path": "raw/sources/references/nhs-archives/isb-standards/cuifullsubmission.pdf",
+      "source_type": "pdf",
+      "source_category": "release metadata",
+      "retrieval_status": "retrieved",
+      "sha256": "1d66e369d67c045e4cefe1dafe1e5522ea6187ddb1c388e81fbdc689f07fd2c1"
+    },
+    {
+      "title": "cuifullapproach.pdf",
+      "original_url": null,
+      "local_path": "raw/sources/references/nhs-archives/isb-standards/cuifullapproach.pdf",
+      "source_type": "pdf",
+      "source_category": "release metadata",
+      "retrieval_status": "retrieved",
+      "sha256": "ce0957fa2a4de6fd5ebf59ee856c4e3bc8d8135da78289705ec6bfef0fbd4dd6"
+    },
+    {
+      "title": "cuifullsafetycase.pdf",
+      "original_url": null,
+      "local_path": "raw/sources/references/nhs-archives/isb-standards/cuifullsafetycase.pdf",
+      "source_type": "pdf",
+      "source_category": "release metadata",
+      "retrieval_status": "retrieved",
+      "sha256": "a08f23fa2d656438568fb3598a22f7e37461c1cda3b557c8c0a7321631b20781"
+    },
+    {
+      "title": "cuicompliance-pack",
+      "original_url": null,
+      "local_path": "raw/sources/references/nhs-archives/cuicompliance-pack.pdf",
+      "source_type": "pdf",
+      "source_category": "release metadata",
+      "retrieval_status": "retrieved",
+      "sha256": "fadf37263a32ce4c63759871266af21cd21ae2df64de35673d0a4ff385f31ce1"
+    },
+    {
+      "title": "cuicompliance-checklist",
+      "original_url": null,
+      "local_path": "raw/sources/references/nhs-archives/cuicompliance-checklist.xlsx",
+      "source_type": "xlsx",
+      "source_category": "release metadata",
+      "retrieval_status": "retrieved",
+      "sha256": "43b078dc589dcacbb92dfc417a0a3c0da73ab4601e25b8d746c5806e29caba90"
+    }
+  ]
+}

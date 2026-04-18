@@ -1,0 +1,3026 @@
+# Design Guidance -- Recording Adverse Drug Reaction Risks
+
+## Provenance
+- Source file: `raw/sources/design-guidance/toolkit-bundled-pdfs/Design Guidance -- Recording Adverse Drug Reaction Risks.pdf`
+- Extracted text: `derived/extracted-text/design-guidance/design-guidance-recording-adverse-drug-reaction-risks.txt`
+- Normalization note: machine-cleaned `pdftotext -layout` output; verify against the PDF for edge cases.
+
+## Extracted Text
+
+Design Guidance
+Recording Adverse Drug Reaction Risks
+
+                         Friday, 27 March 2009
+                               Version 1.0.0.0
+
+                                   Prepared by
+
+This document and/or software (“this Content”) has been created in partnership with the National Health Service (NHS) in England. Intellectual Property
+Rights to this Content are jointly owned by Microsoft and the NHS in England, although both Microsoft and the NHS are entitled to independently exercise
+their rights of ownership. Microsoft acknowledges the contribution of the NHS in England through their Common User Interface programme to this Content.
+Readers are referred to www.cui.nhs.uk for further information on the NHS CUI Programme.
+
+All trademarks are the property of their respective companies. Microsoft and Windows are either registered trademarks or trademarks of Microsoft
+Corporation in the United States and/or other countries.
+
+© Microsoft Corporation 2009. All rights reserved.
+
+                                    Design Guidance – Recording Adverse Drug Reaction Risks
+                                    Prepared by Microsoft, Version 1.0.0.0
+                                    Last modified on 27 March 2009
+
+PREFACE
+   Documents replaced by this document
+
+   Document Title                                                                                                                  Version
+   None
+
+   Documents to be read in conjunction with this document
+
+   Document Title                                                                                                                  Version
+   Design Guidance – Displaying Adverse Drug Reaction Risks                                                                        1.0.0.0
+
+   Design Guidance – Terminology – Matching                                                                                        1.0.0.0
+
+   Design Guidance – Terminology – Elaboration                                                                                     1.0.0.0
+
+   Design Guidance – Displaying Standards for Coded Information                                                                    1.0.0.0
+
+   Design Guidance – Date Display                                                                                                  2.0.0.0
+
+   Design Guidance – Medication Line                                                                                               2.0.0.0
+
+   Design Guidance – Displaying Graphs and Tables                                                                                  2.0.0.0
+
+This document and/or software (“this Content”) has been created in partnership with the National Health Service (NHS) in England. Intellectual Property
+Rights to this Content are jointly owned by Microsoft and the NHS in England, although both Microsoft and the NHS are entitled to independently exercise
+their rights of ownership. Microsoft acknowledges the contribution of the NHS in England through their Common User Interface programme to this Content.
+Readers are referred to www.cui.nhs.uk for further information on the NHS CUI Programme.
+
+All trademarks are the property of their respective companies. Microsoft and Windows are either registered trademarks or trademarks of Microsoft
+Corporation in the United States and/or other countries.
+
+© Microsoft Corporation 2009. All rights reserved.
+
+                                    Design Guidance – Recording Adverse Drug Reaction Risks
+                                    Prepared by Microsoft, Version 1.0.0.0
+                                    Last modified on 27 March 2009
+
+TABLE OF CONTENTS
+1    Introduction .................................................................................................................................... 1
+    1.1    Definitions of Adverse Drug Reactions ..................................................................................... 1
+    1.2    Risks Versus Events ................................................................................................................. 3
+    1.3    Customer Need......................................................................................................................... 4
+    1.4    Scope ........................................................................................................................................ 5
+     1.4.1      In Scope .............................................................................................................................. 5
+     1.4.2      Out of Scope ....................................................................................................................... 5
+    1.5    Assumptions ............................................................................................................................. 7
+    1.6    Dependencies ........................................................................................................................... 8
+
+2    Guidance Overview ....................................................................................................................... 9
+    2.1    Visual Summary of the Guidance ............................................................................................. 9
+    2.2    Clinical Statement Modelling .................................................................................................. 12
+
+3    Adding a New Adverse Drug Reaction Risk ............................................................................. 14
+    3.1    Principles ................................................................................................................................ 15
+    3.2    Guidelines – Adding a New Adverse Drug Reaction Risk ...................................................... 15
+     3.2.1      Initiating the Addition of a New Adverse Drug Reaction Risk ........................................... 15
+     3.2.2      Dialog for Adverse Drug Reaction Risk Entry ................................................................... 17
+     3.2.3      Displaying Existing Reaction Risks ................................................................................... 21
+     3.2.4      Entry Field Ordering and Tabbing ..................................................................................... 23
+     3.2.5      Entering the Causative Agent ........................................................................................... 25
+     3.2.6      Entering Reaction Types ................................................................................................... 29
+     3.2.7      Elaborating the Encoded Reaction Type Keywords.......................................................... 32
+     3.2.8      Adding Further Details and Justification ........................................................................... 34
+     3.2.9      Specifying the Source of Information ................................................................................ 35
+     3.2.10         Displaying ADR Risk Details for the Clinician to Confirm ............................................. 37
+     3.2.11         Warning About Duplicating Risks in the Summary ....................................................... 40
+     3.2.12         Feedback Upon Adding, Editing or Removing a Risk ................................................... 40
+
+4    Removing an Adverse Drug Reaction Risk from the Summary .............................................. 42
+    4.1    Principles ................................................................................................................................ 42
+    4.2    Guidelines – Removing an Adverse Drug Reaction Risk ....................................................... 42
+
+5    Recording ‘No Known Adverse Drug Reactions’ ..................................................................... 45
+    5.1    Principles ................................................................................................................................ 45
+    5.2    Guidelines – Recording ‘No Known Adverse Drug Reactions’ ............................................... 45
+
+6    Editing an Adverse Drug Reaction Risk in the Summary ........................................................ 47
+    6.1    Principles ................................................................................................................................ 47
+    6.2    Guidelines – Editing an Adverse Drug Reaction Risk ............................................................ 47
+                                 Design Guidance – Recording Adverse Drug Reaction Risks
+                                 Prepared by Microsoft, Version 1.0.0.0
+                                 Last modified on 27 March 2009
+
+7    Document Information ................................................................................................................ 50
+    7.1    Terms and Abbreviations ........................................................................................................ 50
+    7.2    Definitions ............................................................................................................................... 50
+    7.3    Nomenclature ......................................................................................................................... 51
+     7.3.1      Body Text .......................................................................................................................... 51
+     7.3.2      Cross References.............................................................................................................. 51
+    7.4    References ............................................................................................................................. 51
+
+                                 Design Guidance – Recording Adverse Drug Reaction Risks
+                                 Prepared by Microsoft, Version 1.0.0.0
+                                 Last modified on 27 March 2009
+
+1          INTRODUCTION
+    Adverse drug reactions (ADRs) represent a significant risk to patient safety. This is demonstrated in
+                   1
+    a recent report drawn up by the National Patient Safety Agency (NPSA).
+    Currently, information about a patient’s propensity (that is, risk) for suffering an ADR to a given
+    drug is not recorded or displayed consistently across the healthcare systems, which could result in
+    ambiguous or incomplete communication.
+    This guidance aims to support clear and unambiguous communication of the known ADR risks for a
+    patient which is also appropriate for a wide range of settings throughout the healthcare industry.
+    Clinical software applications that record or display ADR risks must provide sufficient information to
+    allow the user to make good clinical decisions, such as:
+         Whether to prescribe a medication
+         Whether to take additional actions (such as administering the drug in a hospital).
+    The users must also be able to determine whether the patient’s current symptoms are attributable
+    to an ADR.
+    This guidance is written with the assumption that the display of a list of ADR risks would be
+    featured in clinical applications in addition to automatic warning alerts based upon Decision
+    Support Systems (DSS). Accordingly, the guidance scope does not cover such DSS alerts and the
+    reader should not assume that the designs in this document would remove the need for such alerts.
+    However, it is the case that DSSs would be dependent upon the clear and error-free recording of
+    ADR risks by clinicians, which is addressed by the current guidance.
+    Another important issue associated with the recording and subsequent display of ADRs is that of
+    maintaining data quality. If data is entered to a poor standard, it may be interpreted incorrectly at
+    the point of display.
+
+        Note
+        The example names of companies, organisations, people, places and events depicted in the graphical
+        illustrations are fictitious. No association with any real company, organisation, person, place, or events is
+        intended, or should be inferred.
+        The visual representations used within this document to display the guidance are illustrative only. They
+        are simplified in order to support understanding of the guidance points. Stylistic choices, such as colours,
+        fonts or icons, are not part of the guidance and, unless otherwise specified, are therefore not mandatory
+        requirements for compliance with the guidance in this document.
+
+1.1        Definitions of Adverse Drug Reactions
+    The World Health Organisation (WHO) defines ‘adverse drug reactions’ as “any response to a drug
+    which is noxious and unintended, and which occurs at doses normally used in humans for
+    prophylaxis, diagnosis, or therapy of disease, or for the modification of physiological function” {R2}.
+    In other words, in normal cases, the drug itself is not toxic, but for some patients, the drug will
+    provoke a negative physiological response.
+    However, beyond this general notion of what is an ADR, there are many sub-definitions and
+    opposing classifications.
+
+    1
+     NHS, Clinical Governance, Safety in Doses: Medication Safety Incidents in the NHS (NPSA) {R1}:
+    http://www.clingov.nscsha.nhs.uk/Default.aspx?aid=4021
+                                                                                                                 Page 1
+                             Design Guidance – Recording Adverse Drug Reaction Risks
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 27 March 2009
+
+Many taxonomies categorise ADR risks according to whether they are immune-mediated or not.
+Some also make the distinction between Type A (pharmacological) and Type B (hypersensitivity).
+                                                                                          2
+For example, Figure 1 shows a classification of ADRs from the Medical Journal of Australia :
+
+Figure 1: Classification of Adverse Drug Reactions
+
+Another report describes how there are multiple sub-groups within the category of immunological
+reactions alone, the most common being Type 1, or ‘allergy’, and that immunological reactions only
+                                      3
+account for 5-10% of adverse reactions .
+It would be fair to say that most clinicians would not be familiar with such a detailed classification. A
+national healthcare agency, focused on the delivery of IT and infrastructure in the UK, categorises
+adverse into three categories:
+
+     1. Allergic drug reaction
+           A response to a pharmaceutical product to which an individual has become sensitised, in
+           which histamine, serotonin and other vasoactive substances are released, in response to
+           an immune system-mediated reaction.
+           This causes systemic symptoms which can include pruritus, erythema, flushing, urticaria,
+           angio-oedema, nausea, diarrhoea, vomiting, laryngeal oedema, bronchospasm,
+           hypotension, cardiovascular collapse and death.
+
+     2. Adverse drug reaction
+           A response to a pharmaceutical product which is noxious and unintended, and which
+           occurs at doses normally used in man for prophylaxis, diagnosis, or therapy of disease or
+           for modification of physiological function.
+
+     3. Drug intolerance
+           An undesirable effect produced by the pharmacological actions of a pharmaceutical product
+           at therapeutic or sub-therapeutic dosages, and which prevents the patient from tolerating
+           treatment with that product.
+The goal of the current guidance is to ensure that clinicians can easily and effectively record ADR
+risks in order that the patient is not given the offending drug again (unless there are extenuating
+circumstances). This is not about recording the expected side effects of drugs; instead it is about
+identifying past idiosyncratic reactions in order to prevent them in the future.
+
+2
+ Thien, F. MJA Practice Essentials, 2006, Allergy: Drug hypersensitivity {R3}:
+http://www.mja.com.au/public/issues/185_06_180906/thi10282_fm
+3
+ Riedl, M.A. and Casillas, A.M., American Academy of Family Physicians, Adverse Drug Reactions: Types and Treatment
+Options {R4}: www.aafp.org/afp/20031101/1781.html
+                                                                                                               Page 2
+                               Design Guidance – Recording Adverse Drug Reaction Risks
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 27 March 2009
+
+1.2       Risks Versus Events
+ This guidance will take the approach that an ADR can be expressed in terms of an actual reaction
+ event or in terms of a future risk to the patient. As will be shown later in the document, this is an
+ important distinction, given that a patient can experience a reaction (event) without the clinician
+ believing that the drug represents a serious future risk; or, conversely, the clinician may wish to
+ record that the patient is at risk of adversely reacting to a given medication, even if the details of
+ any past reaction are not known. For example, the patient may tell the clinician that they are
+ allergic to penicillin, but are not able to recall any specific reaction event to justify this risk. The
+ clinician may therefore wish to record this as a risk and not an event.
+ Obviously, the confusion of ‘risk’ and ‘reaction event’ at this point could be dangerous as future
+ readers of the risk information could place undue confidence in the risk if they think that the
+ clinician has witnessed a reaction in the patient.
+ Therefore, this guidance distinguishes between the risk of a future reaction and the event of past
+ reaction, but acknowledges that these two sets of data are intimately linked and that this should be
+ reflected in the user interface.
+ This notion is expressed in the Representation in Electronic Patient Records of Allergic Reactions,
+ Adverse Reactions, and Intolerance of Pharmaceutical Products {R5}, in which it is argued that it is
+ important to distinguish between these two kinds of ADR in the medical record: namely
+ distinguishing discrete ADR ‘events’ and persisting ADR ‘conditions’. In this paper, the authors talk
+ about “recording a clinician’s opinion about future risk of (or propensity to) an allergy or other ADR
+ if the patient is exposed to a substance” . They also acknowledge the difficulties faced by interface
+ developers in labelling the corresponding condition for an ADR event; they point out that the word
+ “adversy” does not exist. For this reason, we refer to this condition as a ‘risk’ in this document.
+ A good example to demonstrate the need for a summary of ADR risks is the area on drug charts
+ reserved for recording drugs which should be avoided, shown as ‘Drug Sensitivities’ in Figure 2:
+
+ Figure 2: Example of the 'ADR Risk' Area of an Existing Paper Drug Chart
+
+ Where possible, the ADR risks listed in this area must be based upon empirical evidence (such as
+ the clinician witnessing a reaction). This area does not replace the need to write detailed
+ examination notes about ADRs elsewhere in the record. Nor should the clinician be expected to
+ write detailed notes about the ADRs on the drug chart, as this detailed information would obstruct
+ the important medication information and may not be necessary on most occasions
+ This information relates to a 'risk' of reaction in the future. We can view it as a risk because:
+       The relationship between the reaction and the drug is most often a likely probability, rather
+        than a certainty
+       If a drug has caused a reaction in the past, this does not mean that it will necessarily
+        produce a similar reaction in the future
+ However, since beginning the development of this guidance, we have discovered that certain key
+ groups of clinicians find the concept of ‘risk’ difficult to understand in the context of ADRs. Instead,
+ they understood the notion of summarising past reactions. Therefore, we suggest that labelling in
+ any user interface (UI) that is presented to the clinician employs the term ‘summary’.
+
+                                                                                                      Page 3
+                                Design Guidance – Recording Adverse Drug Reaction Risks
+                                Prepared by Microsoft, Version 1.0.0.0
+                                Last modified on 27 March 2009
+
+ However, for the benefit of the readers of this guidance document, we shall still use the word ‘risk’
+ in order to distinguish it from the ADR ‘event’. This should make matters clearer to those
+ responsible for ensuring that appropriate data is recorded during clinical noting.
+ Figure 3 shows an example of the ADR summary proposed:
+
+ Figure 3: Example of the ADR Summary
+
+ Therefore, to the clinician who is using the user interface, the overall list is called the Adverse drug
+ reaction summary (or Adverse drug reaction summary list), and each line in the list
+ corresponds to an Adverse drug reaction that the list summarises. Accordingly, clinicians will be
+ required to perform the action of adding an ADR to the summary. To the clinician, the ADR is still
+ an ADR; it is just that they are summarising it for the purposes of warning other clinicians.
+ However, for the readers of the current guidance document, whereas the overall list is also called
+ the Adverse drug reaction summary, each line in the list corresponds to an Adverse drug
+ reaction risk.
+ Suppliers of clinical noting systems should ensure that the clinician not only records a detailed
+ description of any ADR events that they witness the patient experiencing (for example, as part of
+ examination notes), but also that the clinician records if they believe that the patient is at risk of
+ suffering a future reaction if they take the drug again.
+
+1.3      Customer Need
+ Avoiding known adverse reactions to drugs is a well-recognised and important goal within the
+ healthcare industry. Communicating the risk of a drug to a specific patient is an important step in
+ achieving this.
+ To achieve this communication, the user must be able to:
+       Record that there is a risk of a medication causing an ADR in a patient, as part of a
+        summary of ADRs for that patient
+       Record or link to justification for the ADR risk, where appropriate, which exists elsewhere in
+        the patient record and which includes the diagnosis of the ADRs, past reaction symptoms
+        and medication administration or prescription events
+       Record appropriate context and provenance data for the ADR risk, including date(s),
+        authorship and location
+                   Note
+                   Some of this recording may be automatic.
+
+       Record that the patient has no known ADR risks
+       Edit an existing ADR risk, including declassifying it as an active risk
+ These goals should be achieved whilst minimising the amount of re-entry of past details by
+ providing intuitive entry-points in the clinical noting process, whilst not interfering with the
+ consultation process.
+
+                                                                                                     Page 4
+                             Design Guidance – Recording Adverse Drug Reaction Risks
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 27 March 2009
+
+ The ultimate aim is to prevent the administration of drugs known to be dangerous to a particular
+ patient by ensuring that the clinicians are provided with sufficient information to:
+       Identify the presence or confirm the positive absence of ADRs
+       Determine the previous outcomes (including reaction) of the drug being administered
+       Form an opinion on future outcomes if the drug is again administered
+
+1.4       Scope
+1.4.1         In Scope
+ Guidance Area                           Details
+ Adding new ADR risks to the ADR         The guidelines in this section cover when the clinician wishes to add a new drug risk (for a
+ summary                                 particular patient) to the ADR summary.
+                                         This will typically occur when the clinician feels that they have seen or heard sufficient
+                                         evidence to conclude that the patient is at risk of suffering an adverse reaction if they take a
+                                         certain drug in future. This evidence may take the form of a patient testimony, a testimony
+                                         from a third party or an account in existing clinical documentation, such as a referral letter.
+                                         Additionally, it may be that the clinician has examined the patient and has concluded that
+                                         they have suffered an ADR.
+
+ Editing existing ADR risks within the   The guidelines in this section cover when the clinician wishes to edit details of an existing
+ ADR summary                             ADR in the summary.
+
+ Removing existing ADR risks within      The guidelines in this section cover when the clinician wishes to remove an existing ADR
+ the ADR summary                         from the summary. This section covers any warning messages that are required and how to
+                                         allow the clinician to view risks that have been removed from the summary list in the past.
+                                         The warning messages would also communicate to the clinician that by removing the ADR
+                                         risk from the summary they are not removing any corresponding notes from the rest of the
+                                         patient record.
+
+ Recording ‘No known ADRs’               The guidelines in this section cover how to allow the clinician to record where they have
+                                         checked the patient’s ADR status and are confident that the patient has no known ADRs.
+ Table 1: In Scope
+
+1.4.2         Out of Scope
+ If the clinician examining the patient has noticed relevant symptoms and is diagnosing the patient
+ as having experienced an ADR, he or she is expected to make detailed notes about this reaction
+ event and the events leading up to it, as noted in Adverse Drug Reactions: Types and Treatment
+ Options {R4}. The clinician would be expected to note all prescription and non-prescription drugs
+ taken prior to the reaction, including dates of administration and dosage. The clinician must also
+ document in detail the physical examination of the patient, focusing in on the reaction symptoms,
+ which may include a detailed skin examination as the skin is the organ most frequently and
+ prominently affected by ADRs. The execution of this detailed noting is assumed, but is not
+ addressed by the current guidance.
+
+ Guidance Area                           Details
+ Detailed documentation of ADR events The current guidelines have been developed on the assumption that, in the event that a
+                                      clinician witnesses an ADR, they enter detailed examination notes in the record. However, the
+                                      current guidelines do not cover the entry of such notes.
+                                         The assumption is that in addition to the detailed notes, the clinician should also record a
+                                         summary of the ADR in a highly accessible and visible area of the record, which
+                                         communicates that the patient is at risk of reacting to the drug if administered in future.
+                                         The current guidelines only cover the recording of this summary, or risk, of the ADR.
+
+                                                                                                                                    Page 5
+                              Design Guidance – Recording Adverse Drug Reaction Risks
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 27 March 2009
+
+Guidance Area                             Details
+How to communicate the link between The current guidelines have been developed on the assumption that, within the ADR
+supporting notes and ADR risk during summary list, there will be links to any detailed examination notes and/or any other relevant
+input                                data, such as details of past drug administration or diagnoses of ADRs.
+                                          However, the current guidelines do not cover how to create nor present these links.
+
+Browsing up and down a terminology        In order to assist the clinician in finding the drug or substance name that they seek in
+hierarchy structure, in order to define   attempting to define the ADR's causative agent, the UI could allow the clinician to browse the
+either the causative agent or a           terminology hierarchy structure. For example, they could enter 'penicillin' and browse down to
+reaction type                             specific instances of penicillin, such as 'amoxicillin'.
+                                          However, this feature is not covered by the current guidance. But, for a fuller discussion of
+                                          how this may be achieved, refer to the document Design Guidance – Terminology – Matching
+                                          {R6}.
+
+How to trigger an automatic ADR entry The current guidelines cover some aspects of the UI that could enable the clinician to quickly
+dialog                                and easily add an entry to the ADR summary list if they have just entered:
+                                           Notes about an examination of ADR symptoms
+                                           A diagnosis of an ADR
+                                          However, the current guidelines do not cover how the UI identifies that the clinician has
+                                          entered information about an ADR nor the criteria for triggering an 'add to summary' prompt.
+
+Automatic linking between risk and        If the user interface (UI) can identify where notes about an ADR event have been entered,
+supporting notes (and vice versa)         and can automatically prompt the user to enter the corresponding risk, it can ensure that
+                                          these two types of note can be linked together automatically. This would facilitate the
+                                          clinician's accessing of the detailed notes from the ADR summary.
+                                          However, the current guidelines do not cover the process or the UI that would be involved in
+                                          creating such links. Equally, the guidelines do not cover how much of the detailed notes are
+                                          linked to the risk in the summary.
+
+Manual linking between risk and           The current guidelines also assume that, in future, it will be possible for the clinician to
+supporting notes                          manually link entries in the ADR summary to entries elsewhere in the patient record that
+                                          document symptoms or diagnoses relating to the corresponding ADR event.
+                                          However, the current guidelines do not cover the process or the UI that would be involved in
+                                          allowing the clinician to create such links.
+
+Inputting dates, including                The current guidelines outline a UI whereby ADRs are described in a fairly abstract and
+distinguishing between recorded,          high-level manner; that is to say, the ADR is described as a risk that is not limited by date or
+reported and actual dates                 time. This is in contrast to descriptions of the corresponding ADR events (namely occasions
+                                          when the patient has actually reacted to the drug) that are firmly linked to a specific date and
+                                          time (and place).
+                                          Although the clinician may add some dates to the summary as part of their justification (which
+                                          is captured in free text), they are not required to enter dates in a structured manner. The
+                                          system may automatically capture the date and time when the clinician records the risk, but
+                                          the main purpose of this is for data organisation and audit and this does not need to be visible
+                                          to the clinician at the point of entering the risk.
+                                          Therefore, the current guidelines do not cover when the clinician should input dates.
+                                          However, for guidance on how to enter dates please refer to document Design Guidance –
+                                          Date Display {R7}.
+
+How to automatically extract reaction     As part of the design work, the guidance authors considered solutions whereby the clinician
+keywords from free text                   could type in text freely and the UI would identify word matches with the clinical terminology
+                                          and would then provide a mechanism by which the clinician could encode these words.
+                                          However, as this natural language parsing technology is still fairly immature and largely
+                                          unavailable to suppliers of health technology, the current guidelines do not cover such a
+                                          solution as the primary entry mechanism.
+
+                                                                                                                                     Page 6
+                             Design Guidance – Recording Adverse Drug Reaction Risks
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 27 March 2009
+
+ Guidance Area                              Details
+ Moving links to a supporting note          If links exist between an ADR risk entry (in the summary) and the detailed notes which
+ between risks                              support it, there may be a need for the clinician to be able to transfer links between risks. For
+                                            example, following the attribution of a rash to an ADR to penicillin, subsequent evidence
+                                            suggests that the rash was more likely in response to them taking diclofenac. In this case, the
+                                            clinician may want to transfer the linked rash event from the penicillin risk to the diclofenac
+                                            risk.
+                                            However, the current guidelines do not cover how the clinician can transfer links.
+ Table 2: Out of Scope
+
+1.5        Assumptions
+ ID        Assumption
+ A1        The structured terminology used for this guidance will be SNOMED CT®4 and the Dictionary of Medicines and Devices
+           (dm+d)5.
+                    Note
+                    This approach has been taken in line with a national healthcare agency, focused on the delivery of IT and
+                    infrastructure in the UK that the authors of this guidance were working with to create it (see SNOMED CT – the
+                    language of the NHS Care Records Service6). However, the requirement that clinical information technology (IT)
+                    suppliers must use SNOMED CT is not one that is specifically endorsed by Microsoft® over another provider.
+
+ A2        Appropriate subsets within SNOMED CT and dm+d are available.
+
+ A3        The user interface design correlates with the advice given in the document Representation in Electronic Patient Records of
+           Allergic Reactions, Adverse Reactions, and Intolerance of Pharmaceutical Products {R5}, unless there are patient safety
+           reasons not to do so.
+
+ A4        The application will be able to recognise that the encoded terms 'allergy to penicillin' and 'intolerance to penicillin' are
+           subtypes of 'propensity to adverse reaction to penicillin'.
+
+ A5        The assumed messaging standard for allergies and ADRs, and therefore the Summary Care Record application, correlates
+           with the guidelines given in the document SCG Guidance on the Representation of Allergies and Adverse Reaction
+           Information Using NHS Message Templates7.
+
+ A6        This guidance applies to PC-screen-based applications that allow dynamically changing screen views, linked into a
+           database. It does not apply to mobile devices, electronic paper or voice-recognition software although some of the principles
+           that apply in the current guidance could also apply to applications delivered by those types of mechanism.
+
+ A7        This guidance applies (although not exclusively) to server-based applications delivered over a network (for example, over
+           the Internet).
+ Table 3: Assumptions
+
+ 4
+     SNOMED CT® {R8}: http://snomed.org/
+ 5
+     NHS Dictionary of Medicines and Devices (dm+d) {R9}: http://195.97.218.30/dmd_download.htm
+ 6
+  NHS Connecting for Health, SNOMED CT®, the language of the NHS Care Records Service, A guide for NHS staff in
+ England {R10}: http://www.connectingforhealth.nhs.uk/systemsandservices/data/snomed/snomed-ct.pdf
+ 7
+  Bentely, S. And Long, R. (NPfIT Standards Consulting Group), SCG Guidance on the Representation of Allergies and
+ Adverse Reaction Information Using NHS Message Templates {R12}:
+ http://www.connectingforhealth.nhs.uk/systemsandservices/data/scg/publications/SCG0001.pdf
+                                                                                                                                           Page 7
+                               Design Guidance – Recording Adverse Drug Reaction Risks
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 27 March 2009
+
+1.6      Dependencies
+ ID       Dependency
+ D1       The availability of appropriate data sets, for example, SNOMED CT {R8} subsets.
+
+ D2       The following design guidance documents (changes in these documents may affect the current guidance given for recording
+          ADR risks):
+           Design Guidance – Displaying Adverse Drug Reaction Risks
+           Design Guidance – Terminology – Matching
+           Design Guidance – Terminology – Elaboration
+           Design Guidance – Terminology – Display Standards for Coded Information
+           Design Guidance – Date Display
+           Design Guidance – Medication Line
+           Design Guidance – Displaying Graphs and Tables
+
+ D3       Certain guidelines are dependent upon the fact that the medication terminology used contains the same length terms as the
+          current version of the dm+d {R9}.
+ Table 4: Dependencies
+
+                                                                                                                              Page 8
+                            Design Guidance – Recording Adverse Drug Reaction Risks
+                            Prepared by Microsoft, Version 1.0.0.0
+                            Last modified on 27 March 2009
+
+2            GUIDANCE OVERVIEW
+
+2.1          Visual Summary of the Guidance
+    This section provides an overview of the main design elements that are referenced in the guidance.
+    Figure 4 outlines the key elements that comprise the main entry dialog:
+
+    Figure 4: Key Elements in the Main Entry Dialog
+
+    Table 5 provides excerpts of the guidance illustrations and identifies where in the guidance they are
+    found:
+
+    Visual Summary                                                                           Areas of Guidance
+                                                                                             3.2.1 Initiating the Addition of a New
+                                                                                             Adverse Drug Reaction Risk
+
+                                                                                             3.2.2 Dialog for Adverse Drug
+                                                                                             Reaction Risk Entry
+
+                                                                                                                               Page 9
+                                   Design Guidance – Recording Adverse Drug Reaction Risks
+                                   Prepared by Microsoft, Version 1.0.0.0
+                                   Last modified on 27 March 2009
+
+Visual Summary                                                             Areas of Guidance
+                                                                           3.2.3 Displaying Existing Reaction
+                                                                           Risks
+
+                                                                           3.2.4 Entry Field Ordering and Tabbing
+
+                                                                           3.2.5 Entering the Causative Agent
+
+                                                                           3.2.6 Entering Reaction Types
+
+                                                                           3.2.7 Elaborating the Encoded
+                                                                           Reaction Type Keywords
+
+                                                                           3.2.8 Adding Further Details and
+                                                                           Justification
+
+                                                                                                           Page 10
+                 Design Guidance – Recording Adverse Drug Reaction Risks
+                 Prepared by Microsoft, Version 1.0.0.0
+                 Last modified on 27 March 2009
+
+Visual Summary                                                             Areas of Guidance
+                                                                           3.2.9 Specifying the Source of
+                                                                           Information
+
+                                                                           3.2.10 Displaying ADR Risk Details for
+                                                                           the Clinician to Confirm
+
+                                                                           3.2.11 Warning About Duplicating
+                                                                           Risks in the Summary
+
+                                                                           3.2.12 Feedback Upon Adding, Editing
+                                                                           or Removing a Risk
+
+                                                                           4.2 Guidelines – Removing an Adverse
+                                                                           Drug Reaction Risk
+
+                                                                           5.2 Guidelines – Recording ‘No Known
+                                                                           Adverse Drug Reactions’
+
+                                                                                                            Page 11
+                 Design Guidance – Recording Adverse Drug Reaction Risks
+                 Prepared by Microsoft, Version 1.0.0.0
+                 Last modified on 27 March 2009
+
+ Visual Summary                                                                           Areas of Guidance
+                                                                                          6.2 Guidelines – Editing an Adverse
+                                                                                          Drug Reaction Risk
+
+ Table 5: Overview of the Structure of the Adverse Drug Reaction Risk Display
+
+2.2        Clinical Statement Modelling
+ The user interface implied by the guidance in this document is intended to fulfil two purposes:
+         Assist the clinician in creating a set of associated electronic clinical statements
+         Provide an early exemplar for creating such clinical statements
+ The definition of a clinical statement in the current guidance corresponds with that provided in the
+ presentation NPfIT and the International Input into HL7, where it is defined as “an expression of a
+ discrete item of clinical (or clinically related) information that is recorded because of its relevance to
+                        8
+ the care of a patient” .
+ A fundamental assumption behind this guidance is that an electronic health record, which itself
+ must support many diverse care processes, can be modelled as clinical statements. A detailed look
+ at the various factors that contribute to this clinical statement model is not provided in this
+ guidance, however, further information is given in the document, SCG Guidance on the
+ Representation of Allergies and Adverse Reaction Information using NHS Message Templates
+ {R12}.
+ The structure of clinical statement modelling is based in part upon Health Language Seven (HL7)
+                                                                              9
+ v3 messaging rules (see HL7 delivers healthcare interoperability standards ). The current guidance
+ expects that clinical user interfaces that enable the recording of ADR risks should allow them to be
+ recorded in a way that is consistent with this clinical statement message pattern.
+ The approach outlined in this guidance is to treat clinical statements as being the smallest piece of
+ clinical data that has clinical meaning, irrespective of the document or application in which it is
+ displayed. To this end, each clinical statement must have embedded within it the entire ‘context of
+ use’. For example, a ‘family history’ statement of ‘asthma’ contains the context of ‘family history of
+ asthma’ and not just asthma. In this way, statements can be rearranged under different headings
+ and within different clinical contexts, and still convey a consistent, accurate meaning.
+ Within the context of ADR summaries, this guidance considers the following to be the main clinical
+ statements:
+         The ‘risk’ statement (for example, ‘Patient has a risk of adversely reacting to penicillin’):
+                 In order to be meaningful alone, this statement must have at least one date associated
+                  with it (such as the date of entry, an author or the source of the information {R12})
+
+ 8
+  Jones, T., NPfIT and the International Input into HL7, HL7 UK Annual Conference {R13}:
+ www.hl7.org.uk/marketing/downloads/HL7UKConference2004/HL7UK%20NPfIT%20presentation.ppt
+ 9
+     Health Language Seven UK: HL7 delivers healthcare interoperability standards {R14}: http://www.hl7.org.uk/
+                                                                                                                        Page 12
+                                Design Guidance – Recording Adverse Drug Reaction Risks
+                                Prepared by Microsoft, Version 1.0.0.0
+                                Last modified on 27 March 2009
+
+          This statement may contain additional information relating to the justification for
+           recording the risk
+          Associated with this will be one or more ‘type of reaction’ statements and a number of
+           statements relating to clinical events (such as high-level descriptions of the adverse
+           reaction events).
+    The ‘type of reaction’ statement (for example, ‘Patient has had a rash’):
+          This statement may contain additional information relating to the quality of the reaction
+           (such as its severity)
+          In order to be meaningful alone, this statement must also have at least one date
+           associated with it (such as the date of entry, an author or the source of the information).
+           As the emphasis is not so much on the specific details of past occurrences, but rather
+           on what has happened in the past that could potentially happen in future, the date could
+           be the date of entry as distinct to the date of the actual event
+Therefore, throughout this document, the guidance will refer to the capture of such clinical
+statements.
+
+                                                                                                 Page 13
+                     Design Guidance – Recording Adverse Drug Reaction Risks
+                     Prepared by Microsoft, Version 1.0.0.0
+                     Last modified on 27 March 2009
+
+3            ADDING A NEW ADVERSE DRUG REACTION RISK
+    The guidelines in this section cover when the clinician wishes to add a new drug risk to the ADR
+    summary.
+    This will typically occur when the clinician feels that they have seen or heard sufficient evidence to
+    conclude that the patient is at risk of suffering an adverse reaction if they take a certain drug in
+    future. This evidence may take the form of a patient testimony, a testimony from a third party, or an
+    account in existing clinical documentation, such as a referral letter. Additionally, it may be that the
+    clinician has examined the patient and has concluded that they have suffered an ADR. However, in
+    addition to this detailed noting, the clinician would also be expected to add the drug to a high-level
+    ADR summary so that future prescribers and administrators can be made aware of this risk, without
+    having to read through pages of detailed notes. The clinician is effectively creating a clinical
+    statement about the future risk to the patient of taking the drug, in addition to clinical statements
+    about the events surrounding past reactions (that should be documented elsewhere in the record).
+    As far as is safely possible, and where it is technically feasible, the application should reduce the
+    amount of duplicate information that the clinician must enter into the summary; it would be
+    frustrating for clinician to have to retype part of their notes into the summary. To this end, the
+    guidance covers when the system partly automates the summarisation of the detailed event notes.
+    However, the clinician must be aware of what they are entering into the ADR summary as this is
+    the information that will be first viewed by future prescribers; in many cases, clinicians may not read
+    beyond the summary.
+    Figure 5 shows the dialog flow for the process of adding a new ADR:
+
+    Figure 5: Screen Flow for ADR Entry
+
+    The clinician views the ADR summary list then activates a control to launch the dialog in which he
+    or she can enter the new ADR risk. After finishing entering the necessary risk data, the clinician
+    activates a control for finishing the adding process, which has the effect of navigating back to the
+    ADR summary list.
+
+                                                                                                     Page 14
+                                  Design Guidance – Recording Adverse Drug Reaction Risks
+                                  Prepared by Microsoft, Version 1.0.0.0
+                                  Last modified on 27 March 2009
+
+3.1     Principles
+ The following key principles inform the guidance in this section:
+       The clinician may need to add a new ADR risk to the summary at the point of viewing the
+        existing summary
+       The clinician will need to check the existing ADR summary before adding a new risk to the
+        summary
+       Clinicians work in time-pressured environments and may need to trade-off detailed reading
+        and entry of notes against speed and efficiency
+ The following user interface design principles inform the guidance in this section:
+       Directness: provide direct and intuitive ways for the user to accomplish their tasks
+       Control: the user must control the interaction (actions should result from explicit user
+        requests)
+       Phrasing of menu items: use familiar and consistent terminology, ensure that items are
+        distinct from one another, use consistent and concise phrasing, position the key words to
+        the left of the text string
+
+3.2     Guidelines – Adding a New Adverse Drug Reaction Risk
+3.2.1       Initiating the Addition of a New Adverse Drug Reaction Risk
+ This guidance covers the action of initiating the 'add new reaction' dialog.
+
+                                                                                                                     Evidence
+ ID             Description                                                                            Conformance
+                                                                                                                     Rating
+ RAD-0010       Provide a control in the ADR summary list that initiates the process of adding a       Mandatory     High
+                new ADR
+
+ RAD-0010.1     Activating the control will open the ADR entry dialog                                  Mandatory     High
+
+ RAD-0010.2     Ensure that the control is always visible upon initially viewing the ADR summary       Mandatory     High
+                display
+
+ RAD-0010.3     Provide a button for initiating the process of adding a new reaction risk              Recommended   High
+
+ RAD-0010.3.1   Locate the button at the top of the ADR summary display                                Recommended   Medium
+
+ RAD-0010.3.2   Label the button with a phrase that refers to the action of adding the reaction risk   Mandatory     High
+
+ RAD-0010.3.3   Label the button 'Add new drug reaction'                                               Recommended   Medium
+
+ RAD-0010.3.4   Locate the button immediately adjacent to the other options available in the ADR       Recommended   High
+                summary dialog (for example, a 'Close' button)
+
+                                                                                                                            Page 15
+                          Design Guidance – Recording Adverse Drug Reaction Risks
+                          Prepared by Microsoft, Version 1.0.0.0
+                          Last modified on 27 March 2009
+
+Usage Examples
+                                                                         Provide a control in the ADR summary list that initiates the
+                                                                         process of adding a new ADR
+                                                                         Activating the control will open the ADR entry dialog
+
+                                              
+                                                                         Provide a button for initiating the process of adding a new
+                                                                         reaction risk
+                                                                         Locate the button at the top of the ADR summary display.
+                                                                         Label the button with a phrase that refers to the action of
+                                                                         adding the reaction risk
+                                                                         Label the button 'Add new drug reaction'
+                                                                         Locate the button immediately adjacent to the other options
+                                                                         available in the ADR summary dialog (for example, 'Close or an
+                                                                         'x' button in the corner of a dialog window')
+
+                                                                        Do not locate command buttons that are functionally related in
+                                                                         distinct locations
+
+                                                                        Do not label the button with an overly complicated phrase
+
+Rationale
+Design Analysis:
+The point at which the clinician views the ADR summary is also a logical point for adding a new risk. This is demonstrated, for
+example, in a scenario we considered regarding checking ADR risks upon admission. There are a number of elements on the ADR risk
+display with which the control will have to compete. The 'add' control is an important function that may be needed regularly by the
+clinician.
+Our analysis compared different widget options and concluded that a button is the best feature, based upon this type of control's
+familiarity.
+Our analysis compared different location options and concluded that the top of the display is the optimal location for the function
+buttons, as this would allow the list to be extended in length (if necessary) while keeping the 'Add new' button in view. The top right-
+hand location avoids competing for space with the title text.
+Our analysis showed that providing labels that describe the action (to be performed by the user) that the control will execute are easier
+to understand than labels that contain other types of phrase. It is also good usability practice to feature consistency in the phrasing of
+labels and this action label is consistent with other action labels, including 'Close', 'Undo', 'Cancel' and 'Finish'.
+
+                                                                                                                                   Page 16
+                             Design Guidance – Recording Adverse Drug Reaction Risks
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 27 March 2009
+
+ Desk Research:
+ Studies that considered eyeball tracking have shown that, when viewing displays of information, the user's eyes move first to the
+ upper-left centre of the dialog, then quickly move through the display in a clockwise direction. Streveler and Wasserman (1984)
+ showed that users found visual targets fastest when they were located in the upper-left quadrant of a screen (quoted in Essential
+ Guide to User Interface Design: An Introduction to Gui Design Principles and Techniques {R15}). According to their research, those
+ targets located in the lower-right quadrant took longest to find. Given that the dialog title text is located in the top left-hand corner, the
+ most appropriate prominent location for the 'add new' control is the top right-hand corner of the dialog. In this way, the user may read
+ the title and then look across and see the 'add new' control.
+ According to the UI design expert Ben Shneiderman (Designing the User Interface: Strategies for Effective Human-Computer
+ Interaction {R16}), the phrasing of menu items should:
+ 1. Use familiar and consistent terminology
+ 2. Ensure that items are distinct from one another
+ 3. Use consistent and concise phrasing
+ 4. Bring the keyword to the left
+ Our research has shown that clinicians understand the term ‘add’ when used in relation to entering new information into a summary.
+ Also, there are no other actions in the dialog that employ the word ‘add’, so it is distinct. Finally, the word ‘add’ is located at the far left
+ of the label.
+ User Research:
+ In testing, clinicians all identified how to add a new risk correctly using a design that followed the guidelines listed here. The
+ mechanism for adding a new risk was consistently understood in both iterations of the testing.
+ Hazard Risk Analysis Summary:
+ From our Patient Safety Risk Assessment analyses, we identified a number of potential hazards, including the following key risks
+ which are mitigated by the design:
+      Potential Hazards:                                                    Mitigations:
+       User does not understand that they can add a new ADR                 Provide a clear control for adding a new ADR risk to the
+        risk to the summary                                                   summary. Provide such a control in an intuitive location
+       It might be easy for someone to accidentally click ‘add to           If the user clicks the 'add' button, they will be presented with a
+        the list’ without intending to                                        dialog that is clearly titled and a button to go back to the list
+                                                                              view
+
+3.2.2         Dialog for Adverse Drug Reaction Risk Entry
+ This guidance covers the layout and labelling of the dialog that contains the entry fields necessary
+ for the clinician to enter the new reaction risk. It also outlines the main screen elements that are to
+ be contained within this dialog.
+ It is worth emphasising that the term 'dialog' does not necessarily imply a pop-up modal window. In
+ the current guidance, 'dialog' could refer to a discrete set of screen elements within a given section
+ of a page. We are also assuming that, owing to an expected constraint on screen space, the 'ADR
+ summary list' and the 'ADR risk entry' dialogs would not be both visible at the same time. However,
+ if space is not constrained, there would be no reason why they should not be visible at the same
+ time.
+
+ ID                 Description                                                     Conformance                    Evidence Rating
+ RAD-0020           Feature a title which communicates the purpose of the           Mandatory                      High
+                    dialog
+
+ RAD-0020.1         Phrase the title in terms of the action that the user can       Recommended                    High
+                    perform with the dialog
+
+ RAD-0020.2         Locate the title in a sufficiently prominent position           Mandatory                      High
+
+ RAD-0020.3         Locate the title in the top left-hand corner of the dialog      Recommended                    High
+
+                                                                                                                                          Page 17
+                               Design Guidance – Recording Adverse Drug Reaction Risks
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 27 March 2009
+
+RAD-0030     Feature all the global function buttons in a single         Recommended    High
+             location
+
+RAD-0030.1   Locate all the global function buttons horizontally         Recommended    Medium
+             adjacent to each other
+
+RAD-0030.2   Label all the global function buttons and phrase the        Recommended    Medium
+             labels in terms of the actions that the user will perform
+
+RAD-0040     Visually deprecate those global function buttons that       Mandatory      High
+             cannot be activated at the time of viewing by greying
+             them out
+
+RAD-0040.1   Provide a common point of reference (for example, a         Recommended    Medium
+             banner) that spans both the list display and the input
+             field set so that the clinician understands the
+             relationship between the entry field set and the final list
+             display
+
+RAD-0040.2   Within the ADR risk entry dialog clearly communicate        Recommended    High
+             what information will appear immediately as a line in
+             the ADR summary list display after the new risk is
+             saved
+
+RAD-0040.3   Provide a banner in the input field set that looks like a   Recommended    Medium
+             line in the risk list display, and in which data will
+             populate as the user enters data into the fields below.
+             This will emphasise what data will be visible at the top
+             level of the display and what will be initially hidden.
+
+RAD-0040.4   Feature similar formatting between the banner and a         Recommended    Medium
+             selected line in the ADR summary list
+
+RAD-0040.5   Display the causative agent in the banner following its     Recommended    Medium
+             entry into the fields below
+
+RAD-0040.6   Display the reaction types in the banner following their    Recommended    Medium
+             entry into the fields below
+
+RAD-0040.7   Highlight the data that the user enters that will be         Recommended   Medium
+             displayed at the top level (that is, immediately visible) in
+             the ADR list display
+
+RAD-0050     Communicate to the user that the fields relate to the       Mandatory      High
+             action of adding a new risk
+
+RAD-0060     Provide a brief prompt that outlines the instructions for   Recommended    High
+             entering the risk
+
+RAD-0060.1   Provide a brief prompt that communicates the purpose        Recommended    High
+             of recording the risk in the summary, namely that it will
+             warn other clinicians of the risk.
+
+RAD-0060.2   The prompts that relate to the purpose of, and              Recommended    Low
+             instructions for, recording the risk may disappear once
+             the user starts entering the information
+
+RAD-0060.3   The prompts that relate to the purpose of, and             Recommended     Low
+             instructions for, recording the risk may be located in the
+             banner
+
+RAD-0070     The user must be able to always access the prompting        Recommended    Low
+             information in the form of an on-screen help feature
+
+                                                                                                 Page 18
+                       Design Guidance – Recording Adverse Drug Reaction Risks
+                       Prepared by Microsoft, Version 1.0.0.0
+                       Last modified on 27 March 2009
+
+Usage Examples
+
+                                                                                Feature a title which communicates the purpose of the
+
+                                                             
+                                                                                dialog
+                                                                                Phrase the title in terms of the action that the user can
+                                                                                perform with the dialog
+                                                                                Locate the title in a sufficiently prominent position
+                                                                                Locate the title in the top left-hand corner of the dialog
+                                                                                Communicate to the user that the fields relate to the action
+                                                                                of adding a new risk
+
+                                                             
+                                                                                Feature all the global function buttons in a single location
+                                                                                Locate all the global function buttons horizontally adjacent
+                                                                                to each other
+                                                                                Label all the global function buttons, and phrase the labels
+                                                                                in terms of the actions that the user will perform
+                                                                                Visually deprecate those global function buttons which
+                                                                                cannot be activated at the time of viewing (grey out)
+
+                                                                                                                               
+Provide a common point of reference (for example, a banner) that spans both the list display and the input field set so that the clinician
+understands the relationship between the entry field set and the final list display.
+Provide a banner in the input field set that looks like a line in the risk list display and in which data will populate as the user enters data
+into the fields below. This will emphasise what data will be visible at the top level of the display and what will be initially hidden.
+Provide a brief prompt that outlines the instructions for entering the risk. The prompts that relate to the purpose of, and instructions for,
+recording the risk may be located in the banner
+
+                                                                                Display the causative agent in the banner following its
+
+                                                           
+                                                                                entry into the fields below
+                                                                                Within the ADR risk entry dialog clearly communicate what
+                                                                                information will appear immediately as a line in the ADR
+                                                                                summary list display after the new risk is saved
+
+                                                                                Display the reaction types in the banner following their
+                                                                                entry into the fields below
+                                                                                Within the ADR risk entry dialog clearly communicate what
+
+                                                           
+                                                                                information will appear immediately as a line in the ADR
+                                                                                summary list display after the new risk is saved
+                                                                                Feature similar formatting between the banner and a
+                                                                                selected line in the ADR summary list
+                                                                                Highlight the data that the user enters that will be
+                                                                                displayed at the top level (that is, immediately visible) in
+                                                                                the ADR list display
+
+                                                                                                                                        Page 19
+                              Design Guidance – Recording Adverse Drug Reaction Risks
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 27 March 2009
+
+Rationale
+Design Analysis:
+Our analysis showed that providing a title in the dialog would orient the user in terms of what they need to do in the dialog and where
+they are in the clinical noting process. It also indicated that providing titles that refer to the action to be performed by the user in the
+dialog will be easier to understand than titles that contain other types of phrase.
+Following early design exploration of the ADR entry dialog, clinicians and UI experts indicated that, owing to the fact that creating an
+ADR summary electronically is a new and unfamiliar concept (in secondary care), the first-time user could be confused as to what they
+should enter on the screen. Additionally, it was deemed appropriate to communicate to users the purpose of entering this information,
+in the form of prompts, as this could help the clinician to determine what information to enter. Once the risk has been (or is being)
+recorded, the prompts are less useful and may contribute to on-screen clutter and, in this way, may be a distraction to the main task.
+This is especially pertinent if the same interface will be used for displaying the details in future. Therefore, the prompts may disappear
+once the user starts entering the information.
+Although it is good UI practice to provide a control that allows the user to 'undo' the entry or editing action that they have just
+performed, featuring the control in the entry dialog was considered confusing and risky: typically 'undo' is handled at a more global
+level in applications. Therefore, the guidance recommends that if the application features an 'undo' and 'redo' control, these controls
+should apply to the ADR entry dialog and the actions performed within it.
+Vertical space should be used sparingly in this design, given the number of stacked fields in the body of the dialog. Therefore a
+horizontal arrangement of the global function buttons is more appropriate in this situation.
+Our analysis showed that providing labels that describe the action (to be performed by the user) that the control will execute are easier
+to understand than labels which contain other types of phrase. It is also good usability practice to feature consistency in the phrasing of
+labels and this action label is consistent with other action labels, including 'Add', 'Close', 'Cancel' and 'Finish'.
+A key concern is that the user is unsure of how what they are entering will eventually be displayed. This could lead to them entering
+information in a suboptimal fashion, for example, if they decide not to enter keywords describing the type of reaction associated with
+the risk. Also, navigationally, it is important that, if the user clicks on a row to view more details, they can see that the details in the
+ensuing dialog relate to the row they just clicked. Finally, although the team considered showing the whole dialog within the ADR
+summary list, this was not deemed practical due to space considerations and issues of clutter. Therefore, a common point of reference
+that links the display and the input or further details dialog should feature in the design. Our analysis showed that a banner which
+contains the same information as is (or will be) displayed on the first level ('LEVEL 1', according to the document Design Guidance –
+Displaying Adverse Drug Reaction Risks {R17}) in the ADR risk list could provide this point of reference in the simplest manner.
+Desk Research:
+According to the RCP Health Informatics Unit (in Validating Clinical Requirements for information systems in secondary care (VCR):
+Detailed Clinical Requirements (DCR) {R18} (section 2.10.1)), applications should "provide on-line help for new and experienced
+users". Therefore, the guidance proposes that the UI provides detailed prompts to help the user to complete the dialog. These prompts
+may disappear after the user has entered information into the relevant fields. The current guidance does not cover how this online help
+can be accessed by the user after the initial prompts have disappeared from the screen, but it is clear from the DCR that this facility
+should be provided.
+A quick best practice review of popular applications showed that typically dialog titles are located at the top of the dialog, and left or
+centre-justified. Given the small amount of space available in the current dialog (a space that could shrink, given competing demands
+from other screen areas in the application), the default option should be to locate the title in the top left-hand corner. This is consistent
+with studies that have shown that users' eyes tend to direct initially to that area of the screen, described earlier in this document {R15}.
+It is good UI practice to locate the title of a dialog in a sufficiently prominent position, but one which does not affect the fields that the
+user must address. This gives the user feedback that they have selected the correct option to initiate the entry process. Failure to
+locate the title in a sufficiently prominent position could mean that the user does not see it and assumes that they are in a different
+dialog.
+Locating all command buttons, which comprise alternative actions, in the same area of the screen is good UI design practice, as this
+allows the user to quickly and easily see the options that are available to them. The Gestalt principle of 'proximity' suggests that items
+that are close together are perceived as belonging to a common group if they are located sufficiently close to one another in relation to
+the other screen elements.
+User Research and Reviews:
+Previous Microsoft Health CUIresearch has shown that clinicians are sometimes confused by the nature of the ADR summary list and
+consequently believe that it is a repository for full details about the reaction that the patient experienced. Therefore, it is important that
+the interface communicates that the entry fields relate to the action of adding a new risk.
+
+                                                                                                                                         Page 20
+                              Design Guidance – Recording Adverse Drug Reaction Risks
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 27 March 2009
+
+ Hazard Risk Analysis Summary:
+ From our Patient Safety Risk Assessment analyses, we identified a number of potential hazards, including the following key risks
+ which are mitigated by the design:
+      Potential Hazards:                                        Mitigations:
+       What if the word ‘risk’ is misunderstood in the          Our design avoids the use of the word 'risk'. Instead it distinguishes
+        context of ADR ‘Risk’?                                    the 'risk' data from 'event' data by referring to the former data type as
+                                                                  an entry in the summary
+       Cannot record ‘tests’ (for example, skin-prick tests)  The user should refer or link to notes outside of the summary (the
+        with the reactions.                                     details are out of scope) or make a note of the test in the free text field.
+                                                                The UI will enable this to happen.
+                                                                          Note
+                                                                          Skin-prick tests are fairly uncommon in addressing drug reactions
+
+       Users interpret the ADR entry UI as conveying            The dialogs now refer to the term 'adverse drug reaction summary'
+        ADR history rather than ADR risk                          rather than 'adverse drug reaction risks'.
+
+3.2.3         Displaying Existing Reaction Risks
+ It is important that the clinician can see the salient information from the existing ADR risk
+ statements (namely the causative agents) before and during the entry of a new ADR risk, as
+ knowledge of these other risks may influence how the clinician expresses the new risk. For
+ example, if the clinician was entering an ADR to ampicillin, and they noticed that the patient has an
+ existing ADR risk to flucloxacillin, they may decide to record a risk to Penicillins (the class of drug),
+ taking care to justify this risk entry and refer to both the ampicillin and flucloxacillin in the
+ associated justification field.
+
+                                                                                                                                Evidence
+ ID                Description                                                                             Conformance
+                                                                                                                                Rating
+ RAD-0070          Allow the user to access the existing reaction risks without leaving the dialog         Mandatory            Medium
+
+ RAD-0070.1        Where space allows, display all existing reaction summaries simultaneously at the       Recommended          Medium
+                   time of displaying the ADR input fields.
+
+ RAD-0070.2        Provide a label or header for any list of existing ADR risks                            Mandatory            High
+
+ RAD-0070.3        Display the existing ADR risks stacked vertically in any list of existing reaction      Recommended          High
+                   summaries
+
+ RAD-0070.4        Display the current drug risks immediately to the right of the ADR risk entry field set Recommended          Low
+
+ RAD-0080          Warn the user if they are entering a drug that has already been entered                 Mandatory            High
+
+ Usage Examples
+                                                                                                           Allow the user to access the
+                                                                                                           existing reaction risks without
+                                                                                                           leaving the dialog
+
+                                                                                         
+                                                                                                           Display the existing ADR risks
+                                                                                                           stacked vertically
+                                                                                                           Display the current drug risks
+                                                                                                           immediately to the right of the
+                                                                                                           ADR risk entry field set
+
+                                                                                                                                       Page 21
+                               Design Guidance – Recording Adverse Drug Reaction Risks
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 27 March 2009
+
+                                                                                                          Do not display the existing
+                                                                                                           reactions in a tiled arrangement
+
+Rationale
+Design Analysis:
+Scenario analysis has shown that it is a patient safety risk for the user to enter a new reaction risk without being aware of the existing
+ADR risks as the presence of an existing risk may affect the optimum choice of drug for the risk being entered. For example, if the user
+entered 'amoxicillin' when a risk to 'ampicillin' is already on the list this would be suboptimal compared to updating the amoxicillin risk
+to one of 'penicillin'.
+Analysis also showed that failure to provide an appropriate label could leave open the possibility of the user misinterpreting this list.
+For example, if there were only a single other risk listed, they may think that the system was proposing that the user record this risk in
+the current encounter.
+Owing to a shortage of vertical space, due to the other screen elements in the dialog, the most efficient location for the existing drug
+risks is immediately adjacent to the main dialog. Our analysis suggested that locating the list immediately to the left could be too
+distracting for the task in hand. Locating the list immediately to the right of the main dialog may be sufficiently noticeable but not too
+distracting.
+Desk Research:
+Best practice indicates that users can more quickly and effectively scan and find items that are stacked vertically than those which are
+arranged horizontally {R19, R20}.
+User Research:
+In user testing, we compared a number of designs where existing risks were arranged in a number of configurations, including
+vertically stacked and horizontally arranged (and wrapped). Although users showed evidence of being able to spot drugs within both
+arrangements, they indicated a preference for vertically stacking the risks.
+Hazard Risk Analysis Summary:
+From our Patient Safety Risk Assessment analyses, we identified a number of potential hazards, including the following key risks
+which are mitigated by the design:
+   Potential Hazards:                                         Mitigations:
+    Clinician enters a drug that is similar to or the         Provide a summary of existing ADR risks
+     same as an existing drug risk                             Provide a mechanism that identifies exact duplicates and warns the
+                                                                clinician that they are entering a duplicate
+
+                                                                                                                                     Page 22
+                             Design Guidance – Recording Adverse Drug Reaction Risks
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 27 March 2009
+
+3.2.4        Entry Field Ordering and Tabbing
+ The order in which the entry fields are visually arranged, and the order in which the focus navigates
+ through the action of keyboard tabbing, is important as it can influence whether fields are
+ completed or not. Accordingly, this section of the guidance describes how the ordering and tabbing
+ should be arranged to reduce such errors.
+
+                                                                                                                         Evidence
+ ID               Description                                                                              Conformance
+                                                                                                                         Rating
+ RAD-0090         Disable all fields, except for the causative agent, until the causative agent field has Recommended    High
+                  been completed
+
+ RAD-0100         After the causative agent field has been completed, enable the remaining fields          Recommended   High
+
+ RAD-0110         If the user has entered data into the causative agent field, plus any other fields,      Mandatory     Medium
+                  and then removes the data in the causative agent field, the user must be warned
+                  that, without a causative agent, the risk will not be saved and, accordingly, will not
+                  be displayed in the list
+
+ RAD-0120         Automatically move the focus into the causative agent field upon opening the             Recommended   High
+                  dialog
+
+ RAD-0130         If the causative agent field is not completed, the tab order takes the user to the       Recommended   Medium
+                  'Cancel' button (that is, the point of exit from dialog)
+
+ RAD-0140         After the user has entered a causative agent, the system must provide a control          Mandatory     High
+                  that allows the user to leave the dialog with the risk retained by the system and/or
+                  committed to the record.
+
+ RAD-0150         Feature a consistent and logical tabbing order that is reflected in the left-to-right,   Mandatory     High
+                  top-to-bottom visual ordering
+
+ RAD-0150.1       The tabbing order will follow the order of priority: causative agent, reaction types, Recommended      High
+                  source of information, ‘clinician witness reaction’ and then justifications and details
+
+ Usage Examples
+
+                                                                                                                       
+
+ Disable all fields, except for the causative agent, until the causative agent field has been completed.
+
+                                                                                                                                Page 23
+                              Design Guidance – Recording Adverse Drug Reaction Risks
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 27 March 2009
+
+                                                                                                                          
+
+After the causative agent field has been completed, enable the remaining fields
+
+                                                                                                                           
+After the user has entered a causative agent, the system must provide a control that allows the user to leave the dialog with the risk
+retained by the system and/or committed to the record
+
+                                                                                                                          
+
+Feature a consistent and logical tabbing order which is reflected in the left-to-right, top-to-bottom visual ordering.
+The tabbing order will follow the order of priority: causative agent, reaction types, source of information, ‘clinician witness reaction’ and
+then justifications and details.
+
+                                                                                                                                     Page 24
+                             Design Guidance – Recording Adverse Drug Reaction Risks
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 27 March 2009
+
+ Rationale
+ Design Analysis:
+ Following early design exploration of the ADR entry dialog, a clinical audience indicated that they found it difficult to see the focus of
+ the dialog when all the fields have equal visual prominence. Therefore, the guidance proposes that those fields that cannot be
+ completed at the time of viewing should be visually deprecated by being greyed-out.
+ Desk Research:
+ Best practice reviews of existing applications, both within and outside of the healthcare industry, has shown that the technique of
+ greying out fields until they are editable is a common practice.
+ User Research:
+ In testing, users found that they could understand which fields to complete, although in early designs, where there were fields arranged
+ horizontally, some users missed fields. Therefore, the current design arranges the fields vertically where possible.
+ Hazard Risk Analysis Summary:
+ From our Patient Safety Risk Assessment analyses, we identified a number of potential hazards, including the following key risks
+ which are mitigated by the design:
+      Potential Hazards:                                            Mitigations:
+       User fails to record the causative agent of the ADR risk,  The interface prevents the ADR risk being added to the summary
+        namely the drug or substance                                if the causative agent field has not been completed
+       User fails to record other details of the risk               The tabbing order navigates the user through the other entry fields
+                                                                      before arriving at the command buttons (including ‘Finish’)
+
+3.2.5          Entering the Causative Agent
+ This section of the guidance covers the action of entering the causative agent of the ADR risk,
+ namely the drug or substance that is believed to provoke a reaction in the patient. The illustrations
+ in this section largely feature design aspects that are currently being explored (further details of
+ these design aspects can be found in section A.2).
+ This section only covers those guidelines that are specific to the recording of an ADR causative
+ agent and does not cover more general design aspects, which are currently undergoing
+ exploration. The reader is advised to refer to section A.2 and to the document Design Guidance –
+ Terminology – Matching {R6}.
+ The user is expected to type in all or part of the name of the drug that they believe provokes ADRs
+ in the patient. The system then returns a list of matched drug names. The trigger for the return of
+ the matches can be automatic (‘progressively’ matching terms as the user types in letters) or it can
+ be user-triggered (either by clicking a button or ‘Enter’). The user then selects one of the matched
+ terms.
+ This causative agent term will be automatically ‘post-coordinated’ with the concepts ‘propensity to
+ adverse reactions to drug’ (SNOMED CT ID 419511003), or ‘propensity to adverse reactions to
+ substance ’, if the causative agent term is identified to fall within a non-drug subset. These
+ concepts will be connected by the attribute concept ‘has causative agent’ (SNOMED CT ID
+             10
+ 246075003) . This is consistent with guidance provided by the NPfIT Standards Consulting Group
+ {R12}.
+ In addition to the user explicitly entering the causative agent, the system will also automatically
+ record the time and date of the entry and the author who entered it (from their login credentials).
+
+ 10
+   Further details about SNOMED CT post-coordination can be found in the International Health Terminology Standards
+ Development Organisation, SNOMED Clinical Terms User Guide {R21}:
+ http://www.ihtsdo.org/fileadmin/user_upload/Docs_01/SNOMED_CT_Publications/SNOMED_CT_User_Guide_20080731.pd
+ f
+                                                                                                                                      Page 25
+                                Design Guidance – Recording Adverse Drug Reaction Risks
+                                Prepared by Microsoft, Version 1.0.0.0
+                                Last modified on 27 March 2009
+
+This information will combine with the causative agent and the source and justification free-text
+data to constitute the ADR risk statement.
+
+                                                                                                                          Evidence
+ID         Description                                                                              Conformance
+                                                                                                                          Rating
+RAD-0160   Ensure that any appropriate labels for the subsets that will filter the matching         Mandatory             Medium
+           process are displayed as the user is entering either the causative agent or the
+           reaction types
+
+RAD-0170   Display encoded causative agent text in bold                                             Mandatory             Medium
+
+RAD-0190   The system should identify whether the causative agent that the user has entered         Recommended           High
+           is a drug or a non-drug substance. It should post-coordinate drug concepts with
+           concepts 419511003 : 246075003, and non-drug substance concepts with
+           concepts 418471000 : 246075003
+
+RAD-0191   If a term is not recognised, the system will warn the clinician that the term has not    Recommended           Medium
+           been recognised, but will allow them to enter it as free text
+
+Usage Examples
+                                                                                           Present the user with a blank text field into
+
+                                                                      
+                                                                                           which they can type the causative agent of
+                                                                                           the ADR risk. For details see the document
+                                                                                           Design Guidance – Terminology –
+                                                                                           Matching {R6}
+
+                                                                                           Ensure that any appropriate labels for the
+
+                                                                      
+                                                                                           subsets which will filter the matching
+                                                                                           process are displayed as the user is
+                                                                                           entering either the causative agent or the
+                                                                                           reaction types
+
+                                                                                          After the user has typed three letters (or
+                                                                                           has clicked the ‘search’ icon) the system
+                                                                                           matches the text against terms in
+                                                                                           SNOMED CT, constrained by relevant
+                                                                                           subsets. For details see the document
+                                                                                           Design Guidance – Terminology –
+                                                                                           Matching {R6}
+
+                                                                                          Display encoded causative agent text in
+                                                                                           bold
+
+                                                                                                                                 Page 26
+                         Design Guidance – Recording Adverse Drug Reaction Risks
+                         Prepared by Microsoft, Version 1.0.0.0
+                         Last modified on 27 March 2009
+
+Rationale
+Design Analysis:
+An ADR risk (propensity) could be expressed in SNOMED CT in a number of ways. For example, an allergy to penicillin could be
+expressed as:
+ Allergy to penicillin (91936005)
+ Drug allergy (416098002): has causative agent (246075003): penicillin – class of antibiotic (6369005)
+The former example shows the expression of this clinical concept as a ‘pre-coordinated’ term, whereas the latter example shows a
+‘pre-coordinated’ expression. Ultimately they mean the same.
+Our analysis showed that it is preferable to enter the causative agent according to the latter structure because:
+ Not all drugs and substances have a corresponding pre-coordinated ADR or allergy concept in SNOMED CT. Mixing the two
+  structures could lead to problems due to inconsistent data quality.
+ The latter, ‘normalised’ version is easier to interpret by machine: decision-support systems have less processing to do using the
+  SNOMED CT structure in order to identify the causative agent.
+Additionally, previous Microsoft Health CUI research has shown that, for the purposes of displaying ADR risks, it is problematic to
+communicate whether the ADRs have been immunologically or pharmacologically mediated (that is, whether the reaction is allergic or
+not). Therefore, the guidance proposes that the codes that are used are:
+ Propensity to adverse reactions to drug (419511003): has causative agent (246075003): + drug concept
+ Propensity to adverse reactions to substance (418471000): has causative agent (246075003): + substance concept
+However, given that the Microsoft Health CUI research also demonstrated that the word ‘propensity’ is not well understood, the
+guidance does not propose that the labels ‘propensity to adverse reactions to…’ are visible to the user. Equally, the guidance does not
+recommend that the label ‘has causative agent’ is displayed.
+
+Desk Research:
+Currently there is legacy data in existence that could contain pre-coordinated allergy or adverse reaction codes (such as “14L1. H/O
+Penicillin allergy” in Read 2; “Xa5sH Penicillin allergy” in CTV3; and “91936005 penicillin allergy” in SNOMED CT {R12}). However, the
+NPfIT Standards Consulting Group (SCG), recommend that “the handling of the allergy codes by systems must follow the post-
+coordinated model” {R12}. This would apply to the entry of new ADR risks.
+The SNOMED CT codes ‘propensity to adverse reactions to drug’ (419511003) and ‘propensity to adverse reactions to substance’
+(418471000) are both approved by the NPfIT SCG {R12}.
+The post-coordination of these terms could be thus:
+ Propensity to adverse reactions to drug (419511003): has causative agent (246075003): + drug concept
+ Propensity to adverse reactions to substance (418471000): has causative agent (246075003): + substance concept
+User Research:
+In testing, users understood the process of matching a causative agent. In early designs there was some confusion as to the precise
+meaning of the term ‘penicillin’, namely whether it referred to the class of drug or a specific type of penicillin. The confusion lies in the
+fact that:
+ Clinicians often use the term synonymously with specific types of penicillin (such as penicillin V)
+ In SNOMED CT, the word 'penicillin' is a synonym for 'penicillin - class of antibiotic'
+In the current design, the system identifies if the drug falls directly within a subset of ‘drug class’ concepts. If it does, the system will
+display the word ‘class’ in parentheses next to the term’s label. Clinicians reviewing this design found it easy to understand, although
+they stressed that, once encoded, the word ‘class’ must remain next to the term.
+However, a cleaner and safer approach to resolving this problem would be for the synonym to be changed within SNOMED CT, which
+is beyond the scope of the current guidance.
+
+                                                                                                                                       Page 27
+                              Design Guidance – Recording Adverse Drug Reaction Risks
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 27 March 2009
+
+Hazard Risk Analysis Summary:
+From our Patient Safety Risk Assessment analyses, we identified a number of potential hazards, including the following key risks
+which are mitigated by the design:
+   Potential Hazards:                         Mitigations:
+    What if the clinician selects the         The design not only automatically displays a definition for the drug at the point of its
+     wrong drug from a drop down list?          selection but also clearly displays the term back to the user in the dialog. This should
+                                                mitigate against the user mistakenly selecting the wrong drug when they know the
+                                                correct drug name. The design cannot mitigate against the user mistakenly choosing
+                                                the wrong drug if they believe that that drug actually caused the reaction (as this is a
+                                                clinical decision).
+    What if visually or auditorily similar    The further SNOMED CT definition of a term is provided in a fly-out that automatically
+     terms are presented or selected?           appears as the user is selecting the term from the list of results.
+    What if an allergy is a non-drug          Users can change the subset filter to be able to choose from a set of non-drug
+     substance?                                 substances.
+                                                       Note
+                                                       General allergy recording is out-of-scope.
+
+    What if the allergy is recorded in an     We cannot force the clinician to record the drug to a given level. The aim of the
+     over specific way (for example,            design guidance is to enable clinicians to record their notes, rather than to instruct
+     specific drug)?                            them in the content of their notes. However, owing to the fact that the UI encourages
+                                                the user to record the causative agent in encoded terminology, DSS can detect to
+                                                which class a drug belongs
+    What if the allergy is recorded in an     We cannot force the clinician to record the drug to a given level. The aim of the
+     under specific way (for example,           design guidance is to enable clinicians to record their notes, rather than to instruct
+     drug class)?                               them in the content of their notes. However, owing to the fact that the UI encourages
+                                                the user to record the causative agent in encoded terminology, DSS can detect to
+                                                which class a drug belongs
+    What if the clinician does not            Our design allows the clinician to enter a drug brand name, although it encourages
+     recognise the generic drug from a          users to enter the generic name, if known. The default subset does not include trade
+     drug brand name (or vice-versa)?           family names (brand names), but the user can expand the subset range to include
+                                                them
+    What if a term is misspelled and not      The drug names and reaction types are to be encoded. We are recommending partial
+     recognised?                                word matching or pre-fix matching to allow misspelled terms to be recognized. Also, if
+                                                an application has the capability for progressive matching, this feature could help the
+                                                user to get to the correct spelling
+    What if a term is not recognised?         If a term is not recognised, the system will still allow the user to enter it. The system
+                                                will warn the clinician that the term has not been recognised, but will allow them to
+                                                enter it as free text
+    Singular and plural for penicillin have  Although in our design, if a drug term refers to a drug class, the word 'class' is
+     different implications                    displayed in brackets next to the term's label, we would recommend that this issue is
+                                               solved by changing the terminology (SNOMED CT) in order that the synonym for
+                                               'penicillin - class of antibiotic' features the word 'class' in it or is removed
+    Readers want to navigate to more          The design will allow readers to navigate to details of specific reactions, if such
+     details of specific reactions              details have been linked to the summary
+
+                                                                                                                                   Page 28
+                             Design Guidance – Recording Adverse Drug Reaction Risks
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 27 March 2009
+
+3.2.6       Entering Reaction Types
+ This section of the guidance covers the action of entering the types of adverse reaction that have
+ been provoked in the patient after taking the drug or substance. It is worth emphasising that the
+ clinician is only expected to enter brief details of the types of reaction that the patient has suffered,
+ rather than providing a detailed account of an examination of the patient. Detailed notes of the
+ reaction event(s) suffered by the patient will have been fully documented when the reaction
+ occurred, and are likely to be elsewhere the patient’s record, but not in the ADR summary list.
+ Instead, the clinician is expected to summarise the most significant reactions, ideally as single
+ words or phrases.
+ The illustrations in this section largely feature design aspects that are currently being explored
+ (further details of these design aspects can be found in section A.3. This section only covers those
+ guidelines that are specific to the recording of types of adverse reaction and will not cover
+ guidelines for general terminology encoding, for which the reader is advised to refer to APPENDIX
+ A and to the document Design Guidance – Terminology – Matching {R6}.
+ The clinician is expected to enter each reaction type in the same way as for the causative agent,
+ except that, when the clinician selects a reaction type, the encoded term is displayed in the text box
+ to the right of the search field and the search field becomes blank. At this point, the clinician may
+ tab to the text field in order to add additional text to the encoded term or may enter an additional
+ reaction type. In this way, the clinician may enter several types of reaction that the patient has
+ suffered in response to taking the drug.
+
+                                                                                                                    Evidence
+ ID           Description                                                                         Conformance
+                                                                                                                    Rating
+ RAD-0200     Provide one or more controls for entering the types of past reaction that the       Mandatory         Medium
+              patient has had to the causative agent
+
+ RAD-0210     Provide one or more text entry fields for entering or selecting reaction keywords   Mandatory         Medium
+              or key phrases that summarise the past reactions to the causative agent
+
+ RAD-0220     Allow for multiple reaction keywords or key phrases to be entered for a single      Mandatory         medium
+              drug
+
+ RAD-0230     Encourage the user to enter at least one encoded SNOMED CT concept for              Mandatory         Medium
+              each distinct reaction. This will be the keyword or key phrase for that reaction
+
+ RAD-0240     Provide one or more fields for entering elaborating or qualifying text around each Recommended        Medium
+              reaction keyword or key phrase
+
+ RAD-0250     Elaborating text may comprise either (i) free text or (ii) encoded text. If the text is Recommended   Medium
+              encoded, it must be linked to the keyword or key phrase by the encoding
+              terminology model or a clinical data model
+
+ RAD-0260     If the system identifies any words which fundamentally change the meaning of        Mandatory         High
+              the keyword or key phrase the system should warn the user
+              These 'dangerous' words may include expressions of negation, expressions of
+              reduction, or references to family history or other patients
+
+ RAD-0270     Ensure that the system sufficiently communicates to the user which elaborating      Mandatory         High
+              text applies to which reaction keyword or key phrase
+
+ RAD-0280     Clearly and appropriately label the section for entering the reactions              Mandatory         High
+
+ RAD-0280.1   Label the reactions section ‘Type(s) of reactions experienced’                      Recommended       Medium
+
+ RAD-0290     Allow the entry of negation with the reaction keywords. This will post-coordinate   Recommended       High
+              the reaction term with ‘known absent’
+
+                                                                                                                           Page 29
+                         Design Guidance – Recording Adverse Drug Reaction Risks
+                         Prepared by Microsoft, Version 1.0.0.0
+                         Last modified on 27 March 2009
+
+RAD-0300   Allow the entry of severity qualifiers with the reaction keywords. This will post-   Recommended            High
+           coordinate the reaction term with the appropriate severity
+
+RAD-0310   Provide prompting text to instruct the clinician what to do in the fields            Recommended            High
+
+RAD-0320   Allow the clinician to delete the reaction keyword or key phrase                     Mandatory              High
+
+RAD-0330   If the clinician clicks on the encoded reaction keyword or key phrase, reveal a      Recommended            Low
+           button to delete the reaction
+
+Usage Examples
+
+                                                                                                Provide one or more controls for
+
+                                                                           
+                                                                                                entering the types of past reaction
+                                                                                                that the patient has had to the
+                                                                                                causative agent
+
+                                                                           
+                                                                                                Encourage the user to enter at
+                                                                                                least one encoded SNOMED CT
+                                                                                                concept for each distinct reaction.
+                                                                                                This will be the keyword for that
+                                                                                                reaction
+
+                                                                           
+                                                                                                Once the term has been matched,
+                                                                                                it will appear in the right-hand field
+                                                                                                (see section A.3)
+
+                                                                           
+                                                                                                Allow for multiple reaction
+                                                                                                keywords to be entered for a
+                                                                                                single drug (see section A.3)
+
+                                                                           
+                                                                                                Allow the entry of negation with the
+                                                                                                reaction keywords. This will post-
+                                                                                                coordinate the reaction term with
+                                                                                                ‘known absent’
+
+                                                                           
+                                                                                                Allow the entry of severity
+                                                                                                qualifiers with the reaction
+                                                                                                keywords. This will post-coordinate
+                                                                                                the reaction term with the
+                                                                                                appropriate severity
+
+                                                                           
+                                                                                                Provide prompting text to instruct
+                                                                                                the user what to do in the fields
+
+                                                                                                If the clinician clicks on the
+
+                                                                           
+                                                                                                encoded reaction keyword or key
+                                                                                                phrase, reveal a button to delete
+                                                                                                the reaction
+
+                                                                                                                              Page 30
+                      Design Guidance – Recording Adverse Drug Reaction Risks
+                      Prepared by Microsoft, Version 1.0.0.0
+                      Last modified on 27 March 2009
+
+Rationale
+Design Analysis:
+In the phrase ‘Type(s) of reaction experienced’, the word ‘Type(s)’ has been included in order to emphasise that, although the risk is
+based upon the evidence of past reactions, these reactions are not specific to a particular time as they are an ever-present risk (if the
+patient takes the drug in question). Also, in the unlikely event that the patient has reacted in the same way to the same drug, but on
+different occasions, it is not helpful to list the reaction twice in the summary. This should be avoided by using the more abstract phrase
+‘Type(s) of reaction experienced’. This should also emphasise the distinction between the current ADR risk statements and statements
+that may exist elsewhere in the record that document the actual reaction events in detail.
+Desk Research:
+The latest design is supported, in part, by the document Design Guidance – Terminology – Matching {R6}, which outlines how to
+match the text typed in by the user against SNOMED CT concepts from within a specially chosen subset.
+The requirement for entering multiple past reactions is supported by the Design Guidance – Displaying Adverse Drug Reaction Risks
+{R17}.
+User Research:
+Initial designs featured a single field into which the user could enter the reaction. If users wanted to add another reaction, they had to
+click a button that would add another blank field into which they could enter another reaction type. However, testing showed that,
+although users understood the process of typing a word and selecting the matched term, they did not understand the mechanism for
+adding multiple reactions. The latest design has been reviewed by clinicians who did not find that the design presented any risks to
+patient safety. However, this design has not been fully user tested, and therefore confidence in this mechanism is low.
+Hazard Risk Analysis Summary:
+From our Patient Safety Risk Assessment analyses, we identified a number of potential hazards, including the following key risks
+which are mitigated by the design:
+   Potential Hazards:          Mitigations:
+    All users request     On balance, a structured grading of severity that relates to the drug risk as a whole has been
+     reaction severity      deemed to be potentially unclear and ambiguous. The problem is that the rating of severity of a past
+     ranking that can be    reaction is quite subjective. Attempts to rate the severity of a future reaction is quite impossible. This
+     used to sort the ADR   is supported by a study that has shown that most fatal drug anaphylactic reactions are
+                            unpredictable: in the study, over four-fifths dying from drug anaphylaxis had no previous indication of
+                            their allergy {R22}. Allowing clinicians to rate either the severity of a future reaction or the likelihood
+                            of the patient will suffer it is therefore unnecessary and actually could be misleading and dangerous,
+                            if it incorrectly influences the action of another clinician.
+                                   Therefore severity of reactions are (i) implied by the type of reaction and (ii) can be expressed as
+                                   encoded (post-coordinated) qualifiers of the reaction term that the clinician enters (for example,
+                                   ‘severe rash’). This has been supported by user research conducted by the Microsoft Health CUI
+                                   team (see the document Design Guidance – Displaying Adverse Drug Reaction Risks {R17}).
+    Some users will omit       The fields have been located in a prominent location in order to encourage the user to enter reaction
+     to enter reaction           types (if known).
+     keywords in the                    Note
+     reactions field
+                                        This is not mandatory data as the reaction may be unknown.
+
+                                                                                                                                    Page 31
+                             Design Guidance – Recording Adverse Drug Reaction Risks
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 27 March 2009
+
+3.2.7         Elaborating the Encoded Reaction Type Keywords
+   This section of the guidance covers the action of entering additional information to an encoded
+   reaction type term. For example, the clinician may want to add some additional description to the
+   reaction, which they feel is significant enough to include in the summary.
+   This text would be packaged up with the keyword to which it relates to form a clinical statement.
+   Therefore, it is imperative that the UI clearly shows which text belongs with which keyword.
+   The general mechanism for this ‘elaboration’ action is being covered in more detail in ongoing
+   design work (see section A.3) and, in part, by the document Design Guidance – Terminology –
+   Elaboration {R23}.
+
+                                                                                                                                Evidence
+   ID            Description                                                                               Conformance
+                                                                                                                                Rating
+   RAD-0340      Allow the user to add additional free text that elaborates on the reaction keywords       Recommended          Medium
+
+   RAD-0350      Enable the free text elaboration to be strongly visually associated with a specific       Recommended          Low
+                 reaction keyword
+
+   RAD-0360      Upon its saving and subsequent retrieval, the free text elaboration should be treated     Recommended          Medium
+                 as part of a unit in conjunction with the reaction keyword or key phrase. These
+                 components can be used to populate a clinical statement message pattern (see
+                 section 2.2).
+
+   RAD-0370      Words corresponding to severity or certainty (and that are recognised SNOMED CT           Recommended          Low
+                 qualifiers) that are entered as free text should be highlighted and offered to the user
+                 for encoding.11
+                          Note
+                          This guideline is only recommended for applications with the technological
+                          sophistication to handle text parsing of free text (see the document Design
+                          Guidance – Terminology – Matching {R6} for details)
+
+   Usage Examples
+                                                                                            Allow the user to add additional free text that
+
+                                                                       
+                                                                                            elaborates on the reaction keywords
+                                                                                            Enable the free text elaboration to be strongly
+                                                                                            visually associated with a specific reaction
+                                                                                            keyword
+                                                                                            Words corresponding to severity or certainty
+
+                                                                       
+                                                                                            (and that are recognised SNOMED CT
+                                                                                            qualifiers) that are entered as free text should
+                                                                                            be highlighted and offered to the user for
+                                                                                            encoding
+
+11 This follows the Design Guidance – Terminology – Elaboration {R23} document.
+
+                                                                                                                                      Page 32
+                                 Design Guidance – Recording Adverse Drug Reaction Risks
+                                 Prepared by Microsoft, Version 1.0.0.0
+                                 Last modified on 27 March 2009
+
+Rationale
+Design Analysis:
+Analysis has shown that clinicians may wish to type in more description than a single SNOMED CT concept or expression in order to
+express the true nature of the reaction that the patient experienced. For example, they may wish to indicate the location of a rash if
+they feel that is a significant detail. They may also wish to enter that they are unsure if the patient’s reaction was a direct result of the
+drug. Although this would not be a forced structured choice, it would appear to be a valid comment that the clinician wishes to make in
+relation to the reaction. As this is not the proper repository for a detailed description of the patient’s reaction, the clinician should not be
+offered prompts or dedicated fields in which to type detailed examination notes.
+User Research:
+Initial user research tested designs in which the user had to select an encoded term or phrase and then continue typing in the field if
+they had any further (free text) notes. However, users did not find this design easy to understand. Therefore, the design has been
+updated to feature a fixed field into which the user can insert the encoded keywords (using the search field) and then add additional
+free text. This action is communicated to the user by a text prompt that appears in the right-hand field until data is entered into it. As
+each encoded keyword is inserted only on a new line, the clinician is encouraged to enter the elaboration immediately after it (but they
+can carry on typing onto a new line). This new design has been reviewed by a panel of clinicians who did not deem this control to be a
+risk to patient safety. However, to date, it has not been fully user tested.
+Hazard Risk Analysis Summary:
+From our Patient Safety Risk Assessment analyses, we identified a number of potential hazards, including the following key risks
+which are mitigated by the design:
+   Potential Hazards:                         Mitigation:
+    The user elaborates the keyword           The system should warn the user if it identifies expressions of negation in the
+     with text that effectively negates         elaboration text
+     the keyword                               The elaboration text will be packaged with its associated keyword as a single clinical
+                                                statement. Therefore, if the clinician decides to leave the negating free-text in, this will
+                                                be partially mitigated by the fact that the accompanying text will often be accessed at
+                                                the same time as the keyword (although it still constitutes a risk)
+
+                                                                                                                                        Page 33
+                              Design Guidance – Recording Adverse Drug Reaction Risks
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 27 March 2009
+
+3.2.8        Adding Further Details and Justification
+ This section of the guidance covers the action of entering additional free text that (further) justifies
+ the clinician’s belief that the drug or substance constitutes a significant risk to the patient in the
+ future.
+
+                                                                                                                                 Evidence
+ ID                 Description                                                                            Conformance
+                                                                                                                                 Rating
+ RAD-0380           Allow users to enter text which justifies or adds further detail to the risk and       Recommended           High
+                    which may apply to the overall risk
+
+ RAD-0380.1         The user can type in as much text as they wish into the field (the field can start     Recommended           High
+                    scrolling when the text exceeds the visible space)
+
+ RAD-0390           Provide one or more text entry fields into which the user may type justification       Recommended           Medium
+                    or further details pertaining to the risk
+
+ RAD-0400           Justification text can comprise either free text or encoded text, depending upon Recommended                 High
+                    the data model in place
+
+ RAD-0410           The UI should identify any reaction keywords or key phrases that are typed into Recommended                  Medium
+                    the justification field
+
+ RAD-0410.1         The UI should communicate to the user that a significant reaction word (or         Recommended               Medium
+                    words) has been identified in the text and that the user should enter this word in
+                    the 'Type(s) of reactions experienced' section
+
+ RAD-0410.2         The UI should highlight significant reaction words or phrases with a coloured          Recommended           Medium
+                    highlight
+
+ RAD-0410.3         The UI should not highlight any reaction words that have already been matched Recommended                    High
+                    in the 'Type(s) of reactions experienced' section
+
+ RAD-0420           When there is no text in the justification field, display instructional text prompts   Recommended           Medium
+                    in the field
+
+ Usage Examples
+
+ Provide one or more text entry fields into which the user may type justification, or further details, pertaining to the risk.
+ When the field is devoid of data (or focus), the field contains prompting text.
+                                                                                                                                 
+ Justification text can comprise either free text or encoded text, depending upon the data model in place.
+                                                                                                                                 
+
+                                                                                                                                        Page 34
+                               Design Guidance – Recording Adverse Drug Reaction Risks
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 27 March 2009
+
+ The UI should identify any reaction keywords or key phrases that are typed into the justification field.
+                                                                                                                             
+ If the user enters text that relates to a reaction that has not already been entered in the ‘type(s) of reactions experienced’ section, the
+ system warns them and instructs them to enter the term into the appropriate section. After entry in the appropriate section, the
+ highlight and the warning disappear.
+
+ Rationale
+ Design Analysis:
+ Analyses indicated that in many situations there will be justification and details that the clinician wishes to enter that does not
+ correspond to a reaction type. Therefore, a free text field is appropriate in this situation.
+ User Research:
+ User research showed that:
+  Users felt it was clear what they could type into this field
+  Users noticed the highlighted terms and why they were highlighted
+ Hazard Risk Analysis Summary:
+ From our Patient Safety Risk Assessment analyses, we identified a number of potential hazards, including the following key risks
+ which are mitigated by the design:
+      Potential Hazards:                                                   Mitigations:
+       What if vital contextual info such as route of medication, or       The precise details of an ADR event should be recorded
+        reason for medication, is not entered?                               elsewhere in the notes, as usual. If the clinician believes that it
+                                                                             is a significant factor that must be flagged in a prominent
+                                                                             location, he or she may add this as free text in the summary
+       What if it is not clear that the justification area (text and       The current solution clearly indicates that the fields relate to
+        callouts) relates to the new ADR (in dialogue box above)             the entry of a new ADR (that is, it is new to the summary)
+        including ‘More past reactions’?
+
+3.2.9          Specifying the Source of Information
+ This section of the guidance deals with how to allow the clinician to record the source of the ADR
+ risk information.
+
+                                                                                                                                  Evidence
+ ID                  Description                                                                             Conformance
+                                                                                                                                  Rating
+ RAD-0430            Allow the user to specify a ‘source’ of the information displayed for the risk          Mandatory            High
+
+ RAD-0430.1          Allow the user to specify the most recent source of the risk information (namely,       Recommended          Medium
+                     how they discovered the risk)
+
+ RAD-0430.2          Provide a field for selecting the most recent source of the risk                        Recommended          High
+
+ RAD-0430.3          Provide a drop-down list for selecting the source of the risk                           Recommended          High
+
+ RAD-0430.4          Provide a suitable prompt in the 'source' field                                         Mandatory            High
+
+ RAD-0430.4.1        Provide the prompt ‘Enter source of most recent information’                            Recommended          Medium
+
+ RAD-0430.5          Within the drop-down list, present a set list of 'sources' of the risk (data to be      Mandatory            High
+                     determined by an appropriate clinical authority)
+
+                                                                                                                                         Page 35
+                                Design Guidance – Recording Adverse Drug Reaction Risks
+                                Prepared by Microsoft, Version 1.0.0.0
+                                Last modified on 27 March 2009
+
+RAD-0430.6        Do not provide a default selection in the 'source' field                                 Recommended          High
+
+RAD-0440          Provide a control that allows the clinician to specify that they know that a clinician Recommended            Medium
+                  has witnessed the patient reacting to the causative agent
+
+RAD-0440.1        The control that allows the clinician to specify that a clinician has witnessed a        Recommended          Medium
+                  reaction should be a checkbox
+
+RAD-0440.2        If the user selects ‘Clinician witnessed reaction’ in the ‘most recent source’ drop-     Recommended          Low
+                  down, the corresponding checkbox becomes automatically ticked
+
+Usage Examples
+                                                                             Provide a control that allows the clinician to specify that they
+                                                                             know that a clinician has witnessed the patient reacting to the
+                                                                             causative agent
+
+                                                        
+                                                                             Provide a drop-down list for selecting the source of the risk.
+                                                                             The control that allows the clinician to specify that a clinician
+                                                                             has witnessed a reaction should be a checkbox
+                                                                                      Note
+                                                                                      By default, the 'source of information' field is blank
+                                                                                      until the clinician selects from it.
+
+                                                                             Allow the user to specify the most recent source of the risk
+
+                                                         
+                                                                             information (namely, how they discovered the risk)
+                                                                                      Note
+                                                                                      The options displayed here are illustrative only.
+
+                                                         
+                                                                             If the user selects ‘Clinician witnessed reaction’ in the ‘most
+                                                                             recent source’ drop-down, the corresponding checkbox
+                                                                             becomes automatically ticked
+
+Rationale
+User Research:
+Clinicians expressed how important it is to be able to record the source of the information. In particular, they stressed that it is
+important to know if a clinician actually witnessed a reaction. This is reflected in the design.
+Hazard Risk Analysis Summary:
+From our Patient Safety Risk Assessment analyses, we identified a number of potential hazards, including the following key risks
+which are mitigated by the design:
+   Potential Hazards:                                        Mitigations:
+    What if the allergy was a reported event (rather         Allow the user to enter the source of the information, such as whether it
+     than observation)?                                        came from patient testimony or a reaction witnessed by the clinician
+
+                                                                                                                                       Page 36
+                              Design Guidance – Recording Adverse Drug Reaction Risks
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 27 March 2009
+
+3.2.10        Displaying ADR Risk Details for the Clinician to Confirm
+ This section covers guidance relating to the system:
+       Identifying where the clinician has noted details about an ADR event (for example, as part
+        of a diagnosis)
+       Presenting the clinician with a dialog that allows the clinician to create a corresponding
+        entry in the ADR summary
+ This guidance assumes that a mechanism is put in place that can identify where an ADR event is
+ being noted and then triggers a dialog accordingly. The current guidance only addresses the dialog
+ itself (shown on the right in Figure 6), and not the triggering process.
+
+ Figure 6: UI Triggers a Dialog for Entering an ADR Risk into the Summary
+
+                                                                                                                          Evidence
+ ID                Description                                                                              Conformance
+                                                                                                                          Rating
+ RAD-0450          If, when the clinician is making a note entry, and the system has identified a           Mandatory     High
+                   potential ADR risk, it should display a dialog that allows the user to confirm that
+                   they believe it is a risk that should be displayed in the ADR risk list
+
+ RAD-0460          The dialog for confirming a potential ADR risk must feature an option to add the         Mandatory     High
+                   risk to the list ( that is, it allows the user to confirm that they believe it to be a
+                   risk)
+
+ RAD-0470          The dialog for confirming a potential ADR risk must feature an option to ignore          Recommended   Medium
+                   the risk (that is, not record the risk)
+
+ RAD-0480          Locate the confirmation and non-confirmation options adjacent to each other              Recommended   Medium
+
+ RAD-0490          Clearly label both the 'confirm' and 'do not confirm' risk buttons                       Recommended   Medium
+
+ RAD-0490.1        Label the 'confirm' button ‘Yes, record the risk’                                        Recommended   Medium
+
+ RAD-0490.2        Label the 'do not confirm' button ‘Cancel’                                               Recommended   Medium
+
+ RAD-0490.3        Ensure that the button labels are consistent with the dialog heading                     Mandatory     High
+
+ RAD-0500          Locate the confirmation and non-confirmation buttons in the same area of the             Recommended   Medium
+                   dialog as the function buttons in the other ADR risk dialogs (namely, the top
+                   right-hand corner)
+
+ RAD-0510          Display all the details that will form the ADR risk to the user prior to their           Mandatory     Medium
+                   confirming the risk
+
+ RAD-0520          Display the details so that each field appears editable                                  Recommended   High
+
+                                                                                                                                 Page 37
+                                Design Guidance – Recording Adverse Drug Reaction Risks
+                                Prepared by Microsoft, Version 1.0.0.0
+                                Last modified on 27 March 2009
+
+RAD-0530          Encourage the user to edit the displayed details if they feel that this action is          Recommended        Medium
+                  appropriate
+
+RAD-0540          Display a 'selection' of the original notes from which the system identified the           Recommended        Medium
+                  potential ADR risk (for example, the text which contained the term ‘allergy to
+                  penicillin’)
+                  These notes could be encoded or free text and could have been entered by a
+                  number of mechanisms, including by free text field or by a set of form fields
+
+RAD-0550          If they are known, prepopulate the fields in the 'risk confirmation' dialog with the: Recommended             Low
+                   Causative agent
+                   Reaction type keywords
+
+RAD-0560          If the 'selection' text comprises a 'narrative block', display it in the 'Justification/   Recommended        Low
+                  Details' field and highlight the encoded text items
+
+RAD-0570          Where data is not known by the system, feature a blank in the relevant field               Recommended        Medium
+
+RAD-0580          Disable the ‘Yes, record the risk’ button if there is no causative agent entered           Mandatory          High
+                  into the appropriate field
+
+RAD-0590          Following the confirmation of a risk, the dialog should provide clear feedback             Recommended        High
+                  that the risk has been added to the ADR risk list
+
+RAD-0600          Following the confirmation of a risk, the dialog should automatically close and, in Recommended               High
+                  its place, reveal the ADR risk list
+
+Usage Examples
+
+                                                                                                                  
+
+If, when the clinician is making a note entry, and the system has identified a potential ADR risk, it should display a dialog that allows
+the user to confirm that they believe it is a risk that should be displayed in the ADR risk list
+The dialog for confirming a potential ADR risk must feature an option to add the risk to the list (that is, it allows the user to confirm that
+they believe it to be a risk)
+Display all the details that will form the ADR risk to the user prior to their confirming the risk
+Display the details so that each field appears editable
+Encourage the user to edit the displayed details if they feel that this action is appropriate
+Display a 'selection' of the original notes from which the system identified the potential ADR risk (for example, the text which contained
+the term ‘allergy to penicillin’)
+
+                                                                                                                                       Page 38
+                              Design Guidance – Recording Adverse Drug Reaction Risks
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 27 March 2009
+
+These notes could be encoded or free text and could have been entered by a number of mechanisms, including by free text field or by
+a set of form fields
+If they are known, prepopulate the fields in the 'risk confirmation' dialog with the:
+ Causative agent
+ Reaction type keywords
+If the 'selection' text comprises a 'narrative block', display it in the 'Justification/ Details' field and highlight the encoded text items
+
+The dialog for confirming a potential ADR risk must feature an option to ignore the risk (that is, not record the risk)
+Locate the confirmation and non-confirmation options adjacent to each other
+                                                                                                                             
+Clearly label both the 'confirm' and 'do not confirm' risk buttons
+Label the 'confirm' button ‘Yes, record the risk’
+Label the 'do not confirm' button ‘Cancel’
+Ensure that the button labels are consistent with the dialog heading
+Locate the confirmation and non-confirmation buttons in the same area of the dialog as the function buttons in the other ADR risk
+dialogs (namely, the top right-hand corner)
+
+Rationale
+Desk Research:
+The NPfIT Standards Consulting Group {R12}, recommend that “the system should record an allergy event recording for each allergy
+event that the patient suffers”. In our interpretation, the term ‘allergy’ is being used synonymously with the more general concept of
+‘adverse reaction propensity’. This implies a (semi-) automatic process by which the system identifies where the clinician has
+documented an ADR event and then creates an accompanying ADR risk (which, in our design, could reside in the ADR summary). In
+the NPfIT paper, they expand this point by proposing that, if a patient’s record contains an ADR event statement, then they should, in
+most cases, also have one corresponding allergy propensity (ADR risk), but that it may be reasonable to not have a corresponding
+ADR risk if the ADR event is not certain. They also propose that the existence of an ADR risk (that is, an ADR in the summary list)
+does not necessarily require the documentation of an ADR event. Finally, they make it clear that, although there could be multiple ADR
+events associated with a single ADR risk, there should be no duplicate ADR risks documented.
+User Research:
+Users understood this design in user testing.
+Hazard Risk Analysis Summary:
+From our Patient Safety Risk Assessment analyses, we identified a number of potential hazards, including the following key risks
+which are mitigated by the design:
+   Potential Hazards:                                                     Mitigations:
+    Source of information cannot be known, then pre-filled, by            The 'source of information' field is not pre-filled
+     the system
+    Confusion about ‘Record ADR Risk’ because it is already               This label has been changed to indicate that the action
+     recorded in the clinical notes                                         involves adding information to the summary
+
+                                                                                                                                           Page 39
+                               Design Guidance – Recording Adverse Drug Reaction Risks
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 27 March 2009
+
+3.2.11        Warning About Duplicating Risks in the Summary
+                                                                                                                            Evidence
+ ID             Description                                                                             Conformance
+                                                                                                                            Rating
+ RAD-0610       Provide a warning if the user has entered a causative agent that is the same as         Mandatory           Medium
+                the causative agent for an existing risk
+
+ RAD-0620       Communicate to the user that they must remove the existing risk before adding           Recommended         Low
+                a new risk with the same causative agent
+
+ Usage Examples
+
+ Provide a warning if the user has entered a causative agent that is the same as the causative agent for an existing risk
+                                                                                                                         
+ Communicate to the user that they must remove the existing risk before adding a new risk with the same causative agent
+
+ Rationale
+ Desk Research:
+ The NPfIT Standards Consulting Group {R12}, recommend that, in representing allergies and adverse reactions information using
+ messaging, the causative agent code should not be duplicated. They suggest that it is acceptable to feature entries for causative
+ agents that are similar, such as penicillin and amoxicillin, but that they must have different causative agent codes. They go on to
+ propose that systems “should prompt users if adding allergy propensities with duplicate causative agents” . Please note that this is not
+ the same as recording instances of multiple reaction events that have occurred on different times, which is perfectly acceptable.
+ Therefore, although we would only expect there to be a single risk to ‘penicillin’ recorded in the ADR summary list, within the ‘Refer to
+ existing notes’ section we could see links to multiple reactions (for example, the patient experienced a rash in response to amoxicillin
+ in 2001, then a severe rash to flucloxacillin in 2005).
+
+ Hazard Risk Analysis Summary:
+ From our Patient Safety Risk Assessment analyses, we identified a number of potential hazards, including the following key risks
+ which are mitigated by the design:
+      Potential Hazards:                                      Mitigations:
+       What if the same risk is entered more than once?  If the user attempts to enter the same risk twice, the system will warn
+                                                           them not to do this
+
+3.2.12        Feedback Upon Adding, Editing or Removing a Risk
+                                                                                                                              Evidence
+ ID             Description                                                                                Conformance
+                                                                                                                              Rating
+ RAD-0630       Visually highlight any risks that have just been added or changed                          Recommended        High
+
+ RAD-0640       Visually highlight any risks that have been newly added with the text 'New'                Recommended        Medium
+
+ RAD-0650       Visually highlight any risks that have been newly updated (edited) with the text           Recommended        Medium
+                'Updated'
+
+ RAD-0660       Provide the visual highlight immediately adjacent to the relevant ADR risk                 Recommended        High
+
+ RAD-0670       Only display the visual highlight for the current viewing by the clinician. After the      Recommended        Medium
+                dialog has been closed and reopened, the visual highlight will no longer be
+                presented
+
+                                                                                                                                     Page 40
+                              Design Guidance – Recording Adverse Drug Reaction Risks
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 27 March 2009
+
+Usage Examples
+
+                                                                                                                   
+Visually highlight any risks that have been newly added with the text 'New'
+
+                                                                                                                  
+Visually highlight any risks that have been newly updated (edited) with the text 'Updated'
+
+Rationale
+User Research:
+Users noticed and understood the feedback messages, although some proposed that it was slightly unclear how long the message
+would remain visible and to whom.
+Hazard Risk Analysis Summary:
+From our Patient Safety Risk Assessment analyses, we identified a number of potential hazards, including the following key risks
+which are mitigated by the design:
+   Potential Hazards:                                                Mitigations:
+    It is unclear whether the new ADR has been successfully          The design currently features a feedback mechanism, whereby
+     added to the ADR list without proactively navigating to it        the ADR summary view is always shown after an ADR has
+     and viewing it                                                    been added to it. Additionally, in the immediate feedback view,
+                                                                       a new or newly updated ADR risk is distinguished by a label
+                                                                       ('New' or 'Updated')
+    Text label 'New' has no clear reference point to event (new  The label ('New' or 'Updated') will only appear in the immediate
+     to system, new allergy) and time (when does something         feedback view
+     cease to be new)
+
+                                                                                                                              Page 41
+                             Design Guidance – Recording Adverse Drug Reaction Risks
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 27 March 2009
+
+4          REMOVING AN ADVERSE DRUG REACTION RISK FROM
+           THE SUMMARY
+
+4.1        Principles
+    The following key principles inform the guidance in this section:
+          Clinicians should not delete notes from the record (with a few exceptions) but they can
+           remove them from a summary
+          Clinicians should explain why they believe that a particular drug no longer presents a
+           significant risk
+          Clinicians should be able to see what risks have been removed from the summary
+
+4.2        Guidelines – Removing an Adverse Drug Reaction Risk
+                                                                                                                    Evidence
+    ID            Description                                                                         Conformance
+                                                                                                                    Rating
+    RAD-0680      Provide a control that is easily accessible from the ADR risk list that initiates   Mandatory     High
+                  the process of removing an existing ADR risk
+
+    RAD-0680.1    Feature this removal control within the 'details' view of a risk                    Recommended   Medium
+
+    RAD-0680.2    The removal control can be a button                                                 Recommended   Medium
+
+    RAD-0690      Clicking the 'remove' button will remove all the details of the chosen risk         Recommended   High
+                  (including medication, reaction types and justification details) from the active
+                  ADR summary list
+
+    RAD-0700      Provide a hover-over message that explains to the user what will happen if          Recommended   Medium
+                  they click the ‘Remove from list’ button
+
+    RAD-0710      ADR risks that have been removed from the active ADR summary list should            Mandatory     High
+                  be accessible in a 'display deactivated summaries' mode
+
+    RAD-0720      Encourage the user to enter a reason for removing a risk                            Recommended   High
+
+    RAD-0730      Upon removing a risk, the view should return to the ADR risk list                   Mandatory     High
+
+    RAD-0740      Upon removing a risk, this risk will not appear in the ADR risk list                Mandatory     High
+
+    RAD-0750      Provide a confirmation message that explains the implications of removing the Recommended         High
+                  risk to the user and allows the user to choose whether to proceed with the
+                  removal or cancel the removal
+
+    RAD-0750.1    The removal confirmation message should:                                            Recommended   Medium
+                   Outline which drug the user is about to remove and from where it will be
+                    removed (namely, the ADR risk list)
+                   Explain that any related clinical notes will remain on record
+                   Explain that clinicians will no longer be warned not to administer this drug
+                    by the system
+
+    RAD-0750.2    In the removal confirmation message dialog, the options should be presented         Mandatory     Medium
+                  as two buttons
+
+    RAD-0750.3    The removal confirmation buttons should be appropriately labelled in words          Mandatory     High
+                  that are consistent with the wording of the confirmation question
+
+                                                                                                                             Page 42
+                             Design Guidance – Recording Adverse Drug Reaction Risks
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 27 March 2009
+
+Usage Examples
+
+                                                                                                                         
+Provide a control that is easily accessible from the ADR risk list that initiates the process of removing an existing ADR risk
+The user must open the ‘details’ view of a risk in the active summary list before removing it
+
+Feature an option to remove an ADR from the active summary list within the 'details' view of a risk
+The removal control can be a button
+                                                                                                                         
+Clicking the 'remove' button will remove all the details of the chosen risk (including medication, reaction types and justification details)
+from the active ADR summary list
+
+                                                                                           
+Provide a hover-over message that explains to the user what will happen if they click the ‘Remove from list’ button
+
+                                                                                                                         
+Provide a confirmation message that explains the implications of removing the risk to the user and allows the user to choose whether
+to proceed with the removal or cancel the removal
+The removal confirmation message should:
+1. Outline which drug the user is about to remove and from where it will be removed (namely, the ADR risk list)
+2. Explain that any related clinical notes will remain on record
+3. Explain that clinicians will no longer be warned not to administer this drug by the system
+In the removal confirmation message dialog, the options should be presented as two buttons.
+The removal confirmation buttons should be appropriately labelled in words that are consistent with the wording of the confirmation
+question.
+
+                                                                                                                                     Page 43
+                             Design Guidance – Recording Adverse Drug Reaction Risks
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 27 March 2009
+
+                                                                                                                        
+ADR summaries that have been removed from the active ADR summary list should be accessible in a 'display deactivated summaries'
+mode
+
+Rationale
+User Research:
+In early testing, although clinicians understood how to remove a risk, many indicated that they were reluctant to do so. Our analysis
+showed that this was because:
+ Users were incorrectly thinking that they were deleting all references to the reaction from the record
+ Users were worried about there not being a place to record why they were removing it (the ‘justification for removal’ text field only
+  appears after they have clicked ‘Remove’.
+ Possibly the test scenario was addressing a corner case reason for removing the risk (that is, that new evidence had emerged
+  contesting the veracity of the risk) and clinicians felt that they could not contest existing data in this way. If the scenario had
+  addressed the removal of risk because it had been entered in error, then possibly clinicians may have been less reluctant
+The current design addresses these issues by:
+ Emphasising that the clinician would only be removing the reaction from the summary and not from the record entirely
+ Providing a hover-over for the ‘Remove’ button, which informs the clinician that they will be given an opportunity to add a reason for
+  removal
+Hazard Risk Analysis Summary:
+From our Patient Safety Risk Assessment analyses, we identified a number of potential hazards, including the following key risks
+which are mitigated by the design:
+   Potential Hazards:                                           Mitigations:
+    What if a clinician accidentally or inappropriately         The design provides sufficient warning to the user that they are
+     deactivates an ADR?                                          deactivating a risk. The user must explicitly confirm that they are
+                                                                  deactivating a risk
+    What if a clinician is not aware of the existence of        The design allows the user to view ADRs that have been
+     ‘deactivated’ ADRs?                                          'deactivated' from the summary
+    User could remove an ADR without providing a                The user is forced to attend to a dialog that contains a text field into
+     justification                                                which they can type the justification. However, whether or not it is
+                                                                  mandatory to enter text into that field is a matter for the appropriate
+                                                                  clinical authority to address
+    What if the clinician is not aware of the clinical      The clinician is presented with a message that communicates the
+     implications (and risks) involved with removing a drug   implications of removing the risk from the summary
+     from the ADR summary list before removing it?
+    Clinicians always want to enter justification text          The design features a hover-over message that indicates to the user
+     before taking any action                                     that clicking a button will allow the user to record a reason for
+                                                                  removing the ADR summary before actually removing it
+    The user does not feel that they have enough room to  The text field will expand (for example, by becoming a scrollable text
+     record sufficient useful information in the Removing   field) if the user types in more information than will fit in the viewable
+     Risk dialogue box                                      area. However, the maximum data size that can be entered into the
+                                                            field is a matter for the appropriate clinical authority to address
+
+                                                                                                                                   Page 44
+                             Design Guidance – Recording Adverse Drug Reaction Risks
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 27 March 2009
+
+5          RECORDING ‘NO KNOWN ADVERSE DRUG REACTIONS’
+
+5.1        Principles
+    The following key principles inform the guidance in this section:
+          Clinicians must distinguish between a lack of knowledge about the patient’s ADR risk
+           history and a knowledge that the patient does not have any ADR risks (‘No known ADR
+           risks’)
+
+5.2        Guidelines – Recording ‘No Known Adverse Drug Reactions’
+    This section of the guidance covers the act of the clinician confirming that, as far as he or she
+    knows, the patient has no known ADRs. This statement is distinct from not knowing the patient’s
+    ADR; instead it communicates a ‘known’ absence of ADRs.
+
+                                                                                                                      Evidence
+    ID            Description                                                                           Conformance
+                                                                                                                      Rating
+    RAD-0760      Where the risk status is unknown or where a clinicians has recorded that there        Recommended   High
+                  are no known ADRs, feature three action options:
+                  1. An option to confirm that there are no known ADR risks
+                  2. An option to add new risk
+                  3. An option to close the dialog
+
+    RAD-0760.1    Provide these controls as buttons                                                     Recommended   High
+
+    RAD-0760.2    Locate the buttons adjacent to one another                                            Recommended   High
+
+    RAD-0760.3    Locate the buttons in the same location of the dialog as the function buttons in      Recommended   High
+                  other dialogs
+
+    RAD-0760.4    Locate the buttons in the top right-hand corner of the dialog                         Recommended   High
+
+    RAD-0760.5    Clearly label the option buttons                                                      Mandatory     High
+
+    RAD-0760.6    Label the button for confirming that there are no known ADR risks, ‘No known          Recommended   High
+                  adverse drug reaction risks’
+
+    RAD-0770      If the user clicks 'No known adverse drug reaction risks', the phrase ‘No known       Mandatory     High
+                  adverse drug reaction risks’ should appear in the main area of the dialog
+
+    RAD-0780      If the user clicks 'No known adverse drug reaction risks', the date of entry and      Mandatory     Medium
+                  the author's name should appear next to the phrase 'No known adverse drug
+                  reaction risks'
+
+    RAD-0790      If the user clicks 'No known adverse drug reaction risks', a drop-down list should Recommended      Medium
+                  appear from which the user can select who or what was the source of this
+                  information
+
+    RAD-0800      If the user clicks 'No known adverse drug reaction risks', an entry field should      Recommended   Low
+                  appear into which the user may add further details that support their belief that
+                  there are no known ADR risks
+
+    RAD-0810      If the user clicks 'No known adverse drug reaction risks', the 'Close' button label   Recommended   High
+                  should change to 'Finish'
+
+    RAD-0820      If the user clicks 'No known adverse drug reaction risks', the 'No known adverse      Mandatory     Medium
+                  drug reaction risks' button should become disabled. It should remain disabled
+                  while the dialog is still open
+
+                                                                                                                             Page 45
+                           Design Guidance – Recording Adverse Drug Reaction Risks
+                           Prepared by Microsoft, Version 1.0.0.0
+                           Last modified on 27 March 2009
+
+Usage Examples
+
+                                                                                                                         
+Where the risk status is unknown or where a clinicians has recorded that there are no known ADRs, feature three action options:
+1. An option to confirm that there are no known ADR risks
+2. An option to add new risk
+3. An option to close the dialog
+Provide these controls as buttons
+Locate the buttons adjacent to one another
+
+                                                                                                                        
+If the user clicks 'No known adverse drug reaction risks', the phrase ‘No known adverse drug reaction risks’ should appear in the main
+area of the dialog
+If the user clicks 'No known adverse drug reaction risks', the date of entry and the author's name should appear next to the phrase 'No
+known adverse drug reaction risks'
+If the user clicks 'No known adverse drug reaction risks', a drop-down list should appear from which the user can select who, or what
+was, the source of this information
+If the user clicks 'No known adverse drug reaction risks', an entry field should appear into which the user may add further details that
+support their belief that there are no known ADR risks
+If the user clicks 'No known adverse drug reaction risks', the 'Close' button label should change to 'Finish'
+
+                                                                                                                        
+If the user clicks 'No known adverse drug reaction risks', the date of entry and the author's name should appear next to the phrase 'No
+known adverse drug reaction risks'
+This is the view once the user has clicked ‘Finish’
+
+Rationale
+User Research:
+In testing, clinicians all identified how to record ‘No known adverse drug risks’ using the current design.
+Hazard Risk Analysis Summary:
+From our Patient Safety Risk Assessment analyses, we identified a number of potential hazards, including the following key risks
+which are mitigated by the design:
+   Potential Hazards:                                                Mitigations:
+    Unable to enter source of 'no known ADR risks' or view           The 'no known ADR risks' dialog now contains a field for
+     how previous no known ADR was established                         entering the source of the information
+
+                                                                                                                                  Page 46
+                             Design Guidance – Recording Adverse Drug Reaction Risks
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 27 March 2009
+
+6          EDITING AN ADVERSE DRUG REACTION RISK IN THE
+           SUMMARY
+
+6.1        Principles
+    The following key principles inform the guidance in this section:
+          Clinical summary information can be edited, given that the clinical events upon which it is
+           based are documented elsewhere
+          Clinicians may wish to add further information to a summary item as and when new
+           information becomes available
+          Changing the causative agent in an ADR risk would significantly change the meaning of the
+           risk to the extent that all the details associated with it must be re-addressed
+    The following usability principles inform the guidance in this section:
+          Provide the mechanism for editing a data item as close as possible to its display (‘direct
+           editing’)
+          Clearly demarcate what is editable from what is not editable
+
+6.2        Guidelines – Editing an Adverse Drug Reaction Risk
+    This section covers guidelines relating to the editing of and adding to an ADR risk that has already
+    been edited and saved in the ADR summary.
+
+                                                                                                                        Evidence
+    ID            Description                                                                             Conformance
+                                                                                                                        Rating
+    RAD-0830      Feature a control that renders all of the details of an ADR risk editable (with the     Mandatory     High
+                  exception of the causative agent) and allows more details to be added
+
+    RAD-0830.1    Feature this ‘editing’ command button in the ‘details’ view of the ADR risk             Recommended   High
+
+    RAD-0830.2    Clicking on the ‘editing’ command button renders all the fields (except for the        Recommend      High
+                  causative agent) in an editable format and laid out like the original entry dialog but
+                  with data pre-populating the fields
+
+    RAD-0830.3    Label the ‘editing’ command button ‘Edit’.                                              Recommended   High
+
+    RAD-0840      Provide an ‘editing’ command control that is local to each editable data item           Recommended   Medium
+
+    RAD-0840.2    Double-clicking on the data item (or right-clicking on it to reveal an ‘Edit’ option)   Recommended   Medium
+                  will render it editable
+
+    RAD-0850      Disable the ‘Finish’ button until the user has changed or added to the data             Mandatory     High
+
+    RAD-0860      Once the user has changed or added to the data, the ‘Back’ button changes to            Mandatory     Medium
+                  ‘Cancel’
+
+    RAD-0870      The ‘Cancel’ button will navigate back to the ADR summary list view but without         Mandatory     High
+                  saving or retaining any changes to the data
+
+    RAD-0880      The ‘Finish’ button will navigate back to the ADR summary list view and will save       Mandatory     High
+                  or retain any changes to the data
+
+    RAD-0890      Provide access to an edit history, including appropriate dates, for the data visible    Recommended   High
+                  in the ‘Details’ view
+
+                                                                                                                               Page 47
+                             Design Guidance – Recording Adverse Drug Reaction Risks
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 27 March 2009
+
+Usage Examples
+
+                                                                                                                         
+Feature an ‘editing’ command button in the ‘details’ view of the ADR risk that renders all the fields (except for the causative agent) in
+an editable format and laid out like the original entry dialog but with data pre-populating the fields.
+The user can edit or add to an item in the ADR summary by clicking on it to reveal its ‘Details’ view
+
+                                                                                                                         
+
+Label the ‘editing’ command button ‘Edit’
+
+                                                                                                                                    Page 48
+                             Design Guidance – Recording Adverse Drug Reaction Risks
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 27 March 2009
+
+                                                                                                                         
+
+Feature an ‘editing’ command button in the ‘details’ view of the ADR risk that renders all the fields (except for the causative agent) in
+an editable format and laid out like the original entry dialog but with data prepopulating the fields
+Clicking on the ‘Edit’ button renders the ‘Details’ dialog for the ADR editable (except for the causative agent field)
+Disable the ‘Finish’ button until the user has changed or added to the data
+
+Rationale
+User Research:
+User research showed that users did not realise that they could click on a data item to edit it. Therefore the current design also
+features a global ‘Edit’ button.
+Additionally, when presented with the option to edit the causative agent, clinicians were confused by why they would want to do this. It
+was deemed too risky to allow clinicians to do this. This opinion was raised even though the clinicians raising it were aware of the
+concept that this is just a summary (rather than the detailed notes).
+Hazard Risk Analysis Summary:
+From our Patient Safety Risk Assessment analyses, we identified a number of potential hazards, including the following key risks
+which are mitigated by the design:
+   Potential Hazards:                                                                              Mitigations:
+    If the user edits the causative agent of a risk, the remaining details will be out-of-         Do not allow the clinician to edit the
+     context. Future readers could assume, therefore, that the reactions were associated             causative agent
+     with a specific drug whereas, in fact, the patient had actually reacted to another in its
+     class
+
+                                                                                                                                     Page 49
+                             Design Guidance – Recording Adverse Drug Reaction Risks
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 27 March 2009
+
+7             DOCUMENT INFORMATION
+
+7.1           Terms and Abbreviations
+    Abbreviation                       Definition
+    ADR                                Adverse Drug Reaction
+
+    CUI                                Common User Interface
+
+    dm+d                               dictionary of medicines + devices (NHS)
+
+    DCR                                Detailed Clinical Requirements
+
+    DSS                                Decision Support Systems
+
+    HL7                                Health Language Seven
+
+    IT                                 Information Technology
+
+    NHS                                National Health Service
+
+    NHS CFH                            NHS Connecting for Health
+
+    NPfIT                              National Programme for Information Technology
+
+    SCG                                Standards Consulting Group
+
+    SNOMED CT                          Systematized Nomenclature of Medical Clinical Terms
+
+    UI                                 User Interface
+
+    VCR                                Validating Clinical Requirements:
+    Table 6: Terms and Abbreviations
+
+7.2           Definitions
+    Term                                Definition
+    Current best practice               Current best practice is used rather than best practice, as over time best practice guidance may
+                                        change or be revised due to changes to products, changes in technology, or simply the additional
+                                        field deployment experience that comes over time.
+
+    Summary Care Record                 Part of the NHS Care Records Service, the Summary Care Record is centrally held patient data that
+                                        can be uploaded and viewed by different NHS organizations, such as the GP practice and the
+                                        hospital, and by patients themselves.
+
+    Post-coordination                   Post-coordination is a process which allows the combination of concepts. For example, a focus
+                                        concept may be qualified to produce a more specific clinical concept. See SNOMED CT – the
+                                        language of the NHS Care Records Service {R10} for further details on post-coordination.
+    Table 7: Definitions
+
+                                                                                                                                   Page 50
+                                  Design Guidance – Recording Adverse Drug Reaction Risks
+                                  Prepared by Microsoft, Version 1.0.0.0
+                                  Last modified on 27 March 2009
+
+7.3         Nomenclature
+ This section shows how to interpret the different styles used in this document to denote various
+ types of information.
+
+7.3.1         Body Text
+ Text                                                                 Style
+ Code                                                                 Monospace
+
+ Script
+
+ Other markup languages
+
+ Interface dialog names                                               Bold
+
+ Field names
+
+ Controls
+
+ Folder names                                                         Title Case
+
+ File names
+ Table 8: Body Text Styles
+
+7.3.2         Cross References
+ Reference                                                            Style
+ Current document – sections                                          Section number only
+
+ Current document – figures/tables                                    Caption number only
+
+ Other project documents                                              Italics and possibly a footnote
+
+ Publicly available documents                                         Italics with a footnote
+
+ External Web-based content                                           Italics and a hyperlinked footnote
+ Table 9: Cross Reference Styles
+
+7.4         References
+ Reference         Document                                                                                                 Version
+ R1.               Safety in Doses: Medication Safety Incidents in the NHS (NPSA) – NHS – Clinical Governance               2007
+                   http://www.clingov.nscsha.nhs.uk/Default.aspx?aid=4021
+
+ R2.               Requirements for adverse reaction reporting – World Health Organization: Geneva: Author                  1975
+
+ R3.               MJA Practice Essentials – Allergy – Drug hypersensitivity – Thien, F. – Medical Journal of Australia     2006
+                   http://www.mja.com.au/public/issues/185_06_180906/thi10282_fm
+
+ R4.               Adverse Drug Reactions: Types and Treatment Options – American Academy of Family Physicians –            01-Nov-
+                   Riedl, M.A. and Casillas, A.M.                                                                           2003
+                   www.aafp.org/afp/20031101/1781.html
+
+ R5.               Representation in Electronic Patient Records of Allergic Reactions, Adverse Reactions, and Intolerance
+                   of Pharmaceutical Products – Horsfield, P. and Sibeko, S. (
+
+ R6.               Design Guidance – Terminology – Matching                                                                 1.0.0.0
+
+ R7.               Design Guidance – Date Display                                                                           2.0.0.0
+
+                                                                                                                                Page 51
+                               Design Guidance – Recording Adverse Drug Reaction Risks
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 27 March 2009
+
+Reference        Document                                                                                                 Version
+R8.              SNOMED CT
+                 http://ihtsdo.org/
+
+R9.              NHS Dictionary of Medicines and Devices (dm+d)
+                 http://195.97.218.30/dmd_download.htm
+
+R10.             SNOMED CT – the language of the NHS Care Records Service – A guide for NHS staff in England –            2007
+                 NHS Connecting for Health
+                 http://www.connectingforhealth.nhs.uk/systemsandservices/data/snomed/snomed-ct.pdf
+
+R11.             Representation in Electronic Patient Records of Allergic Reactions, Adverse Reactions, and Intolerance
+                 of Pharmaceutical Products – NHS Connecting for Health
+                 http://hiu.rcplondon.ac.uk/clinicalstandards/EPR-CFH-Technical-Doc.pdf
+
+R12.             SCG Guidance on the Representation of Allergies and Adverse Reaction Information Using NHS               1.0
+                 Message Templates – Bentley, S. and Long, R. (NPfIT Standards Consulting Group) (2008)
+                 http://www.connectingforhealth.nhs.uk/systemsandservices/data/scg/publications/SCG0001.pdf
+
+R13.             NPfIT and the International Input into HL7 – Jones, T. – HL7 UK Annual Conference                        2004
+                 www.hl7.org.uk/marketing/downloads/HL7UKConference2004/HL7UK%20NPfIT%20presentation.ppt
+
+R14.             HL7 delivers healthcare interoperability standards – Health Language Seven UK
+                 http://www.hl7.org.uk/
+
+R15.             Essential Guide to User Interface Design: An Introduction to Gui Design Principles and Techniques –      1997
+                 Galitz, W.O.
+
+R16.             Designing the User Interface: Strategies for Effective Human-Computer Interaction – Shneiderman, B. – Third
+                 (1998)                                                                                                edition
+
+R17.             Design Guidance – Displaying Adverse Drug Reaction Risks                                                 1.0.0.0
+
+R18.             Validating Clinical Requirements for information systems in secondary care (VCR): Detailed Clinical
+                 Requirements (DCR) – RCP Health Informatics Unit (23-Oct-2003)
+
+R19.             Guide to Presentation of tables and graphs – British Standards Institute – British Standard BS 7581      1992
+
+R20.             Show me the numbers. Designing tables and graphs to enlighten – Few, Stephen (2004)                      First
+                                                                                                                          edition
+
+R21.             SNOMED Clinical Terms User Guide – The International Health Terminology Standards Development July 2008
+                 Organisation
+                 http://www.ihtsdo.org/fileadmin/user_upload/Docs_01/SNOMED_CT_Publications/SNOMED_CT_User_
+                 Guide_20080731.pdf
+
+R22.             Can We Tell Who is at Risk of a Fatal Reaction?, Current Opinion in Allergy and Clinical Immunology –    2004
+                 Pumphrey, R. Anaphylaxis – 4(4): 285-290
+
+R23.             NHS CUI Programme – Design Guide Entry – Terminology – Elaboration                                       2.0.0.0
+
+R24.             Allergy and Adverse Drug Reaction: Implementation of SNOMED CT in structured electronic records –        0.1
+                 Challen, R. – NHS Connecting for Health: SSeRP Working Document (2007)
+
+R25.             Design Guidance – Terminology – Display Standards for Coded Information                                  1.0.0.0
+Table 10: References
+
+                                                                                                                                Page 52
+                             Design Guidance – Recording Adverse Drug Reaction Risks
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 27 March 2009
+
+APPENDIX A                       DESIGN ASPECTS BEING EXPLORED
+
+A.1     Introduction
+ This appendix illustrates design aspects that could assist the implementation of the guidelines
+ outlined in the main document, but which are still undergoing development and exploration.
+ Future planned guidance development work aims to explore the application of these design
+ aspects in other areas of clinical noting.
+ Therefore, the designs in this appendix should not be mistaken for actual guidelines: they have not
+ been tested with clinicians to the same degree as the designs that are implied by the guidelines in
+ the body of this document. Instead of being followed as guidelines, the designs in this appendix are
+ intended to inspire further development. They also provide some context to help readers of this
+ guidance understand the guidelines themselves.
+ This appendix is divided into sections pertaining to different functional areas or features, each of
+ which contains some visual illustrations and lists some UI assumptions. In some cases, there may
+ be multiple designs that are still being considered, but those other designs are not presented here.
+
+A.2     Adding New Clinical Terms in a Form
+ The process of adding new clinical terms within a form has been based largely on previous
+ Microsoft CUI guidance (see Design Guidance – Terminology – Matching {R6}). The general
+ assumption is that clinicians are presented with a field into which they may type the word or words
+ that they feel expresses the clinical belief, observation, risk or plan that they wish to record. At that
+ point, the UI invokes the matching of these words against a recognized clinical terminology, such
+ as SNOMED CT.
+ Table 11 shows the possible sequence of steps taken to add new clinical terms in a form:
+
+ Step    Design Aspects Being Explored
+ 1
+
+                                                                                                     Page 53
+                       Design Guidance – Recording Adverse Drug Reaction Risks
+                       Prepared by Microsoft, Version 1.0.0.0
+                       Last modified on 27 March 2009
+
+Step   Design Aspects Being Explored
+2
+
+3
+
+4
+
+                                                                            Page 54
+                  Design Guidance – Recording Adverse Drug Reaction Risks
+                  Prepared by Microsoft, Version 1.0.0.0
+                  Last modified on 27 March 2009
+
+ Step        Design Aspects Being Explored
+ 5
+
+ Table 11: Adding a New Clinical Term in a Form
+
+A.3       Adding Multiple Instances of Clinical Terms into a Form
+ Another common requirement will be to add multiple instances of a single category of clinical
+ content. For example, the user may want to enter several types of reaction. The terms ‘rash’,
+ ‘nausea’ and ‘anaphylaxis’ are all instances of the same clinical category, namely ‘reaction type’. In
+ these cases, there may be no clear limit as to how many such instances of a single category of
+ clinical content the clinician may need to enter. Therefore the control must have sufficient flexibility
+ to allow the clinician to enter many terms but also clearly show that they are all instances of the
+ same type of term. The control must also be efficient enough to meet the space limitations of a
+ screen-based form.
+ The design being explored features a single input field and a list field into which the clinician can
+ enter multiple instances of a clinical term (such as a type of reaction). After clinicians have matched
+ a term to their inputted text, this term automatically populates the next available line in the list. The
+ clinician may also then type in additional text next to the term.
+ Table 12 shows the possible sequence of steps taken to add multiple clinical terms in a form:
+
+ Step        Design Aspects Being Explored
+ 1
+
+                                                                                                    Page 55
+                               Design Guidance – Recording Adverse Drug Reaction Risks
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 27 March 2009
+
+Step   Design Aspects Being Explored
+2
+
+3
+
+4
+
+5
+
+                                                                            Page 56
+                  Design Guidance – Recording Adverse Drug Reaction Risks
+                  Prepared by Microsoft, Version 1.0.0.0
+                  Last modified on 27 March 2009
+
+ Step        Design Aspects Being Explored
+ 6
+
+ 7
+
+ Table 12: Example of a Sequence of Screens That Allow the Entry of Multiple Concepts
+
+A.4       Displaying Edit History
+ Displaying the edit history of a data item will be very important to clinicians as it contextualises the
+ current data. Currently, clinicians tend to view this history by paging back through the patient’s
+ record.
+ Figure 7 shows an example of an ‘edit history’ feature:
+
+ Figure 7: Example of an Edit History Feature
+
+                                                                                                    Page 57
+                                Design Guidance – Recording Adverse Drug Reaction Risks
+                                Prepared by Microsoft, Version 1.0.0.0
+                                Last modified on 27 March 2009
+
+A.5       Match Not Found
+ If the clinician types in a term that is not matched against SNOMED CT, the clinician must be able
+ to record it anyway, albeit formatted in a way that indicates that it is not encoded. The clinician
+ should also be warned that the term has not been matched but informed that they can record it
+ anyway.
+ Figure 8 shows an example of a message that could appear if a match were not found:
+
+ Figure 8: Example of a 'Match Not Found' Message
+
+                                                                                                Page 58
+                              Design Guidance – Recording Adverse Drug Reaction Risks
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 27 March 2009
+
+APPENDIX B                       STUDY ID 30: EXECUTIVE SUMMARY
+
+B.1     Abstract
+ The UK National Health Service (NHS) Common User Interface (CUI) programme is a partnership
+                  ®
+ between Microsoft and NHS Connecting for Health (NHS CFH), which is part the NHS National
+ Programme for Information Technology (NPfIT).
+ As part of CUI, the Clinical Applications and Patient Safety (CAPS) project has the goal of ensuring
+ that software applications used by the NHS enhance patient safety. To achieve this, CAPS
+ provides software developers with user interface design guidelines derived through a user-centric
+ development process that includes explicit patient-safety evaluations.
+ This summary describes the results of interviews conducted with five NHS Health Care
+ Professionals (HCPs) at their normal place of work.
+ Purpose:
+ To gather feedback to enhance static wireframe preliminary design options for recording
+ information about Adverse Drug Reactions (ADRs) that will enable patient-safe prescribing
+ decisions.
+ Method:
+ Within an audio-recorded interview, participants were presented with designs arranged in ideal
+ click-through routes for five use scenarios and asked to describe what they saw and what they
+ would do next.
+ Results:
+ The designs were generally very well received as a significant improvement over paper recording
+ and prompted responses like: “This might improve the recording of allergies and have an
+ unintended effect on the quality of care” (p1), “Excellent” (p2), “I think this is probably enough” (p3),
+ “Perfect, a list of drugs and what they cause” (p4).
+ The most significant design changes suggested by the research are to enable the HCP to:
+       Record and discover recorded severity of reactions. Otherwise, the existing data entry fields
+        were acceptable with a range of information presentation and navigation changes
+       View the reaction history of ADR risks before combing them within a drug class
+       Avoid all those issues identified use issues that represented potential patient safety hazards
+
+B.2     Research Objectives
+ This study was designed to gather HCP understandings, preferences and patient safety
+ assessments of preliminary wireframe design flows.
+ The specific objectives were:
+       Use the following five use scenarios to assess and refine preliminary design task flows:
+         a. Recording a new ADR risk
+         b. Diagnosing an ADR risk
+         c. Removing an ADR risk
+         d. Recording no known ADR risk
+         e. Combining recorded ADR risks under a parent drug
+
+                                                                                                    Page 59
+                       Design Guidance – Recording Adverse Drug Reaction Risks
+                       Prepared by Microsoft, Version 1.0.0.0
+                       Last modified on 27 March 2009
+
+       Identify whether the data entry format and fields are appropriate
+       Identify design strengths and weaknesses with specific reference to patient-safety
+       Identify new design requirements
+
+B.3       Research Design
+ Click-through designs were used to provide a structure to the three interviews with individuals and
+ the one interview with two individuals. To assess their understanding of the information represented
+ in the design, and whether it supported progression to effectively complete the scenario, HCPs
+ were asked two questions:
+       What do you see?
+       What would you do next?’
+ All interviews were audio recorded to facilitate analysis and to identify quotes from individual HCPs.
+
+B.4       Results
+B.4.1        Respondent Descriptions
+ Five people that had not previously participated in CUI studies were interviewed at their normal
+ place of work between 08-Dec-2008 and 11-Dec-2008. Participants had worked for the NHS for a
+ wide range of durations (from 1 to 29 years). Table 13 provides a summary of the interviewee’s job
+ roles, NHS employment, workplace and main work location:
+
+ Respondent                                    Years Employed
+            Job Role                                               Workplace        Location     Accomplishments
+ Identifier                                    in the NHS
+ p1                Consultant Pharmacist for   15 years            Hospital         London       Using Microsoft® Office
+                   safe medications practice                                                     Access™
+
+ p2                Consultant Pharmacist for   20 years            Hospital         London       Designing Web pages
+                   infectious diseases
+
+ p3                Prescribing Pharmacist      4 years             GP Surgery       South West   Using Microsoft® Office
+                                                                                                 PowerPoint®
+
+ p4                F2 – Junior Doctor          1 year              GP Surgery       South West   Using Microsoft®
+                                                                                                 Access™
+
+ p5                GP (Primary Care Trust      29 years            GP Surgery       South West   Evaluating systems for
+                   prescribing lead)                                                             use in clinical practice
+ Table 13: Respondent Descriptions
+
+B.4.2        Data Entry Format and Fields
+ The participants:
+       Requested some way to systematically indicate the severity of recorded reactions (all). This
+        was illustrated by a request for explicit severity rating or by reference to the implications of
+        not having this information such as: “There’s a difference between anaphylaxis and a small
+        rash on your hand .You don’t want to not give someone a life saving antibiotic just because
+        they had a tiny rash from it before” (p4), “I’d like to have ‘potentially fatal, don’t do this”.(p5)
+       Requested a way to systematically record ‘Reaction Certainty’ whether the reaction was
+        suspected as an ADR (p1) or proven as an ADR (p2)
+       Interpreted the ‘Undo’ button as acting on the main user interface component rather than on
+        the last user-action (p2)
+
+                                                                                                                    Page 60
+                              Design Guidance – Recording Adverse Drug Reaction Risks
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 27 March 2009
+
+      Senior HCPs (p1, p2, p5) preferred the ADR process to be based on completing multiple
+       required field selections (p1, p2) rather than open text
+      Mentioned the difference between drug side-effects and drug allergies. Requested distinct
+       recording categories for drug side-effects and drug allergies (p5)
+      Indicated that the route to editing an entered ADR required too many clicks, particularly
+       having to click two different buttons labelled ‘Edit’
+
+B.4.3     Scenario Design Flow
+ The participants:
+      Noticed, liked and acted on the prompt to record an ADR being a notification that arrived
+       within the clinical notes as they were being typed (all)
+      Did not notice the availability of an open-text field to enter a justification for recording a new
+       ADR (p1, p2, p5)
+      Wanted to view the reaction history of an ADR before combining it with a parent drug (p1,
+       p2, p5)
+      Believed there should be a requirement to provide a justification for the addition (p1, p2,
+       p5), or removal (all), of an ADR
+
+B.4.4     New Requirements
+ New requirements that the interviews revealed include providing HCPs with the ability to:
+      View the reaction history of an ADR before combining it with a parent drug
+      Add and easily discover the certainty of a reaction (such as ‘suspected’ or ‘proven’)
+  Individual HCPs made suggestions that are being considered by the design team, for example,
+  HCPs variously asked for:
+      The ability to record the outcomes of drug reactions tests systematically using dedicated
+       fields (for example, the outcomes of a skin-prick test).
+      Completion of all data entry fields shown for recording an ADR to be made compulsory (p1)
+      Explicit distinction between ADR and allergies (p3)
+      Use of the term ‘unknown’ to refer to an ADR past reaction in the ADR risk display
+       summary to be unacceptable (there should be some summary of what is actually recorded)
+       (p1)
+
+                                                                                                   Page 61
+                       Design Guidance – Recording Adverse Drug Reaction Risks
+                       Prepared by Microsoft, Version 1.0.0.0
+                       Last modified on 27 March 2009
+
+APPENDIX C                       STUDY ID 59: EXECUTIVE SUMMARY
+
+C.1     Abstract
+ The UK National Health Service (NHS) Common User Interface (CUI) programme is a partnership
+ between Microsoft® and NHS Connecting for Health (NHS CFH), which is part the NHS National
+ Programme for Information Technology (NPfIT).
+ As part of CUI, the Clinical Applications and Patient Safety (CAPS) project has the goal of ensuring
+ that software applications used by the NHS enhance patient safety. To achieve this, CAPS
+ provides software developers with user interface design guidelines derived through a user-centric
+ development process that includes explicit patient-safety evaluations.
+ This summary describes the results of interviews conducted with five NHS Health Care
+ Professionals (HCPs) at their normal place of work.
+ Purpose:
+ To gather feedback to enhance static wireframe preliminary design options for recording
+ information about ADRs that will enable patient-safe prescribing decisions.
+ Method:
+ Within an audio-recorded interview, participants were presented with designs arranged in ideal
+ click-through routes for six use scenarios and asked to describe what they saw and what they
+ would do next.
+ Results:
+ Feedback from 27 HCPs was gathered through two cognitive walk-throughs (one with five people
+ and one with six people) and work-place interviews (with 16 people). The HCPs were presented
+ with click-through screenshots of proposed design solutions to add, remove, combine, reclassify
+ and edit ADR risks, and to record no known ADR risks.
+ 28 use actions by the HCPs introduced issues that will lead to design changes. These use actions
+ primarily stem from:
+       HCP uncertainty about what is required in the reactions keyword and details justification
+        text entry boxes
+       Command links not recognised as actionable and command line text being interpreted in
+        diverse ways
+       An opened ADR risk did not look editable
+ All HCPs were able to record no known ADR risk. Many requested the ability to cite the steps they
+ had taken to ascertain the lack of a known risk (for example, asked the patient, reviewed hospital
+ notes, called the GP).
+ Most HCPs do not want to remove an ADR risk history from the summary, even when it is proven
+ to be no longer a risk. Removed ADR risks should be available to prescribers and recorders as a
+ listed proven non-risk.
+ The majority of HCPs attempted to combine ADR risks by editing an existing risk.
+ Most HCPs questioned the clinical validity of reclassifying a penicillin ADR risk to a Beta-Lactam
+ ADR risk. No HCP was able to complete this task with the current design, primarily because they
+ did not perceive the ADR fields as editable.
+
+                                                                                                Page 62
+                       Design Guidance – Recording Adverse Drug Reaction Risks
+                       Prepared by Microsoft, Version 1.0.0.0
+                       Last modified on 27 March 2009
+
+C.2     Research Objectives
+ This study was designed to gather HCP understandings, preferences and patient safety
+ assessments of wireframe design flows.
+ The specific objectives were:
+       Use the following five use scenarios to assess and refine design task flows:
+         a. Add penicillin ADR risk
+         b. Add penicillin ADR risk from clinical notes
+         c. Record No Known ADR Risk
+         d. Remove an ADR risk
+         e. Combine ADR as class risk
+         f.   Edit ADR to class risk
+       Identify whether the data entry format and fields are appropriate
+       Identify design strengths and weaknesses with specific reference to patient-safety
+       Identify new design requirements
+
+C.3     Research Design
+ Two streamlined cognitive walk-throughs were completed, session one with five technically able
+ clinical advisors and session two with six technically able clinical advisors.
+ In addition to the cognitive walk-throughs, on-site interviews were conducted with 16 people as
+ individuals, pairs and one threesome in a meeting-room at their normal place of work.
+ During the interviews, click-through designs were used to provide a structure to the three interviews
+ with individuals and the one interview with two individuals. To assess their understanding of the
+ information represented in the design, and whether it supported progression to effectively complete
+ the scenario, HCPs were asked two questions:
+       What do you see?
+       What would you do next?’
+ All interviews were audio recorded to facilitate analysis and to identify quotes from individual HCPs.
+
+                                                                                                 Page 63
+                       Design Guidance – Recording Adverse Drug Reaction Risks
+                       Prepared by Microsoft, Version 1.0.0.0
+                       Last modified on 27 March 2009
+
+C.4     Results
+C.4.1    Respondent Descriptions
+ Table 14 provides a summary of the interviewee’s job roles, NHS employment, workplace and main
+ work location:
+
+ Respondent                    Years Employed                                        Computing
+            Job Role                          Workplace              Location
+ Identifier                    in the NHS                                            Accomplishments
+ p1          Other Nurse       30 years or more   Hospital           West Midlands   Written Software Code
+
+ p2          Pharmacist        10–14 years        Hospital           London          Modified Microsoft® Office
+                                                                                     Access™ database
+
+ p3          Pharmacist        10–14 years        Hospital           West Midlands   Installed a program
+
+ p4          Pharmacist        10–14 years        Hospital           London          Modified Microsoft® Office
+                                                                                     Access database
+
+ p5          Pharmacist        20–24 years        Other              Other           Written Software code
+
+ p6          Pharmacist        5–9 years          Hospital           South West      Written Software code
+
+ p7          Midwife           15–19 years        Hospital           East Midlands   Modified Microsoft® Office
+                                                                                     Access database
+
+ p8          Pharmacist        5–9 years          Hospital           London          Modified Microsoft® Office
+                                                                                     Access database
+
+ p9          Surgeon           30 years or more   Hospital           London          Written Software code
+
+ p10         Pharmacist        25–29 years        Hospital           Yorkshire and   Modified Microsoft® Office
+                                                                     Humberside      Access database
+
+ p11         GP                25–29 years        General Practice   North West      Written Software code
+
+ p12         SHO               3 years            General Hospital   North East      Confident with Microsoft®
+             Anaesthetist                                                            Office System applications
+
+ P13         ICU Ward Sister 14 years             General Hospital   North East      Microsoft® Office PowerPoint®
+
+ P14         ICU Staff Nurse   16 months          General Hospital   North East      Microsoft® Office PowerPoint
+
+ P15         Pre-Assessment 25 years              General Hospital   North East      Providing clinical feedback on
+             Sister                                                                  beta-trail software
+
+ p16         ENP               (not given)        Walk-in Hospital   London          Audits using symphony
+
+ p17         Staff nurse       (not given)        Walk-in Hospital   London          Using Microsoft® Office Excel®
+                                                                                     and Microsoft Office
+                                                                                     PowerPoint
+
+ p18         ENP               25 years           Walk-in Hospital   London          Leaning a new program with
+                                                                                     no training (.ppt)
+
+ p19         ENP               15 years           Walk-in Hospital   London          Leaning a new program with
+                                                                                     no training (.ppt)
+
+ p20         ENP               24 years           Walk-in Hospital   London          Leaning a new program with
+                                                                                     no training (.ppt)
+
+ p21         GP Partner        30 years           GP Surgery         North East      System-1
+
+ p22         GP Partner        30 years           GP Surgery         North East      System-1
+
+ p23         Practice Nurse    21 years           GP Surgery         North East      Entering data to templates
+
+ p24         Practice Nurse    23 years           GP Surgery         North East      Entering data to templates
+                                                                                                             Page 64
+                       Design Guidance – Recording Adverse Drug Reaction Risks
+                       Prepared by Microsoft, Version 1.0.0.0
+                       Last modified on 27 March 2009
+
+ Respondent                          Years Employed                                     Computing
+            Job Role                                Workplace              Location
+ Identifier                          in the NHS                                         Accomplishments
+ p25               GP registrar      6 years            GP Surgery         North East   Using clinical systems
+
+ p26               Principle GP      25 years           GP Surgery         North East   Using Clinical systems
+
+ p27               Pharmacist        23 years           GP Surgery         North East   Auditing
+ Table 14: Respondent Descriptions
+
+C.4.2        Data Entry Format and Fields
+ The participants:
+        Were unclear how to record ADR when more than one drug is the potential source of the
+         reaction
+        May type two or three drug names in the ADR drug field
+        Were unsure what is meant by ‘keyword’ on first encounter of ADR form (p16, p17)
+        Interpreted ‘Add more reactions’ as an instruction for the first reaction entry text box
+        Did not recognise ‘Add more reactions text’ as a command-link
+        May omit to enter reaction keywords in the reactions field
+        May not type more text after having seen the reaction text highlighted ‘grey’ in the reactions
+         field
+        Interpreted blue highlighted text within the ‘Details/Justification’ field as a severity warning,
+         not as actionable
+        Commented that ‘More keywords’ pop-up is too complicated and out of context
+        Questioned whether the ‘More keywords’ reaction entry-pop-up was a description or
+         actionable item
+        Were confused about why some reactions were grey (swollen tongue) in justification text
+         and others were not (rash)
+        Were unable to enter source of KNADR risk or view how previous no known ADR was
+         established
+        Commented that an opened ADR (including drug name) did not look editable
+
+C.4.3        Design Comments
+ The participants:
+        May enter a list of reactions (rash and nausea) in one reactions entry field (p13, p14, p17,
+         p18, p19)
+        Questioned whether the second reaction entry box was for entering another reaction to a
+         different drug (p13, p14)
+        Interpreted ‘Link to notes’ as a way to add the ADR to the clinical notes
+        Were confused as to whether ‘How did you discover the risk?’ is a question to the patient or
+         to the HCP
+        Were unclear as to how to access notes to find if there is more relevant information before
+         making the entry (p13, p15)
+        Were unsure if cancelling a pre-filled form would remove data from clinical notes that was
+         used to create the form
+                                                                                                                 Page 65
+                              Design Guidance – Recording Adverse Drug Reaction Risks
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 27 March 2009
+
+     Were unclear about the action associated with the ADR pop-up chevron (this may not
+      indicate how to record the entry as an ADR risk)
+     Were confused about the term ‘Record ADR Risk’ because it is already recorded in the
+      clinical notes
+     May be uncomfortable with the action of removing the risk
+     Were unsure that the ‘Removal justification’ conveyed the clinical risk of removing this item
+     Were concerned that removal of a risk is too easy
+     Were unclear about the behaviour of the auto-suggestion menu and pop-up menu
+
+C.4.4    New Requirements
+ New requirements that the interviews revealed include providing HCPs with the ability to:
+     Arrange reactions in order of severity (swollen tongue more important than rash)
+     Enter justification text before taking an action (for example, select remove, select combine)
+
+                                                                                              Page 66
+                      Design Guidance – Recording Adverse Drug Reaction Risks
+                      Prepared by Microsoft, Version 1.0.0.0
+                      Last modified on 27 March 2009

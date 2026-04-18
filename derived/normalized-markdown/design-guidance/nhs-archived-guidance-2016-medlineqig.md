@@ -1,0 +1,704 @@
+# Medication line quick implementation guide
+
+## Provenance
+- Source file: `raw/sources/design-guidance/nhs-archived-guidance-2016/medlineqig.pdf`
+- Extracted text: `derived/extracted-text/design-guidance/nhs-archived-guidance-2016-medlineqig.txt`
+- Normalization note: machine-cleaned `pdftotext -layout` output; verify against the PDF for edge cases.
+
+## Extracted Text
+
+Medication Line
+Quick Implementation Guide
+
+Edition 1
+20th May 2010
+
+                             Copyright ©2013 Health and Social Care Information Centre
+
+Contents
+
+Introduction                                                                                                              2
+
+Formatting Drug Names                                                                                                     4
+
+Displaying Numbers                                                                                                        5
+
+Separators                                                                                                                6
+
+Wrapping                                                                                                                  7
+
+Abbreviation                                                                                                              8
+
+Truncation                                                                                                                9
+
+Symbols                                                                                                                 10
+
+Text Labels                                                                                                             11
+
+Line Breaks                                                                                                             13
+
+Line Spacing                                                                                                            14
+
+Displaying Dose                                                                                                         15
+
+Displaying Strength                                                                                                     17
+
+Attribute Order                                                                                                         19
+
+This document was prepared for NHS Connecting for Health which ceased to exist on 31 March 2013. It may
+contain references to organisations, projects and other initiatives which also no longer exist. If you have any
+questions relating to any such references, or to any other aspect of the content, please contact
+cuistakeholder.mailbox@hscic.gov.uk
+
+Copyright:
+You may re-use this information (excluding logos) free of charge in any format or medium, under the terms
+of the Open Government Licence. To view this licence, visit nationalarchives.gov.uk/doc/open-government-
+licence or email psi@nationalarchives.gsi.gov.uk.
+
+1                                                                            Copyright ©2013 Health and Social Care Information Centre
+
+                                                                                                     Introduction
+
+Introduction
+     Medications may be represented electronically in varying degrees of detail as well as in
+     different areas of a user interface. For example:
+
+           §   A prescription summary displayed as part of a patient summary
+           §   A subset of prescription detail displayed in a list of a patient’s current
+               medications
+           §   A different subset of prescription detail displayed in an electronic drug
+               administration schedule
+
+     A text description of a medication appearing in such views is referred to in this guidance
+     as a ‘medication line’. The guidance in this document details the content, formatting and
+     layout of medication lines. The guidance applies to all views intended to support
+     medications management for a single patient in a hospital ward
+
+     Important
+     Although it contains all of the guidance points, this document omits supporting
+     information and is therefore not intended as a substitute for the full NHS CUI
+     documents Medication Line1. Refer to that document for the definitive statement of the
+     design guidance in this area.
+     The visual representations used to display the guidance are illustrative only. Stylistic
+     choices (for example, display font used), unless otherwise specified, are not part of the
+     guidance and are therefore not mandatory requirements.
+
+1
+    Medications Management – Medication Line – User Interface Design Guidance (v2.0.0.0)
+
+                                                                  Copyright ©2013 Health and Social Care Information Centre   2
+
+Introduction
+
+ The following examples show how the guidance can be applied to four different styles of
+ medication line in four notional views:
+
+       View 1
+
+                                                 Medication Line 1
+         diltiazem – CALCICARD CR – modified-release tablet – DOSE 120 mg – oral – three times a day
+
+       View 2                                    Medication Line 2
+                                                 diltiazem – CALCICARD CR –
+                                                 modified-release tablet
+                                                 DOSE 120 mg
+                                                 ROUTE oral – three times a day
+
+       View 3                                    Medication Line 3
+                                                 diltiazem – CALCICARD CR – modified-release tablet
+                                                 DOSE 120 mg – oral – three times a day
+
+       View 4                                    Medication Line 4
+                                                 diltiazem – CALCICARD CR
+                                                 FORM modified-release tablet
+                                                 DOSE 120 mg
+                                                 ROUTE oral
+                                                 FREQUENCY three times a day
+
+3                                                                       Copyright ©2013 Health and Social Care Information Centre
+
+                                                                            Guidance
+
+Formatting Drug Names
+
+                                 MEDi-001
+      diltiazem – CALCICARD CR
+                                 Display generic drug names in
+                                 bold
+        bold                     Mandatory
+
+                                 MEDi-002
+      diltiazem – CALCICARD CR
+                                 Display generic drug names in
+                                 lowercase (capital letters may
+     lowercase                   still be used for acronyms and
+                                 abbreviations in some drug
+                                 names such as amphotericin
+                                 B, factor VIII, carbomer 974P)
+                                 Mandatory
+
+                                 MEDi-003
+      diltiazem – CALCICARD CR
+                                 Display drug brand names in
+                                 uppercase
+                   uppercase     Mandatory
+
+                                 MEDi-013
+      diltiazem – CALCICARD CR
+                                 Where both the generic name
+                                 and the brand name appear in a
+    generic name   brand name    medication line, list the generic
+       (first)                   name first
+                                 Mandatory
+
+                                   Copyright ©2013 Health and Social Care Information Centre   4
+
+Guidance
+
+Displaying Numbers
+
+    paracetamol – tablet                 MEDi-014
+    DOSE 1 g – oral – every 6 hours      Where possible, avoid the need
+                                         for decimal points by changing
+    paracetamol – tablet                 the units without breaking
+    DOSE 500 mg – oral – every 6 hours   convention
+                                         Recommended
+
+                                         MEDi-015
+    INFANRIX-IPV Vaccine –
+                                         Do not put a trailing zero after a
+    suspension for injection
+    DOSE 0.5 mL – oral – every 6 hours
+                                         sub-decimal value (that is, ‘0.5’ is
+                                         correct but ‘0.50’ is incorrect)
+                                         Mandatory
+
+                                         MEDi-016
+
+                                         Put a leading zero before a
+                                         decimal point for values of less
+                                         than one
+                                         Mandatory
+
+                                         MEDi-017
+
+                      DOSE 5,000 units   Use a comma to break up
+                                         numeric values of one thousand
+                                         and above
+                         comma
+                                         Mandatory
+
+5                                                    Copyright ©2013 Health and Social Care Information Centre
+
+                                                                                  Guidance
+
+Separators
+
+                                      MEDi-018
+ paracetamol – 120 mg in 5 mL –
+ suspension – DOSE 80 mg – oral –     When combining attributes in a
+ every 6 hours                        text string, use a long dash (em
+                                      dash) surrounded by spaces
+                                      between the attributes
+                                      Mandatory
+
+        double spaces                 MEDi-019
+
+                                      Use a double space instead of a
+ paracetamol 500 mg +                 long dash or separator between
+ metoclopramide 5 mg – sachet –       a drug name and strength when
+ DOSE 2 sachets – oral –              there are multiple drug names in
+ every 4 hours as required –          one medication line
+ maximum 6 doses in 24 hours
+                                      Recommended
+
+           double space               MEDi-020
+
+                                      Use a double space instead of a
+ sodium chloride 0.9% – infusion –    long dash or separator between
+ VOLUME 1,000 mL – 40 mL per hour –   a drug name and strength when
+ over 12 hours – intravenous –        the strength is expressed as a
+ once only                            percentage
+                                      Recommended
+
+                                         Copyright ©2013 Health and Social Care Information Centre   6
+
+Guidance
+
+Wrapping
+
+                                                MEDi-010
+    insulin soluble human –
+                                                When wrapping the text of a
+    ACTRAPID – 100 units per mL –
+    solution for injection –                    medication line, do so without
+    DOSE 12 units – subcutaneous –              breaking up the contents of a
+    twice a day                                 single attribute unless that single
+                                                attribute will not fit on one line
+                                                Mandatory
+
+                                                MEDi-008
+
+                                                Do not allow wrapping to
+                                                separate a label from a value
+                                                Mandatory
+
+                                                MEDi-011
+    insulin soluble human –
+                                                When wrapping the text of a
+    ACTRAPID – 100 units per mL –
+    solution for injection –                    medication line, keep trailing
+    DOSE 12 units – subcutaneous –              delimiters with the preceding
+    twice a day                                 attribute
+                                                Mandatory
+                           trailing delimiter
+
+                                                MEDi-021
+             haemophilus influenzae
+                                                If a long drug name exceeds the
+             type B vaccine –
+             solution for injection –           available screen space and has
+             DOSE 0.5 mL –                      to be wrapped, ensure that the
+             intramuscular – once only          drug name is wrapped between
+                                                words
+                                                Mandatory
+
+7                                                           Copyright ©2013 Health and Social Care Information Centre
+
+                                                                                Guidance
+
+Abbreviation
+
+ paracetamol 500 mg +                MEDi-022
+ metoclopramide 5 mg – sachet –      Do not abbreviate drug names
+ oral – DOSE 2 sachets –
+ every 4 hours as required –         Mandatory
+ maximum 6 doses in 24 hours
+                                     MEDi-023
+
+                                     Use long form names rather than
+ sodium chloride 0.9% – infusion –   abbreviations or symbols where
+ VOLUME 1,000 mL –                   possible
+ 40 mL per hour – over 8 hours –     Recommended
+ intravenous – once only
+                                     MEDi-024
+
+                                     Do not put a full stop after
+                                     abbreviations for units (for
+                                     example mg and mL)
+                                     Mandatory
+
+                                        Copyright ©2013 Health and Social Care Information Centre   8
+
+Guidance
+
+Truncation
+
+                                          MEDi-025
+    cefotaxime –
+                                          Do not truncate drug names
+    powder for solution for injection –
+    intravenous – DOSE 400 mg –           Mandatory
+    every 8 hours
+                                          MEDi-012
+
+                                          If necessary, wrap but do not
+                                          truncate medication line
+                                          information
+                                          Mandatory
+
+                                          MEDi-054
+
+                                          Do not display a part of the
+                                          medication line alone if its
+                                          meaning relies on other parts
+                                          that are not displayed
+                                          Mandatory
+
+9                                                     Copyright ©2013 Health and Social Care Information Centre
+
+                                                                                  Guidance
+
+Symbols
+
+          @    At sign                MEDi-026
+
+                                      Do not use symbols that may be
+          |    Vertical bar           confused with numbers or
+          >    Greater than bracket   otherwise misinterpreted,
+                                      including those illustrated
+          <    Less than bracket      Mandatory
+
+          /    Forward slash
+
+          \    Backslash
+
+          &    Ampersand
+
+          °    Degree
+
+                    spaces            MEDi-027
+
+                                      Use the ‘+’ (plus symbol) only for
+                                      multiple drug name medications
+ paracetamol 500 mg +
+ metoclopramide 5 mg – sachet –       and surround it with spaces.
+ oral – DOSE 2 sachets –              When a ‘+’ is displayed adjacent
+ every 4 hours as required –          to a ‘4’, separate the two with a
+ maximum 6 doses in 24 hours          double space
+                                      Mandatory
+
+                                      MEDi-028
+ paracetamol – tablet
+                                      Use alternatives such as a dash
+ DOSE 1 g – oral – every 6 hours
+                                      or a black dot () instead of
+                                      brackets and separators such as
+                dash
+                                      those illustrated that look like the
+                                      number one
+          ()   Parentheses            Mandatory
+          []   Brackets
+
+          {}   Braces
+
+                                       Copyright ©2013 Health and Social Care Information Centre   10
+
+Guidance
+
+Text Labels
+
+                   space            MEDi-009
+
+                                    Use a different font and colour to
+                 DOSE 5,000 units
+                                    differentiate labels from values
+                                    Mandatory
+
+                 label     value    MEDi-031
+
+                                    Use a space to separate a label
+                                    from a value
+                                    Mandatory
+
+                                    MEDi-032
+
+                                    Do not use a colon after a label
+                                    Mandatory
+
+     olmesartan – tablet            MEDi-033
+     DOSE 10 mg                     Display labels in uppercase
+     ROUTE oral
+     FREQUENCY once a day           Recommended
+
+     uppercase
+
+11                                              Copyright ©2013 Health and Social Care Information Centre
+
+                                                                                     Guidance
+
+Text Labels
+
+                                         MEDi-034
+ co-amoxiclav –
+                                         Keep the number of text labels in
+ 400 mg and 57 mg in 5 mL –
+ suspension – oral – DOSE 1.2 mL –
+                                         a medication represented as a
+ every 12 hours                          single-text sentence to a
+                                         minimum
+       label                             Recommended
+
+                                         MEDi-029
+
+                                         When a medication is
+                                         represented as a single-text
+                                         sentence, use a label for dose
+                                         only
+                                         Mandatory
+
+                                         MEDi-030
+ co-amoxiclav –
+ 400 mg and 57 mg in 5 mL –              When a medication is
+ suspension – oral –                     represented as a series of lines
+ DOSE 1.2 mL – every 12 hours            with hard line breaks, labels
+                                         should appear at the beginning
+            new line (hard line break)   of a new line after a hard line
+                                         break
+                                         Mandatory
+
+                                            Copyright ©2013 Health and Social Care Information Centre   12
+
+Guidance
+
+Line Breaks
+
+                                             MEDi-035
+     paracetamol – tablet
+                                             When using hard line breaks at
+     DOSE 1 g – oral – every 6 hours
+                                             set points (such as before a
+               new line (hard line break)    dose), do not use a long dash at
+                                             the end of the previous line
+                                             Recommended
+     oxycodone – OXYCONTIN –
+     modified-release tablet
+     DOSE 10 mg – oral – once only
+
+               new line (hard line break)
+
+     DIORALYTE –
+     powder for oral solution
+     DOSE 1 sachet – oral – once only
+
+                new line (hard line break)
+
+13                                                      Copyright ©2013 Health and Social Care Information Centre
+
+                                                                                Guidance
+
+Line Spacing
+
+ paracetamol – tablet              line height from 120% to 140%
+ DOSE 1 g – oral – every 6 hours
+
+                                   MEDi-036
+
+                                   When displaying a medication as
+                                   one or many lines of text,
+                                   preserve white space between
+                                   the lines by ensuring that the line
+                                   height is no less than 120%
+                                   (120% leading) and no greater
+                                   than 140% (140% leading)
+                                   Recommended
+
+ paracetamol – tablet
+ DOSE 1 g – oral – every 6 hours
+                                   at least 100% of line height
+ oxycodone – OXYCONTIN –
+ modified-release tablet
+ DOSE 10 mg – oral – once only     MEDi-037
+
+                                   When displaying a list of
+                                   medications, ensure that there is
+                                   a space equivalent to at least
+                                   one line height of 100% between
+                                   the last line of one medication
+                                   line and the first line of the
+                                   medication line below
+                                   Recommended
+
+                                   Copyright ©2013 Health and Social Care Information Centre   14
+
+Guidance
+
+Displaying Dose
+
+                                            MEDi-007
+     morphine – 2 mg in 10 mL –
+                                            Provide a text label that reads
+     solution for injection – DOSE 2 mg –
+     intravenous – once only
+                                            ‘DOSE’ before a dose
+                                            Mandatory
+
+                                            MEDi-038
+
+                                            Display the dose amount and
+                                            units in bold
+                                            Mandatory
+
+                                            MEDi-039
+     sodium chloride 0.9% – infusion –
+     VOLUME 1,000 mL –                      When a dose is expressed as a
+     40 mL per hour –                       volume, display the volume
+     over 12 hours – intravenous –          amount in bold
+     once only                              Mandatory
+
+                                            MEDi-040
+
+                                            When there is no dose or
+                                            volume, display a dose
+                                            equivalent in place of the dose
+                                            and subject to the same
+                                            guidance points as a dose.
+                                            Precede with an appropriate text
+                                            label
+                                            Mandatory
+
+15                                                      Copyright ©2013 Health and Social Care Information Centre
+
+                                                                                  Guidance
+
+Displaying Dose
+
+                                      MEDi-041
+
+                                      Separate the dose amount from
+                  DOSE 500 mg         the dose units with a space
+                                      Mandatory
+                        space
+
+                                      MEDi-042
+ INFANRIX-IPV Vaccine –
+                                      Do not put a trailing zero after a
+ suspension for injection
+ DOSE 0.5 mL – oral – every 6 hours
+                                      sub-decimal value when
+                                      displaying a dose amount (that
+                                      is, ‘0.5’ is correct but ‘0.50’ is
+                                      incorrect)
+                                      Mandatory
+
+                                      MEDi-043
+ INFANRIX-IPV Vaccine –
+                                      Put a leading zero before a
+ suspension for injection
+ DOSE 0.5 mL – oral – every 6 hours
+                                      decimal point for values of less
+                                      than one when displaying a dose
+                                      value
+  leading zero
+                                      Mandatory
+
+                                      MEDi-044
+
+                 DOSE 5,000 units     Use a comma to break up
+                                      numeric values of one thousand
+                    comma             and above when displaying a
+                                      dose value
+                                      Mandatory
+
+                                       Copyright ©2013 Health and Social Care Information Centre   16
+
+Guidance
+
+Displaying Strength
+
+                                         MEDi-045
+     co-amoxiclav –
+                                         When describing strengths with
+     400 and 57 mg in 5 mL –
+     suspension – oral – DOSE 1.2 mL –
+                                         an active ingredient in a fluid,
+     every 12 hours                      use ‘in’ rather than a forward
+                                         slash ( ‘/’ ) before the fluid
+                                         quantity
+                                         Mandatory
+
+                                         MEDi-046
+     heparin – 5,000 units per mL –      When describing strengths of an
+     solution for injection –            ingredient in a single unit of fluid,
+     DOSE 5,000 units – subcutaneous
+     injection – once only
+                                         use the word ‘per’ to describe the
+                                         unit of fluid
+                                         Mandatory
+
+                                         MEDi-047
+     co-codamol – 8 and 500 mg –
+                                         When describing a strength for a
+     tablet – oral – DOSE 1 tablet –
+     every 4 to 6 hours as required
+                                         combination drug whose two
+                                         strength values use the same
+                                         unit (such as mg), use the word
+                                         ‘and’ in a smaller font to join the
+                                         two strength values and display
+                                         the units after the second
+                                         strength value
+                                         Mandatory
+
+17                                                   Copyright ©2013 Health and Social Care Information Centre
+
+                                                                                Guidance
+
+Displaying Strength
+
+                                    MEDi-048
+
+                                    Do not put a trailing zero after a
+                  0.5 mL            decimal point when displaying
+                                    numbers in a strength value
+                 strength           Recommended
+
+                                    MEDi-049
+
+                                    Put a leading zero before a
+                                    decimal point for values of less
+                                    than one when displaying
+                                    numbers in a strength value
+                                    Recommended
+
+                                    MEDi-050
+  heparin – 5,000 units per mL –    Use a comma to break up
+  solution for injection –          numeric values of one thousand
+  DOSE 5,000 units – subcutaneous
+  injection – once only
+                                    and above when displaying
+                                    numbers in a strength value
+                                    Recommended
+
+                                     Copyright ©2013 Health and Social Care Information Centre   18
+
+Guidance
+
+Attribute Order
+
+                                            MEDi-051
+       1 Drug name                          When describing a medication as
+       2 Brand name                         a line of text, adhere to the order
+                                            illustrated for the display of the
+       3 Strength                           medication attributes (as
+       4 Form                               applicable)
+                                            Recommended
+       5 Dose or volume
+
+       6 Rate
+
+       7 Dose duration
+
+       8 Route
+
+       9 Frequency
+
+     morphine – 10 mg in 2 mL –
+     solution for injection – DOSE 2 mg –
+     intravenous – once only
+
+     oxycodone – OXYCONTIN –
+     modified-release tablet –
+     DOSE 10 mg – oral – once only
+
+19                                                     Copyright ©2013 Health and Social Care Information Centre
+
+                                                                                 Guidance
+
+Attribute Order
+
+                                     MEDi-052
+ salbutamol – metered dose inhaler
+                                     When designing for specific
+ STRENGTH 100 micrograms per dose
+ DOSE 2 puffs
+                                     contexts, especially those that
+ ROUTE inhaled                       need additional text labels and
+ every 4 hours as required –         line breaks, display drug name
+ maximum 8 puffs in 24 hours         first and display other attributes
+                                     (in a different order if necessary)
+                                     from the one defined above
+                                     Recommended
+
+                                     MEDi-053
+
+                                     When a medication is not
+                                     displayed as a single line of text
+                                     and the attributes of a
+                                     medication are listed in a
+                                     different order, use text labels for
+                                     as many of the illustrated
+                                     attributes as possible
+                                     Recommended
+
+                                      Copyright ©2013 Health and Social Care Information Centre   20

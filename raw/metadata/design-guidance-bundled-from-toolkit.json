@@ -1,0 +1,601 @@
+{
+  "title": "Bundled MSCUI design-guidance PDFs and crib sheets copied from toolkit mirror",
+  "retrieved_on": "2026-04-17",
+  "source_category": "direct guidance",
+  "retrieval_status": "retrieved",
+  "origin_chain": [
+    {
+      "kind": "toolkit_mirror",
+      "url": "https://github.com/rbirkby/mscui.git",
+      "local_path": "raw/sources/toolkit/mscui",
+      "note": "Local mirror includes sample website PDFs and crib sheets."
+    },
+    {
+      "kind": "historical_site",
+      "url": "http://www.mscui.net/",
+      "note": "Original publication site referenced by toolkit README and sample website markup."
+    }
+  ],
+  "files": [
+    {
+      "title": "Design Groundwork Exploration -- Display of Clinical Statements",
+      "original_url": "http://www.mscui.net/DesignGuide/Pdfs/Design%20Groundwork%20Exploration%20--%20Display%20of%20Clinical%20Statements.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-pdfs/Design Groundwork Exploration -- Display of Clinical Statements.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable PDF.",
+      "sha256": "c468117e462bcbf416bdae7fe1eac637f186c6eaa6e3281133e3cfe7a7a13554"
+    },
+    {
+      "title": "Design Groundwork Exploration -- Noting Using Templates",
+      "original_url": "http://www.mscui.net/DesignGuide/Pdfs/Design%20Groundwork%20Exploration%20--%20Noting%20Using%20Templates.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-pdfs/Design Groundwork Exploration -- Noting Using Templates.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable PDF.",
+      "sha256": "d1001f39835bdeda7204e3a9164d92937765b780a463b2fdacc4e3f638ca0306"
+    },
+    {
+      "title": "Design Groundwork Exploration -- Truncation of Clinical Terms",
+      "original_url": "http://www.mscui.net/DesignGuide/Pdfs/Design%20Groundwork%20Exploration%20--%20Truncation%20of%20Clinical%20Terms.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-pdfs/Design Groundwork Exploration -- Truncation of Clinical Terms.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable PDF.",
+      "sha256": "224e3b8de0747ae9d3076960300993e0ac9974e696574bd6a1d049cfccec92bd"
+    },
+    {
+      "title": "Design Guidance -- Accessibility Checklist",
+      "original_url": "http://www.mscui.net/DesignGuide/Pdfs/Design%20Guidance%20--%20Accessibility%20Checklist.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-pdfs/Design Guidance -- Accessibility Checklist.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable PDF.",
+      "sha256": "8492d1feb215ff796903619292541f3ea98b15a5db08478323f7a85225cbb875"
+    },
+    {
+      "title": "Design Guidance -- Accessibility Principles",
+      "original_url": "http://www.mscui.net/DesignGuide/Pdfs/Design%20Guidance%20--%20Accessibility%20Principles.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-pdfs/Design Guidance -- Accessibility Principles.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable PDF.",
+      "sha256": "1973e1bfc5989a1514f7412df9ff21f745955ad2b4dcb1773276145c56896f63"
+    },
+    {
+      "title": "Design Guidance -- Address Input and Display",
+      "original_url": "http://www.mscui.net/DesignGuide/Pdfs/Design%20Guidance%20--%20Address%20Input%20and%20Display.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-pdfs/Design Guidance -- Address Input and Display.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable PDF.",
+      "sha256": "76967a8b4345bd283b31d7d173402e50e393a40c58b456eeacda42e7b885d8be"
+    },
+    {
+      "title": "Design Guidance -- Clinical Noting in Forms -- Admissions Clerking",
+      "original_url": "http://www.mscui.net/DesignGuide/Pdfs/Design%20Guidance%20--%20Clinical%20Noting%20in%20Forms%20--%20Admissions%20Clerking.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-pdfs/Design Guidance -- Clinical Noting in Forms -- Admissions Clerking.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable PDF.",
+      "sha256": "ab6cc003349eceb40db7337edb3b431568c15c346b6b6fc257a64833cf7d9a40"
+    },
+    {
+      "title": "Design Guidance -- Date Display",
+      "original_url": "http://www.mscui.net/DesignGuide/Pdfs/Design%20Guidance%20--%20Date%20Display.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-pdfs/Design Guidance -- Date Display.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable PDF.",
+      "sha256": "e4b669838f7d25d7009cc87bea326b5c60e537466e3b97a4344e66199ac7e237"
+    },
+    {
+      "title": "Design Guidance -- Date and Time Input",
+      "original_url": "http://www.mscui.net/DesignGuide/Pdfs/Design%20Guidance%20--%20Date%20and%20Time%20Input.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-pdfs/Design Guidance -- Date and Time Input.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable PDF.",
+      "sha256": "cc338c3de0fbe088b7bec92e61d408310564a556411a3ea9961b0501d397f8aa"
+    },
+    {
+      "title": "Design Guidance -- Displaying Adverse Drug Reaction Risks",
+      "original_url": "http://www.mscui.net/DesignGuide/Pdfs/Design%20Guidance%20--%20Displaying%20Adverse%20Drug%20Reaction%20Risks.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-pdfs/Design Guidance -- Displaying Adverse Drug Reaction Risks.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable PDF.",
+      "sha256": "937b6efb4c0a480a155bda6d826a5c8827b78697a6e27dbb9cf52887b7e092ab"
+    },
+    {
+      "title": "Design Guidance -- Displaying Graphs and Tables",
+      "original_url": "http://www.mscui.net/DesignGuide/Pdfs/Design%20Guidance%20--%20Displaying%20Graphs%20and%20Tables.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-pdfs/Design Guidance -- Displaying Graphs and Tables.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable PDF.",
+      "sha256": "3d153f91455a2e9661efc50268fe0e19d640eaf03a361ee535be8d63331bea84"
+    },
+    {
+      "title": "Design Guidance -- Drug Administration",
+      "original_url": "http://www.mscui.net/DesignGuide/Pdfs/Design%20Guidance%20--%20Drug%20Administration.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-pdfs/Design Guidance -- Drug Administration.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable PDF.",
+      "sha256": "dbbda46299a1a74f1a4f73600c9302564019be4b19cb1617b0465e1d0a53feba"
+    },
+    {
+      "title": "Design Guidance -- Email Input and Display",
+      "original_url": "http://www.mscui.net/DesignGuide/Pdfs/Design%20Guidance%20--%20Email%20Input%20and%20Display.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-pdfs/Design Guidance -- Email Input and Display.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable PDF.",
+      "sha256": "dc06d221a7c8255725d22de0fbbc4e09e1d27b7af27f716408194370ffd43acf"
+    },
+    {
+      "title": "Design Guidance -- Filtering Sorting and Grouping",
+      "original_url": "http://www.mscui.net/DesignGuide/Pdfs/Design%20Guidance%20--%20Filtering%20Sorting%20and%20Grouping.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-pdfs/Design Guidance -- Filtering Sorting and Grouping.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable PDF.",
+      "sha256": "0281a4f5a396fb77d395cae7a733cfcfbd0ceae7a0a0c6a84df4337e1d48c8c6"
+    },
+    {
+      "title": "Design Guidance -- Find a Patient",
+      "original_url": "http://www.mscui.net/DesignGuide/Pdfs/Design%20Guidance%20--%20Find%20a%20Patient.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-pdfs/Design Guidance -- Find a Patient.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable PDF.",
+      "sha256": "3401e6369a9fe6de79ad2dc251bcce67fe5ac099775bc6dd476050d3f8e993a6"
+    },
+    {
+      "title": "Design Guidance -- Medication Line",
+      "original_url": "http://www.mscui.net/DesignGuide/Pdfs/Design%20Guidance%20--%20Medication%20Line.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-pdfs/Design Guidance -- Medication Line.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable PDF.",
+      "sha256": "986d428a34356618e7fe7dd08face67ae349f1ff044f2670e532f499a3ec2912"
+    },
+    {
+      "title": "Design Guidance -- Medications List",
+      "original_url": "http://www.mscui.net/DesignGuide/Pdfs/Design%20Guidance%20--%20Medications%20List.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-pdfs/Design Guidance -- Medications List.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable PDF.",
+      "sha256": "71f2a3ec124b9d09144a7fb658e7a7d59df8a78dba43f05f20df0f3f9b40d5c2"
+    },
+    {
+      "title": "Design Guidance -- Medications Views",
+      "original_url": "http://www.mscui.net/DesignGuide/Pdfs/Design%20Guidance%20--%20Medications%20Views.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-pdfs/Design Guidance -- Medications Views.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable PDF.",
+      "sha256": "effccedc704b16bf5428f0335c9e817a1b95b2f92b7997128901f4fe4276e944"
+    },
+    {
+      "title": "Design Guidance -- Micro Patient Banner",
+      "original_url": "http://www.mscui.net/DesignGuide/Pdfs/Design%20Guidance%20--%20Micro%20Patient%20Banner.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-pdfs/Design Guidance -- Micro Patient Banner.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable PDF.",
+      "sha256": "8ad4af2fa3e69f251549cd5e3f12cb9fd9ff7ea503b61c4de2878b5cc6b0e7b4"
+    },
+    {
+      "title": "Design Guidance -- Patient Banner",
+      "original_url": "http://www.mscui.net/DesignGuide/Pdfs/Design%20Guidance%20--%20Patient%20Banner.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-pdfs/Design Guidance -- Patient Banner.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable PDF.",
+      "sha256": "4eece1883eeb1719495351eb22c210a8ba7060de464f654ea6ff6696d11f942f"
+    },
+    {
+      "title": "Design Guidance -- Patient Identification Number Input and Display",
+      "original_url": "http://www.mscui.net/DesignGuide/Pdfs/Design%20Guidance%20--%20Patient%20Identification%20Number%20Input%20and%20Display.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-pdfs/Design Guidance -- Patient Identification Number Input and Display.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable PDF.",
+      "sha256": "f8015e6d5191b212fb2299b437e1d47f58c30fc7658a6b18fb8c7d25907265ea"
+    },
+    {
+      "title": "Design Guidance -- Patient List View",
+      "original_url": "http://www.mscui.net/DesignGuide/Pdfs/Design%20Guidance%20--%20Patient%20List%20View.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-pdfs/Design Guidance -- Patient List View.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable PDF.",
+      "sha256": "e5f0249dec52f0beb8d91510f053043a19b084aea2d83612f45c469e45eca19c"
+    },
+    {
+      "title": "Design Guidance -- Patient Name Input and Display",
+      "original_url": "http://www.mscui.net/DesignGuide/Pdfs/Design%20Guidance%20--%20Patient%20Name%20Input%20and%20Display.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-pdfs/Design Guidance -- Patient Name Input and Display.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable PDF.",
+      "sha256": "8fa0e22d4640d27a10efe74352b2a6e5012f382d7c7c97e81868dc19b9305484"
+    },
+    {
+      "title": "Design Guidance -- Recording Adverse Drug Reaction Risks",
+      "original_url": "http://www.mscui.net/DesignGuide/Pdfs/Design%20Guidance%20--%20Recording%20Adverse%20Drug%20Reaction%20Risks.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-pdfs/Design Guidance -- Recording Adverse Drug Reaction Risks.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable PDF.",
+      "sha256": "64f1eead696d847a449cc17e9281d35424d8f4a4f323b172f55600cf0938fbae"
+    },
+    {
+      "title": "Design Guidance -- Search and Prescribe",
+      "original_url": "http://www.mscui.net/DesignGuide/Pdfs/Design%20Guidance%20--%20Search%20and%20Prescribe.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-pdfs/Design Guidance -- Search and Prescribe.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable PDF.",
+      "sha256": "e5eaa5fd204b2d585bb2272817893ea64fd99b0bb7691fd0d08c206e69c0085b"
+    },
+    {
+      "title": "Design Guidance -- Sex and Current Gender Input and Display",
+      "original_url": "http://www.mscui.net/DesignGuide/Pdfs/Design%20Guidance%20--%20Sex%20and%20Current%20Gender%20Input%20and%20Display.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-pdfs/Design Guidance -- Sex and Current Gender Input and Display.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable PDF.",
+      "sha256": "74b5480d4dc7ac1ac03b58556749fcbffc38d8cf59a55b2921fb4b7a4c42e564"
+    },
+    {
+      "title": "Design Guidance -- Telephone Number Input and Display",
+      "original_url": "http://www.mscui.net/DesignGuide/Pdfs/Design%20Guidance%20--%20Telephone%20Number%20Input%20and%20Display.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-pdfs/Design Guidance -- Telephone Number Input and Display.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable PDF.",
+      "sha256": "ca6966c507c753ce756e491aea3c9ee82c729b8bae227f451ac781cefcd42e50"
+    },
+    {
+      "title": "Design Guidance -- Terminology -- Display Standards for Coded Information",
+      "original_url": "http://www.mscui.net/DesignGuide/Pdfs/Design%20Guidance%20--%20Terminology%20--%20Display%20Standards%20for%20Coded%20Information.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-pdfs/Design Guidance -- Terminology -- Display Standards for Coded Information.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable PDF.",
+      "sha256": "6293f4471c10f053882adcb60d0295754287126d3b14a9c657475c18cbb0f7d6"
+    },
+    {
+      "title": "Design Guidance -- Terminology -- Elaboration",
+      "original_url": "http://www.mscui.net/DesignGuide/Pdfs/Design%20Guidance%20--%20Terminology%20--%20Elaboration.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-pdfs/Design Guidance -- Terminology -- Elaboration.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable PDF.",
+      "sha256": "c3ace823c29de8a969deb6bbb46f243582ef66ad9a8bfbf41e10e3e43c0faed9"
+    },
+    {
+      "title": "Design Guidance -- Terminology -- Matching",
+      "original_url": "http://www.mscui.net/DesignGuide/Pdfs/Design%20Guidance%20--%20Terminology%20--%20Matching.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-pdfs/Design Guidance -- Terminology -- Matching.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable PDF.",
+      "sha256": "6986f4523bde85a3be290b9e5f75aa28b87dba7603ea2f637dc78579d9ee211b"
+    },
+    {
+      "title": "Design Guidance -- Time Display",
+      "original_url": "http://www.mscui.net/DesignGuide/Pdfs/Design%20Guidance%20--%20Time%20Display.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-pdfs/Design Guidance -- Time Display.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable PDF.",
+      "sha256": "5ca41dee6553c904ce168edcd39834b6b0e265c2388d78e75dfc457332d885a1"
+    },
+    {
+      "title": "Design Guidance -- Timeline View",
+      "original_url": "http://www.mscui.net/DesignGuide/Pdfs/Design%20Guidance%20--%20Timeline%20View.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-pdfs/Design Guidance -- Timeline View.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable PDF.",
+      "sha256": "4dfc0e326971337484d1758eb28a9bd0f0947681177aab26e0e4cc0e831c31eb"
+    },
+    {
+      "title": "Design Guidance Exploration -- Abbreviations and Acronyms in Free Text",
+      "original_url": "http://www.mscui.net/DesignGuide/Pdfs/Design%20Guidance%20Exploration%20--%20Abbreviations%20and%20Acronyms%20in%20Free%20Text.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-pdfs/Design Guidance Exploration -- Abbreviations and Acronyms in Free Text.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable PDF.",
+      "sha256": "34a0908c0d8f602b470ccc29a25ea8b0ed8a2947db308f2bbec674daeaf5669a"
+    },
+    {
+      "title": "Design Guidance Exploration -- Abbreviations and Acronyms",
+      "original_url": "http://www.mscui.net/DesignGuide/Pdfs/Design%20Guidance%20Exploration%20--%20Abbreviations%20and%20Acronyms.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-pdfs/Design Guidance Exploration -- Abbreviations and Acronyms.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable PDF.",
+      "sha256": "4c75b075ecd642de31f2a1bacbf016cd6d7728e01d5e8f965c35963a8caa209d"
+    },
+    {
+      "title": "Design Guidance Exploration -- Alert Symbol Design",
+      "original_url": "http://www.mscui.net/DesignGuide/Pdfs/Design%20Guidance%20Exploration%20--%20Alert%20Symbol%20Design.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-pdfs/Design Guidance Exploration -- Alert Symbol Design.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable PDF.",
+      "sha256": "0b8ab99679c2cd19c44f72e38c1597128cff8e6dc620d253b72a58f39cce92f1"
+    },
+    {
+      "title": "Design Guidance Exploration -- Decision Support",
+      "original_url": "http://www.mscui.net/DesignGuide/Pdfs/Design%20Guidance%20Exploration%20--%20Decision%20Support.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-pdfs/Design Guidance Exploration -- Decision Support.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable PDF.",
+      "sha256": "37abc2e0c0c40aede44a499286a7032725532eb467eb29cde4a452502fd9d282"
+    },
+    {
+      "title": "Design Guidance Exploration -- Icons and Symbology",
+      "original_url": "http://www.mscui.net/DesignGuide/Pdfs/Design%20Guidance%20Exploration%20--%20Icons%20and%20Symbology.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-pdfs/Design Guidance Exploration -- Icons and Symbology.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable PDF.",
+      "sha256": "426ee4ede102d953e8a822173ca32e36e01ad1ed420e85e50db2c39f42be58d8"
+    },
+    {
+      "title": "Crib Sheet for Address Display",
+      "original_url": "http://www.mscui.net/DesignGuide/CribSheets/Crib%20Sheet%20for%20Address%20Display.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-crib-sheets/Crib Sheet for Address Display.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable crib sheet.",
+      "sha256": "183eea1ab104600d79fb315309bfa8824120362f07128b240d89ec298aca394b"
+    },
+    {
+      "title": "Crib Sheet for Calendar Date Input",
+      "original_url": "http://www.mscui.net/DesignGuide/CribSheets/Crib%20Sheet%20for%20Calendar%20Date%20Input.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-crib-sheets/Crib Sheet for Calendar Date Input.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable crib sheet.",
+      "sha256": "d3c739e63b1f9f0e2d48993e42e20d52b31875783894144197a0013ae5f5fc9c"
+    },
+    {
+      "title": "Crib Sheet for Date Display",
+      "original_url": "http://www.mscui.net/DesignGuide/CribSheets/Crib%20Sheet%20for%20Date%20Display.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-crib-sheets/Crib Sheet for Date Display.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable crib sheet.",
+      "sha256": "c667e5f45379548c303a4dea91693f141b4c97963b437528adb6c9f7f5a39842"
+    },
+    {
+      "title": "Crib Sheet for Free Text Date Input",
+      "original_url": "http://www.mscui.net/DesignGuide/CribSheets/Crib%20Sheet%20for%20Free%20Text%20Date%20Input.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-crib-sheets/Crib Sheet for Free Text Date Input.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable crib sheet.",
+      "sha256": "35b9fde2bfe84ab6e23792d46b083eb28dfe397b8e8e1982371b4019b71ca547"
+    },
+    {
+      "title": "Crib Sheet for Medication Line Basics",
+      "original_url": "http://www.mscui.net/DesignGuide/CribSheets/Crib%20Sheet%20for%20Medication%20Line%20Basics.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-crib-sheets/Crib Sheet for Medication Line Basics.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable crib sheet.",
+      "sha256": "29fb02db378583ab3521aa0c52d0dd21ab04437f8d0a840e23572ec4c484d538"
+    },
+    {
+      "title": "Crib Sheet for Medication Line Details",
+      "original_url": "http://www.mscui.net/DesignGuide/CribSheets/Crib%20Sheet%20for%20Medication%20Line%20Details.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-crib-sheets/Crib Sheet for Medication Line Details.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable crib sheet.",
+      "sha256": "a9c36cd71c57ba905c8042bcde3161c2fbfde3a5bf0a8ce1e2c094dd613a19eb"
+    },
+    {
+      "title": "Crib Sheet for Non UK Address Input",
+      "original_url": "http://www.mscui.net/DesignGuide/CribSheets/Crib%20Sheet%20for%20Non%20UK%20Address%20Input.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-crib-sheets/Crib Sheet for Non UK Address Input.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable crib sheet.",
+      "sha256": "9155ed969fade1967d5ed5ceff742347df1f3ecf47e8a181f4e87f111a1baaa2"
+    },
+    {
+      "title": "Crib Sheet for Patient Banner Default View",
+      "original_url": "http://www.mscui.net/DesignGuide/CribSheets/Crib%20Sheet%20for%20Patient%20Banner%20Default%20View.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-crib-sheets/Crib Sheet for Patient Banner Default View.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable crib sheet.",
+      "sha256": "e23c4da411dedca952a2fa8ac6e015004245a86372042f35c7c1de62dc223411"
+    },
+    {
+      "title": "Crib Sheet for Patient Banner Expanded",
+      "original_url": "http://www.mscui.net/DesignGuide/CribSheets/Crib%20Sheet%20for%20Patient%20Banner%20Expanded.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-crib-sheets/Crib Sheet for Patient Banner Expanded.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable crib sheet.",
+      "sha256": "71be1a948b9a7e02154275d7ad35c6c608be218e89cb04918d9c8dd6f9bf39ce"
+    },
+    {
+      "title": "Crib Sheet for Patient Banner Format",
+      "original_url": "http://www.mscui.net/DesignGuide/CribSheets/Crib%20Sheet%20for%20Patient%20Banner%20Format.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-crib-sheets/Crib Sheet for Patient Banner Format.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable crib sheet.",
+      "sha256": "acdc11db4c96601d367dde507cf8045c2dca4881d7eff7cd186bc4323994f377"
+    },
+    {
+      "title": "Crib Sheet for Patient Banner for Deceased Patients",
+      "original_url": "http://www.mscui.net/DesignGuide/CribSheets/Crib%20Sheet%20for%20Patient%20Banner%20for%20Deceased%20Patients.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-crib-sheets/Crib Sheet for Patient Banner for Deceased Patients.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable crib sheet.",
+      "sha256": "c6e29f5c1d8d742d09569e86c6ec0d3a62f7ff5a9fc5b0207adb9927736d8189"
+    },
+    {
+      "title": "Crib Sheet for Patient Identification Number Input and Display",
+      "original_url": "http://www.mscui.net/DesignGuide/CribSheets/Crib%20Sheet%20for%20Patient%20Identification%20Number%20Input%20and%20Display.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-crib-sheets/Crib Sheet for Patient Identification Number Input and Display.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable crib sheet.",
+      "sha256": "31a20da81b06c278d81f37d4d34f79cc366b4d62ae71ce5b4f3744e737968ec8"
+    },
+    {
+      "title": "Crib Sheet for Patient Name Display",
+      "original_url": "http://www.mscui.net/DesignGuide/CribSheets/Crib%20Sheet%20for%20Patient%20Name%20Display.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-crib-sheets/Crib Sheet for Patient Name Display.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable crib sheet.",
+      "sha256": "a6825340b7e39d4e32fd38e970c31d1b5c253db3353db7caae124f0ab782b7fb"
+    },
+    {
+      "title": "Crib Sheet for Patient Name Input",
+      "original_url": "http://www.mscui.net/DesignGuide/CribSheets/Crib%20Sheet%20for%20Patient%20Name%20Input.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-crib-sheets/Crib Sheet for Patient Name Input.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable crib sheet.",
+      "sha256": "a6a427fa1393d930490640696d037e9239a025e195bfc54162fbc743afe1a2d1"
+    },
+    {
+      "title": "Crib Sheet for Sex and Current Gender Display",
+      "original_url": "http://www.mscui.net/DesignGuide/CribSheets/Crib%20Sheet%20for%20Sex%20and%20Current%20Gender%20Display.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-crib-sheets/Crib Sheet for Sex and Current Gender Display.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable crib sheet.",
+      "sha256": "e48c7a8fb7dc6406fd6bd9aed7ef835922e8f57f2ceb0ef9c4ec20c65ff66a9b"
+    },
+    {
+      "title": "Crib Sheet for Sex and Current Gender Input",
+      "original_url": "http://www.mscui.net/DesignGuide/CribSheets/Crib%20Sheet%20for%20Sex%20and%20Current%20Gender%20Input.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-crib-sheets/Crib Sheet for Sex and Current Gender Input.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable crib sheet.",
+      "sha256": "8975498ccec4275d947c2c57c94203b6c4e5a6e1d0da4f90a6c6eb694611dc97"
+    },
+    {
+      "title": "Crib Sheet for Telephone Number Input and Display",
+      "original_url": "http://www.mscui.net/DesignGuide/CribSheets/Crib%20Sheet%20for%20Telephone%20Number%20Input%20and%20Display.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-crib-sheets/Crib Sheet for Telephone Number Input and Display.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable crib sheet.",
+      "sha256": "5c0d08f7bbd6dbfdcdad9bec96cfc9e6c871c069fce21e93b357c4750130c8c0"
+    },
+    {
+      "title": "Crib Sheet for Time Display",
+      "original_url": "http://www.mscui.net/DesignGuide/CribSheets/Crib%20Sheet%20for%20Time%20Display.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-crib-sheets/Crib Sheet for Time Display.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable crib sheet.",
+      "sha256": "bc78ea96d2bc161acf3111b20e82e1e54fadfa9b76375f71275637ca40dc5db8"
+    },
+    {
+      "title": "Crib Sheet for Time Input - Duration",
+      "original_url": "http://www.mscui.net/DesignGuide/CribSheets/Crib%20Sheet%20for%20Time%20Input%20-%20Duration.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-crib-sheets/Crib Sheet for Time Input - Duration.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable crib sheet.",
+      "sha256": "ced41f2e591c2464514bbb9d85f91afc0758b07f57dd9f1bcaaeeb43c3211764"
+    },
+    {
+      "title": "Crib Sheet for Time Input",
+      "original_url": "http://www.mscui.net/DesignGuide/CribSheets/Crib%20Sheet%20for%20Time%20Input.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-crib-sheets/Crib Sheet for Time Input.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable crib sheet.",
+      "sha256": "004f65d88efa85e2fbb20ce1053d416fe26fc2a62d8fcc8d7a67a614f61bc399"
+    },
+    {
+      "title": "Crib Sheet for UK Address Input",
+      "original_url": "http://www.mscui.net/DesignGuide/CribSheets/Crib%20Sheet%20for%20UK%20Address%20Input.pdf",
+      "local_path": "raw/sources/design-guidance/toolkit-bundled-crib-sheets/Crib Sheet for UK Address Input.pdf",
+      "source_type": "pdf",
+      "source_classification": "direct guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Copied from the toolkit mirror's bundled sample website; likely reflects the original MSCUI downloadable crib sheet.",
+      "sha256": "373330f01cf38628ab809991f47eb3ca3bfe22dac7733801c1e0192eb373c829"
+    }
+  ]
+}

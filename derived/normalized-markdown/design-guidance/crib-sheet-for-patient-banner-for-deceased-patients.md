@@ -1,0 +1,34 @@
+# Crib Sheet for Patient Banner for Deceased Patients
+
+## Provenance
+- Source file: `raw/sources/design-guidance/toolkit-bundled-crib-sheets/Crib Sheet for Patient Banner for Deceased Patients.pdf`
+- Extracted text: `derived/extracted-text/design-guidance/crib-sheet-for-patient-banner-for-deceased-patients.txt`
+- Normalization note: machine-cleaned `pdftotext -layout` output; verify against the PDF for edge cases.
+
+## Extracted Text
+
+Patient Banner for Deceased Patients Crib Sheet
+
+             Background
+             Colour and pattern must be
+             substantially different (on all
+             display devices) from those                                                                    Date of Death
+             used for a living patient                                                 Left-aligned         Display below the date of birth
+
+           CHANDRASEKHAR, Subramanyan (Mr)                                       Born 14-Jul-1945     Gender Male   NHS No. 129 728 7652
+           Preferred name Rama                                                   Died 06-Dec-2006     Age at Death 61y
+
+           Address 340 Gloucester R... Phone and email 020 8123 4567                                                 A Known allergies
+
+                                                                                   Label                   Label                         Age at Death
+                                                                                                                                         Display without
+                      Last Known Contact Details                                                                                         parentheses
+
+          Labels
+          Use the labels shown
+          Use formatting to give more
+          emphasis to data than labels
+          Do not use unnecessary punctuation
+          in label text or add a colon after it
+
+ Edition 1 – 20th May 2010        © Microsoft Corporation 2010. All rights reserved.

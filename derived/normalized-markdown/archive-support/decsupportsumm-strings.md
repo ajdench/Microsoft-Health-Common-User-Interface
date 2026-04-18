@@ -1,0 +1,2279 @@
+# Decision Support Summary (Partial strings extraction)
+
+## Provenance
+- Source file: `raw/sources/design-guidance/nhs-archived-guidance-2016/decsupportsumm.ppt`
+- Extracted text: `derived/extracted-text/archive-support/decsupportsumm-strings.txt`
+- Normalization note: Partial extraction using `strings -n 8`; this binary PowerPoint file does not yield a clean text layer locally.
+
+## Extracted Text
+
+i|rgG9mC'
+Photoshop 3.0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ICC_PROFILE
+mntrGRAYXYZ 
+'acspAPPL
+(c) 2003 Adobe Systems Inc.
+Grayscale - Gamma 2.2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+tEXtSoftware
+Adobe ImageReadyq
+g[/Fe?w)cC
+!b8o$-/"
+
+
+cmPPJCmp0712
+MvQA{@@<
+xrPj(Vi3u
+HcIK~l!F
+!rt&`Jw%
+;CKiDp]n
+Ss>>ig0%
+Mq
+\%Cd$q
+?{[ +-4/
+6ljKvl3%
+0\z0}xNA
+Ib$6Ddm-
+pS!I!!*C
+z_Iv9yy]
+\^*A#@@a
+r(Zg5Z5w
+A qc~L]G
+o
+C
+@>l1
+
+cmPPJCmp0712
+@y8Q-B`;
+*|(]|L)(
+`V`q[0(j
+C&_y_J"]
+>a2I"g @
+3-_K},Td
+\GuTDZC30
+D^}u&j<'
+\# ~qttlr
+h]VSfpN4
+T`;oW:Hy
+H6m!wnMO
+4("QqL+WC
+{Gd45*0 i
+t[wS+Fb:r
+to~=F?oty
+4Gst$$%< 
+-N@*6%%2
+'' E_GrA
+I@#ha]X>
+u```t|r7
+Y(b/e.IHgokk
+)sphTn](]
+1d>](N09
+F(iNv\ht
+ktc]Z[OX-
+o0Xb;"je.!K
+pRk'YSr8
+kNwcOFuhn
+P|6FI${'
+P&`dxn|Bgn
+A@ 11Lqk
+
+cmPPJCmp0712
+
+cmPPJCmp0712
+$`$`$`$
+
+[l.2iU-W
+<0n.-..^Y
+!sT/HLZc
+//yk4APF
+$$$(((,,,
+00044488 $$
+<<$<<<@@$
+HH,HH0HHHLL4PP0PP4<<
+  YY<YYY
+aa8]]]aaDPP
+44iiimmPmmUqq@qqY 
+uuDqqquu]
+HHuuuyy]yya}}Lyyy}}a}}e4
+
+cmPPJCmp0712
+_u$A4'4Al
+W)OmGGdk
+>LSnePP\-
+ikP17[rY
+Hn5<st."9
+r[jJ=~isH
+R2Ht8?v-
+,,q444((
+@@@DD,00
+((aa8aaHLa
+U0}ya}}Lyyy}}a}}e4
+
+cmPPJCmp0712
+w3/Z2I]qs
+!C{\Y#|=
+;cI(H+s>9
+A41|&E8`
+]Jlv(_\q
+\v@eyBbgRs
+z}:ltrW}
+)f$(s
+~}
+}uEA?`" Jsbg
+Jm?Dc~g)e
+KA1Ec6`@:0
+^i^69;>;
+X"B<I@o B
+T1hg[eGk
+Q#~rjz+y
+_r.|7au4
+     $$  $$
+$$ $$$$$(,,$
+884888<88<<0<<<<<@DD@
+LHLUL$<<
+PP@PPPYP<@@
+
+cmPPJCmp0712
+R:IDATx^
+1mKt\H9w
+R(I1;lf<"?)
+Hu;F@v4e
+<E$9AL\0_
+     $$  $$
+$$ $$$0,
+884888<80<<<HD<HHL
+aaaeeP@m
+mqyuqm]y
+
+cmPPJCmp0712
+O:|4_F}+
+tUkWE$)D
+     $$  $$
+$$ $$$$$(,,$000
+888<88<<0<<4@<0<<<@<<
+LH<HHLLLL<<
+DUPPPPUUPDD
+aaLaaaHq
+iqyqqiqqqUy
+uuuuyuuyyyyu<
+
+cmPPJCmp0712
+s(tM']lt~
+ 3K)).|Y
+NGpbb@&q
+884888<<0((
+LLHLLL<<
+PP@PPP@@
+]]Y]]]a]]aaLPP
+aa]aaaYY
+mmmqmmaa
+qqmuu]ee
+uuu}}y}}}qq
+
+cmPPJCmp0712
+rz,{7GY(
+;-+l.9~s
+KR'Nf>k"y"JJ{@
+2Yy{gbd9
+7ih]`
+@f
+$$$<<0<<<PP@PPPaaLaaauu]uuu
+
+cmPPJCmp0712
+,bW "pboj>
+     $$  $$
+$$ $$$$$(,,(
+888<80<88<<0<<<
+PP@]P,PPPUPPDD
+]]H]]]aaa]m
+yyuyyyey
+
+cmPPJCmp0712
+Q
+JiHN>#
+7jgCm<
+jQ
+CmYH'M-,
+@bd@6}FsOY
+_I$P js2L
+9Z.cK`rj
+3j/HGZ3f-
+@q%P,j{C
+4QCHHmFW
+aHmwOXI5YM
+$$$(((,,,00
+00,00044 44$88$88(888<<$<<(<<,<<0<<<@@$@@,@@@HH(HHHLLLPP0PP@PPPUUUYYYaa8aaLaaaeeeiiiee
+mmmqqUuuDqqquu]uuuuu
+
+cmPPJCmp0712
+IHIDATx^
+!Nj%HUZP
+e[kE+P!d
+dj%**#qzM
+000444888<<$<<0<<<@@$@@@DD0DD@DDDHHDHHHLL8LLLPP0PP<PP@PPPUU<UUUYY@YYDYYY]]H]]Yaa8aaHaaLaaYaaaeeUeeeee
+uuDqqquu]uuuyyeyyyuu
+
+cmPPJCmp0712
+M9IDATx^
+\n~4VEI.
+?~&k+NHCY0
+rcpm|`W+f
+YC5Qq
+ST
+8$e~*sZ1
+?M:)Jm9w
+/lQy74~o
+     $$  $$
+$$ $$$,,,40
+884888<80<88<<0<<<<<@DD@
+YYDYYY8e
+
+cmPPJCmp0712
+f2,zod` 
+fp3`V{6#
+h6cCvMRQ
+9H~>u<}r
+  $$  $ $$$
+884888(<P88<<84<<0<<<HD8
+PPLPPP@@
+UPP]YYPP
+aa]aaa]m
+
+cmPPJCmp0712
+n?zTvzX$
+iTiz%=?{
+ce;#X0K8}
+%y%DAs4T
+/d~(f~C6
+R3Ul~JoY
+}'cRj+kB
+2F#hR<]y
+<V|]]lI)
+]XeT~KxM
+
+
+000400Y$$
+884@@8@@@HDDPHDu8DUPP
+8DaaHe]]eeLqiYqqq
+
+cmPPJCmp0712
+(;IDATx^
+2SoxzL&3&
+GdF|`
+Oy
+pQJ8uE?P
+J(?uL-a>
+    $ $$$
+$$$(((00,000
+88888<<<<HD0
+PPHPPP@@
+0L]]]a]]8i
+aa]aaa@m
+Leuuauuu
+
+cmPPJCmp0712
+u+:\y."^
+$r;j,fz%
+3i!VN-VA
+
+[VJNt,cd
+$$$(((0,,
+<u44,448
+88888<<84
+Dy<<<<<@8DL
+UP4PPHPPPYYH
+0L]]]aaU
+
+cmPPJCmp0712
+gMIDATx^
+H@Xi@h9-"
+t[Xi@h9-"
+t[Xi@h9-"
+t[Xi@h9-"
+t[Xi@h9-
+ DsQ7+$]
+&8\n)|)X
+b2QFBI?(
++3+dWP|`
+AVh|R (vh
+'cPTII>aE
+lkY*Z"]]+O
+lKGzgK@X
+$$$(($(((
+<u40(404
+88888<<88<<8<<<<<@
+4Pa]]aaU
+
+cmPPJCmp0712
+N9VR`eJ{
+B/~p R<T$+0GpW
+ ZQ$5ByV
+Vr8+4dv}P
+aW^O78VZ
+`{+R4n.)@
+L7/YR=+K
+Z|3+".?J
+XL4De\\%8
+y-"+lzo5
+t+[y1}&Z
+U>b
+\gBX;
+41i5?+4B
+)!fe1Yq{
+
+cmPPJCmp0712
+Z<p`1|6x
+000@@@HHH
+00YYYaaa
+LLqqqyyy
+
+cmPPJCmp0712
+00040(444884888<<48<@@@@D@<D@DLD(LH<HHLPP@YP4PPPeY4YYYeY8]]HeeLieYeeeui4emyam
+qqqiu}eu
+
+cmPPJCmp0712
+;_XX\\\Y)
+YYY\\XXx
+ 6?&_Qa'
+Y  <,,400H((@,,
+
+
+884888<<<@<8@@8@@@
+DD<DDDHHHLL@
+$$LLLPP@PPPUUU
+00YYDYYYaaHaaaeeL
+@@eeeiiimmPmmmqqPqqqyyUyyy
+
+cmPPJCmp0712
+($ ,,,448@<,@@DUUPma0am
+u@quyqyymy
+
+cmPPJCmp0712
+RXQQSSS_
+H}}}MMEq1
+<?xml version="1.0" encoding="utf-8"?><LongProperties xmlns="http://schemas.microsoft.com/office/2006/metadata/longProperties"/><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ds:datastoreItem ds:itemID="{E9AE2D6F-D9C7-48E1-8D28-07AFFA276BDE}" xmlns:ds="http://schemas.openxmlformats.org/officeDocument/2006/customXml"><ds:schemaRefs><ds:schemaRef ds:uri="http://schemas.microsoft.com/office/2006/metadata/longProperties"/></ds:schemaRefs></ds:datastoreItem>
+<?mso-contentType?><FormTemplates xmlns="http://schemas.microsoft.com/sharepoint/v3/contenttype/forms"><Display>DocumentLibraryForm</Display><Edit>DocumentLibraryForm</Edit><New>DocumentLibraryForm</New></FormTemplates>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ds:datastoreItem ds:itemID="{BA255A7F-397D-4775-A1AD-C7071FB1DCA6}" xmlns:ds="http://schemas.openxmlformats.org/officeDocument/2006/customXml"><ds:schemaRefs><ds:schemaRef ds:uri="http://schemas.microsoft.com/sharepoint/v3/contenttype/forms"/></ds:schemaRefs></ds:datastoreItem>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ds:datastoreItem ds:itemID="{E7C6A18D-9490-4995-8CEE-53619F01D7B9}" xmlns:ds="http://schemas.openxmlformats.org/officeDocument/2006/customXml"><ds:schemaRefs><ds:schemaRef ds:uri="http://schemas.microsoft.com/office/2006/metadata/contentType"/><ds:schemaRef ds:uri="http://schemas.microsoft.com/office/2006/metadata/properties/
+<?xml version="1.0" encoding="utf-8"?><ct:contentTypeSchema ct:_="" ma:_="" ma:contentTypeName="Document" ma:contentTypeID="0x01010084770EF3DC728E4FBFDD6E4C8B6CCC2E" ma:contentTypeVersion="3" ma:contentTypeDescription="Create a new document." ma:contentTypeScope="" ma:versionID="62d34e86791018de61451fc785a01296" xmlns:ct="http://schemas.microsoft.com/office/2006/metadata/contentType" xmlns:ma="http://schemas.microsoft.com/office/2006/metadata/properties/metaAttributes">
+<xsd:schema targetNamespace="http://schemas.microsoft.com/office/2006/metadata/properties" ma:root="true" ma:fieldsID="c3b1f8190870df21c8b2981a72b962a2" ns2:_="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:p="http://schemas.microsoft.com/office/2006/metadata/properties" xmlns:ns2="4e6782e8-c1eb-4334-a19c-871193b813ea">
+<xsd:import namespace="4e6782e8-c1eb-4334-a19c-871193b813ea"/>
+<xsd:element name="properties">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="documentManagement">
+<xsd:complexType>
+<xsd:all>
+<xsd:element ref="ns2:Published"/>
+</xsd:all>
+</xsd:complexType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+</xsd:schema>
+<xsd:schema targetNamespace="4e6782e8-c1eb-4334-a19c-871193b813ea" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:dms="http://schemas.microsoft.com/office/2006/documentManagement/types">
+<xsd:import namespace="http://schemas.microsoft.com/office/2006/documentManagement/types"/>
+<xsd:element name="Published" ma:index="8" ma:displayName="Published" ma:description="identifies documents that are published externally" ma:format="Dropdown" ma:internalName="Published">
+<xsd:simpleType>
+<xsd:restriction base="dms:Choice">
+<xsd:enumeration value="Yes"/>
+<xsd:enumeration value="No"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+</xsd:schema>
+<xsd:schema targetNamespace="http://schemas.openxmlformats.org/package/2006/metadata/core-properties" elementFormDefault="qualified" attributeFormDefault="unqualified" blockDefault="#all" xmlns="http://schemas.openxmlformats.org/package/2006/metadata/core-properties" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:odoc="http://schemas.microsoft.com/office/internal/2005/internalDocumentation">
+<xsd:import namespace="http://purl.org/dc/elements/1.1/" schemaLocation="http://dublincore.org/schemas/xmls/qdc/2003/04/02/dc.xsd"/>
+<xsd:import namespace="http://purl.org/dc/terms/" schemaLocation="http://dublincore.org/schemas/xmls/qdc/2003/04/02/dcterms.xsd"/>
+<xsd:element name="coreProperties" type="CT_coreProperties"/>
+<xsd:complexType name="CT_coreProperties">
+<xsd:all>
+<xsd:element ref="dc:creator" minOccurs="0" maxOccurs="1"/>
+<xsd:element ref="dcterms:created" minOccurs="0" maxOccurs="1"/>
+<xsd:element ref="dc:identifier" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="contentType" minOccurs="0" maxOccurs="1" type="xsd:string" ma:index="4" ma:displayName="Content Type" ma:readOnly="true"/>
+<xsd:element ref="dc:title" minOccurs="0" maxOccurs="1" ma:index="1" ma:displayName="Title"/>
+<xsd:element ref="dc:subject" minOccurs="0" maxOccurs="1"/>
+<xsd:element ref="dc:description" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="keywords" minOccurs="0" maxOccurs="1" type="xsd:string"/>
+<xsd:element ref="dc:language" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="category" minOccurs="0" maxOccurs="1" type="xsd:string"/>
+<xsd:element name="version" minOccurs="0" maxOccurs="1" type="xsd:string"/>
+<xsd:element name="revision" minOccurs="0" maxOccurs="1" type="xsd:string">
+<xsd:annotation>
+<xsd:documentation>
+                        This value indicates the number of saves or revisions. The application is responsible for updating this value after each revision.
+                    </xsd:documentation>
+</xsd:annotation>
+</xsd:element>
+<xsd:element name="lastModifiedBy" minOccurs="0" maxOccurs="1" type="xsd:string"/>
+<xsd:element ref="dcterms:modified" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="lastPrinted" minOccurs="0" maxOccurs="1" type="xsd:dateTime"/>
+<xsd:element name="contentStatus" minOccurs="0" maxOccurs="1" type="xsd:string"/>
+</xsd:all>
+</xsd:complexType>
+</xsd:schema>
+</ct:contentTypeSchema>
+metaAttributes"/><ds:schemaRef ds:uri="http://www.w3.org/2001/XMLSchema"/><ds:schemaRef ds:uri="http://schemas.microsoft.com/office/2006/metadata/properties"/><ds:schemaRef ds:uri="4e6782e8-c1eb-4334-a19c-871193b813ea"/><ds:schemaRef ds:uri="http://schemas.microsoft.com/office/2006/documentManagement/types"/><ds:schemaRef ds:uri="http://schemas.openxmlformats.org/package/2006/metadata/core-properties"/><ds:schemaRef ds:uri="http://purl.org/dc/elements/1.1/"/><ds:schemaRef ds:uri="http://purl.org/dc/terms/"/><ds:schemaRef ds:uri="http://schemas.microsoft.com/office/internal/2005/internalDocumentation"/></ds:schemaRefs></ds:datastoreItem>
+Chearman Tim
+On-screen Show (4:3)
+[Content_Types].xml 
+_rels/.rels 
+tableStyles.xml
+
+[Content_Types].xmlPK
+_rels/.relsPK
+tableStyles.xmlPK
+[Content_Types].xml|
+_rels/.rels
+drs/slideMasters/slideMaster1.xml
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/slideMasters/slideMaster1.xmlPK
+Click to edit Master title style
+Click to edit Master text styles
+Second level
+Third level
+Fourth level
+Fifth level
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+Last modified on Wednesday, 28 March 2007
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+Release 4 Decision Support Summary, Version 1.0.0.0 Baseline
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+)sI44C9W
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+[Content_Types].xml
+_rels/.rels
+theme/theme/themeManager.xml
+
+theme/theme/theme1.xml
+,x
+c<n*S
+theme/theme/_rels/themeManager.xml.rels
+K(M&$R(.1
+[Content_Types].xmlPK
+_rels/.relsPK
+theme/theme/themeManager.xmlPK
+theme/theme/theme1.xmlPK
+theme/theme/_rels/themeManager.xml.relsPK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<a:clrMap xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" bg1="lt1" tx1="dk1" bg2="lt2" tx2="dk2" accent1="accent1" accent2="accent2" accent3="accent3" accent4="accent4" accent5="accent5" accent6="accent6" hlink="hlink" folHlink="folHlink"/>
+[Content_Types].xml|
+_rels/.rels
+drs/slideMasters/slideMaster1.xml
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/slideMasters/slideMaster1.xmlPK
+Prepared for
+NHS Connecting For Health
+Prepared by
+NHS CUI Programme Team
+cuistakeholder.mailbox@hscic.gov.uk
+Click to edit Master title style
+Click to edit Master text styles
+Second level
+Third level
+Fourth level
+Fifth level
+[Content_Types].xml
+_rels/.rels
+theme/theme/themeManager.xml
+
+theme/theme/theme1.xml
+Soj#zwu?
+!JjO7yf:
+theme/theme/_rels/themeManager.xml.rels
+K(M&$R(.1
+[Content_Types].xmlPK
+_rels/.relsPK
+theme/theme/themeManager.xmlPK
+theme/theme/theme1.xmlPK
+theme/theme/_rels/themeManager.xml.relsPK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<a:clrMap xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" bg1="lt1" tx1="dk1" bg2="lt2" tx2="dk2" accent1="accent1" accent2="accent2" accent3="accent3" accent4="accent4" accent5="accent5" accent6="accent6" hlink="hlink" folHlink="folHlink"/>
+[Content_Types].xml|
+_rels/.rels
+drs/slideLayouts/slideLayout1.xml
+nK9F\qU4
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/slideLayouts/slideLayout1.xmlPK
+[Content_Types].xml|
+_rels/.rels
+drs/slideMasters/slideMaster1.xml
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/slideMasters/slideMaster1.xmlPK
+Click to edit Master title style
+Click to edit Master text styles
+Second level
+Third level
+Fourth level
+Fifth level
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+KQ@ct4<>
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+Last modified on Wednesday, 28 March 2007
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+Release 4 Decision Support Summary, Version 1.0.0.0 Baseline
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+[Content_Types].xml
+_rels/.rels
+theme/theme/themeManager.xml
+
+theme/theme/theme1.xml
+theme/theme/_rels/themeManager.xml.rels
+K(M&$R(.1
+[Content_Types].xmlPK
+_rels/.relsPK
+theme/theme/themeManager.xmlPK
+theme/theme/theme1.xmlPK
+theme/theme/_rels/themeManager.xml.relsPK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<a:clrMap xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" bg1="lt1" tx1="dk1" bg2="lt2" tx2="dk2" accent1="accent1" accent2="accent2" accent3="accent3" accent4="accent4" accent5="accent5" accent6="accent6" hlink="hlink" folHlink="folHlink"/> 
+[Content_Types].xml|
+_rels/.rels
+drs/slideLayouts/slideLayout1.xml
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/slideLayouts/slideLayout1.xmlPK
+[Content_Types].xml|
+_rels/.rels
+drs/slideMasters/slideMaster1.xml
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/slideMasters/slideMaster1.xmlPK
+Click to edit Master title style
+Click to edit Master text styles
+Second level
+Third level
+Fourth level
+Fifth level
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+Last modified on Wednesday, 28 March 2007
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+Release 4 Decision Support Summary, Version 1.0.0.0 Baseline
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+[Content_Types].xml
+_rels/.rels
+theme/theme/themeManager.xml
+
+theme/theme/theme1.xml
+Soj#zwu?
+|wu4"%I[!
+;
++~`_Vu
+theme/theme/_rels/themeManager.xml.rels
+K(M&$R(.1
+[Content_Types].xmlPK
+_rels/.relsPK
+theme/theme/themeManager.xmlPK
+theme/theme/theme1.xmlPK
+theme/theme/_rels/themeManager.xml.relsPK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<a:clrMap xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" bg1="lt1" tx1="dk1" bg2="lt2" tx2="dk2" accent1="accent1" accent2="accent2" accent3="accent3" accent4="accent4" accent5="accent5" accent6="accent6" hlink="hlink" folHlink="folHlink"/>0
+[Content_Types].xml|
+_rels/.rels
+drs/slideLayouts/slideLayout1.xml
+)IN/oM3k
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/slideLayouts/slideLayout1.xmlPK
+[Content_Types].xml|
+_rels/.rels
+drs/slideMasters/slideMaster1.xml
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/slideMasters/slideMaster1.xmlPK
+Click to edit Master title style
+Click to edit Master text styles
+Second level
+Third level
+Fourth level
+Fifth level
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+Last modified on Wednesday, 28 March 2007
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+Release 4 Decision Support Summary, Version 1.0.0.0 Baseline
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+[Content_Types].xml
+_rels/.rels
+theme/theme/themeManager.xml
+
+theme/theme/theme1.xml
+Soj#zwu?
+|wu4"%I[!
+;
++~`_Vu
+theme/theme/_rels/themeManager.xml.rels
+K(M&$R(.1
+[Content_Types].xmlPK
+_rels/.relsPK
+theme/theme/themeManager.xmlPK
+theme/theme/theme1.xmlPK
+theme/theme/_rels/themeManager.xml.relsPK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<a:clrMap xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" bg1="lt1" tx1="dk1" bg2="lt2" tx2="dk2" accent1="accent1" accent2="accent2" accent3="accent3" accent4="accent4" accent5="accent5" accent6="accent6" hlink="hlink" folHlink="folHlink"/>@
+[Content_Types].xml|
+_rels/.rels
+drs/slideLayouts/slideLayout1.xml
+n`]^O'sl&
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/slideLayouts/slideLayout1.xmlPK
+[Content_Types].xml|
+_rels/.rels
+drs/slideMasters/slideMaster1.xml
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/slideMasters/slideMaster1.xmlPK
+Click to edit Master title style
+Click to edit Master text styles
+Second level
+Third level
+Fourth level
+Fifth level
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+xr8>`@4U
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+Last modified on Wednesday, 28 March 2007
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+Release 4 Decision Support Summary, Version 1.0.0.0 Baseline
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+[Content_Types].xml
+_rels/.rels
+theme/theme/themeManager.xml
+
+theme/theme/theme1.xml
+theme/theme/_rels/themeManager.xml.rels
+K(M&$R(.1
+[Content_Types].xmlPK
+_rels/.relsPK
+theme/theme/themeManager.xmlPK
+theme/theme/theme1.xmlPK
+theme/theme/_rels/themeManager.xml.relsPK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<a:clrMap xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" bg1="lt1" tx1="dk1" bg2="lt2" tx2="dk2" accent1="accent1" accent2="accent2" accent3="accent3" accent4="accent4" accent5="accent5" accent6="accent6" hlink="hlink" folHlink="folHlink"/>P
+[Content_Types].xml|
+_rels/.rels
+drs/slideLayouts/slideLayout1.xml
+xOl>l0Z;R
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/slideLayouts/slideLayout1.xmlPK
+[Content_Types].xml|
+_rels/.rels
+drs/slideMasters/slideMaster1.xml
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/slideMasters/slideMaster1.xmlPK
+Click to edit Master title style
+Click to edit Master text styles
+Second level
+Third level
+Fourth level
+Fifth level
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+%f&$mEss
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+Last modified on Wednesday, 28 March 2007
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+Release 4 Decision Support Summary, Version 1.0.0.0 Baseline
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+[Content_Types].xml
+_rels/.rels
+theme/theme/themeManager.xml
+
+theme/theme/theme1.xml
+theme/theme/_rels/themeManager.xml.rels
+K(M&$R(.1
+[Content_Types].xmlPK
+_rels/.relsPK
+theme/theme/themeManager.xmlPK
+theme/theme/theme1.xmlPK
+theme/theme/_rels/themeManager.xml.relsPK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<a:clrMap xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" bg1="lt1" tx1="dk1" bg2="lt2" tx2="dk2" accent1="accent1" accent2="accent2" accent3="accent3" accent4="accent4" accent5="accent5" accent6="accent6" hlink="hlink" folHlink="folHlink"/>`
+[Content_Types].xml|
+_rels/.rels
+drs/slideLayouts/slideLayout1.xml
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/slideLayouts/slideLayout1.xmlPK
+[Content_Types].xml|
+_rels/.rels
+drs/slideMasters/slideMaster1.xml
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/slideMasters/slideMaster1.xmlPK
+Click to edit Master title style
+Click to edit Master text styles
+Second level
+Third level
+Fourth level
+Fifth level
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+Last modified on Wednesday, 28 March 2007
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+Release 4 Decision Support Summary, Version 1.0.0.0 Baseline
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+[Content_Types].xml
+_rels/.rels
+theme/theme/themeManager.xml
+
+theme/theme/theme1.xml
+Soj#zwu?
+|wu4"%I[!
+;
++~`_Vu
+theme/theme/_rels/themeManager.xml.rels
+K(M&$R(.1
+[Content_Types].xmlPK
+_rels/.relsPK
+theme/theme/themeManager.xmlPK
+theme/theme/theme1.xmlPK
+theme/theme/_rels/themeManager.xml.relsPK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<a:clrMap xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" bg1="lt1" tx1="dk1" bg2="lt2" tx2="dk2" accent1="accent1" accent2="accent2" accent3="accent3" accent4="accent4" accent5="accent5" accent6="accent6" hlink="hlink" folHlink="folHlink"/>p
+[Content_Types].xml|
+_rels/.rels
+drs/slideLayouts/slideLayout1.xml
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/slideLayouts/slideLayout1.xmlPK
+[Content_Types].xml|
+_rels/.rels
+drs/slideMasters/slideMaster1.xml
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/slideMasters/slideMaster1.xmlPK
+Click to edit Master title style
+Click to edit Master text styles
+Second level
+Third level
+Fourth level
+Fifth level
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+<1]siuLU2
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+Last modified on Wednesday, 28 March 2007
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+Release 4 Decision Support Summary, Version 1.0.0.0 Baseline
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+[Content_Types].xml
+_rels/.rels
+theme/theme/themeManager.xml
+
+theme/theme/theme1.xml
+theme/theme/_rels/themeManager.xml.rels
+K(M&$R(.1
+[Content_Types].xmlPK
+_rels/.relsPK
+theme/theme/themeManager.xmlPK
+theme/theme/theme1.xmlPK
+theme/theme/_rels/themeManager.xml.relsPK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<a:clrMap xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" bg1="lt1" tx1="dk1" bg2="lt2" tx2="dk2" accent1="accent1" accent2="accent2" accent3="accent3" accent4="accent4" accent5="accent5" accent6="accent6" hlink="hlink" folHlink="folHlink"/>
+[Content_Types].xml|
+_rels/.rels
+drs/slideLayouts/slideLayout1.xml
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/slideLayouts/slideLayout1.xmlPK
+[Content_Types].xml|
+_rels/.rels
+drs/slideMasters/slideMaster1.xml
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/slideMasters/slideMaster1.xmlPK
+Click to edit Master title style
+Click to edit Master text styles
+Second level
+Third level
+Fourth level
+Fifth level
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+Last modified on Wednesday, 28 March 2007
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+Release 4 Decision Support Summary, Version 1.0.0.0 Baseline
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+[Content_Types].xml
+_rels/.rels
+theme/theme/themeManager.xml
+
+theme/theme/theme1.xml
+theme/theme/_rels/themeManager.xml.rels
+K(M&$R(.1
+[Content_Types].xmlPK
+_rels/.relsPK
+theme/theme/themeManager.xmlPK
+theme/theme/theme1.xmlPK
+theme/theme/_rels/themeManager.xml.relsPK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<a:clrMap xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" bg1="lt1" tx1="dk1" bg2="lt2" tx2="dk2" accent1="accent1" accent2="accent2" accent3="accent3" accent4="accent4" accent5="accent5" accent6="accent6" hlink="hlink" folHlink="folHlink"/>
+[Content_Types].xml|
+_rels/.rels
+drs/slideLayouts/slideLayout1.xml
+y[VBa.+u
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/slideLayouts/slideLayout1.xmlPK
+[Content_Types].xml|
+_rels/.rels
+drs/slideMasters/slideMaster1.xml
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/slideMasters/slideMaster1.xmlPK
+Click to edit Master title style
+Click to edit Master text styles
+Second level
+Third level
+Fourth level
+Fifth level
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+xr<>b@4U
+<1]siuLU2
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+Last modified on Wednesday, 28 March 2007
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+Release 4 Decision Support Summary, Version 1.0.0.0 Baseline
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+[Content_Types].xml
+_rels/.rels
+theme/theme/themeManager.xml
+
+theme/theme/theme1.xml
+theme/theme/_rels/themeManager.xml.rels
+K(M&$R(.1
+[Content_Types].xmlPK
+_rels/.relsPK
+theme/theme/themeManager.xmlPK
+theme/theme/theme1.xmlPK
+theme/theme/_rels/themeManager.xml.relsPK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<a:clrMap xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" bg1="lt1" tx1="dk1" bg2="lt2" tx2="dk2" accent1="accent1" accent2="accent2" accent3="accent3" accent4="accent4" accent5="accent5" accent6="accent6" hlink="hlink" folHlink="folHlink"/>
+[Content_Types].xml|
+_rels/.rels
+drs/slideLayouts/slideLayout1.xml
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/slideLayouts/slideLayout1.xmlPK
+[Content_Types].xml|
+_rels/.rels
+drs/slideMasters/slideMaster1.xml
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/slideMasters/slideMaster1.xmlPK
+Click to edit Master title style
+Click to edit Master text styles
+Second level
+Third level
+Fourth level
+Fifth level
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+Last modified on Wednesday, 28 March 2007
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+Release 4 Decision Support Summary, Version 1.0.0.0 Baseline
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+[Content_Types].xml
+_rels/.rels
+theme/theme/themeManager.xml
+
+theme/theme/theme1.xml
+f<"`q
+\u
+,x
+c<n*S
+theme/theme/_rels/themeManager.xml.rels
+K(M&$R(.1
+[Content_Types].xmlPK
+_rels/.relsPK
+theme/theme/themeManager.xmlPK
+theme/theme/theme1.xmlPK
+theme/theme/_rels/themeManager.xml.relsPK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<a:clrMap xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" bg1="lt1" tx1="dk1" bg2="lt2" tx2="dk2" accent1="accent1" accent2="accent2" accent3="accent3" accent4="accent4" accent5="accent5" accent6="accent6" hlink="hlink" folHlink="folHlink"/>
+[Content_Types].xml|
+_rels/.rels
+drs/slideLayouts/slideLayout1.xml
+vn~%8}BN!Vr
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/slideLayouts/slideLayout1.xmlPK
+[Content_Types].xml|
+_rels/.rels
+drs/slideMasters/slideMaster1.xml
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/slideMasters/slideMaster1.xmlPK
+Click to edit Master title style
+Click to edit Master text styles
+Second level
+Third level
+Fourth level
+Fifth level
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+xr8>`@4U
+?>1]sju,U2
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+Last modified on Wednesday, 28 March 2007
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+Release 4 Decision Support Summary, Version 1.0.0.0 Baseline
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+[Content_Types].xml
+_rels/.rels
+theme/theme/themeManager.xml
+
+theme/theme/theme1.xml
+theme/theme/_rels/themeManager.xml.rels
+K(M&$R(.1
+[Content_Types].xmlPK
+_rels/.relsPK
+theme/theme/themeManager.xmlPK
+theme/theme/theme1.xmlPK
+theme/theme/_rels/themeManager.xml.relsPK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<a:clrMap xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" bg1="lt1" tx1="dk1" bg2="lt2" tx2="dk2" accent1="accent1" accent2="accent2" accent3="accent3" accent4="accent4" accent5="accent5" accent6="accent6" hlink="hlink" folHlink="folHlink"/>
+[Content_Types].xml|
+_rels/.rels
+drs/slideLayouts/slideLayout1.xml
+Tn>~EWn~
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/slideLayouts/slideLayout1.xmlPK
+[Content_Types].xml|
+_rels/.rels
+drs/slideMasters/slideMaster1.xml
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/slideMasters/slideMaster1.xmlPK
+Click to edit Master title style
+Click to edit Master text styles
+Second level
+Third level
+Fourth level
+Fifth level
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+Last modified on Wednesday, 28 March 2007
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+Release 4 Decision Support Summary, Version 1.0.0.0 Baseline
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+[Content_Types].xml
+_rels/.rels
+theme/theme/themeManager.xml
+
+theme/theme/theme1.xml
+O]JE<4W)
+theme/theme/_rels/themeManager.xml.rels
+K(M&$R(.1
+[Content_Types].xmlPK
+_rels/.relsPK
+theme/theme/themeManager.xmlPK
+theme/theme/theme1.xmlPK
+theme/theme/_rels/themeManager.xml.relsPK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<a:clrMap xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" bg1="lt1" tx1="dk1" bg2="lt2" tx2="dk2" accent1="accent1" accent2="accent2" accent3="accent3" accent4="accent4" accent5="accent5" accent6="accent6" hlink="hlink" folHlink="folHlink"/>
+[Content_Types].xml|
+_rels/.rels
+drs/slideLayouts/slideLayout1.xml
+4MO2GGr2
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/slideLayouts/slideLayout1.xmlPK
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+keF\q5)uu
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+,oE6Gk9I
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+Click to edit Master text styles
+Second level
+Third level
+Fourth level
+Fifth level
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+drs/downrev.xmlL
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+[Content_Types].xml
+_rels/.rels
+theme/theme/themeManager.xml
+
+theme/theme/theme1.xml
+theme/theme/_rels/themeManager.xml.rels
+K(M&$R(.1
+[Content_Types].xmlPK
+_rels/.relsPK
+theme/theme/themeManager.xmlPK
+theme/theme/theme1.xmlPK
+theme/theme/_rels/themeManager.xml.relsPK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<a:clrMap xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" bg1="lt1" tx1="dk1" bg2="lt2" tx2="dk2" accent1="accent1" accent2="accent2" accent3="accent3" accent4="accent4" accent5="accent5" accent6="accent6" hlink="hlink" folHlink="folHlink"/>
+[Content_Types].xml|
+_rels/.rels
+drs/slideMasters/slideMaster1.xml
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/slideMasters/slideMaster1.xmlPK
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+MSmry:\M
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+Gk)Vznw!
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+[Content_Types].xml
+_rels/.rels
+theme/theme/themeManager.xml
+
+theme/theme/theme1.xml
+theme/theme/_rels/themeManager.xml.rels
+K(M&$R(.1
+[Content_Types].xmlPK
+_rels/.relsPK
+theme/theme/themeManager.xmlPK
+theme/theme/theme1.xmlPK
+theme/theme/_rels/themeManager.xml.relsPK
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<a:clrMap xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" bg1="lt1" tx1="dk1" bg2="lt2" tx2="dk2" accent1="accent1" accent2="accent2" accent3="accent3" accent4="accent4" accent5="accent5" accent6="accent6" hlink="hlink" folHlink="folHlink"/>
+NHS CUI Design Guide Workstream
+Release 4 Decision Support Summary
+Wednesday, 28 March 2007
+ Version 1.0.0.0 Baseline
+Contributors
+Shruti Kapur
+This document was prepared for NHS Connecting for Health which ceased to exist on 31 March 2013. It may contain references to organisations, projects and other initiatives which also no longer exist. If you have any questions relating to any such references, or to any other aspect of the content, please contact cuistakeholder.mailbox@hscic.gov.uk
+Last modified on Wednesday, 28 March 2007
+Copyright 
+2013 Health and Social Care Information Centre
+Who is it for?
+UI designers and software developers of clinical applications
+Evaluators of clinical applications
+To make the user interface of clinical systems consistent and safe
+To guide the integration of recognised usability principles
+To inform the user about decision support services running on their local system
+To provide preferred options at an early stage in the process
+To inform the user about situations that require attention
+What you need to know
+These guidelines have been developed in conjunction with the NHS Connecting For Health (NHS CFH) team
+About This Presentation
+Last modified on Wednesday, 28 March 2007
+Copyright 
+2013 Health and Social Care Information Centre
+Key Principles
+Communication of Decision Support Capability
+Information Window Anatomy
+Choice Lists with Preferences
+Unprompted Notifications
+Next Steps
+Presentation Structure
+This presentation describes the Design Guide Entry for Decision Support covering: 
+Communication of decision support capability
+Display of choice lists with preferences
+Display of and Interaction with unprompted notifications
+This is an initial investigation around the above areas
+Further research, user testing, patient safety assessment and supplier participation are required to define the final guidance
+During this work, consideration has been given to the wider research material available within this domain 
+Context 1 of 4
+Copyright 
+2013 Health and Social Care Information Centre
+Last modified on Wednesday, 28 March 2007
+Context 2 of 4
+Copyright 
+2013 Health and Social Care Information Centre
+Last modified on Wednesday, 28 March 2007
+Context 3 of 4
+Copyright 
+2013 Health and Social Care Information Centre
+Last modified on Wednesday, 28 March 2007
+User interface for knowledge and decision support contains a set of fundamental elements 
+For a specific patient, these elements provide a mechanism for informing the user of:
+important information
+relevant information
+notifications 
+Context 4 of 4
+Copyright 
+2013 Health and Social Care Information Centre
+Last modified on Wednesday, 28 March 2007
+Last modified on Wednesday, 28 March 2007
+Copyright 
+2013 Health and Social Care Information Centre
+In Scope 2 of 2
+Copyright 
+2013 Health and Social Care Information Centre
+Last modified on Wednesday, 28 March 2007
+Last modified on Wednesday, 28 March 2007
+Copyright 
+2013 Health and Social Care Information Centre
+Last modified on Wednesday, 28 March 2007
+Copyright 
+2013 Health and Social Care Information Centre
+Last modified on Wednesday, 28 March 2007
+Copyright 
+2013 Health and Social Care Information Centre
+Out of Scope 3 of 4
+Audit trail of an alert
+Logging of an alert
+Rating of an alert
+Overriding an alert
+Messaging framework
+View when an alert has been raised
+View the priority of an alert (which can change over a period of time)
+Out of Scope 4 of 4
+Clinical rules for alerts
+Triggers for alerts
+Defining the level of priority and context for an alert
+Configuration of alerts within the configuration of the clinical application
+Last modified on Wednesday, 28 March 2007
+Copyright 
+2013 Health and Social Care Information Centre
+Last modified on Wednesday, 28 March 2007
+Copyright 
+2013 Health and Social Care Information Centre
+There are two types of communication in decision support, informing and recommending
+When an inform act/recommend act occurs, it is recorded in the electronic patient record
+For alerts, the aim is to combine multiple axes of importance, such as criticality and urgency, into one axis of priority
+For choices, the aim is to combine multiple axes into a single scale for preference
+There needs to be a defined number of priority levels for an alert
+Key Principles 1 of 3
+Last modified on Wednesday, 28 March 2007
+Copyright 
+2013 Health and Social Care Information Centre
+The significance of the priority levels must be easily understood by the user
+Recommendations for appropriate actions following an alert will be displayed if they are available from a decision support system
+Alerts need to be compatible with, and exist within the messaging framework
+Explanations will be available for any alert or preference
+Key Principles 2 of 3
+Last modified on Wednesday, 28 March 2007
+Copyright 
+2013 Health and Social Care Information Centre
+Where explanations refer to an item in a patient record, it must be possible to view that item in its original context
+Consistency of structure in display of information
+There is a standard NHS CFH catalogue of all available decision support services
+The full set of local decision support functionality will be given at login
+The standard care process must not be interrupted
+Key Principles 3 of 3
+Last modified on Wednesday, 28 March 2007
+Copyright 
+2013 Health and Social Care Information Centre
+Last modified on Wednesday, 28 March 2007
+Copyright 
+2013 Health and Social Care Information Centre
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+Communication of Decision Support Capability 
+Communicate to the user that decision support services are currently running/not running on the system
+High-level communication
+Detail of individual services
+Requirements
+The title of the decision support capability tool should be short
+An arrow should suggest detailed information is available on a click
+Display the different states in different colours and icons 
+An icon should suggest a change of state since last viewed
+How to Display the Overview of Decision Support Capability 1 of 2
+Last modified on Wednesday, 28 March 2007
+Copyright 
+2013 Health and Social Care Information Centre
+Last modified on Wednesday, 28 March 2007
+Copyright 
+2013 Health and Social Care Information Centre
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+How to Display the Overview of Decision Support Capability 2 of 2
+For every change in availability of a decision support service, a pop-up should be displayed which summarises the change
+The pop-up should appear in close proximity to the title
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+The pop-up should display the date and time of the change according to the existing NHS CUI Design Guide Workstream guidance:
+Time Display 
+Date Display
+The pop-up should fade out over a period of time
+The NHS CFH catalogue of decision support services should be displayed in alphabetical order
+Display the different states of services with different textual treatments and icons
+Display the detailed status on mouse-over
+A link to configure the states of the services should be provided
+How to Display the Detailed Level of Decision Support Capability 1 of 2
+Last modified on Wednesday, 28 March 2007
+Copyright 
+2013 Health and Social Care Information Centre
+Access to the Help file should be allowed by clicking on the help icon
+Last modified on Wednesday, 28 March 2007
+Copyright 
+2013 Health and Social Care Information Centre
+The Help file should display a brief description of each service
+How to Display the Detailed Level of Decision Support Capability 2 of 2
+Last modified on Wednesday, 28 March 2007
+Copyright 
+2013 Health and Social Care Information Centre
+Information Window Anatomy
+Header Area
+Summary Area: Should be the selected tab by default. 
+It should capture the following: Icon, Summary Information, Source of Information, Link to details, Recommended Actions, and Buttons
+Resizing Control: Should be placed at the bottom right or bottom left corner of the alert box to allow resizing 
+Information Window Anatomy
+Last modified on Wednesday, 28 March 2007
+Copyright 
+2013 Health and Social Care Information Centre
+Last modified on Wednesday, 28 March 2007
+Copyright 
+2013 Health and Social Care Information Centre
+Information Summary
+Summary Area 2 of 7
+Source of Information
+The source of the information should be displayed in brackets, below the summary. The source of information should identify a service from the NHS CFH catalogue
+Information Details 
+A textual link to the information details should be provided. This link should be displayed below the source. This link should display the information details
+Information Details
+Source of Information
+Copyright 
+2013 Health and Social Care Information Centre
+Last modified on Wednesday, 28 March 2007
+Last modified on Wednesday, 28 March 2007
+Copyright 
+2013 Health and Social Care Information Centre
+Summary Area 3 of 7
+Button to Record Response
+Takes the user to the area of the clinical application to allow them to record a response
+Should be placed before or to the left of the Dismiss button
+Should be enabled at all times
+Record Response Button
+Summary Area 4 of 7
+Button to Dismiss
+Dismisses the information box
+Should be placed after or to the right of the Record Response button
+Should be enabled at all times
+Dismiss Button
+Copyright 
+2013 Health and Social Care Information Centre
+Last modified on Wednesday, 28 March 2007
+Last modified on Wednesday, 28 March 2007
+Copyright 
+2013 Health and Social Care Information Centre
+Summary Area 5 of 7
+Recommended Actions 
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+Actions should be displayed in a collapsed state by default:
+The label Actions with a chevron next to it should be displayed
+The chevron should act as an interactive element which should expand the actions area on click
+Last modified on Wednesday, 28 March 2007
+Copyright 
+2013 Health and Social Care Information Centre
+Summary Area 6 of 7
+Recommended Actions 
+If decision support is not recommending any actions, elements including the label and chevron should not be displayed 
+Last modified on Wednesday, 28 March 2007
+Copyright 
+2013 Health and Social Care Information Centre
+Summary Area 7 of 7
+Recommended Actions
+The actions should be displayed in order of preference
+Select an action by clicking its associated option button
+An action could have multiple options and combinations
+The preference icons represented by the rectangle bars should be placed on the left side of every action
+On mouse-over of each icon, a tooltip explaining its significance should be displayed
+Last modified on Wednesday, 28 March 2007
+Copyright 
+2013 Health and Social Care Information Centre
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+Details Area
+Should be available by clicking the Details tab
+The Details tab should be placed after the Summary tab
+The Details area should also be available on clicking the Details link provided in the Summary area
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+This area should capture:
+A summary of the information
+Patient-specific information
+Rationale
+References
+Last modified on Wednesday, 28 March 2007
+Copyright 
+2013 Health and Social Care Information Centre
+Last modified on Wednesday, 28 March 2007
+Copyright 
+2013 Health and Social Care Information Centre
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+Display of Choice Lists with Preferences 1 of 4
+Not to interrupt the standard care process - if interruption is required then this should be minimal, but in all cases the user must be able to override any information
+The user must be able to access the information details during the clinical activity without losing/obscuring the context of the current activity
+Requirements
+Last modified on Wednesday, 28 March 2007
+Copyright 
+2013 Health and Social Care Information Centre
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+Display of Choice Lists with Preferences 2 of 4 
+Information must contain:
+Actions (if any)
+Information details (from the above) must contain:
+Patient-specific information
+Rationale and references
+Requirements
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+Display of Choice Lists with Preferences 3 of 4 
+Information must include 5 level indicators for preference
+Users must be able to access the reasoning behind the preference
+Users must be able to access the knowledge support information about conditions, drugs and so on, within the summary of the information
+Requirements
+Copyright 
+2013 Health and Social Care Information Centre
+Last modified on Wednesday, 28 March 2007
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+Requirements
+Copyright 
+2013 Health and Social Care Information Centre
+Last modified on Wednesday, 28 March 2007
+There should be unique icons to represent the different preferential ratings
+The preference rating should be represented by icons which should be placed to the left of the option
+Choice Lists with Preferences 1 of 6
+Last modified on Wednesday, 28 March 2007
+Copyright 
+2013 Health and Social Care Information Centre
+Last modified on Wednesday, 28 March 2007
+Copyright 
+2013 Health and Social Care Information Centre
+On clicking the preference icon, the information box should be displayed as an overlay
+If the user clicks on Dismiss button, the information box should close
+If the user clicks the Record Response button, the user should be taken to the area of the clinical application that allows them to record a response
+Choice Lists with Preferences 2 of 6
+Last modified on Wednesday, 28 March 2007
+Copyright 
+2013 Health and Social Care Information Centre
+On mouse-over of the preference icon, a summary of the information should be displayed as a tooltip
+The summary of the information in the tooltip should be brief and identify the reason for preference
+Choice Lists with Preferences 3 of 6
+Last modified on Wednesday, 28 March 2007
+Copyright 
+2013 Health and Social Care Information Centre
+If there are multiple reasons for a particular preference, display all the information summaries on mouse-over
+Choice Lists with Preferences 4 of 6
+Last modified on Wednesday, 28 March 2007
+Copyright 
+2013 Health and Social Care Information Centre
+If any wording in the summary is derived from one or more patient items, it should be linked to that record item in its original context
+Choice Lists with Preferences 5 of 6
+Last modified on Wednesday, 28 March 2007
+Copyright 
+2013 Health and Social Care Information Centre
+If there are multiple pieces of information against the same option, display all the summaries within the same information box
+Actions for multiple summaries should be consolidated as a single list in the actions area
+Details for multiple summaries should be consolidated in the Details area
+Choice Lists with Preferences 6 of 6
+Last modified on Wednesday, 28 March 2007
+Copyright 
+2013 Health and Social Care Information Centre
+Unprompted Notifications
+(System Generated Alerts)
+An alert relevant to this patient generated in response to a change in the information available
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+Display and Interaction with Unprompted Notifications 1 of 2
+User must be able to access the alert details during the clinical activity 
+Alert must contain:
+Status of the alert (high/priority)
+Date and time when the alert occurred
+Alert icon
+Alert summary
+Alert details
+Actions (if any)
+Requirements
+Copyright 
+2013 Health and Social Care Information Centre
+Last modified on Wednesday, 28 March 2007
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+Display and Interaction with Unprompted Notifications 2 of 2 
+Alert details must contain:
+Patient-specific information
+Rationale and references
+Users must be able to directly access the relevant clinical information (such as test results) through the explanation of the alert
+Alert must include 5 level indicators for preference (when showing recommendation)
+Users must be able to access the reasoning behind the preference
+Requirements
+Copyright 
+2013 Health and Social Care Information Centre
+Last modified on Wednesday, 28 March 2007
+In the context of a clinical application, there should be an indicator to suggest system generated alerts, which could be represented by an icon
+On clicking the indicator icon, the system should display the alert container which lists all the active system generated alerts for this patient
+Unprompted Notifications 1 of 6
+Last modified on Wednesday, 28 March 2007
+Copyright 
+2013 Health and Social Care Information Centre
+Last modified on Wednesday, 28 March 2007
+Copyright 
+2013 Health and Social Care Information Centre
+When a new alert appears, a pop-up should be displayed in close proximity to the indicator icon
+[Content_Types].xml
+_rels/.rels
+drs/shapexml.xml
+_j}!XT1w
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/shapexml.xmlPK
+drs/downrev.xmlPK
+This pop-up should capture the status, date and time of the alert in its header, according to the existing NHS CUI Design Guide Workstream guidance:
+Time Display
+Date Display 
+The pop-up should fade out over a period of time
+If the user clicks on the pop-up, the system should display the alert container
+Unprompted Notifications 2 of 6
+Last modified on Wednesday, 28 March 2007
+Copyright 
+2013 Health and Social Care Information Centre
+There should be two types of alert status: High Priority and Priority 
+All High Priority alerts should be displayed in an expanded state by default, where the alert details are visible
+All Priority alerts should be displayed in a collapsed state by default, where only the alert header details are visible
+The user should be able to collapse and expand every alert by clicking on the alert header
+Unprompted Notifications 3 of 6
+Last modified on Wednesday, 28 March 2007
+Copyright 
+2013 Health and Social Care Information Centre
+The alert header should capture the alert status, the date and the time of the alert, according to the existing NHS CUI Design Guide Workstream guidance:
+Time Display
+Date Display
+If the alert summary refers to any record item of the patient, this reference should be linked to that record item
+The resizing control should be available on the alert container
+On resizing the container area, all the alerts in the container should also be resized
+Unprompted Notifications 4 of 6
+Last modified on Wednesday, 28 March 2007
+Copyright 
+2013 Health and Social Care Information Centre
+The alerts should be grouped by status and, within each status group, stacked in reverse chronological order
+The group of High Priority alerts should be placed above the group of Priority alerts
+The minimum dimensions of the alert container and information box should be fixed
+Unprompted Notifications 5 of 6
+[Content_Types].xml
+_rels/.rels
+drs/e2oDoc.xml
+drs/downrev.xmlDOKK
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/e2oDoc.xmlPK
+drs/downrev.xmlPK
+[Content_Types].xml|
+_rels/.relsl
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/downrev.xmlPK
+Exemplar Representation of Indicator Icon
+[Content_Types].xml|
+_rels/.relsl
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/downrev.xmlPK
+Icon Description
+[Content_Types].xml|
+_rels/.relsl
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/downrev.xmlPK
+[Content_Types].xml|
+_rels/.relsl
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/downrev.xmlPK
+Icon suggests there are no active alerts
+[Content_Types].xml|
+_rels/.relsl
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/downrev.xmlPK
+[Content_Types].xml|
+_rels/.relsl
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/downrev.xmlPK
+Icon suggests there is one or more active priority alert which has not been viewed
+[Content_Types].xml|
+_rels/.relsl
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/downrev.xmlPK
+[Content_Types].xml|
+_rels/.relsl
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/downrev.xmlPK
+Icon suggests there is one or more active priority alert which has been viewed 
+[Content_Types].xml|
+_rels/.relsl
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/downrev.xmlPK
+[Content_Types].xml|
+_rels/.relsl
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/downrev.xmlPK
+Icon suggests there is one or more high priority active alert and a possible number of priority alerts which have not been viewed
+[Content_Types].xml|
+_rels/.relsl
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/downrev.xmlPK
+[Content_Types].xml|
+_rels/.relsl
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/downrev.xmlPK
+Icon suggests there is one or more high priority active alert and a possible number of priority alerts which have been viewed
+[Content_Types].xml|
+_rels/.relsl
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/downrev.xmlPK
+[Content_Types].xml|
+_rels/.relsl
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/downrev.xmlPK
+[Content_Types].xml|
+_rels/.relsl
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/downrev.xmlPK
+[Content_Types].xml|
+_rels/.relsl
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/downrev.xmlPK
+[Content_Types].xml|
+_rels/.relsl
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/downrev.xmlPK
+[Content_Types].xml|
+_rels/.relsl
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/downrev.xmlPK
+[Content_Types].xml|
+_rels/.relsl
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/downrev.xmlPK
+[Content_Types].xml|
+_rels/.relsl
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/downrev.xmlPK
+[Content_Types].xml|
+_rels/.relsl
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/downrev.xmlPK
+[Content_Types].xml|
+_rels/.relsl
+drs/downrev.xmlD
+[Content_Types].xmlPK
+_rels/.relsPK
+drs/downrev.xmlPK
+Unprompted Notifications 6 of 6
+Copyright 
+2013 Health and Social Care Information Centre
+Last modified on Wednesday, 28 March 2007
+Last modified on Wednesday, 28 March 2007
+Copyright 
+2013 Health and Social Care Information Centre
+In order to progress this work further, the following aspects of decision support require consideration and investigation:
+Next Steps 1 of 2
+Work with the software and application providers to refine the guidance
+The header information for system generated alerts should be explored further to accommodate summary information of the alert
+Research should be conducted on how to summarize an alert to make it meaningful
+Design for the look-ahead scroll bar to suggest the number of system generated alerts which are behind the scroll bar
+Placement of the system generated alerts container within a clinical application
+Next Steps 2 of 2
+Last modified on Wednesday, 28 March 2007
+Copyright 
+2013 Health and Social Care Information Centre
+arly design exploration into principles of display of decision support.
+Shruti Kapur
+28-Mar-2007
+noff Template
+8_NHS Signoff Template
+9_NHS Signoff Template
+10_NHS Signoff Template
+11_NHS Signoff Template
+12_NHS Signoff Template
+13_NHS Signoff Template
+NHS CUI Design Guide Workstream
+PowerPoint Presentation
+PowerPoint Presentation
+NHS CUI Design Guide Workstream
+Shruti Kapur
+NHS Signoff Template
+Chearman Tim
+Microsoft Office PowerPoint
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+Communication of Decision Support Capability  The communication to the user that decision support is currently active/inactive during the user
+s current session within a clinical application
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+Information Window Anatomy
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+Choice Lists with Preferences  Allowing choice from a set of graded recommendations of activities in a patient
+s situation 
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+Unprompted Notifications (System Generated Alerts)  An alert relevant to this patient generated in response to a change in the information available
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+Fonts Used
+Slide Titles
+_PID_HLINKS
+Review Status
+Description0
+Version0
+Document Version
+Evidence Base
+Safety Rating
+ISB HaSC status
+CSG status
+ContentType
+Keywords
+_Category
+Categories
+Approval Level
+_Comments
+Assigned To
+Release date
+Samples and Controls
+Published
+On-screen Show (4:3)
+Wingdings
+NHS Signoff Template
+1_NHS Signoff Template
+2_NHS Signoff Template
+3_NHS Signoff Template
+4_NHS Signoff Template
+5_NHS Signoff Template
+6_NHS Signoff Template
+7_NHS Signoff Template
+8_NHS Signoff Template
+9_NHS Signoff Template
+10_NHS Signoff Template
+11_NHS Signoff Template
+12_NHS Signoff Template
+13_NHS Signoff Template
+NHS CUI Design Guide Workstream
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+Communication of Decision Support Capability  The communication to the user that decision support is currently active/inactive during the user
+s current session within a clinical application
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+Information Window Anatomy
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+Choice Lists with Preferences  Allowing choice from a set of graded recommendations of activities in a patient
+s situation 
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+Unprompted Notifications (System Generated Alerts)  An alert relevant to this patient generated in response to a change in the information available
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+PowerPoint Presentation
+Fonts Used
+Slide Titles
+_PID_HLINKS
+Review Status
+Description0
+Version0
+Document Version
+Evidence Base
+Safety Rating
+ISB HaSC status
+CSG status
+ContentType
+Keywords
+_Category
+Categories
+Approval Level
+_Comments
+Assigned To
+Release date
+Samples and Controls
+Published
+Working Baseline
+Guidance
+Document
+This presentation contains e

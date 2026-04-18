@@ -1,0 +1,2031 @@
+# Medication list quick implementation guide
+
+## Provenance
+- Source file: `raw/sources/design-guidance/nhs-archived-guidance-2016/medlistqig.pdf`
+- Extracted text: `derived/extracted-text/design-guidance/nhs-archived-guidance-2016-medlistqig.txt`
+- Normalization note: machine-cleaned `pdftotext -layout` output; verify against the PDF for edge cases.
+
+## Extracted Text
+
+Medications List
+Quick Implementation Guide
+
+Edition 1
+20th May 2010
+
+                       Copyright ©2013 Health and Social Care Information Centre
+
+Contents
+
+Introduction                                                                                                       2
+
+Structure and Layout                                                                                               3
+
+Columns                                                                                                            9
+
+Status                                                                                                           16
+
+Current and Past Medications                                                                                     20
+
+Filtering                                                                                                        26
+
+Look-Ahead Scroll Bar                                                                                            28
+
+Grouping                                                                                                         38
+
+Sorting                                                                                                          45
+
+Levels of Detail                                                                                                 47
+
+Selection                                                                                                        48
+
+This document was prepared for NHS Connecting for Health which ceased to exist on 31 March 2013. It may
+contain references to organisations, projects and other initiatives which also no longer exist. If you have any
+questions relating to any such references, or to any other aspect of the content, please contact
+cuistakeholder.mailbox@hscic.gov.uk
+
+Copyright:
+You may re-use this information (excluding logos) free of charge in any format or medium, under the terms of
+the Open Government Licence. To view this licence, visit nationalarchives.gov.uk/doc/open-government-
+licence or email psi@nationalarchives.gsi.gov.uk.
+
+1
+                                                                      Copyright ©2013 Health and Social Care Information Centre
+
+                                                                                                      Guidance
+
+Introduction
+     An electronic display of a patient’s medications must be able to support the complex
+     information needs of a wide range of health care professions and settings. A successful
+     display solution must therefore take those information needs into account whilst ensuring
+     patient safety and promoting consistency across views and between systems.
+
+     A list of medications is expected to be one of many ways of displaying medications
+     information for a single patient. The information required for a medication review will vary
+     for different contexts so guidance is provided for the needs that are common to all kinds of
+     medications review. This list of medications forms only part of the Medications
+     Management views and tools that would be available in a clinical application.
+
+     Important
+     Although it contains all of the guidance points, this document omits supporting
+     information and is therefore not intended as a substitute for the full NHS CUI
+     documents Medications List1. Refer to that document for the definitive statement of the
+     design guidance in this area.
+     The visual representations used to display the guidance are illustrative only. Stylistic
+     choices (for example, display font used), unless otherwise specified, are not part of the
+     guidance and are therefore not mandatory requirements.
+
+1
+    Medications Management – Medications List – User Interface Design Guidance (v1.0.0.0)
+
+                                                                                                                     2
+                                                             Copyright ©2013 Health and Social Care Information Centre
+
+Guidance
+
+Structure and Layout
+
+    This simplified diagram shows some of the elements of a Medications List View:
+
+            Current and Past Menu Buttons
+                                                                                    Grouping Control
+
+                            Current   Past             Group by Status
+
+        Column Headings     Drug Details            yyyy     zzzz     Start ▼            Look-ahead Scroll
+                                                                    aaa ·    bbb         Bar (LASB)
+                            ccc – xxxx - xxxx       yyyy     zzzz                        Notification
+            Medications     ddd – xxxx - xxxx       yyyy     zzzz
+                            eee – xxxx - xxxx       yyyy     zzzz
+                               Group A (2)
+        Group Headings
+                               Group B
+                            kkk – xxxx - xxxx       yyyy     zzzz
+            Recent Past     3 past medications were completed...
+             Notification
+                                                                                         Look-ahead Scroll
+                                             2 more · kkk · jjj · iii · ggg · fff
+                                                                                         Bar Notification
+
+ Important
+ For the sake of brevity, illustrations in sections other than the Look-Ahead Scroll Bar
+ section omit LASB notifications. Refer to that section for specific guidance on reserving
+ space for, and displaying, LASB notifications.
+
+3
+                                                                                    Copyright ©2013 Health and Social Care Information Centre
+
+                                                                                                 Guidance
+
+Structure and Layout
+
+Tabular Layout
+
+                                                           MEDv-020
+
+                                                           Present medications as lines of
+                                                           text within rows in a tabular
+                                                           format where each row
+                                                           represents one medication
+                                                           Mandatory
+
+  temazepam – tablet – DOSE 20 mg – oral – at night          Started       26-May-2010
+
+  oxygen 60% – inhalation gas – RATE 15 L per minute –       Started       25-May-2010
+  continuous – with non re-breather bag
+
+  co-amilofruse – 5 mg and 40 mg in 5 mL – solution –        Started       24-May-2010
+  DOSE 5 mL – oral – once a day
+
+  salbutamol – 100 micrograms per dose – metered dose        Started       24-May-2010
+  inhaler – DOSE 2 puffs – inhaled –
+  four times a day as required
+
+                  composite column
+                                                           MEDv-141
+
+                                                           Use composite columns to
+                                                           minimise the display of blank
+                                                           cells for some rows (that is, avoid
+                                                           placing each individual data point
+                                                           in a separate column)
+                                                           Recommended
+
+                                                                                                                4
+                                                         Copyright ©2013 Health and Social Care Information Centre
+
+Guidance
+
+Structure and Layout
+
+Indicating List Length
+
+Drug Details                                           Status        Start Date ▼
+temazepam – tablet – DOSE 20 mg – oral – at night      Started       26-May-2010
+
+oxygen 60% – inhalation gas – RATE 15 L per minute –   Started       25-May-2010
+continuous – with non re-breather bag
+
+co-amilofruse – 5 mg and 40 mg in 5 mL – solution –    Started       24-May-2010
+DOSE 5 mL – oral – once a day
+
+salbutamol – 100 micrograms per dose – metered dose    Started       24-May-2010
+inhaler – DOSE 2 puffs – inhaled –
+four times a day as required
+
+                                       space
+
+                                                          MEDv-142
+
+                                                          When the list is scrolled to the
+                                                          end, display a space at the
+                                                          bottom of the list with a height
+                                                          equivalent to a line of text
+                                                          Recommended
+
+5
+                                                                 Copyright ©2013 Health and Social Care Information Centre
+
+                                                                                              Guidance
+
+Structure and Layout
+
+Gridlines and Row Formatting
+
+temazepam – tablet – DOSE 20 mg – oral – at night      Started      26-May-2010
+
+oxygen 60% – inhalation gas – RATE 15 L per minute –   Started      25-May-2010                  Subtle
+continuous – with non re-breather bag                                                            gridlines
+co-amilofruse – 5 mg and 40 mg in 5 mL – solution –    Started      24-May-2010                  between
+DOSE 5 mL – oral – once a day                                                                    rows
+salbutamol – 100 micrograms per dose – metered dose    Started      24-May-2010
+inhaler – DOSE 2 puffs – inhaled –
+four times a day as required
+
+MEDv-021                                                 MEDv-144
+
+Avoid the use of strong grids and                        When using alternate row
+strong vertical lines. (Use subtle                       shading, ensure that colour and
+methods to support distinguishing                        brightness of the background
+between rows in the list)                                does not interfere with the
+Mandatory                                                readability of the foreground text
+                                                         Mandatory
+MEDv-022
+                                                         MEDv-145
+Use subtle alternate row shading
+Recommended
+                                                         Supplement alternate shading
+                                                         with 1 point pale lines between
+MEDv-143
+                                                         rows
+Use at least alternate row shading                       Recommended
+or lines between rows
+Mandatory
+
+                                                                                                              6
+                                                         Copyright ©2013 Health and Social Care Information Centre
+
+Guidance
+
+Structure and Layout
+
+Displaying Icons for Drug Details
+
+              Drug Details column
+
+glyceryl trinitrate – 400 micrograms per dose –        Started              28-May-2010
+sublingual spray – DOSE 1 to 2 puffs – sublingual –
+as required – maximum 3 doses in 15 minutes B
+lansoprazole – orodispersible tablet –                 Started              27-May-2010
+DOSE 30 mg – oral – once a day A B
+
+dalteparin – 10,000 units per 1 mL – injection –       Started              27-May-2010
+DOSE 10,000 units – subcutaneous – twice a day     A
+
+                                                icon
+
+                                                                 MEDv-023
+
+                                                                 Support the display of icons
+                                                                 following the text of the Drug
+                                                                 Details column in the
+                                                                 Medications List View
+                                                                 Mandatory
+
+                                                                 Note The lettered squares that
+                                                                 have been used to represent icons
+                                                                 are placeholders only and do not
+                                                                 form part of the guidance
+
+7                                                                      Copyright ©2013 Health and Social Care Information Centre
+
+                                                                                                 Guidance
+
+Structure and Layout
+
+Empty Lists
+
+Drug Details                                        Status              First Administration
+
+There are no current medications for this patient
+
+                                                             MEDv-146
+
+                                                             Display a message when a list is
+                                                             empty (for example, when there
+                                                             are no current medications)
+                                                             Mandatory
+
+                                                                                                                8
+                                                              Copyright ©2013 Health and Social Care Information Centre
+
+Guidance
+
+Columns
+
+Mandatory Columns
+
+                                                                    status          an initiation
+                              drug details                       information            date
+
+         Drug Details                                              Status        Start Date ▼
+
+         temazepam – tablet – DOSE 20 mg – oral – at night         Started         26-May-2010
+
+         oxygen 60% – inhalation gas – RATE 15 L per minute –      Started         25-May-2010
+         continuous – with non re-breather bag
+
+         co-amilofruse – 5 mg and 40 mg in 5 mL – solution –       Started         24-May-2010
+         DOSE 5 mL – oral – once a day
+
+                                                                MEDv-147
+
+                                                                Provide a column that
+                                                                contains status information
+                                                                including information that
+                                                                defines whether the
+                                                                medication is ‘current’ or ‘past’
+                                                                Mandatory
+
+                                                                MEDv-148
+
+                                                                Provide a column that
+                                                                contains drug details
+                                                                according to Medication Line1
+                                                                guidance
+                                                                Mandatory
+
+1
+    Medications Management – Medication Line – User Interface Design Guidance (v2.0.0.0)
+
+9
+                                                                       Copyright ©2013 Health and Social Care Information Centre
+
+                                                                                                 Guidance
+
+Columns
+
+Mandatory Columns
+
+Drug Details                                                           Status         Start Date ▼
+
+temazepam – tablet – DOSE 20 mg – oral – at night                        Started        26-May-2010
+
+oxygen 60% – inhalation gas – RATE 15 L per minute – continuous –        Started        25-May-2010
+with non re-breather bag
+
+co-amilofruse – 5 mg and 40 mg in 5 mL – solution – DOSE 5 mL – oral – Started          24-May-2010
+once a day
+
+                                                            MEDv-149
+
+                                                            When displaying current
+                                                            medications, provide a column
+                                                            that contains an initiation date
+                                                            (such as the date of the first
+                                                            planned administration). The
+                                                            examples in this document show
+                                                            a Start Date column
+                                                            Mandatory
+
+Status         Drug Details                                                              End Date ▲
+
+Completed       hydrochlorothiazide – tablet – DOSE 100 mg – oral – 4 times a day        26-May-2010
+
+Discontinued    methyldopa – tablet – DOSE 250 mg – oral – twice a day                   25-May-2010
+
+Completed       furosemide – tablet – DOSE 40 mg – oral – once a day                     24-May-2010
+
+                                                            MEDv-150
+
+                                                            When displaying past
+                                                            medications, provide a column
+                                                            that contains a stop date (such
+                                                            as the date of the last
+                                                            administration or the date that
+                                                            the medication was
+                                                            discontinued). The examples in
+                                                            this document show an End Date
+                                                            column
+                                                            Mandatory
+
+                                                                                                              10
+                                                               Copyright ©2013 Health and Social Care Information Centre
+
+Guidance
+
+Columns
+
+Date Columns
+
+  The specific information to display in date columns is not part of guidance because it
+  needs to differ between tasks and contexts. Guidance is therefore provided for the relative
+  placement of date columns.
+
+  Illustrations in this document use column headings with the following labels:
+  ·   Start Date for the start or initiation of a medication
+  ·   End Date for the end or completion of a medication
+
+Drug Details                                             Status         Start Date ▼      End Date
+
+temazepam – tablet – DOSE 20 mg – oral – at night         Started       26-May-2010       03-Jun-2010
+
+oxygen 60% – inhalation gas – RATE 15 L per minute –      Started       25-May-2010       09-Jun-2010
+continuous – with non re-breather bag
+
+co-amilofruse – 5 mg and 40 mg in 5 mL – solution –       Started       24-May-2010       06-Jun-2010
+DOSE 5 mL – oral – once a day
+
+MEDv-154                                                 MEDv-151
+
+Maintain consistent placement                            When an end date column is
+of date columns relative to                              displayed, place a start date
+one another and relative to the                          column before (to the left of)
+Drug Details column in both                              the end date column
+current and past medications                             Mandatory
+Mandatory
+                                                         MEDv-152
+
+                                                         When an end date column is
+                                                         displayed, and there is no
+                                                         duration column, place a start
+                                                         date column adjacent to the
+                                                         end date column
+                                                         Recommended
+
+11
+                                                                  Copyright ©2013 Health and Social Care Information Centre
+
+                                                                                            Guidance
+
+Columns
+
+Date Columns
+
+                                                                      fixed width fixed width
+
+Drug Details                                           Status        Start Date ▼      End Date
+
+temazepam – tablet – DOSE 20 mg – oral – at night      Started       26-May-2010       03-Jun-2010
+
+oxygen 60% – inhalation gas – RATE 15 L per minute –   Started       25-May-2010       09-Jun-2010
+continuous – with non re-breather bag
+
+co-amilofruse – 5 mg and 40 mg in 5 mL – solution –    Started       24-May-2010       06-Jun-2010
+DOSE 5 mL – oral – once a day
+
+                                                       MEDv-153
+
+                                                       Use fixed width columns for
+                                                       dates
+                                                       Mandatory
+
+                                                                                                         12
+                                                          Copyright ©2013 Health and Social Care Information Centre
+
+Guidance
+
+Columns
+
+Column Headings
+
+Drug Details      Status         Start Date ▼       End Date
+
+                  MEDv-155
+
+                  Label columns with text that
+                  describes the contents
+                  unambiguously and succinctly
+                  (such as, ‘Status’, ‘Date
+                  Prescribed’ or ‘First
+                  Administration’)
+                  Recommended
+
+                  MEDv-156
+
+                  Use a unique heading for each
+                  column
+                  Mandatory
+
+13                         Copyright ©2013 Health and Social Care Information Centre
+
+                                                                                  Guidance
+
+Columns
+
+Composite Columns
+
+                                            MEDv-027
+            Review and End Dates ▼
+                                            Allow columns to contain more
+                                            than one attribute for a single
+             Review 06-Jun-2010
+             End 12-Jun-2010                medication
+             Review 08-Jun-2010
+                                            Mandatory
+             End 08-Jun-2010
+                                            MEDv-157
+
+                                            When combining two attributes
+                                            that have the same data type
+                                            (such as dates), include labels
+                                            for both attributes in the column
+                                            heading
+                                            Mandatory
+
+                                            MEDv-158
+
+                                            When combining two attributes
+                                            that have the same data types
+                                            (such as dates), include labels
+                                            for both attributes within the cell
+                                            Mandatory
+
+                                     Copyright ©2013 Health and Social Care Information Centre   14
+
+Guidance
+
+Columns
+
+Constraining Dimensions
+
+                                                        MEDv-159
+
+                                                        Maintain the relative proportions
+                                                        of columns such that the Drug
+                                                        Details column is the widest
+                                                        Mandatory
+
+                                                        MEDv-161
+
+                                                        Define minimum widths for all
+                                                        columns
+                                                        Recommended
+
+                     widest column
+
+Drug Details                                            Status          Start Date ▼       End Date
+
+temazepam – tablet – DOSE 20 mg – oral – at night       Started          26-May-2010       03-Jun-2010
+
+oxygen 60% – inhalation gas – RATE 15 L per minute –    Started          25-May-2010       09-Jun-2010
+continuous – with non re-breather bag
+
+co-amilofruse – 5 mg and 40 mg in 5 mL – solution –     Started          24-May-2010       06-Jun-2010
+DOSE 5 mL – oral – once a day
+
+                                   limited number of columns
+
+                                                        MEDv-160
+
+                                                        Avoid the need for horizontal
+                                                        scrolling by limiting the number
+                                                        of columns visible at any one
+                                                        time
+                                                        Mandatory
+
+15                                                               Copyright ©2013 Health and Social Care Information Centre
+
+                                                                             Guidance
+
+Status
+
+                                       MEDv-162
+
+         Status         Star           Ensure that all medications have
+         Not Started    29-M           a status value and the status
+         Started
+                                       cannot be blank
+                        25-M
+                                       Mandatory
+         Started        24-M
+                                       MEDv-163
+
+                                       Limit status descriptions to short
+                                       phrases, preferably no more than
+                                       two words
+                                       Recommended
+
+                                        MEDv-042
+
+                                        Display the status of each
+                                        medication in bold
+                                        Mandatory
+
+                                        MEDv-164
+
+         Status
+                                        Allow status to be supplemented
+                        Star
+         Not Started    29-M
+                                        with additional information (such
+         Verified
+                                        as pharmacy verified)
+         Started
+                        25-M
+         Not Verified                   Recommended
+         Started        24-M
+         Verified
+
+                                       MEDv-165
+
+                                       Use the status description to
+                                       differentiate between
+                                       medications that have no
+                                       recorded administration events
+                                       and those that have
+                                       Mandatory
+
+                               Copyright ©2013 Health and Social Care Information Centre   16
+
+Guidance
+
+Status
+
+                                             MEDv-167
+
+                                             Assign a status of ‘Started’ to
+                    Status            Star
+                                             medications that have an
+                    Started           25-M
+                                             administration event recorded
+                                             and have further scheduled
+                                             administrations
+                                             Recommended
+
+                                             MEDv-168
+
+                                             Assign a status of ‘Not Started’
+                    Status            Star
+                                             to medications that have an
+                    Not Started       29-M
+                                             administration scheduled and a
+                                             start date in the future
+                                             Recommended
+
+                                             MEDv-170
+
+                                             Assign a status of ‘Completed’ to
+           Status             Drug Details
+                                  hydrochl
+                                             medications that have
+           Completed
+                                             administration events recorded
+                                             according to their schedule
+                                             (within tolerances) and have an
+                                             end date in the past
+                                             Recommended
+
+                                             MEDv-171
+
+           Status             Drug Details
+                                             Assign a status of ‘Discontinued’
+           Discontinued           methyld
+                                             to medications that were stopped
+                                             on a date that preceded one or
+                                             more of the scheduled
+                                             administrations
+                                             Recommended
+
+17                                                 Copyright ©2013 Health and Social Care Information Centre
+
+                                                                            Guidance
+
+Status
+
+                                      MEDv-166
+
+         Status         Star          Support a status of ‘suspended’
+         Suspended on   24-M          and include medications with this
+         30-May-2008
+                                      status in current medications
+                                      Mandatory
+
+                                      MEDv-169
+
+                                      Assign a status of ‘Suspended’
+                                      to medications that are marked
+                                      as not to be administered but
+                                      which are intended to be
+                                      resumed at a later date
+                                      Recommended
+
+                                      MEDv-024
+
+                                      Use visual design to draw
+                                      attention to suspended
+                                      medications
+                                      Mandatory
+
+                               Copyright ©2013 Health and Social Care Information Centre   18
+
+Guidance
+
+Status
+
+Drug Details                                                           Status          Start Date ▼
+
+temazepam – tablet – DOSE 20 mg – oral – at night                        Started        26-May-2010
+
+oxygen 60% – inhalation gas – RATE 15 L per minute – continuous –        Started        25-May-2010
+with non re-breather bag
+
+co-amilofruse – 5 mg and 40 mg in 5 mL – solution – DOSE 5 mL – oral – Started          24-May-2010
+once a day
+
+   MEDv-025                                                 MEDv-172
+
+   Use visual design to distinguish                         Define medications with a status
+   a list of current medications from                       of either ‘Started’, ‘Not Started’
+   a list of past medications                               or ‘Suspended’ as current
+   Mandatory                                                medications
+                                                            Recommended
+
+Status         Drug Details                                                              End Date ▲
+
+Completed       hydrochlorothiazide – tablet – DOSE 100 mg – oral – 4 times a day        26-May-2010
+
+Discontinued    methyldopa – tablet – DOSE 250 mg – oral – twice a day                   25-May-2010
+
+Completed       furosemide – tablet – DOSE 40 mg – oral – once a day                     24-May-2010
+
+                                                            MEDv-173
+
+                                                            Define medications with a status
+                                                            of ‘Completed’ or ‘Discontinued’
+                                                            as past medications
+                                                            Recommended
+
+19                                                                  Copyright ©2013 Health and Social Care Information Centre
+
+                                                                             Guidance
+
+Current and Past Medications
+
+Controls
+
+            Current    Past            MEDv-063
+
+                                       Provide buttons for displaying
+                                       current and past medications
+                                       respectively in the Medications
+                                       List View and label the buttons
+                                       ‘Current’ and ‘Past’
+                                       Mandatory
+
+                                       MEDv-062
+            Current    Past
+                                       Present the Medications List
+                                       View with Current selected by
+            default                    default
+           selection                   Mandatory
+
+                                       MEDv-065
+            Current    Past
+                                       Do not allow Current and Past
+                                       buttons to be selected
+              one is selected          simultaneously
+                                       Mandatory
+
+                                       MEDv-174
+
+                                       Ensure that either the Current or
+                                       the Past button is selected at
+                                       any one time
+                                       Mandatory
+
+                                Copyright ©2013 Health and Social Care Information Centre   20
+
+Guidance
+
+Current and Past Medications
+
+Controls
+
+            Current       Past        MEDv-064
+
+                                      Use the visual formatting of the
+           Example of Current
+           and Past buttons           Current and Past buttons to
+                                      indicate which is currently
+            Current     Past          selected
+                                      Mandatory
+           Example of Current and
+           Past buttons in an
+           alternative style
+
+                                      MEDv-066
+            Current    Past
+                                      Supplement the Past button in
+                      Show All Past
+                                      the Medications List View with a
+                      Past week
+                      Past month      drop-down control for displaying,
+                      Past 3 months
+                      Past 2 years
+                                      selecting and applying a filter on
+                                      the past medications view
+                                      Mandatory
+
+                                      MEDv-067
+
+                                      Include an option for displaying
+                                      all past medications in the
+                                      drop-down control
+                                      Mandatory
+
+21                                          Copyright ©2013 Health and Social Care Information Centre
+
+                                                                                                   Guidance
+
+Current and Past Medications
+
+Current Medications
+
+Drug Details                                                             Status          Start Date ▼
+
+temazepam – tablet – DOSE 20 mg – oral – at night                         Started         26-May-2010
+
+oxygen 60% – inhalation gas – RATE 15 L per minute – continuous –         Started         25-May-2010
+with non re-breather bag
+
+co-amilofruse – 5 mg and 40 mg in 5 mL – solution – DOSE 5 mL – oral – Started            24-May-2010
+once a day
+
+                                                             MEDv-099
+
+                                                             By default, present current
+                                                             medications sorted reverse
+                                                             chronologically by a starting
+                                                             date, such that the most recent is
+                                                             first (top) in the list
+                                                             Mandatory
+
+                                                             MEDv-173
+
+                                                             When displaying current
+                                                             medications, place the drug
+                                                             details in the first (furthest left)
+                                                             column
+                                                             Mandatory
+
+                                                      Copyright ©2013 Health and Social Care Information Centre   22
+
+Guidance
+
+Current and Past Medications
+
+Recent Past Notifications
+
+Drug Details                                                               Status        Start Date ▼
+oxygen 60% – inhalation gas – RATE 15 L per minute –                       Started       25-May-2010
+continuous – with non re-breather bag
+
+co-amilofruse – 5 mg and 40 mg in 5 mL – solution –                        Started       24-May-2010
+DOSE 5 mL – oral – once a day
+
+salbutamol – 100 micrograms per dose – metered dose                        Started       24-May-2010
+inhaler – DOSE 2 puffs – inhaled –
+four times a day as required
+  2 past medications were completed or discontinued in the last 48 hours
+
+                                                               MEDv-074
+
+                                                               When displaying current
+                                                               medications, display a
+                                                               notification for medications that
+                                                               have been completed or
+                                                               discontinued within a specified
+                                                               time interval from the current
+                                                               time
+                                                               Mandatory
+
+                                                               MEDv-174
+
+                                                               Use formatting to distinguish the
+                                                               recent past notifications from
+                                                               medications in the list
+                                                               Recommended
+
+23                                                                    Copyright ©2013 Health and Social Care Information Centre
+
+                                                                                                    Guidance
+
+Current and Past Medications
+
+Recent Past Notifications
+
+ 2 past medications were completed or discontinued in the last 48 hours
+
+                                                      Time interval
+
+                                                              MEDv-075
+
+                                                              Clearly display the time interval
+                                                              within the recent past notification
+                                                              Mandatory
+
+ 2 past medications were completed or discontinued in the last 48 hours
+
+count                                                         MEDv-077
+
+                                                              Display a count of the number of
+                                                              recently past medications within
+                                                              the recent past notification in the
+                                                              medication list
+                                                              Mandatory
+
+                                                       Copyright ©2013 Health and Social Care Information Centre   24
+
+Guidance
+
+Current and Past Medications
+
+Past Medications
+
+                                                            MEDv-175
+
+                                                            When displaying past
+                                                            medications, place the status
+                                                            column first (furthest left) and the
+                                                            Drug Details column second
+                                                            Mandatory
+
+ First Column                           Second Column
+    Status                               Drug Details
+
+Status          Drug Details                                                             End Date ▲
+
+Completed        hydrochlorothiazide – tablet – DOSE 100 mg – oral – 4 times a day       26-May-2010
+
+Discontinued     methyldopa – tablet – DOSE 250 mg – oral – twice a day                  25-May-2010
+
+Completed        furosemide – tablet – DOSE 40 mg – oral – once a day                    24-May-2010
+
+                                                            MEDv-100
+
+                                                            By default, sort medications
+                                                            reverse chronologically by end
+                                                            date (or equivalent) such that the
+                                                            most recent is first (top) when
+                                                            the filter is set to ‘Past’ in the
+                                                            Medications List View
+                                                            Recommended
+
+25                                                                Copyright ©2013 Health and Social Care Information Centre
+
+                                                                                                           Guidance
+
+Filtering
+
+Filtering Past Medications
+
+                                                                      MEDv-069
+
+                                                                      When a filter is applied to past
+                                                                      medications in Medications List
+                                                                      View, the Past button should
+                                                                      indicate that it is currently
+                                                                      selected
+                                                                      Mandatory
+                   Current     Past
+
+Status          Drug Details                                                                        End Date ▲
+The total list (54) is filtered to show: Past 2 months (3)    Remove Filter
+
+Completed         hydrochlorothiazide – tablet – DOSE 100 mg – oral – 4 times a day                 26-May-2010
+
+Discontinued      methyldopa – tablet – DOSE 250 mg – oral – twice a day                            25-May-2010
+
+Completed         furosemide – tablet – DOSE 40 mg – oral – once a day                              24-May-2010
+
+                                                                      MEDv-070
+
+                                                                      When a filter is applied to past
+                                                                      medications in the Medications
+                                                                      List View, display a filter
+                                                                      notification at the top of the list
+                                                                      below the column headings and
+                                                                      above the scroll bar (thus
+                                                                      ‘pushing’ the list of medications
+                                                                      down a line)
+                                                                      Mandatory
+
+                                                             Copyright ©2013 Health and Social Care Information Centre   26
+
+Guidance
+
+Filtering
+
+Filtering Past Medications
+
+The total list (54) is filtered to show: Past 2 months (3)   Remove Filter
+
+                      Control for removing a filter
+                                                                   MEDv-068
+
+                                                                   When a filter notification is
+                                                                   displayed, include a control for
+                                                                   removing the filter within that
+                                                                   notification
+                                                                   Mandatory
+                                                                   MEDv-071
+
+                                                                   Display a description of the filter
+                                                                   in use within the filter notification
+                                                                   in the Medications List View
+                                                                   Mandatory
+
+The total list (54) is filtered to show: Past 2 months (3)   Remove Filter
+
+          count of                                  count of       MEDv-072
+       unfiltered total                          filtered total    Include a count of the number of
+                                                                   medications displayed and a
+                                                                   count of the total (unfiltered)
+                                                                   number of past medications in a
+                                                                   filter notification
+                                                                   Recommended
+
+                                                                   MEDv-176
+
+                                                                   Clearly label the counts (number
+                                                                   of medications displayed and
+                                                                   total unfiltered number) with text
+                                                                   that allows them to be
+                                                                   differentiated
+                                                                   Recommended
+
+27                                                                           Copyright ©2013 Health and Social Care Information Centre
+
+                                                                                                         Guidance
+
+Look-Ahead Scroll Bar
+
+A look-ahead scroll bar (LASB) is a standard scroll bar that is supplemented with
+notifications at the top and bottom to indicate that there are items in the list that are not
+currently visible.
+
+                                                                                        Look-ahead scroll
+                      Drug Details            yyyy   zzzz     Start ▼                   bar notification
+                                                            aaa ·   bbb
+                      ccc – xxxx - xxxx       yyyy   zzzz
+                      ddd – xxxx - xxxx       yyyy   zzzz                               Look-ahead
+                      eee – xxxx - xxxx       yyyy   zzzz                               scroll bar
+                      fff – xxxx - xxxx       yyyy   zzzz
+       Medications
+                      ggg – xxxx - xxxx       yyyy   zzzz
+                      hhh – xxxx - xxxx       yyyy   zzzz
+                      iii – xxxx - xxxx       yyyy   zzzz                               Look-ahead scroll
+                      jjj – xxxx - xxxx       yyyy   zzzz                               bar notification
+                                  2 more · ooo · nnn · mmm · lll · kkk
+
+                                     Alert Icon
+
+                     Diagram of a Medications List View
+
+                                                                    MEDv-177
+
+                                                                    When displaying a list of current
+                                                                    or past medications, and the
+                                                                    scroll bar is active because the
+                                                                    list is longer than the space
+                                                                    available to display them,
+                                                                    provide a clear indication that
+                                                                    there are medications out of view
+                                                                    Mandatory
+
+                                                                    MEDv-178
+
+                                                                    When displaying current
+                                                                    medications, supplement the
+                                                                    standard scroll bar with
+                                                                    notifications that display the
+                                                                    names of drugs that are out of
+                                                                    view. This document refers to
+                                                                    this kind of scroll bar as a
+                                                                    look-ahead scroll bar (LASB)
+                                                                    Recommended
+
+                                                            Copyright ©2013 Health and Social Care Information Centre   28
+
+Guidance
+
+Look-Ahead Scroll Bar
+
+Layout
+
+                                      space
+      Drug Details             yyyy   zzzz   Start ▼
+                                                       MEDv-179
+      ccc – xxxx - xxxx        yyyy   zzzz
+                                                       When displaying a LASB,
+      ddd – xxxx - xxxx        yyyy   zzzz
+      eee – xxxx - xxxx        yyyy   zzzz
+                                                       reserve a space at the top and
+      fff – xxxx - xxxx        yyyy   zzzz             bottom of the list for look-ahead
+      ggg – xxxx - xxxx        yyyy   zzzz             notifications
+      hhh – xxxx - xxxx        yyyy   zzzz
+                                                       Mandatory
+
+                                      space
+
+                                                       MEDv-180
+                                      pale colour
+                                                       Use a pale solid background
+                                                       colour for the space reserved for
+                                                       look-ahead notifications that is
+     Status                Start Date ▼
+                          aspirin · paracetamol
+                                                       sufficient to distinguish the space
+                                                       from the background of the list
+                                                       Recommended
+
+29                                                           Copyright ©2013 Health and Social Care Information Centre
+
+                                                                                                   Guidance
+
+Look-Ahead Scroll Bar
+
+Grouping
+
+Drug Details                                                             Status          Start Date ▼
+                                                                                     aspirin · paracetamol
+
+    Rectal (1)
+
+    Intravenous (3)
+
+    Inhaled
+salbutamol – 100 micrograms per dose – metered dose                       Started        24-May-2010
+inhaler – DOSE 2 puffs – inhaled –
+four times a day as required
+
+                                                             MEDv-181
+
+    Example in which the first group in                      When grouping is applied, and
+    the list has been scrolled out of                        there is a collapsed group out
+    view. This group contains aspirin                        of view, display drug names in
+    and paracetamol.
+                                                             the look-ahead scroll bar for
+                                                             any drug that is out of view,
+                                                             irrespective of whether it is
+                                                             within a collapsed group or an
+                                                             expanded group
+                                                             Recommended
+
+                                                             MEDv-185
+
+                                                             Do not include additional text or
+                                                             formatting to indicate grouping in
+                                                             the look-ahead notifications
+                                                             Mandatory
+
+                                                      Copyright ©2013 Health and Social Care Information Centre   30
+
+Guidance
+
+Look-Ahead Scroll Bar
+
+Interaction
+
+                                                 MEDv-058
+
+ccc – xxxx - xxxx        yyyy     zzzz           Update the look-ahead
+ddd – xxxx - xxxx        yyyy     zzzz           notifications dynamically in
+eee – xxxx - xxxx        yyyy     zzzz           response to scrolling
+                                                 Mandatory
+
+                                                 MEDv-059
+
+                                                 Allow the look-ahead notification
+              Status        Start Date ▼         to change width dynamically to
+                         aspirin · paracetamol
+                                                 accommodate its contents up to
+                                                 the available width
+                                                 Mandatory
+
+                                                 MEDv-182
+
+                                                 Do not allow the look-ahead
+                                                 notification to be used for
+     Status            Start Date ▼
+                    aspirin · paracetamol
+                                                 navigation by clicking on areas
+                                                 of the notification, such as drug
+                                                 names or counts
+                                                 Mandatory
+
+31                                                   Copyright ©2013 Health and Social Care Information Centre
+
+                                                                                                  Guidance
+
+Look-Ahead Scroll Bar
+
+Contents
+
+                                                            MEDv-044
+            aspirin · paracetamol
+                                                            Restrict the look-ahead
+                                                            notifications to a single line each
+                                                            Mandatory
+
+                                                            MEDv-043
+
+                                                            The look-ahead notifications
+                                          notification      should be clearly joined to the
+       Start Date ▼
+     aspirin · paracetamol                up arrow
+                                                            ‘up’ and ‘down’ arrow controls of
+                                                            the scroll bar respectively
+                                                            Mandatory
+
+                                                            MEDv-045
+                   Drug Details
+   look-ahead         6 more · metformin · gli
+                                                            Do not place controls or other
+    notification                                            notifications such that they
+                   temazepam – tablet – DO
+                                                            separate the look-ahead
+                   oxygen 60% – inhalation                  notification from the medications
+  medications      with non re-breather bag
+                                                            in the Medication List View
+                   co-amilofruse – 5 mg an
+                                                            Mandatory
+                   once a day
+
+                                                     Copyright ©2013 Health and Social Care Information Centre   32
+
+Guidance
+
+Look-Ahead Scroll Bar
+
+Order of Contents
+
+                                                                   MEDv-049
+                               1 · 2 · 3 · 4 · 5
+      6 – xxxx - xxxx           yyyy     zzzz                      The order of both the items in the
+      7 – xxxx - xxxx           yyyy     zzzz                      look-ahead notification and the
+      8 – xxxx - xxxx           yyyy     zzzz                      medications list should always
+      9 – xxxx - xxxx           yyyy     zzzz                      be the same
+      10 – xxxx - xxxx          yyyy     zzzz                      Mandatory
+      11 – xxxx - xxxx          yyyy     zzzz
+                          16 · 15 · 14 · 13 · 12
+                                                                   MEDv-048
+
+                                                                   The look-ahead notification is
+                                                                   populated from right to left such
+                                                                   that the next drug in the list
+                                                                   appears closest to the scroll bar
+                                                                   Mandatory
+
+oxygen 60% – inhalation gas – RATE 15 L per minute –                             Started       25-May-2010
+continuous – with non re-breather bag
+
+co-amilofruse – 5 mg and 40 mg in 5 mL – solution –                              Started       24-May-2010
+DOSE 5 mL – oral – once a day
+
+salbutamol – 100 micrograms per dose – metered dose inhaler –                     Started      24-May-2010
+                4 more · paracetamol · atenolol · ramipril · clopidogrel · fluticasone · tiotropium · salbutamol
+DOSE 2 puffs – inhaled – four times a day as required
+
+                                                                   MEDv-183
+
+                                                                   If any of the drug name text
+                                                                   (other than the letter ascenders
+                                                                   and descenders) is obscured by
+                                                                   the boundaries of the list, include
+                                                                   that drug in the look-ahead
+                                                                   notification
+                                                                   Recommended
+
+33                                                                         Copyright ©2013 Health and Social Care Information Centre
+
+                                                                                             Guidance
+
+Look-Ahead Scroll Bar
+
+Counts
+
+          oxygen 60% – inhalation gas – R               MEDv-052
+          continuous – with non re-breather
+                                                        When there are more items than
+          co-amilofruse – 5 mg and 40 mg                can be displayed in the look-
+          DOSE 5 mL – oral – once a day
+                                                        ahead notification for current
+          salbutamol – 100 micrograms pe                medications, display as many as
+          inhaler – DOSE 2 puffs – inhaled –
+               4 more · paracetamol · atenolol
+                                                        possible and end the list with a
+                                                        count of the remaining items that
+                                                        could not be displayed
+                                                        Mandatory
+
+                                                        MEDv-053
+         oxygen 60% – inhalation gas – R
+         continuous – with non re-breather
+                                                        When a count is displayed in a
+                                                        look-ahead notification and one
+         co-amilofruse – 5 mg and 40 mg
+         DOSE 5 mL – oral – once a day
+                                                        or more of the medications
+                                                        included in that count have
+         salbutamol – 100 micrograms pe
+         inhaler – DOSE 2 puffs – inhaled –
+                                                        decision support alerts, display a
+             4 more · paracetamol · atenolol            decision support alert icon next
+                                                        to the count
+                                                        Mandatory
+
+                                                        MEDv-055
+
+         Current Medications                            When displaying current
+         oxygen 60% – inhalation gas – R                medications only, show drug
+         continuous – with non re-breather              names and decision support alert
+         co-amilofruse – 5 mg and 40 mg                 icons in the look-ahead
+         DOSE 5 mL – oral – once a day                  notification
+         salbutamol – 100 micrograms pe                 Mandatory
+         inhaler – DOSE 2 puffs – inhaled –
+           4 more ·   paracetamol · atenolol
+
+                                                 Copyright ©2013 Health and Social Care Information Centre   34
+
+Guidance
+
+Look-Ahead Scroll Bar
+
+Counts
+
+                                                         MEDv-050
+
+         Status     Start Date ▼                         Where exceptionally long drug
+                               1 more
+                                                         names require more space than
+                                                         is available in a look-ahead
+                                                         notification, display a count
+                                                         instead (as for past medications)
+                                                         Mandatory
+
+                                                         MEDv-051
+
+                                                         Do not truncate or abbreviate
+                                                         drug names in the look-ahead
+                                                         notification
+                                                         Mandatory
+
+     Past Medications
+     Discontinued   digoxin – tablet – DOSE 125 micrograms – oral – once a day
+
+     Completed      hydrochlorothiazide – tablet – DOSE 100 mg – oral – 4 times a day
+
+     Discontinued   methyldopa – tablet – DOSE 250 mg – oral – twice a day
+
+     Completed      furosemide – tablet – DOSE 40 mg – oral – once a day
+                                                                                            3 more
+
+                                                                                           counts
+                                                         MEDv-054
+
+                                                         When displaying past
+                                                         medications only, display
+                                                         counts in the look-ahead
+                                                         notification and not drug
+                                                         names
+                                                         Mandatory
+
+35                                                              Copyright ©2013 Health and Social Care Information Centre
+
+                                                                                         Guidance
+
+Look-Ahead Scroll Bar
+
+Format of Contents
+
+                                                   MEDv-186
+         6 more · metformin · glicazide
+                                                   Display drug names in bold and
+                                                   in black text by default
+                     bold
+                                                   Mandatory
+
+                                                   MEDv-187
+         6 more · metformin · glicazide
+                                                   Display counts and descriptive
+                                                   text (such as ‘more’) in normal
+     normal weight                                 weight font
+                                                   Mandatory
+
+                                                   MEDv-188
+     solid background
+       in a light colour                           Use a light solid background
+                                                   colour for the notifications that is
+                                                   both sufficiently different from the
+           Status      Start Date ▼
+                                                   colour in the space reserved for
+                    aspirin · paracetamol
+                                                   notifications and sufficiently
+                                                   different from the black text in
+                                                   the notification
+                                                   Recommended
+
+                                                   MEDv-189
+
+                                                   Do not use a border in a dark
+                                                   colour or with a weight greater
+                                                   than 1 point for a look-ahead
+                                                   notification
+                                                   Recommended
+
+                                            Copyright ©2013 Health and Social Care Information Centre   36
+
+Guidance
+
+Look-Ahead Scroll Bar
+
+Format of Contents
+
+                                               MEDv-056
+             aspirin · paracetamol
+                                               Use a delimiter that is unlikely to
+                                               be interpreted as a character or
+                  delimiter                    number (such as a black dot ‘’),
+                                               with a space either side to
+                                               separate drug names and to
+                                               separate the count from drug
+                                               names
+                                               Mandatory
+
+                                               MEDv-184
+           no delimiter         no delimiter
+                                               Do not use leading or trailing
+                                               delimiters
+       Status       Start Date ▼               Mandatory
+                 aspirin · paracetamol
+
+37                                                   Copyright ©2013 Health and Social Care Information Centre
+
+                                                                                Guidance
+
+Grouping
+
+Grouping Control
+
+                                          MEDv-084
+    Group by Status
+             None                         Provide a standard drop-down
+             Drug Name
+                                          list for displaying, selecting and
+             Route                        applying grouping to the
+             Frequency                    medications list
+             Route and Frequency
+             Status                       Mandatory
+
+                                          MEDv-085
+
+                                          Label the grouping control
+                                          ‘Group by’
+                                          Mandatory
+
+                                          MEDv-190
+
+                                          Include an option in the
+                                          drop-down list to set the
+                                          grouping to ‘None’
+                                          Mandatory
+
+                                   Copyright ©2013 Health and Social Care Information Centre   38
+
+Guidance
+
+Grouping
+
+Displaying Groups
+
+Drug Details                                                          Status        Start Date ▼
+oxygen 60% – inhalation gas – RATE 15 L per minute –                  Started       25-May-2010
+continuous – with non re-breather bag
+
+co-amilofruse – 5 mg and 40 mg in 5 mL – solution –                   Started       24-May-2010
+DOSE 5 mL – oral – once a day
+
+salbutamol – 100 micrograms per dose – metered dose inhaler –         Started       24-May-2010
+DOSE 2 puffs – inhaled – four times a day as required
+
+                                                           MEDv-083
+
+                                                           Present the Medications List
+                                                           View with no grouping active
+                                                           by default
+                                                           Recommended
+
+Drug Details                                                          Status        Start Date ▼
+
+     Inhaled
+oxygen 60% – inhalation gas – RATE 15 L per minute –                  Started       25-May-2010
+continuous – with non re-breather bag
+
+salbutamol – 100 micrograms per dose – metered dose inhaler –         Started       24-May-2010
+DOSE 2 puffs – inhaled – four times a day as required
+
+     Oral
+co-amilofruse – 5 mg and 40 mg in 5 mL – solution –                   Started       24-May-2010
+DOSE 5 mL – oral – once a day
+
+                                                           MEDv-087
+
+                                                           Retain the column sort order in
+                                                           the Medications List View when
+                                                           grouping is applied
+                                                           Mandatory
+
+                                                           MEDv-191
+
+                                                           Display groups expanded by
+                                                           default
+                                                           Mandatory
+
+39                                                               Copyright ©2013 Health and Social Care Information Centre
+
+                                                           Guidance
+
+Grouping
+
+Row Shading
+
+    Group 1          MEDv-192
+
+line 1               Re-start alternate row shading at
+line 2               the beginning of each group.
+line 3               (Alternate row shading is not
+    Group 2          needed if there is only one
+line 1               medication in each group)
+line 2               Mandatory
+line 3
+
+                     MEDv-193
+    Group 1
+                     When a group is selected in the
+line 1
+                     grouping control, ensure that at
+line 2
+                     least one group heading is visible
+line 3
+                     in the newly grouped list
+line 4
+line 5               Mandatory
+line 6
+line 7
+line 6
+
+              Copyright ©2013 Health and Social Care Information Centre   40
+
+Guidance
+
+Grouping
+
+Group Headings
+
+                     group heading
+
+     Inhaled
+oxygen 60% – inhalation gas – RATE 15 L per minute –                  Started       25-May-2010
+continuous – with non re-breather bag
+
+salbutamol – 100 micrograms per dose – metered dose inhaler –         Started       24-May-2010
+DOSE 2 puffs – inhaled – four times a day as required
+
+     Oral
+co-amilofruse – 5 mg and 40 mg in 5 mL – solution –                   Started       24-May-2010
+DOSE 5 mL – oral – once a day
+
+                                                           MEDv-086
+
+                                                           Display clear and prominent
+                                                           headings for each group
+                                                           category
+                                                           Mandatory
+
+                                                           MEDv-090
+
+                                                           Do not display group headings
+                                                           for empty groups
+                                                           Recommended
+
+41                                                               Copyright ©2013 Health and Social Care Information Centre
+
+                                                                                                   Guidance
+
+Grouping
+
+Null Groups
+
+                             ‘null’ group
+
+   (No Form Specified)
+clopidogrel – DOSE 75 mg – oral – once a day                              Started        24-May-2010
+
+   Tablet
+temazepam – tablet – DOSE 20 mg – oral – at night                         Started        25-May-2010
+
+   Solution
+co-amilofruse – 5 mg and 40 mg in 5 mL – solution –                       Started        24-May-2010
+DOSE 5 mL – oral – once a day
+
+                                                             MEDv-091
+
+                                                             Provide ‘null’ groups where
+                                                             necessary to support the display
+                                                             of medications that do not have a
+                                                             value for the attribute being used
+                                                             to group the medications
+                                                             Mandatory
+
+                                                             MEDv-194
+
+                                                             Display the label for a ‘null’ group
+                                                             heading in brackets
+                                                             Mandatory
+
+                                                             MEDv-195
+
+                                                             Display ‘null’ groups at the top of
+                                                             the list of groups
+                                                             Recommended
+
+                                                      Copyright ©2013 Health and Social Care Information Centre   42
+
+Guidance
+
+Grouping
+
+Expand and Collapse
+
+                control for expanding a collapsed group
+
+     Oral (2)
+
+     Inhaled
+salbutamol – 100 micrograms per dose – metered dose inhaler –         Started       24-May-2010
+DOSE 2 puffs – inhaled – four times a day as required
+
+                                                           MEDv-092
+
+                                                           Provide controls for expanding
+                                                           and collapsing individual groups.
+                                                           Place these controls at the
+                                                           beginning of the group heading
+                                                           Mandatory
+
+                                                           MEDv-089
+
+                                                           When a group is collapsed,
+                                                           supplement the group heading
+                                                           with a number representing a
+                                                           count of medications within that
+                                                           group
+                                                           Mandatory
+
+                                                           MEDv-196
+
+     Oral (2)                                              Support the selection of group
+                                                           headings and the display of a
+     Inhaled                                               context menu that includes
+                         Collapse All Groups
+salbutamol – 100 micrograms per dose – metered             options for collapsing and
+                         Expand All Groups
+DOSE 2 puffs – inhaled – four times a day as requi         expanding all columns
+                                                           Mandatory
+
+43                                                              Copyright ©2013 Health and Social Care Information Centre
+
+                                                                                                Guidance
+
+Grouping
+
+Combining Group Names
+
+  Analgesic (2)                                                  a combined group
+
+  Analgesic; Non-steroidal Anti-inflammatory (1)
+
+  Non-steroidal Anti-inflammatory (1)
+
+ MEDv-198                                                 MEDv-197
+
+ Display each medication in only                          When one or more medications
+ one group (do not duplicate                              belong to more than one group
+ medications so that they can be                          (such as analgesic and
+ displayed in more than one                               non-steroidal anti-inflammatory),
+ group)                                                   create a new group and label it
+ Mandatory                                                with the group names combined
+                                                          (such as ‘Analgesic;
+                                                          Non-steroidal Anti-inflammatory’)
+                                                          Mandatory
+
+                                              semi-colon
+
+                      Analgesic (2)
+       in sort
+        order         Analgesic; Non-steroidal Anti-inflammatory (1)
+
+                      Non-steroidal Anti-inflammatory (1)
+
+   MEDv-199                                               MEDv-200
+
+   When combining group names,                            When combining group names,
+   display the names in the same                          separate the labels with a
+   order as they would appear in a                        semi-colon
+   list that is sorted by that attribute                  Recommended
+   Mandatory
+
+                                                   Copyright ©2013 Health and Social Care Information Centre   44
+
+Guidance
+
+Sorting
+
+Sorting Control
+
+                                                                      sort order: most recent first
+1    Drug Details                                                        Status         Start Date ▼
+     oxygen 60% – inhalation gas – RATE 15 L per minute –                 Started       25-May-2010
+     continuous – with non re-breather bag
+
+     co-amilofruse – 5 mg and 40 mg in 5 mL – solution –                  Started       24-May-2010
+     DOSE 5 mL – oral – once a day
+
+     salbutamol – 100 micrograms per dose – metered dose inhaler –        Started       24-May-2010
+     DOSE 2 puffs – inhaled – four times a day as required
+
+                                                                      sort order: most recent last
+2    Drug Details                                                        Status         Start Date ▲
+     salbutamol – 100 micrograms per dose – metered dose inhaler –        Started       24-May-2010
+     DOSE 2 puffs – inhaled – four times a day as required
+
+     co-amilofruse – 5 mg and 40 mg in 5 mL – solution –                  Started       24-May-2010
+     DOSE 5 mL – oral – once a day
+
+     oxygen 60% – inhalation gas – RATE 15 L per minute –                 Started       25-May-2010
+     continuous – with non re-breather bag
+
+                                                           MEDv-101
+
+                                                           Allow the sort order of a list in the
+                                                           medications list to be changed by
+                                                           clicking on a column heading
+                                                           Mandatory
+
+                                                           MEDv-102
+
+                                                           Allow the sort order of a list in the
+                                                           Medications List View to be
+                                                           reversed by clicking on the
+                                                           column heading for the column
+                                                           with the active sort applied
+                                                           Mandatory
+
+45                                                               Copyright ©2013 Health and Social Care Information Centre
+
+                                                                                                    Guidance
+
+Sorting
+
+Indicating the Sort Order
+
+                                                          sort order symbol
+
+                                                       column heading
+
+Drug Details                                                               Status         Start Date ▼
+oxygen 60% – inhalation gas – RATE 15 L per minute –                       Started        25-May-2010
+continuous – with non re-breather bag
+
+co-amilofruse – 5 mg and 40 mg in 5 mL – solution –                        Started        24-May-2010
+DOSE 5 mL – oral – once a day
+
+salbutamol – 100 micrograms per dose – metered dose inhaler –              Started        24-May-2010
+DOSE 2 puffs – inhaled – four times a day as required
+
+MEDv-104                                                      MEDv-103
+
+Use an icon or symbol in the                                  Use formatting of the column
+column heading to indicate the                                heading to clearly indicate the
+column by which the data is                                   column to which the sort order is
+sorted and the direction of the                               currently applied
+sort                                                          Recommended
+Mandatory
+
+    1      Drug Details   Status    Start Date ▼
+                                                              MEDv-105
+
+           paracetamol    Started   26-May-2010               When the sort order is changed
+           oxygen         Started   25-May-2010               from the default to another
+           salbutamol     Started   24-May-2010               attribute in the Medications List
+           salbutamol     Started   12-Apr-2010               View, retain the default as a
+           paracetamol    Started   08-Apr-2010               secondary sort order
+                                                              Mandatory
+    2      Drug Details ▼ Status    Start Date
+           oxygen         Started   25-May-2010
+           paracetamol    Started   26-May-2010
+           paracetamol    Started   08-Apr-2010
+           salbutamol     Started   24-May-2010
+           salbutamol     Started   12-Apr-2010
+
+                                                       Copyright ©2013 Health and Social Care Information Centre   46
+
+Guidance
+
+Levels of Detail
+
+                                 MEDv-201
+
+                                 Provide a control that allows the
+     +               –           type and quantity of information
+                                 displayed to be changed such
+     Example 1                   that the rows and columns may
+                                 change in number and be
+                                 presented with a different layout
+      +                      –
+                                 Recommended
+     Example 2
+
+      A     B    C       D
+
+     Example 3
+
+47
+                                        Copyright ©2013 Health and Social Care Information Centre
+
+                                                                                               Guidance
+
+Selection
+
+                                                         MEDv-202
+
+                                                         Ensure that there are no
+                                                         medications selected by default
+                                                         when a list is opened
+                                                         Mandatory
+
+  1   Drug Details                                                             Status         Start Date ▼
+      oxygen 60% – inhalation gas – RATE 15 L per minute –                     Started        25-May-2010
+      continuous – with non re-breather bag
+
+      co-amilofruse – 5 mg and 40 mg in 5 mL – solution –                      Started        24-May-2010
+      DOSE 5 mL – oral – once a day
+
+      salbutamol – 100 micrograms per dose – metered dose inhaler –            Started        24-May-2010
+      DOSE 2 puffs – inhaled – four times a day as required
+
+  2   Drug Details                                                             Status         Start Date ▼
+      oxygen 60% – inhalation gas – RATE 15 L per minute –                     Started        25-May-2010
+      continuous – with non re-breather bag
+
+      co-amilofruse – 5 mg and 40 mg in 5 mL – solution –                      Started        24-May-2010
+      DOSE 5 mL – oral – once a day
+
+      salbutamol – 100 micrograms per dose – metered dose inhaler –            Started        24-May-2010
+      DOSE 2 puffs – inhaled – four times a day as required
+
+                                                         MEDv-122
+
+                                                         Support click (or keyboard
+                                                         selection using the spacebar) to
+                                                         select a medication in the list
+                                                         Mandatory
+
+                                                  Copyright ©2013 Health and Social Care Information Centre   48
+
+Guidance
+
+Selection
+
+Highlighting Selections
+
+                                                           MEDv-123
+
+                                                           Clearly highlight selected
+                                                           medications in the medication list
+                                                           Mandatory
+
+1    Drug Details                                                        Status         Start Date ▼
+     oxygen 60% – inhalation gas – RATE 15 L per minute –                 Started       25-May-2010
+     continuous – with non re-breather bag
+
+     co-amilofruse – 5 mg and 40 mg in 5 mL – solution –                  Started       24-May-2010
+     DOSE 5 mL – oral – once a day
+
+     salbutamol – 100 micrograms per dose – metered dose inhaler –        Started       24-May-2010
+     DOSE 2 puffs – inhaled – four times a day as required
+
+2    Drug Details                                                        Status         Start Date ▲
+     salbutamol – 100 micrograms per dose – metered dose inhaler –       Started        24-May-2010
+     DOSE 2 puffs – inhaled – four times a day as required
+
+     co-amilofruse – 5 mg and 40 mg in 5 mL – solution –                  Started       24-May-2010
+     DOSE 5 mL – oral – once a day
+
+     oxygen 60% – inhalation gas – RATE 15 L per minute –                Started        25-May-2010
+     continuous – with non re-breather bag
+
+     MEDv-124                                              MEDv-125
+
+     Maintain the selection of a                           Maintain the selection of a
+     medication when switching                             medication when applying or
+     between views of a patient’s                          changing a grouping or a sort
+     medications (such that a                              order and ensure that the
+     medication selected in a                              selection remains visible
+     Medication List View is                               Mandatory
+     automatically selected when
+     switching to the Drug
+     Administration View)
+     Recommended
+
+49                                                               Copyright ©2013 Health and Social Care Information Centre
+
+                                                                                        Guidance
+
+Selection
+
+Supporting Selection
+
+Drug Details       Status   Start Date ▲          MEDv-126
+line 1
+                                                  Support the selection of multiple
+line 2
+                                                  items using CTRL and click for
+line 3
+                                                  discrete selections, and SHIFT
+line 4
+                                                  and click for contiguous
+line 5
+                                                  selections
+line 6
+                                                  Mandatory
+line 7
+
+                                                  MEDv-127
+
+                                                  Support keyboard-only
+                                                  equivalents such as SHIFT and
+                                                  arrow key for contiguous
+                                                  selection and the CTRL and
+                                                  SPACEBAR to toggle select and
+                                                  deselect when making
+                                                  non-contiguous selections
+                                                  Mandatory
+
+                                                  MEDv-203
+
+                                                  When an action is applied to
+                                                  more than one medication,
+                                                  display a summary of the
+                                                  selected medications before
+                                                  allowing the user to complete the
+                                                  action
+                                                  Mandatory
+
+                                           Copyright ©2013 Health and Social Care Information Centre   50
+
+Guidance
+
+Selection
+
+Context Menu
+
+                                                                             context menu
+
+Drug Details                                                        Status         Start Date ▼
+oxygen 60% – inhalation gas – RATE 15 L per minute –                 Started       25-May-2010
+continuous – with non re-breather bag
+                                                  Details...
+co-amilofruse – 5 mg and 40 mg in 5 mL – solution –                  Started       24-May-2010
+DOSE 5 mL – oral – once a day                       Suspend
+
+                                                      Edit
+salbutamol – 100 micrograms per dose – metered dose inhaler –        Started       24-May-2010
+DOSE 2 puffs – inhaled – four times a day as required
+
+MEDv-128                                                       MEDv-130
+
+Support the display of a context                               In the context menu, support
+menu for selected medications in                               actions with icons where
+the Medications List View (for                                 appropriate
+example, by right-clicking)                                    Recommended
+Mandatory
+
+MEDv-129                                                       MEDv-131
+
+In the context menu, provide                                   In the context menu, grey out
+appropriate actions and options                                actions that are unavailable or
+Mandatory                                                      disallowed for one or more of the
+                                                               current selections
+                                                               Mandatory
+
+51                                                                   Copyright ©2013 Health and Social Care Information Centre
+
+                                                                                          Guidance
+
+Selection
+
+Context Menu
+
+                                                       MEDv-136
+                   a frequently used action
+                                                       Include an option to access all
+      Details...
+                                                       details for one medication in the
+                                                       context menu
+      Suspend
+                                                       Mandatory
+      Edit
+                                                       MEDv-132
+
+                                                       In the context menu, define a
+                                                       consistent and static order of
+                                                       menu items in which frequently
+                                                       used actions are prioritised by
+                                                       placing them higher in the list
+                                                       Mandatory
+
+                                                       MEDv-135
+
+                                                       In the context menu for
+                                                       selections in the Medications List
+                                                       View, provide an option for
+                                                       displaying all details for the
+                                                       selected medication
+                                                       Mandatory
+
+                                                       MEDv-133
+      Details...       information
+                                                       In the context menu, group
+      Suspend                                          similar options so that the direct
+                        actions                        actions, actions that permit
+      Edit
+                                                       addition of information and
+                                                       actions that display more
+                                                       information, are each grouped
+                                                       together
+                                                       Mandatory
+
+                                              Copyright ©2013 Health and Social Care Information Centre   52

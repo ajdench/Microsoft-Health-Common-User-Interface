@@ -1,0 +1,37 @@
+# Crib Sheet for Address Display
+
+## Provenance
+- Source file: `raw/sources/design-guidance/toolkit-bundled-crib-sheets/Crib Sheet for Address Display.pdf`
+- Extracted text: `derived/extracted-text/design-guidance/crib-sheet-for-address-display.txt`
+- Normalization note: machine-cleaned `pdftotext -layout` output; verify against the PDF for edge cases.
+
+## Extracted Text
+
+Address Display Crib Sheet
+ In-Form Address
+
+     18 Orchard Cottage                           18 Orchard Cottage                                 Line 1 18 Orchard Cottage
+     King’s Road                                  Ipswich                                      Town / City Ipswich
+     Ipswich                                      Northshire                                        County Northshire
+     Northshire                                   NS33 8KR                                      Post Code NS33 8KR
+     NS33 8KR                                     Road Name Omitted:
+                                                  When part of an address is                   Do not display labels for
+         Left-align
+                                                  not available, omit it (rather               individual address elements
+                                                  than leave a space)
+
+ In-Line Address                                                                                          Postcode
+                                                Space and comma between each element
+                                                                                                           Display letters in capitals
+     18 Orchard Cottage, King’s Road, Ipswich, Northshire, NS33 8KR
+                                                                                                                NS33 8KR
+     18 Orchard Cottage, King’s Road,                        Do not split an address element
+                                                             when wrapping an address
+     Ipswich, Northshire, NS33 8KR                           across multiple lines                             Display a space
+                                                                                                               between the two
+                                                                                                               parts
+     18 Orchard Cottage, King’s Road, Ip...
+       When truncating, add an ellipsis
+       and provide access to the full text
+
+ Edition 1 – 20th May 2010     © Microsoft Corporation 2010. All rights reserved.

@@ -1,0 +1,433 @@
+# Sex and current Gender Input and Display - QIG
+
+## Provenance
+- Source file: `raw/sources/design-guidance/nhs-archived-guidance-2016/sexqig.pdf`
+- Extracted text: `derived/extracted-text/design-guidance/nhs-archived-guidance-2016-sexqig.txt`
+- Normalization note: machine-cleaned `pdftotext -layout` output; verify against the PDF for edge cases.
+
+## Extracted Text
+
+Sex and Current Gender
+Input and Display
+Quick Implementation Guide
+
+Edition 1
+22nd April 2010
+
+                         Copyright ©2013 Health and Social Care Information Centre
+
+Contents
+
+Introduction                                                                                                             2
+
+Current Gender and Sex Display                                                                                           3
+
+Current Gender and Sex Input                                                                                             4
+    Current Gender Input                                                                                                 5
+    Sex Input                                                                                                            8
+    Input Control Definitions                                                                                          11
+
+This document was prepared for NHS Connecting for Health which ceased to exist on 31 March 2013. It may
+contain references to organisations, projects and other initiatives which also no longer exist. If you have
+any questions relating to any such references, or to any other aspect of the content, please contact
+cuistakeholder.mailbox@hscic.gov.uk
+
+Copyright:
+You may re-use this information (excluding logos) free of charge in any format or medium, under the terms of
+the Open Government Licence. To view this licence, visit nationalarchives.gov.uk/doc/open-government-
+licence or email psi@nationalarchives.gsi.gov.uk.
+
+1                                                                           Copyright ©2013 Health and Social Care Information Centre
+
+                                                                                                            Guidance
+
+Introduction
+        The NHS categorises a person’s gender in two ways:
+        ·   Person Gender Current, which refers to a person’s current gender classification
+            For brevity and clarity, this document uses the term Current Gender for this concept
+
+        ·   Person Gender at Registration, which refers to the record of a person’s gender
+            classification at the point of birth registration
+            For brevity and clarity, this document uses the term Sex for this concept
+
+        Healthcare professionals and patients may confuse the terms ‘Current Gender’ and ‘Sex’,
+        or assume that they are synonymous. Therefore, all NHS applications should display and
+        explain those terms in a clear and consistent manner, both at input and at subsequent
+        display.
+        Allowable values for Current Gender and Sex need to be from a pre-defined, restricted set
+        in order to ensure legal compliance and data interoperability and to respect patient
+        sensitivity.
+
+        Important
+        The values defined in this document are based upon the current proposed changes to
+        the NHS Data Model and Dictionary1. Should future changes be made to this
+        document, amendments to this guidance will be required.
+
+        Although it contains all of the guidance points, this document omits supporting
+        information and is therefore not intended as a substitute for the full NHS CUI document
+        Sex and Current Gender Input and Display2 . Refer to that document for the definitive
+        statement of the design guidance in this area.
+        The visual representations used to display the guidance are illustrative only. Stylistic
+        choices (for example, display font used), unless otherwise specified, are not part of the
+        guidance and are therefore not mandatory requirements.
+
+    1
+     NHS Data Model and Dictionary
+    http://www.datadictionary.nhs.uk/index.asp
+2
+    Sex and Current Gender Input and Display – User Interface Design Guidance (v4.0.0.0)
+
+                                                                   Copyright ©2013 Health and Social Care Information Centre   2
+
+Guidance
+
+Current Gender and Sex Display
+
+               Male               CGS-0003
+
+                                  The Current Gender status is
+               Female             one of the illustrated values
+               Other Specific     Mandatory
+
+               Not Known
+
+               Not Specified
+
+                                  CGS-0011
+               Male               The Sex status must only
+                                  contain one of the illustrated
+               Female
+                                  values
+               Not Known          Mandatory
+
+               Indeterminate
+
+                                  CGS-0007
+       Current Gender Not Known   Label the Current Gender
+                                  status display ‘Current
+                Sex     Female
+                                  Gender’
+                                  Recommended
+
+                                  CGS-0016
+
+                                  Label the Sex status display
+                                  ‘Sex’
+                                  Recommended
+
+3                                            Copyright ©2013 Health and Social Care Information Centre
+
+                                                                                              Guidance
+
+Current Gender and Sex Input
+ The guidance supports two control styles for input of Current Gender and Sex
+
+    Option Button Group                            Drop-Down List Box
+    (also known as Radio Button Group)
+
+    Current Gender                                 Current Gender
+                                                   Not Known
+          Male
+          Female                                   Male
+                                                   Female
+          Other Specific
+                                                   Other Specific
+          Not Known                                Not Known
+          Not Specified                            Not Specified
+
+    Sex                                            Sex
+
+          Male
+                                                   Male
+          Female
+                                                   Female
+          Not Known                                Not Known
+          Indeterminate                            Indeterminate
+
+    The Option Button group design
+    occupies more screen space but
+    provides better instruction to the user.
+    This control style should be used if
+    there is room on the input form.
+
+                                                     Copyright ©2013 Health and Social Care Information Centre   4
+
+Guidance
+
+Current Gender Input
+
+           Current Gender        CGS-0001
+
+                                 Label the Current Gender input
+                Male
+                                 controls ‘Current Gender’
+                Female
+                                 Mandatory
+                Other Specific
+                                 CGS-0008
+                Not Known
+                                 Use ‘Not Known’ as the
+                Not Specified
+                                 Current Gender default value
+                                 Recommended
+
+                                 CGS-0020
+
+                                 Current Gender option buttons
+                                 group input controls must
+                                 consist of five option buttons
+                                 Mandatory
+
+                                 CGS-0021
+
+                                 Current Gender option button
+                                 group labels must be in the
+                                 order illustrated
+                                 Mandatory
+
+                                 CGS-0022
+
+                                 The Current Gender tab order
+                                 is the same as illustrated
+                                 Recommended
+
+5                                            Copyright ©2013 Health and Social Care Information Centre
+
+                                                                                                 Guidance
+
+ Current Gender Input
+
+Current Gender    Not Known                          CGS-0026
+
+                  Male                               Use a single drop-down list
+                  Female                             box for the Current Gender
+                  Other Specific                     control
+                  Not Known                          Mandatory
+                  Not Specified                      CGS-0025
+
+                                                     Current Gender drop-down list
+                                                     box options are in the order
+                                                     illustrated
+                                                     Mandatory
+
+                               default value         CGS-0027
+                               (thus no prompt)      Do not use a prompt for the
+                                                     Current Gender control, due to
+Current Gender    Not Known                          its default value of ‘Not
+                                                     Known’
+                                                     Mandatory
+
+          Current Gender                             CGS-0004
+
+                 Male
+                                                     Make the definitions of the
+                                                     Current Gender status values
+                 Female
+                                                     accessible to the user
+                 Other Specific                      Mandatory
+                   Not Known
+                 When   the person has a clear
+                   Not Specified
+                 idea of what their gender is, but   Note The tooltip is one example of
+                 is neither discretely male nor      how a definition might be displayed.
+                 female, for example, ‘intersex’,    The display style and definition are
+                 ‘transgender’, ‘third gender’       not part of the guidance
+
+                                                        Copyright ©2013 Health and Social Care Information Centre   6
+
+Guidance
+
+Current Gender Input
+
+            Male             CGS-0002
+
+                             The Current Gender values
+            Female
+                             are as illustrated
+            Other Specific   Mandatory
+                             CGS-0005
+            Not Known
+                             Do not abbreviate Current
+            Not Specified    Gender data values
+                             Mandatory
+
+                             CGS-0006
+
+                             Do not display the underlying
+                             coded representation of the
+                             Current Gender data values
+                             For example, the standard
+                             code for ‘Male’ may be the
+                             integer 1, but this number
+                             should not appear
+                             Mandatory
+
+7                                        Copyright ©2013 Health and Social Care Information Centre
+
+                                                                              Guidance
+
+Sex Input
+
+            Sex                   CGS-0009
+
+                                  Label the Sex input
+                  Male
+                                  controls ‘Sex’
+                  Female
+                                  Mandatory
+                  Not Known
+                                  CGS-0013
+                  Indeterminate
+                                  The Sex default
+                                  state is null
+                                  Mandatory
+
+                                  CGS-0023
+
+                                  Sex option button group input
+                                  controls must consist of four
+                                  option buttons
+                                  Mandatory
+
+                                  CGS-0024
+
+                                  Sex option button group labels
+                                  are in the order illustrated
+                                  Recommended
+
+                                     Copyright ©2013 Health and Social Care Information Centre   8
+
+Guidance
+
+Sex Input
+
+      Sex                                   CGS-0028
+
+            Male                            Ensure that Sex controls have
+            Female                          no value selected by default
+            Not Known                       and no method of returning to
+            Indeterminate                   this ‘null’ state
+                                            Mandatory
+
+                                            CGS-0029
+
+                                            Use a single control for the
+                                            Sex drop-down list box
+                                            Mandatory
+                                            CGS-0030
+
+                                            Ensure that the Sex
+                                            drop-down list box is blank by
+                                            default and does not contain a
+                                            prompt
+                                            Recommended
+
+      Sex                                   CGS-0015
+
+            Male
+                                            Make the definitions of the
+                                            Sex status values accessible
+            Female                          to the user
+            Not Known                       Mandatory
+            Indeterminate
+                                            Note The tooltip is one example of
+               Unable to be classified as   how a definition might be displayed.
+               either male or female        The display style and definition are
+                                            not part of the guidance
+
+9                                                       Copyright ©2013 Health and Social Care Information Centre
+
+                                                                        Guidance
+
+Sex Input
+
+            Male            CGS-0010
+
+                            The Sex values are as
+            Female
+                            illustrated
+            Not Known       Mandatory
+                            CGS-0012
+            Indeterminate
+                            Sex data values must never
+                            be abbreviated
+                            Mandatory
+
+                            CGS-0014
+
+                            The application must not
+                            display the underlying coded
+                            representation of the Sex data
+                            values
+                            For example, the standard
+                            code for ‘Male’ may be the
+                            integer 1, but this number
+                            must not appear
+                            Mandatory
+
+                             Copyright ©2013 Health and Social Care Information Centre   10
+
+Guidance
+
+Input Control Definitions
+
+                                            CGS-0017
+     Current Gender
+                                            Provide definitions for input
+          Male                              controls
+         ‘Current Gender’ as assigned
+          Female
+         by the individual to themselves    Mandatory
+          Other Specific                    CGS-0019
+
+          Not Known                         Provide a shortened version of
+          Not Specified                     the definitions
+                                            Recommended
+
+Other Specific                              Left Examples of definitions for
+                                            Current Gender values
+When the person has a clear idea of
+what their gender is, but is neither
+discretely male nor female, for example,    Note These definitions are
+‘intersex’, ‘transgender’, ‘third gender’   examples only and do not
+                                            form part of guidance
+
+Not Known
+
+Used when no information on this
+subject is known
+
+Not Specified
+When the person is unable to specify
+their current gender or does not have a
+clear idea of their current gender
+
+11                                                      Copyright ©2013 Health and Social Care Information Centre
+
+                                                                                     Guidance
+
+Input Control Definitions
+
+  Sex                                    CGS-0018
+
+                                         Provide access to definitions
+        Male                             of the valid values
+        Female                           Mandatory
+        Not Known
+        Indeterminate
+
+            Unable to be classified as
+            either male or female
+
+Not Known                                Left Examples of definitions for Sex
+                                         values
+Used when no information on this
+subject is known
+                                         Note These definitions are
+                                         examples only and do not
+Indeterminate                            form part of the guidance
+
+Used when the person is unable to be
+classified as either male or female
+
+                                          Copyright ©2013 Health and Social Care Information Centre   12

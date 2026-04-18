@@ -1,0 +1,24 @@
+
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/css/SourceCode.css" />
+	<script src="/js/feedback.js"></script>
+	<script>var require = { paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.1/min/vs' } }</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.1/min/vs/loader.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.1/min/vs/editor/editor.main.nls.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.1/min/vs/editor/editor.main.js"></script>
+	<script>
+		window.colorize = function (fr) { }; // IE fallback
+	</script>
+	<script type="module" src="/js/sourceCode.js"></script>
+</head>
+<frameset id="sourcecode" cols="20%,80%" border="2" bordercolor="silver">
+	<frame src="tree"></frame>
+	<frame name="sf" onload="colorize(this)"></frame>
+	<noframes>
+	Congratulations, you found a frameset.
+	Sadly your browser failed you.
+	Send feedback if you insist this whould work.
+	</noframes>
+</frameset>
+</html>

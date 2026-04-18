@@ -1,0 +1,726 @@
+Address Input and Display
+Quick Implementation Guide
+
+
+
+Edition 1
+22nd April 2010
+
+
+
+Version History to be deleted before publishing Edition 2
+0.0.0.1   07-Mar-2010 Changed illustration for ADR-0052
+
+
+
+
+                                                            Copyright ©2013 Health and Social Care Information Centre
+Contents
+
+
+
+
+Introduction                                                                                                                2
+
+Address Display                                                                                                             3
+
+UK Address Input                                                                                                            6
+
+UK Address Finder                                                                                                         12
+
+Non-UK Address Input                                                                                                      15
+
+
+This document was prepared for NHS Connecting for Health which ceased to exist on 31 March 2013. It may
+contain references to organisations, projects and other initiatives which also no longer exist. If you have any
+questions relating to any such references, or to any other aspect of the content, please contact
+cuistakeholder.mailbox@hscic.gov.uk
+
+Copyright:
+You may re-use this information (excluding logos) free of charge in any format or medium, under the terms of
+the Open Government Licence. To view this licence, visit nationalarchives.gov.uk/doc/open-government-
+licence or email psi@nationalarchives.gsi.gov.uk.
+
+
+
+
+1                                                                       Copyright ©2013 Health and Social Care Information Centre
+                                                                                                       Introduction
+
+
+Introduction
+Record and display postal addresses in clinical applications accurately and consistently in
+order to support:
+
+     ·   Patient identification
+     ·   Service delivery (such as sending appointment letters)
+     ·   Data interoperability
+
+
+
+
+     Important
+     Although it contains all of the guidance points, this document omits supporting
+     information and is therefore not intended as a substitute for the full NHS CUI document
+     Address Input and Display1. Refer to that document for the definitive statement of the
+     design guidance in this area.
+     The visual representations used to display the guidance are illustrative only. Stylistic
+     choices (for example, display font used), unless otherwise specified, are not part of the
+     guidance and are therefore not mandatory requirements.
+
+
+
+
+1
+    Address Input and Display – User Interface Design Guidance (v3.0.0.0)
+
+
+                                                                    Copyright ©2013 Health and Social Care Information Centre   2
+Guidance
+
+
+Address Display
+
+
+    There are two forms of address display supported by this guidance that apply to
+    both UK and non-UK addresses:
+
+
+             18 Orchard Cottage
+             King’s Road
+             Ipswich
+             Northshire
+             NS33 8KR
+
+            In-form or vertically aligned address
+
+
+
+
+             18 Orchard Cottage, King’s Road, Ipswich, Northshire, NS33 8KR
+            In-line or horizontally aligned address
+
+
+
+
+3                                                             Copyright ©2013 Health and Social Care Information Centre
+                                                                                               Guidance
+
+
+Address Display
+
+
+
+    18 Orchard Cottage, King’s Road, Ipswich, Northshire, NS33 8KR
+
+                                                   ADR-0001
+
+                                                   When displaying an
+                                                   address horizontally, only
+                                                   use a single comma and a
+                                                   single space, in that order,
+                                                   to delimit the different fields
+                                                   Mandatory
+
+                                                   ADR-0002
+
+                                                   When displaying an address
+    18 Orchard Cottage                             vertically, do not use a comma
+    King’s Road                                    at the end of a line
+    Ipswich
+                                                   Recommended
+    Northshire
+    NS33 8KR                                       ADR-0003
+
+                                                   When displaying an address
+                                                   vertically, left-align the text for
+                                                   ease of reading
+                                                   Recommended
+
+
+                                                   ADR-0004
+    18 Orchard Cottage, King’s Road...             When truncating an address,
+                                                   add an ellipsis to indicate that
+                                                   the address is not displayed in
+                                                   full and, where appropriate,
+                                                   provide a means for the user
+                                                   to access the full address
+                                                   Recommended
+
+
+                                                   ADR-0005
+    18 Orchard Cottage,
+    King’s Road, Ipswich,                          Do not split an address
+    Northshire, NS33 8KR                           element when wrapping an
+                                                   address across multiple lines
+    Wrapping of the address has caused ‘King’s     Recommended
+    Road’ to be displayed on a new line. It has
+    wrapped without splitting the two words
+
+
+                                                      Copyright ©2013 Health and Social Care Information Centre   4
+Guidance
+
+
+Address Display
+
+
+
+     18 Orchard Cottage                ADR-0006
+     Ipswich                           Where part of an address is
+     Northshire
+                                       not available, do not display
+     NS33 8KR
+                                       an empty string in its place
+                                       Recommended
+     The name of the road is missing
+
+
+
+
+                                       ADR-0007
+
+     NS33 8KR                          Display the postcode in all
+                                       caps with a space between
+           space                       the first part (the outcode) and
+                                       the second part (the incode)
+                                       Mandatory
+
+
+                                       ADR-0008
+     Address                           Do not display labels for
+     18 Orchard Cottage                individual address elements
+     Ipswich                           Recommended
+     Northshire
+     NS33 8KR
+
+
+
+
+5                                           Copyright ©2013 Health and Social Care Information Centre
+                                                                                                       Guidance
+
+
+UK Address Input
+
+
+
+    The minimum number of data elements required for input of a UK address can
+    vary. Many addresses will only require three elements:
+
+
+         ·   House number and street
+         ·   Town or city
+         ·   Postcode
+
+
+    However, addresses outside of London will require a ‘County’ and all addresses
+    might need the name of a locality or suburb. During design, reference should be
+    made to the NHS Data Model and Dictionary1 and the NHS Connecting for Health
+    Personal Demographics Service (PDS)2 to ensure that content and field lengths
+    comply with the requisite standards.
+    Where possible, designers of NHS clinical applications should consider validation
+    of the address at time of input in line with PDS entry order.
+
+
+
+
+1
+ NHS Data Model and Dictionary
+http://www.datadictionary.nhs.uk/index.asp
+2
+ The Personal Demographics Service
+http://www.connectingforhealth.nhs.uk/systemsandservices/demographics/pds/
+
+
+                                                              Copyright ©2013 Health and Social Care Information Centre   6
+Guidance
+
+
+UK Address Input
+
+
+
+
+                                                        Line 1
+    Three boxes for input of all details up             Line 2
+    to and including the street name
+                                                        Line 3
+
+    One box for input of the town or city          Town / City
+
+    One box for the input of the county                County
+
+    One box for the input of the postcode           Postcode                                  Find Postcode
+
+                                                         ADR-00011
+
+                                                         Provide these input boxes, in
+                                                         the stated order, for UK
+                                                         address input
+                                                         Recommended
+
+
+                                                         ADR-0012
+         Line 1
+                                                         Where text input boxes are
+         Line 2                                          used, they must be labelled as
+                                                         illustrated
+         Line 3                                          Mandatory
+
+    Town / City                                          Note This guidance applies to the
+                                                         text of the labels, not the formatting
+        County
+
+      Postcode                     Find Postcode
+                                                         ADR-0014
+      ADR-0013
+                                                         Display a means to find a
+      Provide a means to find a                          postcode only if such a service is
+      postcode, to enhance data                          supported, positioning it after the
+      quality                                            postcode input box and labelling
+      Recommended                                        it ‘Find Postcode’
+                                                         Recommended
+
+
+
+7                                                                Copyright ©2013 Health and Social Care Information Centre
+                                                                         Guidance
+
+
+UK Address Input
+
+
+
+                             ADR-0015
+
+  Postcode   NS33 8KR        Set the length of the postcode
+                             input box to 8 characters
+             8 characters
+                             Mandatory
+
+                             ADR-0016
+
+
+    County                   Set the length of the ‘County’
+                             input box to 18 characters
+             18 characters   Recommended
+
+
+                             ADR-0017
+
+
+    Line 1                   Set the height of each text
+                             input box to the largest
+    Line 2
+                             character height in the
+                             currently active display font,
+                             taking the user’s settings into
+                             account
+                             Recommended
+
+
+
+
+                              Copyright ©2013 Health and Social Care Information Centre   8
+Guidance
+
+
+UK Address Input
+
+
+
+                          Left align input fields             ADR-0018
+
+         Line 1                                               Display the text input boxes
+                                                              vertically with left alignment
+         Line 2                                               Recommended
+
+         Line 3
+                                                              ADR-0019
+    Town / City
+                                                              Display the labels immediately
+        County                                                to the left of their
+                                                              corresponding text input box,
+     Postcode                                 Find Postcode
+                                                              mutually right-aligning the
+                                                              labels
+Right align
+                                                              Recommended
+    labels
+
+
+
+                                                              ADR-0020
+
+
+                                                              Permit address input via all
+                  Q           W           E                   the mechanisms supported on
+                                                              a platform such as, but not
+                      A           S
+                                                              limited to, typing on a
+                          Z           X                       keyboard, copy and paste,
+                                                              and handwriting with a stylus
+                                                              Recommended
+
+
+
+
+9                                                                   Copyright ©2013 Health and Social Care Information Centre
+                                                                                    Guidance
+
+
+UK Address Input
+
+
+
+  Aa Uppercase and lowercase letters   ADR-0021
+
+ 0-9 Numbers 0 to 9                    Permit the illustrated
+   . The full stop                     characters in an address
+                                       Recommended
+   / Forward slash
+   , Comma
+   : Colon
+    ‘ Apostrophe
+     Space
+   - Hyphen
+
+
+
+
+                                       Copyright ©2013 Health and Social Care Information Centre   10
+Guidance
+
+
+UK Address Input
+
+
+
+ Though the guidance does not define it, the input control should provide
+ instructional text to guide input. This could be by using hints (text outside the text
+ input box), prompts (watermarks inside the text input box), or tool tips.
+
+
+
+     Town / City                                      e.g. Ipswich
+
+         County                                       e.g. Northshire
+
+
+                   Instructional text outside of the text input box
+
+
+
+
+     Town / City    e.g. Ipswich
+
+         County     e.g. Northshire
+
+
+                   Instructional text inside the text input box
+
+
+
+
+          Line 1
+
+          Line 2
+                        Enter the first line of the address
+
+                   Instructional text in a tool tip
+
+
+
+
+11                                                                      Copyright ©2013 Health and Social Care Information Centre
+                                                                                                   Guidance
+
+
+UK Address Finder
+
+
+  A UK address finder should only be provided if the clinical application supports a
+  postcode-based address lookup service. Typically, all the matching addresses
+  found in the database are displayed in an address picker. The user then selects
+  one of these addresses and it is stored as if the user had input the whole address.
+
+  Thought the guidance does not define it, the finder control may provide additional
+  text by using hints, prompts or tool tips.
+
+
+
+
+          House / Building Number
+
+            House / Building Name
+
+                         Postcode                           Find Address
+
+                                        UK Address Finder
+
+
+
+
+                                                      ADR-0031
+ 1 box For input of house or building
+                                                      Provide these text input boxes, in
+       number
+                                                      the stated order, for input of a
+ 1 box For input of house or building                 UK address
+       name
+                                                      Recommended
+ 1 box For input of the postcode
+
+
+                                                      ADR-0032
+             House / Building Number
+                                                      Where text input boxes are
+               House / Building Name                  used, they must be labelled as
+                                                      illustrated
+                            Postcode
+                                                      Mandatory
+
+
+
+
+                                                      Copyright ©2013 Health and Social Care Information Centre   12
+Guidance
+
+
+UK Address Finder
+
+
+
+              House / Building Number
+
+                House / Building Name
+
+                           Postcode             Find Address
+
+
+                                          ADR-0033
+
+                                          Display a means to find an
+                                          address only if such a service is
+                                          supported, positioning it after the
+                                          postcode input box and labelling
+                                          it ‘Find Address’
+                                          Recommended
+
+
+                                          ADR-0034
+ Postcode   NS33 8KR       Find Address   Set the length of the postcode
+            8 characters                  input box to 8 characters
+                                          Mandatory
+
+
+                                          ADR-0035
+ House / Building Number
+                                          Set the height of each text input
+                                          box to the largest character
+                                          height in the currently active
+                                          display font, taking the user’s
+                                          settings into account
+                                          Recommended
+
+
+
+
+13                                              Copyright ©2013 Health and Social Care Information Centre
+                                                                                                        Guidance
+
+
+UK Address Finder
+
+
+
+
+                                                           ADR-0036
+
+                                                           Display the text input boxes
+                                                           vertically with left alignment
+                                                           Recommended
+
+
+                                                   Left align input fields
+
+        House / Building Number
+
+         House / Building Name
+
+                                        Postcode                    Find Address
+
+
+                                     Right align           ADR-0037
+                                         labels
+                                                           Display the labels immediately
+                                                           to the left of their
+                                                           corresponding text input box,
+                                                           mutually right-aligning the
+                                                           labels
+                                                           Recommended
+
+
+
+                                                           ADR-0038
+         Q           W           E
+                                                           Permit address input via all
+             A           S
+                                                           the mechanisms supported on
+                                                           a platform such as, but not
+                 Z           X                             limited to, typing on a
+                                                           keyboard, copy and paste,
+                                                           and handwriting with a stylus
+                                                           Recommended
+
+
+
+
+                                                             Copyright ©2013 Health and Social Care Information Centre   14
+Guidance
+
+
+Non-UK Address Input
+
+
+
+ Non-UK address input may be required for an expatriate living abroad, a patient
+ living abroad temporarily, or a patient providing the address of their next of kin.
+
+
+                                                      ADR-0050
+  1 editable For country selection
+                                                      Provide the illustrated boxes,
+ combo box
+                                                      in the stated order, for input of
+     4 boxes For all details up to and                a non-UK address
+             including the street name                Recommended
+       1 box For input of the town or city
+
+       1 box For input of the postal
+             code
+
+
+
+
+                                                      ADR-0051
+
+                                                      Where used, the boxes must
+     Country
+                                                      be labelled as illustrated
+      Line 1                                          Mandatory
+
+      Line 2
+                                                      Note This guidance applies to the
+      Line 3                                          text of the labels, not the formatting
+
+      Line 4
+
+Town / City
+
+Postal Code                   Find Postcode
+
+
+
+
+15                                                          Copyright ©2013 Health and Social Care Information Centre
+                                                                                                        Guidance
+
+
+Non-UK Address Input
+
+
+
+                                                            ADR-0052
+     Country
+                                                            Set the height of each text
+       Line 1                                               input box to the largest
+                                                            character height in the
+                                                            currently active display font,
+                                                            taking the user’s settings into
+                                                            account
+                                                            Recommended
+
+                                                            ADR-0053
+                    Left align input fields                 Display the input boxes
+     Country                                                vertically with left alignment
+                                                            Recommended
+       Line 1
+
+       Line 2                                               ADR-0054
+
+
+       Line 3
+                                                            Display the labels immediately
+                                                            to the left of their
+       Line 4                                               corresponding text input box,
+                                                            mutually right-aligning the
+  Town / City                                               labels
+ Postal Code                                Find Postcode   Recommended
+
+Right align
+    labels
+
+
+                                                            ADR-0055
+
+                                                            Permit address input via all
+                Q           W           E                   the mechanisms supported on
+                                                            a platform such as, but not
+                    A           S
+                                                            limited to, typing on a
+                        Z           X                       keyboard, copy and paste,
+                                                            and handwriting with a stylus
+                                                            Recommended
+
+
+
+                                                             Copyright ©2013 Health and Social Care Information Centre   16
+Guidance
+
+
+Non-UK Address Input
+
+
+
+                                                              ADR-0056
+         Country
+                                                              Use an editable drop-down
+                                                              combo box for country names
+                                                              Recommended
+
+
+                                                              ADR-0057
+         Country
+                                                              Use the list of country names
+                     Afghanistan                              in ISO 3166-11 for the country
+                     Aland Islands                            selector drop-down combo
+                     Albania                                  box
+                     Algeria
+                     American Samoa                           Mandatory
+                     Andorra
+                                                              ADR-0058
+                     Angola
+                     Anguilla                                 Display the country names in
+                     Antarctica                               alphabetic order
+                     Antigua and Barbuda
+                                                              Recommended
+
+                                                              ADR-0059
+
+                                                              Display the country names
+                                                              with left alignment
+                                                              Recommended
+
+
+
+
+1
+    ISO 3166-1: 2006 Codes for the representation of names of countries and their subdivisions
+     Part 1: Country codes http://www.iso.org/iso/country_codes/iso_3166_code_lists/
+                           english_country_names_and_code_elements.htm
+     and http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=2130
+
+17                                                                   Copyright ©2013 Health and Social Care Information Centre
+

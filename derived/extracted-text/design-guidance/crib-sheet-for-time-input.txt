@@ -1,0 +1,45 @@
+Time Input Crib Sheet
+
+                                                                                                     Allow the time elements         1     13:54
+                  Use the 24-hour clock only                                                         (hours, minutes and
+                                                                                                     seconds) to be
+                                 Provide a check box for indicating                                                                  2     13:54
+                                                                                                                                           2
+                                                                                                     individually edited
+                                 when the time is approximate
+                                                                                                                                     3     22:54
+ 13:54                       Approx
+                                                       Provide access to instructions
+                                                       on how to use the control                     Support selection of the              22:54
+                                                                                                     entire value
+              hh:mm:ss
+                                                                  Provide indication that the
+                                                                  24-hour clock is in use            Support arithmetic shortcuts
+               Enter a time using the 24-hour                                                                                              +3h
+                                                                                                     for times (but not for dates)
+               clock (for example ‘13:05’) or a
+               shortcut (for example ‘+3h’).
+                                                                                                     Allow input of ‘unknown’ or           Un
+                                                                                                     similar
+
+Follow guidance for Time Display
+                                                                                           Default Values                       Arithmetic Shortcuts
+ Spin Control
+                                                                                           Display a default within
+ Increase / decrease the whole                   Provide the ability to                    the time input control                  + For later times
+ time by the least significant time              spin individual time
+ unit if the entire value is selected            units when selected                        hh:mm:ss                               - For earlier times
+ or if no unit is selected                                                                  Non-specific default
+                                                                                                                                   h hours
+
+      1      23:35:01                              1       23:35:01                         12:00
+                                                                                                                                 m minutes
+                                                                                            Default time
+                                                                                            (appropriate to                        s seconds
+      2      23:35:02                              2      23:35:02
+                                                          22
+                                                                                            the clinical context)
+
+
+ Edition 1 – 20th May 2010            © Microsoft Corporation 2010. All rights reserved.
+

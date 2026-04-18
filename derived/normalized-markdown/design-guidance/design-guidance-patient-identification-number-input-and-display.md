@@ -1,0 +1,476 @@
+# Design Guidance -- Patient Identification Number Input and Display
+
+## Provenance
+- Source file: `raw/sources/design-guidance/toolkit-bundled-pdfs/Design Guidance -- Patient Identification Number Input and Display.pdf`
+- Extracted text: `derived/extracted-text/design-guidance/design-guidance-patient-identification-number-input-and-display.txt`
+- Normalization note: machine-cleaned `pdftotext -layout` output; verify against the PDF for edge cases.
+
+## Extracted Text
+
+Design Guidance
+Patient Identification Number Input and Display
+
+                              Thursday, 28 January 2010
+                                         Version 2.0.0.0
+
+                                            Prepared by
+
+PREFACE
+   Documents replaced by this document
+
+   Document Title                                                                                                                  Version
+   Design Guidance – Patient Identification Number Input and Display                                                               1.0.0.0
+
+   Documents to be read in conjunction with this document
+
+   Document Title                                                                                                                  Version
+   Design Guidance – Accessibility Principles                                                                                      1.0.0.0
+
+   Design Guidance – Accessibility Checklist                                                                                       1.0.0.0
+
+This document and/or software (“this Content”) has been created in partnership with the National Health Service (NHS) in England. Intellectual Property
+Rights to this Content are jointly owned by Microsoft and the NHS in England, although both Microsoft and the NHS are entitled to independently exercise
+their rights of ownership. Microsoft acknowledges the contribution of the NHS in England through their Common User Interface programme to this Content.
+Readers are referred to www.cui.nhs.uk for further information on the NHS CUI Programme.
+All trademarks are the property of their respective companies. Microsoft and Windows are either registered trademarks or trademarks of Microsoft
+Corporation in the United States and/or other countries.
+
+© Microsoft Corporation 2010. All rights reserved.
+
+                                    Design Guidance – Patient Identification Number Input and Display
+                                    Prepared by Microsoft, Version 2.0.0.0
+                                    Last modified on 28 January 2010
+
+TABLE OF CONTENTS
+1    Introduction ....................................................................................................................................1
+    1.1    Customer Need .........................................................................................................................1
+    1.2    Scope ........................................................................................................................................2
+     1.2.1      In Scope...............................................................................................................................2
+     1.2.2      Out of Scope ........................................................................................................................2
+    1.3    Key Principles ...........................................................................................................................3
+
+2    Recommendations and Guidance ................................................................................................4
+    2.1    Number Display.........................................................................................................................4
+     2.1.1      Guidance .............................................................................................................................4
+     2.1.2      Examples of Correct Usage.................................................................................................4
+     2.1.3      Examples of Incorrect Usage ..............................................................................................5
+     2.1.4      Rationale..............................................................................................................................5
+    2.2    Number Input ............................................................................................................................6
+     2.2.1      Hints, Prompts and Tooltips ................................................................................................6
+     2.2.2      Guidance .............................................................................................................................7
+     2.2.3      Examples of Correct Usage.................................................................................................7
+     2.2.4      Examples of Incorrect Usage ..............................................................................................7
+     2.2.5      Rationale..............................................................................................................................8
+
+3    Document Information ...................................................................................................................9
+    3.1    Terms and Abbreviations ..........................................................................................................9
+    3.2    Nomenclature ............................................................................................................................9
+     3.2.1      Body Text.............................................................................................................................9
+     3.2.2      Cross References ................................................................................................................9
+
+                                 Design Guidance – Patient Identification Number Input and Display
+                                 Prepared by Microsoft, Version 2.0.0.0
+                                 Last modified on 28 January 2010
+
+1             INTRODUCTION
+    This document describes the design guidance for input and display of patient identification numbers
+    in clinical applications. It describes the area of focus, provides guidance and recommendations,
+    and explains the rationale behind the guidance and recommendations.
+    This document is intended for the use of anyone whose role includes screen design,
+    implementation, or assessment of a clinical application. This document can be used as guidance
+    for the:
+          Specification of an input control and a display control for a patient identification number in a
+           user interface (UI)
+          Implementation of an input control and a display control for a patient identification number
+           within an application
+          Assessment of an input control and a display control for a patient identification number in a
+           clinical application user interface
+         Notes
+          This document contains some examples explicitly derived from research in the UK. Whilst you should
+               adhere to the underlying principles, disregard any country-specific detail if it is not appropriate for your
+               locale. Ensure that your clinical application adheres to the requirements of the location where it will be
+               used
+          Elements used within a software application are commonly referred to as a ‘control’. These can take
+               many forms but the types referred to in this document will either be ‘input controls’ that can receive
+               input from a user, such as a button, text box, option button (radio button) or check box, or ‘display
+               controls’ such as a label, which can only display information
+
+    Table 1 describes the changes made since the previous version of this guidance (Baseline version
+    1.0.0.0 dated 01-Apr-2008):
+
+    Change            IDs             Change Description
+    Deleted                           None
+
+    Modified                          Enhanced out of scope context setting (section 1.2.2)
+
+                                      Enhanced usage example description (section 2.1.2)
+
+    Added             NUM-0002        Display the patient identification number (for example, NHS Number) in groups for readability
+    Table 1: Changes Since the Last Baseline Version
+
+1.1           Customer Need
+    The accurate identification of patients is vital to ensure that the correct patient receives the right
+    care. This is a very frequent task and must necessarily be repeated every time a patient presents
+    themselves, for example, to a receptionist, sometimes several times in one day. In addition to being
+    accurate, the patient-identification task must therefore also be performed efficiently. The patient
+    identification number is a unique identifier that makes it possible to share patient information across
+    the healthcare industry safely, efficiently and accurately.
+
+    The patient identification number will be read from screen displays and be correlated with
+    information in different media, for example, paper records, and forms, to check that these show the
+    same identifier. Unambiguous display enhances patient safety and application usability by enabling
+    rapid correlation with paper records and forms on which the identifier is printed. Therefore, it should
+    be presented in an easy-to-read and consistent format across all media.
+
+                                                                                                                                       Page 1
+                                  Design Guidance – Patient Identification Number Input and Display
+                                  Prepared by Microsoft, Version 2.0.0.0
+                                  Last modified on 28 January 2010
+
+ The patient identification number will provide the means to efficiently integrate a patient’s data from
+ disparate registers. Additional checks with the full set of patient information, such as family name,
+ given name, gender, date of birth and address, are used for greater accuracy when matching for
+ clinical purposes.
+
+1.2      Scope
+ This section defines the scope of this guidance document.
+
+1.2.1        In Scope
+ This guidance is applicable to UIs such as those displayed on desktop or laptop computers. It is
+ assumed that, as a minimum, these computers are capable of operating at a display resolution of
+ 1024 x 768, and have a keyboard and pointing device. The following items are in scope:
+       Input of a fully specified patient identification number
+       Display of a fully specified patient identification number
+
+1.2.2        Out of Scope
+ This section defines areas that are not covered in this guidance. Although there may be specific
+ risks associated with these areas that are not addressed in this guidance, it is likely that the
+ principles in this guidance will extend to the input and display of a patient identification number in
+ many of the areas listed below.
+ The following items are out of scope:
+       Validation –That a given patient identification number is that of the stated person
+       Multi-language applications – Languages that use right-to-left writing, such as Arabic, the
+        Cyrillic alphabet such as Russian, or ideograms such as Japanese
+       Display styles – Choice of display font size, background and foreground text colour will
+        affect the readability of patient identification numbers, as with all other displayed text
+       Bar code representation – The display on a wristband of a patient identification number in
+        the form of a bar code
+       Reduced-size form factors – This guidance does not cover reduced-size form factors,
+        such as personal digital assistants (PDAs) and such other small mobile devices
+       Data storage and transmission – This guidance relates only to the display layer of a
+        clinical application, and does not prescribe how patient identification numbers should be
+        stored. It is assumed that all applications will be capable of transforming a patient
+        identification number stored in an arbitrary format, into that prescribed by this guidance,
+        without error
+       Data history and provenance – The recording of dates for when a patient identification
+        number is valid is left to the designer of the clinical application
+       Form design – Typically a patient identification number will be entered in a form in which a
+        user is asked to enter additional information such as name and contact address. This
+        guidance does not address form-level aspects such as the positioning of labels, error
+        messages, or how mandatory fields should be displayed
+
+      Note
+      Listing an item as out of scope does not classify it as unimportant. Project time and resource constraints
+      inevitably restrict what can be in scope for a particular release. It is possible that items out of scope for
+      this release may be considered for a future release.
+
+                                                                                                                Page 2
+                          Design Guidance – Patient Identification Number Input and Display
+                          Prepared by Microsoft, Version 2.0.0.0
+                          Last modified on 28 January 2010
+
+1.3     Key Principles
+ The following key principles have shaped the guidance in this document:
+       Conforming to convention and existing best practice with which clinicians are already
+        familiar, so as to reduce the training requirements of clinical applications
+       Promoting data quality to reduce the occurrence of errors
+       Balancing the need for consistency and commonality across clinical applications with the
+        need to support Independent Software Vendor (ISV) requirements for flexibility
+
+                                                                                                 Page 3
+                      Design Guidance – Patient Identification Number Input and Display
+                      Prepared by Microsoft, Version 2.0.0.0
+                      Last modified on 28 January 2010
+
+2            RECOMMENDATIONS AND GUIDANCE
+    The guidance provided in this document is based upon a programme of user research, including:
+          A desk-based research project looking at a range of information entry Web pages and
+           clinical applications
+          A Web-based survey of 41 respondents drawn from ISVs, healthcare administrative staff
+           and healthcare professionals, including clinicians and community pharmacists
+          A patient safety assessment
+
+         Important
+         The visual representations used within this document to display the guidance are illustrative only. Stylistic
+         choices, unless otherwise specified, are not part of the guidance and are therefore not mandatory
+         requirements for compliance with the guidance in this document.
+
+2.1          Number Display
+    Patient identification numbers will be read frequently by healthcare professionals and by patients,
+    on computer monitors, as displayed by clinical applications, as well as on paper communications
+    such as referral letters, appointment cards and test results. They must, therefore, be easy to read.
+    As they are used to identify patients and match patient records, they must be displayed in full, to
+    ensure these tasks are conducted accurately. The guidance for displaying the patient identification
+    number takes these requirements into account.
+
+2.1.1            Guidance
+    ID              Guideline                                                                                                      Status
+    NUM-0001        Display the patient identification number in full, on a single line, without truncation or splitting it over   Mandatory
+                    multiple lines
+
+    NUM-0002        Display the NHS Number as three groups, with a single space included as a separator between                    Mandatory
+                    groups, as follows:
+                     The first group must consist of the first, second and third digits in order
+                     The second group must consist of the fourth, fifth and sixth digits in order
+                     The third group must consist of the seventh, eighth, ninth and tenth digits in order
+
+    NUM-0003        Support the copying of patient identification numbers by the user as part of the ‘Copy and Paste’ task         Recommended
+    Table 2: Guidance for Patient Identification Number Display
+
+2.1.2            Examples of Correct Usage
+    Usage Format                     Example               Comments
+              999 999 9999          123 456 7890          The patient identification number is displayed in the required format with numbers
+                                                           grouped to improve screen reader performance
+    Table 3: Correct Patient Identification Number Display Examples
+
+                                                                                                                                            Page 4
+                                   Design Guidance – Patient Identification Number Input and Display
+                                   Prepared by Microsoft, Version 2.0.0.0
+                                   Last modified on 28 January 2010
+
+2.1.3          Examples of Incorrect Usage
+  Usage Format                     Example              Comments
+            9999999999            1234567890           Patient Safety Critical
+                                                        This example displays a very poor reading pattern because a single ten-digit number
+                                                        is beyond the normal capacity of short-term memory. This representation is likely to
+                                                        cause errors
+
+            999999-               123456-              Patient Safety Critical
+             9999                  7890                 The patient identification number is split over two lines making it likely that users will
+                                                        not read all ten digits or assume that the hyphen is part of the number
+
+            99999 99999           12345 67890          Lack of Intuitive Structure
+             99 99 99 99 99        12 34 56 78 90       The display of more than four digits in a group or of more than three groups does not
+                                                        make best use of short-term memory
+
+            999/999/9999          123/456/7890         Poor Readability
+             999.999.9999          123.456.7890         A space provides better separation; it also assists in differentiating the patient
+                                                        identification number from other numeric data items, such as dates and telephone
+                                                        numbers
+  Table 4: Incorrect Patient Identification Number Display Examples
+
+2.1.4          Rationale
+  This section discusses the reasons underlying the guidance for displaying patient identification
+  numbers.
+
+2.1.4.1            Wrapping and Truncation
+  Readability is enhanced when the digits comprising the patient identification number can be read
+  together. If the patient identification number is split over two lines, a hyphen will be inserted at the
+  point at which the line breaks. This could potentially cause the reader to think that the patient
+  identification number contains the hyphen. Alternatively, the continuation of the number on another
+  line may not be noticed by the user, or may be read incorrectly.
+
+2.1.4.2            Accessibility
+  The provision of a separator between number groups assists with interpretation of the number by
+  screen readers. Without the separator, the numbers would often be read out as large numbers,
+  which are difficult to deconstruct into their constituent numbers.
+                                     ®
+  For example, the JAWS for Windows screen reader reads 4010232137 as “Four billion and ten
+  million two hundred and thirty two thousand one hundred and thirty seven”. However, the same
+  screen reader software reads out the proposed patient identification number as a string of
+  numbers. An inherent problem with screen readers is that the form the read-out numbers take is
+  dependent on the numbers themselves. Some examples are:
+        401 023 2137 – read out as “four hundred and one zero two three twenty one thirty seven”
+        401 230 2137 – read out as “four hundred and one two hundred and thirty twenty one thirty
+         seven”
+        041 023 0104 – read out as “zero four one zero two three zero one zero four”
+        401 230 2009 – read out as “four hundred and one two hundred and thirty two thousand
+         and nine”
+  It is unfortunate that the audible reading patterns differ according to the specific number. However,
+  this is considered acceptable because users of screen readers are accustomed to dealing with
+  such numbers.
+                                                                                                                                            Page 5
+                                 Design Guidance – Patient Identification Number Input and Display
+                                 Prepared by Microsoft, Version 2.0.0.0
+                                 Last modified on 28 January 2010
+
+2.2       Number Input
+ The purpose of the patient identification number input control is to enable the user to enter a patient
+ identification number. The control is a ‘Text Input Box’ as shown in Figure 1. Typically, it would be
+ preceded by a label as shown in Figure 2. Upon input, the control would display the number
+ entered as illustrated in Figure 3.
+
+ Figure 1: Example of a Patient Identification Number Control Without a Label
+
+ Figure 2: Example of a Patient Identification Number Control with a Label
+
+ Figure 3: Example of a Patient Identification Number Control with a Label (After Input)
+
+      Important
+      In the illustrations in this document, the text 'NHS Number' is provided as an example for a label. It is not
+      part of the control and no guidance on the wording or positioning of this label is implied.
+
+2.2.1         Hints, Prompts and Tooltips
+ The input control may provide a hint, prompt, or tooltip. Hints are instructional text placed outside
+ but adjacent, to the text input box. Prompts are commonly known as watermarks and comprise
+ instructional text placed within the text input box. Tooltips are instructional text that appear when
+ the mouse pointer is placed over the text input box. The wording of hints and prompts is left to the
+ designers of clinical applications. A suggestion for when the patient identification number is the
+ NHS Number is to use, for example, ‘123 456 7890’. A suggestion for a tooltip in this case is: ‘Enter
+ the patient identification number e.g. 123 456 7890. This is a ten-digit number used to identify a
+ person uniquely within the NHS in England and Wales’. Examples of hints, prompts, and tooltips
+ are shown in Figure 4, Figure 5 and Figure 6 respectively.
+
+ Figure 4: Example of a Patient Identification Number Control with a Hint
+
+ Figure 5: Example of a Patient Identification Number Control with a Prompt
+
+                                                                                                               Page 6
+                                 Design Guidance – Patient Identification Number Input and Display
+                                 Prepared by Microsoft, Version 2.0.0.0
+                                 Last modified on 28 January 2010
+
+ Figure 6: Example of a Patient Identification Number Control with a Tooltip
+
+2.2.2         Guidance
+ ID              Guideline                                                                                                   Status
+ NUM-0010        Provide a single text input box for patient identification number entry                                     Recommended
+
+ NUM-0011        Permit only one patient identification number to be entered in a patient identification number input box Mandatory
+
+ NUM-0012        Set the length of the patient identification number input box such that the patient identification number   Recommended
+                 is visible in full
+
+ NUM-0013        Set the height of the patient identification number input box to the largest character height in the        Recommended
+                 currently active display font, taking the user’s settings into account
+
+ NUM-0014        Permit patient identification number input via all the mechanisms supported on a platform such as, but Recommended
+                 not limited to, typing on a keyboard, copy and paste, and handwriting with a stylus
+
+ NUM-0018        Do not permit input of old format and temporary patient identification numbers                              Mandatory
+ Table 5: Guidance for the Input of the Patient Identification Number
+
+2.2.3         Examples of Correct Usage
+  Usage Format                                 Example                                          Comments
+           Sufficiently-sized input box                                                        The input box is the right size to
+                                                                                                accommodate a single patient identification
+                                                                                                number; it must be no bigger and no
+                                                                                                smaller
+
+ Table 6: Correct Patient Identification Number Display Examples
+
+2.2.4         Examples of Incorrect Usage
+  Usage Format                                 Example                                          Comments
+           Multi-line input box                                                                A tall input box incorrectly implies that more
+                                                                                                data than a single patient identification
+                                                                                                number can be entered, while also
+                                                                                                unnecessarily consuming real-estate on a
+                                                                                                monitor
+
+           Long input box                                                                      A long input box incorrectly implies that
+                                                                                                more data than a single patient
+                                                                                                identification number must be entered
+ Table 7: Incorrect Patient Identification Number Display Examples
+
+                                                                                                                                       Page 7
+                                 Design Guidance – Patient Identification Number Input and Display
+                                 Prepared by Microsoft, Version 2.0.0.0
+                                 Last modified on 28 January 2010
+
+2.2.5      Rationale
+  The patient identification number is unique to an individual. This elevates its importance in patient
+  identification over patient name and date of birth, which may not be unique to an individual. The
+  chosen layout provides the best display format because it divides the patient identification number
+  into a consistent set of easy-to-read sections. This should increase patient safety through a
+  reduction in patient identification errors, caused by misreading the number.
+
+2.2.5.1       Height and Length of the Patient Identification Number Text Box
+  The dimensions of the text input box should be sufficient to correctly indicate the intended purpose
+  of the box, namely to enter a single patient identification number. The height of the box should
+  therefore be adequate to accommodate a single line, not a paragraph. The length of the box should
+  be sufficient to permit the user to read the patient identification number in its entirety.
+  The checking of a patient identification number after it has been entered is a common task and one
+  which users will perform after each patient identification number input. When a user enters a
+  patient identification number in a box that is not long enough, the initial numbers will scroll to the
+  left side of the box, and therefore, not be visible. The user will then be forced to scroll back to the
+  start of the box to reveal the initial numbers of the patient identification number. To do this,
+  keyboard users will have to locate and press either the left arrow or the HOME key, thereby,
+  reducing task efficiency.
+
+2.2.5.2       Automatic Reformatting
+  Entering, and then checking, the long sequence of numbers that make up a patient identification
+  number, such as an NHS Number, is an error-prone task. The required display format, namely the
+  constituent numbers arranged in three groups delimited by a single space, makes the number
+  easier to read, and decreases the cognitive load on the user. By having the control do this
+  automatically, the user is assisted proactively, and data quality is enhanced.
+
+2.2.5.3       Screen Reader
+  Screen reader software would read out a patient identification number, such as an NHS Number,
+  that did not contain any spaces in such a way that it did not make sense. For example, the number
+  1234567890 would be read out by JAWS as “one billion two hundred and thirty four million five
+  hundred and sixty seven thousand eight hundred and ninety”. Read out in this way, the number is
+  almost unintelligible and cannot be validated by the person who has just entered it. Conversely, a
+  number displayed in the required form, for example, 123 456 7890, would be read out by JAWS as
+  “one hundred and twenty three four hundred and fifty six seventy eight ninety”. Read out in this
+  way, the number is easier for the listener to validate.
+
+                                                                                                    Page 8
+                       Design Guidance – Patient Identification Number Input and Display
+                       Prepared by Microsoft, Version 2.0.0.0
+                       Last modified on 28 January 2010
+
+3              DOCUMENT INFORMATION
+
+3.1            Terms and Abbreviations
+    Abbreviation                       Definition
+    CUI                                Common User Interface
+
+    ISV                                Independent Software Vendor
+
+    NHS                                National Health Service
+
+    PDA                                Personal Digital Assistant
+
+    UI                                 User Interface
+    Table 7: Terms and Abbreviations
+
+3.2            Nomenclature
+    This section shows how to interpret the different styles used in this document to denote various
+    types of information.
+
+3.2.1            Body Text
+    Text                                                             Style
+    Code                                                             Monospace
+
+    Script
+
+    Other markup languages
+
+    Interface dialog names                                           Bold
+
+    Field names
+
+    Controls
+
+    Folder names                                                     Title Case
+
+    File names
+    Table 9: Body Text Styles
+
+3.2.2            Cross References
+    Reference                                                        Style
+    Current document – sections                                      Section number only
+
+    Current document – figures/tables                                Caption number only
+
+    Other project documents                                          Italics and possibly a footnote
+
+    Publicly available documents                                     Italics with a footnote
+
+    External Web-based content                                       Italics and a hyperlinked footnote
+    Table 10: Cross Reference Styles
+
+                                                                                                           Page 9
+                                  Design Guidance – Patient Identification Number Input and Display
+                                  Prepared by Microsoft, Version 2.0.0.0
+                                  Last modified on 28 January 2010

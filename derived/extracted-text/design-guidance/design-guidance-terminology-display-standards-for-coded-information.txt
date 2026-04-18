@@ -1,0 +1,1403 @@
+                                Design Guidance
+Terminology – Display Standards for Coded Information
+
+
+
+                                        Thursday, 5 July 2007
+                                              Version 1.0.0.0
+
+
+                                                  Prepared by
+                                                   Microsoft
+                                                                                                                                                         Microsoft
+
+
+
+
+This document and/or software (“this Content”) has been created in partnership with the National Health Service (NHS) in England. Intellectual Property Rights
+to this Content are jointly owned by Microsoft and the NHS in England, although both Microsoft and the NHS are entitled to independently exercise their rights of
+ownership. Microsoft acknowledges the contribution of the NHS in England through their Common User Interface programme to this Content. Readers are
+referred to www.cui.nhs.uk for further information on the NHS CUI Programme.
+All trademarks are the property of their respective companies. Microsoft and Windows are either registered trademarks or trademarks of Microsoft Corporation in
+the United States and/or other countries.
+
+© Microsoft Corporation 2007. All rights reserved.
+
+                                                                                                                                                           Page ii
+                                    Design Guidance – Terminology – Display Standards for Coded Information
+                                    Prepared by Microsoft, Version 1.0.0.0
+                                    Last modified on 5 July 2007
+                                                                                                                                                     Microsoft
+
+
+
+
+TABLE OF CONTENTS
+1    Introduction .......................................................................................................................................... 1
+    1.1    Overview ......................................................................................................................................... 1
+    1.2    Area of Focus ................................................................................................................................. 2
+
+2    Recommendation and Guidance ........................................................................................................ 4
+    2.1    Display Standards for Communicating Encodable Notes............................................................... 4
+     2.1.1      Displaying Potentially Encodable Text ...................................................................................... 4
+     2.1.2      Displaying Suggested SNOMED-CT Matches .......................................................................... 8
+     2.1.3      Displaying Potential Post-Coordinated Attribute Matches ...................................................... 13
+     2.1.4      Displaying Non-SNOMED-CT-Matched Elaboration............................................................... 15
+     2.1.5      Displaying Expression Boundaries.......................................................................................... 18
+    2.2    Display Standards for Notes Confirmed for Encoding .................................................................. 22
+     2.2.1      Displaying Confirmed Matches ............................................................................................... 22
+     2.2.2      Displaying Unstructured Notes that are Associated with Confirmed Matches ........................ 26
+
+3    Document Information ...................................................................................................................... 28
+    3.1    Terms and Abbreviations .............................................................................................................. 28
+    3.2    Nomenclature ............................................................................................................................... 28
+     3.2.1      Body Text ................................................................................................................................ 28
+     3.2.2      Cross References.................................................................................................................... 28
+    3.3    References ................................................................................................................................... 29
+
+
+
+
+                                                                                                                                                       Page iii
+                                 Design Guidance – Terminology – Display Standards for Coded Information
+                                 Prepared by Microsoft, Version 1.0.0.0
+                                 Last modified on 5 July 2007
+                                                                                                      Microsoft
+
+
+
+
+1         INTRODUCTION
+    This document provides guidance and recommendations with rationale for aspects of Terminology user
+    interfaces related to display standards for clinical codes information.
+    This document should be read in conjunction with the following Design Guidance documentation:
+        Design Guidance – Terminology – Matching {R1}
+        Design Guidance – Terminology – Elaboration {R2}
+
+1.1       Overview
+    This document is for the use of anyone whose role includes screen design, implementation or
+    assessment of a clinical application and is involved in creating or evaluating terminology user
+    interfaces (UIs).
+    Terminology user interfaces operate within a note-taking environment. These environments fall into
+    three categories (as illustrated in Figure 1 and described below), each of which requires different
+    guidance:
+        Forms
+              The user makes notes by selecting check boxes and choosing options, not by entering text
+              An encoding interface is not needed. The clinical codes should be embedded within the
+               form itself or derived from combinations of entries in the form
+        Single concept matching
+              The user makes notes by selecting a clinical code, such as 'asthma', and elaborating it with
+               other codes, such as 'severe' and unencoded text, such as ‘worse in cold weather’
+              Encoding interfaces require components to search for and elaborate clinical terms
+        Text parser
+              The user makes notes by writing text, then identifies and encodes words and phases within
+               that text
+              Encoding interfaces require components to identify and manage clinical terms within the
+               text, as well as components to search for, and elaborate, clinical terms
+
+
+
+
+                                                                                                       Page 1
+                         Design Guidance – Terminology – Display Standards for Coded Information
+                         Prepared by Microsoft, Version 1.0.0.0
+                         Last modified on 5 July 2007
+                                                                                                                          Microsoft
+
+
+
+ Figure 1 illustrates forms (left), single concept matching (centre) and text parser matching (right):
+
+
+
+
+       The user enters
+       key words and
+       the system
+       returns matches,
+                                                                                                   As the user types in
+       which the user
+                                                                                                   notes, the system
+       can elaborate.
+                                                                                                   suggests SNOMED-CT
+                                                                                                   matches.
+
+
+ Figure 1: Styles of Encoding
+
+ A possible fourth hybrid category could be defined where forms may include areas where single
+ concept matching or text parser is used.
+ Medical language is full of abbreviations and jargon, some of which have more than one meaning. By
+ encoding clinical statements, they can be shared unambiguously. This should improve patient safety by
+ reducing confusion, or errors, due to ambiguity in clinical notes.
+ Encoding also opens up important opportunities, such as:
+        Filtering context specific views of medical records in order to improve searching
+        Unambiguously sharing clinical statements between clinicians in different disciplines or
+         institutions
+        Using decision support mechanisms, based on codes within clinical statements, to enhance
+         patient safety
+        Auditing clinical activity by using codes to locate and report on specific types of information
+         within patient records
+        Researching clinical practice or outcomes by extracting codes from electronic patient records
+                        1
+ SNOMED-CT® {R3} is used in this Design Guidance as the terminology for encoding clinical
+ statements.
+
+1.2       Area of Focus
+ This document describes display standards for coded information. There are three main areas of
+ consideration across the terminology domain that will be covered within this guidance, as illustrated in
+ Figure 2 and the points below:
+        Enter and select text – including display standards for communicating encodable text
+        Fully qualified concepts – including display standards for encoded text
+        Leave concepts unencoded – concepts not encoded but displayed in the notes
+
+
+
+ 1
+     SNOMED-CT: http://www.snomed.org/
+                                                                                                                           Page 2
+                                Design Guidance – Terminology – Display Standards for Coded Information
+                                Prepared by Microsoft, Version 1.0.0.0
+                                Last modified on 5 July 2007
+                                                                                                         Microsoft
+
+
+
+
+Figure 2: User Interaction Model
+
+
+
+
+                                                                                                          Page 3
+                               Design Guidance – Terminology – Display Standards for Coded Information
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 5 July 2007
+                                                                                                             Microsoft
+
+
+
+
+2            RECOMMENDATION AND GUIDANCE
+
+2.1          Display Standards for Communicating Encodable Notes
+    The following sections present guidance on how text that is potentially encodable should be displayed.
+    This guidance applies primarily to notes in the text parser approach to matching. However, it will also
+    apply to the additional text area in the single concept matching approach.
+    Please note that this guidance applies only to the noting input and matching process. Beyond the point
+    at which the notes are saved to record, this guidance is no longer necessarily applicable.
+
+2.1.1            Displaying Potentially Encodable Text
+    This guidance shows how to distinguish words and phrases that have been identified as being
+    potentially encodable as SNOMED-CT concepts. Potentially encodable text refers to text against which
+    the system can match SNOMED-CT expressions (which comprise single concept or multiple
+    coordinated concepts). Whether the text can be matched may be affected by:
+          Filtering by contextual subsets
+          Rules regarding what constitutes an expression, namely that a matched expression must
+           contain a base concept (that is, a clinical finding, procedure, observable entity, situation with
+           explicit context or, in certain circumstances, pharmaceutical/biological product) and any other
+           concepts that post-coordinate with the base concept
+    Changing the subset filtering may alter what is deemed encodable, and the formatting outlined below
+    would be updated accordingly. Additionally, users may be allowed to force an encoding by selecting (in
+    other words, highlighting) a text string, clicking on the right mouse button and choosing the appropriate
+    match from the shortcut menu. In this case, the formatting would not be needed.
+    Figure 3 illustrates how potentially encodable text typed in by the clinician as notes will be displayed in
+    a clinical application. This text is displayed in an input text area in the right pane and the suggested
+    SNOMED-CT matches are displayed in the left pane.
+
+
+
+
+    Figure 3: Formatting in the Text Input (Right Pane) and Suggested Matches (Left Pane) Areas
+
+                                                                                                              Page 4
+                                   Design Guidance – Terminology – Display Standards for Coded Information
+                                   Prepared by Microsoft, Version 1.0.0.0
+                                   Last modified on 5 July 2007
+                                                                                                                              Microsoft
+
+
+
+  This guidance will also apply to the additional text field in the single concept matching design approach
+  as illustrated in Figure 4.
+
+
+
+
+                                                                                                User moves the mouse down
+                                                                                                the list, which moves the
+                                                                                                highlight and displays a flyout
+                                                                                                for the highlighted item.
+
+
+
+
+  Figure 4: Formatting in the Additional Text Field
+
+  In both cases, potentially encodable text will be displayed in a pale highlight that, whilst being visible,
+  will not affect the legibility of the text.
+
+2.1.1.1             Guidance
+  The system:
+        Must visibly display, from the text typed by the user, which words or phrases have been
+         recognised by the system to be potentially encodable as SNOMED-CT concepts
+        Should ensure that the visible elements for communicating encodable words or phrases must
+         be strongly visually associated with the text typed by the user
+        Should ensure that any communication where text can be encoded does not hinder the
+         legibility of the text itself
+        Should communicate that a word or phrase is encodable by highlighting it
+        Should ensure that the colour of the highlight is sufficiently visible under conditions which do
+         not require accessibility enhancements, but that it does not deteriorate the legibility of the text
+        Should emphasise the boundaries between encodable concepts, for example, by showing
+         clear gaps in the highlight between separate encodable concepts
+        Should communicate that a word or phrase is encodable as it is being typed (and as soon as
+         the system is able to recognise it as a potential SNOMED-CT concept)
+        Should ensure that while typing, all text is clearly visible
+        Should block additional formatting by the user, including highlights, text colour changes and
+         underlines
+        Should allow the user to enter punctuation and carriage returns
+
+
+
+                                                                                                                                  Page 5
+                                  Design Guidance – Terminology – Display Standards for Coded Information
+                                  Prepared by Microsoft, Version 1.0.0.0
+                                  Last modified on 5 July 2007
+                                                                                                                                          Microsoft
+
+
+
+
+2.1.1.2           How to Use the Design Guidance
+  Usage Format                                        Example                           Comments
+
+           Feature a light, but distinct highlight   Light blue highlight              This should be sufficiently prominent, but also
+                                                                                        allow the user to read the text underneath
+
+           Feature unencoded text in black, normal Black, normal text                  Black normal weight text is easy to read. It is
+            weight text                                                                 important only to bold text where necessary
+
+           The background for the text field should Black on white                     This should provide a good contrast to make the
+            be white (or off-white)                                                     text easy to read
+
+           Align (justify) text to the left          Left justified                    This will make the text easy to read
+
+
+           The space between one line of type and Line spacing of 1.5 times            This is a standard format and will make the text
+            the next should be 1.5 to 2 times the                                       easy to read
+            space between words
+  Table 1: How to Use the Design Guidance
+
+2.1.1.3           How Not to Use the Design Guidance
+  Usage Format                                        Example                           Comments
+           Do not feature dark saturated colours as Dark highlight                     The dark highlight makes black text hard to read
+            the highlight
+
+           Do not use highlight colours that could   Not sleeping last night           Colours such as green or red can have other
+            possibly have other connotations such                                       connotations, for example, red can be used for an
+            as green or red                                                             alert or green for OK
+                                                                                        Also, green and red are difficult to distinguish for
+                                                                                        some colour-blind users
+
+           Ensure that the highlight colour is not   This colour is too light/subtle   The colours will not show on some screens, so
+            too light or subtle. This may not show                                      information may be missed by the user
+            on high contrast/high brightness
+            screens
+  Table 2: How Not to Use the Design Guidance
+
+2.1.1.4           Benefits and Rationale
+  Users must be able to clearly see which text is encodable so that they can choose what to encode.
+  Displaying encodable text also acts as a reminder to the user that text should be encoded in the same
+  way that underlining spelling mistakes in a word processor reminds a user that words should be spelled
+  correctly. This will work in conjunction with the suggested matches in the left pane (see the next
+  section for details).
+  Highlights are preferred to underlines or boxes (that enclose text), since these disrupt the legibility of
+  the text. Additionally, underlines are used in many software packages, as well as in the current design,
+  to indicate spelling mistakes.
+  Additional formatting, such as text colour changes, could interfere with the visibility of the encoding
+  highlighting and, as a result, is strongly discouraged in this guidance. Punctuation and carriage returns
+  form part of the text meaning and, hence, are not included in this guidance.
+  The light blue colour used in Table 1 is a serene yet prominent colour and one that does not affect
+  legibility.
+
+                                                                                                                                               Page 6
+                                 Design Guidance – Terminology – Display Standards for Coded Information
+                                 Prepared by Microsoft, Version 1.0.0.0
+                                 Last modified on 5 July 2007
+                                                                                                      Microsoft
+
+
+
+  Potentially encodable text should be strongly visually linked with the text typed by the user, because
+  the original text provides context and cues as to how the text should be encoded. Highlighting the text
+  directly provides a strong visual association.
+  Encodable words and phrases must be clearly and visibly distinct from one another. This is so a phrase
+  that is encodable as a single concept is distinguishable from a phrase that contains several distinct
+  encodable concepts. For example, from the following text, ‘Protein deficiency, disease of kidney,
+  finding it hard to urinate’, the system may identify the following terms: ‘Protein deficiency disease’
+  ‘kidney finding’ and ‘urinate’, which has a different meaning to the one intended by the user. It is
+  therefore important that the user can clearly see where the boundaries of the encodable concepts lie,
+  and, if necessary, take action. In the case of highlighted words, there needs to be a definite gap
+  between them in order for them to be distinguished from one another.
+  Examples of this display were shown to clinicians during wireframe testing sessions. All of the
+  participants recognised that the highlighting functionality communicated key words for encoding.
+  By highlighting potentially encodable words automatically, the effort on the part of users is reduced
+  when encoding text.
+
+2.1.1.5      Confidence Level
+  High confidence
+      Must visibly display, from the text typed by the user, which words or phrases have been
+       recognised by the system to be potentially encodable as SNOMED-CT concepts
+      Should ensure that the visible elements for communicating encodable words or phrases must
+       be strongly visually associated with the text typed by the user
+      Should ensure that any communication where text can be encoded does not hinder the
+       legibility of the text itself
+      Should ensure that the colour of the highlight is sufficiently visible under conditions which do
+       not require accessibility enhancements, but that it does not deteriorate the legibility of the text
+      Should ensure that while typing, all text is clearly visible
+  Medium confidence
+      Should communicate that a word or phrase is encodable by highlighting it
+      Should emphasise the boundaries between encodable concepts, for example, by showing
+       clear gaps in the highlight between separate encodable concepts
+  Low confidence
+      Should communicate that a word or phrase is encodable as it is being typed (and as soon as
+       the system is able to recognise it as a potential SNOMED-CT concept)
+      Should block additional formatting by the user, including highlights, text colour changes and
+       underlines
+
+
+
+
+                                                                                                          Page 7
+                       Design Guidance – Terminology – Display Standards for Coded Information
+                       Prepared by Microsoft, Version 1.0.0.0
+                       Last modified on 5 July 2007
+                                                                                                                          Microsoft
+
+
+
+
+2.1.2        Displaying Suggested SNOMED-CT Matches
+ In addition to highlighting where text is potentially encodable, the system will also display the potential
+ SNOMED-CT matches in an area adjacent to the text input area, in the text parser approach. In the
+ single concept matching approach, the matches will appear above the additional text input field.
+ The formatting of the suggested matches will be consistent with the formatting of the encodable text,
+ namely a pale blue colour. The exception is the in-focus (selected) match, which will be displayed in
+ yellow and will be slightly embossed (that is, standing out in relief), to convey that it is a clickable
+ button. This colouring will also change on mouse-over. In other words, when the user moves the
+ mouse over the suggested matches, the colour will change. The yellow handles and bold marquee in
+ the text input area in the right pane will also move to the appropriate text when the user clicks on a
+ suggested match in the left pane is illustrated in Figure 5.
+
+
+
+
+                                                                                             The ‘in-focus’ marquee has a
+                                                                                             bold outline and yellow
+                                                                                             ‘handles’ at each end.
+
+
+
+                                                                                           The ‘in-focus’ match(es) are
+                                                                                           displayed on a yellow
+                                                                                           background, and with ‘down
+                                                                                           arrow’ icons.
+
+
+
+ Figure 5: Suggested SNOMED-CT Matches Are Shown in the Left Pane
+
+
+
+
+                                                                                                                           Page 8
+                             Design Guidance – Terminology – Display Standards for Coded Information
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 5 July 2007
+                                                                                                                    Microsoft
+
+
+
+Additionally, when the user moves the mouse over a match, its colour will change to yellow. At this
+point, if there are similar matches to the top match, or there are more specific matches to be viewed,
+the system will communicate a message to encourage users to click further, as illustrated in Figure 6.
+
+
+
+
+                                                                                   Moving the mouse over the
+                                                                                   matching area highlights it in
+                                                                                   yellow. The system warns
+                                                                                   the user if there are similar
+                                                                                   matches.
+
+
+
+
+Figure 6: System Warns of Similar Matches
+
+As the user moves the mouse onto the label itself, the surrounding area will become orange and
+slightly embossed (that is, standing out in relief) to communicate that it is a clickable button. This is
+illustrated in Figure 7.
+
+
+
+
+                                                                                Moving the mouse over a
+                                                                                concept label highlights it in
+                                                                                orange and makes it look
+                                                                                ‘clickable’.
+
+
+
+
+Figure 7: Match Label becomes a Clickable Button
+
+
+
+
+                                                                                                                     Page 9
+                              Design Guidance – Terminology – Display Standards for Coded Information
+                              Prepared by Microsoft, Version 1.0.0.0
+                              Last modified on 5 July 2007
+                                                                                                                        Microsoft
+
+
+
+  Furthermore, if there are matches that have the same spelling as the top match, the system will
+  communicate a message that tells the user to click the button to view the alternative matches before
+  they can confirm the top match, as shown in Figure 8.
+
+
+
+
+                                                                                          In the event of the same
+                                                                                          spelling between the top
+                                                                                          match and alternative
+                                                                                          match(es), the check box is
+                                                                                          disabled and a warning
+                                                                                          message is displayed.
+
+
+
+
+  Figure 8: Confirmation Check Box is Disabled if there are Two Matches the Same
+
+2.1.2.1           Guidance
+  The system:
+        Must ensure that the suggested matched expressions are distinct from each other
+                 Should ensure that each suggested matched expression is contained in a rectangular
+                  boundary
+                 Could round the corners of the rectangular boundaries to make the areas stand out further
+                  from the field in which they are displayed
+                 Could ensure that the suggested match areas have sufficient colour contrast with the
+                  background of the field in which they are displayed
+        Should feature the suggested SNOMED-CT matches in the same colour as the encoded
+         highlight
+                 Could feature a yellow or orange colour for the suggested SNOMED-CT match above
+                  which the mouse is hovering
+                 Could change the surface of the suggested match area so that it becomes embossed and
+                  clickable on mouse-over
+        Must display a message to communicate to the user when (i) there are close alternative
+         matches or (ii) when there are more specific alternative matches (that is, children of the top
+         match)
+                 Could expand the suggested match area downwards on mouse-over, if there are messages
+                  to communicate for that match. This would push down the matches below it in order to fit
+                  the expanded area
+
+
+                                                                                                                        Page 10
+                                Design Guidance – Terminology – Display Standards for Coded Information
+                                Prepared by Microsoft, Version 1.0.0.0
+                                Last modified on 5 July 2007
+                                                                                                         Microsoft
+
+
+
+        Should display the text on the suggested matches in normal (regular), rather than in bold text
+         style
+        Must display the preferred term or the synonym term label for each suggested match
+        Must display a confirm check box control at the far left of the suggested match area
+                 Should display the suggested match label immediately to the right of the confirm check box
+        Should display the suggested matches stacked vertically
+                 Should display the suggested matches in the same order in which the related text appears
+                  in the input field
+        Must display the suggested matches in an area that can be viewed at the same time as the
+         area in which user types the notes
+        Should not display the SNOMED-CT concept ID number in the default view of the encoded
+         notes
+
+2.1.2.2           How to Use the Design Guidance
+  Usage Format                                     Example                   Comments
+
+           Feature the suggested matches in a     See above
+            prominent colour
+  Table 3: How to Use the Design Guidance
+
+2.1.2.3           How Not to Use the Design Guidance
+  Usage Format                                     Example                   Comments
+           Feature the suggested matches in a     Hand tendon repaired
+            colour that obscures the text
+  Table 4: How Not to Use the Design Guidance
+
+2.1.2.4           Benefits and Rationale
+  The benefits of providing feedback in a location that is immediately visible to the user include:
+        Giving users confidence that they have (successfully) encoded the notes and providing a
+         measure of progress that may encourage the user to continue encoding. Failing to provide this
+         feedback could lead to users being uncertain that they are encoding their notes correctly and,
+         hence, make them dissatisfied (most of the time, people like to see the immediate results of
+         their actions).
+        Allowing users to check their encoded notes before saving them to the system. This
+         confirmation partially mitigates the patient safety risk that the user encodes the wrong concept
+         or fails to record an important qualification to the concept. Given the time-pressured and
+         attention-demanding environment in which the notes may be entered, ensuring that the notes
+         are structured in a way that the user can quickly and easily pick out the most important notes
+         first, should also help to mitigate this risk.
+        Giving the user an insight into how the notes are going to be saved in the system. This could
+         help the user to create better-structured notes in future and could help the user understand how
+         to best retrieve these notes when needed.
+
+
+                                                                                                         Page 11
+                               Design Guidance – Terminology – Display Standards for Coded Information
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 5 July 2007
+                                                                                                      Microsoft
+
+
+
+  We recommend arranging the notes vertically. This is a standard way of presenting lists for users to
+  check, and one with which users will be familiar. It also helps to ensure that the multiple notes do not
+  appear to merge together, as in most cases there is a single term, note or value per line.
+  Displaying the system’s suggested matches immediately next to the text input area:
+      Gives the user the opportunity to check that the structured encoded notes are accurate
+      Gives the user a greater understanding of how the notes will be recorded in the system
+  Displaying matches to the left of the text input area means that these suggested matches will always
+  be close to the text input, given the left-hand justification of the text input.
+
+2.1.2.5       Confidence Level
+  High confidence
+      Must ensure that the suggested matched expressions are distinct from each other
+      Must display the preferred term or the synonym term label for each suggested match
+      Must display a confirm check box control at the far left of the suggested match area
+             Should display the suggested match label immediately to the right of the confirm check box
+      Should display the suggested matches stacked vertically
+             Should display the suggested matches in the same order in which the related text appears
+              in the input field
+      Should not display the SNOMED-CT concept ID number in the default view of the encoded
+       notes
+  Medium confidence
+      Should ensure that each suggested matched expression is contained in a rectangular boundary
+             Could round the corners of the rectangular boundaries in order to make the areas stand out
+              further from the field in which they are displayed
+      Should ensure that the suggested match areas have sufficient colour contrast with the
+       background of the field in which they are displayed
+      Should feature the suggested SNOMED-CT matches in the same colour as the encoded
+       highlight
+             Could feature a yellow or orange colour for the suggested SNOMED-CT match above
+              which the mouse is hovering
+             Could change the surface of the suggested match area so that it becomes embossed and
+              clickable on mouse-over
+      Should display the text on the suggested matches in normal, rather than bold, style
+  Low
+      Must display a message to communicate to the user when (i) there are close alternative
+       matches or (ii) when there are more specific alternative matches (that is, children of the top
+       match)
+             Could expand the suggested match area downwards on mouse-over, if there are messages
+              to communicate for that match. This would push down the matches below it in order to fit
+              the expanded area
+                                                                                                       Page 12
+                       Design Guidance – Terminology – Display Standards for Coded Information
+                       Prepared by Microsoft, Version 1.0.0.0
+                       Last modified on 5 July 2007
+                                                                                                            Microsoft
+
+
+
+        Must display the suggested matches in an area that can be viewed at the same time as the
+         area in which user types the notes
+
+2.1.3            Displaying Potential Post-Coordinated Attribute Matches
+  The system must also be able to display potential post-coordinated attribute matches that it has
+  identified from the user’s typed text.
+  The system needs to both communicate the post-coordinated expression as a unitary whole, while at
+  the same time displaying its component parts.
+  The system will display the post-coordinated solution (that is, the base concept and its attribute
+  concepts) within the same boundary as illustrated in Figure 9.
+
+
+
+
+                                                                              Post-coordinated expression
+                                                                              is displayed as a unitary
+                                                                              whole.
+
+
+
+
+  Figure 9: Post-Coordinated Expression Match Displayed As a Unitary Whole
+
+2.1.3.1           Guidance
+  The system:
+        Must display the attribute concepts that it has identified as part of the top matched
+         SNOMED-CT expression solution, within a single boundary
+                 Must display a confirm check box for each of the attributes
+        Must communicate that the attribute concepts are further descriptions that belong to the base
+         concept
+                 Should indent each attribute concept in relation to its base concept
+                 Should indent each attribute concept approximately a width of a check box
+                 Should be able to communicate if an attribute concept is also a base concept for a further
+                  attribute concept, by further indentation
+        Should only display the attribute value label (such as ‘Mild’), and not the attribute name (such
+         as ‘Severity’)
+
+
+
+                                                                                                            Page 13
+                                Design Guidance – Terminology – Display Standards for Coded Information
+                                Prepared by Microsoft, Version 1.0.0.0
+                                Last modified on 5 July 2007
+                                                                                                         Microsoft
+
+
+
+
+2.1.3.2           How to Use the Design Guidance
+  Usage Format                                     Example                   Comments
+
+           Display the post-coordinated expression See Figure 9
+            in a single suggested match area
+  Table 5: How to Use the Design Guidance
+
+2.1.3.3           How Not to Use the Design Guidance
+  Usage Format                                     Example                   Comments
+           Feature more than one indent
+  Table 6: How Not to Use the Design Guidance
+
+2.1.3.4           Benefits and Rationale
+We need to distinguish the base concept from its attribute concepts, and indents are a standard way of
+showing that items belong together or are a further description of the main item. User testing has shown
+that clinicians understand this presentation of post-coordinated expressions.
+
+2.1.3.5           Confidence Level
+  High confidence
+        Must display the attribute concepts that it has identified as part of the top matched
+         SNOMED-CT expression solution, within a single boundary
+                 Must display a confirm check box for each of the attributes
+        Must communicate that the attribute concepts are further descriptions that belong to the base
+         concept
+                 Should indent each attribute concept in relation to its base concept
+  Low confidence
+        Should only display the attribute value label (such as ‘Mild’), and not the attribute name (such
+         as ‘Severity’)
+  Although hiding the attribute name should make the communication of many attributes more efficient
+  and easier to read, there may be some instances where this could be problematic. For example, where
+  there are two attribute matches that fall within similar categories, and where the use of these attributes
+  is hard to discern without the attribute name label.
+
+
+
+
+                                                                                                         Page 14
+                               Design Guidance – Terminology – Display Standards for Coded Information
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 5 July 2007
+                                                                                                               Microsoft
+
+
+
+
+2.1.4         Displaying Non-SNOMED-CT-Matched Elaboration
+ In addition to displaying post-coordinated attributes as part of a top-matched solution, the system will
+ also display other (free) text and structured data matches which are not SNOMED-CT matches, as
+ illustrated in Figure 10. These structured non-SNOMED-CT matches may be drawn from an external
+ informational model. Examples include time chunks and shorthand matches, which we recommend are
+ created and used in conjunction with the SNOMED-CT data.
+
+
+
+
+                                                                               Free text is displayed with a
+                                                                               special icon.
+
+
+
+
+ Figure 10: Chunks of Text Visibly Distinguished
+
+ Also there may be non-SNOMED-CT attribute relationships drawn from an external information model,
+ for example, linking clinical findings with qualifiers such as expressions of time periods (such as night
+ time).
+ As of yet, there is no agreed way of actually linking the non-SNOMED-CT matches with the
+ SNOMED-CT matches. Therefore, as the relationships do not exist, they are simply displayed below all
+ the SNOMED-CT matches within a single expression envelope.
+ All the text that (i) cannot be matched (either with SNOMED-CT or non-SNOMED-CT matches) or (ii)
+ coordinated with the base concept in an expression, must remain as unstructured free text if it does not
+ match a base concept and cannot therefore form a new expression of its own.
+ This text will be displayed as being associated with the SNOMED-CT matches, but without being
+ encodable itself.
+
+
+
+
+                                                                                                               Page 15
+                                Design Guidance – Terminology – Display Standards for Coded Information
+                                Prepared by Microsoft, Version 1.0.0.0
+                                Last modified on 5 July 2007
+                                                                                                                         Microsoft
+
+
+
+
+  Each chunk of free text, where a chunk is text in which all the words are adjacent, will be displayed
+  separately as shown in Figure 11. Any chunk that only features words from the exclusion list, including
+  prepositions, will not be displayed.
+
+
+
+
+                                                                                    Non-adjacent free text is
+                                                                                    displayed as multiple instances of
+                                                                                    free text.
+
+
+
+
+  Figure 11: Example of Post-Coordination and Two Strings of Associated Free Text
+
+2.1.4.1           Guidance
+  The system:
+        Should display all structured data matches in the same way as for the SNOMED-CT matches,
+         regardless of whether they are drawn from SNOMED-CT or not
+        Must display a confirm check box control at the far left of the suggested match area
+                 Should display the suggested match label immediately to the right of the confirm check box
+        Should display each chunk of unstructured text separately
+        Must display the unstructured text underneath all the structured matches (within a single
+         expression envelope)
+                 Should display the unstructured text one indent in from the base concept
+                 Should display all chunks of unstructured text at the same indent level
+        Must display the non-SNOMED-CT matches below the SNOMED-CT matches
+        Must visually distinguish the unstructured free text from the structured SNOMED-CT and
+         non-SNOMED-CT items
+                 Should feature a special icon for the unstructured free text
+                       Should feature the special icon immediately to the left of the unstructured free text
+                 Must not feature a confirm check box control for the unstructured free text
+        Must feature the unstructured free text in normal (regular), rather than in bold text style
+
+
+
+                                                                                                                         Page 16
+                                Design Guidance – Terminology – Display Standards for Coded Information
+                                Prepared by Microsoft, Version 1.0.0.0
+                                Last modified on 5 July 2007
+                                                                                                               Microsoft
+
+
+
+
+2.1.4.2           How to Use the Design Guidance
+  Usage Format                                      Example                       Comments
+
+           Display each chunk of text separately   See figure above
+
+  Table 7: How to Use the Design Guidance
+
+2.1.4.3           How Not to Use the Design Guidance
+  Usage Format                                      Example                       Comments
+           Display words from an externally written Words such as ‘of’ or ‘to’
+            exclusion list                           should not be displayed on
+                                                     their own
+  Table 8: How Not to Use the Design Guidance
+
+2.1.4.4           Benefits and Rationale
+  We need to display the associated text, but need to distinguish it from the encodable text so that the
+  user fully understands what they are confirming. Several rounds of usability testing have shown that
+  clinicians understand this convention.
+  It must be possible to display the unstructured notes with the structured notes so that:
+        The user can easily view potentially important unstructured notes that elaborate the structured
+         notes; the user should be encouraged to check what unstructured notes are going to be saved
+         with the structured notes
+        The user can easily view the original text that led to the creation of the structured notes; the
+         user can check why the structured notes are written as they are
+  Leaving the unstructured notes in a normal, rather than bold style, visually distinguishes them from the
+  structured notes. Once they are saved, there are potentially more uses for the structured notes than
+  the unstructured notes and it is important to communicate the distinction. The system should
+  communicate that these unstructured notes belong to the main encoded concept, either because the
+  unstructured notes should be written as elaboration for the structured notes, or because they have
+  been part of the method for achieving the structured notes. Either way, this belonging is central to the
+  relationship between the structured and unstructured notes.
+  We need to exclude certain words from the free text that would not make sense on their own. For
+  example, it would not make sense to display the word ’of’ or ’to’ as an individual chunk of free text.
+
+2.1.4.5           Confidence Level
+  High confidence
+        Must visually distinguish the unstructured free text from the structured SNOMED-CT and
+         non-SNOMED-CT items
+                 Should feature a special icon for the unstructured free text
+                      Should feature the special icon immediately to the left of the unstructured free text
+                 Must not feature a confirm check box control for the unstructured free text
+
+
+
+
+                                                                                                               Page 17
+                               Design Guidance – Terminology – Display Standards for Coded Information
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 5 July 2007
+                                                                                                    Microsoft
+
+
+
+
+ Medium confidence
+     Should display all structured data matches in the same way as for the SNOMED-CT matches,
+      regardless of whether they are drawn from SNOMED-CT or not
+     Must display a confirm check box control at the far left of the suggested match area
+            Should display the suggested match label immediately to the right of the confirm check box
+     Must display the non-SNOMED-CT matches below the SNOMED-CT matches
+     Must feature the unstructured free text in normal (regular), rather than in bold text style
+ Low confidence
+     Should display each chunk of unstructured text separately
+     Must display the unstructured text underneath all the structured matches (within a single
+      expression envelope)
+            Should display the unstructured text one indent in from the base concept
+            Should display all chunks of unstructured text at the same indent level
+
+2.1.5       Displaying Expression Boundaries
+ This guidance shows how the system displays groupings of words that encompass the encodable
+ terms and the text that can elaborate the concept, either in a structured or unstructured way.
+ A grouping could comprise ‘mild fever for three days’, where ‘Fever’ is the main encodable
+ (SNOMED-CT) concept, ‘Mild’ is the qualifier concept (an attribute of the concept, Fever) and ‘Three
+ days’ is the non-SNOMED-CT time-chunk elaboration.
+ The system would parse the words into groups, as the user types them, according to its interpretation
+ of the most likely structure that could be expressed with these words. (See Design Guidance –
+ Terminology – Matching {R1} and Design Guidance – Terminology – Elaboration {R2} for details of the
+ parsing process.)
+ The user then may decide to encode a term (and its group of elaboration words) or manipulate the
+ boundaries of the group in order to include or exclude words (to give the correct meaning to the notes),
+ prior to encoding the concept. Therefore, as these groups are identified by the system, they must be
+ displayed to the user.
+
+
+
+
+                                                                                                    Page 18
+                      Design Guidance – Terminology – Display Standards for Coded Information
+                      Prepared by Microsoft, Version 1.0.0.0
+                      Last modified on 5 July 2007
+                                                                                                                         Microsoft
+
+
+
+
+Figure 12 and Figure 13 illustrate how to display groupings through the use of marquees. Marquees
+are displayed around all chunks of encodable concepts and their elaboration. The selected (in-focus)
+marquee is distinguished by bold lines and yellow draggable handles, which change in appearance
+when the user points the mouse over them (see Figure 12). Additionally, a hover-over could be
+provided which communicates to the user what they could achieve by dragging the boundary. These
+descriptions could be specific depending upon what has been typed and what could be achieved by
+dragging it, for example, ‘Drag the selection to separate terms’ or ’Drag the selection to include or
+exclude text to add meaning to the concept’.
+
+
+
+
+                                                                                               Groups of text are
+                                                                                               distinguished by dotted
+                                                                                               marquees.
+
+
+
+
+Figure 12: Grouping of Terms
+
+
+
+
+                                                                                               Moving the mouse over the
+                                                                                               yellow handles at the ends of
+                                                                                               an in-focus expression
+                                                                                               marquee causes directional
+                                                                                               arrows to appear.
+
+
+
+
+Figure 13: Draggable Handles
+
+When the user changes the expression boundaries, this may have an effect on the suggested matches
+in the left pane (which would occur almost immediately).
+
+
+                                                                                                                          Page 19
+                               Design Guidance – Terminology – Display Standards for Coded Information
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 5 July 2007
+                                                                                                                                Microsoft
+
+
+
+
+2.1.5.1           Guidance
+  The system:
+        Must communicate how potentially encodable text is grouped with potential elaboration text,
+         and distinguish this from text that will not be encoded
+        Must distinguish the group that is selected (that is, in-focus) from the other groups that are not
+         selected
+        Should ensure that any visual communication of grouping does not significantly reduce the
+         legibility of the text
+        Should ensure that any visual communication of grouping does not interfere with other visual
+         communication elements associated with the text (for example, encodable text highlights)
+        Could display marquees around words to visually communicate they are grouped together
+        Must communicate that the boundaries of a selected group can be dragged (to include adjacent
+         text or exclude text already included)
+        Must display the new boundaries of the selected group as they are being dragged (as feedback
+         of the dragging action)
+        Should communicate the direction in which the selected group boundaries can be dragged, for
+         instance, by changing the mouse cursor (not illustrated) or by changing the boundary marker to
+         include arrows when the user selects the boundary marker (see Figure 13)
+        Should communicate in words that the boundaries can be dragged, for instance, using hover-
+         over messages that communicate that users can drag the boundaries and what can be
+         achieved by dragging them
+
+2.1.5.2           How to Use the Design Guidance
+  Usage Format                                      Example                              Comments
+           The marquees must be fairly faint,      See Figure 12                        The marquees must not visually
+            unless they are selected                                                     interfere with the user’s reading of the
+                                                                                         text
+
+           Feature a hover-over over the selected The hover-over could read ‘Drag the   This will communicate to the user what
+            marquee that communicates to the user selection around related text’         they can do with the selected marquee
+            that they can drag the selection area
+            over other text. Where appropriate, it
+            should also communicate the
+            corresponding keyboard actions
+  Table 9: How to Use the Design Guidance
+
+2.1.5.3           How Not to use the Design Guidance
+  Usage Format                                      Example                              Comments
+           Do not overlap marquees                 n/a                                  Each marquee contains distinct text
+
+           Do not feature more than one selected   n/a                                  The proposed system will only handle
+            area (that is, an area with draggable                                        one encoding process at a time
+            handles) at a time
+  Table 10: How Not to Use the Design Guidance
+
+                                                                                                                                Page 20
+                               Design Guidance – Terminology – Display Standards for Coded Information
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 5 July 2007
+                                                                                                      Microsoft
+
+
+
+
+2.1.5.4      Benefits and Rationale
+  The user must have an understanding of how the system will interpret the text when an encoding
+  action is triggered, how they can manipulate this structure, as well as the effects of any manipulation.
+  Marquees are useful because they allow the user to read the text (because they do not cover the text)
+  and they do not interfere with highlights (which could signify what terms are encodable as
+  SNOMED-CT concepts). Their boundaries also afford manipulation, such as dragging. Dragging could
+  be reinforced by featuring handles with directional arrows on the left-hand and/or right-hand boundaries
+  of the selected group.
+  The notion that the directional arrows would only appear when the user points at the handles, would
+  keep the interface clean. Also, a context-specific hover-over message could give users instructions on
+  how and why to drag the boundaries.
+  In early wireframe testing, upon viewing a static picture of the mouse hovered over the boundary
+  handle, over 50% of the clinicians tested realised that they could associate text with an encodable word
+  by dragging the boundaries to encompass the text.
+
+2.1.5.5      Confidence Level
+  High confidence
+      Must communicate how potentially encodable text is grouped with potential elaboration text,
+       and distinguish this from text that will not be encoded
+      Must distinguish the group that is selected (that is, in-focus) from the other groups that are not
+       selected
+      Should ensure that any visual communication of grouping does not significantly reduce the
+       legibility of the text
+      Should ensure that any visual communication of grouping does not interfere with other visual
+       communication elements associated with the text (for example, encodable text highlights)
+  Medium confidence
+      Could display marquees around words to visually communicate they are grouped together
+      Must communicate that the boundaries of a selected group can be dragged (to include adjacent
+       text or exclude text already included)
+      Should communicate the direction in which the selected group boundaries can be dragged, for
+       instance, by changing the mouse cursor (not illustrated) or by changing the boundary marker to
+       include arrows when the user selects the boundary marker (see Figure 13)
+      Should communicate in words that the boundaries can be dragged, for instance, using hover-
+       over messages that communicate that users can drag the boundaries and what can be
+       achieved by dragging them
+  Low confidence
+      Must display the new boundaries of the selected group as they are being dragged (as feedback
+       of the dragging action)
+
+
+
+
+                                                                                                      Page 21
+                       Design Guidance – Terminology – Display Standards for Coded Information
+                       Prepared by Microsoft, Version 1.0.0.0
+                       Last modified on 5 July 2007
+                                                                                                                             Microsoft
+
+
+
+
+2.2       Display Standards for Notes Confirmed for Encoding
+  This guidance shows how the system should display the notes following the user’s confirmation that
+  the match is correct for encoding. It applies to all notes to be encoded in the text parser matching
+  approach. It also applies to additional text notes in the single concept matching approach. Both
+  approaches are dealt with in this section.
+  Showing the distinction between notes that have been confirmed to be encoded (both as SNOMED-CT
+  codes and as supporting informational model attributes) and those which are not, is important. Failure
+  to do so sufficiently, could risk the user not knowing what will be encoded and possibly the user not
+  encoding anything (depending, of course, upon whether the user interface forces them to encode at
+  least one concept).
+
+2.2.1         Displaying Confirmed Matches
+2.2.1.1           Suggested Matches Area
+  When the user has confirmed a note (by confirming the whole of or part of an expression), a tick
+  appears in the check box. This happens either when the user has actually selected it or when the user
+  has doubled-clicked on a selection (or has actioned an equivalent keyboard stroke). Furthermore, the
+  area surrounding the appropriate match changes to grey. Those parts of the expression that have been
+  confirmed and are structured matches are rendered in a bold text style. Those conceptual elements
+  that have not been confirmed remain in normal text style (not bold), as shown in Figure 14. The
+  unstructured text always remains in normal text style.
+
+
+
+
+                                                                                               Confirmed text is displayed
+                                                                                               with a grey background/
+                                                                                               highlight and bold text.
+
+
+
+
+  Figure 14: Confirmed Matches are Greyed Out
+
+
+
+
+                                                                                                                             Page 22
+                               Design Guidance – Terminology – Display Standards for Coded Information
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 5 July 2007
+                                                                                                                   Microsoft
+
+
+
+
+2.2.1.2           Text Input Area
+  When the user confirms a single SNOMED-CT match, the input text that spawned the match becomes
+  replaced by the SNOMED-CT description label; either by the preferred term or synonym description
+  label.
+  When the user confirms a post-coordinated expression comprising multiple SNOMED-CT concepts, the
+  system renders the text by displaying the appropriate SNOMED-CT description labels for the base
+  concept and for the attribute value concept(s).
+  Likewise, the confirmation of a non-SNOMED-CT match (such as a match against a concept from a
+  separate informational model) also leads to the rendering of the text as that particular match label.
+  In between these labels, it will render a simplified translation of the attribute (relationship) label, which
+  typically is a linkage concept. For example, in the case of the concept number 116676008, instead of
+  displaying the preferred term label ‘associated morphology’, the system will display the word ‘with’. The
+  system will render this label in a smaller font and in grey in order to keep it from distracting the user’s
+  attention from the other labels.
+  All the confirmed structured notes in the text input area will be highlighted in grey to indicate that they
+  are inactive, until they are unconfirmed.
+
+2.2.1.3           Single Concept Approach
+  In the single concept approach to matching, matches identified in the additional text input field are
+  displayed below the base concept list (but above the additional text input field). If the user confirms this
+  match by selecting the check box next to this match, it will be rendered in bold. The corresponding text
+  in the additional text input field will become highlighted in grey and will be rendered (in bold) by the
+  appropriate SNOMED-CT description label.
+  In addition, if the user single-clicks on an item in the main list, and moves the mouse away from the list,
+  the item is highlighted grey to indicate that it is selected. See the example in Figure 15:
+
+
+
+
+                                                                                  Confirmed text is displayed in
+                                                                                  bold and with a grey
+                                                                                  highlight.
+
+
+
+
+  Figure 15: Confirmed Matches in the Single Concept Matching Approach
+
+
+
+
+                                                                                                                   Page 23
+                               Design Guidance – Terminology – Display Standards for Coded Information
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 5 July 2007
+                                                                                                                                Microsoft
+
+
+
+
+2.2.1.4           Guidance
+  The system:
+        Should ensure through visual communication that a match has been confirmed and is
+         consistent between the text input area and the suggested match area
+        Must visually distinguish confirmed from unconfirmed or unstructured text
+                 Could feature a grey background/highlight for matches that have been confirmed
+                 Should feature the label text for all confirmed matches in bold text style
+                 Should ensure that all unstructured text remains in a normal text style
+        Must replace the typed text with the matched SNOMED-CT label once the user confirms the
+         match
+        Must display either the preferred term or the synonym description labels in the noting area
+         (depending on what the user has chosen) once the user has confirmed the match
+        Must display either the preferred term or the synonym description labels in the matching area
+         (depending on what the user has chosen) once the user has confirmed the match
+        Must render expression matches that comprise post-coordinations of multiple concepts in a
+         user-friendly and readable form
+                 Could render expressions that comprise post-coordinations of multiple concepts by
+                  displaying the preferred term/synonym descriptions in a left-to-right order, with the base
+                  concept at the far left and its attribute concept values to its right
+                      Could render a simplified translation of the attribute (relationship) label
+                           Could render the attribute label in a smaller font and in grey
+       Note
+            The simplified translations of attribute relationship labels should be created and managed. However,
+             before this approach is adopted, further testing and research is required to determine the usability of the
+             range of possible translations (for example, testing the usability of translating ‘associated morphology’ into
+             ’with’)
+            The simplified translation of attribute relationship labels is only a default approach. In the event of a more
+             sophisticated rendering solution becoming available, the simplified translation approach should be
+             replaced
+
+2.2.1.5           How to Use the Design Guidance
+  Usage Format                                          Example                         Comments
+           If the text drops below the height of the   n/a                             The user must be able to view all the
+            text box, feature a scroll bar                                              encoded text
+  Table 11: How to Use the Design Guidance
+
+
+
+
+                                                                                                                                Page 24
+                               Design Guidance – Terminology – Display Standards for Coded Information
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 5 July 2007
+                                                                                                                                   Microsoft
+
+
+
+
+2.2.1.6           How Not to Use the Design Guidance
+  Usage Format                                         Example                                 Comments
+           Do not feature any elaboration settings    It would be unnecessary for the system This would be distracting and
+            that the user has not selected (unless     to show the axial modifiers, for example, unnecessary
+            there is a special safety reason to do     ‘patient currently has this finding’, if the
+            so)                                        user has modified these settings
+
+           Do not feature too dark a highlight; the   Fever for three days                    The user must be able to read the text
+            text must be readable underneath                                                   underneath the highlight
+  Table 12: How Not to Use the Design Guidance
+
+2.2.1.7           Benefits and Rationale
+  User feedback has indicated that users want to see a tidy, meaningful narrative in the text area before
+  saving it to record. If they have typed in shorthand and have refined a concept match, they would like
+  to see the label displayed here, rather than their original notes. Some users believed that there was the
+  need to display the original text, but this is a point for discussion.
+  Displaying confirmed items in grey is a useful communication that the item is finished and is now
+  unchangeable (until the match is unconfirmed by the user). User testing has supported this notion.
+
+2.2.1.8           Confidence Level
+  High confidence
+        Should ensure through visual communication that a match has been confirmed and is
+         consistent between the text input area and the suggested match area
+        Must visually distinguish confirmed from unconfirmed or unstructured text
+                 Could feature a grey background/highlight for matches that have been confirmed
+                 Should feature the label text for all confirmed matches in bold text style
+                 Should ensure that all unstructured text remains in a normal text style
+        Must display either the preferred term or the synonym description labels in the noting area
+         (depending on what the user has chosen) once the user has confirmed the match
+        Must display either the preferred term or the synonym description labels in the matching area
+         (depending on what the user has chosen) once the user has confirmed the match
+  Medium confidence
+        Must replace the typed text with the matched SNOMED-CT label once the user confirms the
+         match
+        Must render expression matches that comprise post-coordinations of multiple concepts in a
+         user-friendly and readable form
+                 Could render expressions that comprise post-coordinations of multiple concepts by
+                  displaying the preferred term/synonym descriptions in a left-to-right order, with the base
+                  concept at the far left and its attribute concept values to its right
+                      Could render a simplified translation of the attribute (relationship) label
+                            Could render the attribute label in a smaller font and in grey
+
+                                                                                                                                    Page 25
+                               Design Guidance – Terminology – Display Standards for Coded Information
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 5 July 2007
+                                                                                                          Microsoft
+
+
+
+  From the wireframe testing conducted with clinicians, very positive comments were received about the
+  encoded notes view. Responses included the fact that the notes were easy to run one’s eyes over, that
+  the encoded note view looked ‘really nice’, and that the association of elaboration and concepts was
+  much clearer in the encoded notes view than it was in the original typed text view.
+
+2.2.2            Displaying Unstructured Notes that are Associated with Confirmed
+                 Matches
+  The unstructured (free text) notes that are associated with matches that have been confirmed, will
+  remain rendered in normal text style (as opposed to a bold text style), but will also feature the marquee
+  around them which remains fixed until the note is unconfirmed. This is illustrated in Figure 16.
+  Maintaining the unstructured notes in normal text style is useful to distinguish it from the encoded
+  notes.
+
+
+
+
+                                                                    Free text remains in normal
+                                                                    (not bold) text.
+
+
+
+
+  Figure 16: Unstructured Notes Appear in Normal Style Text
+
+2.2.2.1           Guidance
+  The system:
+        Must leave the unstructured (free text) notes that are associated with matches that have been
+         confirmed, rendered in normal text style
+        Must visually link the unstructured notes with the confirmed concept match with which they are
+         associated
+                 Should visually link the unstructured notes with the associated confirmed concept match by
+                  a marquee
+
+
+
+
+                                                                                                          Page 26
+                                Design Guidance – Terminology – Display Standards for Coded Information
+                                Prepared by Microsoft, Version 1.0.0.0
+                                Last modified on 5 July 2007
+                                                                                                                           Microsoft
+
+
+
+
+2.2.2.2           How to Use the Design Guidance
+  Usage Format                                      Example                             Comments
+           Leave the marquee boundary around       See figure above
+            the unstructured notes, even when the
+            structured notes have been confirmed
+            for encoding
+  Table 13: How to Use the Design Guidance
+
+2.2.2.3           How Not to Use the Design Guidance
+  Usage Format                                      Example                             Comments
+           Feature any associated unstructured     properly                            This would make the unstructured notes
+            notes in bold                                                               indistinguishable from the structured
+                                                                                        notes
+  Table 14: How Not to Use the Design Guidance
+
+2.2.2.4           Benefits and Rationale
+  The user must be confident that they know what elaboration will be saved with each encoded note
+  when they save the notes to record. Leaving the marquees in to indicate associations between
+  confirmed notes and their associated text will be an important way to communicate this.
+  This notion has been supported by multiple rounds of usability testing.
+
+2.2.2.5           Confidence Level
+  High confidence
+        Must visually link the unstructured notes with the confirmed concept match with which they are
+         associated
+                 Should visually link the unstructured notes with the associated confirmed concept match by
+                  a marquee
+  Medium confidence
+        Must leave the unstructured (free text) notes that are associated with matches that have been
+         confirmed, rendered in normal text style
+
+
+
+
+                                                                                                                           Page 27
+                               Design Guidance – Terminology – Display Standards for Coded Information
+                               Prepared by Microsoft, Version 1.0.0.0
+                               Last modified on 5 July 2007
+                                                                                                             Microsoft
+
+
+
+
+3              DOCUMENT INFORMATION
+
+3.1            Terms and Abbreviations
+    Abbreviation                        Definition
+    SNOMED-CT                           Systematised Nomenclature of Medicine-Clinical Terms
+
+    UI                                  User Interface
+    Table 15: Terms and Abbreviations
+
+
+3.2            Nomenclature
+    This section shows how to interpret the different styles used in this document to denote various types
+    of information.
+    All content subject to completion, agreement or verification is denoted with highlighting.
+
+3.2.1            Body Text
+    Text                                                                Style
+    Code                                                                Monospace
+
+    Script
+
+    Other markup languages
+
+    Interface dialog names                                              Bold
+
+    Field names
+
+    Controls
+
+    Folder names                                                        Title Case
+
+    File names
+    Table 16: Body Text Styles
+
+3.2.2            Cross References
+    Reference                                                           Style
+    Current document – sections                                         Section number only
+
+    Current document – figures/tables                                   Caption number only
+
+    Other project documents                                             Italics and possibly a footnote
+
+    Publicly available documents                                        Italics with a footnote
+
+    External Web-based content                                          Italics and a hyperlinked footnote
+    Table 17: Cross Reference Styles
+
+
+
+
+                                                                                                             Page 28
+                                  Design Guidance – Terminology – Display Standards for Coded Information
+                                  Prepared by Microsoft, Version 1.0.0.0
+                                  Last modified on 5 July 2007
+                                                                                                                 Microsoft
+
+
+
+
+3.3       References
+ Reference         Document                                                                            Version
+ R1.               Design Guidance – Terminology – Matching                                            1.0.0.0
+
+ R2.               Design Guidance – Terminology – Elaboration                                         1.0.0.0
+
+ R3.               SNOMED-CT:
+                    http://www.snomed.org/
+ Table 18: References
+
+
+
+
+                                                                                                                 Page 29
+                             Design Guidance – Terminology – Display Standards for Coded Information
+                             Prepared by Microsoft, Version 1.0.0.0
+                             Last modified on 5 July 2007
+

@@ -1,0 +1,953 @@
+Patient Name
+Input and Display
+Quick Implementation Guide
+
+
+
+Edition 1
+22nd April 2010
+
+
+
+Version History to be deleted in the final version
+0.0.1.1   18-May-2010 Updated diagrams for optimal character lengths
+
+
+
+
+                                                                       Copyright ©2013 Health and Social Care Information Centre
+Contents
+
+
+
+
+Introduction                                                                                                            2
+
+Patient Name Display                                                                                                    3
+
+Patient Name Input                                                                                                      8
+    Title                                                                                                               9
+    Family Name                                                                                                      12
+    Given Name                                                                                                       13
+    Middle Name(s)                                                                                                   14
+    Suffix                                                                                                           15
+    Preferred Name                                                                                                   16
+    Control Layout                                                                                                   18
+    Instructional Text                                                                                               20
+
+
+This document was prepared for NHS Connecting for Health which ceased to exist on 31 March 2013. It may
+contain references to organisations, projects and other initiatives which also no longer exist. If you have
+any questions relating to any such references, or to any other aspect of the content, please contact
+cuistakeholder.mailbox@hscic.gov.uk
+
+Copyright:
+You may re-use this information (excluding logos) free of charge in any format or medium, under the terms of
+the Open Government Licence. To view this licence, visit nationalarchives.gov.uk/doc/open-government-
+licence or email psi@nationalarchives.gsi.gov.uk.
+
+
+
+
+1                                                                            Copyright ©2013 Health and Social Care Information Centre
+                                                                                                            Guidance
+
+
+Introduction
+The unambiguous recording and reading of patient names is vital for patient safety and
+application usability. Confusion is likely to lead to delays in identification (or, even worse,
+cause misidentification) of patients and their associated items, such as records and
+letters.
+
+Therefore, a consistent and clear format for the input and display of patient names is a
+key component of an effective health care system.
+
+
+
+
+     Important
+     Although it contains all of the guidance points, this document omits supporting
+     information and is therefore not intended as a substitute for the full NHS CUI document
+     Patient Name Input and Display1. Refer to that document for the definitive statement of
+     the design guidance in this area.
+     The visual representations used to display the guidance are illustrative only. Stylistic
+     choices (for example, display font used), unless otherwise specified, are not part of the
+     guidance and are therefore not mandatory requirements.
+
+
+
+
+1
+    Patient Name Input and Display – User Interface Design Guidance (v3.0.0.0)
+
+
+                                                                   Copyright ©2013 Health and Social Care Information Centre   2
+Guidance
+
+
+Patient Name Display
+
+
+    This document refers to Patient Name elements using the descriptors 'Family Name' and
+    'Given Name'. This includes the labels used within the visual representations. However,
+    use of these terms is not Mandatory but only Recommended (see Instructional Text
+    section). An example of alternative terms would be 'Last Name' and 'First Name'.
+
+
+
+                                            Family Name
+
+                                               Given Name
+
+
+                          SMITH, John (Mr)
+
+                                                   Title
+
+
+
+
+                                                      NID-0001
+
+        SMITH, John (Mr)                              The display must present the
+                                                      Family Name in all uppercase
+                                                      letters to clearly distinguish it
+                                                      from the Given Name
+                                                      Mandatory
+
+
+                                                      NID-0002
+        COOPER, Catherine (Dr)                        The display must separate the
+                                                      Family Name and Given Name
+                                                      using a comma to further
+             comma
+                                                      establish that the Family Name is
+                                                      being placed first
+                                                      Mandatory
+
+
+
+
+3                                                                 Copyright ©2013 Health and Social Care Information Centre
+                                                                                   Guidance
+
+
+Patient Name Display
+
+
+
+    CORDERO, Thelma (Ms)               NID-0003
+
+                                       The display must include
+                                       parentheses around the Title
+                 parentheses           to separate and distinguish it
+                                       from the other name elements
+                                       Mandatory
+
+                                       NID-0008
+
+                                       The display must present a
+                                       single pair of parentheses
+                                       around the Title element, for
+                                       example, (Mr)
+                                       Mandatory
+
+                                       NID-0004
+SUBRAMANYAN, Chandrasekhar (Mr)        The display must present the
+                                       name elements strictly in the
+     1.                2.       3.     order shown
+ Family Name     Given Name    Title   Mandatory
+
+
+                                       NID-0005
+    SMITH, John (Mr)
+                                       The display must present all
+                                       data for each specified
+                                       element (Family Name, Given
+                                       Name and Title) of the Patient
+                                       Name in full. Avoid truncation
+                                       of information where possible
+                                       Mandatory
+
+
+                                       NID-0006
+    JOHNSON, Brian (Mr)
+                                       The display must separate the
+                                       presentation of Given Name and
+                space                  Title by a single space
+                                       Mandatory
+
+                                          Copyright ©2013 Health and Social Care Information Centre   4
+Guidance
+
+
+Patient Name Display
+
+
+
+                                       NID-0007
+    JOHNSON, Brian (Mr)
+                                       The display must present the
+    COOPER, Catherine (Dr)             Title element in title case, for
+                                       example, Sir not SIR, Mr not MR
+    EVANS WEST, Jonathan (Sir)
+                                       Mandatory
+
+                                       NID-0009
+    JOHNSON, Brian (Mr)                The display must allow any
+                                       free-text (up to 35 characters) to
+             Up to 35 characters       be presented in the Title element
+                                       Mandatory
+                                       NID-0011
+
+                                       The display must allow the
+                                       Family Name, Given Name and
+                                       Title elements to present at least
+                                       the maximum field sizes given in
+                                       the NHS Connecting for Health
+                                       Personal Demographics Service
+                                       (PDS) FS 10.00, Issue 1A, 18th
+                                       January 2005 (CDT D 0222).
+                                       Mandatory
+
+                                       NID-0010
+       JOHNSON, Brian (Mr)             The display must, in accordance
+                                       with the UK Government Data
+                                       Standards Catalogue guidelines,
+                   full stop omitted
+                                       omit a trailing full stop from the
+                                       Title element (for example, 'Mr'
+                                       not 'Mr.')
+                                       Mandatory
+
+
+
+
+5                                                  Copyright ©2013 Health and Social Care Information Centre
+                                                                            Guidance
+
+
+Patient Name Display
+
+
+
+                                NID-0012
+   EVANS WEST, Jonathan (Sir)
+                                The display must allow for the
+                                Family Name and Given Name
+   A Family Name with           elements to consist of multiple
+    two components              components. Components are
+                                constituent parts of the name
+   SMITH, Mary Jane (Mrs)       element that combine with other
+                                parts to form the element as a
+       A Given Name with        whole
+        two components
+                                Components have the following
+                                features:
+
+   SMITH, Mary Jane (Mrs)       Family Name components must
+                                consist of UPPERCASE
+  Uppercase
+                                alphabetic characters only, for
+                                example, SMITH
+
+   EVANS WEST, Jonathan (Sir)   Multiple Family Name
+                                components must be separated
+  OR                            by a hyphen or a single space
+   EVANS-WEST, Jonathan (Sir)
+
+
+
+   SMITH, Nadejda (Mrs)         Given Name components must
+                                display in title case, for example,
+                                Nadejda
+          Title case
+
+
+   SMITH, Nis Bank (Mr)         Multiple Given Name
+                                components must be separated
+                                by a hyphen or a single space.
+   SMITH, Anne-Jorun (Mrs)
+                                Mandatory
+
+
+
+                                   Copyright ©2013 Health and Social Care Information Centre   6
+Guidance
+
+
+Patient Name Display
+
+
+
+           SUBRAMANYAN,         NID-0013
+
+           Chandrasekhar (Mr)   The display should allow word
+                                wrapping to occur in instances
+                                where the field length exceeds
+                                the width allocated to it on the
+                                form. If word wrapping occurs,
+                                it should be applied only at the
+                                end of a whole field element
+                                or at the end of a field element
+                                component, if it comprises
+                                multiple parts (for example,
+                                Middle name(s) field)
+                                Recommended
+
+
+
+
+7                                          Copyright ©2013 Health and Social Care Information Centre
+                                                                               Guidance
+
+
+Patient Name Input
+
+
+
+            Title     e.g. Mr      NID-0062
+
+                                   By default, include a prompt in
+ FAMILY name e.g. SMITH
+                                   the input boxes to indicate to a
+   Given name e.g. John            user the information required
+                                   Recommended
+ Middle name(s) e.g. David James   NID-0063
+
+                                   Present the default prompt in an
+            Suffix e.g. Junior     occluded form to prevent
+                                   confusion with actual data input
+     Known as e.g. Johnny-Boy      by a user
+                                   Recommended
+
+                                   NID-0064
+
+        1           e.g. John      Remove the default prompt
+                                   when a user begins to input
+        2                          data
+                                   Mandatory
+
+        3           Jos
+
+
+
+
+                                      Copyright ©2013 Health and Social Care Information Centre   8
+Guidance
+
+
+Patient Name Input
+
+Fields
+
+    A Patient Name input control can consist of up to six constituent fields with labels: Title,
+    Family Name, Given Name, Middle name, Suffix and Known As
+
+
+                        Title                         These are considered to be
+                                                      the minimum data required
+                        Family Name
+                                                      to make the name useful
+                        Given Name
+                        Middle Name
+                                                      These are considered to
+                        Suffix                        improve data quality but
+                                                      are not mandatory
+                        Preferred Name
+
+
+
+
+9                                                                     Copyright ©2013 Health and Social Care Information Centre
+                                                                                        Guidance
+
+
+Patient Name Input
+
+Fields - Title
+
+                            Mr        Sir   NID-0016
+
+                        Mrs        Lady     This table shows suggested
+                            Ms      Lord    values for ‘Title’
+                                            Recommended
+                            Dr    Dame
+                        Rev      Other...
+
+
+                                            NID-0017
+         Title
+                                            One value should allow the
+                 Mr                         user to invoke free-text input
+                 Mrs                        mode (for example 'Other...' in
+                 Ms                         the illustrations)
+                 Dr                         Recommended
+                 Rev
+                 Sir
+                 Lady
+                 Lord
+                 Dame
+                 Other...
+
+
+
+
+                                            NID-0018
+         Title   e.g. Mr                    Input box for Title should
+                                            contain a relevant prompt, for
+                                            example, Mr
+                                            Recommended
+
+                                            NID-0019
+
+                                            Input box for Title should be in
+                                            the form of a drop-down
+                                            combo-box
+                                            Recommended
+
+
+
+
+                                             Copyright ©2013 Health and Social Care Information Centre   10
+Guidance
+
+
+Patient Name Input
+
+Fields - Title
+
+                                        NID-0014
+         Title   e.g. Mr                The Title input control must
+                                        allow a maximum of 35
+                  Up to 35 characters
+                                        characters
+                         input          Mandatory
+
+
+
+                                        NID-0015
+         Title Mr
+                                        Minimum visual width of the
+                                        input box must display four
+        At least four characters        characters
+               displayed                Mandatory
+
+
+
+
+11                                                 Copyright ©2013 Health and Social Care Information Centre
+                                                                                Guidance
+
+
+Patient Name Input
+
+Fields - Family Name
+
+                                    NID-0020
+
+FAMILY name e.g. SMITH              Family Name input must be via a
+                                    free-text entry box
+                                    Mandatory
+
+                                    NID-0024
+
+                                    Family Name input box should
+                                    contain a relevant prompt in its
+                                    default state (for example, 'e.g.
+                                    SMITH') in occluded form
+                                    Recommended
+
+
+                                    NID-0021
+FAMILY name e.g. SMITH
+                                    Family Name input box must
+                                    accept a maximum of 40
+              Up to 40 characters   characters
+                     input
+                                    Mandatory
+
+
+
+                                    NID-0022
+FAMILY name winstan
+                                    Family Name input box should
+                                    be capable of displaying a
+             At least eight         minimum of eight characters
+         characters displayed       without occlusion
+                                    Recommended
+
+                                    NID-0023
+FAMILY name winstan
+                                    Family Name input box should
+                                    optimally display 14 characters
+          Optimally 14 characters   without occlusion
+               displayed
+                                    Recommended
+
+
+
+
+                                       Copyright ©2013 Health and Social Care Information Centre   12
+Guidance
+
+
+Patient Name Input
+
+Fields - Family Name
+
+                         NID-0025
+FAMILY name WINSTANLEY
+                         When displaying a Family Name
+                         value, the characters should all
+                         be in uppercase
+                         Recommended
+
+
+
+
+                                    Copyright ©2013 Health and Social Care Information Centre
+13
+                                                                                      Guidance
+
+
+Patient Name Input
+
+Fields - Given Name
+
+                                          NID-0026
+ Given Name e.g. John
+                                          Given Name input must be via a
+                                          free-text entry box
+                                          Mandatory
+                                          NID-0030
+
+                                          Given Name input box should
+                                          contain a relevant prompt in its
+                                          default state (for example, 'e.g.
+                                          John') in occluded form
+                                          Recommended
+
+                                          NID-0027
+ Given Name e.g. John
+                                          Given Name input box must
+                                          accept a maximum of 35
+              Up to 35 characters input   characters
+                                          Mandatory
+
+                                          NID-0028
+ Given Name jonathan                      Given Name input box should be
+                                          capable of displaying a minimum
+        At least eight characters         of eight characters without
+               displayed                  occlusion
+                                          Recommended
+
+                                          NID-0029
+ Given Name     jonathan
+                                          Given Name input box should
+                                          optimally display 14
+           Optimally 14 characters        characters without occlusion
+                displayed
+                                          Recommended
+
+                                          NID-0031
+ Given Name Jonathan
+                                          When displaying a Given Name
+                                          value the first character should
+                                          be in uppercase
+                                          Recommended
+
+
+                                           Copyright ©2013 Health and Social Care Information Centre   14
+Guidance
+
+
+Patient Name Input
+
+Fields - Middle Name(s)
+
+                                         NID-0032
+
+Middle name(s) e.g. David James          Middle name input must be via a
+                                         free-text entry box
+                                         Mandatory
+
+                                         NID-0036
+
+                                         Middle name input box should
+                                         contain a relevant prompt in its
+                                         default state, (for example, 'e.g.
+                                         David James') in occluded form
+                                         Recommended
+
+
+                                         NID-0033
+Middle name(s) e.g. David James
+                                         Middle name input box must
+                                         accept a maximum of 100
+                  Up to 100 characters   characters
+                         input
+                                         Mandatory
+
+
+
+                                         NID-0034
+Middle name(s) david ja
+                                         Middle name input box should be
+                                         capable of displaying a minimum
+         At least eight characters       of eight characters without
+                displayed                occlusion
+                                         Recommended
+
+
+
+                                         NID-0035
+Middle name(s) david j
+                                         Middle name input box should
+                                         optimally display 7 characters
+         Optimally 7 characters          without occlusion
+              displayed
+                                         Recommended
+
+
+
+
+15                                                  Copyright ©2013 Health and Social Care Information Centre
+                                                                                        Guidance
+
+
+Patient Name Input
+
+Fields - Suffix
+
+       Suffix e.g. Junior                   NID-0037
+
+                                            Suffix input must be via a
+                                            free-text entry box
+                                            Mandatory
+                                            NID-0041
+
+                                            Suffix input box should contain
+                                            a relevant prompt when in its
+                                            default state (for example,
+                                            'e.g. Junior') in occluded form
+                                            Recommended
+
+
+                                            NID-0038
+       Suffix e.g. Junior
+                                            Suffix input must accept a
+                                            maximum of 35 characters
+                Up to 35 characters input   Mandatory
+
+
+                                            NID-0039
+       Suffix    junior
+                                            Suffix input box should be
+                                            capable of displaying a
+               At least eight               minimum of eight characters
+           characters displayed             without occlusion
+                                            Recommended
+
+
+
+                                            NID-0040
+       Suffix    junior
+                                            Suffix input box should
+                                            optimally display 14
+            Optimally 14 characters         characters without occlusion
+                  displayed
+                                            Recommended
+
+
+
+
+                                             Copyright ©2013 Health and Social Care Information Centre   16
+Guidance
+
+
+Patient Name Input
+
+Fields – Preferred Name
+
+                                         NID-0042
+     Known as e.g. Johnny-Boy
+                                         Preferred name input must be
+                                         via a free-text entry box
+                                         Mandatory
+                                         NID-0046
+
+                                         Preferred name input box
+                                         should contain a relevant
+                                         prompt in its default state
+                                         (for example, 'e.g. Johnny-
+                                         Boy') in occluded form
+                                         Recommended
+
+
+                                         NID-0043
+     Known as e.g. Johnny-Boy
+                                         Preferred name input box must
+                                         accept a maximum of 35
+             Up to 35 characters input   characters
+                                         Mandatory
+
+
+                                         NID-0044
+     Known as johnn
+                                         Preferred name input box should
+                                         be capable of displaying a
+               At least eight            minimum of eight characters
+           characters displayed          without occlusion
+                                         Recommended
+
+
+
+                                         NID-0045
+     Known as johnn
+                                         Preferred name input box
+                                         should optimally display 14
+             Optimally 14 characters
+                  displayed              characters without occlusion
+                                         Recommended
+
+
+
+
+17                                                   Copyright ©2013 Health and Social Care Information Centre
+                                                                                                   Guidance
+
+
+Patient Name Input
+
+Control Layout
+
+This guidance supports two patient name input control layouts
+
+
+
+
+               Title    e.g. Mr
+                                                       InForm Layout
+    FAMILY name e.g. SMITH                             The most desirable layout for
+                                                       patient safety and usability and
+      Given name e.g. John                             the default for an application's
+                                                       Patient Name Input Control
+
+  Middle name(s) e.g. David James
+
+              Suffix e.g. Junior
+
+
+           Known as e.g. Johnny-Boy
+
+
+
+
+InLine Layout
+The InLine layout is included for instances where vertical space is constrained or where
+horizontal layout is the application's convention
+
+
+
+
+  Title                FAMILY name         Given name                   Middle name(s)
+   e.g. Mr             e.g. SMITH          e.g. John                     e.g. David James
+
+
+  Suffix               Known as
+   e.g. Junior          e.g. Johnny-Boy
+
+
+
+
+                                                        Copyright ©2013 Health and Social Care Information Centre   18
+Guidance
+
+
+Patient Name Input
+
+Control Layout
+
+                                                         NID-0047
+                  Title   e.g. Mr                        InForm field controls must be
+                                                         aligned on the left edge of the
+     FAMILY name e.g. SMITH
+                                                         input boxes
+        Given name e.g. John                             Mandatory
+
+                                                         NID-0048
+  Middle name(s) e.g. David James
+                                                         InForm field controls (where
+                                                         they exist) must be placed
+                 Suffix e.g. Junior                      underneath each other in the
+                                                         order illustrated
+             Known as e.g. Johnny-Boy
+                                                         Mandatory
+
+
+
+
+     Title                FAMILY name        Given name              Middle name(s)
+     e.g. Mr              e.g. SMITH         e.g. John                e.g. David James
+
+
+     Suffix               Known as
+     e.g. Junior           e.g. Johnny-Boy
+
+
+                                                         NID-0051
+             NID-0050
+
+             Correct presentation order is as            InLine design choice should
+             illustrated                                 only be used when InForm
+                                                         design has been considered
+             Mandatory
+                                                         undesirable
+             NID-0049                                    Recommended
+             Ensure wrapping only occurs on
+             whole fields
+             Mandatory
+
+
+
+
+19                                                                   Copyright ©2013 Health and Social Care Information Centre
+                                                                                        Guidance
+
+
+Patient Name Input
+
+Instructional Text
+
+
+         Title   e.g. Mr                    NID-0052
+
+                                            Each field in a name input
+FAMILY name e.g. SMITH
+                                            control must have an
+  Given name e.g. John                      associated label
+                                            Mandatory
+Middle name(s) e.g. David James
+                                            NID-0053
+
+
+        Suffix e.g. Junior
+                                            Labels must be
+                                            programmatically linked to
+                                            their associated input field
+    Known as e.g. Johnny-Boy
+                                            Mandatory
+
+
+                                            NID-0054
+                           Title
+                                            Label values should be as
+                           FAMILY name
+                                            illustrated
+                           Given name       Recommended
+                           Middle name(s)
+                           Suffix           Note ‘Known as’ is the label for the
+                                            Preferred Name input control
+                           Known as
+
+
+
+
+                                             Copyright ©2013 Health and Social Care Information Centre   20
+Guidance
+
+
+Patient Name Input
+
+
+
+           Title   e.g. Mr        NID-0055
+
+                                  Each field in a name input
+FAMILY name e.g. SMITH
+                                  control should have an
+     Given name e.g. John         associated prompt
+                                  Recommended
+Middle name(s) e.g. David James   NID-0056
+
+                                  Prompts for Family Name
+          Suffix e.g. Junior      should be capitalised
+                                  Recommended
+      Known as e.g. Johnny-Boy
+                                  NID-0057
+
+                                  All prompts except Family
+                                  Name should have
+                                  sentence style capitalisation
+                                  Recommended
+
+                                  NID-0058
+
+                                  Prompt values should be as
+                                  illustrated
+                                  Recommended
+
+                                  NID-0059
+
+                                  Prompts should be lighter in
+                                  weight and colour than the
+                                  input text, and italicised
+                                  Recommended
+
+
+
+
+21                                           Copyright ©2013 Health and Social Care Information Centre
+                                                                                                   Guidance
+
+
+Patient Name Input
+
+
+
+           Title   e.g. Mr                             NID-0060
+
+                                                       Each field in a name input
+FAMILY name e.g. SMITH
+                                                       control should have
+  Given name e.g. John                                 instructional text (for
+                                                       example, a tooltip)
+Middle name(s) e.g. David James                        Recommended
+
+
+           Suffix e.g. Enter
+                       Juniorthe person’s Middle name(s)
+
+    Known as e.g. Johnny-Boy
+
+
+
+
+   Title                                      Middle name(s)
+
+   Select a Title from the list or simply     Enter the person's middle name(s)
+   type in a different Title
+
+   FAMILY name                                Suffix
+
+   Enter the person's Family Name             Enter the person's suffix name (e.g.
+   (surname)                                  'Junior' or 'The Third')
+
+   Given name                                 Known as
+
+   Enter the person's Given Name              Enter the name a person likes to
+   (forename or Christian name)               referred to as
+
+
+                                                       NID-0061
+
+                                                       Tooltip values should be as
+                                                       illustrated
+                                                       Recommended
+
+
+
+
+                                                        Copyright ©2013 Health and Social Care Information Centre   22
+

@@ -1,0 +1,480 @@
+# Microsoft launches CUI internationally
+
+## Provenance
+- Source file: `raw/sources/references/secondary/digitalhealth-microsoft-launches-cui-internationally-2007.html`
+- Extracted text: `derived/extracted-text/reference-context/digitalhealth-microsoft-launches-cui-internationally-2007.txt`
+- Normalization note: HTML text extraction using a conservative parser; boilerplate and navigation chrome may remain.
+
+## Extracted Text
+
+Microsoft launches CUI internationally | Digital Health
+
+ Back to Top
+
+ Skip to content
+
+News
+
+Opinion
+
+Podcast
+
+Insights Reports
+
+Case Studies/White Papers
+
+Events
+
+Digital Health Rewired
+Digital Health Summer Schools
+Webinars
+
+Topics
+
+10 Year Health Plan
+Digital Transformation
+Integrated Care
+Leadership and Teams
+Smart Health
+Cyber Security
+AI and Data
+Start-ups
+
+Rewired
+
+Networks
+
+Impact List
+
+Products
+
+Networks Sponsorship
+Rewired Exhibition
+Digital Health Insights
+Digital Roundtables
+Industry Spotlights
+Webinar Sponsorship
+
+Newsletter
+
+Intelligence
+
+ Search for:Search Button
+
+Home
+
+News
+
+Opinion
+
+Podcast
+
+Insights Reports
+
+Case Studies/White Papers
+
+Events
+
+Digital Health Rewired
+
+Digital Health Summer Schools
+
+Webinars
+
+Topics
+
+10 Year Health Plan
+
+Digital Transformation
+
+Integrated Care
+
+Leadership and Teams
+
+Smart Health
+
+Cyber Security
+
+AI and Data
+
+Start-ups
+
+Rewired
+
+Networks
+
+Impact List
+
+Products
+
+Networks Sponsorship
+
+Rewired Exhibition
+
+Digital Health Insights
+
+Digital Roundtables
+
+Industry Spotlights
+
+Webinar Sponsorship
+
+Intelligence
+
+Microsoft launches CUI internationally
+
+News
+
+ 11 September 2007
+
+DHI News Team
+
+ December 1, 2016
+
+Microsoft has today launched its health Common User Interface (CUI), designed to help improve patient safety and the efficiency of clinicians by providing them with a standard user interface for clinical systems. 
+
+Developed in partnership with the English NHS the CUI is now available to all healthcare developers around the world at no cost at http://www.mscui.net/.
+
+Microsoft says that the international launch marks the completion of the first phase of the NHS Common User Interface Project, after two years of work. The CUI work is now being made available to healthcare application developers around the world, and Microsoft says it will now work with a wider community to develop CUI.
+
+The CUI, which initially consists of a guide and set of tools for creating a common look and feel to critical clinical applications, is available as a free toolkit which developers can use to incorporate into their systems.
+
+Adoption of the CUI enables application providers to ensure a consistent user interface and presentation of data such as date and drug dosages, information which today can often be delivered in a confusing variety of ways by different clinical systems. As well as helping improve patient safety CUI can ensure healthcare professionals get a familiar look and feel across a range of different systems, improving efficiency.
+
+Designed to be used by healthcare application providers and institutions the CUI has been developed in partnership with the English National Health Service. The CUI has been the focus of a major development project by Microsoft over the past two years.
+
+The initial release of the CUI has created guidance and tools for a common look and feel for patient-critical functions, intended to increase patient safety and clinician effectiveness and reduce training and support costs, among other benefits.
+
+The Microsoft Health CUI has been developed to ensure NHS doctors can spend more time focusing on providing optimal care to their patients and less time worrying about searching for the right way to enter information into the system.
+
+"For every healthcare institution around the world, patient safety is of paramount importance," said Tim Smokoff, general manager, worldwide health for the Worldwide Public Sector at Microsoft. "The Microsoft health Common User Interface will help developers building healthcare applications ensure a higher level of quality control through a common look and feel to reduce the margin for error and save lives in the process."
+
+"The NHS is a complex organization due to the diversity of care settings, applications and vendors," said Dr. Mark Ferrar, director of infrastructure at NHS Connecting for Health, "Our ultimate goal is to make systems easier to use and more consistent, and increase patient safety in the process. Microsoft’s expert role in helping us manage technologies and achieve cost savings is vital; initial feedback is very positive."
+
+"Microsoft Health CUI ensures a common look, feel and set of rules around standard processes in healthcare, which can help us shorten the development cycle on certain projects, adding value to clinicians and ultimately transferring benefits to the patient," said Sean Riddell, healthcare managing director at EMIS. "Extending the Microsoft Health CUI beyond the U.K. will have a significant impact on patient safety worldwide."
+
+To date, however, adoption within the NHS has been limited, with only some application providers so far implementing elements of CUI into their systems. The largest supplier to so far begin to incorporate elements of CUI into its products is primary care systems vendor EMIS.
+
+Microsoft has previously indicated that in the future it hopes that the safety and efficiency benefits of CUI in health will lead to adoption becoming a core standard that the NHS will accredit suppliers against.
+
+The CUI provides both platform-independent guidance for designing clinical interfaces that can be implemented on any software technology, together with a reference implementation on the Microsoft platform and the .NET Framework. Microsoft says that the CUI is an important element of its ‘Connected Health Platform’ concept.
+
+The guidance and software code are available to download at no cost, and are designed to support the delivery of safe patient care across a healthcare system.
+
+Link
+
+http://www.mscui.net/
+
+Microsoft NHS Resource Centre 
+
+Subscribe To Our Newsletters
+
+ Find out more
+
+Subscribe to our newsletter
+
+ Email
+
+ Subscribe
+
+ Subscribe To Our Newsletter
+
+ Digital Health Digest
+
+ Digital Health Main Newsletter List
+
+ Intelligence Round-up List
+
+ Digital Health Daily Newsletter
+
+ First Name
+
+ Last Name
+
+ Email Address:
+
+ Job Title:
+
+ Organisation:
+
+Leave this field empty if you're human:
+
+ Tags
+
+ applications
+
+ Community
+
+ Data
+
+ Drug
+
+ Efficiency
+
+ feedback
+
+ Health
+
+ healthcare
+
+ Infrastructure
+
+ Microsoft
+
+ patient
+
+ Patient safety
+
+ patients
+
+ Primary Care
+
+ Quality
+
+ Safety
+
+ Savings
+
+ software
+
+ systems
+
+ Toolkit
+
+ US
+
+Prev News
+One quarter of patients favour records opt-out
+
+Next News
+ Practices urged to decide on systems by year end
+
+ Latest News
+
+ Cheshire neighbourhood care model reduces A&E attendances
+
+ Palantir's NHS contract could end if others 'can do the job better'
+
+ Digital Health’s monthly roundup of contracts and go lives
+
+ Cera launches AI lab to address global care capacity challenges
+
+ Digital Health Coffee Time Briefing ☕
+
+ Latest News
+
+ Trending
+
+ Cheshire neighbourhood care model reduces A&E attendances
+
+ Palantir's NHS contract could end if others 'can do the job better'
+
+ Digital Health’s monthly roundup of contracts and go lives
+
+ Cera launches AI lab to address global care capacity challenges
+
+ Digital Health Coffee Time Briefing ☕
+
+ Digital Health Rewired Pitchfest 2026 shortlist revealed
+
+ What NHS trusts get wrong in EPR rollouts
+
+ Joe's View: Christmas in space and the app that fell to Earth
+
+ Insufficient EPR training contributes to risk of patient harm
+
+ Concerns that capital funding for NHS tech could delay AI roll-out
+
+ Most Popular
+
+ 1
+
+ Digital Transformation
+
+ Liverpool University Hospitals selects Nervecentre to supply EPR
+
+ 2
+
+ 10 Year Health Plan
+
+ IBM awarded £160m to transform NHS App into ‘health companion’
+
+ 3
+
+ AI and Data
+
+ NHSE official warns staff over criticism of Palantir’s FDP
+
+ 4
+
+ AI and Data
+
+ Palantir’s NHS contract could end if others ‘can do the job better’
+
+ 5
+
+ Cyber Security
+
+ NHS England investigating compromised GP websites
+
+ 6
+
+ News
+
+ £1.5m FemTech fund launched under Women’s Health Strategy
+
+ 7
+
+ 10 Year Health Plan
+
+ MHRA secures £3.6m to expand AI regulatory sandbox
+
+ 8
+
+ Digital Transformation
+
+ DHSC invests in scanning and diagnostic equipment for CDCs
+
+Subscribe To Our Newsletters
+
+ Find out more
+
+ Most Popular
+
+ 1
+
+ Digital Transformation
+
+ National NHS chief digital, data and tech officer appointed
+
+ 2
+
+ Leadership and Teams
+
+ Digital health staff will be expected to gain professional registration
+
+ 3
+
+ Digital Transformation
+
+ Liverpool University Hospitals selects Nervecentre to supply EPR
+
+ 4
+
+ Digital Transformation
+
+ Somerset and Dorset sign £222m contract with Epic for unified EPR
+
+ 5
+
+ AI and Data
+
+ Doctors raise safety concerns about AI discharge summary tool
+
+ 6
+
+ Digital Transformation
+
+ NHS SBS launches £250m communication framework
+
+ 7
+
+ AI and Data
+
+ Accurx to supply AI-scribing tool for large-scale NHS hospital rollout
+
+ 8
+
+ 10 Year Health Plan
+
+ IBM awarded £160m to transform NHS App into ‘health companion’
+
+ 9
+
+ Cyber Security
+
+ NHS supplier hit by cyber attack by pro-Iran activist hackers
+
+ 10
+
+ AI and Data
+
+ Palantir staff being issued NHS email accounts sparks concerns
+
+ Related News
+
+ Integrated Care
+
+ March 6, 2026
+
+ NHS population health analytics supporting early intervention
+
+ Population health analytics delivered by Graphnet Health are now embedded across almost nine million patients, supporting early intervention.
+
+ News
+
+ March 4, 2026
+
+ Doctors raise safety concerns about AI discharge summary tool
+
+ Doctors groups have raised safety concerns over plans to roll out an AI-Assisted Discharge Summary tool nationally through the FDP.
+
+ Smart Health
+
+ March 4, 2026
+
+ NIHR awards £47.8m for NHS equipment to boost clinical trials
+
+ The National Institute for Health and Care Research (NIHR) has awarded £47.8m for equipment that will help streamline clinical trial delivery.
+
+ Company
+
+About
+
+Contact Us
+
+Terms and Conditions
+
+Privacy Policy
+
+Comment Policy
+
+Cookie Policy
+
+Accessibility Statement
+
+ Media Pack
+
+Media Pack
+
+Digital Health Insights
+
+Case Studies and White Papers
+
+Roundtables
+
+Contributors’ Guidelines
+
+ Events
+
+Rewired
+
+Summer Schools
+
+Webinars
+
+ X-twitter
+
+ Youtube
+
+ Linkedin-in
+
+ Bluesky Streamline Icon: https://streamlinehq.comBluesky
+
+Digital Health Intelligence Limited
+Registered Office: 3rd Floor, The Foundry, 77 Fulham Palace Rd, London W6 8JA
+
+Registered No. 9257440
+Vat No. 198 3531 71
+
+Copyright © 2026 Digital Health

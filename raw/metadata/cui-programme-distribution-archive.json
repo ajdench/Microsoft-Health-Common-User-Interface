@@ -1,0 +1,60 @@
+{
+  "title": "Historical CUI programme distribution and support pages",
+  "retrieved_on": "2026-04-18",
+  "files": [
+    {
+      "title": "NHS Common User Interface",
+      "original_url": "http://www.cui.nhs.uk/Pages/NHSCommonUserInterface.aspx",
+      "local_path": "raw/sources/references/nhs-archives/2012-cui-home.html",
+      "source_type": "html",
+      "source_category": "archive context",
+      "retrieval_status": "retrieved",
+      "sha256": "1a0effa9e0b88cd97fa38952d27dfc96412d3d0ae2d402f08f419a3a1520a20f"
+    },
+    {
+      "title": "Register.aspx",
+      "original_url": "http://www.cui.nhs.uk/Pages/Register.aspx",
+      "local_path": "raw/sources/references/nhs-archives/2012-cui-register.html",
+      "source_type": "html",
+      "source_category": "archive context",
+      "retrieval_status": "retrieved",
+      "sha256": "428befb34cc943742211e6f8a100e0ae990313e9e31f6607a8087a1577b31fcb"
+    },
+    {
+      "title": "NHS CUI Distribution Mechanism User Guide",
+      "original_url": "http://www.cui.nhs.uk/Pages/NHS CUI Distribution Mechanism User Guide.pdf",
+      "local_path": "raw/sources/references/nhs-archives/cui-programme/nhs-cui-distribution-mechanism-user-guide.pdf",
+      "source_type": "pdf",
+      "source_category": "archive context",
+      "retrieval_status": "retrieved",
+      "sha256": "31717a625b4c5880f69ff20e382fa3307a5f2bd2ebc4acb89d6c9c57cee9544f"
+    },
+    {
+      "title": "Privacy Statement",
+      "original_url": "http://www.cui.nhs.uk/Pages/Privacy.aspx",
+      "local_path": "raw/sources/references/nhs-archives/cui-programme/privacy.html",
+      "source_type": "html",
+      "source_category": "archive context",
+      "retrieval_status": "retrieved",
+      "sha256": "37625116db7995da589806ee51f2c1b08af4ef35f276729bcf29fb83054bb9bb"
+    },
+    {
+      "title": "Sign In Help",
+      "original_url": "http://www.cui.nhs.uk/Pages/SignInHelp.aspx",
+      "local_path": "raw/sources/references/nhs-archives/cui-programme/sign-in-help.html",
+      "source_type": "html",
+      "source_category": "archive context",
+      "retrieval_status": "retrieved",
+      "sha256": "0a4195de55b818b548da7d0fcf572b423611861a88a585fd01d7791031b30627"
+    },
+    {
+      "title": "Forgotten Password",
+      "original_url": "http://www.cui.nhs.uk/Pages/ForgotPass.aspx",
+      "local_path": "raw/sources/references/nhs-archives/cui-programme/forgot-password.html",
+      "source_type": "html",
+      "source_category": "archive context",
+      "retrieval_status": "retrieved",
+      "sha256": "7b8781e82a5701722efaf72ebaf0085077cb454aef3072d47672ee56be9321c5"
+    }
+  ]
+}

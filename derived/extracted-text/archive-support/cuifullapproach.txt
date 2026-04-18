@@ -1,0 +1,1084 @@
+                         Programme        NPFIT                           DOCUMENT RECORD ID KEY
+                         Sub-Prog /       Technology Office            NPFIT-FNT-TO-REQ-QUAL-0301
+                         Project          Data Standards &
+                                          Products
+                                          Directorate
+                                          CUI programme
+                         Prog. Director   Ken Lunn
+                         Owner            Roarke Batten       Version       5v0
+                         Author           Roarke Batten
+                         Version Date     26 Aug 2009         Status        Approved
+
+
+
+
+              Common User Interface (CUI) Programme:
+Clinical Applications and Patient Safety (CAPS) Project:
+                                                                       Development Lifecycle
+
+
+
+
+© Crown Copyright 2009                                                            Page 1 of 22
+                                                                               NPFIT-FNT-TO-REQ-QUAL-0301
+Approved                                                                                    5v0 26 Aug 2009
+
+
+Amendment History:
+Version    Date          Amendment History
+0.1        10-Apr-2006   Barry Day - First draft for comment
+0.2        22-May-2006   Barry Day - Second draft, incorporating comments from Roarke Batten and
+                         ISB.
+0.3        19-Jan-2007   Third draft, incorporating comments from Roarke Batten, Tim Chearman and
+                         ISB.
+0.4        23-Jan-2007   Roarke Batten - updated following discussion with Tim and Bev.
+0.5        23-Jan-2007   Roarke Batten - updated following final review with Bev Scott prior to the ISB
+                         January submissions meetings. For confirmation of sponsorship message from
+                         Mark Ferrar, and review and approval of the overall document content by Mark
+                         Ferrar.
+0.5        22-Mar-2007   Roarke Batten - updates to the document following ISB feedback in January
+                         submissions. This version maintained as 0v5 to avoid removing and updating
+                         references to final release documentation in all submissions for January and
+                         February.
+1v1        19-Sep-2007   Roarke Batten – updates reflecting clarity of the definition of “clinical systems”
+                         earlier in the document, updates with changed workstream names in Phase 2,
+                         and updated sponsor statement from Mark Ferrar.
+2v0        24-Oct-2007   Roarke Batten – second baseline document for publication.
+2v1        12-Feb-2008   Roarke Batten – clinical systems definition for the purposes of scoping for the
+                         ISB HaSC included following ISB HaSC appraisal.
+3v0        15-Feb-2008   Roarke Batten – third baseline version approved for use in relation to ISB
+                         publications.
+4v0        04-Aug-2009   Bev Scott – fourth baseline version. Updated to incorporate change in
+                         directorate for CUI CAPS project from Infrastructure to Data Standards and
+                         Products. Also change in organisation from NHS Connecting for Health to the
+                         Department of Health Informatics Directorate.
+5v0        26-Aug-2009   Bev Scott – fifth baseline version. Updated with the CUI CAPS Clinical Safety
+                         Management System and the UX development lifecycle.
+
+
+Reviewers:
+This original document has been reviewed by the following Beverley Scott, Martin Severs,
+Maureen Baker, Ian Harrison, Paul Hough, Mark Ferrar and DHID CAPS Team members
+as described in this document.
+Approvals:
+This document requires the following approvals.
+Name               Signature      Title                Date of      Version
+                                                       Issue
+Roarke Batten      Pending        CUI Programme        30-Oct-2007 2v0
+                   approval       Manager
+Roarke Batten      Pending        CUI Programme        15-Feb-      3v0
+                   approval       Manager              2008
+Roarke Batten      Pending        CUI Programme        04-Aug-      4v0
+                   approval       Manager              2009
+
+
+
+
+© Crown Copyright 2009             Page 2 of 22
+                                                                             NPFIT-FNT-TO-REQ-QUAL-0301
+Approved                                                                                  5v0 26 Aug 2009
+
+
+Related Documents:
+These documents (some of which are confidential) have been used in the production of
+this lifecycle.
+Ref no     Doc Reference Number                Title                                     Version
+1          NPFIT-SHR-QMS-PRP-0015              Glossary of Terms Consolidated.doc        <enter latest>
+2          PID draft 0v8 (NPFIT-FNT-TO-DPM-    Project Initiation Document               0v8
+           CUI0001) - all amendments
+           included[1][1].doc
+3          NPFIT-FNT-TO-TOCLNSA-0059           Authority Advisory Note:          1.0
+           (Request for Information)           Contractor Clinical Safety
+                                               Management Systems
+4          requirements_template.doc           ISB HaSC Operational Standard 10.0
+                                               „Requirement‟ level submission
+                                               template
+5          draft_template.doc                  ISB HaSC Operational Standard 10.0
+                                               „Draft‟ level submission template
+6          full_template.doc                   ISB HaSC Operational Standard 10.0
+                                               „Full‟ level submission template
+
+Glossary of Terms
+ Term                      Acronym       Definition
+Information                ISB HaSC      Independent body responsible for approving
+Standards Board                          information standards for health and social care.
+for Health and
+Social Care
+Information                ISB           Former title of the ISB HaSC
+Standards Board
+Microsoft                  n/a           Microsoft Corporation®, and its subsidiaries
+Microsoft Solutions        MSF           Service delivery framework developed and used by
+Framework                                Microsoft
+Patient Safety             PSA           A hazard assessment used to assess clinical safety
+Assessment
+Statement of Work          SoW           An output of the MSF defining key pieces of work to
+                                         be delivered over a release cycle.
+Data Standards and         DS&P          Directorate within Department of Health Informatics
+Products                                 Directorate responsible for delivery of the CUI
+                                         CAPS Project
+Department of              DHID          New organisation following restructure of NHS
+Health Informatics                       Connecting for Health
+Directorate
+
+
+
+
+© Crown Copyright 2009              Page 3 of 22
+                                                                                                                              NPFIT-FNT-TO-REQ-QUAL-0301
+Approved                                                                                                                                   5v0 26 Aug 2009
+
+
+
+Contents
+
+1         Purpose of the document ........................................................................................... 5
+2         Intended Audience ...................................................................................................... 5
+3         Background to CUI ...................................................................................................... 5
+4         Design Guidance Development Lifecycle .................................................................. 7
+    4.1        Overview ................................................................................................................................. 7
+5         Sponsor statement .................................................................................................... 12
+6         Compliance ................................................................................................................ 13
+    6.1        Commercial Issues ............................................................................................................... 13
+    6.2        Strategic fit ............................................................................................................................ 13
+    6.3        Operational Fit ...................................................................................................................... 14
+    6.4        Interdependencies ................................................................................................................ 14
+    6.5        Governance .......................................................................................................................... 14
+    6.6        Provisional testing approach................................................................................................. 15
+    6.7        Compliance Testing .............................................................................................................. 15
+    6.8        Migration Plans ..................................................................................................................... 16
+7         Maintenance .............................................................................................................. 16
+    7.1        Reactive maintenance .......................................................................................................... 16
+    7.2        Proactive maintenance ......................................................................................................... 17
+    7.3        Ownership ............................................................................................................................. 17
+8         CUI CAPS Clinical Safety Management System ...................................................... 17
+    8.1        Structure of the CUI CAPS Clinical Safety Team ................................................................. 18
+    8.2        Clinical Safety Products and Sign Off ................................................................................... 18
+    8.3        Clinical Safety Risk Management File .................................................................................. 19
+    8.4        CUI CAPS Clinical Safety Approach .................................................................................... 20
+
+
+
+
+© Crown Copyright 2009                                       Page 4 of 22
+                                         Commercial in Confidence
+                                                                           NPFIT-FNT-TO-REQ-QUAL-0301
+Approved                                                                           4v0 27 November 2009
+
+
+
+
+   Purpose of the document
+
+
+   This document outlines the delivery lifecycle applicable to the work of the Clinical Applications and
+   Patient Safety (CAPS) Project, which forms a part of the Department of Health Informatics
+   Directorate (DHID), Common User Interface (CUI) programme. The lifecycle intends to draw
+   together the multiple stakeholders involved in the work of CAPS and identify interdependencies
+   between them. In particular, this document describes the integration of NHS Clinical Safety and the
+   NHS Information Standards activities, in order to satisfy both safety requirements, authorities, and
+   to gain successful standards submissions through the Information Standards Board for Health and
+   Social Care (ISB HaSC).
+
+
+   The document also serves as a supplementary source of generic process information, in support of
+   each of the standards submitted to the ISB HaSC, where a single source of generic cross-standard
+   information better suits the purposes of submissions, than duplication of information across the
+   submissions.
+
+
+   All new versions of this document will be referenced in subsequent submissions to the ISB HaSC.
+   Section 4 of this document contains the information necessary to support the Evaluation
+   requirements of an ISB HaSC submission.
+
+
+
+
+   Intended Audience
+
+
+   This document is primarily aimed at a group of those stakeholders who currently interconnect with
+   the CAPS Project, including the ISB HaSC, DHID Clinical Safety Group (CSG), the NHS National
+   Integration Centre (NIC), Local Service Providers (LSPs), National Application Service Providers
+   (NASPs) Independent Software Vendors (ISVs), and Microsoft.
+
+
+   It is assumed, therefore, that the representatives to whom this document is circulated to will have
+   knowledge of the NHS, Department of Health Informatics Directorate (DHID), the history of the
+   National Programme for IT (NPfIT), impact of the National Local Ownership Programme (NLOP)
+   and the Regional Programmes for IT that have evolved from this, as well as the high-level
+   organisational structure of the Department of Health (DH). Where relevant, references to related
+   documents will be given for further reading.
+
+
+
+
+   Background to CUI
+
+   © Crown Copyright 2009                                                     Page 5 of 22
+                                                                             NPFIT-FNT-TO-REQ-QUAL-0301
+ Approved                                                                                 5v0 26 Aug 2009
+
+
+The CUI Programme is a funded programme within DHID. Phase 2 of the programme is split into
+five Projects:
+
+
+      1. Clinical Applications and Patient Safety (CAPS) [previously “Design Guide” and “Toolkit”]
+      2. Information Management and Technology (IM&T) Tools
+      3. Knowledge Worker Tools (KWT)
+      4. NHS Clinicians Portal
+      5. NHSmail Technical Refresh (MTR)
+
+
+The lifecycle outlined in this document covers the design guidance outputs from the CAPS Project
+only.
+
+
+The high-level objective of the CAPS Project is to establish user interface design guidelines,
+standards and associated technical components for the high-priority, safety-critical areas of clinical
+functionality contained, or planned to be contained, within clinical systems provided to the NHS in
+England.
+
+
+The remit of the output from the CAPS Project within the CUI programme is described in each
+Standard Submission as "clinical systems within the NHS in England within the remit of NHS
+Connecting for Health”.
+
+
+Clinical systems within the context of the CAPS Project are defined as all those software
+applications within the contractual control of NHS Connecting for Health used in the processing of
+patient identifiable data. This includes those clinical systems delivered within the scope of the
+existing LSP and National Application Service Provider (NASP) contracts.
+
+
+It is recommended that all other suppliers of clinical systems that include CUI standards move
+towards implementing them (once they are approved) as part of their updating and maintenance
+programmes.
+
+
+For more information on the CUI programme, please contact the CUI                            team    via
+cuistakeholder.mailbox@nhs.net or visit the programme website at www.cui.nhs.uk
+
+
+
+
+© Crown Copyright 2009               Page 6 of 22
+                                                                            NPFIT-FNT-TO-REQ-QUAL-0301
+ Approved                                                                                5v0 26 Aug 2009
+
+
+
+Design Guidance Development Lifecycle
+ Overview
+
+
+Figure 1 on the following page provides a diagram outlining the development lifecycle. Due to the
+size of the diagram it is best to read it in electronic format. It is possible, however, to make some
+general comments regarding the lifecycle, which are made below. A *.vsd file is provided here
+containing the diagram in order to enable detailed viewing.
+
+
+
+
+Developed upon existing processes
+The lifecycle consists of five stages: Envisioning, Planning, Development, Stabilisation and Live.
+These stages are derived from Microsoft‟s Solutions Framework (MSF), as much of the
+development of the design guidance (and solutions toolkit) will be carried out in partnership with
+Microsoft, the DHID development partner working on the CUI programme. Other established
+processes integrated into the lifecycle are derived as below:
+
+
+        The Clinical / Patient Safety activities referenced in this document are taken from the
+        Clinical Safety Management System as defined for suppliers of systems to the NHS under
+        the NPfIT (see document references 1 and 2);
+
+
+        The Information Standards process for developing standards is taken from existing
+        templates for Operational Standards developed by the ISB HaSC (see document
+        references 4-6).
+
+
+Releases and work items
+The CUI programme will run over two phases, the first of which was covered by the previous
+version of this lifecycle document. This version of the document has been updated for the second
+phase of the programme running from October 2007 until December 2009.
+
+
+The second phase is broken down into several releases, of anything between four and nine
+months in duration, dependent on the needs of the work area being covered in a given release.
+This lifecycle document describes activities which occur in relation to a single release. Each CAPS
+release has several work items (eg. Medication Line, Prescribing, Date and Time controls, and a
+Clinical Terminology user interface) which may result in the production of a Design Guide entry.
+
+
+
+
+© Crown Copyright 2009               Page 7 of 22
+                                                                             NPFIT-FNT-TO-REQ-QUAL-0301
+ Approved                                                                                 5v0 26 Aug 2009
+
+
+The activities listed in the lifecycle are either applicable across all work items in a release, or a
+single work item. This differentiation is indicated by the „light‟, „medium‟ and „heavy‟ rating
+respectively. In any one release it is likely that different work items will be at different stages of
+maturity. It is realistic, for example, to be developing a piece of design work on medications
+management (Development stage) whilst carrying out a pilot of Date and Time input controls
+implemented in a test system (Stabilisation stage).
+
+
+Some of the larger areas of scope within the CAPS Project (for example, medications
+management) are likely to require multiple releases of development to achieve a level of maturity
+satisfactory to stakeholders and suitable to publish as a complete Design Guide entry.
+
+
+The general landscape
+The majority of activities are carried out by Microsoft and the DHID CAPS team. This is greatest
+between the Envisioning and Development stages. There is little activity from Microsoft in
+Stabilisation and Live once they have delivered the Design Guidance. In these stages the focus
+shifts to the DHID CAPS Project team and other key stakeholders.
+
+
+In all stages there is an important integration with the Clinical Safety Group, who assures the
+clinical safety work being carried out. Similarly, The ISB HaSC assurance activities play a key role
+from Planning to Live assessing the rigour of the CAPS work as pieces of design guidance are
+submitted to become standards. Attaining Clinical Safety sign off on these work items is a pre-
+cursor to delivering a Full Standard. Both the Clinical Safety Group and ISB HaSC have a key role
+to play during Stabilisation in determining the required level of implementation of a piece of design
+guidance in order to attain Draft and Full Standards approvals, explained in more detail later on.
+
+
+The next section describes in more detail the activities at each stage.
+
+
+Consultation and support
+The following represents the CAPS Project team during Phase 2 of the CUI programme:
+
+
+ Role                                        Names
+ Programme Director                          Ken Lunn
+ User Interface Design Strategy              Stephen Corbett
+ Programme Manager                           Roarke Batten
+ Technical Project Leads                     Tim Chearman, Mike Carey
+ User Experience Architect                   Kit Lewis
+
+
+
+
+© Crown Copyright 2009               Page 8 of 22
+                                                                             NPFIT-FNT-TO-REQ-QUAL-0301
+    Approved                                                                              5v0 26 Aug 2009
+
+
+
+    Role                                      Names
+    Clinical Terminology Architect            Peter Johnson
+    Clinical Architect                        Mike Bainbridge
+    Clinical Advisors                         A varying team of clinical advisors and leads across
+                                              NHS care settings such as Hospital Doctor, General
+                                              Practitioner, Primary and Secondary care Nursing and
+                                              Pharmacy.
+    Clinical Safety Advisor                   Beverley Scott (February 2008 – September 2009)
+                                              Lindsey Butler (August 2009 – onwards)
+
+
+Input from specific clinical stakeholder bodies and required governance approval specific to each
+area of guidance under development within individual standards are detailed within individual
+standards and supporting documentation.
+
+
+Consideration is given to the impact upon the patient experience of clinical systems used by
+clinicians, in terms of requirement, risks and hazards, during the various phases of clinical
+engagement where applicable to each standard.
+
+
+In addition to specific sponsors and approvers, the support and sponsorship where applicable of
+each of the following bodies is also in place for guidance and related standards developed within
+this programme:
+
+
+        The National Patient Safety Agency (NPSA) and DHID Clinical Safety Group in ratification
+         and signoff of the clinical safety process against which each design entry is developed;
+        Royal Colleges affected by each area of guidance, through consultation in the development of
+         guidance during high-level review and signoff of related areas of guidance;
+        The NHS, through direct engagement with NHS Professionals throughout user requirements
+         gathering, user surveys and interviews, site visits, workshops, hazard assessments and user
+         testing;
+        The National Clinical Executive and the Office of the Chief Clinical Officer (OCCO) as
+         sponsor, reviewer and approver of the table of contents and roadmap for the CAPS Project as
+         well as high level signoff of related areas of guidance;
+        The National Clinical Leads group (National Clinical Architects for the NPfIT and NLOP
+         programmes) in evangelising and supporting the programme outputs and sourcing relevantly
+         experienced clinical advisory support;
+
+
+
+
+© Crown Copyright 2009                 Page 9 of 22
+                                                                              NPFIT-FNT-TO-REQ-QUAL-0301
+    Approved                                                                               5v0 26 Aug 2009
+
+
+        The NHS Care Record Service National Clinical Reference Panel as a monitor of the work
+         developed, reviewed and approved by the Design Steering Groups;
+        Design Steering Groups constituting multiple practising clinical staff from across the NHS in
+         areas of authority and experience, in user requirements analysis, reviews and hazard
+         assessments;
+        National Advisory Groups (NAGs), national forums representing clinical and health
+         disciplines, presented with the outputs of the programme group meetings, as well as
+         attending break out consultation workshops on the design guidance in development;
+        The National Clinical Engagement team, Regional Clinical Engagement teams, and NHS
+         Clinical Safety Team in sourcing a wide range of clinicians to be engaged in consultation,
+         requirements gathering and user testing activities against the work during development and
+         once complete;
+        Various suppliers of clinical systems to the NHS under the contractual control of DHID have
+         and will be actively involved in the development and implementation of the design guidance
+         standards. This involvement is not however restricted to those suppliers providing services to
+         the NHS directly. Engagement with other clinical software suppliers and / or healthcare
+         procurement groups and agencies both in the UK and internationally has been and will
+         continue to be actively undertaken to ensure the guidance produced is relevant and
+         applicable to as broad a range of healthcare applications as possible.
+
+
+
+
+© Crown Copyright 2009                 Page 10 of 22
+                                                                                                                                                                              Commercial in Confidence
+                                                                                                                                                                                                                                                                                                                                  NPFIT-FNT-TO-REQ-QUAL-0301
+Approved                                                                                                                                                                                                                                                                                                                                  4v0 27 November 2009
+
+
+   Figure 1: DHID CUI CAPS User Experience (UX) Development Lifecycle (PDF version)
+
+   UX Design Process
+
+
+
+              Envisioning                                        Planning                                                                        Developing                                                                    Stabilising                          Deploying/Envisioning
+
+
+                                  Information Gathering                                                                                                    Design/Develop                                                                     Guidance / Recommendation
+
+
+      Light                                 Medium touch                                 Heavy                    Light                              Medium touch                                   Heavy         Light                               Medium touch                            Heavy
+
+        Generate requirements                                                                                        Internal knowledge                                                                              High-level guidance &/or Evidence-based                  ISB standard / Safety
+                                        Define Users                    Shadow users                                                               Heuristic evaluation             Literature study
+        with customer                                                                                                review                                                                                                      recommendation                               Case
+                                        Interaction flow chart
+                                                                        Review broad range of                                                      Create collage                   User interviews
+        Review range of                 (screnflows)
+                                                                        existing standards                           Implementation reviews                                                                                       Executive Summary                          Executive Summary
+        existing standards
+                                                                                                                                                   Mood boards                      Site visits
+                                        Prioritise criteria             Roll up existing research                                                                                                                                 Introduction                               Introduction
+        User stories/scenarios                                                                                       Use cases
+                                                                                                                                                   Concept maps                     Surveys
+                                        Brainstorms                                                                                                                                                                                     Overview                                Overview
+                                                                        Evaluate ISV applications
+                                                                                                                     Brainstorms                   Participatory design
+                                                                                                                                                                                    Advisory/focus groups                               Problem description                     Problem description
+                                        Storyboards                     Monitor public discussion                                                  workshops
+                                                                                                                     Document level of                                                                                                  ToC references                          ToC references
+                                                                        groups/sites                                                                                                Task analysis
+                                        Concept designs                                                              completeness                  Visual representations
+                                                                                                                                                                                                                                  Recommendation/                            Recommendation/
+                                                                        Review relevant products /                                                                                  Compliance
+                                        Personas development                                                         UI descriptions               Simple click-thru                                                              Guidance                                   Guidance
+                                                                        applications                                                                                                documentation
+                                                                                                                                                   prototypes
+                                        Review narrow range of                                                                                                                                                                          Solution/explanation                    Solution/explanation
+                                        existing standards                                                                                                                          Examine unrelated
+                                                                        Interview domain experts                                                   Lo-fi prototypes                 solutions                                           Confidence level                        Confidence level
+                                        Patient Safety                                                                                                                                                                                  Usage examples                          Usage examples
+                                        Assessment                      Observe users                                                              Wireframes
+                                                                                                                                                                                    Hi-fi data-driven
+                                                                                                                                                                                                                                        Benefits                                Benefits
+                                                                        Patient Safety                                                             User feedback                    prototypes
+                                                                        Assessment                                                                 (informal)                                                                     Rationale                                  Rationale
+                                                                                                                                                                                    Hi-fi visuals
+                                                                                                                                                                                                                                        Series of references                    Series of references
+                                                                                                                                                   Card sorts
+                                                                                                                                                                                    User testing (formal)
+                                                                                                                                                                                                                                                                             Detailed narrative
+                                                                                                                                                   GOMS analysis
+                                                                                                                                                                                    UI specs
+                                                                                                                                                   Patient Safety
+                                                                                                                                                                                    Technology review
+                                                                                                                                                   Assessment
+                                                                                                                                                                                    Patient Safety
+                                                                                                                                                                                    Assessment
+
+
+
+
+                                                                                                                                                                                                                                                                                                         Key
+    Design Guide and Toolkit – generic design process                                                                                                                                                                                                                         Deployment
+                                                                                                                                                                                                                                                                                strategy –                                                                                           Completeness scale
+                                                                                                                                                                                                                             Toolkit                                             potential
+                                                                                                                               Produce                                                                                                                                                                                                  Irreducible minimum
+
+
+
+
+                                                                                                                                                                                                                                                                                                          UX activity checklist
+      Identify scope                                                     Develop UI                                                                                                                  User                  component                                           candidates:
+                                                                                                                              supporting                      Prototype                                                                                                                                                                 (rapid design journey; draws on
+          topics                                                          models                                                                                                                  evaluations              candidates                                                                                                                                                       100%
+                                                                                                     Wireframe                  assets                                                                                                                                          ISB HaSC                                                existing work items; little clinical input
+                                                                                                        Wireframe
+                                                                                                    storyboards                                                                                                                                                               submissions;                                              required)                                                         ISB standard, CSG
+                                                                                                       storyboards                                                                                                                                                              NHS CFH                                                 Customer as SME                                                   Clinical Authority to
+                    Agree                                                                                                                                                                                                                                                     CSG Safety                                                (customer-centric design, summary                                 Release and/or
+                                                    Develop
+                  appropriate                                                                                                                                                                                                                                                      Case                                                 design journey; some level of clinical                            completed DG entry
+                                                  storyboards
+                   activities                                                                                                                                                                                                                                                 submissions                                               input required)
+                                                                                                                                                                                                                          Document level                   DG entries                                                                   Validated – formal UCD                              75%
+                                                                                                     Compliance                                                                                                           of completeness
+                               Create                          Design and                                                                                                                                                                                                                                                               (detailed design journey; major level
+                                                              Patient Safety                            with UI
+                             personas &                                                                                                                                                                                                                                                                                                 of clinical input required)
+                                                                                                      standards                                                                                                                                                                                                                                                                                           Evidence based
+                              scenarios                            Risk
+                                                                                                                                                                                                                                                                                                                                                                                                          recommendation
+                                                               Assessment
+                                                                (Opening)                                                                                                                                                                                                        Measure
+                                                                                                                                                                                                                                                                                 adoption                                                                                                   50%
+                               Determine                                                                                                                                                                                                                                                                                             Generic
+                                                                                                    Develop
+                             requirements                                                             Develop                                                                                                                                                                                                                      across DG &
+                                                                                                    concept                  User reviews                     Prototype                           Final designs
+                                                                                                      concept                                                                                                                                                                                                                          TK
+                                                                                                    designs                                                                                                                                                                                                                                                                                               High-level guidance
+
+
+
+
+                                                                                                                                                                                                                                                                                                          UX process flow
+                                                                                                      designs
+                                                                                                                                                                               User                                                                                                                                                Toolkit (TK)
+                                                                                                                                                Refine                      evaluations                                                                                                                                                                                                     25%
+                                                                                                                                                                                                                                                                                                                                     specific
+                                                                                                                                               designs/                     and Patient
+                                                                                                                                              wireframes                    Safety Risk
+                                                                                                                                                                                                                                                                                                                                                                                                          Summary
+                                                                                                                                                                            Assessment
+                                                                                                                                                                                                                                                                                                                                                                                                          presentation level
+                                                                                                                                                                             (Closing)                                                                                                                                             Design Guide
+                                                                                                                                                                                                                                                                                                                                   (DG) specific
+                                                                                                                                                                                                                                                                                                                                                                                            0%
+
+
+
+
+   © Crown Copyright 2009                                                                                                                                                                                                                                                                              Page 11 of 22
+                                                               Commercial in Confidence
+
+Approved
+
+
+
+
+   Sponsor statement
+
+   The following sponsor statement (via email on 4th August 2009) has been agreed by
+   Kenn Lunn (Director of Data Standards and Products for the Technology Office and
+   the CUI CAPS Clinical Safety Advisor.
+
+   As the Director of Data Standards and Products, I would like to confirm in writing my
+   support for the package of standards that will be submitted to the ISB HaSC in
+   relation design guidance developed within the Common User Interface (CUI)
+   programme. This statement is in support of all design guidance developed and for
+   submittal to the ISB HaSC between April 2009 and December 2009.
+
+   I can confirm the proposed standards fit with NHS policy drivers, NHS Business
+   Architecture and NHS Data Standards.
+
+   Furthermore, I can assure that the conditions for achieving implementation and for
+   maintenance thereof post implementation where required, including funding, are
+   present. I also support the forecast dates for full compliance with these standards, as
+   detailed in the individual submissions.”
+
+
+   Ken Lunn
+   Director of Data Standards and Products
+   Technology Office
+   Department of Health Informatics Directorate
+
+
+
+
+   © Crown Copyright 2009
+                                                               Commercial in Confidence
+
+Approved
+
+
+   Compliance
+
+
+    Commercial Issues
+   The relevant Intellectual Property Rights, which might concern the use of the
+   proposed standard within the NHS, are owned jointly by NHS Connecting for Health
+   and Microsoft. This is defined in the Development Agreement, Clause 13,
+   "Intellectual Property Rights".
+   The Development Agreement is an exhibit of the Contract between the Authority
+   (NHS) and the Company (Microsoft), signed December 2005 and renewed in
+   October 2007.
+   Design Guidance and Standards are available on a royalty free licence basis to any
+   and all suppliers to the NHS in England, as well as to other national and international
+   clinical systems suppliers and health procurement agencies, as long as such use is
+   in line with the terms and conditions defined in the Participation Agreement (where
+   suppliers or other agents take an active role in the development process) or in the
+   End User Licence Agreement, the terms of which must be accepted prior to access
+   being granted to the CUI web site where all guidance will be published.
+   The CUI development agreement with Microsoft will continue to provide support and
+   development of guidance and standards to end December 2009. Ongoing
+   maintenance costs in relation to guidance and standards will be provided for beyond
+   this date within the operating budget of the DHID Technology Office.
+
+    Strategic fit
+   The CUI programme forms a component of the Technology Office strategy to deliver
+   and support the goals and objectives of the NPfIT. The resultant CUI CAPS
+   Information Standards will continue to support the delivery of this agreed national
+   programme of work involving the necessary use of information technology, through a
+   process of clinical systems review against the core objectives of the NPfIT and DHID:
+
+           Increased patient safety;
+           Increased clinical take up of systems;
+           Increased clinician effectiveness and efficiency;
+           Reduced training costs.
+
+
+
+
+   © Crown Copyright 2009
+                                                                 Commercial in Confidence
+
+Approved
+
+
+    Operational Fit
+   The proposed standards will cover the human interface of clinical systems only. They
+   do not relate to, and as such will not cover underlying processing or data storage.
+
+   Operationally it is envisaged that clinical system developers will use the standards in
+   two ways:
+      1. When evaluating an existing system against the standard, developers will
+          make a direct comparison against the existing designs and that defined in the
+          standards;
+       2. When commissioning and designing a new system the standard would be
+          applied early in the user interface design process.
+
+
+   Currently all LSPs and NASPs are in the process of developing the systems which
+   will enable access to electronic patient records. These systems may implement
+   design solutions which diverge from the proposed standards. Please see sections 6.7
+   Migration Plans and 7 Maintenance for further detail on how a plan for this will be
+   developed.
+
+    Interdependencies
+   There are a range of interdependencies which have been evaluated and documented
+   for each standard. The CAPS team has reviewed relevant known standards. It is
+   envisaged that none of those reviewed and listed in each submission will prevent
+   progression of standards through the ISB HaSC process at this stage. In the event of
+   issues arising, the CAPS team will work with the relevant body to resolve any issues.
+   This may result in updates to CUI CAPS standards.
+
+
+    Governance
+   Identification of governance issues relating to clinical safety, patient confidentiality,
+   data security, etc. will be included in hazard assessment workshops and safety
+   reviews, as well as a part of the clinical user testing process.
+
+   Accredited clinicians will be used to either host or take part in hazard assessments
+   against each of the clinical areas covered by the design guidance in development.
+   This will ensure trained specialists are involved in the process, with expertise in the
+   identification of these types of issue.
+
+   In addition to this, the design guide team will develop and review design guidance in
+   development against all known and relevant bodies, codes of practice, and standards
+   relevant to the clinical area being addressed. This will ensure adherence to the
+   expected level of rigour within DHID programmes.
+
+
+
+
+   © Crown Copyright 2009
+                                                                 Commercial in Confidence
+
+Approved
+
+
+    Provisional testing approach
+   As outlined in the section regarding the general lifecycle each stage of development
+   has been subject to iterative testing and validation from a clinical, user and patient
+   safety perspective. An DHID Hazard Log is available for reference. This records
+   patient safety risks and mitigations throughout the design process. In terms of user
+   engagement, there are two levels.
+
+   During Development end users are involved in much of the user research and user
+   testing undertaken. Additionally relevant Royal Colleges and Professional Regulatory
+   bodies will be consulted across the CUI programme.
+
+   During the pilot stage further clinical user testing and patient safety analysis will be
+   undertaken. The results will be used in analysis of the designs proposed and used in
+   rework where applicable. This may also result in general recommendations for
+   human behavioural, organisational and technical user guidance to be given by
+   suppliers.
+
+   The NIC also plays a key role in the technical assurance of design guidance, and this
+   activity begins at the end of Development and continues through to the Live stage.
+   This is linked to system suppliers implementing design guidance, which occurs
+   during Stabilisation and Live. The suppliers are also involved in the CAPS usability
+   assessments which are carried out during Development.
+
+   Supplier testing will be carried out as part of their standard release process. This will
+   cover clinical and functional testing. Specific human behavioural, organisational and
+   technical user guidance will be given by the application supplier to their users as part
+   of the standard release process for that supplier.
+
+   High level performance characteristics are specified within each standard as a first
+   point of reference for testing criteria.
+
+    Compliance Testing
+   A set of compliance criteria will be developed to enable the NIC to assess adherence
+   with the CUI CAPS standards across LSP hosted systems. These will be applied to
+   systems as and when they enter the test environments in the NIC following the
+   required compliance date for a given standard.
+
+   These tests will be objective, measurable and quantifiable, and will reflect the specific
+   requirement of each given piece of design guidance. These tests will be based on a
+   mix of software tests and human evaluations, as per existing NIC processes.
+   Compliance will be required for these systems based on the commitment to be
+   compliant with all current data standards within the LSP contracts.
+
+   The compliance criteria will also be made available to any systems suppliers wishing
+   to adopt the CAPS design guidance and not currently under the contractual control of
+
+
+
+
+   © Crown Copyright 2009
+                                                                 Commercial in Confidence
+
+Approved
+
+
+   DHID, as well as to health organisations and procurement agents wishing to ensure a
+   level of adherence with the guidance within systems procured by them.
+
+    Migration Plans
+   Compliance dates defined for each standard submission relate to the dates by which
+   the ISVs for each of the software applications which fall under the definition in section
+   3 above must comply with the CUI CAPS standards, as per relevant contractual
+   requirements within the NPfIT and Regional Programmes for IT for supplier
+   compliance with NHS Information Standards
+
+   For those systems covered by the DHID Existing Systems Programme, a standard
+   compliance plan and strategy will be developed subsequent to the formal compliance
+   dates defined above for LSP hosted systems.
+
+   This will be provided to each existing system provider on a case by case basis as
+   and when they sign up to use DHID systems (i.e. access data on the SPINE or use a
+   SPINE related service in their application, such as Choose and Book).
+
+   Maintenance
+   Once a Design Guide entry or a Full Information Standard is published in the public
+   domain and is implemented by suppliers, a system will be in place to manage the
+   ongoing ownership of and any arising problems with the standard.
+
+   There will be two forms of maintenance which are described below.
+
+    Reactive maintenance
+   During the life of the CUI programme it is possible that a supplier may contend the
+   viability of a piece of CAPS guidance/standard, or may present an equally clinically
+   safe alternative solution. It is important therefore that a feedback loop is set-up
+   between compliance testing processes at the NIC and the CAPS team, where the
+   CAPS team are consulted on either the clinical evidence of alternate designs or to
+   provide feedback to suppliers on design rationale, if appropriate.
+
+   The CAPS Project will publish only a single standard for each aspect of the interface;
+   however this may not be the best outcome for the NHS, so a review mechanism with
+   links to the ISB HaSC will need to consider any such issues as they arise. Any
+   significant changes to a standard will need assurance of the likes of that proposed in
+   the above lifecycle.
+
+   There is currently a three yearly cycle of standards review undertaken by the ISB
+   HaSC. Sufficient resource and funding will be available within the Technology Office,
+   such that if review of any CUI CAPS Full Standard results in a need for rework of the
+   standard, a work package can be defined and team assembled to ensure the work is
+   completed to update the standard accordingly.
+
+
+
+
+   © Crown Copyright 2009
+                                                               Commercial in Confidence
+
+Approved
+
+
+   For clinical incidents that occur within a trust that relate to a piece of CAPS design
+   and which are reported through the supplier Clinical Safety Incident Report Register,
+   a mechanism will be set-up to ensure that any design resolution involves CAPS. Any
+   significant changes to a standard will need assurance of the likes of that proposed in
+   the above lifecycle. This will be an enhancement to the existing Clinical Incident
+   Reporting process defined by the Clinical Safety Group.
+
+    Proactive maintenance
+   In addition to the reactive approach above, CAPS is taking a proactive approach
+   during the life of the CUI development programme to identifying issues with usability,
+   interoperability, implementability and clinical safety by approaching system suppliers
+   and system users for evidence. This may take the form of reviewing a supplier‟s
+   hazard log or interviewing technical staff in a trust. There are many techniques for
+   information extraction. All evidence gathered will then feed into a standards design
+   review which will occur either during the 3 yearly cycle of review based on the ISB
+   HaSC review periods for existing standards, or for those areas requiring urgent
+   resolution, on the basis of best endeavours resolution in a shorter timescale as
+   required.
+
+   In terms of versioning, it is suggested that small incremental versions are released
+   where a design fix has been provided due to a clinical incident. During each three
+   yearly review, if there are significant changes to a standard based on evidence
+   gathered proactively, then a more significant increment is probable. In all cases,
+   changes to the standard will be reviewed by the ISB HaSC for approval prior to
+   publishing.
+
+    Ownership
+   DHID will maintain ownership of the standards within the Technology Office, under
+   the Data Standards and Products (DS&P) Directorate. For the duration of the CUI
+   programme, the CAPS Project team within DS&P will provide the single point of
+   contact in relation to any issues or amendments arising out of Live implementations
+   in the NHS.
+
+   Once the CUI CAPS project is completed the Business As Usual (BAU) team within
+   the Data Standards and Products Directorate will form the first point of contact for
+   any questions and queries about CUI CAPS standards.
+
+   CUI CAPS Clinical Safety Management System
+   The following section outlines the high level CUI CAPS Clinical Safety Management
+   System – which is predominantly based on the DHID Clinical Safety Management
+   System and the emerging information standard, “Application of Clinical Risk
+   Management to the Manufacture of Health Software.”
+
+
+
+
+   © Crown Copyright 2009
+                                                               Commercial in Confidence
+
+Approved
+
+
+   Structure of the CUI CAPS Clinical Safety Team
+   The list below identifies the key people responsible for clinical safety within the CUI
+   CAPS project. Although, all members of the CUI CAPS team are expected to
+   integrate clinical safety into every aspect of development work. Appropriate
+   awareness raising and education has been provided „on site‟ by the current Clinical
+   Safety Advisor. Relevant clinical team members of the CUI CAPS team (known as
+   the Specific Audience) have attended the DHID training in human factors and risk
+   assessment, in order to become “Accredited Clinicians” in Patient Safety Assessment
+   (PSA) workshops and understand the required safety processes.
+
+          Beverley Scott, Clinical Safety Advisor and Registered Mental Health Nurse
+           (RMN) (Accredited Clinician) – February 2008 – September 2009.
+          Lindsey Butler, Clinical Safety Advisor and Registered General Nurse (RGN)
+           (Accredited Clinician) – from August 2009 onwards.
+          Stephen Corbett, Head of User Interface Design, Technology Office.
+          Tim Chearman, CUI CAPS Project Lead and User Experience Designer.
+          Frank Cross, Consultant Surgeon and Senior Clinical Advisor (Accredited
+           Clinician).
+          Pete Johnson, Clinical Architect and General Practitioner (Accredited
+           Clinician).
+
+
+   Due to the size of the CUI CAPS team, a internal clinical safety committee is not
+   required. Instead the CAPS safety team as defined above meets on a regular basis
+   with the design team to review the CUI CAPS clinical safety approach, individual
+   Hazard Logs and clinical safety products in production and planned for future
+   releases.
+
+   The CUI CAPS team utilise the safety assurance and sign off processes of the DHID
+   Clinical Safety Group (CSG) and the Information Standards Board for Health and
+   Social Care (ISB HaSC) for CUI design guidance.
+
+
+   Clinical Safety Products and Sign Off
+   The following clinical safety specific products will be produced for each CUI CAPS
+   design guide:
+         Hazard Log.
+          Clinical Safety Case (including the Patient Safety Assessment).
+          Safety Closure Report.
+
+
+   The DHID CSMS supports staged submission of the above documents to the Clinical
+   Safety Group as a usual route to achieving Clinical Authority to Release (CATR).
+   However, due to tight CUI CAPS project timescales, ie. typically 3 months per design
+
+
+   © Crown Copyright 2009
+                                                            Commercial in Confidence
+
+Approved
+
+
+   guide, and limited Clinical Safety Advisor resource, the CUI CAPS Clinical Safety
+   Cases and Safety Closure Reports will normally be compiled and submitted post
+   design guide development.
+
+   Depending on the size and complexity of the design guide under consideration,
+   project timescales and agreement from the CSG, the Clinical Safety Case and Safety
+   Closure Report may be combined into one document and one submission to the
+   CSG (as in this instance).
+
+   Whilst design guides may be published on the CUI website, www.cui.nhs.uk
+   (registration required) before receiving CATR, both the safety and information
+   standards status of each design guide is clearly identified on the website, and a
+   caveat included in the document itself with respect to the patient safety process.
+
+   The latest safety information can be requested by suppliers by emailing the mailbox
+   TechOffice.ClinicalSafety@nhs.net
+
+
+   Clinical Safety Risk Management File
+   All documents created as part of the CUI CAPS Clinical Safety Management System
+   are maintained, version controlled and managed by the CUI CAPS Clinical Safety
+   Advisor (CSA).
+
+   Documents are stored on the CUI CAPS Clinical Safety SharePoint site, which has
+   access control measures in place. Members of the CSG or ISB HaSC can request
+   access by contacting the CUI CAPS CSA.
+
+
+
+
+   © Crown Copyright 2009
+                                                               Commercial in Confidence
+
+Approved
+
+
+
+
+   CUI CAPS Clinical Safety Approach
+   The CUI CAPS project has developed their clinical safety management approach
+   based on the Clinical Safety Management System (CSMS) prescribed to system
+   suppliers by the DHID and the emerging information standard, “Application of Clinical
+   Risk Management to the Manufacture of Health Software.”
+
+   Although outputs from the CUI CAPS project, namely text based user interface
+   design guidance, are not systems per se, they will inform the user interface work
+   carried out by clinical system suppliers which will in turn end up being part of a live
+   deployed system. It is crucial, therefore, that the outputs from CUI CAPS are also
+   clinically safe.
+
+   The DHID CSMS outlines four risk areas: End to end clinical process risk; Technical
+   risk; Message risk; and Patient safety risk. As the CAPS project is focused on the
+   user interface layer of an application, the scope of the CAPS safety process is limited
+   to patient safety risks. The other risk types are classed out of CUI scope. However,
+   where related risks are raised, CUI CAPS will record and transfer those risks to the
+   appropriate parties.
+
+   As the CUI CAPS Project is responsible for developing user interface design
+   guidelines which will be utilised within clinical applications - not the development of
+   applications themselves – the CUI CAPS Clinical Safety Cases are developed as
+   Pre-Operational. Taking a typical software development lifecycle (see the table
+   below), the scope of CUI design guidance covers the stages of Define Requirements,
+   Design and Develop. As such, the CUI CAPS Clinical Safety Cases will cover these
+   stages also (although it important to note that the Patient Safety Assessment‟s
+   themselves are very much focused upon context of use). It is the intention that the
+   CUI CAPS safety documentation will be the starting point for NHS clinical application
+   developers upon which to build their own Clinical Safety Case and, ultimately, pass
+   on to end users within the live estate.
+
+
+                                                 Define Requirements
+                                                 Design
+                                                 Develop
+                          Manufacturers          Build
+                                                 Test
+                                                 Release
+
+
+
+                                                 Deploy
+                          End Users              Use
+                                                 Decommission
+
+
+
+
+   © Crown Copyright 2009
+                                                                 Commercial in Confidence
+
+Approved
+
+
+   In order to build the Clinical Safety Case, each CUI CAPS design guide will undergo
+   an end to end Patient Safety Assessment (PSA). It is important to note that a Patient
+   Safety Assessment (PSA) is not a distinct activity, scheduled into the development
+   lifecycle as a milestone. A PSA is the term used to describe the end to end,
+   continuous, iterative assessment to establish the safety integrity of the deliverable. It
+   is integrated into the development lifecycle for each CAPS deliverable right from the
+   outset.
+
+   A CUI CAPS PSA consists of two main „processes‟: Hazard identification and risk
+   assessment; and Hazard analysis and risk management. Various safety specific
+   activities (eg. risk assessment workshop), methods (eg. Structured What If
+   Technique, Hierarchical Task Analysis) and tools (eg. hazard checklists, cause and
+   effect (Fishbone) diagrams) can be used during a PSA. However, all usual activities
+   undertaken as part of normal research and development processes for CUI CAPS,
+   ie. non safety specific, will pro-actively elicit patient safety issues and hazards on an
+   ongoing basis. These are then fed into the master Hazard Log via the Clinical Safety
+   Advisor for management.
+
+   As part of an end to end Patient Safety Assessment (PSA), the following safety
+   specific activities should take place for each CUI CAPS deliverable (design guide):
+
+           Each CAPS deliverable should have an assessment during the scoping
+           phase to identify the minimum number and type of safety specific activities to
+           take place and when.
+           As a minimum, each CAPS deliverable should have:
+           o   A web based survey, including safety specific questions.
+           o   One to one interviews with representative end users, including safety
+               specific questions.
+           o   Patient Safety Risk Assessment (PSA) workshops, eg.
+                1 x Opening Risk Assessment workshop with representative end users
+                 (pre design: safety requirements and objectives and preliminary
+                 hazard identification and risk assessment).
+                1 x Closing Risk Assessment workshop with representative end users
+                 (post design: risk identification, grading and management).
+                Interim Risk Assessments can take place as required, such as when a
+                 design guide spans multiple releases.
+           The purpose of an Opening Risk Assessment is to inform the CUI CAPS
+           requirements process (including safety requirements). Very often, the ORA
+           can raise hazards and issues that are either out of scope or not patient safety
+           specific – as it is conducted during the very early, conceptual stages of
+           design.
+
+
+
+
+   © Crown Copyright 2009
+                                                              Commercial in Confidence
+
+Approved
+
+
+           All hazards and issues, irrespective of where and when they are raised, go
+           into the Hazard Log for central tracking by the CSA.
+           The purpose of a Closing (or Interim) Risk Assessment is to formally risk
+           assess final (or near final) designs, using a structured approach to identify
+           hazards and grade and manage risks.
+           Regular meetings take place with the CUI CAPS safety and design teams to
+           review live hazards and manage to an acceptable level.
+           The number and type of activities, methods and tools varies across CUI
+           CAPS deliverables. Ultimately, the overall aim of the PSA is to build a
+           progressive Clinical Safety Case.
+
+
+
+
+   © Crown Copyright 2009
+

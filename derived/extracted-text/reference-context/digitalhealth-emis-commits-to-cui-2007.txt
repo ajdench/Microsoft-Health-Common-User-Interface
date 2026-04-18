@@ -1,0 +1,461 @@
+EMIS becomes first GP supplier to commit to CUI | Digital Health
+
+ Back to Top
+
+ Skip to content
+
+News
+
+Opinion
+
+Podcast
+
+Insights Reports
+
+Case Studies/White Papers
+
+Events
+
+Digital Health Rewired
+Digital Health Summer Schools
+Webinars
+
+Topics
+
+10 Year Health Plan
+Digital Transformation
+Integrated Care
+Leadership and Teams
+Smart Health
+Cyber Security
+AI and Data
+Start-ups
+
+Rewired
+
+Networks
+
+Impact List
+
+Products
+
+Networks Sponsorship
+Rewired Exhibition
+Digital Health Insights
+Digital Roundtables
+Industry Spotlights
+Webinar Sponsorship
+
+Newsletter
+
+Intelligence
+
+ Search for:Search Button
+
+Home
+
+News
+
+Opinion
+
+Podcast
+
+Insights Reports
+
+Case Studies/White Papers
+
+Events
+
+Digital Health Rewired
+
+Digital Health Summer Schools
+
+Webinars
+
+Topics
+
+10 Year Health Plan
+
+Digital Transformation
+
+Integrated Care
+
+Leadership and Teams
+
+Smart Health
+
+Cyber Security
+
+AI and Data
+
+Start-ups
+
+Rewired
+
+Networks
+
+Impact List
+
+Products
+
+Networks Sponsorship
+
+Rewired Exhibition
+
+Digital Health Insights
+
+Digital Roundtables
+
+Industry Spotlights
+
+Webinar Sponsorship
+
+Intelligence
+
+EMIS becomes first GP supplier to commit to CUI
+
+News
+
+ 14 March 2007
+
+DHI News Team
+
+ December 1, 2016
+
+Primary care systems supplier EMIS is to become the first major clinical software vendor to the health service to incorporate elements of the new NHS Common User Interface (CUI), developed by Microsoft on behalf of Connecting for Health, into its software.
+
+EMIS revealed to EHI Primary Care last week that it will incorporate components of CUI into its new EMIS Web product with work already underway and the first elements being seen in user upgrades within months.
+
+Ironically EMIS is the largest clinical software supplier to the NHS not within  National Programme for IT, yet is the largest health software supplier to yet commit to the CfH project to develop a standard user interface for NHS staff. 
+
+InPractice Systems (INPS), another leading GP systems provider, is also understood to be working with Microsoft on CUI, beginning by looking at how it might incorporate design guidance. The involvement of both EMIS and IPS indicates that CUI may make most headway initially in primary care, historically the most computerised segment of the health service.
+
+The NHS CUI project is intended by CfH to provide a standard user interface for clinicians using different clinical systems across the health service. Neither of the main acute clinical suppliers within NPfIT contracts – iSoft or Cerner – have yet publicly committed to the project.
+
+EMIS, which provides primary care information systems to almost 50% of English GPs told EHI Primary Care that it will begin by incorporating CUI components including the standard Patient Identification Panel and standard time date format.
+
+Sean Riddell managing director of EMIS told E-Health Insider Primary Care that backing the £40m NHS CUI project, led by CfH and Microsoft, "entirely fits with our commitment to interoperability".
+
+Dr Shaun O’Hanlon, EMIS’s clinical design director said: "We are reviewing our current application EMIS Web against the CUI design guide and working out how to implement design guidance."
+
+He added: "Our initial assumption was that CUI was about Microsoft trying to take over, but we quickly came to see it as providing the tools we need to make systems easier to use."
+
+He said that in the long term the vision was of a single user interface across the NHS. "This will probably not be completely standard but have standard elements so that if you want to look at a patient’s details you’ll be looking at a standard screen."
+
+Dr O’Hanlon said removing the need for every supplier to painstakingly develop their own basic UI components would enable them to focus on "providing knowledge, clinical tools and databases".
+
+Illustrating the value of the CUI Design Guide and associated Toolkit Dr O’Hanlon said that it could be difficult for suppliers to focus consistently on the simplest things such as standard dates and times. "Displaying dates inconsistently can lead to patient safety issues," he stressed.
+
+"The Toolkit is Microsoft providing us with a set of components we can drop into our applications," said Dr O’Hanlon. He explained that components such as the Patient ID Panel had been adapted for a primary care user and Microsoft developers had worked at EMIS’s offices "learning how we put components in and develop software".
+
+O’Hanlon concluded: "In the future I do see us having a single core UI for different clinical applications across the NHS."
+
+He said this would ultimately also apply to patient views of records: "In the long term this will also be provided to patient views of records as well. Microsoft have got unprecedented experience in user interfaces."
+
+Microsoft says that other clinical suppliers currently working with them on CUI include BT on its spine applications, System C, Axis Technologies, Learning Clinic and INPS.
+
+Subscribe To Our Newsletters
+
+ Find out more
+
+Subscribe to our newsletter
+
+ Email
+
+ Subscribe
+
+ Subscribe To Our Newsletter
+
+ Digital Health Digest
+
+ Digital Health Main Newsletter List
+
+ Intelligence Round-up List
+
+ Digital Health Daily Newsletter
+
+ First Name
+
+ Last Name
+
+ Email Address:
+
+ Job Title:
+
+ Organisation:
+
+Leave this field empty if you're human:
+
+ Tags
+
+ Acute
+
+ BT
+
+ Cerner
+
+ CfH
+
+ EHI
+
+ EHI Primary Care
+
+ EMIS
+
+ EMIS Web
+
+ GPs
+
+ iSoft
+
+ Microsoft
+
+ NPfIT
+
+ Patient safety
+
+ Safety
+
+ Spine
+
+ Toolkit
+
+ US
+
+ Vision
+
+Prev News
+Chesterfield Foundation Trust gets SRC digital dictation
+
+Next News
+ Winchester says Millennium becoming ‘more robust’
+
+ Latest News
+
+ Cheshire neighbourhood care model reduces A&E attendances
+
+ Palantir's NHS contract could end if others 'can do the job better'
+
+ Digital Health’s monthly roundup of contracts and go lives
+
+ Cera launches AI lab to address global care capacity challenges
+
+ Digital Health Coffee Time Briefing ☕
+
+ Latest News
+
+ Trending
+
+ Cheshire neighbourhood care model reduces A&E attendances
+
+ Palantir's NHS contract could end if others 'can do the job better'
+
+ Digital Health’s monthly roundup of contracts and go lives
+
+ Cera launches AI lab to address global care capacity challenges
+
+ Digital Health Coffee Time Briefing ☕
+
+ Digital Health Rewired Pitchfest 2026 shortlist revealed
+
+ What NHS trusts get wrong in EPR rollouts
+
+ Joe's View: Christmas in space and the app that fell to Earth
+
+ Insufficient EPR training contributes to risk of patient harm
+
+ Concerns that capital funding for NHS tech could delay AI roll-out
+
+ Most Popular
+
+ 1
+
+ Digital Transformation
+
+ Liverpool University Hospitals selects Nervecentre to supply EPR
+
+ 2
+
+ 10 Year Health Plan
+
+ IBM awarded £160m to transform NHS App into ‘health companion’
+
+ 3
+
+ AI and Data
+
+ NHSE official warns staff over criticism of Palantir’s FDP
+
+ 4
+
+ AI and Data
+
+ Palantir’s NHS contract could end if others ‘can do the job better’
+
+ 5
+
+ Cyber Security
+
+ NHS England investigating compromised GP websites
+
+ 6
+
+ News
+
+ £1.5m FemTech fund launched under Women’s Health Strategy
+
+ 7
+
+ 10 Year Health Plan
+
+ MHRA secures £3.6m to expand AI regulatory sandbox
+
+ 8
+
+ Digital Transformation
+
+ DHSC invests in scanning and diagnostic equipment for CDCs
+
+Subscribe To Our Newsletters
+
+ Find out more
+
+ Most Popular
+
+ 1
+
+ Digital Transformation
+
+ National NHS chief digital, data and tech officer appointed
+
+ 2
+
+ Leadership and Teams
+
+ Digital health staff will be expected to gain professional registration
+
+ 3
+
+ Digital Transformation
+
+ Liverpool University Hospitals selects Nervecentre to supply EPR
+
+ 4
+
+ Digital Transformation
+
+ Somerset and Dorset sign £222m contract with Epic for unified EPR
+
+ 5
+
+ AI and Data
+
+ Doctors raise safety concerns about AI discharge summary tool
+
+ 6
+
+ Digital Transformation
+
+ NHS SBS launches £250m communication framework
+
+ 7
+
+ AI and Data
+
+ Accurx to supply AI-scribing tool for large-scale NHS hospital rollout
+
+ 8
+
+ 10 Year Health Plan
+
+ IBM awarded £160m to transform NHS App into ‘health companion’
+
+ 9
+
+ Cyber Security
+
+ NHS supplier hit by cyber attack by pro-Iran activist hackers
+
+ 10
+
+ AI and Data
+
+ Palantir staff being issued NHS email accounts sparks concerns
+
+ Related News
+
+ News
+
+ March 4, 2026
+
+ Doctors raise safety concerns about AI discharge summary tool
+
+ Doctors groups have raised safety concerns over plans to roll out an AI-Assisted Discharge Summary tool nationally through the FDP.
+
+ AI and Data
+
+ February 18, 2026
+
+ Patients call for transparency around the use of AI in healthcare
+
+ The Patients Association has called for more transparency around the use of AI in healthcare in response to the MHRA's call for evidence.
+
+ Digital Transformation
+
+ February 3, 2026
+
+ RCGP calls for Scottish government to improve GP IT systems
+
+ More than half of GPs in Scotland say that their software is not fit for purpose, according to a member survey by RCGP Scotland.
+
+ Company
+
+About
+
+Contact Us
+
+Terms and Conditions
+
+Privacy Policy
+
+Comment Policy
+
+Cookie Policy
+
+Accessibility Statement
+
+ Media Pack
+
+Media Pack
+
+Digital Health Insights
+
+Case Studies and White Papers
+
+Roundtables
+
+Contributors’ Guidelines
+
+ Events
+
+Rewired
+
+Summer Schools
+
+Webinars
+
+ X-twitter
+
+ Youtube
+
+ Linkedin-in
+
+ Bluesky Streamline Icon: https://streamlinehq.comBluesky
+
+Digital Health Intelligence Limited
+Registered Office: 3rd Floor, The Foundry, 77 Fulham Palace Rd, London W6 8JA
+
+Registered No. 9257440
+Vat No. 198 3531 71
+
+Copyright © 2026 Digital Health
