@@ -120,6 +120,40 @@ const { head } = Astro.locals.starlightRoute;
       });
     };
 
+    const setTocVisualCurrent = (nav, selected) => {
+      if (!nav) return;
+      const links = Array.from(nav.querySelectorAll('a[href^="#"]'));
+      links.forEach((link) => {
+        if (link === selected) {
+          link.setAttribute('data-msh-current', 'true');
+        } else {
+          link.removeAttribute('data-msh-current');
+        }
+      });
+    };
+
+    const applyTocVisualCurrent = () => {
+      document.querySelectorAll('.page-toc-sticky nav').forEach((nav) => {
+        const links = Array.from(nav.querySelectorAll('a[href^="#"]'));
+        if (!links.length) return;
+
+        const hash = window.location.hash;
+        let selected = null;
+
+        if (hash) {
+          selected = links.find((link) => (link.getAttribute('href') ?? '') === hash) ?? null;
+        }
+
+        if (!selected) {
+          selected =
+            links.find((link) => link.getAttribute('aria-current') === 'true' && (link.getAttribute('href') ?? '') !== '#_top') ??
+            null;
+        }
+
+        setTocVisualCurrent(nav, selected);
+      });
+    };
+
     const applyTocOverflowState = () => {
       document.querySelectorAll('.page-toc-sticky').forEach((element) => {
         const hasOverflow = element.scrollHeight > element.clientHeight + 1;
@@ -133,6 +167,7 @@ const { head } = Astro.locals.starlightRoute;
           applyHeaderNavState();
           applyTocPageTitleLabel();
           applyDesktopTocWrapContract();
+          applyTocVisualCurrent();
           applyTocOverflowState();
         })
       );
@@ -147,6 +182,20 @@ const { head } = Astro.locals.starlightRoute;
       const resizeObserver = new ResizeObserver(() => applyTocOverflowState());
       document.querySelectorAll('.page-toc-sticky').forEach((element) => resizeObserver.observe(element));
       window.__mshTocResizeObserver = resizeObserver;
+
+      if (window.__mshTocMutationObserver) {
+        window.__mshTocMutationObserver.disconnect();
+      }
+
+      const mutationObserver = new MutationObserver(() => applyTocVisualCurrent());
+      document.querySelectorAll('.page-toc-sticky nav').forEach((nav) => {
+        mutationObserver.observe(nav, {
+          subtree: true,
+          attributes: true,
+          attributeFilter: ['aria-current'],
+        });
+      });
+      window.__mshTocMutationObserver = mutationObserver;
     };
 
     if (document.readyState === 'loading') {
@@ -159,12 +208,26 @@ const { head } = Astro.locals.starlightRoute;
     window.addEventListener('resize', () => {
       applyHeaderNavState();
       applyTocPageTitleLabel();
+      applyTocVisualCurrent();
       applyTocOverflowState();
     }, { passive: true });
     window.addEventListener('hashchange', () => {
       applyDesktopTocWrapContract();
+      applyTocVisualCurrent();
       applyTocOverflowState();
     });
+    document.addEventListener('pointerdown', (event) => {
+      const link = event.target instanceof Element ? event.target.closest('.page-toc-sticky nav a[href^="#"]') : null;
+      if (!link) return;
+      const nav = link.closest('nav');
+      setTocVisualCurrent(nav, link);
+    }, { capture: true });
+    document.addEventListener('click', (event) => {
+      const link = event.target instanceof Element ? event.target.closest('.page-toc-sticky nav a[href^="#"]') : null;
+      if (!link) return;
+      const nav = link.closest('nav');
+      setTocVisualCurrent(nav, link);
+    }, { capture: true });
     window.addEventListener('pageshow', bindObservers);
   })();
 </script>
