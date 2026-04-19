@@ -404,3 +404,15 @@
 - Inputs used: local `msh-cui-wiki/src/components/Head.astro`, live `http://localhost:4322/#concepts`, Playwright WebKit verification on the `Concepts` heading, local browser artifact `output/playwright/concepts-anchor-test-webkit.png`
 - Outputs created: updated `msh-cui-wiki/src/components/Head.astro`, refreshed browser artifact `output/playwright/concepts-anchor-alignment-webkit.png`, updated `log.md`
 - Unresolved issues: none in the current live pass; the served HTML on `4322` now contains `top: -18px`, and the icon is visibly higher than the earlier `-8px` state
+
+## 2026-04-19 01:43:42 BST — Removed the broken dynamic heading-anchor sizing logic and reset the live anchor to the verified mid offset
+- Action performed: removed the failed per-heading x-glyph sizing and shift calculation from `msh-cui-wiki/src/components/Head.astro`, restored a fixed wrapper offset, set the live heading anchor icon to `top: -15px`, restarted the `4322` dev server, and re-captured the `Concepts` heading from the live page after hover
+- Inputs used: local `msh-cui-wiki/src/components/Head.astro`, live `http://localhost:4322/#concepts`, served HTML inspection via `curl`, Playwright browser verification against the restarted `4322` server, comparison artifacts `output/playwright/concepts-anchor-test-minus14-webkit.png`, `output/playwright/concepts-anchor-test-minus15-webkit.png`, and `output/playwright/concepts-anchor-test-minus16-webkit.png`
+- Outputs created: updated `msh-cui-wiki/src/components/Head.astro`, refreshed browser artifact `output/playwright/concepts-anchor-alignment-webkit.png`, updated `log.md`
+- Unresolved issues: the icon placement is now intentionally driven by the verified rendered midpoint rather than the failed dynamic metric model; if a later pass still needs tighter optical correction, it should start from this stable `-15px` baseline and compare rendered screenshots instead of reintroducing the broken sizing script
+
+## 2026-04-19 01:42:02 BST — Added a wiki page for surviving viewable UI examples and exposed it in the wiki navigation
+- Action performed: authored a new overview page that separates directly viewable UI artefacts, inspectable sample-page implementations, preserved demonstrator artefacts, and no-longer-live public URLs, then linked it from the canonical index so it appears cleanly in both the repo wiki and the mirrored wiki UI
+- Inputs used: localized toolkit sample website under `raw/sources/toolkit/mscui/Solutions/Main/Microsoft.Cui.SampleWebsite/`, localized showcase assets and demonstrator files, existing source notes for the toolkit mirror and showcase remnants, and live status checks of `mscui.net` / `pjd.mscui.net` on 2026-04-19
+- Outputs created: `wiki/overview/viewable-ui-examples.md`, updated `index.md`, updated `log.md`
+- Unresolved issues: the page is intentionally conservative about what counts as directly viewable because many surviving artefacts are source files or static images rather than runnable historical web experiences
