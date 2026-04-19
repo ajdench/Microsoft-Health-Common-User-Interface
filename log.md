@@ -476,3 +476,9 @@
 - Inputs used: local `msh-cui-wiki/src/components/Head.astro`, local `msh-cui-wiki/src/styles/global.css`, live Astro dev server at `http://localhost:4322/`, local Page TOC transition rules in `msh-cui-wiki/node_modules/@pelagornis/page/overrides/TwoColumnContent.astro`, and explicit Playwright WebKit timing checks on `/agents/#wiki-content-must-distinguish-fact-from-interpretation` transitioning to `#do-not-invent-missing-documents`
 - Outputs created: updated `msh-cui-wiki/src/components/Head.astro`, updated `msh-cui-wiki/src/styles/global.css`, updated `log.md`
 - Unresolved issues: the non-animated handoff is currently scoped to the desktop rightbar contract only; mobile TOC remains on theme-default transition behavior
+
+## 2026-04-19 14:31:00 BST — Restored default-style TOC animation while preserving the no-reflow contract in WebKit
+- Action performed: narrowed the desktop rightbar TOC transition override so only non-layout properties animate again, restoring the Page-like fill/text-color animation while keeping padding/inset and font-weight instantaneous; rechecked the hash handoff timing so the contract still prevents reflow and the old/new items do not overlap in current-state layout
+- Inputs used: local `msh-cui-wiki/src/styles/global.css`, live Astro dev server at `http://localhost:4322/`, and explicit Playwright WebKit timing checks on `/agents/#wiki-content-must-distinguish-fact-from-interpretation` transitioning to `#do-not-invent-missing-documents`
+- Outputs created: updated `msh-cui-wiki/src/styles/global.css`, updated `log.md`
+- Unresolved issues: fill/background now crossfades between items during handoff by design; if that visual is still undesirable, the next adjustment would be shortening or changing only the background-color easing rather than reintroducing layout animation

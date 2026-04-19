@@ -242,7 +242,9 @@
 .right-sidebar-panel nav a {
   position: relative;
   --msh-toc-contract-inset: var(--page-space-2);
-  transition: none !important;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease !important;
 }
 
 .right-sidebar-panel nav a .msh-toc-contract {
