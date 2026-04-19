@@ -416,3 +416,9 @@
 - Inputs used: localized toolkit sample website under `raw/sources/toolkit/mscui/Solutions/Main/Microsoft.Cui.SampleWebsite/`, localized showcase assets and demonstrator files, existing source notes for the toolkit mirror and showcase remnants, live status checks of `mscui.net` / `pjd.mscui.net` on 2026-04-19, and the existing `msh-cui-wiki` sync/build pipeline
 - Outputs created: `wiki/overview/viewable-ui-examples.md`, `msh-cui-wiki/public/viewable-ui-examples/`, updated `index.md`, refreshed mirrored docs under `msh-cui-wiki/src/content/docs/`, updated `log.md`
 - Unresolved issues: the page is intentionally conservative about what counts as directly viewable because many surviving artefacts are source files or static images rather than runnable historical web experiences
+
+## 2026-04-19 01:52:31 BST — Added a separate Codex-thread handoff prompt for raw-link behavior and image context
+- Action performed: added a repo-local prompt for a separate Codex thread focused on the Astro wiki’s raw-link behavior, image-context improvements, and the distinction between canonical repo paths and web-served assets, without introducing a new wiki UI channel
+- Inputs used: current `msh-cui-wiki` sync/build model, the existing `wiki/overview/viewable-ui-examples.md` page, and the clarified user instruction to create a handoff prompt rather than a new UI channel
+- Outputs created: `prompts/codex-raw-links-image-context-thread.md`, updated `log.md`
+- Unresolved issues: none in this handoff step; the implementation work itself is intentionally deferred to the separate Codex thread
