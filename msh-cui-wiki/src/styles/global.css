@@ -239,6 +239,15 @@
   visibility: hidden;
 }
 
+[data-msh-right-toc].sl-toc {
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  z-index: auto !important;
+  width: 100% !important;
+}
+
 [data-msh-right-toc] a {
   position: relative;
   --msh-toc-contract-inset: var(--page-space-2);
