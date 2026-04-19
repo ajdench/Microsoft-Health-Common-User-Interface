@@ -440,3 +440,9 @@
 - Inputs used: current `msh-cui-wiki` sync/build model, the existing `wiki/overview/viewable-ui-examples.md` page, and the clarified user instruction to create a handoff prompt rather than a new UI channel
 - Outputs created: `prompts/codex-raw-links-image-context-thread.md`, updated `log.md`
 - Unresolved issues: none in this handoff step; the implementation work itself is intentionally deferred to the separate Codex thread
+
+## 2026-04-19 01:56:00 BST — Broadened the separate-thread handoff prompt from image links to broken source links generally
+- Action performed: updated the repo-local Codex handoff prompt so it explicitly targets the separate `Fix broken source links` chat, broadens the scope from image-specific issues to broken source links and non-image artefacts generally, and keeps image context as one part of that larger task
+- Inputs used: existing `prompts/codex-raw-links-image-context-thread.md`, clarified user instruction to use the prompt with the separate broken-source-links chat, and the current raw/source-link expectations in the Astro wiki
+- Outputs created: updated `prompts/codex-raw-links-image-context-thread.md`, updated `log.md`
+- Unresolved issues: none in the prompt itself; any actual source-link remediation remains for the separate Codex thread
