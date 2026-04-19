@@ -452,3 +452,15 @@
 - Inputs used: existing `prompts/codex-raw-links-image-context-thread.md`, clarified user instruction to use the prompt with the separate broken-source-links chat, and the current raw/source-link expectations in the Astro wiki
 - Outputs created: updated `prompts/codex-raw-links-image-context-thread.md`, updated `log.md`
 - Unresolved issues: none in the prompt itself; any actual source-link remediation remains for the separate Codex thread
+
+## 2026-04-19 02:05:47 BST — Wired Starlight search to work on localhost using a published Pagefind bundle
+- Action performed: added a local Starlight `Search` override that initializes Pagefind during `astro dev`, created a `prepare-dev-search` script that bootstraps or republishes the `dist/pagefind` bundle into `msh-cui-wiki/public/pagefind/`, wired that step into the app `dev` scripts, and ignored the generated localhost search assets
+- Inputs used: local `msh-cui-wiki/node_modules/@astrojs/starlight/components/Search.astro`, local `msh-cui-wiki/astro.config.mjs`, local `msh-cui-wiki/package.json`, and the existing Astro/Starlight/Pagefind build output under `msh-cui-wiki/dist/pagefind/`
+- Outputs created: new `msh-cui-wiki/src/components/Search.astro`, new `msh-cui-wiki/scripts/prepare-dev-search.mjs`, updated `msh-cui-wiki/astro.config.mjs`, updated `msh-cui-wiki/package.json`, updated `msh-cui-wiki/.gitignore`, and updated `log.md`
+- Unresolved issues: localhost search now uses a locally served Pagefind bundle, but the index still refreshes only when `astro build` runs; routine content edits during `astro dev` will not hot-update search results until the bundle is rebuilt
+
+## 2026-04-19 14:16:00 BST — Restored Page-default TOC fill while keeping the rightbar no-reflow wrap contract, verified in explicit WebKit
+- Action performed: narrowed the desktop rightbar TOC contract so it no longer suppresses the Page theme’s own hover/current chip background and left inset, kept only the hidden measurement layer that reserves the filled-state text width and heavier-weight line breaks, and verified the resulting current-state chip directly in an explicit Playwright WebKit session on `/agents/#wiki-content-must-distinguish-fact-from-interpretation`
+- Inputs used: local `msh-cui-wiki/src/styles/global.css`, live Astro dev server at `http://localhost:4322/`, local `@pelagornis/page` TOC styles in `node_modules/@pelagornis/page/overrides/TwoColumnContent.astro`, and Playwright CLI opened with `--browser=webkit`
+- Outputs created: updated `msh-cui-wiki/src/styles/global.css`, updated `output/playwright/toc-wrap-contract-webkit.png`, updated `log.md`
+- Unresolved issues: the rightbar wrap contract is currently implemented only for the desktop TOC pane; mobile TOC behavior remains on untouched theme defaults until the desktop contract is stable

@@ -235,6 +235,45 @@
   -webkit-backdrop-filter: blur(16px);
 }
 
+.right-sidebar-panel nav a {
+  position: relative;
+  --msh-toc-contract-inset: var(--page-space-2);
+}
+
+.right-sidebar-panel nav a .msh-toc-contract {
+  display: grid;
+  width: 100%;
+}
+
+.right-sidebar-panel nav a .msh-toc-measure,
+.right-sidebar-panel nav a .msh-toc-label {
+  grid-area: 1 / 1;
+  display: block;
+  box-sizing: border-box;
+  line-height: inherit;
+  width: calc(100% - (var(--msh-toc-contract-inset) * 2));
+}
+
+.right-sidebar-panel nav a .msh-toc-measure {
+  font-weight: 500;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.right-sidebar-panel nav a .msh-toc-label {
+  color: inherit;
+}
+
+.right-sidebar-panel nav a:hover .msh-toc-measure,
+.right-sidebar-panel nav a:focus-visible .msh-toc-measure,
+.right-sidebar-panel nav a[aria-current="true"] .msh-toc-measure,
+.right-sidebar-panel nav a:hover .msh-toc-label,
+.right-sidebar-panel nav a:focus-visible .msh-toc-label,
+.right-sidebar-panel nav a[aria-current="true"] .msh-toc-label {
+  width: calc(100% - var(--msh-toc-contract-inset));
+  font-weight: 500;
+}
+
 @media (min-width: 1025px) {
   .page-main-container.with-toc .page-content-wrapper {
     margin-right: 0 !important;
