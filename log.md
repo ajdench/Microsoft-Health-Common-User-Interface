@@ -464,3 +464,9 @@
 - Inputs used: local `msh-cui-wiki/src/styles/global.css`, live Astro dev server at `http://localhost:4322/`, local `@pelagornis/page` TOC styles in `node_modules/@pelagornis/page/overrides/TwoColumnContent.astro`, and Playwright CLI opened with `--browser=webkit`
 - Outputs created: updated `msh-cui-wiki/src/styles/global.css`, updated `output/playwright/toc-wrap-contract-webkit.png`, updated `log.md`
 - Unresolved issues: the rightbar wrap contract is currently implemented only for the desktop TOC pane; mobile TOC behavior remains on untouched theme defaults until the desktop contract is stable
+
+## 2026-04-19 14:22:00 BST — Removed the multiline TOC blip by making the desktop wrap contract ready before links become visible
+- Action performed: changed the desktop rightbar TOC contract flow so the contract shell is applied before hash-selection state is re-applied, marked the rightbar nav as ready only after all hash links were wrapped, and hid rightbar section links until that ready state exists to prevent the raw current-state multiline item from flashing before the contract takes over
+- Inputs used: local `msh-cui-wiki/src/components/Head.astro`, local `msh-cui-wiki/src/styles/global.css`, live Astro dev server at `http://localhost:4322/`, and explicit Playwright WebKit verification on `/agents/#wiki-content-must-distinguish-fact-from-interpretation`
+- Outputs created: updated `msh-cui-wiki/src/components/Head.astro`, updated `msh-cui-wiki/src/styles/global.css`, updated `log.md`
+- Unresolved issues: this removes the pre-contract flash path in the desktop rightbar, but it does not yet extend the contract to the mobile TOC, which remains on untouched theme behavior

@@ -106,6 +106,39 @@ const { head } = Astro.locals.starlightRoute;
       });
     };
 
+    const applyDesktopTocWrapContract = () => {
+      document.querySelectorAll('.right-sidebar-panel nav').forEach((nav) => {
+        const links = Array.from(nav.querySelectorAll('a[href^="#"]'));
+
+        links.forEach((link) => {
+          if (link.dataset.mshTocWrapped === 'true') return;
+
+          const text = normalizeText(link.textContent);
+          if (!text) return;
+
+          link.textContent = '';
+
+          const shell = document.createElement('span');
+          shell.className = 'msh-toc-contract';
+
+          const measure = document.createElement('span');
+          measure.className = 'msh-toc-measure';
+          measure.setAttribute('aria-hidden', 'true');
+          measure.textContent = text;
+
+          const label = document.createElement('span');
+          label.className = 'msh-toc-label';
+          label.textContent = text;
+
+          shell.append(measure, label);
+          link.append(shell);
+          link.dataset.mshTocWrapped = 'true';
+        });
+
+        nav.classList.add('msh-toc-contract-ready');
+      });
+    };
+
     const applyTocOverflowState = () => {
       document.querySelectorAll('.page-toc-sticky').forEach((element) => {
         const hasOverflow = element.scrollHeight > element.clientHeight + 1;
@@ -118,6 +151,7 @@ const { head } = Astro.locals.starlightRoute;
         requestAnimationFrame(() => {
           applyHeaderNavState();
           applyTocPageTitleLabel();
+          applyDesktopTocWrapContract();
           applyTocHashSelection();
           applyTocOverflowState();
         })

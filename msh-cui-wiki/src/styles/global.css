@@ -235,6 +235,10 @@
   -webkit-backdrop-filter: blur(16px);
 }
 
+.right-sidebar-panel nav:not(.msh-toc-contract-ready) a[href^="#"] {
+  visibility: hidden;
+}
+
 .right-sidebar-panel nav a {
   position: relative;
   --msh-toc-contract-inset: var(--page-space-2);
