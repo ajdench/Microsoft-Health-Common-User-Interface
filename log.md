@@ -438,6 +438,12 @@
 ## 2026-04-19 01:52:31 BST — Added a separate Codex-thread handoff prompt for raw-link behavior and image context
 - Action performed: added a repo-local prompt for a separate Codex thread focused on the Astro wiki’s raw-link behavior, image-context improvements, and the distinction between canonical repo paths and web-served assets, without introducing a new wiki UI channel
 - Inputs used: current `msh-cui-wiki` sync/build model, the existing `wiki/overview/viewable-ui-examples.md` page, and the clarified user instruction to create a handoff prompt rather than a new UI channel
+## 2026-04-24 00:41:02 BST — Added companion offline-first web app stack recommendation
+- Action performed: researched current Edge/PWA/WebView2 storage constraints, OPFS/persistent storage behavior, Workbox, local-first database options, accessible React UI primitive libraries, and sync candidates; synthesized these findings against the existing Health CUI wiki constraints; created a separate companion knowledge space so the material is clearly distinct from the primary historical corpus
+- Inputs used: existing wiki pages on patient safety, modern web UI mappings, React/Radix/shadcn mappings, component contracts, design tokens, governance rules, and current external documentation from Microsoft Learn, MDN, web.dev, Workbox, Dexie, Electric, PGlite, TanStack Router, Fluent UI, React Aria, and Base UI
+- Outputs created: `wiki/companion-web-app-stack/README.md`, `wiki/companion-web-app-stack/offline-first-pwa-stack-recommendation.md`, updated `index.md`, updated `log.md`
+- Unresolved issues: WebView2 packaging, app-owned backup/storage bridge design, backend conflict rules, and any paid grid/sync selection need separate project-specific design notes once deployment and clinical workflow requirements are clearer
+
 - Outputs created: `prompts/codex-raw-links-image-context-thread.md`, updated `log.md`
 - Unresolved issues: none in this handoff step; the implementation work itself is intentionally deferred to the separate Codex thread
 

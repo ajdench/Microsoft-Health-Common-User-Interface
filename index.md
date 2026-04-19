@@ -14,6 +14,10 @@
 - [Research Scope Status](wiki/overview/research-scope-status.md) — whether the historical discovery phase is now exhausted enough to move on
 - [Chronology](wiki/chronology/health-cui-chronology.md) — compact event table
 
+## Companion Knowledge Spaces
+- [Companion Web App Stack](wiki/companion-web-app-stack/README.md) — modern web/PWA stack guidance informed by, but separate from, the primary Health CUI corpus
+- [Offline-first PWA Stack Recommendation](wiki/companion-web-app-stack/offline-first-pwa-stack-recommendation.md) — reasoned stack and storage approach for Edge, WebView2, offline-first use, and clinical UI libraries
+
 ## Concepts
 - [Design Guidance](wiki/concepts/design-guidance.md) — shape and scope of the historical guidance corpus
 - [Toolkit Controls](wiki/concepts/toolkit-controls.md) — what the localized toolkit source contains
