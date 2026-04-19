@@ -115,3 +115,4 @@ Implementation rule:
 ## Later references
 
 - `https://fevol.github.io/starlight-site-graph/` — keep as a future reference if we revisit graph-style discovery/navigation inside the Astro/Starlight layer
+- [heading-anchor-alignment.md](/Users/andrew/Projects/Microsoft%20Health%20Common%20User%20Interface/msh-cui-wiki/docs/heading-anchor-alignment.md) — record of what failed, what worked, and the current heading-anchor alignment baseline

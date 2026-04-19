@@ -54,5 +54,6 @@ The current local fixes are intentionally narrow:
 - stronger light/dark surface separation in the header, left sidebar, and right-hand TOC
 - higher-contrast canonical-note links
 - CSS-rendered search and theme icons so Safari/WebKit, Chrome, and Edge all show the same controls reliably
+- a fixed optical wrapper offset for heading anchor icons, documented separately because it required page-specific live verification
 
-See [docs/ui-reset-notes.md](/Users/andrew/Projects/Microsoft%20Health%20Common%20User%20Interface/msh-cui-wiki/docs/ui-reset-notes.md) for the reset rationale, current UI policy, and browser verification notes.
+See [docs/ui-reset-notes.md](/Users/andrew/Projects/Microsoft%20Health%20Common%20User%20Interface/msh-cui-wiki/docs/ui-reset-notes.md) for the reset rationale, current UI policy, and browser verification notes, and [docs/heading-anchor-alignment.md](/Users/andrew/Projects/Microsoft%20Health%20Common%20User%20Interface/msh-cui-wiki/docs/heading-anchor-alignment.md) for the heading-anchor alignment record.

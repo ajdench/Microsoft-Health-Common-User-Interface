@@ -417,6 +417,12 @@
 - Outputs created: updated `msh-cui-wiki/src/components/Head.astro`, browser artifact `output/playwright/viewable-anchor-alignment-webkit.png`, updated `log.md`
 - Unresolved issues: none in the live verification pass; the alignment baseline for this icon is now the actual target heading the user supplied, and any later tuning should compare against that heading first
 
+## 2026-04-19 01:58:49 BST — Documented the heading-anchor alignment workflow and failure modes for future UI work
+- Action performed: wrote a dedicated app note describing the heading-anchor alignment requirement, the stale-CSS/dev-server failure mode, the discarded dynamic metric approach, the verified optical-tuning workflow, and the current `-8px` baseline; linked that note from the existing UI reset notes and the app README
+- Inputs used: local `msh-cui-wiki/src/components/Head.astro`, local `msh-cui-wiki/docs/ui-reset-notes.md`, local `msh-cui-wiki/README.md`, prior Playwright verification on `http://localhost:4322/wiki/overview/viewable-ui-examples/#what-is-directly-viewable-now`
+- Outputs created: new `msh-cui-wiki/docs/heading-anchor-alignment.md`, updated `msh-cui-wiki/docs/ui-reset-notes.md`, updated `msh-cui-wiki/README.md`, updated `log.md`
+- Unresolved issues: none; the future-reference path for this topic is now explicit and local to the app docs
+
 ## 2026-04-19 01:42:02 BST — Added a wiki page for surviving viewable UI examples and exposed it in the wiki navigation
 - Action performed: authored a new overview page that separates directly viewable UI artefacts, inspectable sample-page implementations, preserved demonstrator artefacts, and no-longer-live public URLs, linked it from the canonical index, mirrored four representative preview images into the Astro app’s public assets, and verified that the new route builds successfully in the wiki UI
 - Inputs used: localized toolkit sample website under `raw/sources/toolkit/mscui/Solutions/Main/Microsoft.Cui.SampleWebsite/`, localized showcase assets and demonstrator files, existing source notes for the toolkit mirror and showcase remnants, live status checks of `mscui.net` / `pjd.mscui.net` on 2026-04-19, and the existing `msh-cui-wiki` sync/build pipeline
