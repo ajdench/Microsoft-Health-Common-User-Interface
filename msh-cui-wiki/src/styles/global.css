@@ -249,33 +249,13 @@
   transition: none !important;
 }
 
-.right-sidebar-panel nav a::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: var(--msh-toc-contract-inset);
-  border-radius: var(--page-radius-xl);
-  background: var(--page-accent-light);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.2s ease !important;
-}
-
 .right-sidebar-panel nav a[aria-current="true"] {
-  background: transparent !important;
-  color: var(--page-text-secondary) !important;
-  padding-left: 0 !important;
-  font-weight: 400 !important;
-  transition: none !important;
+  transition: background-color 0.2s ease !important;
 }
 
 .right-sidebar-panel nav a .msh-toc-contract {
   display: grid;
   width: 100%;
-  position: relative;
-  z-index: 1;
 }
 
 .right-sidebar-panel nav a .msh-toc-measure,
@@ -284,7 +264,7 @@
   display: block;
   box-sizing: border-box;
   line-height: inherit;
-  width: calc(100% - var(--msh-toc-contract-inset));
+  width: calc(100% - (var(--msh-toc-contract-inset) * 2));
   transition: none !important;
 }
 
@@ -298,32 +278,14 @@
   color: inherit;
 }
 
-.right-sidebar-panel nav a:hover,
-.right-sidebar-panel nav a:focus-visible,
-.right-sidebar-panel nav a[data-msh-current="true"] {
-  color: var(--page-text) !important;
-}
-
-.right-sidebar-panel nav a:hover::before,
-.right-sidebar-panel nav a:focus-visible::before,
-.right-sidebar-panel nav a[data-msh-current="true"]::before {
-  opacity: 1;
-}
-
 .right-sidebar-panel nav a:hover .msh-toc-measure,
 .right-sidebar-panel nav a:focus-visible .msh-toc-measure,
-.right-sidebar-panel nav a[data-msh-current="true"] .msh-toc-measure,
+.right-sidebar-panel nav a[aria-current="true"] .msh-toc-measure,
 .right-sidebar-panel nav a:hover .msh-toc-label,
 .right-sidebar-panel nav a:focus-visible .msh-toc-label,
-.right-sidebar-panel nav a[data-msh-current="true"] .msh-toc-label {
-  transform: translateX(var(--msh-toc-contract-inset));
+.right-sidebar-panel nav a[aria-current="true"] .msh-toc-label {
+  width: calc(100% - var(--msh-toc-contract-inset));
   font-weight: 500;
-}
-
-.right-sidebar-panel nav a[data-msh-current="true"] {
-  padding-left: 0 !important;
-  background: transparent !important;
-  transition: none !important;
 }
 
 @media (min-width: 1025px) {

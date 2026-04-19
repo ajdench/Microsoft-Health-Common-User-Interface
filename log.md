@@ -495,6 +495,12 @@
 - Outputs created: updated `msh-cui-wiki/src/components/Head.astro`, updated `msh-cui-wiki/src/styles/global.css`, updated `output/playwright/agents-4323-selection-owner-webkit.png`, updated `log.md`
 - Unresolved issues: the fresh `4323` baseline removes the duplicate-selected-item path, but initial no-hash pages can legitimately show no visible selected rightbar item because the hidden synthetic `_top` entry remains the observer’s initial current target until a real section is selected
 
+## 2026-04-19 21:37:00 BST — Rolled back the separate visual-current / chip-layer rightbar experiment on the fresh `4323` server
+- Action performed: reverted the rightbar TOC from the experimental `data-msh-current` / animated chip-layer approach back to the earlier Starlight-owned-current baseline, removed the experimental script hooks and leftover CSS rule, restarted the clean Astro dev server on `http://localhost:4323/`, and verified in WebKit that the served page no longer contains the visual-current experiment strings
+- Inputs used: local `msh-cui-wiki/src/components/Head.astro`, local `msh-cui-wiki/src/styles/global.css`, fresh Astro dev server restart on `http://localhost:4323/`, and WebKit screenshot `output/playwright/agents-4323-rollback-webkit.png`
+- Outputs created: updated `msh-cui-wiki/src/components/Head.astro`, updated `msh-cui-wiki/src/styles/global.css`, updated `output/playwright/agents-4323-rollback-webkit.png`, updated `log.md`
+- Unresolved issues: this rollback intentionally restores the pre-experiment behavior rather than solving the underlying TOC interaction bug
+
 ## 2026-04-19 21:30:00 BST — Restored rightbar selection animation on a separate visual-current chip layer while keeping Starlight as semantic owner
 - Action performed: kept Starlight as the sole `aria-current` owner, introduced a separate rightbar-only `data-msh-current` visual state in `msh-cui-wiki/src/components/Head.astro`, synchronized it from hash, mutation, and click/pointer events, neutralized Starlight’s native rightbar current styling in CSS, and moved the visible fill animation onto a separate `::before` chip layer so the clicked item can animate visually without reviving the duplicate-selected-item path
 - Inputs used: local `msh-cui-wiki/src/components/Head.astro`, local `msh-cui-wiki/src/styles/global.css`, fresh server at `http://localhost:4323/`, and explicit Playwright WebKit checks on `/agents/` including screenshot `output/playwright/agents-4323-chip-layer-webkit.png`
