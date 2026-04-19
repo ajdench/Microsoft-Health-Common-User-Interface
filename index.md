@@ -9,6 +9,7 @@
 - [MSH CUI](wiki/overview/health-cui-overview.md) — what the programme was, what the repo contains, and why it matters now
 - [History and Context](wiki/overview/history-and-context.md) — dated timeline and programme framing
 - [Adoption, Retirement, and Afterlife](wiki/overview/adoption-retirement-and-afterlife.md) — what evidence exists for uptake, why the standards were retired, and what survived
+- [Viewable UI Examples](wiki/overview/viewable-ui-examples.md) — what can still be opened locally now, from static visuals to sample pages and demonstrator remnants
 - [Archive Limits and Dead Ends](wiki/overview/archive-limits-and-dead-ends.md) — what recovery paths were tried, what failed, and why
 - [Research Scope Status](wiki/overview/research-scope-status.md) — whether the historical discovery phase is now exhausted enough to move on
 - [Chronology](wiki/chronology/health-cui-chronology.md) — compact event table
