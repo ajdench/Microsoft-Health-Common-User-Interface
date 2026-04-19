@@ -14,24 +14,37 @@
 - The original live Silverlight web experiences do not appear to remain publicly viewable now.
 
 ## Wiki UI preview gallery
-These mirrored previews are included so the Astro/Starlight wiki UI can show representative surviving artefacts directly on the page.
+These mirrored previews are included so the Astro/Starlight wiki UI can show representative surviving artefacts directly on the page. The set below prefers actual UI-heavy examples over generic showcase thumbnails.
 
 ![Medication preview example](/viewable-ui-examples/msp2190.png)
 
-![Patient Journey Demonstrator thumbnail](/viewable-ui-examples/PatJoDem.png)
+Source file: `raw/sources/toolkit/mscui/Solutions/Main/Microsoft.Cui.SampleWebsite/DesignGuide/QuickGuides/SearchPrescribe/images/msp2190.png`
 
-![Care Pathways showcase thumbnail](/viewable-ui-examples/demoimagesix.png)
+![Search and prescribe surface](/viewable-ui-examples/search-and-prescribe.jpg)
 
-![Showcase landing image](/viewable-ui-examples/showcaseimage.png)
+Source file: `raw/sources/toolkit/mscui/Solutions/Main/Microsoft.Cui.SampleWebsite/Components/Images/SearchAndPrescribe.jpg`
+
+![Patient banner example](/viewable-ui-examples/patient-banner.gif)
+
+Source file: `raw/sources/toolkit/mscui/Solutions/Main/Microsoft.Cui.SampleWebsite/images/PatientBanner.gif`
+
+![Clinical graphing example](/viewable-ui-examples/graphing.gif)
+
+Source file: `raw/sources/toolkit/mscui/Solutions/Main/Microsoft.Cui.SampleWebsite/Components/Images/graphing.gif`
+
+![Single concept matching example](/viewable-ui-examples/single-concept-matching.jpg)
+
+Source file: `raw/sources/toolkit/mscui/Solutions/Main/Microsoft.Cui.SampleWebsite/Components/Images/SingleConceptMatching.jpg`
 
 ## What is directly viewable now
 
 ### Rendered static visuals
-- [Medication preview example](../../raw/sources/toolkit/mscui/Solutions/Main/Microsoft.Cui.SampleWebsite/DesignGuide/QuickGuides/SearchPrescribe/images/msp2190.png) — preserved prescribing preview UI with medication line and action buttons.
-- [Patient Journey Demonstrator thumbnail](../../raw/sources/toolkit/mscui/Solutions/Main/Microsoft.Cui.SampleWebsite/Showcase/Images/PatJoDem.png) — surviving showcase tile for the Patient Journey Demonstrator.
-- [Care Pathways showcase thumbnail](../../raw/sources/toolkit/mscui/Solutions/Main/Microsoft.Cui.SampleWebsite/Showcase/Images/demoimagesix.png) — surviving tile for the downloadable Care Pathways demonstrator.
-- [Showcase landing image](../../raw/sources/toolkit/mscui/Solutions/Main/Microsoft.Cui.SampleWebsite/Showcase/Images/showcaseimage.png) — page art used to frame the showcase branch.
-- [Gender and sex quick-guide images](../../raw/sources/toolkit/mscui/Solutions/Main/Microsoft.Cui.SampleWebsite/DesignGuide/QuickGuides/GenderSex/images/) — preserved control and option illustrations for that guidance area.
+- `raw/sources/toolkit/mscui/Solutions/Main/Microsoft.Cui.SampleWebsite/DesignGuide/QuickGuides/SearchPrescribe/images/msp2190.png` — preserved prescribing preview UI with medication line and action buttons.
+- `raw/sources/toolkit/mscui/Solutions/Main/Microsoft.Cui.SampleWebsite/Components/Images/SearchAndPrescribe.jpg` — fuller prescribing surface with structured drug, dose, administration, duration, and authorization controls.
+- `raw/sources/toolkit/mscui/Solutions/Main/Microsoft.Cui.SampleWebsite/images/PatientBanner.gif` — side-by-side patient-banner guidance and toolkit control example.
+- `raw/sources/toolkit/mscui/Solutions/Main/Microsoft.Cui.SampleWebsite/Components/Images/graphing.gif` — dense multi-vital graphing screen with alerts, ranges, and time controls.
+- `raw/sources/toolkit/mscui/Solutions/Main/Microsoft.Cui.SampleWebsite/Components/Images/SingleConceptMatching.jpg` — terminology search and matching surface with result list and detail pane.
+- `raw/sources/toolkit/mscui/Solutions/Main/Microsoft.Cui.SampleWebsite/DesignGuide/QuickGuides/GenderSex/images/` — preserved control and option illustrations for that guidance area.
 
 ### Inspectable sample-page implementations
 - [Extended Patient Banner sample](../../raw/sources/toolkit/mscui/Solutions/Main/Microsoft.Cui.SampleWebsite/Samples/PatientBanner/ExtendedPatientBanner.aspx) — composite patient banner example with expandable sections and additional demographic/context content.

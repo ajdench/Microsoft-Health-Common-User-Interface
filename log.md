@@ -441,6 +441,12 @@
 - Outputs created: `prompts/codex-raw-links-image-context-thread.md`, updated `log.md`
 - Unresolved issues: none in this handoff step; the implementation work itself is intentionally deferred to the separate Codex thread
 
+## 2026-04-19 02:08:00 BST — Replaced weak showcase thumbnails with stronger actual UI examples in the viewable-examples page
+- Action performed: removed the mirrored `PatJoDem`, `demoimagesix`, and `showcaseimage` preview assets from the Astro app’s public gallery set, added stronger UI-heavy previews for search-and-prescribe, patient banner, graphing, and single-concept matching, and updated the canonical viewable-examples page so the gallery now emphasizes actual interface examples with explicit source-path context
+- Inputs used: localized component and sample-website images under `raw/sources/toolkit/mscui/Solutions/Main/Microsoft.Cui.SampleWebsite/`, especially `Components/Images/SearchAndPrescribe.jpg`, `images/PatientBanner.gif`, `Components/Images/graphing.gif`, and `Components/Images/SingleConceptMatching.jpg`; local Astro/Starlight skill references on component/island capabilities
+- Outputs created: updated `wiki/overview/viewable-ui-examples.md`, updated `msh-cui-wiki/public/viewable-ui-examples/`, updated `log.md`
+- Unresolved issues: there is no evidence in the local Starlight references of a built-in carousel primitive for the current markdown-only pipeline; a richer gallery would likely require either a custom Astro/component island or a different content format such as Markdoc/MDX
+
 ## 2026-04-19 01:56:00 BST — Broadened the separate-thread handoff prompt from image links to broken source links generally
 - Action performed: updated the repo-local Codex handoff prompt so it explicitly targets the separate `Fix broken source links` chat, broadens the scope from image-specific issues to broken source links and non-image artefacts generally, and keeps image context as one part of that larger task
 - Inputs used: existing `prompts/codex-raw-links-image-context-thread.md`, clarified user instruction to use the prompt with the separate broken-source-links chat, and the current raw/source-link expectations in the Astro wiki
