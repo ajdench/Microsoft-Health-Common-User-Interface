@@ -482,3 +482,9 @@
 - Inputs used: local `msh-cui-wiki/src/styles/global.css`, live Astro dev server at `http://localhost:4322/`, and explicit Playwright WebKit timing checks on `/agents/#wiki-content-must-distinguish-fact-from-interpretation` transitioning to `#do-not-invent-missing-documents`
 - Outputs created: updated `msh-cui-wiki/src/styles/global.css`, updated `log.md`
 - Unresolved issues: fill/background now crossfades between items during handoff by design; if that visual is still undesirable, the next adjustment would be shortening or changing only the background-color easing rather than reintroducing layout animation
+
+## 2026-04-19 14:35:00 BST — Made desktop rightbar TOC deselection snap while current-item fill still animates in, verified in WebKit
+- Action performed: split the desktop rightbar TOC transition rules so non-current links animate only color while current links animate background-color and color, which removes the lingering deselection fill on the previously active item while preserving the animated fill-in on the newly active item
+- Inputs used: local `msh-cui-wiki/src/styles/global.css`, live Astro dev server at `http://localhost:4322/`, and explicit Playwright WebKit timing checks on `/agents/#wiki-content-must-distinguish-fact-from-interpretation` transitioning to `#do-not-invent-missing-documents`
+- Outputs created: updated `msh-cui-wiki/src/styles/global.css`, updated `log.md`
+- Unresolved issues: this is still scoped to the desktop rightbar contract; mobile TOC continues to use untouched theme transition behavior
