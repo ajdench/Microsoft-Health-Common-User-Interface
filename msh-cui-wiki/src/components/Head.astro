@@ -87,25 +87,6 @@ const { head } = Astro.locals.starlightRoute;
       });
     };
 
-    const applyTocHashSelection = () => {
-      const hash = window.location.hash;
-      if (!hash) return;
-
-      document.querySelectorAll('.page-toc-sticky nav').forEach((nav) => {
-        const links = Array.from(nav.querySelectorAll('a[href^="#"]'));
-        const selected = links.find((link) => (link.getAttribute('href') ?? '') === hash);
-        if (!selected) return;
-
-        links.forEach((link) => {
-          if (link === selected) {
-            link.setAttribute('aria-current', 'true');
-          } else {
-            link.removeAttribute('aria-current');
-          }
-        });
-      });
-    };
-
     const applyDesktopTocWrapContract = () => {
       document.querySelectorAll('.right-sidebar-panel nav').forEach((nav) => {
         const links = Array.from(nav.querySelectorAll('a[href^="#"]'));
@@ -152,7 +133,6 @@ const { head } = Astro.locals.starlightRoute;
           applyHeaderNavState();
           applyTocPageTitleLabel();
           applyDesktopTocWrapContract();
-          applyTocHashSelection();
           applyTocOverflowState();
         })
       );
@@ -179,12 +159,10 @@ const { head } = Astro.locals.starlightRoute;
     window.addEventListener('resize', () => {
       applyHeaderNavState();
       applyTocPageTitleLabel();
-      applyTocHashSelection();
       applyTocOverflowState();
     }, { passive: true });
     window.addEventListener('hashchange', () => {
       applyDesktopTocWrapContract();
-      applyTocHashSelection();
       applyTocOverflowState();
     });
     window.addEventListener('pageshow', bindObservers);
