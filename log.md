@@ -398,3 +398,9 @@
 - Inputs used: local `msh-cui-wiki/src/components/Head.astro`, live `http://localhost:4322/#concepts`, Playwright WebKit verification on the `Concepts` heading, local browser artifact `output/playwright/concepts-anchor-test-webkit.png`
 - Outputs created: updated `msh-cui-wiki/src/components/Head.astro`, refreshed browser artifact `output/playwright/concepts-anchor-alignment-webkit.png`, updated `log.md`
 - Unresolved issues: this is a direct measured placement rather than a successful per-heading metric computation; it is the correct current fix because it actually changes the live browser result and places the icon close to the requested band between visible text bottom and descender reserve
+
+## 2026-04-19 01:17:36 BST — Refined the working icon-wrapper offset upward to place the icon into the title x-height zone
+- Action performed: raised the live heading anchor icon wrapper from `top: -8px` to `top: -18px` in `msh-cui-wiki/src/components/Head.astro`, restarted the `4322` dev server, and re-captured the `Concepts` heading in WebKit so the chain icon sits materially higher and reads against the heading’s x-height zone rather than the descender reserve
+- Inputs used: local `msh-cui-wiki/src/components/Head.astro`, live `http://localhost:4322/#concepts`, Playwright WebKit verification on the `Concepts` heading, local browser artifact `output/playwright/concepts-anchor-test-webkit.png`
+- Outputs created: updated `msh-cui-wiki/src/components/Head.astro`, refreshed browser artifact `output/playwright/concepts-anchor-alignment-webkit.png`, updated `log.md`
+- Unresolved issues: none in the current live pass; the served HTML on `4322` now contains `top: -18px`, and the icon is visibly higher than the earlier `-8px` state
