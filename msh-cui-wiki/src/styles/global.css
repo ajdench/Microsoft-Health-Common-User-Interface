@@ -235,31 +235,27 @@
   -webkit-backdrop-filter: blur(16px);
 }
 
-.right-sidebar-panel nav:not(.msh-toc-contract-ready) a[href^="#"] {
+[data-msh-right-toc]:not(.msh-toc-contract-ready) a[data-toc-link] {
   visibility: hidden;
 }
 
-.page-toc-sticky nav a[href="#_top"] {
-  display: none !important;
-}
-
-.right-sidebar-panel nav a {
+[data-msh-right-toc] a {
   position: relative;
   --msh-toc-contract-inset: var(--page-space-2);
   transition: none !important;
 }
 
-.right-sidebar-panel nav a[aria-current="true"] {
+[data-msh-right-toc] a[aria-current="true"] {
   transition: background-color 0.2s ease !important;
 }
 
-.right-sidebar-panel nav a .msh-toc-contract {
+[data-msh-right-toc] a .msh-toc-contract {
   display: grid;
   width: 100%;
 }
 
-.right-sidebar-panel nav a .msh-toc-measure,
-.right-sidebar-panel nav a .msh-toc-label {
+[data-msh-right-toc] a .msh-toc-measure,
+[data-msh-right-toc] a .msh-toc-label {
   grid-area: 1 / 1;
   display: block;
   box-sizing: border-box;
@@ -268,22 +264,22 @@
   transition: none !important;
 }
 
-.right-sidebar-panel nav a .msh-toc-measure {
+[data-msh-right-toc] a .msh-toc-measure {
   font-weight: 500;
   visibility: hidden;
   pointer-events: none;
 }
 
-.right-sidebar-panel nav a .msh-toc-label {
+[data-msh-right-toc] a .msh-toc-label {
   color: inherit;
 }
 
-.right-sidebar-panel nav a:hover .msh-toc-measure,
-.right-sidebar-panel nav a:focus-visible .msh-toc-measure,
-.right-sidebar-panel nav a[aria-current="true"] .msh-toc-measure,
-.right-sidebar-panel nav a:hover .msh-toc-label,
-.right-sidebar-panel nav a:focus-visible .msh-toc-label,
-.right-sidebar-panel nav a[aria-current="true"] .msh-toc-label {
+[data-msh-right-toc] a:hover .msh-toc-measure,
+[data-msh-right-toc] a:focus-visible .msh-toc-measure,
+[data-msh-right-toc] a[aria-current="true"] .msh-toc-measure,
+[data-msh-right-toc] a:hover .msh-toc-label,
+[data-msh-right-toc] a:focus-visible .msh-toc-label,
+[data-msh-right-toc] a[aria-current="true"] .msh-toc-label {
   width: calc(100% - var(--msh-toc-contract-inset));
   font-weight: 500;
 }

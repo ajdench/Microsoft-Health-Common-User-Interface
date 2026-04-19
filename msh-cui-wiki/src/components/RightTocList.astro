@@ -1,0 +1,26 @@
+---
+import type { TocItem } from '@astrojs/starlight/utils/generateToC';
+
+interface Props {
+  items: TocItem[];
+  depth?: number;
+}
+
+const { items, depth = 0 } = Astro.props;
+---
+
+<ul class="msh-right-toc-list" data-depth={depth}>
+  {
+    items.map((item) => (
+      <li class="msh-right-toc-item">
+        <a href={`#${item.slug}`} data-toc-link>
+          <span class="msh-toc-contract">
+            <span class="msh-toc-measure" aria-hidden="true">{item.text}</span>
+            <span class="msh-toc-label">{item.text}</span>
+          </span>
+        </a>
+        {item.children.length > 0 && <Astro.self items={item.children} depth={depth + 1} />}
+      </li>
+    ))
+  }
+</ul>

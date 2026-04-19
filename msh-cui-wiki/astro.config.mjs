@@ -14,6 +14,8 @@ export default defineConfig({
 			customCss: ['./src/styles/global.css'],
 			components: {
 				Head: '/src/components/Head.astro',
+				Search: '/src/components/Search.astro',
+				TableOfContents: '/src/components/TableOfContents.astro',
 			},
 			plugins: [
 				pagePlugin({

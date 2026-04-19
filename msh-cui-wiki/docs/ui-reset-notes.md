@@ -98,19 +98,25 @@ The current baseline is:
 
 ## TOC Model
 
-The right-hand TOC now follows the simpler model:
+The right-hand TOC is now locally rendered.
 
-- do not rewrite the theme’s TOC list structure
-- do not create a synthetic parent TOC node
-- render the page title as a separate static label above the untouched TOC list
-- let the theme keep ownership of hover, current-state visuals, spacing, and list structure
-- add only a minimal hash-selection pass so the exact matching TOC link becomes current on load and on hash changes
+The prior approach kept trying to patch `@pelagornis/page` / Starlight TOC behavior in place. That failed because framework scroll-spy and current-state ownership kept conflicting with local overrides.
+
+The current model is:
+
+- replace the page TOC component with a local Astro component
+- keep the existing Page visual language by reusing the `sl-toc` styling class
+- render the page title as a separate static label above the section list
+- drop the synthetic `_top` entry entirely
+- own `aria-current` locally for the custom TOC links
+- keep the no-reflow wrap contract locally with the hidden measurement span
 
 Implementation rule:
 
-- structure stays native to `@pelagornis/page`
-- the local layer may add static title context and hash-selection correction only
-- no local TOC geometry or chip-style ownership unless a later bug proves it necessary
+- the custom TOC component owns structure and selection semantics
+- Page theme CSS may still provide the base visual treatment
+- selection behavior should be verified in Playwright WebKit on real pages before further TOC styling changes
+- avoid reintroducing Starlight TOC state mutation into the local component path
 
 ## Later references
 

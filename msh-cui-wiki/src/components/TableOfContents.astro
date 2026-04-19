@@ -1,0 +1,108 @@
+---
+import RightTocList from './RightTocList.astro';
+
+const { toc } = Astro.locals.starlightRoute;
+const pageTitle = Astro.locals.starlightRoute.entry.data.title;
+const items = toc?.items.filter((item) => item.slug !== '_top') ?? [];
+---
+
+{
+  toc && (
+    <div class="msh-right-toc-shell">
+      <nav class="msh-right-toc sl-toc msh-toc-contract-ready" aria-label="On this page" data-msh-right-toc>
+        <div class="msh-toc-page-title">{pageTitle}</div>
+        <RightTocList items={items} />
+      </nav>
+    </div>
+  )
+}
+
+<script is:inline>
+  (() => {
+    const SELECTOR = '[data-msh-right-toc]';
+
+    const rafThrottle = (fn) => {
+      let frame = 0;
+      return () => {
+        if (frame) return;
+        frame = requestAnimationFrame(() => {
+          frame = 0;
+          fn();
+        });
+      };
+    };
+
+    const setCurrent = (nav, selected) => {
+      nav.querySelectorAll('a[data-toc-link]').forEach((link) => {
+        if (link === selected) {
+          link.setAttribute('aria-current', 'true');
+        } else {
+          link.removeAttribute('aria-current');
+        }
+      });
+    };
+
+    const syncToc = (nav) => {
+      const links = Array.from(nav.querySelectorAll('a[data-toc-link]'));
+      if (!links.length) return;
+
+      const hash = window.location.hash;
+      const hashMatch = hash ? links.find((link) => link.getAttribute('href') === hash) : null;
+      if (hashMatch) {
+        setCurrent(nav, hashMatch);
+        return;
+      }
+
+      const threshold = 132;
+      const candidates = links
+        .map((link) => {
+          const id = (link.getAttribute('href') ?? '').slice(1);
+          const heading = id ? document.getElementById(id) : null;
+          if (!heading) return null;
+          return { link, top: heading.getBoundingClientRect().top };
+        })
+        .filter(Boolean);
+
+      const active =
+        [...candidates].reverse().find((entry) => entry.top <= threshold)?.link ??
+        null;
+
+      setCurrent(nav, active);
+    };
+
+    const bindNav = (nav) => {
+      if (nav.dataset.mshBound === 'true') return;
+      nav.dataset.mshBound = 'true';
+
+      const sync = rafThrottle(() => syncToc(nav));
+
+      nav.addEventListener(
+        'click',
+        (event) => {
+          const link = event.target instanceof Element ? event.target.closest('a[data-toc-link]') : null;
+          if (!link) return;
+          setCurrent(nav, link);
+        },
+        { capture: true }
+      );
+
+      window.addEventListener('scroll', sync, { passive: true });
+      window.addEventListener('resize', sync, { passive: true });
+      window.addEventListener('hashchange', sync);
+      document.addEventListener('astro:page-load', sync);
+      window.addEventListener('pageshow', sync);
+
+      syncToc(nav);
+    };
+
+    const init = () => {
+      document.querySelectorAll(SELECTOR).forEach((nav) => bindNav(nav));
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init, { once: true });
+    } else {
+      init();
+    }
+  })();
+</script>
