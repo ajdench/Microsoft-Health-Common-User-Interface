@@ -182,7 +182,11 @@ const { head } = Astro.locals.starlightRoute;
       applyTocHashSelection();
       applyTocOverflowState();
     }, { passive: true });
-    window.addEventListener('hashchange', scheduleApply);
+    window.addEventListener('hashchange', () => {
+      applyDesktopTocWrapContract();
+      applyTocHashSelection();
+      applyTocOverflowState();
+    });
     window.addEventListener('pageshow', bindObservers);
   })();
 </script>

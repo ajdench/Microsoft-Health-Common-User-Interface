@@ -242,6 +242,7 @@
 .right-sidebar-panel nav a {
   position: relative;
   --msh-toc-contract-inset: var(--page-space-2);
+  transition: none !important;
 }
 
 .right-sidebar-panel nav a .msh-toc-contract {
@@ -256,6 +257,7 @@
   box-sizing: border-box;
   line-height: inherit;
   width: calc(100% - (var(--msh-toc-contract-inset) * 2));
+  transition: none !important;
 }
 
 .right-sidebar-panel nav a .msh-toc-measure {

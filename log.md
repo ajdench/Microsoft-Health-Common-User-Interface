@@ -470,3 +470,9 @@
 - Inputs used: local `msh-cui-wiki/src/components/Head.astro`, local `msh-cui-wiki/src/styles/global.css`, live Astro dev server at `http://localhost:4322/`, and explicit Playwright WebKit verification on `/agents/#wiki-content-must-distinguish-fact-from-interpretation`
 - Outputs created: updated `msh-cui-wiki/src/components/Head.astro`, updated `msh-cui-wiki/src/styles/global.css`, updated `log.md`
 - Unresolved issues: this removes the pre-contract flash path in the desktop rightbar, but it does not yet extend the contract to the mobile TOC, which remains on untouched theme behavior
+
+## 2026-04-19 14:26:00 BST — Removed the remaining desktop rightbar selection blip by making hash handoff immediate and non-animated in WebKit
+- Action performed: changed the desktop rightbar hash-change path so TOC wrapping and `aria-current` reassignment happen immediately on `hashchange` instead of after the scheduled RAF pass, and disabled the inherited Page link transitions on the desktop rightbar TOC links and contract spans so multiline items no longer animate through intermediate padding/background/font-weight states when selection moves to the next item
+- Inputs used: local `msh-cui-wiki/src/components/Head.astro`, local `msh-cui-wiki/src/styles/global.css`, live Astro dev server at `http://localhost:4322/`, local Page TOC transition rules in `msh-cui-wiki/node_modules/@pelagornis/page/overrides/TwoColumnContent.astro`, and explicit Playwright WebKit timing checks on `/agents/#wiki-content-must-distinguish-fact-from-interpretation` transitioning to `#do-not-invent-missing-documents`
+- Outputs created: updated `msh-cui-wiki/src/components/Head.astro`, updated `msh-cui-wiki/src/styles/global.css`, updated `log.md`
+- Unresolved issues: the non-animated handoff is currently scoped to the desktop rightbar contract only; mobile TOC remains on theme-default transition behavior
