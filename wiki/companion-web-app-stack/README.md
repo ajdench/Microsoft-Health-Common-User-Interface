@@ -10,6 +10,7 @@ offline-first, and UI-library research.
 
 ## Pages
 - [Offline-first PWA stack recommendation](offline-first-pwa-stack-recommendation.md)
+- [ADR: EHR UI stack baseline](ehr-ui-stack-adr.md)
 
 ## Boundary
 Use this area for:
@@ -24,4 +25,3 @@ Do not use this area for:
 - raw source provenance
 - primary corpus source notes
 - formal claims about historical Health CUI that are not already supported elsewhere in the wiki
-
