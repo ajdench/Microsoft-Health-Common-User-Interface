@@ -438,6 +438,12 @@
 ## 2026-04-19 01:52:31 BST — Added a separate Codex-thread handoff prompt for raw-link behavior and image context
 - Action performed: added a repo-local prompt for a separate Codex thread focused on the Astro wiki’s raw-link behavior, image-context improvements, and the distinction between canonical repo paths and web-served assets, without introducing a new wiki UI channel
 - Inputs used: current `msh-cui-wiki` sync/build model, the existing `wiki/overview/viewable-ui-examples.md` page, and the clarified user instruction to create a handoff prompt rather than a new UI channel
+## 2026-04-24 23:46:37 BST — Scaffolded first offline-first EHR PWA prototype
+- Action performed: created `prototypes/ehr-pwa/` as a Vite React TypeScript app implementing the first EHR vertical slice: patient context shell, consultation capture, coded entry search, medication review, alert panel, clinical results table with visible filter/sort state, Dexie-backed draft persistence, PWA manifest/service worker generation, unit tests, and a Playwright offline draft recovery test
+- Inputs used: companion EHR UI stack ADR, prototype vertical-slice spec, existing Health CUI-derived component contracts for patient context, medication line, alerting, and clinical data state; current npm package ecosystem for Vite, React, TanStack Router/Table, Dexie, Workbox via `vite-plugin-pwa`, Vitest, and Playwright
+- Outputs created: new `prototypes/ehr-pwa/` app, updated `index.md`, updated `log.md`
+- Unresolved issues: this is a prototype with fake data only; React Aria/Base UI primitives are not yet introduced, real terminology/sync/prescribing are out of scope, and WebView2 packaging remains future work
+
 ## 2026-04-24 23:28:09 BST — Added first EHR prototype vertical-slice specification
 - Action performed: converted the EHR UI stack ADR into a buildable first-slice prototype specification covering the user scenario, screen regions, component contracts, fake data model, routes, offline persistence behavior, acceptance tests, design tokens, implementation phases, and review questions
 - Inputs used: companion EHR UI stack ADR, companion offline-first stack recommendation, and primary wiki checklists for patient banner, medication line, clinical table state, alerting, and patient-safety framing

@@ -20,6 +20,9 @@
 - [ADR: EHR UI Stack Baseline](wiki/companion-web-app-stack/ehr-ui-stack-adr.md) — chosen baseline stack, first prototype scope, and CUI-informed consultation capture assessment
 - [Prototype Vertical Slice Spec](wiki/companion-web-app-stack/prototype-vertical-slice-spec.md) — buildable first-slice specification for consultation capture, patient context, offline drafts, alerts, medication review, and visible table state
 
+## Prototypes
+- [EHR PWA Prototype](prototypes/ehr-pwa/README.md) — React/Vite offline-first EHR vertical slice with Dexie draft persistence and Playwright offline recovery test
+
 ## Concepts
 - [Design Guidance](wiki/concepts/design-guidance.md) — shape and scope of the historical guidance corpus
 - [Toolkit Controls](wiki/concepts/toolkit-controls.md) — what the localized toolkit source contains
