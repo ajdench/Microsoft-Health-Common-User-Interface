@@ -12,9 +12,10 @@ This prototype covers:
 - medication review with stable medication line rendering
 - alert review with sign-off blocking state
 - visible clinical table filter/sort state
+- React Aria Components combobox mechanics for coded entry search
 - Dexie-backed IndexedDB draft persistence
 - Workbox-generated PWA app shell
-- Playwright offline draft recovery test
+- Playwright offline draft recovery and coded-entry selection tests
 
 It intentionally does not use real patient data, real terminology services,
 real prescribing, or production sync.
@@ -41,6 +42,9 @@ http://127.0.0.1:5174/patients/p-1001/consultation?panel=results
   worker and manifest; it is not part of the runtime clinical dependency surface.
 - Cache API/service worker storage is used only for app-shell caching. Draft
   consultation content is stored in IndexedDB through Dexie.
-- The first Playwright test builds and previews the production PWA, writes a
-  draft, goes offline, reloads, and verifies local draft recovery.
+- React Aria Components is split into an `accessibility-primitives` vendor chunk
+  so its bundle cost is visible during PWA build review.
+- The Playwright tests build and preview the production PWA, write a draft, go
+  offline, verify local draft recovery, and exercise coded-entry combobox
+  selection.
 

@@ -19,3 +19,14 @@ test('recovers a consultation draft after offline reload', async ({ page, contex
 
   await context.setOffline(false)
 })
+
+test('adds a coded entry through the accessible combobox', async ({ page }) => {
+  await page.goto('/patients/p-1001/consultation')
+
+  const codeSearch = page.getByRole('combobox', { name: 'Search coded entries' })
+  await codeSearch.fill('hypertensive')
+  await page.getByRole('option', { name: /Hypertensive disorder/ }).click()
+
+  await expect(page.getByLabel('Added coded entries')).toContainText('Hypertensive disorder')
+  await expect(page.getByLabel('Added coded entries')).toContainText('remove')
+})

@@ -332,7 +332,58 @@ button.danger {
   gap: 0.65rem;
 }
 
+.clinical-combobox {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.clinical-combobox label {
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.clinical-combobox [slot='description'] {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.clinical-combobox-group {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.4rem;
+}
+
+.clinical-combobox-popover {
+  width: var(--trigger-width);
+  max-width: min(28rem, calc(100vw - 2rem));
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: 0 16px 32px rgba(27, 31, 36, 0.18);
+  padding: 0.35rem;
+}
+
+.clinical-combobox-list {
+  display: grid;
+  gap: 0.35rem;
+  max-height: 20rem;
+  overflow: auto;
+  outline: none;
+}
+
+.clinical-combobox-list [data-focused] {
+  border-color: var(--accent);
+  box-shadow: var(--focus-ring);
+}
+
+.clinical-combobox-list [data-selected] {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
 .code-search input,
+.clinical-combobox input,
 .task-input {
   width: 100%;
   border: 1px solid var(--line-strong);
@@ -349,6 +400,7 @@ button.danger {
   padding: 0.65rem;
   background: var(--surface-subtle);
   text-align: left;
+  cursor: pointer;
 }
 
 .code-result[aria-pressed='true'] {
@@ -553,4 +605,3 @@ button.danger {
     grid-template-columns: 1fr;
   }
 }
-

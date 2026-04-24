@@ -31,6 +31,25 @@ export default defineConfig({
       },
     }),
   ],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('react-aria') || id.includes('react-stately') || id.includes('@react-aria') || id.includes('@react-stately')) {
+            return 'accessibility-primitives'
+          }
+
+          if (id.includes('@tanstack')) {
+            return 'tanstack'
+          }
+
+          if (id.includes('react') || id.includes('scheduler')) {
+            return 'react-vendor'
+          }
+        },
+      },
+    },
+  },
   test: {
     environment: 'jsdom',
     exclude: ['tests/e2e/**', 'node_modules/**', 'dist/**'],
