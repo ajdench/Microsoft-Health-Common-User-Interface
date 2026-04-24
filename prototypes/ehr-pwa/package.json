@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
+    "check:spacing": "node scripts/check-spacing.mjs",
     "preview": "vite preview",
     "test": "vitest run",
     "e2e": "playwright test"

@@ -19,6 +19,7 @@
 - [Offline-first PWA Stack Recommendation](wiki/companion-web-app-stack/offline-first-pwa-stack-recommendation.md) — reasoned stack and storage approach for Edge, WebView2, offline-first use, and clinical UI libraries
 - [ADR: EHR UI Stack Baseline](wiki/companion-web-app-stack/ehr-ui-stack-adr.md) — chosen baseline stack, first prototype scope, and CUI-informed consultation capture assessment
 - [Prototype Vertical Slice Spec](wiki/companion-web-app-stack/prototype-vertical-slice-spec.md) — buildable first-slice specification for consultation capture, patient context, offline drafts, alerts, medication review, and visible table state
+- [EHR Prototype Spacing Governance](wiki/companion-web-app-stack/ehr-prototype-spacing-governance.md) — diagnosis and governance approach for spacing, density, design tokens, and visual review tooling
 
 ## Prototypes
 - [EHR PWA Prototype](prototypes/ehr-pwa/README.md) — React/Vite offline-first EHR vertical slice with Dexie draft persistence and Playwright offline recovery test

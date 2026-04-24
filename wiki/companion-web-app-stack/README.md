@@ -12,6 +12,7 @@ offline-first, and UI-library research.
 - [Offline-first PWA stack recommendation](offline-first-pwa-stack-recommendation.md)
 - [ADR: EHR UI stack baseline](ehr-ui-stack-adr.md)
 - [Prototype vertical slice spec](prototype-vertical-slice-spec.md)
+- [EHR prototype spacing governance](ehr-prototype-spacing-governance.md)
 
 ## Boundary
 Use this area for:

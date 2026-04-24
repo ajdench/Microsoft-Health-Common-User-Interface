@@ -25,6 +25,7 @@ real prescribing, or production sync.
 ```sh
 npm install
 npm run dev
+npm run check:spacing
 npm run build
 npm run test
 npm run e2e
@@ -44,7 +45,8 @@ http://127.0.0.1:5174/patients/p-1001/consultation?panel=results
   consultation content is stored in IndexedDB through Dexie.
 - React Aria Components is split into an `accessibility-primitives` vendor chunk
   so its bundle cost is visible during PWA build review.
+- `npm run check:spacing` enforces tokenized spacing for spacing-sensitive CSS
+  declarations in `src/styles.css`.
 - The Playwright tests build and preview the production PWA, write a draft, go
   offline, verify local draft recovery, and exercise coded-entry combobox
   selection.
-
