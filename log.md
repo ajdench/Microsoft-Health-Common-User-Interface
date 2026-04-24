@@ -438,6 +438,12 @@
 ## 2026-04-19 01:52:31 BST — Added a separate Codex-thread handoff prompt for raw-link behavior and image context
 - Action performed: added a repo-local prompt for a separate Codex thread focused on the Astro wiki’s raw-link behavior, image-context improvements, and the distinction between canonical repo paths and web-served assets, without introducing a new wiki UI channel
 - Inputs used: current `msh-cui-wiki` sync/build model, the existing `wiki/overview/viewable-ui-examples.md` page, and the clarified user instruction to create a handoff prompt rather than a new UI channel
+## 2026-04-24 23:28:09 BST — Added first EHR prototype vertical-slice specification
+- Action performed: converted the EHR UI stack ADR into a buildable first-slice prototype specification covering the user scenario, screen regions, component contracts, fake data model, routes, offline persistence behavior, acceptance tests, design tokens, implementation phases, and review questions
+- Inputs used: companion EHR UI stack ADR, companion offline-first stack recommendation, and primary wiki checklists for patient banner, medication line, clinical table state, alerting, and patient-safety framing
+- Outputs created: `wiki/companion-web-app-stack/prototype-vertical-slice-spec.md`, updated `wiki/companion-web-app-stack/README.md`, updated `index.md`, updated `log.md`
+- Unresolved issues: the prototype app itself is not scaffolded yet; final primitive library choice, local SQL need, paid grid/sync justification, and WebView2 packaging should be decided after the prototype exposes real friction
+
 ## 2026-04-24 22:58:17 BST — Added EHR UI stack ADR and consultation capture assessment
 - Action performed: created a companion ADR that fixes the proposed EHR UI stack baseline, defines application-owned clinical components, scopes the first prototype, and assesses how Health CUI principles inform consultation capture components without presenting consultation capture as a recovered historical CUI standard
 - Inputs used: existing companion offline-first stack recommendation; primary wiki pages for patient safety, single-patient workflow, medication review workflow, clinical data review workflow, page templates, component contracts, and governance rules

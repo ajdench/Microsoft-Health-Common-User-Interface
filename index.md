@@ -18,6 +18,7 @@
 - [Companion Web App Stack](wiki/companion-web-app-stack/README.md) — modern web/PWA stack guidance informed by, but separate from, the primary Health CUI corpus
 - [Offline-first PWA Stack Recommendation](wiki/companion-web-app-stack/offline-first-pwa-stack-recommendation.md) — reasoned stack and storage approach for Edge, WebView2, offline-first use, and clinical UI libraries
 - [ADR: EHR UI Stack Baseline](wiki/companion-web-app-stack/ehr-ui-stack-adr.md) — chosen baseline stack, first prototype scope, and CUI-informed consultation capture assessment
+- [Prototype Vertical Slice Spec](wiki/companion-web-app-stack/prototype-vertical-slice-spec.md) — buildable first-slice specification for consultation capture, patient context, offline drafts, alerts, medication review, and visible table state
 
 ## Concepts
 - [Design Guidance](wiki/concepts/design-guidance.md) — shape and scope of the historical guidance corpus
