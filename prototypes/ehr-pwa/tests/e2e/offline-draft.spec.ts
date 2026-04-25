@@ -68,3 +68,23 @@ test('keeps the reference pane usable across tabs and narrow widths', async ({ p
   await expect(page.getByLabel('Clinical results list')).toBeVisible()
   await expect(page.locator('.clinical-table')).toBeHidden()
 })
+
+test('keeps patient and sync state visible while scrolling', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 900 })
+  await page.goto('/patients/p-1001/consultation?panel=results')
+
+  await page.evaluate(() => window.scrollTo(0, 900))
+
+  const chromeBox = await page.locator('.app-chrome').boundingBox()
+  const syncBox = await page.getByLabel('Offline and sync state').boundingBox()
+  const simulateButtonBox = await page.getByRole('button', { name: 'Simulate sync failure' }).boundingBox()
+
+  expect(chromeBox).not.toBeNull()
+  expect(syncBox).not.toBeNull()
+  expect(simulateButtonBox).not.toBeNull()
+
+  expect(chromeBox!.y).toBe(0)
+  expect(syncBox!.y).toBeGreaterThanOrEqual(0)
+  expect(simulateButtonBox!.height).toBeLessThanOrEqual(34)
+  expect(simulateButtonBox!.width).toBeLessThan(160)
+})

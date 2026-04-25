@@ -48,8 +48,8 @@
   --space-field-gap: var(--space-s);
   --space-panel: var(--space-xl);
   --space-page: var(--space-xl);
-  --sticky-reference-top: 7.6rem;
-  --sticky-reference-max-height: calc(100vh - 8.6rem);
+  --sticky-reference-top: 10rem;
+  --sticky-reference-max-height: calc(100vh - 11rem);
   --radius-s: 6px;
   --radius: 8px;
 }
@@ -103,8 +103,20 @@ button.danger {
   color: #7d1d16;
 }
 
+.compact-button {
+  min-height: 2rem;
+  padding: var(--space-xs) var(--space-m);
+  font-size: 0.9rem;
+}
+
 .app-shell {
   min-height: 100vh;
+}
+
+.app-chrome {
+  position: sticky;
+  top: 0;
+  z-index: 30;
 }
 
 .loading-shell {
@@ -115,9 +127,6 @@ button.danger {
 }
 
 .patient-shell {
-  position: sticky;
-  top: 0;
-  z-index: 20;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   gap: var(--space-xl);
@@ -196,12 +205,13 @@ button.danger {
 .sync-strip {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-l);
+  gap: var(--space-m);
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid var(--line);
   background: var(--surface);
-  padding: var(--space-l) var(--space-2xl);
+  padding: var(--space-m) var(--space-2xl);
+  box-shadow: 0 2px 8px rgba(27, 31, 36, 0.06);
 }
 
 .sync-items {

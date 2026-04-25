@@ -36,6 +36,7 @@ Specific drivers:
 | Grid alignment defaults | The consultation action tray stretched to match the taller note column, so compact cards appeared to have excessive vertical spacing. |
 | Nested column pressure | At the in-app browser width, the page attempted to show the reference panel, note column, and action rail at the same time. This made Validation, Coded entries, and Follow-up tasks look cramped even after token normalization. |
 | Reference-pane contract drift | The right-hand reference pane reused workspace header spacing, which double-inset headings inside already padded content. Its results table also remained a desktop table on narrow/mobile widths, clipping the status column and exposing noisy sort-state text. |
+| Persistent state chrome | The patient banner was sticky, but the online/offline, draft-state, recovered-draft, local-save, and sync-failure simulation strip scrolled away from the clinical workspace. |
 
 ## Relevant design principles
 ### Spacing Is A System
@@ -96,6 +97,10 @@ word.
 Chips, alerts, sync state, and recovered-draft banners should use stable spacing
 so clinical state changes do not resize the page unpredictably.
 
+The sync-state strip is now part of the sticky app chrome with the patient
+banner, because online/offline state, draft state, recovered local draft status,
+and last local save time are safety-relevant context while editing.
+
 ### Magic Numbers Need Names
 The reference panel's sticky offset is inherently tied to the patient header and
 sync strip. That relationship should be named as a token even if the first value
@@ -127,6 +132,10 @@ Before the governance pass:
   preserve readable labels, values, and status chips.
 - Medication attribute labels used a narrow flex label column, allowing
   `Frequency` to split in the right pane on mobile.
+- The sync-state strip was normal page content rather than persistent app
+  chrome, so it disappeared while scrolling through the consultation.
+- The sync-failure simulation action used the default button sizing, making a
+  secondary prototype control visually louder than the status chips.
 - No tool prevented future raw spacing values.
 
 ## Implemented formalization
@@ -174,6 +183,10 @@ The prototype now also includes:
   attribute labels
 - a Playwright reference-pane contract test that checks all three tabs for
   horizontal overflow at in-app and mobile widths
+- a sticky app-chrome contract that keeps patient identity and sync/draft state
+  visible while scrolling
+- a compact secondary button contract for the sync-failure simulation control,
+  with the full action preserved as the accessible name
 
 The check scans spacing-sensitive declarations in `src/styles.css` and fails on
 raw length values in properties such as `gap`, `padding`, `margin`, and

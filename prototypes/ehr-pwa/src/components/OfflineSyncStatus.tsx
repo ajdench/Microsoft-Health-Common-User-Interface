@@ -18,8 +18,8 @@ export function OfflineSyncStatus({ state, draft, onSimulateFailure }: OfflineSy
         {draft.lastSavedLocalAt ? <span className="state-chip">Local save {formatTime(draft.lastSavedLocalAt)}</span> : null}
         {state.storageError ? <span className="state-chip bad">Storage error: {state.storageError}</span> : null}
       </div>
-      <button type="button" onClick={onSimulateFailure}>
-        Simulate sync failure
+      <button className="compact-button" type="button" onClick={onSimulateFailure} aria-label="Simulate sync failure">
+        Simulate failure
       </button>
     </section>
   )
@@ -47,4 +47,3 @@ function formatTime(value: string) {
     second: '2-digit',
   }).format(new Date(value))
 }
-

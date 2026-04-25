@@ -125,13 +125,15 @@ function ConsultationRoute() {
 
   return (
     <div className="app-shell">
-      <PatientContextShell
-        patient={record.patient}
-        hasDirtyDraft={draft.state !== 'signed'}
-        onSwitchPatient={handlePatientSwitch}
-      />
+      <div className="app-chrome">
+        <PatientContextShell
+          patient={record.patient}
+          hasDirtyDraft={draft.state !== 'signed'}
+          onSwitchPatient={handlePatientSwitch}
+        />
 
-      <OfflineSyncStatus state={persistenceState} draft={draft} onSimulateFailure={simulateSyncFailure} />
+        <OfflineSyncStatus state={persistenceState} draft={draft} onSimulateFailure={simulateSyncFailure} />
+      </div>
 
       <main className="workspace-main">
         {switchWarning ? (

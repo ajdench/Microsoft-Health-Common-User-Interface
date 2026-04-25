@@ -458,6 +458,13 @@
 - Verification: Ran `npm run check:spacing`, `npm run lint`, `npm run test`, `npm run build`, `npm run e2e`, and `npm audit` in `prototypes/ehr-pwa`; all passed and audit reported 0 vulnerabilities.
 - Unresolved issues: consider formal screenshot baselines for the right pane once content stabilizes
 
+## 2026-04-25 10:48:17 BST — Made patient and sync state persistent app chrome
+- Action performed: changed the patient banner and offline/sync strip into one sticky app-chrome region so online/offline state, draft state, recovered local draft status, local save time, and the simulation action remain visible while scrolling; reduced the simulation control's visual weight while keeping `Simulate sync failure` as its accessible name
+- Inputs used: in-app browser view at `http://127.0.0.1:5174/patients/p-1001/consultation?panel=results`, `prototypes/ehr-pwa/src/App.tsx`, `prototypes/ehr-pwa/src/components/OfflineSyncStatus.tsx`, `prototypes/ehr-pwa/src/styles.css`, and existing Playwright EHR tests
+- Outputs created: updated `prototypes/ehr-pwa/src/App.tsx`, `prototypes/ehr-pwa/src/components/OfflineSyncStatus.tsx`, `prototypes/ehr-pwa/src/styles.css`, `prototypes/ehr-pwa/tests/e2e/offline-draft.spec.ts`, `wiki/companion-web-app-stack/ehr-prototype-spacing-governance.md`, and `log.md`
+- Verification: Ran `npm run check:spacing`, `npm run lint`, `npm run test`, `npm run build`, `npm run e2e`, and `npm audit` in `prototypes/ehr-pwa`; all passed and audit reported 0 vulnerabilities.
+- Unresolved issues: sticky reference-panel offset remains tokenized rather than dynamically measured from app-chrome height
+
 ## 2026-04-24 23:55:04 BST — Added React Aria coded-entry combobox to EHR prototype
 - Action performed: replaced the custom button-list coded-entry search with an app-owned `ClinicalCodeSearch` wrapper using React Aria Components combobox/listbox primitives, preserved visible prioritisation and ambiguity metadata, added a Playwright coded-entry selection test, split React Aria/TanStack/React vendor chunks so primitive bundle cost is visible, and added an npm override for the PWA build-tool `serialize-javascript` advisory
 - Inputs used: existing `prototypes/ehr-pwa/` scaffold, React Aria Components package, TanStack/Vite build output, Playwright e2e workflow, and the companion prototype specification's coded-entry search contract
