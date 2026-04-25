@@ -632,3 +632,10 @@
 - Inputs used: current EHR prototype at `http://127.0.0.1:5174/patients/p-1001/consultation?panel=results`, Playwright screenshots at wide and mobile widths, `prototypes/ehr-pwa/src/components/ConsultationCaptureWorkspace.tsx`, `prototypes/ehr-pwa/src/styles.css`, `prototypes/ehr-pwa/DESIGN.md`, and companion wiki pages.
 - Outputs created: updated `prototypes/ehr-pwa/src/components/ConsultationCaptureWorkspace.tsx`, `prototypes/ehr-pwa/src/styles.css`, `prototypes/ehr-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-ui-stack-adr.md`, `wiki/companion-web-app-stack/ehr-prototype-spacing-governance.md`, and `log.md`.
 - Unresolved issues: some legacy class names remain as transitional layout hooks; future passes should replace them with domain wrapper components and smaller shadcn/Tailwind class contracts.
+
+## 2026-04-25 22:17:09 BST — Consolidated right-pane panels around a shadcn section contract
+- Action performed: added an app-owned `ReferencePanelSection` wrapper over shadcn `Separator`, migrated medications, alerts, and results to that shared heading/action/divider/body rhythm, replaced one-off card header grid classes with shadcn `CardAction` and `CardDescription` slots for status and secondary facts, and removed obsolete legacy right-pane CSS hooks.
+- Inputs used: current EHR PWA source, shadcn best-practice guidance, `prototypes/ehr-pwa/DESIGN.md`, companion UI stack ADR, and spacing governance notes.
+- Outputs created: new `prototypes/ehr-pwa/src/components/ReferencePanelSection.tsx`; updated `ClinicalDataTable.tsx`, `MedicationReviewPanel.tsx`, `AlertPanel.tsx`, `styles.css`, `DESIGN.md`, `wiki/companion-web-app-stack/ehr-prototype-spacing-governance.md`, `wiki/companion-web-app-stack/ehr-ui-stack-adr.md`, and `log.md`.
+- Verification: Ran `npm run check:spacing`, `npm run lint`, `npm run test`, `npm run build`, `npm run e2e`, and `npm audit` in `prototypes/ehr-pwa`; all passed and audit reported 0 vulnerabilities.
+- Unresolved issues: continue reducing transitional CSS where app-specific layout hooks can be replaced by domain wrappers without weakening the clinical layout contracts.

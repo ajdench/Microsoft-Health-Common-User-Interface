@@ -1,7 +1,8 @@
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import type { ClinicalAlert } from '../types'
 import { ClinicalStatusBadge } from './ClinicalStatusBadge'
+import { ReferencePanelSection } from './ReferencePanelSection'
 
 type AlertPanelProps = {
   alerts: ClinicalAlert[]
@@ -13,13 +14,11 @@ export function AlertPanel({ alerts, signingAttempted, syncFailed }: AlertPanelP
   const sortedAlerts = [...alerts].sort((first, second) => priorityRank(first.priority) - priorityRank(second.priority))
 
   return (
-    <section className="reference-content" aria-label="Alerts and decision support">
-      <header className="reference-header">
-        <div>
-          <h2>Alerts and decision support</h2>
-          <p>Summary-first review with explanation available in context.</p>
-        </div>
-      </header>
+    <ReferencePanelSection
+      label="Alerts and decision support"
+      title="Alerts and decision support"
+      description="Summary-first review with explanation available in context."
+    >
       {signingAttempted && syncFailed ? (
         <Alert className="border-[#e8c06d] bg-[var(--warning-soft)] text-[#593600]">
           <AlertTitle>Sync failure unresolved.</AlertTitle>
@@ -31,17 +30,19 @@ export function AlertPanel({ alerts, signingAttempted, syncFailed }: AlertPanelP
           <Card className={alert.priority === 'critical' ? 'border-[#ee9f9a] bg-[var(--critical-soft)]' : undefined} key={alert.id} size="sm">
             <CardHeader>
               <CardTitle>{alert.title}</CardTitle>
-              <ClinicalStatusBadge tone={alert.priority}>{alert.priority}</ClinicalStatusBadge>
+              <CardDescription>{alert.relatedAction ?? 'Review in clinical context'}</CardDescription>
+              <CardAction>
+                <ClinicalStatusBadge tone={alert.priority}>{alert.priority}</ClinicalStatusBadge>
+              </CardAction>
             </CardHeader>
             <CardContent className="grid gap-2">
               <p>{alert.rationale}</p>
-              {alert.relatedAction ? <p className="meta">{alert.relatedAction}</p> : null}
               <ClinicalStatusBadge tone={alert.unresolved ? 'warn' : 'good'}>{alert.unresolved ? 'Unresolved' : 'Reviewed'}</ClinicalStatusBadge>
             </CardContent>
           </Card>
         ))}
       </div>
-    </section>
+    </ReferencePanelSection>
   )
 }
 

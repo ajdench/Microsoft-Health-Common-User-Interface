@@ -270,6 +270,14 @@ The important constraint is that shadcn visual defaults are adopted only where
 they do not break clinical density, patient context, coded-content field height,
 reference-pane alignment, or no-horizontal-overflow contracts.
 
+The third shadcn reconciliation pass added a shared right-pane section contract:
+`ReferencePanelSection` owns the tab-body heading, optional action area, shadcn
+`Separator`, and body rhythm for medications, alerts, and results. This removes
+three near-duplicate right-pane header implementations and keeps panel-specific
+components focused on clinical content. Medication, alert, and mobile result
+cards now use shadcn `CardAction` for status chips and `CardDescription` for
+secondary context instead of ad hoc grid header classes.
+
 ## Recommended governance model
 Use a three-layer model:
 

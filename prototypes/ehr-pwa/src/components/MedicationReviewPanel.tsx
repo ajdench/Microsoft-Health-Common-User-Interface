@@ -1,6 +1,7 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import type { Medication } from '../types'
 import { ClinicalStatusBadge } from './ClinicalStatusBadge'
+import { ReferencePanelSection } from './ReferencePanelSection'
 
 type MedicationReviewPanelProps = {
   medications: Medication[]
@@ -8,28 +9,32 @@ type MedicationReviewPanelProps = {
 
 export function MedicationReviewPanel({ medications }: MedicationReviewPanelProps) {
   return (
-    <section className="reference-content" aria-label="Medication review">
-      <header className="reference-header">
-        <div>
-          <h2>Medication review</h2>
-          <p>Stable ordering, visible dose, wrapping, and current/past state.</p>
-        </div>
-      </header>
+    <ReferencePanelSection
+      label="Medication review"
+      title="Medication review"
+      description="Stable ordering, visible dose, wrapping, and current/past state."
+    >
       <div className="medication-list">
         {medications.map((medication) => (
           <MedicationLine medication={medication} key={medication.id} />
         ))}
       </div>
-    </section>
+    </ReferencePanelSection>
   )
 }
 
 function MedicationLine({ medication }: { medication: Medication }) {
   return (
     <Card className={medication.status === 'active' ? undefined : 'bg-secondary'} size="sm">
-      <CardHeader className="grid-cols-[1fr_auto]">
+      <CardHeader>
         <CardTitle className="medication-name">{medication.name}</CardTitle>
-        <ClinicalStatusBadge tone={medication.status === 'active' ? 'good' : 'neutral'}>{medication.status}</ClinicalStatusBadge>
+        <CardDescription>
+          Started {medication.startedOn ?? 'unknown'}
+          {medication.stoppedOn ? ` · stopped ${medication.stoppedOn}` : ''}
+        </CardDescription>
+        <CardAction>
+          <ClinicalStatusBadge tone={medication.status === 'active' ? 'good' : 'neutral'}>{medication.status}</ClinicalStatusBadge>
+        </CardAction>
       </CardHeader>
       <CardContent className="grid gap-2">
         <div className="medication-attributes">
@@ -50,10 +55,6 @@ function MedicationLine({ medication }: { medication: Medication }) {
             <span>{medication.frequency}</span>
           </div>
         </div>
-        <p className="meta">
-          Started {medication.startedOn ?? 'unknown'}
-          {medication.stoppedOn ? ` · stopped ${medication.stoppedOn}` : ''}
-        </p>
       </CardContent>
     </Card>
   )

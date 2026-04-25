@@ -248,9 +248,11 @@ Section-local coded-content areas are compact field groups: heading, count
 chip, search control, and selected/empty state. Do not repeat explanatory help
 text in every section.
 
-Reference panel: shadcn `Tabs` switch medications, alerts, and results.
-shadcn `Table` can be used only where width supports it; narrow views use
-shadcn `Card` lists.
+Reference panel: shadcn `Tabs` switch medications, alerts, and results. Each
+tab body uses the app-owned `ReferencePanelSection` wrapper for the shared
+heading, optional actions, shadcn `Separator`, and body rhythm. shadcn `Table`
+can be used only where width supports it; narrow views use shadcn `Card` lists
+with `CardAction` for status chips and `CardDescription` for secondary facts.
 
 Empty states: use shadcn `Empty` with a compact clinical variant inside dense
 work surfaces. Do not use large centered empty-state panels inside repeated

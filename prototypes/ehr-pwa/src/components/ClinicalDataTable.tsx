@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import {
   flexRender,
@@ -12,6 +12,7 @@ import {
 import { useMemo, useState } from 'react'
 import type { ReferenceRow } from '../types'
 import { ClinicalStatusBadge } from './ClinicalStatusBadge'
+import { ReferencePanelSection } from './ReferencePanelSection'
 
 type ClinicalDataTableProps = {
   rows: ReferenceRow[]
@@ -47,17 +48,16 @@ export function ClinicalDataTable({ rows, filter, onToggleAbnormal }: ClinicalDa
   })
 
   return (
-    <section className="reference-content" aria-label="Clinical results">
-      <header className="reference-header">
-        <div>
-          <h2>Recent results</h2>
-          <p>Filter, sort, result count, and reset remain attached to the data.</p>
-        </div>
+    <ReferencePanelSection
+      label="Clinical results"
+      title="Recent results"
+      description="Filter, sort, result count, and reset remain attached to the data."
+      actions={
         <Button variant="outline" type="button" onClick={onToggleAbnormal}>
           {filter === 'abnormal' ? 'Reset filter' : 'Show abnormal only'}
         </Button>
-      </header>
-
+      }
+    >
       <div className="filter-summary" aria-live="polite">
         <span>
           Showing {filteredRows.length} of {rows.length} results
@@ -114,23 +114,25 @@ export function ClinicalDataTable({ rows, filter, onToggleAbnormal }: ClinicalDa
       <div className="clinical-result-list" aria-label="Clinical results list">
         {table.getRowModel().rows.map((row) => (
           <Card key={row.id} size="sm">
-            <CardHeader className="grid-cols-[1fr_auto]">
+            <CardHeader>
               <CardTitle>{row.original.label}</CardTitle>
-              <ClinicalStatusBadge tone={row.original.status === 'abnormal' ? 'warn' : 'good'}>{row.original.status}</ClinicalStatusBadge>
-              <p className="meta">{row.original.date}</p>
+              <CardDescription>{row.original.date}</CardDescription>
+              <CardAction>
+                <ClinicalStatusBadge tone={row.original.status === 'abnormal' ? 'warn' : 'good'}>{row.original.status}</ClinicalStatusBadge>
+              </CardAction>
             </CardHeader>
             <CardContent>
               <dl>
-              <div>
-                <dt>Value</dt>
-                <dd>{row.original.value}</dd>
-              </div>
+                <div>
+                  <dt>Value</dt>
+                  <dd>{row.original.value}</dd>
+                </div>
               </dl>
             </CardContent>
           </Card>
         ))}
       </div>
-    </section>
+    </ReferencePanelSection>
   )
 }
 

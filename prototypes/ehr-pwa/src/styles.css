@@ -336,6 +336,13 @@ button:not([data-slot]).danger {
   justify-content: space-between;
 }
 
+.reference-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-m);
+  justify-content: flex-end;
+}
+
 .workspace-header h1,
 .reference-header h2,
 .section-card h2,
@@ -391,10 +398,7 @@ button:not([data-slot]).danger {
 }
 
 .section-card,
-.panel-card,
-.medication-line,
-.alert-card,
-.result-card {
+.panel-card {
   background: var(--surface);
   box-shadow:
     0 0 0 1px rgba(27, 31, 36, 0.08),
@@ -655,23 +659,8 @@ button:not([data-slot]).danger {
   padding: var(--space-0) var(--space-panel) var(--space-panel);
 }
 
-.medication-line {
-  display: grid;
-  gap: var(--space-m);
-  padding: var(--space-card-compact);
-}
-
-.medication-line-header,
-.result-card header {
-  display: flex;
-  gap: var(--space-l);
-  align-items: flex-start;
-  justify-content: space-between;
-}
-
-.medication-line.stopped,
-.medication-line.historical {
-  background: var(--surface-subtle);
+.reference-separator {
+  background: var(--line);
 }
 
 .medication-name {
@@ -701,25 +690,6 @@ button:not([data-slot]).danger {
 .dose-value {
   font-weight: 780;
   color: #14314f;
-}
-
-.alert-card {
-  padding: var(--space-card-compact);
-}
-
-.alert-card.critical {
-  border-color: #ee9f9a;
-  background: var(--critical-soft);
-}
-
-.alert-card.high {
-  border-color: #e8c06d;
-  background: var(--warning-soft);
-}
-
-.alert-card h3 {
-  margin: var(--space-s) var(--space-0);
-  font-size: 0.95rem;
 }
 
 .priority-chip {
@@ -795,40 +765,28 @@ button:not([data-slot]).danger {
   display: none;
 }
 
-.result-card {
-  display: grid;
-  gap: var(--space-m);
-  padding: var(--space-card-compact);
-}
-
-.result-card h3,
-.result-card p,
-.result-card dl,
-.result-card dd {
+.clinical-result-list dl,
+.clinical-result-list dd {
   margin: var(--space-0);
 }
 
-.result-card h3 {
-  font-size: 0.95rem;
-}
-
-.result-card dl {
+.clinical-result-list dl {
   display: grid;
   gap: var(--space-s);
 }
 
-.result-card dl div {
+.clinical-result-list dl div {
   display: grid;
   gap: var(--space-2xs);
 }
 
-.result-card dt {
+.clinical-result-list dt {
   color: var(--clinical-muted);
   font-size: 0.78rem;
   font-weight: 700;
 }
 
-.result-card dd {
+.clinical-result-list dd {
   overflow-wrap: anywhere;
 }
 
