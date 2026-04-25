@@ -444,6 +444,13 @@
 - Outputs created: `wiki/companion-web-app-stack/ehr-prototype-spacing-governance.md`, updated `wiki/companion-web-app-stack/README.md`, updated `index.md`, updated `prototypes/ehr-pwa/src/styles.css`, new `prototypes/ehr-pwa/scripts/check-spacing.mjs`, updated `prototypes/ehr-pwa/package.json`, updated `prototypes/ehr-pwa/README.md`, updated `log.md`
 - Unresolved issues: the token check is intentionally narrow and CSS-only; full Stylelint, Style Dictionary token generation, and Playwright screenshot baselines remain follow-up steps once the prototype layout stabilizes
 
+## 2026-04-25 09:45:36 BST — Tightened consultation action-panel layout contract
+- Action performed: re-checked the in-app browser view after user feedback and confirmed that Validation, Coded entries, and Follow-up tasks still had poor spacing because the consultation workspace allowed a cramped nested action rail and lacked explicit compact panel header/body spacing
+- Inputs used: in-app browser view at `http://127.0.0.1:5174/patients/p-1001/consultation?panel=results`, `prototypes/ehr-pwa/src/styles.css`, `prototypes/ehr-pwa/src/components/ConsultationCaptureWorkspace.tsx`, and `prototypes/ehr-pwa/src/components/ClinicalCodeSearch.tsx`
+- Outputs created: updated `prototypes/ehr-pwa/src/styles.css` with a consultation-workspace container query, action/section grid areas, compact panel header/body gap tokens, and top-aligned panel headers; updated `prototypes/ehr-pwa/tests/e2e/offline-draft.spec.ts` with a constrained-width layout-contract test; updated `wiki/companion-web-app-stack/ehr-prototype-spacing-governance.md`; updated `log.md`
+- Verification: Ran `npm run check:spacing`, `npm run lint`, `npm run test`, `npm run build`, `npm run e2e`, and `npm audit` in `prototypes/ehr-pwa`; all passed and audit reported 0 vulnerabilities.
+- Unresolved issues: consider adding screenshot baselines once the consultation content model stabilizes
+
 ## 2026-04-24 23:55:04 BST — Added React Aria coded-entry combobox to EHR prototype
 - Action performed: replaced the custom button-list coded-entry search with an app-owned `ClinicalCodeSearch` wrapper using React Aria Components combobox/listbox primitives, preserved visible prioritisation and ambiguity metadata, added a Playwright coded-entry selection test, split React Aria/TanStack/React vendor chunks so primitive bundle cost is visible, and added an npm override for the PWA build-tool `serialize-javascript` advisory
 - Inputs used: existing `prototypes/ehr-pwa/` scaffold, React Aria Components package, TanStack/Vite build output, Playwright e2e workflow, and the companion prototype specification's coded-entry search contract

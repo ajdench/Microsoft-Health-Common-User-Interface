@@ -44,6 +44,8 @@
   --space-text-stack: var(--space-2xs);
   --space-card: var(--space-xl);
   --space-card-compact: var(--space-l);
+  --space-card-body-gap: var(--space-l);
+  --space-field-gap: var(--space-s);
   --space-panel: var(--space-xl);
   --space-page: var(--space-xl);
   --sticky-reference-top: 7.6rem;
@@ -259,6 +261,10 @@ button.danger {
   color: #593600;
 }
 
+.consultation-workspace {
+  container-type: inline-size;
+}
+
 .workspace-header,
 .reference-header {
   display: flex;
@@ -297,10 +303,21 @@ button.danger {
 
 .consultation-body {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(15rem, 18rem);
+  grid-template-areas:
+    "actions"
+    "sections";
+  grid-template-columns: 1fr;
   gap: var(--space-panel);
   align-items: start;
   padding: var(--space-panel);
+}
+
+.section-stack {
+  grid-area: sections;
+}
+
+.action-stack {
+  grid-area: actions;
 }
 
 .section-stack,
@@ -327,7 +344,7 @@ button.danger {
 .panel-card header {
   display: flex;
   gap: var(--space-l);
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   padding: var(--space-card-compact);
 }
@@ -345,6 +362,9 @@ button.danger {
 }
 
 .panel-card {
+  display: grid;
+  gap: var(--space-card-body-gap);
+  align-content: start;
   padding: var(--space-card);
 }
 
@@ -354,12 +374,12 @@ button.danger {
 
 .code-search {
   display: grid;
-  gap: var(--space-l);
+  gap: var(--space-card-body-gap);
 }
 
 .clinical-combobox {
   display: grid;
-  gap: var(--space-s);
+  gap: var(--space-field-gap);
 }
 
 .clinical-combobox label {
@@ -602,14 +622,20 @@ button.danger {
 }
 
 @media (max-width: 1080px) {
-  .workspace-grid,
-  .consultation-body {
+  .workspace-grid {
     grid-template-columns: 1fr;
   }
 
   .reference-panel {
     position: static;
     max-height: none;
+  }
+}
+
+@container (min-width: 52rem) {
+  .consultation-body {
+    grid-template-areas: "sections actions";
+    grid-template-columns: minmax(0, 1fr) minmax(18rem, 20rem);
   }
 }
 

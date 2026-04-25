@@ -34,6 +34,7 @@ Specific drivers:
 | Reference panel stickiness | `top` and `max-height` used magic numbers tied to header height without naming that dependency. |
 | Mobile breakpoint | The narrow layout changed only some spacing, so mobile inherited desktop density unevenly. |
 | Grid alignment defaults | The consultation action tray stretched to match the taller note column, so compact cards appeared to have excessive vertical spacing. |
+| Nested column pressure | At the in-app browser width, the page attempted to show the reference panel, note column, and action rail at the same time. This made Validation, Coded entries, and Follow-up tasks look cramped even after token normalization. |
 
 ## Relevant design principles
 ### Spacing Is A System
@@ -65,6 +66,16 @@ The following should not all invent local spacing:
 They should use shared card/panel/content tokens unless their clinical role
 requires a documented exception.
 
+### Layout Contracts Need Width Gates
+Responsive behavior should be based on the space available to the component, not
+only on the full viewport width. The consultation workspace now uses a container
+query: the action tray is a full-width compact action block before the note
+sections until the consultation workspace itself is wide enough to support a
+side-by-side note/action layout.
+
+This matters because a two-column page can leave an inner component too narrow
+even on a nominally desktop-sized viewport.
+
 ### State Must Not Collapse Layout
 Chips, alerts, sync state, and recovered-draft banners should use stable spacing
 so clinical state changes do not resize the page unpredictably.
@@ -86,6 +97,12 @@ Before the governance pass:
 - Consultation columns and stacked card groups relied on CSS Grid's default
   stretch behavior, which allowed compact cards to expand vertically when a
   neighboring column was taller.
+- The action tray had no minimum usable width contract, so it could render as a
+  narrow third column beside both the note sections and reference panel.
+- `panel-card` had a padding token, but not a formal header/body gap. This left
+  the Coded entries and Follow-up tasks headings too close to their controls.
+- Panel headers vertically centered status chips against multi-line text rather
+  than top-aligning them with the heading block.
 - No tool prevented future raw spacing values.
 
 ## Implemented formalization
@@ -119,12 +136,37 @@ The prototype now also includes:
 - `prototypes/ehr-pwa/scripts/check-spacing.mjs`
 - explicit grid-stack alignment rules so consultation columns and stacked cards
   pack to content height unless a component intentionally opts into stretching
+- a consultation-workspace container query that only permits a side action rail
+  when the consultation component is at least `52rem` wide
+- an action-panel anatomy rule: panel cards are grids with an explicit
+  header/body gap, and status chips align to the top of heading blocks
+- a Playwright layout-contract test that verifies constrained consultation
+  layouts render the action block before the note sections at usable width
 
 The check scans spacing-sensitive declarations in `src/styles.css` and fails on
 raw length values in properties such as `gap`, `padding`, `margin`, and
 positional offsets. This is intentionally narrower than a full CSS linter: it
 guards the problem observed in the prototype without introducing a large style
 linting policy before the design system is mature.
+
+## How the first pass missed it
+The first pass treated spacing as mostly a token-governance problem and then
+verified that the most obvious stretch defect had gone away. That was
+insufficient.
+
+What should have been checked:
+
+- the component anatomy of Validation, Coded entries, and Follow-up tasks
+- the in-app browser's actual constrained viewport, not only a wider desktop
+  screenshot
+- whether the consultation workspace had enough internal width to support a
+  side action rail
+- whether header/body gaps existed inside compact panels, not only between cards
+
+The resulting process correction is that spacing governance must include both:
+
+- token checks for raw spacing values
+- layout-contract checks for component width, order, and alignment
 
 ## Recommended governance model
 Use a three-layer model:

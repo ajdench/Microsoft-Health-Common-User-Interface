@@ -30,3 +30,19 @@ test('adds a coded entry through the accessible combobox', async ({ page }) => {
   await expect(page.getByLabel('Added coded entries')).toContainText('Hypertensive disorder')
   await expect(page.getByLabel('Added coded entries')).toContainText('remove')
 })
+
+test('uses the compact action block before notes when the consultation area is constrained', async ({ page }) => {
+  await page.setViewportSize({ width: 1108, height: 760 })
+  await page.goto('/patients/p-1001/consultation?panel=results')
+
+  const workspaceBox = await page.locator('.consultation-workspace').boundingBox()
+  const actionBox = await page.locator('.action-stack').boundingBox()
+  const sectionBox = await page.locator('.section-stack').boundingBox()
+
+  expect(workspaceBox).not.toBeNull()
+  expect(actionBox).not.toBeNull()
+  expect(sectionBox).not.toBeNull()
+
+  expect(actionBox!.y).toBeLessThan(sectionBox!.y)
+  expect(actionBox!.width).toBeGreaterThan(workspaceBox!.width * 0.9)
+})
