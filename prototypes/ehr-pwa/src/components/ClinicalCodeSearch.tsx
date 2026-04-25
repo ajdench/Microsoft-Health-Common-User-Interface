@@ -7,7 +7,6 @@ import {
   ListBox,
   ListBoxItem,
   Popover,
-  Text,
   type Key,
 } from 'react-aria-components'
 import { useMemo, useState } from 'react'
@@ -88,9 +87,10 @@ export function ClinicalCodeSearch({ sectionId, sectionLabel, onAddCode }: Clini
       <Label>Add coded content</Label>
       <Group className="clinical-combobox-group">
         <Input placeholder={`Search ${sectionLabel.toLowerCase()} concepts`} />
-        <AriaButton aria-label={`Show coded entry options for ${sectionLabel}`}>Options</AriaButton>
+        <AriaButton className="compact-button" aria-label={`Show coded entry options for ${sectionLabel}`}>
+          Codes
+        </AriaButton>
       </Group>
-      <Text slot="description">Search SNOMED CT-style concepts for this section.</Text>
       <Popover className="clinical-combobox-popover">
         <ListBox<CodeOption> className="clinical-combobox-list">
           {(result) => (

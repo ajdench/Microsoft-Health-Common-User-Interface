@@ -23,7 +23,7 @@ test('recovers a consultation draft after offline reload', async ({ page, contex
 test('adds a coded entry through the accessible combobox', async ({ page }) => {
   await page.goto('/patients/p-1001/consultation')
 
-  await expect(page.getByLabel('Reason coded content')).toContainText('No coded content recorded for this section.')
+  await expect(page.getByLabel('Reason coded content')).toContainText('No codes added.')
 
   const codeSearch = page.getByRole('combobox', { name: 'Search coded entries for Reason' })
   await codeSearch.fill('hypertensive')
@@ -32,6 +32,30 @@ test('adds a coded entry through the accessible combobox', async ({ page }) => {
   await expect(page.getByLabel('Reason coded content')).toContainText('Hypertensive disorder')
   await expect(page.getByLabel('Reason coded content')).toContainText('SNOMED CT 38341003')
   await expect(page.getByLabel('Reason coded content').getByRole('button', { name: 'Remove Hypertensive disorder from Reason' })).toBeVisible()
+})
+
+test('keeps section coded-content fields compact in constrained layouts', async ({ page }) => {
+  for (const viewport of [
+    { width: 1108, height: 760 },
+    { width: 390, height: 900 },
+  ]) {
+    await page.setViewportSize(viewport)
+    await page.goto('/patients/p-1001/consultation?panel=results')
+
+    const codedContentBox = await page.getByLabel('Reason coded content').boundingBox()
+    const codesButtonBox = await page
+      .getByLabel('Reason coded content')
+      .getByRole('button', { name: 'Show coded entry options for Reason' })
+      .boundingBox()
+
+    expect(codedContentBox).not.toBeNull()
+    expect(codesButtonBox).not.toBeNull()
+    expect(codedContentBox!.height).toBeLessThanOrEqual(150)
+    expect(codesButtonBox!.width).toBeLessThanOrEqual(72)
+
+    const hasHorizontalOverflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth)
+    expect(hasHorizontalOverflow).toBe(false)
+  }
 })
 
 test('uses the compact action block before notes when the consultation area is constrained', async ({ page }) => {

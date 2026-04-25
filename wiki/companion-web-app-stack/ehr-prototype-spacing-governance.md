@@ -185,8 +185,13 @@ The prototype now also includes:
   header/body gap, and status chips align to the top of heading blocks
 - an explicit selected-code area in Coded entries with an empty state, count
   chip, selected rows, and compact remove actions
+- a section-local coded-content contract that keeps repeated coding controls
+  compact when they appear inside every consultation section
 - a Playwright layout-contract test that verifies constrained consultation
   layouts render the action block before the note sections at usable width
+- a Playwright coded-content density test that checks the section-local coding
+  field height, compact codes trigger, and horizontal overflow at in-app and
+  mobile widths
 - a separate reference-pane header contract so right-pane headings align with
   filters, cards, and tables
 - a responsive clinical-results contract: table on wider reference panes, card
@@ -224,6 +229,22 @@ The resulting process correction is that spacing governance must include both:
 
 - token checks for raw spacing values
 - layout-contract checks for component width, order, and alignment
+
+## Reconciliation After Section-Local Coding
+Moving coded search into each consultation section fixed the clinical attachment
+problem, but introduced a new density problem. The same explanatory text,
+description text, and full-size `Options` control were repeated inside every
+section, turning a placeholder field group into a secondary panel.
+
+The reconciliation keeps the section-local model and changes the contract:
+
+- section-coded content is a compact field group, not a teaching panel
+- repeated helper copy is removed from each section instance
+- the combobox trigger is visually compact while preserving an explicit
+  accessible name
+- empty state copy is short enough to scan in every section
+- Playwright now checks the coded-content field height and compact trigger at
+  both the in-app width and mobile width
 
 ## Recommended governance model
 Use a three-layer model:

@@ -158,10 +158,13 @@ The prototype now:
 - removes the separate coded-content action-rail pane
 - adds a coded-content search directly inside each section's `Coded content`
   box
+- keeps each section-local coded-content box compact so repeated coding
+  controls do not dominate the consultation note
 - records selected codes with a `sectionId`
 - renders each section's own `Coded content` block above its free-text area
 - migrates older locally persisted prototype codes to the `Reason` section
-- updates the coded-entry e2e test to check section-visible SNOMED content
+- updates the coded-entry e2e tests to check section-visible SNOMED content
+  and constrained-width coded-content density
 
 This is still a prototype. It uses static fake SNOMED-like results rather than
 a real terminology service.

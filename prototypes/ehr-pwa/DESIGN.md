@@ -235,6 +235,9 @@ and explicit body gaps. Do not nest decorative cards inside cards.
 
 Clinical code search: expose prioritisation and ambiguity before adding a code.
 Selected codes stay separate from free text and have explicit remove controls.
+Section-local coded-content areas are compact field groups: heading, count
+chip, search control, and selected/empty state. Do not repeat explanatory help
+text in every section.
 
 Reference panel: tabs switch medications, alerts, and results. Tables can be
 used only where width supports them; narrow views use card lists.

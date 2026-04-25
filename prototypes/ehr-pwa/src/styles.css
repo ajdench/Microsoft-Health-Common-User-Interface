@@ -381,18 +381,18 @@ button.danger {
 
 .section-coded-content {
   display: grid;
-  gap: var(--space-l);
+  gap: var(--space-m);
   margin: var(--space-0) var(--space-card-compact) var(--space-card-compact);
   border: 1px dashed var(--line);
   border-radius: var(--radius-s);
-  padding: var(--space-l);
+  padding: var(--space-m);
   background: var(--surface-subtle);
 }
 
 .section-coded-content header {
   display: flex;
-  gap: var(--space-l);
-  align-items: flex-start;
+  gap: var(--space-m);
+  align-items: center;
   justify-content: space-between;
   padding: var(--space-0);
 }
@@ -401,6 +401,10 @@ button.danger {
   margin: var(--space-0);
   color: #344258;
   font-size: 0.85rem;
+}
+
+.section-coded-empty {
+  margin: var(--space-0);
 }
 
 .section-code-list {
@@ -453,7 +457,7 @@ button.danger {
 
 .clinical-combobox {
   display: grid;
-  gap: var(--space-field-gap);
+  gap: var(--space-xs);
 }
 
 .clinical-combobox label {
@@ -470,7 +474,13 @@ button.danger {
 .clinical-combobox-group {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
-  gap: var(--space-m);
+  gap: var(--space-s);
+}
+
+.clinical-combobox-group button {
+  min-height: 2.35rem;
+  padding-right: var(--space-m);
+  padding-left: var(--space-m);
 }
 
 .clinical-combobox-popover {

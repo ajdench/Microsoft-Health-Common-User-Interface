@@ -154,7 +154,6 @@ function SectionCodedContent({
       <header>
         <div>
           <h3>Coded content</h3>
-          <p className="meta">Attach structured concepts before adding supporting narrative.</p>
         </div>
         <span className={`state-chip ${codes.length > 0 ? 'good' : ''}`}>{codes.length} coded</span>
       </header>
@@ -179,7 +178,7 @@ function SectionCodedContent({
           ))}
         </ul>
       ) : (
-        <p className="meta">No coded content recorded for this section.</p>
+        <p className="meta section-coded-empty">No codes added.</p>
       )}
     </section>
   )
