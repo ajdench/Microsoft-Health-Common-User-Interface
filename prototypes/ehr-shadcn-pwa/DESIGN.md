@@ -19,8 +19,10 @@ comparison material, but new component decisions should be made here first.
 - Patient identity and sync/local draft state are persistent clinical chrome.
 - Coded content belongs inside the relevant consultation section.
 - Free text remains available, but coded content is made first-class.
-- Validation and follow-up tasks sit beside the consultation, not inside note
-  text.
+- Validation belongs to the consultation banner with save/sign actions, because
+  it describes the whole capture state.
+- Follow-up tasks are captured as the final consultation section after Plan, so
+  they remain part of the clinical narrative without becoming free-text-only.
 - Right-pane medications, alerts, and results are contextual reference surfaces.
 - Tailwind utility composition is preferred for layout. Global CSS should define
   tokens and shadcn theme variables, not component-specific layout hacks.
@@ -33,7 +35,9 @@ comparison material, but new component decisions should be made here first.
   status, section-local coded content, and note text.
 - `SectionCodingField`: shadcn `Popover` and `Command` concept picker with
   selected codes attached to the section.
-- `ActionRail`: validation state, follow-up task entry, and save/sign actions.
+- Consultation banner: shadcn `Card` header containing consultation state,
+  validation status, and save/sign actions.
+- Follow-up section: final `ConsultationSectionCard` after Plan.
 - `ReferencePanel`: shadcn `Tabs` for medications, alerts, and results.
 
 ## Native Primitive Policy
@@ -66,6 +70,8 @@ interaction, slot anatomy, and visual consistency.
 - Do keep status chips as `ClinicalBadge` wrappers over shadcn `Badge`.
 - Do use full shadcn `CardHeader`/`CardTitle`/`CardDescription` composition for
   card-like headers instead of hand-styled header boxes.
+- Do let card actions stack below title/description on narrow viewports and
+  move to the right-hand header rail from `sm` upward.
 - Do use shadcn `Empty` for compact no-data states, including repeated
   section-local states.
 - Do keep layout responsive with grid/flex utility classes and stable gaps.

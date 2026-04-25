@@ -1,10 +1,11 @@
 import { useMemo, useState } from 'react'
-import { ActionRail } from '@/components/ActionRail'
 import { ConsultationSectionCard } from '@/components/ConsultationSectionCard'
+import { ClinicalBadge } from '@/components/ClinicalBadge'
 import { PatientChrome } from '@/components/PatientChrome'
 import { ReferencePanel } from '@/components/ReferencePanel'
 import { SyncStateBar } from '@/components/SyncStateBar'
-import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
+import { Card, CardAction, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { initialCodes, initialSections, patient } from '@/data/demo'
 import type { CodedEntry, ConsultationSection } from '@/types'
 import './styles.css'
@@ -41,27 +42,33 @@ export function App() {
       <SyncStateBar />
       <main className="mx-auto grid max-w-[1440px] gap-4 p-4 xl:grid-cols-[minmax(0,1fr)_minmax(22rem,28rem)]">
         <section className="grid gap-4" aria-label="Consultation capture">
-          <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_20rem]">
-            <div className="grid gap-4">
-              <Card>
-                <CardHeader>
-                  <CardTitle>Consultation capture</CardTitle>
-                  <CardDescription>Author Dr Taylor Reed · Health CUI-informed shadcn-native V2</CardDescription>
-                </CardHeader>
-              </Card>
-              {sections.map((section) => (
-                <ConsultationSectionCard
-                  codes={codes.filter((entry) => entry.sectionId === section.id)}
-                  key={section.id}
-                  section={section}
-                  onTextChange={(value) => updateSection(section.id, value)}
-                  onAddCode={(entry) => addCode(section.id, entry)}
-                  onRemoveCode={removeCode}
-                />
-              ))}
-            </div>
-            <ActionRail missingRequiredCount={missingRequiredCount} />
-          </div>
+          <Card>
+            <CardHeader>
+              <CardTitle>Consultation capture</CardTitle>
+              <CardDescription>
+                Author Dr Taylor Reed · {missingRequiredCount} required sections incomplete
+              </CardDescription>
+              <CardAction className="mt-2 flex flex-wrap gap-2 sm:mt-0 sm:justify-end">
+                <ClinicalBadge tone={missingRequiredCount > 0 ? 'warn' : 'good'}>{missingRequiredCount > 0 ? 'Validation open' : 'Validation clear'}</ClinicalBadge>
+                <Button type="button" size="sm">
+                  Save locally
+                </Button>
+                <Button variant="outline" size="sm" type="button" disabled={missingRequiredCount > 0}>
+                  Sign consultation
+                </Button>
+              </CardAction>
+            </CardHeader>
+          </Card>
+          {sections.map((section) => (
+            <ConsultationSectionCard
+              codes={codes.filter((entry) => entry.sectionId === section.id)}
+              key={section.id}
+              section={section}
+              onTextChange={(value) => updateSection(section.id, value)}
+              onAddCode={(entry) => addCode(section.id, entry)}
+              onRemoveCode={removeCode}
+            />
+          ))}
         </section>
         <ReferencePanel />
       </main>

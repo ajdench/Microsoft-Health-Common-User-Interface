@@ -18,6 +18,7 @@ export const initialSections: ConsultationSection[] = [
   { id: 'examination', label: 'Examination', required: false, text: '' },
   { id: 'assessment', label: 'Assessment', required: true, text: '' },
   { id: 'plan', label: 'Plan', required: true, text: '' },
+  { id: 'follow-up', label: 'Follow-up', required: false, text: '' },
 ]
 
 export const initialCodes: CodedEntry[] = [

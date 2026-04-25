@@ -11,7 +11,8 @@ The first prototype was useful. It proved and refined the clinical contracts:
 - persistent patient identity
 - persistent online/local draft/sync state
 - section-local coded content
-- validation and follow-up tasks outside free text
+- validation attached to the consultation banner
+- follow-up captured as the final consultation section after Plan
 - right-pane medications, alerts, and results
 - spacing governance and browser layout checks
 
@@ -35,7 +36,8 @@ UI class structure.
 | Sync/local state | `SyncStateBar`, always visible below patient chrome |
 | Consultation section | `ConsultationSectionCard`, shadcn `Card` anatomy |
 | Section coding | `SectionCodingField`, shadcn `Popover` + `Command` |
-| Validation/actions | `ActionRail`, compact card contracts |
+| Validation/actions | Consultation banner `CardAction`, beside save/sign actions |
+| Follow-up | Final consultation section after Plan |
 | Reference context | `ReferencePanel`, shadcn `Tabs`, `Alert`, `Table`, and `Card` |
 
 ## First Implementation
@@ -44,7 +46,8 @@ The first V2 implementation creates a consultation capture page with:
 - patient chrome
 - sync-state bar
 - section-local coded content in each consultation section
-- validation/follow-up action rail
+- validation in the top consultation banner with save/sign actions
+- follow-up as the final consultation section after Plan
 - medication, alert, and results reference tabs
 - unit and Playwright layout tests
 
@@ -69,6 +72,11 @@ shadcn `Card`, `CardHeader`, `CardTitle`, and `CardDescription` composition.
 The section-local coded-content empty state now uses shadcn `Empty` instead of
 plain paragraph text. This keeps repeated no-data states on the same primitive
 family as the rest of the V2 surface.
+
+The middle-column action rail has been removed. Validation is part of the
+top consultation banner because it is a whole-consultation state. Follow-up is
+part of the consultation flow after Plan because it is clinical content, not a
+generic side action.
 
 Unused local shadcn source components are intentionally retained. They are not
 legacy dependencies; they are available native primitives for upcoming passes.

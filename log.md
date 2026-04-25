@@ -673,3 +673,9 @@
 - Outputs created: updated `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
 - Verification: Ran `npm run check:spacing`, `npm run lint`, `npm run test`, `npm run build`, `npm run e2e`, and `npm audit` in `prototypes/ehr-shadcn-pwa`; all passed and audit reported 0 vulnerabilities. Reloaded `http://127.0.0.1:5175/` and confirmed patient chrome, coded content, empty-state copy, and medication review render.
 - Unresolved issues: none for this native tidy stage; next UI work can use retained shadcn primitives such as `ScrollArea`, `Dialog`, and `Empty` where the interaction calls for them.
+
+## 2026-04-26 08:47:10 BST — Moved V2 validation and follow-up into the consultation flow
+- Action performed: removed the V2 middle-column action rail, attached validation status and save/sign actions to the top consultation banner, and made Follow-up the final consultation section after Plan.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, `prototypes/ehr-shadcn-pwa/src/App.tsx`, `prototypes/ehr-shadcn-pwa/src/data/demo.ts`, V2 design contract, and the V2 companion wiki note.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/App.tsx`, `prototypes/ehr-shadcn-pwa/src/data/demo.ts`, `prototypes/ehr-shadcn-pwa/src/components/ui/card.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, removed obsolete `prototypes/ehr-shadcn-pwa/src/components/ActionRail.tsx`, updated `prototypes/ehr-shadcn-pwa/DESIGN.md`, updated `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and updated `log.md`.
+- Unresolved issues: validation currently reports only missing required sections; future passes should expand it into a structured validation summary if the clinical workflow needs actionable rule-level detail.
