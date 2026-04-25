@@ -252,6 +252,24 @@ The reconciliation keeps the section-local model and changes the contract:
 - Playwright now checks the coded-content field height and compact trigger at
   both the in-app width and mobile width
 
+## Shadcn Visual Reconciliation
+After the first shadcn replatform, the app still looked close to the legacy
+prototype because the old CSS card and panel contracts still controlled most of
+the visible surface. The second pass moved visible composition to shadcn slots:
+
+- consultation sections use `CardHeader`, `CardContent`, `CardAction`, and
+  `CardTitle`
+- Validation and Follow-up tasks use the same shadcn card anatomy
+- repeated empty states use compact shadcn `Empty` rather than plain paragraph
+  placeholders
+- reference tabs use a segmented shadcn `TabsList` treatment
+- cards and major panels use subtle shadcn-style rings and shadows while
+  preserving dense clinical spacing
+
+The important constraint is that shadcn visual defaults are adopted only where
+they do not break clinical density, patient context, coded-content field height,
+reference-pane alignment, or no-horizontal-overflow contracts.
+
 ## Recommended governance model
 Use a three-layer model:
 

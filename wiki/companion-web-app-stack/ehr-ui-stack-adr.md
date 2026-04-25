@@ -79,6 +79,12 @@ a closed or black-box component package. Radix owns much of the interaction
 mechanics, while application-owned clinical components retain responsibility
 for patient safety semantics, density, state visibility, and wording.
 
+The second shadcn pass made the adoption visible rather than only structural:
+consultation and action panels now use shadcn `CardHeader`, `CardContent`, and
+`CardAction` anatomy; repeated no-data states use compact shadcn `Empty`;
+reference tabs use a segmented shadcn `TabsList`; and app surfaces use
+shadcn-style rings/shadows while preserving the clinical density contracts.
+
 Dexie over IndexedDB is the default local store because it is pragmatic for
 structured browser data. OPFS is the right companion for large files, exports,
 attachments, local database files, or other file-like state. Cache API and

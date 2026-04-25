@@ -238,8 +238,8 @@ Sync strip: stays with the app chrome and uses chips for local save, pending
 sync, recovered draft, offline, and sync-failure states.
 
 Cards and panels: compose shadcn `Card` with quiet white surfaces, stable
-borders, compact headings, and explicit body gaps. Do not nest decorative cards
-inside cards.
+borders/rings, compact `CardHeader`/`CardContent` anatomy, and explicit body
+gaps. Do not nest decorative cards inside cards.
 
 Clinical code search: expose prioritisation and ambiguity before adding a code.
 Use shadcn `Popover` and `Command` for the section-local concept picker.
@@ -251,6 +251,10 @@ text in every section.
 Reference panel: shadcn `Tabs` switch medications, alerts, and results.
 shadcn `Table` can be used only where width supports it; narrow views use
 shadcn `Card` lists.
+
+Empty states: use shadcn `Empty` with a compact clinical variant inside dense
+work surfaces. Do not use large centered empty-state panels inside repeated
+consultation sections.
 
 ## Do's and Don'ts
 - Do keep patient identity and sync/draft state persistently visible.

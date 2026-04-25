@@ -1,6 +1,7 @@
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
-import { Card } from '@/components/ui/card'
+import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Empty, EmptyDescription } from '@/components/ui/empty'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { useState } from 'react'
@@ -71,50 +72,60 @@ export function ConsultationCaptureWorkspace({
         <div className="section-stack">
           {draft.sections.map((section) => (
             <Card className="section-card" key={section.id}>
-              <header>
+              <CardHeader>
                 <div>
-                  <h2>{section.label}</h2>
-                  <p>{section.validationState === 'missingRequired' ? 'Required before sign-off' : section.dirty ? 'Saved locally with changes' : 'Ready'}</p>
+                  <CardTitle>{section.label}</CardTitle>
+                  <CardDescription>
+                    {section.validationState === 'missingRequired' ? 'Required before sign-off' : section.dirty ? 'Saved locally with changes' : 'Ready'}
+                  </CardDescription>
                 </div>
-                <ClinicalStatusBadge tone={section.validationState === 'missingRequired' ? 'warn' : 'good'}>
-                  {section.validationState === 'missingRequired' ? 'Needs entry' : 'Visible'}
-                </ClinicalStatusBadge>
-              </header>
-              <SectionCodedContent
-                codes={draft.codes.filter((code) => code.sectionId === section.id)}
-                section={section}
-                onAddCode={onAddCode}
-                onRemoveCode={onRemoveCode}
-              />
-              <Textarea
-                aria-label={`${section.label} section`}
-                value={section.text}
-                onChange={(event) => onUpdateSection(section.id, event.target.value)}
-                placeholder={`Add ${section.label.toLowerCase()} notes`}
-              />
+                <CardAction>
+                  <ClinicalStatusBadge tone={section.validationState === 'missingRequired' ? 'warn' : 'good'}>
+                    {section.validationState === 'missingRequired' ? 'Needs entry' : 'Visible'}
+                  </ClinicalStatusBadge>
+                </CardAction>
+              </CardHeader>
+              <CardContent className="grid gap-3">
+                <SectionCodedContent
+                  codes={draft.codes.filter((code) => code.sectionId === section.id)}
+                  section={section}
+                  onAddCode={onAddCode}
+                  onRemoveCode={onRemoveCode}
+                />
+                <Textarea
+                  aria-label={`${section.label} section`}
+                  value={section.text}
+                  onChange={(event) => onUpdateSection(section.id, event.target.value)}
+                  placeholder={`Add ${section.label.toLowerCase()} notes`}
+                />
+              </CardContent>
             </Card>
           ))}
         </div>
 
         <div className="action-stack" aria-label="Consultation action tray">
           <Card className="panel-card">
-            <header>
+            <CardHeader>
               <div>
-                <h2>Validation</h2>
-                <p>{requiredMissing.length} required section{requiredMissing.length === 1 ? '' : 's'} incomplete</p>
+                <CardTitle>Validation</CardTitle>
+                <CardDescription>
+                  {requiredMissing.length} required section{requiredMissing.length === 1 ? '' : 's'} incomplete
+                </CardDescription>
               </div>
-              <ClinicalStatusBadge tone={requiredMissing.length > 0 ? 'warn' : 'good'}>{requiredMissing.length > 0 ? 'Open' : 'Clear'}</ClinicalStatusBadge>
-            </header>
+              <CardAction>
+                <ClinicalStatusBadge tone={requiredMissing.length > 0 ? 'warn' : 'good'}>{requiredMissing.length > 0 ? 'Open' : 'Clear'}</ClinicalStatusBadge>
+              </CardAction>
+            </CardHeader>
           </Card>
 
           <Card className="panel-card">
-            <header>
+            <CardHeader>
               <div>
-                <h2>Follow-up tasks</h2>
-                <p>Kept separate from note text.</p>
+                <CardTitle>Follow-up tasks</CardTitle>
+                <CardDescription>Kept separate from note text.</CardDescription>
               </div>
-            </header>
-            <div className="code-search">
+            </CardHeader>
+            <CardContent className="code-search">
               <Input
                 className="task-input"
                 value={taskText}
@@ -134,9 +145,11 @@ export function ConsultationCaptureWorkspace({
                   ))}
                 </ul>
               ) : (
-                <p className="meta">No follow-up tasks yet.</p>
+                <Empty className="compact-empty">
+                  <EmptyDescription>No follow-up tasks yet.</EmptyDescription>
+                </Empty>
               )}
-            </div>
+            </CardContent>
           </Card>
         </div>
       </div>
@@ -185,7 +198,9 @@ function SectionCodedContent({
           ))}
         </ul>
       ) : (
-        <p className="meta section-coded-empty">No codes added.</p>
+        <Empty className="compact-empty section-coded-empty">
+          <EmptyDescription>No codes added.</EmptyDescription>
+        </Empty>
       )}
     </section>
   )
