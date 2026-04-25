@@ -265,8 +265,7 @@ button.danger {
   container-type: inline-size;
 }
 
-.workspace-header,
-.reference-header {
+.workspace-header {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-l);
@@ -274,6 +273,14 @@ button.danger {
   justify-content: space-between;
   border-bottom: 1px solid var(--line);
   padding: var(--space-panel);
+}
+
+.reference-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-l);
+  align-items: flex-start;
+  justify-content: space-between;
 }
 
 .workspace-header h1,
@@ -492,6 +499,9 @@ button.danger {
 }
 
 .reference-content {
+  display: grid;
+  gap: var(--space-l);
+  align-content: start;
   padding: var(--space-panel);
 }
 
@@ -499,6 +509,14 @@ button.danger {
   display: grid;
   gap: var(--space-m);
   padding: var(--space-card-compact);
+}
+
+.medication-line-header,
+.result-card header {
+  display: flex;
+  gap: var(--space-l);
+  align-items: flex-start;
+  justify-content: space-between;
 }
 
 .medication-line.stopped,
@@ -517,7 +535,8 @@ button.danger {
 }
 
 .medication-attribute {
-  display: flex;
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
   gap: var(--space-s);
   align-items: baseline;
   min-width: 0;
@@ -526,7 +545,7 @@ button.danger {
 
 .medication-attribute strong {
   color: #344258;
-  min-width: 4.5rem;
+  overflow-wrap: normal;
 }
 
 .dose-value {
@@ -579,7 +598,6 @@ button.danger {
   border-radius: var(--radius-s);
   background: var(--accent-soft);
   padding: var(--space-l);
-  margin-bottom: var(--space-l);
 }
 
 .clinical-table {
@@ -606,12 +624,62 @@ button.danger {
 }
 
 .sort-button {
+  display: inline-flex;
+  gap: var(--space-xs);
+  align-items: baseline;
   min-height: auto;
   padding: var(--space-2xs) var(--space-0);
   border: 0;
   background: transparent;
   color: inherit;
   font-weight: inherit;
+}
+
+.sort-indicator {
+  color: var(--muted);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+.clinical-result-list {
+  display: none;
+}
+
+.result-card {
+  display: grid;
+  gap: var(--space-m);
+  padding: var(--space-card-compact);
+}
+
+.result-card h3,
+.result-card p,
+.result-card dl,
+.result-card dd {
+  margin: var(--space-0);
+}
+
+.result-card h3 {
+  font-size: 0.95rem;
+}
+
+.result-card dl {
+  display: grid;
+  gap: var(--space-s);
+}
+
+.result-card dl div {
+  display: grid;
+  gap: var(--space-2xs);
+}
+
+.result-card dt {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.result-card dd {
+  overflow-wrap: anywhere;
 }
 
 .empty-state {
@@ -642,6 +710,8 @@ button.danger {
 @media (max-width: 720px) {
   .patient-shell {
     grid-template-columns: 1fr;
+    gap: var(--space-l);
+    padding: var(--space-l) var(--space-xl);
   }
 
   .patient-actions {
@@ -653,6 +723,22 @@ button.danger {
   }
 
   .panel-tabs {
-    grid-template-columns: 1fr;
+    gap: var(--space-xs);
+    padding: var(--space-m);
+  }
+
+  .panel-tabs button {
+    min-width: 0;
+    padding-right: var(--space-m);
+    padding-left: var(--space-m);
+  }
+
+  .clinical-table {
+    display: none;
+  }
+
+  .clinical-result-list {
+    display: grid;
+    gap: var(--space-l);
   }
 }

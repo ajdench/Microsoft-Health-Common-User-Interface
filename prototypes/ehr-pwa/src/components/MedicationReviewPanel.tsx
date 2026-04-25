@@ -25,8 +25,10 @@ export function MedicationReviewPanel({ medications }: MedicationReviewPanelProp
 function MedicationLine({ medication }: { medication: Medication }) {
   return (
     <article className={`medication-line ${medication.status}`}>
-      <div className="medication-name">{medication.name}</div>
-      <span className={`state-chip ${medication.status === 'active' ? 'good' : ''}`}>{medication.status}</span>
+      <header className="medication-line-header">
+        <div className="medication-name">{medication.name}</div>
+        <span className={`state-chip ${medication.status === 'active' ? 'good' : ''}`}>{medication.status}</span>
+      </header>
       <div className="medication-attributes">
         <div className="medication-attribute">
           <strong>Strength</strong>
@@ -52,4 +54,3 @@ function MedicationLine({ medication }: { medication: Medication }) {
     </article>
   )
 }
-

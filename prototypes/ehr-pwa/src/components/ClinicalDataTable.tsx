@@ -71,11 +71,20 @@ export function ClinicalDataTable({ rows, filter, onToggleAbnormal }: ClinicalDa
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
-                <th key={header.id} scope="col">
+                <th key={header.id} scope="col" aria-sort={getAriaSort(header.column.getIsSorted())}>
                   {header.column.getCanSort() ? (
-                    <button className="sort-button" type="button" onClick={header.column.getToggleSortingHandler()}>
-                      {flexRender(header.column.columnDef.header, header.getContext())}
-                      {renderSortState(header.column.getIsSorted())}
+                    <button
+                      className="sort-button"
+                      type="button"
+                      onClick={header.column.getToggleSortingHandler()}
+                      aria-label={`Sort by ${String(header.column.columnDef.header)}${getSortLabel(header.column.getIsSorted())}`}
+                    >
+                      <span>{flexRender(header.column.columnDef.header, header.getContext())}</span>
+                      {header.column.getIsSorted() ? (
+                        <span className="sort-indicator" aria-hidden="true">
+                          {header.column.getIsSorted() === 'asc' ? 'asc' : 'desc'}
+                        </span>
+                      ) : null}
                     </button>
                   ) : (
                     flexRender(header.column.columnDef.header, header.getContext())
@@ -95,14 +104,42 @@ export function ClinicalDataTable({ rows, filter, onToggleAbnormal }: ClinicalDa
           ))}
         </tbody>
       </table>
+
+      <div className="clinical-result-list" aria-label="Clinical results list">
+        {table.getRowModel().rows.map((row) => (
+          <article className="result-card" key={row.id}>
+            <header>
+              <div>
+                <h3>{row.original.label}</h3>
+                <p>{row.original.date}</p>
+              </div>
+              <span className={`state-chip ${row.original.status === 'abnormal' ? 'warn' : 'good'}`}>{row.original.status}</span>
+            </header>
+            <dl>
+              <div>
+                <dt>Value</dt>
+                <dd>{row.original.value}</dd>
+              </div>
+            </dl>
+          </article>
+        ))}
+      </div>
     </section>
   )
 }
 
-function renderSortState(state: false | 'asc' | 'desc') {
+function getAriaSort(state: false | 'asc' | 'desc') {
   if (!state) {
-    return ' sortable'
+    return 'none'
   }
 
-  return state === 'asc' ? ' sorted ascending' : ' sorted descending'
+  return state === 'asc' ? 'ascending' : 'descending'
+}
+
+function getSortLabel(state: false | 'asc' | 'desc') {
+  if (!state) {
+    return ''
+  }
+
+  return state === 'asc' ? ', currently ascending' : ', currently descending'
 }

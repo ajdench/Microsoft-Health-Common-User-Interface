@@ -46,3 +46,25 @@ test('uses the compact action block before notes when the consultation area is c
   expect(actionBox!.y).toBeLessThan(sectionBox!.y)
   expect(actionBox!.width).toBeGreaterThan(workspaceBox!.width * 0.9)
 })
+
+test('keeps the reference pane usable across tabs and narrow widths', async ({ page }) => {
+  for (const viewport of [
+    { width: 1108, height: 760 },
+    { width: 390, height: 900 },
+  ]) {
+    await page.setViewportSize(viewport)
+
+    for (const panel of ['medications', 'alerts', 'results']) {
+      await page.goto(`/patients/p-1001/consultation?panel=${panel}`)
+      await expect(page.getByRole('banner', { name: 'Current patient context' })).toContainText('Alex Morgan')
+
+      const hasHorizontalOverflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth)
+      expect(hasHorizontalOverflow).toBe(false)
+    }
+  }
+
+  await page.setViewportSize({ width: 390, height: 900 })
+  await page.goto('/patients/p-1001/consultation?panel=results')
+  await expect(page.getByLabel('Clinical results list')).toBeVisible()
+  await expect(page.locator('.clinical-table')).toBeHidden()
+})

@@ -35,6 +35,7 @@ Specific drivers:
 | Mobile breakpoint | The narrow layout changed only some spacing, so mobile inherited desktop density unevenly. |
 | Grid alignment defaults | The consultation action tray stretched to match the taller note column, so compact cards appeared to have excessive vertical spacing. |
 | Nested column pressure | At the in-app browser width, the page attempted to show the reference panel, note column, and action rail at the same time. This made Validation, Coded entries, and Follow-up tasks look cramped even after token normalization. |
+| Reference-pane contract drift | The right-hand reference pane reused workspace header spacing, which double-inset headings inside already padded content. Its results table also remained a desktop table on narrow/mobile widths, clipping the status column and exposing noisy sort-state text. |
 
 ## Relevant design principles
 ### Spacing Is A System
@@ -76,6 +77,21 @@ side-by-side note/action layout.
 This matters because a two-column page can leave an inner component too narrow
 even on a nominally desktop-sized viewport.
 
+### Reference Panes Need Their Own Content Anatomy
+The reference pane is not a second workspace header. It has a tab strip, then
+content with its own heading, controls, summaries, and clinical data objects.
+Those pieces need a local anatomy:
+
+- tab strip
+- reference heading and optional actions
+- filter or status summary
+- clinical cards or table
+
+The results view now uses a table where the reference pane is wide enough and a
+card list on narrow/mobile widths. Medication rows use a title/status header row
+and fixed label anatomy so terms such as `Frequency` do not split inside the
+word.
+
 ### State Must Not Collapse Layout
 Chips, alerts, sync state, and recovered-draft banners should use stable spacing
 so clinical state changes do not resize the page unpredictably.
@@ -103,6 +119,14 @@ Before the governance pass:
   the Coded entries and Follow-up tasks headings too close to their controls.
 - Panel headers vertically centered status chips against multi-line text rather
   than top-aligning them with the heading block.
+- `reference-header` inherited workspace-header padding and borders, so
+  headings were misaligned with the controls and cards underneath.
+- The results table used visible sort-state words such as `sortable`, which
+  turned compact column headers into awkward multi-line text.
+- The results table remained visible on mobile, where four columns could not
+  preserve readable labels, values, and status chips.
+- Medication attribute labels used a narrow flex label column, allowing
+  `Frequency` to split in the right pane on mobile.
 - No tool prevented future raw spacing values.
 
 ## Implemented formalization
@@ -142,6 +166,14 @@ The prototype now also includes:
   header/body gap, and status chips align to the top of heading blocks
 - a Playwright layout-contract test that verifies constrained consultation
   layouts render the action block before the note sections at usable width
+- a separate reference-pane header contract so right-pane headings align with
+  filters, cards, and tables
+- a responsive clinical-results contract: table on wider reference panes, card
+  list on mobile/narrow panes
+- a medication-row contract with a title/status header and non-breaking
+  attribute labels
+- a Playwright reference-pane contract test that checks all three tabs for
+  horizontal overflow at in-app and mobile widths
 
 The check scans spacing-sensitive declarations in `src/styles.css` and fails on
 raw length values in properties such as `gap`, `padding`, `margin`, and
