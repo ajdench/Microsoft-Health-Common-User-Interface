@@ -23,6 +23,13 @@
 - [Inline Clinical Coding For Consultations](wiki/companion-web-app-stack/inline-clinical-coding-for-consultations.md) — UK-oriented approach to SNOMED/dm+d-backed coded content in consultation and history workflows
 - [DESIGN.md UI Standard](wiki/companion-web-app-stack/design-md-ui-standard.md) — app-local agent-readable UI standard for the EHR prototype
 
+## Modern Equivalents
+- [Modern Equivalents](wiki/modern-equivalents/README.md) — current sources similar or adjacent to Health CUI, clearly separated from the historical corpus
+- [NHS Design Systems and Clinical Safety](wiki/modern-equivalents/nhs-design-systems-and-clinical-safety.md) — current NHS service/design-system guidance, NHS App patterns, and DCB0129/DCB0160 safety context
+- [Interoperability and Clinical Workflow Standards](wiki/modern-equivalents/interoperability-and-clinical-workflow-standards.md) — SMART App Launch and CDS Hooks as modern EHR workflow-interface equivalents
+- [Open Clinical UI Systems](wiki/modern-equivalents/open-clinical-ui-systems.md) — openEHR and OpenMRS 3 as model-driven and open-source EHR implementation analogues
+- [Modern Equivalence Matrix](wiki/modern-equivalents/modern-equivalence-matrix.md) — compact classification of what each modern source does and does not replace
+
 ## Prototypes
 - [EHR PWA Prototype](prototypes/ehr-pwa/README.md) — React/Vite offline-first EHR vertical slice with Dexie draft persistence and Playwright offline recovery test
 - [EHR shadcn PWA Prototype V2](prototypes/ehr-shadcn-pwa/README.md) — clean shadcn-native consultation capture prototype built from the V1 layout and clinical-contract lessons
@@ -100,6 +107,7 @@
 - [Medication Line note](wiki/source-notes/design-guidance-medication-line.md) — source-focused note for medication rendering rules
 - [Search and Prescribe note](wiki/source-notes/design-guidance-search-and-prescribe.md) — source-focused note for prescribing interaction guidance
 - [DESIGN.md format note](wiki/source-notes/design-md-format-specification.md) — source note for the modern agent-readable design-system format used by the prototype
+- [Modern equivalents source set 2026](wiki/source-notes/modern-equivalents-source-set-2026.md) — provenance for current NHS, HL7, openEHR, OpenMRS, and VA.gov comparison sources
 - [Decision Support exploration note](wiki/source-notes/design-guidance-exploration-decision-support.md) — source-focused note for alerting/DSS exploration
 - [Filtering Sorting and Grouping note](wiki/source-notes/design-guidance-filtering-sorting-and-grouping.md) — source-focused note for dense-data state handling
 
@@ -113,6 +121,7 @@
 - `raw/metadata/isb-1500-1508-archive-branch.json` — structured metadata for recovered standards/compliance branch
 - `raw/metadata/cui-programme-distribution-archive.json` — structured metadata for programme distribution/support artefacts
 - `raw/metadata/secondary-adoption-and-afterlife-sources.json` — structured metadata for later adoption, retirement, and afterlife evidence
+- `raw/metadata/modern-equivalents-source-set-2026.json` — structured metadata for current comparison sources in the modern equivalents area
 - [Toolkit file inventory](derived/inventories/toolkit-file-inventory.md) — major files and modules in the toolkit mirror
 - `derived/extracted-text/design-guidance/` — machine text extraction of localized PDFs
 - `derived/normalized-markdown/design-guidance/` — cleaned markdown wrappers around extracted text
@@ -125,5 +134,6 @@
 - `raw/sources/toolkit/mscui/` — immutable toolkit mirror
 - `raw/sources/design-guidance/` — localized design-guidance PDFs, crib sheets, archive-only QIGs, and recovered supporting artefacts
 - `raw/sources/references/` — release metadata and archival context pages
+- `raw/sources/references/modern-equivalents/` — localized current comparison sources for the modern equivalents wiki area
 - `raw/sources/references/nhs-archives/isb-standards/` — archived ISB standard pages, documentation pages, and DSCN PDFs
 - `raw/manifests/design-guidance-manifest.json` — machine-readable source manifest

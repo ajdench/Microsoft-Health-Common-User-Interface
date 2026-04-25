@@ -1,0 +1,157 @@
+{
+  "title": "Modern equivalents and adjacent health UI source set",
+  "retrieved_on": "2026-04-25",
+  "scope_note": "Current external sources used to document modern equivalents, successors, and adjacent standards relevant to Microsoft Health CUI. These are not treated as part of the canonical historical Health CUI corpus.",
+  "files": [
+    {
+      "title": "NHS Digital service manual home",
+      "original_url": "https://service-manual.nhs.uk/",
+      "local_path": "raw/sources/references/modern-equivalents/nhs-digital-service-manual-home.html",
+      "source_type": "html",
+      "source_category": "modern design system / service guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Official NHS England service manual. Current guidance may change; this local copy records the 2026-04-25 retrieval.",
+      "sha256": "10c0af6286506579f0d6ea99b07410b3eb8f2fc3fa27e2a9e0d908ffc6dda045"
+    },
+    {
+      "title": "NHS Digital service manual design system",
+      "original_url": "https://service-manual.nhs.uk/design-system",
+      "local_path": "raw/sources/references/modern-equivalents/nhs-digital-service-manual-design-system.html",
+      "source_type": "html",
+      "source_category": "modern design system / service guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Official NHS England design-system page for public and staff digital services.",
+      "sha256": "ad7c4ae574bf97af0b2525f315a92c8be1d6a341d95cf70df71bd79fadbf5438"
+    },
+    {
+      "title": "NHS service standard",
+      "original_url": "https://service-manual.nhs.uk/standards-and-technology/service-standard",
+      "local_path": "raw/sources/references/modern-equivalents/nhs-digital-service-standard.html",
+      "source_type": "html",
+      "source_category": "modern design system / service governance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Official NHS England service standard page, including health-specific points for clinical safety and interoperability.",
+      "sha256": "fd50ddba2a7c4d14b131f098d5a4b6d985f3fa2f2c095bad0a9ed65a5226098c"
+    },
+    {
+      "title": "NHS App design system home",
+      "original_url": "https://design-system.nhsapp.service.nhs.uk/",
+      "local_path": "raw/sources/references/modern-equivalents/nhs-app-design-system-home.html",
+      "source_type": "html",
+      "source_category": "modern design system / NHS App",
+      "retrieval_status": "retrieved",
+      "trust_note": "Official NHS App design-system page. Relevant to patient-facing NHS App surfaces, not a clinician-facing EHR standard.",
+      "sha256": "bece4f9ecd9aeecf6b7b25fe0a37be15186a9780f195a514957631ca414062ba"
+    },
+    {
+      "title": "NHS App design system components",
+      "original_url": "https://design-system.nhsapp.service.nhs.uk/components/",
+      "local_path": "raw/sources/references/modern-equivalents/nhs-app-design-system-components.html",
+      "source_type": "html",
+      "source_category": "modern design system / NHS App",
+      "retrieval_status": "retrieved",
+      "trust_note": "Official NHS App component index, used to understand component-scope boundaries.",
+      "sha256": "b203518ac1d6d1c5515c1582460116046d5605fe5fed557279e4982dee5cefb1"
+    },
+    {
+      "title": "NHS App design system patterns",
+      "original_url": "https://design-system.nhsapp.service.nhs.uk/patterns/",
+      "local_path": "raw/sources/references/modern-equivalents/nhs-app-design-system-patterns.html",
+      "source_type": "html",
+      "source_category": "modern design system / NHS App",
+      "retrieval_status": "retrieved",
+      "trust_note": "Official NHS App pattern index, used to understand pattern-scope boundaries.",
+      "sha256": "a1b5468b5c1eb087932e58cb3ab1271baf89a58c15f2854690c145c43e02a091"
+    },
+    {
+      "title": "NHS England digital clinical safety assurance",
+      "original_url": "https://www.england.nhs.uk/long-read/digital-clinical-safety-assurance/",
+      "local_path": "raw/sources/references/modern-equivalents/nhs-england-digital-clinical-safety-assurance.html",
+      "source_type": "html",
+      "source_category": "clinical safety governance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Official NHS England guidance explaining DCB0129 and DCB0160 for clinical risk management.",
+      "sha256": "0604b3e075e3c7a513926a5b49ddd4054589e914987b25fd1200fc19c272fa95"
+    },
+    {
+      "title": "Review of digital clinical safety standards DCB0129 and DCB0160",
+      "original_url": "https://digital.nhs.uk/data-and-information/information-standards/governance/latest-activity/standards-and-collections/review-of-digital-clinical-safety-standards-dcb0129-and-dcb0160/",
+      "local_path": "raw/sources/references/modern-equivalents/nhs-digital-dcb0129-dcb0160-review.html",
+      "source_type": "html",
+      "source_category": "clinical safety governance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Official NHS England page confirming the standards are under review to remain current with healthcare technology and practice.",
+      "sha256": "ba6b1256843206b9376c7be964fbfc1484eed63846daf066efab89c710a1dfb8"
+    },
+    {
+      "title": "SMART App Launch v2.2.0",
+      "original_url": "https://www.hl7.org/fhir/smart-app-launch/",
+      "local_path": "raw/sources/references/modern-equivalents/hl7-smart-app-launch-v2-2-0.html",
+      "source_type": "html",
+      "source_category": "interoperability / app launch",
+      "retrieval_status": "retrieved",
+      "trust_note": "Official HL7 implementation guide. This is an interoperability and launch-context standard, not a visual UI design system.",
+      "sha256": "74f0778857be28b11dc7ae139bc1b429668b1519b1374913fbd8ed04b15475a2"
+    },
+    {
+      "title": "CDS Hooks v2.0.1",
+      "original_url": "https://cds-hooks.hl7.org/index.html",
+      "local_path": "raw/sources/references/modern-equivalents/hl7-cds-hooks-v2-0-1.html",
+      "source_type": "html",
+      "source_category": "clinical decision support interoperability",
+      "retrieval_status": "retrieved",
+      "trust_note": "Official CDS Hooks specification. It defines workflow-triggered decision support payloads and trust concerns, leaving visual rendering mostly to client systems.",
+      "sha256": "4ef0899ab55e6da6613952fe27411d37c5206b8ef2e18ffef26017f788e5defa"
+    },
+    {
+      "title": "openEHR clinical content models",
+      "original_url": "https://openehr.atlassian.net/wiki/spaces/healthmod/overview?homepageId=2949233",
+      "local_path": "raw/sources/references/modern-equivalents/openehr-clinical-content-models.html",
+      "source_type": "html",
+      "source_category": "clinical content modelling",
+      "retrieval_status": "retrieved",
+      "trust_note": "openEHR community documentation for Clinical Knowledge Manager and clinical knowledge governance.",
+      "sha256": "a7f2a6464535113f4bc7e3a68e5e222a164d34ec602aaaf069115f46eef49c8b"
+    },
+    {
+      "title": "openEHR archetypes and templates",
+      "original_url": "https://specifications.openehr.org/releases/1.0.1/html/architecture/overview/Output/archetyping.html",
+      "local_path": "raw/sources/references/modern-equivalents/openehr-archetypes-and-templates.html",
+      "source_type": "html",
+      "source_category": "clinical content modelling",
+      "retrieval_status": "retrieved",
+      "trust_note": "Official openEHR specification page. Relevant because templates are closely related to form/report structures, but not visual UI guidance.",
+      "sha256": "de585f3ce8bc0b48f6824c6bdbe4e39a03a9d170ddbd8226657f8e57c138ebd2"
+    },
+    {
+      "title": "O3: The New OpenMRS Explained and the Investments that made it possible",
+      "original_url": "https://openmrs.org/o3-the-new-openmrs-explained-and-the-investments-that-made-it-possible/",
+      "local_path": "raw/sources/references/modern-equivalents/openmrs-o3-explained.html",
+      "source_type": "html",
+      "source_category": "open-source EHR frontend / design system adoption",
+      "retrieval_status": "retrieved",
+      "trust_note": "Official OpenMRS article. Useful for a modern open-source EHR example using Carbon, React, TypeScript, microfrontends, FHIR, and shared clinical forms.",
+      "sha256": "0310c665dff753aa6c92d52e0a15242c1f58e51747e46b1b715285e571d409e7"
+    },
+    {
+      "title": "VA.gov Design System home",
+      "original_url": "https://design.va.gov/",
+      "local_path": "raw/sources/references/modern-equivalents/va-gov-design-system-home.html",
+      "source_type": "html",
+      "source_category": "government health-adjacent design system",
+      "retrieval_status": "retrieved",
+      "trust_note": "Official VA.gov design system. Strong patient/veteran-facing government service design, not a clinician-facing EHR UI standard.",
+      "sha256": "e9b27ca9ca61674c179a3ff216456064c43c706be16210583c9d6812a11680e3"
+    },
+    {
+      "title": "VA.gov Design System health content",
+      "original_url": "https://design.va.gov/content-style-guide/health-content/",
+      "local_path": "raw/sources/references/modern-equivalents/va-gov-design-system-health-content.html",
+      "source_type": "html",
+      "source_category": "government health content guidance",
+      "retrieval_status": "retrieved",
+      "trust_note": "Official VA.gov health-content guidance. Relevant to patient-facing health content, plain language, and risk communication.",
+      "sha256": "ecff3491926ebb03c9104232b188e1e02d98f4581fb74036272b6c33e80c7cbf"
+    }
+  ]
+}

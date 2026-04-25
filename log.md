@@ -1,5 +1,11 @@
 # Log
 
+## 2026-04-25 22:54:10 BST — Modern equivalents research and wiki area
+- Action performed: researched current public equivalents and adjacent standards for Microsoft Health CUI, localized the key current source pages, and added a clearly separated modern-equivalents wiki area.
+- Inputs used: NHS digital service manual, NHS App design system, NHS England digital clinical safety assurance and DCB0129/DCB0160 review pages, HL7 SMART App Launch, HL7 CDS Hooks, openEHR clinical content model and archetyping pages, OpenMRS 3 overview, and VA.gov Design System health pages.
+- Outputs created: `raw/sources/references/modern-equivalents/`, `raw/metadata/modern-equivalents-source-set-2026.json`, `wiki/source-notes/modern-equivalents-source-set-2026.md`, new pages under `wiki/modern-equivalents/`, and updated `index.md`.
+- Unresolved issues: this is a focused public-source survey, not an exhaustive worldwide catalogue; proprietary EHR vendor design systems remain largely invisible, and the current-source pages should be refreshed if used for later compliance-sensitive work.
+
 ## 2026-04-25 17:07:42 BST — DESIGN.md prototype UI standard introduced
 - Action performed: localized Google Labs Code DESIGN.md reference material, added provenance and source-note coverage, introduced a companion wiki page explaining DESIGN.md usage, and established an app-local `DESIGN.md` visual standard for the EHR PWA prototype.
 - Inputs used: `https://stitch.withgoogle.com/docs/design-md/specification`, `https://github.com/google-labs-code/design.md`, existing prototype CSS/component contracts, and existing companion web-app stack notes.
