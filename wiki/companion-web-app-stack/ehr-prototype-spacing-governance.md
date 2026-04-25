@@ -103,8 +103,10 @@ and last local save time are safety-relevant context while editing.
 
 ### Magic Numbers Need Names
 The reference panel's sticky offset is inherently tied to the patient header and
-sync strip. That relationship should be named as a token even if the first value
-is still manually chosen.
+sync strip. That relationship is now named as a token and driven from the
+measured sticky app-chrome height. This keeps the reference pane on the same
+initial top rail as the consultation pane while still making it stick below the
+patient and sync state chrome during scroll.
 
 ## Where the principles were not being applied
 Before the governance pass:
@@ -202,6 +204,10 @@ The prototype now also includes:
   horizontal overflow at in-app and mobile widths
 - a sticky app-chrome contract that keeps patient identity and sync/draft state
   visible while scrolling
+- a measured app-chrome height token used by the reference-pane sticky offset,
+  so the right pane starts on the same top rail as the consultation pane
+- a Playwright top-rail contract that checks the consultation workspace and
+  reference pane share the same y-position on the two-column layout
 - a compact secondary button contract for the sync-failure simulation control,
   with the full action preserved as the accessible name
 

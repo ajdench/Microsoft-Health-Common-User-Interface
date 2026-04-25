@@ -74,6 +74,18 @@ test('uses the compact action block before notes when the consultation area is c
   expect(actionBox!.width).toBeGreaterThan(workspaceBox!.width * 0.9)
 })
 
+test('aligns the reference pane with the consultation workspace top rail', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 1000 })
+  await page.goto('/patients/p-1001/consultation?panel=results')
+
+  const workspaceBox = await page.locator('.consultation-workspace').boundingBox()
+  const referenceBox = await page.locator('.reference-panel').boundingBox()
+
+  expect(workspaceBox).not.toBeNull()
+  expect(referenceBox).not.toBeNull()
+  expect(Math.abs(referenceBox!.y - workspaceBox!.y)).toBeLessThanOrEqual(1)
+})
+
 test('keeps the reference pane usable across tabs and narrow widths', async ({ page }) => {
   for (const viewport of [
     { width: 1108, height: 760 },

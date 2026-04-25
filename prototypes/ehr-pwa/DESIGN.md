@@ -212,6 +212,9 @@ Use the named spacing scale. Prefer semantic spacing tokens for product roles:
 `card`, `panel`, `page`, `button-y`, `button-x`, `chip-y`, and `chip-x`.
 Container-query behavior matters: the consultation action rail appears beside
 note sections only when the consultation workspace itself has enough width.
+The consultation workspace and reference pane share the same top rail. The
+reference pane's sticky offset is derived from the measured app-chrome height
+plus page padding so it does not start lower than the left pane.
 
 ## Elevation & Depth
 Depth is mostly flat. Use borders, soft background layers, and state color

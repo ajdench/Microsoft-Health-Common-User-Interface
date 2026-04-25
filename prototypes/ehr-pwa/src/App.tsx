@@ -1,6 +1,6 @@
 import { Navigate, Outlet, createRootRoute, createRoute, createRouter } from '@tanstack/react-router'
 import { RouterProvider } from '@tanstack/react-router'
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import './styles.css'
 import { AlertPanel } from './components/AlertPanel'
 import { ClinicalDataTable } from './components/ClinicalDataTable'
@@ -48,6 +48,7 @@ function isConsultationPanel(value: unknown): value is ConsultationPanel {
 }
 
 function ConsultationRoute() {
+  const chromeRef = useRef<HTMLDivElement | null>(null)
   const { patientId } = consultationRoute.useParams()
   const search = consultationRoute.useSearch()
   const navigate = consultationRoute.useNavigate()
@@ -70,6 +71,31 @@ function ConsultationRoute() {
   useEffect(() => {
     void seedPrototypeData()
   }, [])
+
+  useLayoutEffect(() => {
+    const chrome = chromeRef.current
+
+    if (!chrome) {
+      return
+    }
+
+    const chromeElement = chrome
+
+    function setChromeHeight() {
+      document.documentElement.style.setProperty('--app-chrome-height', `${chromeElement.getBoundingClientRect().height}px`)
+    }
+
+    setChromeHeight()
+
+    const resizeObserver = new ResizeObserver(setChromeHeight)
+    resizeObserver.observe(chromeElement)
+    window.addEventListener('resize', setChromeHeight)
+
+    return () => {
+      resizeObserver.disconnect()
+      window.removeEventListener('resize', setChromeHeight)
+    }
+  }, [isLoading])
 
   const criticalUnresolved = useMemo(
     () => record.alerts.filter((alert) => alert.priority === 'critical' && alert.unresolved),
@@ -124,7 +150,7 @@ function ConsultationRoute() {
 
   return (
     <div className="app-shell">
-      <div className="app-chrome">
+      <div className="app-chrome" ref={chromeRef}>
         <PatientContextShell
           patient={record.patient}
           hasDirtyDraft={draft.state !== 'signed'}

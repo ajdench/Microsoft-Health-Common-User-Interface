@@ -48,8 +48,9 @@
   --space-field-gap: var(--space-s);
   --space-panel: var(--space-xl);
   --space-page: var(--space-xl);
-  --sticky-reference-top: 10rem;
-  --sticky-reference-max-height: calc(100vh - 11rem);
+  --app-chrome-height: 8rem;
+  --sticky-reference-top: calc(var(--app-chrome-height) + var(--space-page));
+  --sticky-reference-max-height: calc(100vh - var(--sticky-reference-top) - var(--space-page));
   --radius-s: 6px;
   --radius: 8px;
 }
