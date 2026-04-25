@@ -15,6 +15,7 @@ This prototype covers:
 - React Aria Components combobox mechanics for coded entry search
 - Dexie-backed IndexedDB draft persistence
 - Workbox-generated PWA app shell
+- DESIGN.md-governed visual tokens and UI rationale
 - Playwright offline draft recovery and coded-entry selection tests
 
 It intentionally does not use real patient data, real terminology services,
@@ -25,6 +26,7 @@ real prescribing, or production sync.
 ```sh
 npm install
 npm run dev
+npm run design:lint
 npm run check:spacing
 npm run build
 npm run test
@@ -47,6 +49,8 @@ http://127.0.0.1:5174/patients/p-1001/consultation?panel=results
   so its bundle cost is visible during PWA build review.
 - `npm run check:spacing` enforces tokenized spacing for spacing-sensitive CSS
   declarations in `src/styles.css`.
+- `DESIGN.md` is the app-local visual standard for agents and maintainers. Run
+  `npm run design:lint` after changing it.
 - The Playwright tests build and preview the production PWA, write a draft, go
   offline, verify local draft recovery, and exercise coded-entry combobox
   selection.

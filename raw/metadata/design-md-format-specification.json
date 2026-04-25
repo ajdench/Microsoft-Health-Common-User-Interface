@@ -1,0 +1,20 @@
+{
+  "title": "DESIGN.md format specification",
+  "source_category": "modern design-system tooling reference",
+  "original_urls": [
+    "https://stitch.withgoogle.com/docs/design-md/specification",
+    "https://github.com/google-labs-code/design.md",
+    "https://raw.githubusercontent.com/google-labs-code/design.md/main/docs/spec.md",
+    "https://raw.githubusercontent.com/google-labs-code/design.md/main/README.md",
+    "https://raw.githubusercontent.com/google-labs-code/design.md/main/LICENSE"
+  ],
+  "access_date": "2026-04-25",
+  "local_files": [
+    "raw/sources/references/design-md/spec.md",
+    "raw/sources/references/design-md/README.md",
+    "raw/sources/references/design-md/LICENSE"
+  ],
+  "license": "Apache-2.0",
+  "trust_caveat": "Official Google Labs Code repository and Google Stitch documentation. The format is marked alpha, so token schema and CLI behavior may change.",
+  "use_in_repo": "Companion web-app governance and prototype UI standardization only; not historical Health CUI source material."
+}

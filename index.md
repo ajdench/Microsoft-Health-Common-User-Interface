@@ -20,6 +20,7 @@
 - [ADR: EHR UI Stack Baseline](wiki/companion-web-app-stack/ehr-ui-stack-adr.md) — chosen baseline stack, first prototype scope, and CUI-informed consultation capture assessment
 - [Prototype Vertical Slice Spec](wiki/companion-web-app-stack/prototype-vertical-slice-spec.md) — buildable first-slice specification for consultation capture, patient context, offline drafts, alerts, medication review, and visible table state
 - [EHR Prototype Spacing Governance](wiki/companion-web-app-stack/ehr-prototype-spacing-governance.md) — diagnosis and governance approach for spacing, density, design tokens, and visual review tooling
+- [DESIGN.md UI Standard](wiki/companion-web-app-stack/design-md-ui-standard.md) — app-local agent-readable UI standard for the EHR prototype
 
 ## Prototypes
 - [EHR PWA Prototype](prototypes/ehr-pwa/README.md) — React/Vite offline-first EHR vertical slice with Dexie draft persistence and Playwright offline recovery test
@@ -96,6 +97,7 @@
 - [Patient Banner note](wiki/source-notes/design-guidance-patient-banner.md) — source-focused note for the banner guidance
 - [Medication Line note](wiki/source-notes/design-guidance-medication-line.md) — source-focused note for medication rendering rules
 - [Search and Prescribe note](wiki/source-notes/design-guidance-search-and-prescribe.md) — source-focused note for prescribing interaction guidance
+- [DESIGN.md format note](wiki/source-notes/design-md-format-specification.md) — source note for the modern agent-readable design-system format used by the prototype
 - [Decision Support exploration note](wiki/source-notes/design-guidance-exploration-decision-support.md) — source-focused note for alerting/DSS exploration
 - [Filtering Sorting and Grouping note](wiki/source-notes/design-guidance-filtering-sorting-and-grouping.md) — source-focused note for dense-data state handling
 

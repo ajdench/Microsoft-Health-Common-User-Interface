@@ -13,6 +13,7 @@ offline-first, and UI-library research.
 - [ADR: EHR UI stack baseline](ehr-ui-stack-adr.md)
 - [Prototype vertical slice spec](prototype-vertical-slice-spec.md)
 - [EHR prototype spacing governance](ehr-prototype-spacing-governance.md)
+- [DESIGN.md UI standard for the EHR prototype](design-md-ui-standard.md)
 
 ## Boundary
 Use this area for:
