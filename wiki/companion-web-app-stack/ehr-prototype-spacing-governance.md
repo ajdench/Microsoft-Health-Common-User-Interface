@@ -278,6 +278,12 @@ components focused on clinical content. Medication, alert, and mobile result
 cards now use shadcn `CardAction` for status chips and `CardDescription` for
 secondary context instead of ad hoc grid header classes.
 
+The fourth pass reconciled persistent chrome status groups. Patient status
+flags and offline/sync badges now share `ClinicalStatusGroup` around
+shadcn-backed `ClinicalStatusBadge`. The old `.status-flag`, `.state-chip`,
+`.priority-chip`, `.code-chip`, `.sync-items`, and raw-button fallback CSS was
+removed because it no longer represented live component contracts.
+
 ## Recommended governance model
 Use a three-layer model:
 

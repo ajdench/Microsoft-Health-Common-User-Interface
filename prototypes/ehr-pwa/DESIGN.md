@@ -232,10 +232,13 @@ unless they are semantically chips or status flags.
 
 ## Components
 Patient banner: always shows the patient name, demographics, identifier, status
-flags, and draft indicator when relevant. Do not hide it behind navigation.
+flags, and draft indicator when relevant. Status flags use
+`ClinicalStatusGroup` plus shadcn-backed `ClinicalStatusBadge`; do not restore
+standalone legacy chip classes. Do not hide the banner behind navigation.
 
 Sync strip: stays with the app chrome and uses chips for local save, pending
-sync, recovered draft, offline, and sync-failure states.
+sync, recovered draft, offline, and sync-failure states. Its state chips use the
+same `ClinicalStatusGroup`/`ClinicalStatusBadge` pattern as the patient banner.
 
 Cards and panels: compose shadcn `Card` with quiet white surfaces, stable
 borders/rings, compact `CardHeader`/`CardContent` anatomy, and explicit body

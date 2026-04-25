@@ -109,44 +109,12 @@ textarea {
   font: inherit;
 }
 
-button:not([data-slot]) {
-  border: 1px solid var(--line-strong);
-  border-radius: var(--radius-s);
-  background: var(--surface);
-  color: var(--text);
-  cursor: pointer;
-  min-height: 2.25rem;
-  padding: var(--space-button-y) var(--space-button-x);
-}
-
-button:not([data-slot]):hover {
-  border-color: var(--clinical-accent);
-}
-
 button:not([data-slot]):focus-visible,
 textarea:focus-visible,
 input:focus-visible,
 a:focus-visible {
   outline: none;
   box-shadow: var(--focus-ring);
-}
-
-button:not([data-slot]).primary {
-  background: var(--clinical-accent);
-  border-color: var(--clinical-accent);
-  color: white;
-}
-
-button:not([data-slot]).danger {
-  background: var(--critical-soft);
-  border-color: #ee9f9a;
-  color: #7d1d16;
-}
-
-.compact-button {
-  min-height: 2rem;
-  padding: var(--space-xs) var(--space-m);
-  font-size: 0.9rem;
 }
 
 .app-shell {
@@ -195,51 +163,11 @@ button:not([data-slot]).danger {
   font-size: 0.93rem;
 }
 
-.status-flags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-m);
-}
-
-.status-flag,
-.state-chip,
-.priority-chip,
-.code-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-chip-gap);
-  width: fit-content;
-  border-radius: 999px;
-  border: 1px solid transparent;
-  font-size: 0.78rem;
-  font-weight: 700;
-  line-height: 1.1;
-  padding: var(--space-chip-y) var(--space-chip-x);
-}
-
-.status-flag {
-  background: #eef6ff;
-  color: #14314f;
-}
-
-.status-flag.critical,
-.priority-critical {
-  background: var(--critical-soft);
-  border-color: #ee9f9a;
-  color: #7d1d16;
-}
-
 .patient-actions {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
   gap: var(--space-m);
-}
-
-.patient-actions button {
-  border-color: rgba(255, 255, 255, 0.5);
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
 }
 
 .sync-strip {
@@ -254,35 +182,11 @@ button:not([data-slot]).danger {
   box-shadow: 0 2px 8px rgba(27, 31, 36, 0.06);
 }
 
-.sync-items {
+.clinical-status-group {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-m);
   align-items: center;
-}
-
-.state-chip {
-  background: var(--surface-subtle);
-  border-color: var(--line);
-  color: var(--clinical-muted);
-}
-
-.state-chip.good {
-  background: var(--success-soft);
-  border-color: #a7d8bd;
-  color: var(--success);
-}
-
-.state-chip.warn {
-  background: var(--warning-soft);
-  border-color: #e8c06d;
-  color: var(--warning);
-}
-
-.state-chip.bad {
-  background: var(--critical-soft);
-  border-color: #ee9f9a;
-  color: var(--critical);
 }
 
 .workspace-grid {
@@ -613,11 +517,6 @@ button:not([data-slot]).danger {
   list-style: none;
 }
 
-.code-chip {
-  border-color: var(--line);
-  background: var(--surface-subtle);
-}
-
 .panel-tabs {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -690,22 +589,6 @@ button:not([data-slot]).danger {
 .dose-value {
   font-weight: 780;
   color: #14314f;
-}
-
-.priority-chip {
-  text-transform: capitalize;
-}
-
-.priority-high {
-  background: var(--warning-soft);
-  border-color: #e8c06d;
-  color: var(--warning);
-}
-
-.priority-routine {
-  background: var(--surface-subtle);
-  border-color: var(--line);
-  color: var(--clinical-muted);
 }
 
 .filter-summary {

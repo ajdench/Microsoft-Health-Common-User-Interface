@@ -91,6 +91,11 @@ right-pane heading, action, divider, and body rhythm. The domain cards now use
 native shadcn `CardAction` and `CardDescription` slots for status and secondary
 facts rather than local one-off grid header classes.
 
+Persistent chrome status now follows the same rule: patient flags and
+offline/sync state use `ClinicalStatusGroup` around the shadcn-backed
+`ClinicalStatusBadge`, and the patient switch action uses a native shadcn button
+variant instead of custom per-button color overrides.
+
 Dexie over IndexedDB is the default local store because it is pragmatic for
 structured browser data. OPFS is the right companion for large files, exports,
 attachments, local database files, or other file-like state. Cache API and

@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button'
 import type { ConsultationDraft, PersistenceState } from '../types'
+import { ClinicalStatusGroup } from './ClinicalStatusGroup'
 import { ClinicalStatusBadge } from './ClinicalStatusBadge'
 
 type OfflineSyncStatusProps = {
@@ -13,13 +14,13 @@ export function OfflineSyncStatus({ state, draft, onSimulateFailure }: OfflineSy
 
   return (
     <section className="sync-strip" aria-label="Offline and sync state">
-      <div className="sync-items">
+      <ClinicalStatusGroup label="Offline and sync status">
         <ClinicalStatusBadge tone={state.isOnline ? 'good' : 'warn'}>{state.isOnline ? 'Online' : 'Offline'}</ClinicalStatusBadge>
         <ClinicalStatusBadge tone={stateTone}>Draft state: {formatDraftState(draft.state)}</ClinicalStatusBadge>
         {state.recovered ? <ClinicalStatusBadge tone="warn">Recovered local draft</ClinicalStatusBadge> : null}
         {draft.lastSavedLocalAt ? <ClinicalStatusBadge>Local save {formatTime(draft.lastSavedLocalAt)}</ClinicalStatusBadge> : null}
         {state.storageError ? <ClinicalStatusBadge tone="bad">Storage error: {state.storageError}</ClinicalStatusBadge> : null}
-      </div>
+      </ClinicalStatusGroup>
       <Button variant="outline" size="sm" type="button" onClick={onSimulateFailure} aria-label="Simulate sync failure">
         Simulate failure
       </Button>
