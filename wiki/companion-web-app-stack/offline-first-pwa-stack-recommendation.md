@@ -200,8 +200,8 @@ For a first serious implementation:
 | Build | Vite |
 | Routing | TanStack Router |
 | App-shell PWA | Workbox through `vite-plugin-pwa`, custom strategy |
-| UI primitives | React Aria Components or Base UI; Radix/shadcn acceptable for prototype parity with existing wiki notes |
-| Styling | CSS variables/design tokens, with Tailwind only as a utility layer |
+| UI primitives | Native shadcn/ui source components on Radix for the current prototype; React Aria or Base UI remain alternatives for later comparison |
+| Styling | Tailwind CSS v4, shadcn theme variables, and clinical design tokens |
 | Tables | TanStack Table plus app-owned clinical state summary components |
 | Local store | Dexie on IndexedDB first; OPFS for files and large data |
 | Local SQL option | PGlite or SQLite WASM on OPFS when relational local querying is justified |
@@ -253,4 +253,3 @@ but it should not own the clinical component contract.
 - [Fluent UI Web repository](https://github.com/microsoft/fluentui)
 - [React Aria accessibility notes](https://react-aria.adobe.com/quality#accessibility)
 - [Base UI overview](https://base-ui.com/)
-

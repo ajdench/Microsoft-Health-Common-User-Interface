@@ -2,6 +2,9 @@ import { Navigate, Outlet, createRootRoute, createRoute, createRouter } from '@t
 import { RouterProvider } from '@tanstack/react-router'
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import './styles.css'
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
+import { Button } from '@/components/ui/button'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { AlertPanel } from './components/AlertPanel'
 import { ClinicalDataTable } from './components/ClinicalDataTable'
 import { ConsultationCaptureWorkspace } from './components/ConsultationCaptureWorkspace'
@@ -162,15 +165,15 @@ function ConsultationRoute() {
 
       <main className="workspace-main">
         {switchWarning ? (
-          <section className="clinical-warning" role="alert">
+          <Alert className="clinical-warning border-[#e8c06d] bg-[var(--warning-soft)] text-[#593600]">
             <div>
-              <strong>Patient switch paused.</strong>
-              <span> Save, sign, or deliberately discard this local draft before changing patient context.</span>
+              <AlertTitle>Patient switch paused.</AlertTitle>
+              <AlertDescription className="text-[#593600]">Save, sign, or deliberately discard this local draft before changing patient context.</AlertDescription>
             </div>
-            <button type="button" onClick={() => setSwitchWarning(false)}>
+            <Button variant="outline" type="button" onClick={() => setSwitchWarning(false)}>
               Stay with current patient
-            </button>
-          </section>
+            </Button>
+          </Alert>
         ) : null}
 
         <section className="workspace-grid" aria-label="Consultation workspace">
@@ -187,40 +190,23 @@ function ConsultationRoute() {
           />
 
           <aside className="reference-panel" aria-label="Clinical reference panel">
-            <div className="panel-tabs" role="tablist" aria-label="Reference panel">
-              <button
-                type="button"
-                role="tab"
-                aria-selected={activePanel === 'medications'}
-                onClick={() => setPanel('medications')}
-              >
-                Medications
-              </button>
-              <button
-                type="button"
-                role="tab"
-                aria-selected={activePanel === 'alerts'}
-                onClick={() => setPanel('alerts')}
-              >
-                Alerts
-              </button>
-              <button
-                type="button"
-                role="tab"
-                aria-selected={activePanel === 'results'}
-                onClick={() => setPanel('results')}
-              >
-                Results
-              </button>
-            </div>
+            <Tabs value={activePanel} onValueChange={(value) => setPanel(value as ConsultationPanel)}>
+              <TabsList className="panel-tabs" aria-label="Reference panel">
+                <TabsTrigger value="medications">Medications</TabsTrigger>
+                <TabsTrigger value="alerts">Alerts</TabsTrigger>
+                <TabsTrigger value="results">Results</TabsTrigger>
+              </TabsList>
 
-            {activePanel === 'medications' ? <MedicationReviewPanel medications={record.medications} /> : null}
-            {activePanel === 'alerts' ? (
-              <AlertPanel alerts={record.alerts} signingAttempted={signingAttempted} syncFailed={draft.state === 'syncFailed'} />
-            ) : null}
-            {activePanel === 'results' ? (
-              <ClinicalDataTable rows={fakeReferenceRows} filter={search.filter} onToggleAbnormal={toggleAbnormalFilter} />
-            ) : null}
+              <TabsContent value="medications">
+                <MedicationReviewPanel medications={record.medications} />
+              </TabsContent>
+              <TabsContent value="alerts">
+                <AlertPanel alerts={record.alerts} signingAttempted={signingAttempted} syncFailed={draft.state === 'syncFailed'} />
+              </TabsContent>
+              <TabsContent value="results">
+                <ClinicalDataTable rows={fakeReferenceRows} filter={search.filter} onToggleAbnormal={toggleAbnormalFilter} />
+              </TabsContent>
+            </Tabs>
           </aside>
         </section>
       </main>

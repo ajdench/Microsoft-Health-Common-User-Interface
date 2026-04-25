@@ -46,9 +46,9 @@ Use the ADR baseline:
 | Build | Vite |
 | Router | TanStack Router |
 | Tables | TanStack Table |
-| UI primitives | React Aria Components or Base UI |
-| Prototype fallback | Radix + shadcn/ui only behind app-owned wrappers |
-| Styling | CSS custom properties and clinical design tokens |
+| UI primitives | Native shadcn/ui source components on Radix |
+| Clinical wrappers | App-owned EHR components over shadcn primitives |
+| Styling | Tailwind CSS v4, shadcn theme variables, and clinical design tokens |
 | Forms | React Hook Form + Zod |
 | Local store | Dexie over IndexedDB |
 | PWA shell | Workbox through `vite-plugin-pwa` |
@@ -367,4 +367,3 @@ visibility behavior. Color alone is not sufficient for clinical state.
 - [Medication line checklist](../entities/medication-line-checklist.md)
 - [Clinical table state checklist](../entities/clinical-table-state-checklist.md)
 - [Alerting checklist](../entities/alerting-checklist.md)
-

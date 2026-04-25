@@ -1,4 +1,6 @@
+import { Button } from '@/components/ui/button'
 import type { ConsultationDraft, PersistenceState } from '../types'
+import { ClinicalStatusBadge } from './ClinicalStatusBadge'
 
 type OfflineSyncStatusProps = {
   state: PersistenceState
@@ -7,20 +9,20 @@ type OfflineSyncStatusProps = {
 }
 
 export function OfflineSyncStatus({ state, draft, onSimulateFailure }: OfflineSyncStatusProps) {
-  const stateClass = draft.state === 'syncFailed' || state.storageError ? 'bad' : draft.state === 'pendingSync' || state.recovered ? 'warn' : 'good'
+  const stateTone = draft.state === 'syncFailed' || state.storageError ? 'bad' : draft.state === 'pendingSync' || state.recovered ? 'warn' : 'good'
 
   return (
     <section className="sync-strip" aria-label="Offline and sync state">
       <div className="sync-items">
-        <span className={`state-chip ${state.isOnline ? 'good' : 'warn'}`}>{state.isOnline ? 'Online' : 'Offline'}</span>
-        <span className={`state-chip ${stateClass}`}>Draft state: {formatDraftState(draft.state)}</span>
-        {state.recovered ? <span className="state-chip warn">Recovered local draft</span> : null}
-        {draft.lastSavedLocalAt ? <span className="state-chip">Local save {formatTime(draft.lastSavedLocalAt)}</span> : null}
-        {state.storageError ? <span className="state-chip bad">Storage error: {state.storageError}</span> : null}
+        <ClinicalStatusBadge tone={state.isOnline ? 'good' : 'warn'}>{state.isOnline ? 'Online' : 'Offline'}</ClinicalStatusBadge>
+        <ClinicalStatusBadge tone={stateTone}>Draft state: {formatDraftState(draft.state)}</ClinicalStatusBadge>
+        {state.recovered ? <ClinicalStatusBadge tone="warn">Recovered local draft</ClinicalStatusBadge> : null}
+        {draft.lastSavedLocalAt ? <ClinicalStatusBadge>Local save {formatTime(draft.lastSavedLocalAt)}</ClinicalStatusBadge> : null}
+        {state.storageError ? <ClinicalStatusBadge tone="bad">Storage error: {state.storageError}</ClinicalStatusBadge> : null}
       </div>
-      <button className="compact-button" type="button" onClick={onSimulateFailure} aria-label="Simulate sync failure">
+      <Button variant="outline" size="sm" type="button" onClick={onSimulateFailure} aria-label="Simulate sync failure">
         Simulate failure
-      </button>
+      </Button>
     </section>
   )
 }

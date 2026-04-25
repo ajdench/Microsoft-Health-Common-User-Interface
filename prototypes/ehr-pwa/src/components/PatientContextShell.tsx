@@ -1,4 +1,6 @@
+import { Button } from '@/components/ui/button'
 import type { Patient } from '../types'
+import { ClinicalStatusBadge } from './ClinicalStatusBadge'
 
 type PatientContextShellProps = {
   patient: Patient
@@ -17,19 +19,18 @@ export function PatientContextShell({ patient, hasDirtyDraft, onSwitchPatient }:
         <span className="patient-detail">{patient.identifier}</span>
         <span className="status-flags" aria-label="Patient status flags">
           {patient.statusFlags.map((flag) => (
-            <span className={`status-flag ${flag.severity}`} key={flag.label}>
+            <ClinicalStatusBadge tone={flag.severity === 'critical' ? 'critical' : 'neutral'} key={flag.label}>
               {flag.severity === 'critical' ? 'Critical' : 'Status'}: {flag.label}
-            </span>
+            </ClinicalStatusBadge>
           ))}
         </span>
       </div>
       <div className="patient-actions">
         {hasDirtyDraft ? <span className="patient-detail">Local draft active</span> : null}
-        <button type="button" onClick={onSwitchPatient}>
+        <Button className="border-white/50 bg-white/10 text-white hover:bg-white/20" variant="outline" type="button" onClick={onSwitchPatient}>
           Switch patient
-        </button>
+        </Button>
       </div>
     </header>
   )
 }
-

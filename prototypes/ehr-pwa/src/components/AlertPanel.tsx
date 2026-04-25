@@ -1,4 +1,7 @@
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import type { ClinicalAlert } from '../types'
+import { ClinicalStatusBadge } from './ClinicalStatusBadge'
 
 type AlertPanelProps = {
   alerts: ClinicalAlert[]
@@ -18,20 +21,24 @@ export function AlertPanel({ alerts, signingAttempted, syncFailed }: AlertPanelP
         </div>
       </header>
       {signingAttempted && syncFailed ? (
-        <section className="clinical-warning" role="alert">
-          <strong>Sync failure unresolved.</strong>
-          <span>Finalization is blocked until local changes can be reconciled.</span>
-        </section>
+        <Alert className="border-[#e8c06d] bg-[var(--warning-soft)] text-[#593600]">
+          <AlertTitle>Sync failure unresolved.</AlertTitle>
+          <AlertDescription className="text-[#593600]">Finalization is blocked until local changes can be reconciled.</AlertDescription>
+        </Alert>
       ) : null}
       <div className="alert-stack">
         {sortedAlerts.map((alert) => (
-          <article className={`alert-card ${alert.priority}`} key={alert.id}>
-            <span className={`priority-chip priority-${alert.priority}`}>{alert.priority}</span>
-            <h3>{alert.title}</h3>
-            <p>{alert.rationale}</p>
-            {alert.relatedAction ? <p className="meta">{alert.relatedAction}</p> : null}
-            <span className={`state-chip ${alert.unresolved ? 'warn' : 'good'}`}>{alert.unresolved ? 'Unresolved' : 'Reviewed'}</span>
-          </article>
+          <Card className={alert.priority === 'critical' ? 'border-[#ee9f9a] bg-[var(--critical-soft)]' : undefined} key={alert.id} size="sm">
+            <CardHeader>
+              <CardTitle>{alert.title}</CardTitle>
+              <ClinicalStatusBadge tone={alert.priority}>{alert.priority}</ClinicalStatusBadge>
+            </CardHeader>
+            <CardContent className="grid gap-2">
+              <p>{alert.rationale}</p>
+              {alert.relatedAction ? <p className="meta">{alert.relatedAction}</p> : null}
+              <ClinicalStatusBadge tone={alert.unresolved ? 'warn' : 'good'}>{alert.unresolved ? 'Unresolved' : 'Reviewed'}</ClinicalStatusBadge>
+            </CardContent>
+          </Card>
         ))}
       </div>
     </section>
@@ -48,4 +55,3 @@ function priorityRank(priority: ClinicalAlert['priority']) {
       return 2
   }
 }
-

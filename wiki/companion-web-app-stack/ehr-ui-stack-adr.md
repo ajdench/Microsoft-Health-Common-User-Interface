@@ -1,7 +1,7 @@
 # ADR: EHR UI Stack Baseline
 
 ## Status
-Proposed.
+Accepted for the current prototype.
 
 This is a companion implementation decision record. It is informed by the
 primary Health CUI wiki, but it is not recovered historical Health CUI source
@@ -25,6 +25,12 @@ create a strong constraint set:
 
 This ADR chooses a practical baseline stack for first implementation work.
 
+2026-04-25 implementation update: the EHR PWA prototype has moved from custom
+CSS and React Aria-led primitives to native shadcn/ui source components on
+Radix, Tailwind CSS v4, and app-owned clinical wrappers. The earlier React
+Aria/Base UI recommendation remains a valid general option, but it is no longer
+the active prototype baseline.
+
 ## Decision
 Use the following default stack for the clinician-facing EHR web app:
 
@@ -35,10 +41,10 @@ Use the following default stack for the clinician-facing EHR web app:
 | Build tool | Vite |
 | Routing | TanStack Router |
 | Tables | TanStack Table |
-| UI primitives | React Aria Components or Base UI |
-| Rapid prototype option | Radix + shadcn/ui, wrapped by application-owned clinical components |
+| UI primitives | Native shadcn/ui source components on Radix |
+| Clinical wrappers | Application-owned components over shadcn primitives |
 | Microsoft-aligned option | Fluent UI React v9 where Edge/Microsoft 365 familiarity is valuable |
-| Styling | CSS custom properties and design tokens; Tailwind only as a utility layer if useful |
+| Styling | Tailwind CSS v4, shadcn theme variables, and clinical CSS custom properties |
 | Forms | React Hook Form plus Zod |
 | App-shell PWA | Workbox through `vite-plugin-pwa`, with an explicit caching strategy |
 | Local structured data | Dexie over IndexedDB |
@@ -66,10 +72,12 @@ under application control. Paid grids such as AG Grid Enterprise or MUI X should
 be evaluated only after the prototype exposes real needs for column tooling,
 virtualization, export, or large-scale keyboard workflows.
 
-React Aria Components or Base UI are the preferred primitive layer because they
-are accessible and comparatively unstyled. Radix plus shadcn/ui remains useful
-for rapid composition and matches existing wiki mappings, but it must sit below
-domain-owned components.
+The current prototype uses native shadcn/ui source components because they are
+open source, copied into the project, inspectable, and composable. This matches
+the need for an AI-readable and locally governed clinical UI layer better than
+a closed or black-box component package. Radix owns much of the interaction
+mechanics, while application-owned clinical components retain responsibility
+for patient safety semantics, density, state visibility, and wording.
 
 Dexie over IndexedDB is the default local store because it is pragmatic for
 structured browser data. OPFS is the right companion for large files, exports,
@@ -100,8 +108,9 @@ surfaces:
 | `OfflineSyncStatus` | Makes local, pending, failed, stale, and reconciled states visible where they affect interpretation. |
 | `ConsultationCaptureWorkspace` | Captures notes, codes, observations, orders, plans, and follow-up actions while preserving patient context and draft/sync state. |
 
-These components may use React Aria, Base UI, Radix, shadcn/ui, Fluent UI, or
-other primitives internally. The clinical contract belongs to the application.
+These components now use shadcn/ui primitives internally where possible. The
+clinical contract belongs to the application, not to shadcn, Radix, TanStack, or
+any generic UI primitive.
 
 ## First prototype scope
 Build one vertical slice before choosing paid infrastructure:
@@ -203,4 +212,3 @@ Tradeoffs:
 - [Health CUI to page templates](../mappings/health-cui-to-page-templates.md)
 - [Health CUI to component contracts](../mappings/health-cui-to-component-contracts.md)
 - [Health CUI to governance rules](../mappings/health-cui-to-governance-rules.md)
-

@@ -620,3 +620,9 @@
 - Inputs used: official shadcn MCP documentation at `https://ui.shadcn.com/docs/mcp`, local `~/.codex/config.toml`, and `npx shadcn@latest mcp --help`.
 - Outputs created: updated `~/.codex/config.toml` with `[mcp_servers.shadcn]` using `command = "npx"` and `args = ["shadcn@latest", "mcp"]`; updated `log.md`.
 - Unresolved issues: Codex must be restarted before the new MCP server is loaded in this session.
+
+## 2026-04-25 22:05:23 BST — Replatformed the EHR prototype UI foundation onto native shadcn/ui
+- Action performed: initialized shadcn/ui for the Vite EHR PWA prototype using Tailwind CSS v4, Radix-backed `radix-nova` style components, and the `@/*` import alias; added the first shadcn primitive set; migrated the visible consultation, sync, coded-entry, alert, medication, results, and reference-tab surfaces to shadcn primitives while retaining application-owned clinical wrappers and layout contracts.
+- Inputs used: official shadcn Vite installation documentation, shadcn MCP registry tools, local prototype source under `prototypes/ehr-pwa/src`, existing Playwright layout contracts, and the live Vite app at `http://127.0.0.1:5174/patients/p-1001/consultation?panel=results`.
+- Outputs created: updated `prototypes/ehr-pwa/package.json`, `package-lock.json`, `components.json`, `vite.config.ts`, `tsconfig.json`, `tsconfig.app.json`, `eslint.config.js`, `src/styles.css`, shadcn UI files under `src/components/ui/`, `src/lib/utils.ts`, EHR component files under `src/components/`, `prototypes/ehr-pwa/DESIGN.md`, companion stack wiki pages, and `log.md`.
+- Unresolved issues: this is a first-pass replatform. Some legacy CSS class contracts remain while the domain components are progressively simplified around shadcn composition.

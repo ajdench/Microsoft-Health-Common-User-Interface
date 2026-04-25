@@ -1,3 +1,6 @@
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import {
   flexRender,
   getCoreRowModel,
@@ -8,6 +11,7 @@ import {
 } from '@tanstack/react-table'
 import { useMemo, useState } from 'react'
 import type { ReferenceRow } from '../types'
+import { ClinicalStatusBadge } from './ClinicalStatusBadge'
 
 type ClinicalDataTableProps = {
   rows: ReferenceRow[]
@@ -26,7 +30,7 @@ export function ClinicalDataTable({ rows, filter, onToggleAbnormal }: ClinicalDa
       {
         accessorKey: 'status',
         header: 'Status',
-        cell: ({ row }) => <span className={`state-chip ${row.original.status === 'abnormal' ? 'warn' : 'good'}`}>{row.original.status}</span>,
+        cell: ({ row }) => <ClinicalStatusBadge tone={row.original.status === 'abnormal' ? 'warn' : 'good'}>{row.original.status}</ClinicalStatusBadge>,
       },
     ],
     [],
@@ -49,9 +53,9 @@ export function ClinicalDataTable({ rows, filter, onToggleAbnormal }: ClinicalDa
           <h2>Recent results</h2>
           <p>Filter, sort, result count, and reset remain attached to the data.</p>
         </div>
-        <button type="button" onClick={onToggleAbnormal}>
+        <Button variant="outline" type="button" onClick={onToggleAbnormal}>
           {filter === 'abnormal' ? 'Reset filter' : 'Show abnormal only'}
-        </button>
+        </Button>
       </header>
 
       <div className="filter-summary" aria-live="polite">
@@ -60,21 +64,23 @@ export function ClinicalDataTable({ rows, filter, onToggleAbnormal }: ClinicalDa
           {filter === 'abnormal' ? ' · active filter: abnormal only' : ' · no active filter'}
         </span>
         {filter === 'abnormal' ? (
-          <button type="button" onClick={onToggleAbnormal}>
+          <Button variant="outline" size="sm" type="button" onClick={onToggleAbnormal}>
             Clear filter
-          </button>
+          </Button>
         ) : null}
       </div>
 
-      <table className="clinical-table">
-        <thead>
+      <Table className="clinical-table">
+        <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
-            <tr key={headerGroup.id}>
+            <TableRow key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
-                <th key={header.id} scope="col" aria-sort={getAriaSort(header.column.getIsSorted())}>
+                <TableHead key={header.id} scope="col" aria-sort={getAriaSort(header.column.getIsSorted())}>
                   {header.column.getCanSort() ? (
-                    <button
+                    <Button
                       className="sort-button"
+                      variant="ghost"
+                      size="sm"
                       type="button"
                       onClick={header.column.getToggleSortingHandler()}
                       aria-label={`Sort by ${String(header.column.columnDef.header)}${getSortLabel(header.column.getIsSorted())}`}
@@ -85,43 +91,43 @@ export function ClinicalDataTable({ rows, filter, onToggleAbnormal }: ClinicalDa
                           {header.column.getIsSorted() === 'asc' ? 'asc' : 'desc'}
                         </span>
                       ) : null}
-                    </button>
+                    </Button>
                   ) : (
                     flexRender(header.column.columnDef.header, header.getContext())
                   )}
-                </th>
+                </TableHead>
               ))}
-            </tr>
+            </TableRow>
           ))}
-        </thead>
-        <tbody>
+        </TableHeader>
+        <TableBody>
           {table.getRowModel().rows.map((row) => (
-            <tr key={row.id}>
+            <TableRow key={row.id}>
               {row.getVisibleCells().map((cell) => (
-                <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
+                <TableCell key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</TableCell>
               ))}
-            </tr>
+            </TableRow>
           ))}
-        </tbody>
-      </table>
+        </TableBody>
+      </Table>
 
       <div className="clinical-result-list" aria-label="Clinical results list">
         {table.getRowModel().rows.map((row) => (
-          <article className="result-card" key={row.id}>
-            <header>
-              <div>
-                <h3>{row.original.label}</h3>
-                <p>{row.original.date}</p>
-              </div>
-              <span className={`state-chip ${row.original.status === 'abnormal' ? 'warn' : 'good'}`}>{row.original.status}</span>
-            </header>
-            <dl>
+          <Card key={row.id} size="sm">
+            <CardHeader className="grid-cols-[1fr_auto]">
+              <CardTitle>{row.original.label}</CardTitle>
+              <ClinicalStatusBadge tone={row.original.status === 'abnormal' ? 'warn' : 'good'}>{row.original.status}</ClinicalStatusBadge>
+              <p className="meta">{row.original.date}</p>
+            </CardHeader>
+            <CardContent>
+              <dl>
               <div>
                 <dt>Value</dt>
                 <dd>{row.original.value}</dd>
               </div>
-            </dl>
-          </article>
+              </dl>
+            </CardContent>
+          </Card>
         ))}
       </div>
     </section>

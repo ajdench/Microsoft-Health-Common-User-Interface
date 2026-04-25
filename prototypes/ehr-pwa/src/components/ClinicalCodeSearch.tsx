@@ -1,16 +1,10 @@
-import {
-  Button as AriaButton,
-  ComboBox,
-  Group,
-  Input,
-  Label,
-  ListBox,
-  ListBoxItem,
-  Popover,
-  type Key,
-} from 'react-aria-components'
 import { useMemo, useState } from 'react'
+import { Button } from '@/components/ui/button'
+import { Command, CommandEmpty, CommandGroup, CommandItem, CommandList } from '@/components/ui/command'
+import { Input } from '@/components/ui/input'
+import { Popover, PopoverAnchor, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import type { ConsultationCode } from '../types'
+import { ClinicalStatusBadge } from './ClinicalStatusBadge'
 
 export type CodeOption = Omit<ConsultationCode, 'addedAt' | 'sectionId'>
 
@@ -49,7 +43,7 @@ type ClinicalCodeSearchProps = {
 
 export function ClinicalCodeSearch({ sectionId, sectionLabel, onAddCode }: ClinicalCodeSearchProps) {
   const [query, setQuery] = useState('')
-  const [selectedKey, setSelectedKey] = useState<Key | null>(null)
+  const [open, setOpen] = useState(false)
   const filteredResults = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase()
 
@@ -65,48 +59,63 @@ export function ClinicalCodeSearch({ sectionId, sectionLabel, onAddCode }: Clini
     )
   }, [query])
 
-  return (
-    <ComboBox<CodeOption>
-      aria-label={`Search coded entries for ${sectionLabel}`}
-      className="clinical-combobox"
-      inputValue={query}
-      items={filteredResults}
-      menuTrigger="focus"
-      onInputChange={setQuery}
-      onSelectionChange={(key) => {
-        const selectedCode = codeResults.find((result) => result.id === key)
+  function selectCode(code: CodeOption) {
+    onAddCode(code, sectionId)
+    setQuery('')
+    setOpen(false)
+  }
 
-        if (selectedCode) {
-          setSelectedKey(key)
-          onAddCode(selectedCode, sectionId)
-          setQuery('')
-        }
-      }}
-      selectedKey={selectedKey}
-    >
-      <Label>Add coded content</Label>
-      <Group className="clinical-combobox-group">
-        <Input placeholder={`Search ${sectionLabel.toLowerCase()} concepts`} />
-        <AriaButton className="compact-button" aria-label={`Show coded entry options for ${sectionLabel}`}>
-          Codes
-        </AriaButton>
-      </Group>
-      <Popover className="clinical-combobox-popover">
-        <ListBox<CodeOption> className="clinical-combobox-list">
-          {(result) => (
-            <ListBoxItem className="code-result" id={result.id} textValue={`${result.display} ${result.code}`}>
-              <strong>
-                {result.display} ({result.code})
-              </strong>
-              <span>{result.category}</span>
-              <span className={`state-chip ${result.priority === 'ambiguous' ? 'warn' : result.priority === 'prioritised' ? 'good' : ''}`}>
-                {result.priority}
-              </span>
-              <span className="meta">{result.matchReason}</span>
-            </ListBoxItem>
-          )}
-        </ListBox>
-      </Popover>
-    </ComboBox>
+  return (
+    <Popover open={open} onOpenChange={setOpen}>
+      <div className="clinical-combobox">
+        <label htmlFor={`${sectionId}-code-search`}>Add coded content</label>
+        <PopoverAnchor asChild>
+          <div className="clinical-combobox-group">
+            <Input
+              id={`${sectionId}-code-search`}
+              role="combobox"
+              aria-label={`Search coded entries for ${sectionLabel}`}
+              aria-expanded={open}
+              aria-controls={`${sectionId}-code-results`}
+              value={query}
+              onChange={(event) => {
+                setQuery(event.target.value)
+                setOpen(true)
+              }}
+              onFocus={() => setOpen(true)}
+              placeholder={`Search ${sectionLabel.toLowerCase()} concepts`}
+            />
+            <PopoverTrigger asChild>
+              <Button variant="outline" size="sm" type="button" aria-label={`Show coded entry options for ${sectionLabel}`}>
+                Codes
+              </Button>
+            </PopoverTrigger>
+          </div>
+        </PopoverAnchor>
+      </div>
+      <PopoverContent className="clinical-combobox-popover p-1" align="start" onOpenAutoFocus={(event) => event.preventDefault()}>
+        <Command shouldFilter={false}>
+          <CommandList id={`${sectionId}-code-results`} className="clinical-combobox-list">
+            <CommandEmpty>No matching coded entries.</CommandEmpty>
+            <CommandGroup>
+              {filteredResults.map((result) => (
+                <CommandItem className="code-result" key={result.id} value={`${result.display} ${result.code}`} onSelect={() => selectCode(result)}>
+                  <span>
+                    <strong>
+                      {result.display} ({result.code})
+                    </strong>
+                    <small>{result.category}</small>
+                    <ClinicalStatusBadge tone={result.priority === 'ambiguous' ? 'warn' : result.priority === 'prioritised' ? 'good' : 'neutral'}>
+                      {result.priority}
+                    </ClinicalStatusBadge>
+                    <small className="meta">{result.matchReason}</small>
+                  </span>
+                </CommandItem>
+              ))}
+            </CommandGroup>
+          </CommandList>
+        </Command>
+      </PopoverContent>
+    </Popover>
   )
 }
