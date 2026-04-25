@@ -12,6 +12,7 @@ offline-first, and UI-library research.
 - [Offline-first PWA stack recommendation](offline-first-pwa-stack-recommendation.md)
 - [ADR: EHR UI stack baseline](ehr-ui-stack-adr.md)
 - [Prototype vertical slice spec](prototype-vertical-slice-spec.md)
+- [EHR shadcn V2 prototype](ehr-shadcn-v2-prototype.md)
 - [EHR prototype spacing governance](ehr-prototype-spacing-governance.md)
 - [Inline clinical coding for consultations](inline-clinical-coding-for-consultations.md)
 - [DESIGN.md UI standard for the EHR prototype](design-md-ui-standard.md)

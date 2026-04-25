@@ -96,6 +96,11 @@ offline/sync state use `ClinicalStatusGroup` around the shadcn-backed
 `ClinicalStatusBadge`, and the patient switch action uses a native shadcn button
 variant instead of custom per-button color overrides.
 
+2026-04-25 V2 pivot: the first prototype remains useful as evidence, but the
+clean implementation target is now `prototypes/ehr-shadcn-pwa/`. V2 starts from
+native shadcn composition and app-owned clinical wrappers rather than continuing
+to migrate V1's legacy CSS and markup contracts.
+
 Dexie over IndexedDB is the default local store because it is pragmatic for
 structured browser data. OPFS is the right companion for large files, exports,
 attachments, local database files, or other file-like state. Cache API and

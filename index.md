@@ -25,6 +25,7 @@
 
 ## Prototypes
 - [EHR PWA Prototype](prototypes/ehr-pwa/README.md) — React/Vite offline-first EHR vertical slice with Dexie draft persistence and Playwright offline recovery test
+- [EHR shadcn PWA Prototype V2](prototypes/ehr-shadcn-pwa/README.md) — clean shadcn-native consultation capture prototype built from the V1 layout and clinical-contract lessons
 
 ## Concepts
 - [Design Guidance](wiki/concepts/design-guidance.md) — shape and scope of the historical guidance corpus
