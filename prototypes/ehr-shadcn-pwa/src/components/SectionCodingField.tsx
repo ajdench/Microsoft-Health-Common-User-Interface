@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
-import { Card, CardContent } from '@/components/ui/card'
+import { Card, CardAction, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/command'
+import { Empty, EmptyDescription } from '@/components/ui/empty'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { ClinicalBadge } from '@/components/ClinicalBadge'
 import { codeSuggestions } from '@/data/demo'
@@ -18,11 +19,13 @@ export function SectionCodingField({ entries, onAddCode, onRemoveCode }: Section
 
   return (
     <Card className="border-dashed bg-muted/30 shadow-none" size="sm">
-      <CardContent className="grid gap-3">
-        <div className="flex flex-wrap items-center justify-between gap-2">
-          <div className="text-sm font-medium">Coded content</div>
+      <CardHeader>
+        <CardTitle>Coded content</CardTitle>
+        <CardAction>
           <ClinicalBadge tone={entries.length > 0 ? 'good' : 'neutral'}>{entries.length} coded</ClinicalBadge>
-        </div>
+        </CardAction>
+      </CardHeader>
+      <CardContent className="grid gap-3">
         <Popover open={open} onOpenChange={setOpen}>
           <PopoverTrigger asChild>
             <Button variant="outline" size="sm" type="button" className="w-fit">
@@ -77,7 +80,9 @@ export function SectionCodingField({ entries, onAddCode, onRemoveCode }: Section
             ))}
           </ul>
         ) : (
-          <p className="text-sm text-muted-foreground">No codes added.</p>
+          <Empty className="min-h-0 items-start gap-0 rounded-lg border bg-background p-3 text-left">
+            <EmptyDescription>No codes added.</EmptyDescription>
+          </Empty>
         )}
       </CardContent>
     </Card>

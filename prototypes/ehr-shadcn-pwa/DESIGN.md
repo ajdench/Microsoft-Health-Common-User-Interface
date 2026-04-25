@@ -12,6 +12,9 @@ V2 exists because the first EHR PWA prototype proved the clinical contracts but
 also accumulated legacy CSS and migration scars. V2 starts from native
 shadcn/ui composition and app-owned clinical wrappers.
 
+V2 is now the clean shadcn-native design track. V1 remains useful evidence and
+comparison material, but new component decisions should be made here first.
+
 ## Principles
 - Patient identity and sync/local draft state are persistent clinical chrome.
 - Coded content belongs inside the relevant consultation section.
@@ -33,12 +36,38 @@ shadcn/ui composition and app-owned clinical wrappers.
 - `ActionRail`: validation state, follow-up task entry, and save/sign actions.
 - `ReferencePanel`: shadcn `Tabs` for medications, alerts, and results.
 
+## Native Primitive Policy
+The prototype keeps local shadcn source components available even when a
+primitive is not yet used in a visible surface. Components such as `Empty`,
+`ScrollArea`, and `Dialog` may be used in later passes without treating them as
+legacy dependencies.
+
+Current visible primitives include:
+
+- `Alert`
+- `Badge` through `ClinicalBadge`
+- `Button`
+- `Card`
+- `Command`
+- `Empty`
+- `Input`
+- `Popover`
+- `Separator`
+- `Table`
+- `Tabs`
+- `Textarea`
+
+App-owned wrappers should name clinical meaning; shadcn primitives should own
+interaction, slot anatomy, and visual consistency.
+
 ## Do's And Don'ts
 - Do compose shadcn primitives directly unless a clinical wrapper names a real
   product contract.
 - Do keep status chips as `ClinicalBadge` wrappers over shadcn `Badge`.
 - Do use full shadcn `CardHeader`/`CardTitle`/`CardDescription` composition for
   card-like headers instead of hand-styled header boxes.
+- Do use shadcn `Empty` for compact no-data states, including repeated
+  section-local states.
 - Do keep layout responsive with grid/flex utility classes and stable gaps.
 - Do add tests with the component contract as soon as a new surface is added.
 - Don't import V1 CSS class names or recreate V1's component-local spacing

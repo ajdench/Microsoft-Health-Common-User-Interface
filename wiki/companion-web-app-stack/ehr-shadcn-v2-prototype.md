@@ -66,6 +66,13 @@ transitive tooling dependencies, not V2 application imports.
 The consultation page header was also converted from a hand-styled header box to
 shadcn `Card`, `CardHeader`, `CardTitle`, and `CardDescription` composition.
 
+The section-local coded-content empty state now uses shadcn `Empty` instead of
+plain paragraph text. This keeps repeated no-data states on the same primitive
+family as the rest of the V2 surface.
+
+Unused local shadcn source components are intentionally retained. They are not
+legacy dependencies; they are available native primitives for upcoming passes.
+
 The prototype is available locally during development at:
 
 `http://127.0.0.1:5175/`

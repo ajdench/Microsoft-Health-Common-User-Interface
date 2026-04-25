@@ -666,3 +666,10 @@
 - Outputs created: updated `prototypes/ehr-shadcn-pwa/package.json`, `package-lock.json`, `src/App.tsx`, `DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
 - Verification: Ran `npm run check:spacing`, `npm run lint`, `npm run test`, `npm run build`, `npm run e2e`, and `npm audit` in `prototypes/ehr-shadcn-pwa`; all passed and audit reported 0 vulnerabilities. Reloaded the V2 browser view and confirmed patient chrome, sync state, consultation capture, and medication review still render.
 - Unresolved issues: V2 still contains copied but currently unused shadcn source files such as `Empty` and `ScrollArea`; keep or remove them based on whether the next UI pass needs those primitives.
+
+## 2026-04-25 23:22:12 BST — Updated V2 DESIGN.md as active shadcn-native contract
+- Action performed: clarified that V2 is the clean shadcn-native design track, documented the native primitive policy, kept unused local shadcn source primitives for future passes, and changed the section-local coded-content empty state to use shadcn `Empty`.
+- Inputs used: `prototypes/ehr-shadcn-pwa/DESIGN.md`, `SectionCodingField.tsx`, shadcn best-practice guidance, and the V2 companion wiki note.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
+- Verification: Ran `npm run check:spacing`, `npm run lint`, `npm run test`, `npm run build`, `npm run e2e`, and `npm audit` in `prototypes/ehr-shadcn-pwa`; all passed and audit reported 0 vulnerabilities. Reloaded `http://127.0.0.1:5175/` and confirmed patient chrome, coded content, empty-state copy, and medication review render.
+- Unresolved issues: none for this native tidy stage; next UI work can use retained shadcn primitives such as `ScrollArea`, `Dialog`, and `Empty` where the interaction calls for them.
