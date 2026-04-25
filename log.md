@@ -614,3 +614,9 @@
 - Inputs used: live prototype at `http://127.0.0.1:5174/patients/p-1001/consultation?panel=results`, `prototypes/ehr-pwa/src/App.tsx`, `prototypes/ehr-pwa/src/styles.css`, `prototypes/ehr-pwa/tests/e2e/offline-draft.spec.ts`, and spacing governance notes.
 - Outputs created: updated `prototypes/ehr-pwa/src/App.tsx`, `prototypes/ehr-pwa/src/styles.css`, `prototypes/ehr-pwa/tests/e2e/offline-draft.spec.ts`, `prototypes/ehr-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-prototype-spacing-governance.md`, and `log.md`.
 - Unresolved issues: none for the reported top-rail alignment; mobile remains a single-column layout, so the reference pane intentionally follows the consultation pane rather than sharing a rail.
+
+## 2026-04-25 21:48:18 BST — Added shadcn MCP server to Codex configuration
+- Action performed: added the shadcn MCP server block to the local Codex configuration so future Codex sessions can browse, search, and install shadcn registry items through MCP.
+- Inputs used: official shadcn MCP documentation at `https://ui.shadcn.com/docs/mcp`, local `~/.codex/config.toml`, and `npx shadcn@latest mcp --help`.
+- Outputs created: updated `~/.codex/config.toml` with `[mcp_servers.shadcn]` using `command = "npx"` and `args = ["shadcn@latest", "mcp"]`; updated `log.md`.
+- Unresolved issues: Codex must be restarted before the new MCP server is loaded in this session.
