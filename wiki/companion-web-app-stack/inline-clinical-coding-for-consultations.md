@@ -74,10 +74,11 @@ Codes should appear in the same section as the clinical thought:
 A floating "selected codes" tray can help review, but it should not be the only
 visible representation.
 
-### Support Section-Scoped Search
-The coding search should know the target context. The initial prototype uses an
-`Add to section` selector. Later versions should allow section-local search
-inside each section, with keyboard-first interaction.
+### Support Section-Local Search
+The coding search should live in the section it affects. A selector that asks
+the user to choose a remote target is too indirect for routine consultation
+capture. Each section should have its own coding affordance so the clinician
+adds structured content where the clinical meaning belongs.
 
 ### Preserve Narrative, But Avoid Narrative-Only Records
 Narrative should explain uncertainty, nuance, exceptions, and patient-specific
@@ -154,11 +155,11 @@ Suggested flow:
 ## Implemented First Pass
 The prototype now:
 
-- renames the action panel to `Add coded content`
-- lets the user choose an `Add to section` target
+- removes the separate coded-content action-rail pane
+- adds a coded-content search directly inside each section's `Coded content`
+  box
 - records selected codes with a `sectionId`
 - renders each section's own `Coded content` block above its free-text area
-- keeps a consultation-level coded-content summary in the coding panel
 - migrates older locally persisted prototype codes to the `Reason` section
 - updates the coded-entry e2e test to check section-visible SNOMED content
 
@@ -170,8 +171,8 @@ a real terminology service.
 2. Add a development terminology provider backed by a local fixture and a
    production provider backed by a FHIR terminology service.
 3. Define section-specific value sets and ranking rules.
-4. Add section-local "Add coded content" controls so coding starts where the
-   clinician is documenting.
+4. Make each section-local search use its own constrained value set and ranking
+   profile.
 5. Add dm+d-backed medication search separately from general SNOMED problem
    coding.
 6. Add explicit mapping decisions for FHIR resources and UK Core profiles.

@@ -1,10 +1,11 @@
-import { type ReactNode, useState } from 'react'
+import { useState } from 'react'
+import { ClinicalCodeSearch, type CodeOption } from './ClinicalCodeSearch'
 import type { ConsultationCode, ConsultationDraft, ConsultationSection } from '../types'
 
 type ConsultationCaptureWorkspaceProps = {
   draft: ConsultationDraft
-  children: ReactNode
   onUpdateSection: (sectionId: string, text: string) => void
+  onAddCode: (code: CodeOption, sectionId: string) => void
   onRemoveCode: (codeId: string, sectionId: string) => void
   onAddTask: (label: string) => void
   onSave: () => void
@@ -15,8 +16,8 @@ type ConsultationCaptureWorkspaceProps = {
 
 export function ConsultationCaptureWorkspace({
   draft,
-  children,
   onUpdateSection,
+  onAddCode,
   onRemoveCode,
   onAddTask,
   onSave,
@@ -76,6 +77,7 @@ export function ConsultationCaptureWorkspace({
               <SectionCodedContent
                 codes={draft.codes.filter((code) => code.sectionId === section.id)}
                 section={section}
+                onAddCode={onAddCode}
                 onRemoveCode={onRemoveCode}
               />
               <textarea
@@ -98,8 +100,6 @@ export function ConsultationCaptureWorkspace({
               <span className={`state-chip ${requiredMissing.length > 0 ? 'warn' : 'good'}`}>{requiredMissing.length > 0 ? 'Open' : 'Clear'}</span>
             </header>
           </section>
-
-          {children}
 
           <section className="panel-card">
             <header>
@@ -141,15 +141,24 @@ export function ConsultationCaptureWorkspace({
 function SectionCodedContent({
   codes,
   section,
+  onAddCode,
   onRemoveCode,
 }: {
   codes: ConsultationCode[]
   section: ConsultationSection
+  onAddCode: (code: CodeOption, sectionId: string) => void
   onRemoveCode: (codeId: string, sectionId: string) => void
 }) {
   return (
     <section className="section-coded-content" aria-label={`${section.label} coded content`}>
-      <h3>Coded content</h3>
+      <header>
+        <div>
+          <h3>Coded content</h3>
+          <p className="meta">Attach structured concepts before adding supporting narrative.</p>
+        </div>
+        <span className={`state-chip ${codes.length > 0 ? 'good' : ''}`}>{codes.length} coded</span>
+      </header>
+      <ClinicalCodeSearch sectionId={section.id} sectionLabel={section.label} onAddCode={onAddCode} />
       {codes.length > 0 ? (
         <ul className="section-code-list">
           {codes.map((code) => (

@@ -3,7 +3,6 @@ import { RouterProvider } from '@tanstack/react-router'
 import { useEffect, useMemo, useState } from 'react'
 import './styles.css'
 import { AlertPanel } from './components/AlertPanel'
-import { ClinicalCodeSearch } from './components/ClinicalCodeSearch'
 import { ClinicalDataTable } from './components/ClinicalDataTable'
 import { ConsultationCaptureWorkspace } from './components/ConsultationCaptureWorkspace'
 import { MedicationReviewPanel } from './components/MedicationReviewPanel'
@@ -152,15 +151,14 @@ function ConsultationRoute() {
           <ConsultationCaptureWorkspace
             draft={draft}
             onUpdateSection={updateSection}
+            onAddCode={addCode}
             onRemoveCode={removeCode}
             onAddTask={addTask}
             onSave={markPendingSync}
             onSign={handleSign}
             signingAttempted={signingAttempted}
             criticalAlertCount={criticalUnresolved.length}
-          >
-            <ClinicalCodeSearch addedCodes={draft.codes} sections={draft.sections} onAddCode={addCode} onRemoveCode={removeCode} />
-          </ConsultationCaptureWorkspace>
+          />
 
           <aside className="reference-panel" aria-label="Clinical reference panel">
             <div className="panel-tabs" role="tablist" aria-label="Reference panel">

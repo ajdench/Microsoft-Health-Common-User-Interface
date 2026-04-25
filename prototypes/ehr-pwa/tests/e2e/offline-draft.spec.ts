@@ -23,14 +23,12 @@ test('recovers a consultation draft after offline reload', async ({ page, contex
 test('adds a coded entry through the accessible combobox', async ({ page }) => {
   await page.goto('/patients/p-1001/consultation')
 
-  await expect(page.getByLabel('Consultation action tray')).toContainText('No coded content has been attached to the consultation yet.')
+  await expect(page.getByLabel('Reason coded content')).toContainText('No coded content recorded for this section.')
 
-  const codeSearch = page.getByRole('combobox', { name: 'Search coded entries' })
+  const codeSearch = page.getByRole('combobox', { name: 'Search coded entries for Reason' })
   await codeSearch.fill('hypertensive')
   await page.getByRole('option', { name: /Hypertensive disorder/ }).click()
 
-  await expect(page.getByLabel('Added coded entries')).toContainText('Hypertensive disorder')
-  await expect(page.getByLabel('Consultation action tray')).toContainText('1 coded')
   await expect(page.getByLabel('Reason coded content')).toContainText('Hypertensive disorder')
   await expect(page.getByLabel('Reason coded content')).toContainText('SNOMED CT 38341003')
   await expect(page.getByLabel('Reason coded content').getByRole('button', { name: 'Remove Hypertensive disorder from Reason' })).toBeVisible()

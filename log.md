@@ -485,6 +485,13 @@
 - Verification: Ran `npm run check:spacing`, `npm run lint`, `npm run test`, `npm run build`, `npm run e2e`, and `npm audit` in `prototypes/ehr-pwa`; all passed and audit reported 0 vulnerabilities.
 - Unresolved issues: the prototype still uses static fake SNOMED-like results; a terminology-service adapter, section-specific value sets, dm+d medication coding, and UK Core/FHIR resource mapping remain next steps
 
+## 2026-04-25 21:05:35 BST — Moved coded search into each consultation section
+- Action performed: removed the separate coded-content action-rail pane and replaced it with section-local coded search controls inside every consultation section's `Coded content` box, so codes are selected where they are recorded rather than routed through a remote target selector
+- Inputs used: in-app browser view at `http://127.0.0.1:5174/patients/p-1001/consultation?panel=results`, `prototypes/ehr-pwa/src/components/ClinicalCodeSearch.tsx`, `prototypes/ehr-pwa/src/components/ConsultationCaptureWorkspace.tsx`, `prototypes/ehr-pwa/src/App.tsx`, `prototypes/ehr-pwa/src/styles.css`, and the inline clinical-coding wiki note
+- Outputs created: updated `prototypes/ehr-pwa/src/components/ClinicalCodeSearch.tsx`, `prototypes/ehr-pwa/src/components/ConsultationCaptureWorkspace.tsx`, `prototypes/ehr-pwa/src/App.tsx`, `prototypes/ehr-pwa/src/styles.css`, `prototypes/ehr-pwa/tests/e2e/offline-draft.spec.ts`, `wiki/companion-web-app-stack/inline-clinical-coding-for-consultations.md`, and `log.md`
+- Verification: Ran `npm run check:spacing`, `npm run lint`, `npm run test`, `npm run build`, `npm run e2e`, and `npm audit` in `prototypes/ehr-pwa`; all passed and audit reported 0 vulnerabilities.
+- Unresolved issues: section-local searches still use shared static fake results; section-specific value sets and terminology-service integration remain next steps
+
 ## 2026-04-24 23:55:04 BST — Added React Aria coded-entry combobox to EHR prototype
 - Action performed: replaced the custom button-list coded-entry search with an app-owned `ClinicalCodeSearch` wrapper using React Aria Components combobox/listbox primitives, preserved visible prioritisation and ambiguity metadata, added a Playwright coded-entry selection test, split React Aria/TanStack/React vendor chunks so primitive bundle cost is visible, and added an npm override for the PWA build-tool `serialize-javascript` advisory
 - Inputs used: existing `prototypes/ehr-pwa/` scaffold, React Aria Components package, TanStack/Vite build output, Playwright e2e workflow, and the companion prototype specification's coded-entry search contract
