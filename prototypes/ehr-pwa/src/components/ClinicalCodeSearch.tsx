@@ -71,8 +71,11 @@ export function ClinicalCodeSearch({ addedCodes, onAddCode, onRemoveCode }: Clin
       <header>
         <div>
           <h2>Coded entries</h2>
-          <p>Selection preview keeps prioritisation and uncertainty visible.</p>
+          <p>Selected structured entries are kept separate from note text.</p>
         </div>
+        <span className={`state-chip ${addedCodes.length > 0 ? 'good' : ''}`}>
+          {addedCodes.length} selected
+        </span>
       </header>
       <div className="code-search">
         <ComboBox<CodeOption>
@@ -119,17 +122,24 @@ export function ClinicalCodeSearch({ addedCodes, onAddCode, onRemoveCode }: Clin
             </ListBox>
           </Popover>
         </ComboBox>
-        {addedCodes.length > 0 ? (
-          <ul className="added-codes" aria-label="Added coded entries">
-            {addedCodes.map((code) => (
-              <li key={code.id}>
-                <button type="button" className="code-chip" onClick={() => onRemoveCode(code.id)}>
-                  {code.display} · remove
-                </button>
-              </li>
-            ))}
-          </ul>
-        ) : null}
+
+        <section className="selected-code-panel" aria-labelledby="selected-code-heading" aria-live="polite">
+          <h3 id="selected-code-heading">Selected codes</h3>
+          {addedCodes.length > 0 ? (
+            <ul className="added-codes" aria-label="Added coded entries">
+              {addedCodes.map((code) => (
+                <li className="selected-code-row" key={code.id}>
+                  <span>{code.display}</span>
+                  <button type="button" className="compact-button" onClick={() => onRemoveCode(code.id)} aria-label={`Remove ${code.display}`}>
+                    Remove
+                  </button>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="meta">No coded entries selected.</p>
+          )}
+        </section>
       </div>
     </section>
   )

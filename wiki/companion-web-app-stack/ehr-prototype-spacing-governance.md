@@ -122,6 +122,9 @@ Before the governance pass:
   narrow third column beside both the note sections and reference panel.
 - `panel-card` had a padding token, but not a formal header/body gap. This left
   the Coded entries and Follow-up tasks headings too close to their controls.
+- Selected coded entries were technically rendered, but the list was too easy
+  to miss after the combobox selection flow because it lacked a clear selected
+  area and could land outside the visible part of the panel.
 - Panel headers vertically centered status chips against multi-line text rather
   than top-aligning them with the heading block.
 - `reference-header` inherited workspace-header padding and borders, so
@@ -139,6 +142,13 @@ Before the governance pass:
 - No tool prevented future raw spacing values.
 
 ## Implemented formalization
+The prototype now has two related governance artefacts:
+
+- `prototypes/ehr-pwa/DESIGN.md` for the agent-readable visual standard,
+  token intent, and clinical component rationale.
+- `prototypes/ehr-pwa/src/styles.css` for the CSS implementation of that
+  standard.
+
 The prototype now defines a spacing/radius system in
 `prototypes/ehr-pwa/src/styles.css`:
 
@@ -173,6 +183,8 @@ The prototype now also includes:
   when the consultation component is at least `52rem` wide
 - an action-panel anatomy rule: panel cards are grids with an explicit
   header/body gap, and status chips align to the top of heading blocks
+- an explicit selected-code area in Coded entries with an empty state, count
+  chip, selected rows, and compact remove actions
 - a Playwright layout-contract test that verifies constrained consultation
   layouts render the action block before the note sections at usable width
 - a separate reference-pane header contract so right-pane headings align with

@@ -399,6 +399,20 @@ button.danger {
   gap: var(--space-field-gap);
 }
 
+.selected-code-panel {
+  display: grid;
+  gap: var(--space-s);
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius-s);
+  padding: var(--space-l);
+  background: var(--surface-subtle);
+}
+
+.selected-code-panel h3 {
+  margin: var(--space-0);
+  font-size: 0.9rem;
+}
+
 .clinical-combobox label {
   color: var(--muted);
   font-size: 0.82rem;
@@ -478,6 +492,26 @@ button.danger {
   padding: var(--space-0);
   margin: var(--space-0);
   list-style: none;
+}
+
+.added-codes {
+  display: grid;
+}
+
+.selected-code-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--space-m);
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-s);
+  padding: var(--space-m);
+  background: var(--surface);
+}
+
+.selected-code-row span {
+  font-weight: 700;
+  overflow-wrap: anywhere;
 }
 
 .code-chip {

@@ -23,12 +23,15 @@ test('recovers a consultation draft after offline reload', async ({ page, contex
 test('adds a coded entry through the accessible combobox', async ({ page }) => {
   await page.goto('/patients/p-1001/consultation')
 
+  await expect(page.getByLabel('Consultation action tray')).toContainText('No coded entries selected.')
+
   const codeSearch = page.getByRole('combobox', { name: 'Search coded entries' })
   await codeSearch.fill('hypertensive')
   await page.getByRole('option', { name: /Hypertensive disorder/ }).click()
 
   await expect(page.getByLabel('Added coded entries')).toContainText('Hypertensive disorder')
-  await expect(page.getByLabel('Added coded entries')).toContainText('remove')
+  await expect(page.getByRole('button', { name: 'Remove Hypertensive disorder' })).toBeVisible()
+  await expect(page.getByLabel('Consultation action tray')).toContainText('1 selected')
 })
 
 test('uses the compact action block before notes when the consultation area is constrained', async ({ page }) => {

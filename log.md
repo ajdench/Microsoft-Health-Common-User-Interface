@@ -1,5 +1,11 @@
 # Log
 
+## 2026-04-25 17:07:42 BST — DESIGN.md prototype UI standard introduced
+- Action performed: localized Google Labs Code DESIGN.md reference material, added provenance and source-note coverage, introduced a companion wiki page explaining DESIGN.md usage, and established an app-local `DESIGN.md` visual standard for the EHR PWA prototype.
+- Inputs used: `https://stitch.withgoogle.com/docs/design-md/specification`, `https://github.com/google-labs-code/design.md`, existing prototype CSS/component contracts, and existing companion web-app stack notes.
+- Outputs created: `raw/sources/references/design-md/`, `raw/metadata/design-md-format-specification.json`, `wiki/source-notes/design-md-format-specification.md`, `wiki/companion-web-app-stack/design-md-ui-standard.md`, `prototypes/ehr-pwa/DESIGN.md`, updated prototype README/package scripts, updated companion stack index, updated root index.
+- Unresolved issues: the upstream DESIGN.md format is alpha, so the prototype standard should be linted and kept conservative as the format evolves.
+
 ## Initial scaffold
 - Created starter folder structure
 - Added `AGENTS.md`
@@ -464,6 +470,13 @@
 - Outputs created: updated `prototypes/ehr-pwa/src/App.tsx`, `prototypes/ehr-pwa/src/components/OfflineSyncStatus.tsx`, `prototypes/ehr-pwa/src/styles.css`, `prototypes/ehr-pwa/tests/e2e/offline-draft.spec.ts`, `wiki/companion-web-app-stack/ehr-prototype-spacing-governance.md`, and `log.md`
 - Verification: Ran `npm run check:spacing`, `npm run lint`, `npm run test`, `npm run build`, `npm run e2e`, and `npm audit` in `prototypes/ehr-pwa`; all passed and audit reported 0 vulnerabilities.
 - Unresolved issues: sticky reference-panel offset remains tokenized rather than dynamically measured from app-chrome height
+
+## 2026-04-25 17:08:15 BST — Made selected coded entries visible in the coding panel
+- Action performed: reproduced the coded-entry selection flow and confirmed that selections were persisted but the selected-code display was not discoverable after selection; added an explicit selected-code area with empty state, count chip, selected rows, and compact remove actions directly in the Coded entries panel
+- Inputs used: in-app browser view at `http://127.0.0.1:5174/patients/p-1001/consultation?panel=results`, `prototypes/ehr-pwa/src/components/ClinicalCodeSearch.tsx`, `prototypes/ehr-pwa/src/styles.css`, and the coded-entry Playwright test
+- Outputs created: updated `prototypes/ehr-pwa/src/components/ClinicalCodeSearch.tsx`, updated `prototypes/ehr-pwa/src/styles.css`, updated `prototypes/ehr-pwa/tests/e2e/offline-draft.spec.ts`, updated `wiki/companion-web-app-stack/ehr-prototype-spacing-governance.md`, and updated `log.md`
+- Verification: Ran `npm run check:spacing`, `npm run lint`, `npm run test`, `npm run build`, `npm run e2e`, and `npm audit` in `prototypes/ehr-pwa`; all passed and audit reported 0 vulnerabilities.
+- Unresolved issues: none for selected-code visibility; future terminology integration will need richer code metadata display.
 
 ## 2026-04-24 23:55:04 BST — Added React Aria coded-entry combobox to EHR prototype
 - Action performed: replaced the custom button-list coded-entry search with an app-owned `ClinicalCodeSearch` wrapper using React Aria Components combobox/listbox primitives, preserved visible prioritisation and ambiguity metadata, added a Playwright coded-entry selection test, split React Aria/TanStack/React vendor chunks so primitive bundle cost is visible, and added an npm override for the PWA build-tool `serialize-javascript` advisory
