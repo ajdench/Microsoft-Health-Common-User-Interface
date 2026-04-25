@@ -152,13 +152,14 @@ function ConsultationRoute() {
           <ConsultationCaptureWorkspace
             draft={draft}
             onUpdateSection={updateSection}
+            onRemoveCode={removeCode}
             onAddTask={addTask}
             onSave={markPendingSync}
             onSign={handleSign}
             signingAttempted={signingAttempted}
             criticalAlertCount={criticalUnresolved.length}
           >
-            <ClinicalCodeSearch addedCodes={draft.codes} onAddCode={addCode} onRemoveCode={removeCode} />
+            <ClinicalCodeSearch addedCodes={draft.codes} sections={draft.sections} onAddCode={addCode} onRemoveCode={removeCode} />
           </ConsultationCaptureWorkspace>
 
           <aside className="reference-panel" aria-label="Clinical reference panel">

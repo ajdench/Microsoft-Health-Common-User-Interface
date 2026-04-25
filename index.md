@@ -20,6 +20,7 @@
 - [ADR: EHR UI Stack Baseline](wiki/companion-web-app-stack/ehr-ui-stack-adr.md) — chosen baseline stack, first prototype scope, and CUI-informed consultation capture assessment
 - [Prototype Vertical Slice Spec](wiki/companion-web-app-stack/prototype-vertical-slice-spec.md) — buildable first-slice specification for consultation capture, patient context, offline drafts, alerts, medication review, and visible table state
 - [EHR Prototype Spacing Governance](wiki/companion-web-app-stack/ehr-prototype-spacing-governance.md) — diagnosis and governance approach for spacing, density, design tokens, and visual review tooling
+- [Inline Clinical Coding For Consultations](wiki/companion-web-app-stack/inline-clinical-coding-for-consultations.md) — UK-oriented approach to SNOMED/dm+d-backed coded content in consultation and history workflows
 - [DESIGN.md UI Standard](wiki/companion-web-app-stack/design-md-ui-standard.md) — app-local agent-readable UI standard for the EHR prototype
 
 ## Prototypes

@@ -1,10 +1,11 @@
 import { type ReactNode, useState } from 'react'
-import type { ConsultationDraft } from '../types'
+import type { ConsultationCode, ConsultationDraft, ConsultationSection } from '../types'
 
 type ConsultationCaptureWorkspaceProps = {
   draft: ConsultationDraft
   children: ReactNode
   onUpdateSection: (sectionId: string, text: string) => void
+  onRemoveCode: (codeId: string, sectionId: string) => void
   onAddTask: (label: string) => void
   onSave: () => void
   onSign: () => void
@@ -16,6 +17,7 @@ export function ConsultationCaptureWorkspace({
   draft,
   children,
   onUpdateSection,
+  onRemoveCode,
   onAddTask,
   onSave,
   onSign,
@@ -71,6 +73,11 @@ export function ConsultationCaptureWorkspace({
                   {section.validationState === 'missingRequired' ? 'Needs entry' : 'Visible'}
                 </span>
               </header>
+              <SectionCodedContent
+                codes={draft.codes.filter((code) => code.sectionId === section.id)}
+                section={section}
+                onRemoveCode={onRemoveCode}
+              />
               <textarea
                 aria-label={`${section.label} section`}
                 value={section.text}
@@ -131,3 +138,40 @@ export function ConsultationCaptureWorkspace({
   )
 }
 
+function SectionCodedContent({
+  codes,
+  section,
+  onRemoveCode,
+}: {
+  codes: ConsultationCode[]
+  section: ConsultationSection
+  onRemoveCode: (codeId: string, sectionId: string) => void
+}) {
+  return (
+    <section className="section-coded-content" aria-label={`${section.label} coded content`}>
+      <h3>Coded content</h3>
+      {codes.length > 0 ? (
+        <ul className="section-code-list">
+          {codes.map((code) => (
+            <li key={`${section.id}-${code.id}`}>
+              <span>
+                {code.display}
+                <small>SNOMED CT {code.code}</small>
+              </span>
+              <button
+                type="button"
+                className="compact-button"
+                onClick={() => onRemoveCode(code.id, section.id)}
+                aria-label={`Remove ${code.display} from ${section.label}`}
+              >
+                Remove
+              </button>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p className="meta">No coded content recorded for this section.</p>
+      )}
+    </section>
+  )
+}

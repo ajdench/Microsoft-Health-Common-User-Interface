@@ -20,7 +20,7 @@ export function useConsultationDraft(patientId: string) {
       try {
         const draftId = `draft-${patientId}`
         const existing = await db.consultationDrafts.get(draftId)
-        const nextDraft = existing ?? createInitialDraft(patientId)
+        const nextDraft = existing ? normalizeDraft(existing) : createInitialDraft(patientId)
 
         if (!existing) {
           await db.consultationDrafts.put(nextDraft)
@@ -107,12 +107,12 @@ export function useConsultationDraft(patientId: string) {
   )
 
   const addCode = useCallback(
-    (code: Omit<ConsultationCode, 'addedAt'>) => {
-      const nextCode: ConsultationCode = { ...code, addedAt: new Date().toISOString() }
+    (code: Omit<ConsultationCode, 'addedAt' | 'sectionId'>, sectionId: string) => {
+      const nextCode: ConsultationCode = { ...code, sectionId, addedAt: new Date().toISOString() }
       const nextDraft: ConsultationDraft = {
         ...draft,
         state: 'savedLocal',
-        codes: draft.codes.some((existing) => existing.id === code.id) ? draft.codes : [...draft.codes, nextCode],
+        codes: draft.codes.some((existing) => existing.id === code.id && existing.sectionId === sectionId) ? draft.codes : [...draft.codes, nextCode],
         lastSavedLocalAt: new Date().toISOString(),
       }
 
@@ -122,11 +122,11 @@ export function useConsultationDraft(patientId: string) {
   )
 
   const removeCode = useCallback(
-    (codeId: string) => {
+    (codeId: string, sectionId?: string) => {
       const nextDraft: ConsultationDraft = {
         ...draft,
         state: 'savedLocal',
-        codes: draft.codes.filter((code) => code.id !== codeId),
+        codes: draft.codes.filter((code) => code.id !== codeId || (sectionId ? code.sectionId !== sectionId : false)),
         lastSavedLocalAt: new Date().toISOString(),
       }
 
@@ -239,3 +239,12 @@ export function useConsultationDraft(patientId: string) {
   }
 }
 
+function normalizeDraft(draft: ConsultationDraft): ConsultationDraft {
+  return {
+    ...draft,
+    codes: draft.codes.map((code) => ({
+      ...code,
+      sectionId: code.sectionId ?? 'reason',
+    })),
+  }
+}

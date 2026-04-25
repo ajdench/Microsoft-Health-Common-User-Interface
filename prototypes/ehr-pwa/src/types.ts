@@ -25,6 +25,7 @@ export type ConsultationSection = {
 
 export type ConsultationCode = {
   id: string
+  sectionId: string
   code: string
   display: string
   category: string
@@ -103,4 +104,3 @@ export type PersistenceState = {
   recovered: boolean
   storageError?: string
 }
-

@@ -11,9 +11,9 @@ import {
   type Key,
 } from 'react-aria-components'
 import { useMemo, useState } from 'react'
-import type { ConsultationCode } from '../types'
+import type { ConsultationCode, ConsultationSection } from '../types'
 
-type CodeOption = Omit<ConsultationCode, 'addedAt'>
+type CodeOption = Omit<ConsultationCode, 'addedAt' | 'sectionId'>
 
 const codeResults: CodeOption[] = [
   {
@@ -44,13 +44,16 @@ const codeResults: CodeOption[] = [
 
 type ClinicalCodeSearchProps = {
   addedCodes: ConsultationCode[]
-  onAddCode: (code: CodeOption) => void
-  onRemoveCode: (codeId: string) => void
+  sections: ConsultationSection[]
+  onAddCode: (code: CodeOption, sectionId: string) => void
+  onRemoveCode: (codeId: string, sectionId: string) => void
 }
 
-export function ClinicalCodeSearch({ addedCodes, onAddCode, onRemoveCode }: ClinicalCodeSearchProps) {
+export function ClinicalCodeSearch({ addedCodes, sections, onAddCode, onRemoveCode }: ClinicalCodeSearchProps) {
   const [query, setQuery] = useState('diabetes')
+  const [targetSectionId, setTargetSectionId] = useState('reason')
   const [selectedKey, setSelectedKey] = useState<Key | null>(null)
+  const sectionLabels = useMemo(() => new Map(sections.map((section) => [section.id, section.label])), [sections])
   const filteredResults = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase()
 
@@ -70,14 +73,25 @@ export function ClinicalCodeSearch({ addedCodes, onAddCode, onRemoveCode }: Clin
     <section className="panel-card">
       <header>
         <div>
-          <h2>Coded entries</h2>
-          <p>Selected structured entries are kept separate from note text.</p>
+          <h2>Add coded content</h2>
+          <p>Attach structured clinical concepts to the relevant consultation section.</p>
         </div>
         <span className={`state-chip ${addedCodes.length > 0 ? 'good' : ''}`}>
-          {addedCodes.length} selected
+          {addedCodes.length} coded
         </span>
       </header>
       <div className="code-search">
+        <label className="section-target-control">
+          <span>Add to section</span>
+          <select value={targetSectionId} onChange={(event) => setTargetSectionId(event.target.value)}>
+            {sections.map((section) => (
+              <option value={section.id} key={section.id}>
+                {section.label}
+              </option>
+            ))}
+          </select>
+        </label>
+
         <ComboBox<CodeOption>
           aria-label="Search coded entries"
           className="clinical-combobox"
@@ -90,7 +104,7 @@ export function ClinicalCodeSearch({ addedCodes, onAddCode, onRemoveCode }: Clin
 
             if (selectedCode) {
               setSelectedKey(key)
-              onAddCode(selectedCode)
+              onAddCode(selectedCode, targetSectionId)
             }
           }}
           selectedKey={selectedKey}
@@ -123,21 +137,29 @@ export function ClinicalCodeSearch({ addedCodes, onAddCode, onRemoveCode }: Clin
           </Popover>
         </ComboBox>
 
-        <section className="selected-code-panel" aria-labelledby="selected-code-heading" aria-live="polite">
-          <h3 id="selected-code-heading">Selected codes</h3>
+        <section className="selected-code-panel" aria-labelledby="selected-code-heading">
+          <h3 id="selected-code-heading">Consultation coded content</h3>
           {addedCodes.length > 0 ? (
             <ul className="added-codes" aria-label="Added coded entries">
               {addedCodes.map((code) => (
-                <li className="selected-code-row" key={code.id}>
-                  <span>{code.display}</span>
-                  <button type="button" className="compact-button" onClick={() => onRemoveCode(code.id)} aria-label={`Remove ${code.display}`}>
+                <li className="selected-code-row" key={`${code.sectionId}-${code.id}`}>
+                  <span>
+                    {code.display}
+                    <small>{sectionLabels.get(code.sectionId) ?? 'Section'} · SNOMED CT {code.code}</small>
+                  </span>
+                  <button
+                    type="button"
+                    className="compact-button"
+                    onClick={() => onRemoveCode(code.id, code.sectionId)}
+                    aria-label={`Remove ${code.display} from ${sectionLabels.get(code.sectionId) ?? 'section'}`}
+                  >
                     Remove
                   </button>
                 </li>
               ))}
             </ul>
           ) : (
-            <p className="meta">No coded entries selected.</p>
+            <p className="meta">No coded content has been attached to the consultation yet.</p>
           )}
         </section>
       </div>
