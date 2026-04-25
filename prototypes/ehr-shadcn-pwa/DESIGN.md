@@ -37,8 +37,11 @@ shadcn/ui composition and app-owned clinical wrappers.
 - Do compose shadcn primitives directly unless a clinical wrapper names a real
   product contract.
 - Do keep status chips as `ClinicalBadge` wrappers over shadcn `Badge`.
+- Do use full shadcn `CardHeader`/`CardTitle`/`CardDescription` composition for
+  card-like headers instead of hand-styled header boxes.
 - Do keep layout responsive with grid/flex utility classes and stable gaps.
 - Do add tests with the component contract as soon as a new surface is added.
 - Don't import V1 CSS class names or recreate V1's component-local spacing
   layer.
+- Don't keep V1 libraries in the dependency graph unless V2 actively uses them.
 - Don't make generic primitives own clinical meaning.

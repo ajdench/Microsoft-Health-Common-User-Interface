@@ -659,3 +659,10 @@
 - Outputs created: new V2 prototype under `prototypes/ehr-shadcn-pwa/`; new V2 DESIGN.md; new companion wiki page `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`; updated companion README, root index, UI stack ADR, and `log.md`.
 - Verification: Ran `npm run check:spacing`, `npm run lint`, `npm run test`, `npm run build`, `npm run e2e`, and `npm audit` in `prototypes/ehr-shadcn-pwa`; all passed and audit reported 0 vulnerabilities. Started the V2 dev server at `http://127.0.0.1:5175/` and confirmed patient chrome, sync state, consultation capture, and medication review render in the in-app browser.
 - Unresolved issues: V2 intentionally does not yet inherit V1's Dexie offline draft persistence; add persistence deliberately after the first UI review.
+
+## 2026-04-25 23:15:47 BST — Trimmed V2 to active shadcn-native dependencies
+- Action performed: removed unused V1 direct dependencies from the clean V2 prototype (`@tanstack/react-router`, `@tanstack/react-table`, `dexie`, `react-aria-components`, `react-hook-form`, and `zod`) and converted the remaining hand-styled consultation page header to shadcn `CardHeader`, `CardTitle`, and `CardDescription` composition.
+- Inputs used: `prototypes/ehr-shadcn-pwa/package.json`, package lock, V2 component imports, shadcn best-practice guidance, and the current V2 browser view at `http://127.0.0.1:5175/`.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/package.json`, `package-lock.json`, `src/App.tsx`, `DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
+- Verification: Ran `npm run check:spacing`, `npm run lint`, `npm run test`, `npm run build`, `npm run e2e`, and `npm audit` in `prototypes/ehr-shadcn-pwa`; all passed and audit reported 0 vulnerabilities. Reloaded the V2 browser view and confirmed patient chrome, sync state, consultation capture, and medication review still render.
+- Unresolved issues: V2 still contains copied but currently unused shadcn source files such as `Empty` and `ScrollArea`; keep or remove them based on whether the next UI pass needs those primitives.

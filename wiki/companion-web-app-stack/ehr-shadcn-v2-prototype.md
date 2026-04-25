@@ -48,6 +48,24 @@ The first V2 implementation creates a consultation capture page with:
 - medication, alert, and results reference tabs
 - unit and Playwright layout tests
 
+## Native shadcn Hygiene
+The initial scaffold copied some V1 package dependencies for speed. These have
+now been removed where V2 does not use them directly:
+
+- `@tanstack/react-router`
+- `@tanstack/react-table`
+- `dexie`
+- `react-aria-components`
+- `react-hook-form`
+- `zod`
+
+The visible app surfaces now use shadcn source components plus app-owned
+clinical wrappers. Remaining `zod` references in `package-lock.json` are
+transitive tooling dependencies, not V2 application imports.
+
+The consultation page header was also converted from a hand-styled header box to
+shadcn `Card`, `CardHeader`, `CardTitle`, and `CardDescription` composition.
+
 The prototype is available locally during development at:
 
 `http://127.0.0.1:5175/`
@@ -65,7 +83,6 @@ Initial verification for V2:
 All passed on the first V2 implementation stage.
 
 ## Next Decisions
-- Trim the V2 dependency graph once the component set stabilizes.
 - Add offline draft persistence deliberately rather than inheriting V1 Dexie
   implementation details.
 - Add visual screenshot baselines for patient chrome, coding fields, and right

@@ -4,6 +4,7 @@ import { ConsultationSectionCard } from '@/components/ConsultationSectionCard'
 import { PatientChrome } from '@/components/PatientChrome'
 import { ReferencePanel } from '@/components/ReferencePanel'
 import { SyncStateBar } from '@/components/SyncStateBar'
+import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { initialCodes, initialSections, patient } from '@/data/demo'
 import type { CodedEntry, ConsultationSection } from '@/types'
 import './styles.css'
@@ -42,10 +43,12 @@ export function App() {
         <section className="grid gap-4" aria-label="Consultation capture">
           <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_20rem]">
             <div className="grid gap-4">
-              <header className="rounded-lg border bg-card p-4 text-card-foreground shadow-sm">
-                <h1 className="text-lg font-semibold">Consultation capture</h1>
-                <p className="text-sm text-muted-foreground">Author Dr Taylor Reed · Health CUI-informed shadcn-native V2</p>
-              </header>
+              <Card>
+                <CardHeader>
+                  <CardTitle>Consultation capture</CardTitle>
+                  <CardDescription>Author Dr Taylor Reed · Health CUI-informed shadcn-native V2</CardDescription>
+                </CardHeader>
+              </Card>
               {sections.map((section) => (
                 <ConsultationSectionCard
                   codes={codes.filter((entry) => entry.sectionId === section.id)}
