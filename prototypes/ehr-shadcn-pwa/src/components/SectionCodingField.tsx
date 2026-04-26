@@ -161,7 +161,7 @@ export function SectionCodingField({ entries, onAddCode, onRemoveCode }: Section
                   {formatPriority(entry.priority)}
                 </ClinicalBadge>
                 <Button
-                  className="justify-self-end text-destructive hover:bg-destructive/10 hover:text-destructive focus-visible:ring-destructive/30"
+                  className="justify-self-end rounded-full border-transparent bg-transparent text-red-700 hover:border-red-200 hover:bg-red-50 hover:text-red-800 active:border-red-200 active:bg-red-100 focus-visible:border-red-300 focus-visible:bg-red-50 focus-visible:ring-red-200/70"
                   variant="ghost"
                   size="icon-xs"
                   type="button"

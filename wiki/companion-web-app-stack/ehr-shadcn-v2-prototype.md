@@ -89,8 +89,10 @@ than red/warning colour, because it is a semantic category rather than a safety
 state; `Situation` has also moved off grey so contextual statements remain
 visibly classifiable. Removing a selected concept opens a confirmation dialog
 before the code is deleted from the section. The remove control is pinned to the
-right side of the selected-concept pill and uses a bold red `XIcon` affordance
-to separate deletion from concept metadata. The selected-concept title uses the
+right side of the selected-concept pill and uses a quiet red `x` by default,
+with the circular red affordance appearing only on hover, active, or keyboard
+focus. It is separated by the same grid gap as the other chip elements to
+separate deletion from concept metadata. The selected-concept title uses the
 same normal body text scale as consultation free-text fields, leaving the nested
 pills to carry emphasis. The seed concept set now includes examples across
 disorder, finding, procedure, observable, situation, and regime/therapy tags so

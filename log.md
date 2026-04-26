@@ -716,6 +716,18 @@
 - Outputs created: updated `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
 - Unresolved issues: none for selected-code chip typography.
 
+## 2026-04-26 12:42:29 BST — Normalised selected SNOMED remove affordance spacing
+- Action performed: changed the selected SNOMED concept remove control from an invisible square ghost hit area to a visible circular red affordance, keeping the remove circle on the same right inset as the title left inset and enforcing the same grid gap between priority and remove as between all other chip elements.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user-provided selected SNOMED concept pill screenshot, `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, V2 e2e layout contract, V2 design contract, and the V2 companion wiki note.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
+- Unresolved issues: none.
+
+## 2026-04-26 12:44:58 BST — Made selected SNOMED remove circle interaction-only
+- Action performed: changed the selected SNOMED concept remove control so the red `x` remains visible by default, but the red circular background and border only appear on hover, active, or keyboard focus while retaining the aligned right inset and equal internal chip gaps.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user correction that the red circle should only appear on hover/select, `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, V2 e2e layout contract, V2 design contract, and the V2 companion wiki note.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
+- Unresolved issues: none.
+
 ## 2026-04-26 12:36:54 BST — Rebalanced selected SNOMED concept pill colour and rails
 - Action performed: changed SNOMED semantic `Disorder` from warning-like rose/red to a calmer blue family, moved `Situation` off grey, tinted selected concept parent pills from a lighter version of their semantic type family, and changed selected concept pills to a single centre-aligned grid rail with symmetric left/right insets.
 - Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user-provided selected SNOMED concept pill screenshot, `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, `prototypes/ehr-shadcn-pwa/src/components/ClinicalBadge.tsx`, V2 e2e layout contract, V2 design contract, and the V2 companion wiki note.
