@@ -81,8 +81,12 @@ interaction, slot anatomy, and visual consistency.
 - Do use the pane spacing rhythm (`gap-4`) inside the consultation banner
   action rail: between the status-pill row and the button row, and between each
   aligned status/action column.
+- Do keep consultation banner rail controls fixed to the widest status-pill
+  width (`w-40`, 10rem), preserving normal shadcn pill side padding instead of
+  stretching pills and buttons across the available header rail.
 - Do keep banner status pills at normal shadcn `Badge` height; they may fill
-  grid-column width for alignment, but should not be enlarged to button height.
+  the fixed rail-control width for alignment, but should not be enlarged to
+  button height.
 - Do use clinical button variants in the consultation action rail: yellow for
   `Review Validation`, green for `Save Locally`, and purple for
   `Sign Consultation`.

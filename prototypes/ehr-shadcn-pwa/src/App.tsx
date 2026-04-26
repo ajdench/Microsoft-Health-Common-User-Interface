@@ -62,26 +62,26 @@ export function App() {
               <CardDescription>
                 Author Dr Taylor Reed · {missingRequiredCount} required sections incomplete
               </CardDescription>
-              <CardAction className="mt-2 grid w-full gap-4 sm:mt-0 sm:min-w-[34rem]" data-testid="consultation-banner-action-rail">
-                <div className="grid gap-4 sm:grid-cols-3">
-                  <ClinicalBadge className="w-full justify-center" tone={missingRequiredCount > 0 ? 'warn' : 'good'}>
+              <CardAction className="mt-2 grid w-full justify-items-start gap-4 sm:mt-0 sm:w-auto" data-testid="consultation-banner-action-rail">
+                <div className="grid gap-4 sm:grid-cols-[repeat(3,10rem)]">
+                  <ClinicalBadge className="w-40 justify-center" tone={missingRequiredCount > 0 ? 'warn' : 'good'}>
                     {missingRequiredCount > 0 ? 'Validation open' : 'Validation clear'}
                   </ClinicalBadge>
-                  <ClinicalBadge className="w-full justify-center" tone="bad">
+                  <ClinicalBadge className="w-40 justify-center" tone="bad">
                     Not saved locally
                   </ClinicalBadge>
-                  <ClinicalBadge className="w-full justify-center" tone="purple">
+                  <ClinicalBadge className="w-40 justify-center" tone="purple">
                     Consultation not signed
                   </ClinicalBadge>
                 </div>
-                <div className="grid gap-4 sm:grid-cols-3">
-                  <Button className="w-full" variant="clinicalWarn" type="button" size="sm" onClick={reviewValidation}>
+                <div className="grid gap-4 sm:grid-cols-[repeat(3,10rem)]">
+                  <Button className="w-40" variant="clinicalWarn" type="button" size="sm" onClick={reviewValidation}>
                     Review Validation
                   </Button>
-                  <Button className="w-full" variant="clinicalSuccess" type="button" size="sm">
+                  <Button className="w-40" variant="clinicalSuccess" type="button" size="sm">
                     Save Locally
                   </Button>
-                  <Button className="w-full" variant="clinicalPurple" size="sm" type="button" disabled={missingRequiredCount > 0}>
+                  <Button className="w-40" variant="clinicalPurple" size="sm" type="button" disabled={missingRequiredCount > 0}>
                     Sign Consultation
                   </Button>
                 </div>
