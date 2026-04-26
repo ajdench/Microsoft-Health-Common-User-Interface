@@ -716,6 +716,12 @@
 - Outputs created: updated `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
 - Unresolved issues: none for selected-code chip typography.
 
+## 2026-04-26 12:18:13 BST — Formalised consultation action button colour contract
+- Action performed: set the `Review Validation` button fill to exact `#ffd230` with matched gold border/text; changed `Save Locally` to use the green pill text colour family as fill and border, keeping `Sign Consultation` aligned to the purple pill text colour family.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user-provided yellow reference, shadcn Button guidance, `prototypes/ehr-shadcn-pwa/src/components/ui/button.tsx`, V2 e2e layout contract, V2 design contract, and the V2 companion wiki note.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/components/ui/button.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
+- Unresolved issues: none.
+
 ## 2026-04-26 12:12:14 BST — Tuned V2 consultation action button colours
 - Action performed: adjusted V2 consultation action button variants so `Review Validation` uses the vivid highlighted-pane yellow with stronger gold border/text, `Save Locally` uses a darker light-green fill aligned with the pill family, and `Sign Consultation` uses the unsigned purple pill text colour as its fill with aligned border.
 - Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, shadcn Button guidance, `prototypes/ehr-shadcn-pwa/src/components/ui/button.tsx`, V2 e2e layout contract, V2 design contract, and the V2 companion wiki note.
