@@ -2,10 +2,11 @@ import { useState } from 'react'
 import { XIcon } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/command'
+import { Command, CommandEmpty, CommandGroup, CommandItem, CommandList } from '@/components/ui/command'
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import { Empty, EmptyDescription } from '@/components/ui/empty'
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
+import { Input } from '@/components/ui/input'
+import { Popover, PopoverAnchor, PopoverContent } from '@/components/ui/popover'
 import { ClinicalBadge } from '@/components/ClinicalBadge'
 import { codeSuggestions } from '@/data/demo'
 import type { ClinicalTone, CodedEntry } from '@/types'
@@ -42,7 +43,17 @@ function formatSemanticTag(tag: CodedEntry['semanticTag']) {
 
 export function SectionCodingField({ entries, onAddCode, onRemoveCode }: SectionCodingFieldProps) {
   const [open, setOpen] = useState(false)
+  const [query, setQuery] = useState('')
   const [entryPendingRemoval, setEntryPendingRemoval] = useState<CodedEntry | null>(null)
+  const normalizedQuery = query.trim().toLowerCase()
+  const filteredSuggestions = normalizedQuery
+    ? codeSuggestions.filter((suggestion) => {
+        return [suggestion.display, suggestion.code, suggestion.system, formatSemanticTag(suggestion.semanticTag), formatPriority(suggestion.priority)]
+          .join(' ')
+          .toLowerCase()
+          .includes(normalizedQuery)
+      })
+    : codeSuggestions
 
   return (
     <Card className="border-dashed bg-muted/30 shadow-none" size="sm">
@@ -51,39 +62,55 @@ export function SectionCodingField({ entries, onAddCode, onRemoveCode }: Section
       </CardHeader>
       <CardContent className="grid gap-3">
         <Popover open={open} onOpenChange={setOpen}>
-          <PopoverTrigger asChild>
-            <Button variant="outline" size="sm" type="button" className="w-full justify-start text-muted-foreground">
-              Search SNOMED CT concepts
-            </Button>
-          </PopoverTrigger>
-          <PopoverContent align="start" className="w-[min(28rem,calc(100vw-2rem))] p-0">
-            <Command>
-              <CommandInput placeholder="Search SNOMED CT concepts..." />
+          <PopoverAnchor asChild>
+            <Input
+              aria-label="Search SNOMED CT concepts"
+              placeholder="Search SNOMED CT concepts"
+              value={query}
+              onChange={(event) => {
+                setQuery(event.target.value)
+                setOpen(true)
+              }}
+              onFocus={() => setOpen(true)}
+            />
+          </PopoverAnchor>
+          <PopoverContent align="start" className="max-w-[calc(100vw-2rem)] w-[var(--radix-popover-trigger-width)] p-0">
+            <Command shouldFilter={false}>
               <CommandList>
-                <CommandEmpty>No matching concepts.</CommandEmpty>
-                <CommandGroup heading="Suggested concepts">
-                  {codeSuggestions.map((suggestion) => (
-                    <CommandItem
-                      key={suggestion.code}
-                      value={`${suggestion.display} ${suggestion.code}`}
-                      onSelect={() => {
-                        onAddCode(suggestion)
-                        setOpen(false)
-                      }}
-                    >
-                      <span className="grid gap-0.5">
-                        <span>{suggestion.display}</span>
-                        <span className="text-xs text-muted-foreground">
-                          {suggestion.system} {suggestion.code}
+                {filteredSuggestions.length === 0 ? (
+                  <CommandEmpty>No matching concepts.</CommandEmpty>
+                ) : (
+                  <CommandGroup heading="Suggested concepts">
+                    {filteredSuggestions.map((suggestion) => (
+                      <CommandItem
+                        className="grid! grid-cols-[minmax(0,1fr)_7.75rem_6.75rem] items-center gap-2 [&>svg:last-child]:hidden"
+                        key={suggestion.code}
+                        value={`${suggestion.display} ${suggestion.code}`}
+                        onMouseDown={(event) => event.preventDefault()}
+                        onSelect={() => {
+                          onAddCode(suggestion)
+                          window.setTimeout(() => {
+                            setQuery('')
+                            setOpen(false)
+                          }, 0)
+                        }}
+                      >
+                        <span className="grid min-w-0 gap-0.5">
+                          <span className="truncate">{suggestion.display}</span>
+                          <span className="truncate text-xs text-muted-foreground">
+                            {suggestion.system} {suggestion.code}
+                          </span>
                         </span>
-                      </span>
-                      <span className="ml-auto flex items-center gap-1">
-                        <ClinicalBadge tone={suggestion.semanticTag}>{formatSemanticTag(suggestion.semanticTag)}</ClinicalBadge>
-                        <ClinicalBadge tone={getPriorityTone(suggestion.priority)}>{formatPriority(suggestion.priority)}</ClinicalBadge>
-                      </span>
-                    </CommandItem>
-                  ))}
-                </CommandGroup>
+                        <span className="flex justify-end" data-snomed-result-column="type">
+                          <ClinicalBadge tone={suggestion.semanticTag}>{formatSemanticTag(suggestion.semanticTag)}</ClinicalBadge>
+                        </span>
+                        <span className="flex justify-end" data-snomed-result-column="priority">
+                          <ClinicalBadge tone={getPriorityTone(suggestion.priority)}>{formatPriority(suggestion.priority)}</ClinicalBadge>
+                        </span>
+                      </CommandItem>
+                    ))}
+                  </CommandGroup>
+                )}
               </CommandList>
             </Command>
           </PopoverContent>

@@ -45,9 +45,39 @@ test('renders shadcn-native V2 consultation shell without horizontal overflow', 
     return Math.round(chip.getBoundingClientRect().right - button.getBoundingClientRect().right)
   })
   expect(hypertensionRemoveAlignment).toBeLessThanOrEqual(8)
-  await reason.getByRole('button', { name: 'Search SNOMED CT concepts' }).click()
-  await page.getByPlaceholder('Search SNOMED CT concepts...').fill('diabetes')
-  await page.getByText('Type 2 diabetes mellitus').click()
+  await expect(reason.getByRole('button', { name: 'Search SNOMED CT concepts' })).toHaveCount(0)
+  const reasonCodeSearch = reason.getByRole('textbox', { name: 'Search SNOMED CT concepts' })
+  await expect(reasonCodeSearch).toBeVisible()
+  await reasonCodeSearch.fill('diabetes')
+  const diabetesRows = page.locator('[data-slot="command-item"]').filter({ hasText: 'diabetes' })
+  const resultColumnMetrics = await diabetesRows.evaluateAll((rows) =>
+    rows.map((row) => {
+      const typeColumn = row.querySelector('[data-snomed-result-column="type"]')
+      const priorityColumn = row.querySelector('[data-snomed-result-column="priority"]')
+
+      if (!typeColumn || !priorityColumn) {
+        return null
+      }
+
+      return {
+        typeWidth: Math.round(typeColumn.getBoundingClientRect().width),
+        priorityWidth: Math.round(priorityColumn.getBoundingClientRect().width),
+        typeRightGap: Math.round(row.getBoundingClientRect().right - typeColumn.getBoundingClientRect().right),
+        priorityRightGap: Math.round(row.getBoundingClientRect().right - priorityColumn.getBoundingClientRect().right),
+      }
+    })
+  )
+  const validColumnMetrics = resultColumnMetrics.filter((metrics): metrics is NonNullable<typeof metrics> => metrics !== null)
+  expect(validColumnMetrics.length).toBeGreaterThan(1)
+  expect(new Set(validColumnMetrics.map((metrics) => metrics.typeWidth)).size).toBe(1)
+  expect(new Set(validColumnMetrics.map((metrics) => metrics.priorityWidth)).size).toBe(1)
+  expect(new Set(validColumnMetrics.map((metrics) => metrics.priorityRightGap)).size).toBe(1)
+  validColumnMetrics.forEach((metrics) => {
+    expect(metrics.typeRightGap).toBeGreaterThan(metrics.priorityRightGap)
+  })
+  const type2DiabetesResult = page.locator('[data-slot="command-item"]').filter({ hasText: 'Type 2 diabetes mellitus' })
+  await expect(type2DiabetesResult).toBeVisible()
+  await type2DiabetesResult.click({ force: true })
   await expect(reason.getByText('Type 2 diabetes mellitus')).toBeVisible()
   await expect(reason.getByText('44054006')).toBeVisible()
   await expect(reason.getByText('[44054006]')).toHaveCount(0)

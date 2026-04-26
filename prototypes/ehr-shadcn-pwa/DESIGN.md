@@ -90,7 +90,10 @@ interaction, slot anatomy, and visual consistency.
 - Do use shadcn `Empty` for compact no-data states, including repeated
   section-local states.
 - Do keep coded-content entry as a SNOMED CT concept searchbar, not a generic
-  add button.
+  add button, and not a button that opens a second searchbar.
+- Do render section-local SNOMED search results as fixed-column rows: concept
+  and SNOMED CT code on the left, semantic type and priority in right-aligned
+  metadata columns sized for the largest expected pill text.
 - Do render selected concepts as compact parent pills with primary display
   text, a smaller muted SNOMED CT code without brackets, the search-result
   semantic type and priority as nested `ClinicalBadge` pills, and an end
