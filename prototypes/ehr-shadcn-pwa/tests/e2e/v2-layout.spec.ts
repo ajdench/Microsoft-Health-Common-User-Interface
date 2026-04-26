@@ -30,6 +30,9 @@ test('renders shadcn-native V2 consultation shell without horizontal overflow', 
   await expect(reason.locator('[aria-label="Selected SNOMED CT concepts"]').getByText('Disorder', { exact: true })).toBeVisible()
   await expect(reason.getByText('Prioritised')).toBeVisible()
   const hypertensionChip = reason.locator('[aria-label="Selected SNOMED CT concepts"] li').filter({ hasText: 'Hypertensive disorder' })
+  await expect(hypertensionChip.getByText('Hypertensive disorder')).toHaveClass(/text-sm/)
+  await expect(hypertensionChip.getByText('Hypertensive disorder')).toHaveClass(/font-normal/)
+  await expect(hypertensionChip.getByText('Hypertensive disorder')).not.toHaveClass(/font-medium/)
   await expect(hypertensionChip.getByRole('button', { name: 'Remove Hypertensive disorder' })).toHaveClass(/text-destructive/)
   await expect(hypertensionChip.locator('svg')).toHaveAttribute('stroke-width', '3')
   const hypertensionRemoveAlignment = await hypertensionChip.evaluate((chip) => {

@@ -93,7 +93,7 @@ export function SectionCodingField({ entries, onAddCode, onRemoveCode }: Section
             {entries.map((entry) => (
               <li className="inline-grid max-w-full grid-cols-[minmax(0,1fr)_auto] items-center gap-1.5 rounded-4xl border bg-background px-2 py-1" key={entry.id}>
                 <span className="flex min-w-0 flex-wrap items-center gap-1.5">
-                  <span className="text-sm font-medium">{entry.display}</span>
+                  <span className="text-sm leading-5 font-normal">{entry.display}</span>
                   <span className="text-xs text-muted-foreground">{entry.code}</span>
                   <ClinicalBadge tone={entry.semanticTag}>{formatSemanticTag(entry.semanticTag)}</ClinicalBadge>
                   <ClinicalBadge tone={getPriorityTone(entry.priority)}>{formatPriority(entry.priority)}</ClinicalBadge>

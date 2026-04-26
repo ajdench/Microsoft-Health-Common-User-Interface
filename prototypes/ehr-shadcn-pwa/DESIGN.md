@@ -98,6 +98,9 @@ interaction, slot anatomy, and visual consistency.
 - Do keep selected-concept remove controls in their own right-aligned chip
   column, using a bold red `XIcon` treatment so deletion remains visibly
   distinct from the coded content.
+- Do keep selected-concept title text at the same normal body scale and weight
+  as consultation free-text fields; reserve emphasis for type and priority
+  pills, not the concept title.
 - Do use consistent semantic-type colours in SNOMED search and selected-code
   display, for example finding, disorder, procedure, observable, situation,
   regime/therapy, and product.
