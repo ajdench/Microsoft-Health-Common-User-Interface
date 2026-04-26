@@ -10,9 +10,9 @@ test('renders shadcn-native V2 consultation shell without horizontal overflow', 
   await expect(consultation.getByText('Validation open')).toBeVisible()
   await expect(consultation.getByText('Not saved locally')).toBeVisible()
   await expect(consultation.getByText('Consultation not signed')).toBeVisible()
-  await expect(consultation.getByRole('button', { name: 'Review validation' })).toBeVisible()
-  await expect(consultation.getByRole('button', { name: 'Save locally' })).toBeVisible()
-  await expect(consultation.getByRole('button', { name: 'Sign consultation' })).toBeVisible()
+  await expect(consultation.getByRole('button', { name: 'REVIEW VALIDATION' })).toHaveAttribute('data-variant', 'clinicalWarn')
+  await expect(consultation.getByRole('button', { name: 'Save Locally' })).toHaveAttribute('data-variant', 'clinicalSuccess')
+  await expect(consultation.getByRole('button', { name: 'Sign Consultation' })).toHaveAttribute('data-variant', 'clinicalPurple')
   const railMetrics = await consultation.getByTestId('consultation-banner-action-rail').evaluate((rail) => {
     const pills = Array.from(rail.querySelectorAll('[data-slot="badge"]')).map((element) => Math.round(element.getBoundingClientRect().width))
     const buttons = Array.from(rail.querySelectorAll('[data-slot="button"]')).map((element) => Math.round(element.getBoundingClientRect().width))
@@ -42,7 +42,7 @@ test('renders shadcn-native V2 consultation shell without horizontal overflow', 
   await page.getByRole('button', { name: 'Remove concept' }).click()
   await expect(reason.getByText('Type 2 diabetes mellitus')).toHaveCount(0)
 
-  await consultation.getByRole('button', { name: 'Review validation' }).click()
+  await consultation.getByRole('button', { name: 'REVIEW VALIDATION' }).click()
   await expect(consultation.locator('[data-section-id="assessment"]')).toHaveClass(/ring-2/)
   await expect(page.getByLabel('Assessment notes')).toBeFocused()
 

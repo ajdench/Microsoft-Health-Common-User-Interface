@@ -80,6 +80,9 @@ interaction, slot anatomy, and visual consistency.
   by matching action buttons below.
 - Do keep banner status pills at normal shadcn `Badge` height; they may fill
   grid-column width for alignment, but should not be enlarged to button height.
+- Do use clinical button variants in the consultation action rail: yellow for
+  `REVIEW VALIDATION`, green for `Save Locally`, and purple for
+  `Sign Consultation`.
 - Do use red-family status for unsaved local state and purple-family status
   for unsigned consultation state.
 - Do make `Review validation` reveal required sections needing attention and

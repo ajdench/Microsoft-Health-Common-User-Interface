@@ -75,14 +75,14 @@ export function App() {
                   </ClinicalBadge>
                 </div>
                 <div className="grid gap-2 sm:grid-cols-3">
-                  <Button className="w-full" variant="outline" type="button" size="sm" onClick={reviewValidation}>
-                    Review validation
+                  <Button className="w-full" variant="clinicalWarn" type="button" size="sm" onClick={reviewValidation}>
+                    REVIEW VALIDATION
                   </Button>
-                  <Button className="w-full" type="button" size="sm">
-                    Save locally
+                  <Button className="w-full" variant="clinicalSuccess" type="button" size="sm">
+                    Save Locally
                   </Button>
-                  <Button className="w-full" variant="outline" size="sm" type="button" disabled={missingRequiredCount > 0}>
-                    Sign consultation
+                  <Button className="w-full" variant="clinicalPurple" size="sm" type="button" disabled={missingRequiredCount > 0}>
+                    Sign Consultation
                   </Button>
                 </div>
               </CardAction>
