@@ -13,6 +13,12 @@ test('renders shadcn-native V2 consultation shell without horizontal overflow', 
   await expect(consultation.getByRole('button', { name: 'Review Validation' })).toHaveAttribute('data-variant', 'clinicalWarn')
   await expect(consultation.getByRole('button', { name: 'Save Locally' })).toHaveAttribute('data-variant', 'clinicalSuccess')
   await expect(consultation.getByRole('button', { name: 'Sign Consultation' })).toHaveAttribute('data-variant', 'clinicalPurple')
+  await expect(consultation.getByRole('button', { name: 'Review Validation' })).toHaveClass(/bg-yellow-400/)
+  await expect(consultation.getByRole('button', { name: 'Review Validation' })).toHaveClass(/border-amber-600/)
+  await expect(consultation.getByRole('button', { name: 'Save Locally' })).toHaveClass(/bg-emerald-100/)
+  await expect(consultation.getByRole('button', { name: 'Save Locally' })).toHaveClass(/border-emerald-300/)
+  await expect(consultation.getByRole('button', { name: 'Sign Consultation' })).toHaveClass(/bg-purple-900/)
+  await expect(consultation.getByRole('button', { name: 'Sign Consultation' })).toHaveClass(/border-purple-900/)
   const railMetrics = await consultation.getByTestId('consultation-banner-action-rail').evaluate((rail) => {
     const pills = Array.from(rail.querySelectorAll('[data-slot="badge"]')).map((element) => Math.round(element.getBoundingClientRect().width))
     const buttons = Array.from(rail.querySelectorAll('[data-slot="button"]')).map((element) => Math.round(element.getBoundingClientRect().width))

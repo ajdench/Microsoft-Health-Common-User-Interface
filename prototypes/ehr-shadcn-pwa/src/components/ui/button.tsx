@@ -19,11 +19,11 @@ const buttonVariants = cva(
         destructive:
           "bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 dark:focus-visible:ring-destructive/40",
         clinicalWarn:
-          "border-amber-200 bg-amber-100 text-amber-950 hover:bg-amber-200 focus-visible:border-amber-300 focus-visible:ring-amber-200/60",
+          "border-amber-600 bg-yellow-400 text-amber-950 hover:bg-yellow-500 focus-visible:border-amber-700 focus-visible:ring-yellow-400/60",
         clinicalSuccess:
-          "border-emerald-200 bg-emerald-600 text-white hover:bg-emerald-700 focus-visible:border-emerald-400 focus-visible:ring-emerald-200/70",
+          "border-emerald-300 bg-emerald-100 text-emerald-950 hover:bg-emerald-200 focus-visible:border-emerald-400 focus-visible:ring-emerald-200/70",
         clinicalPurple:
-          "border-purple-200 bg-purple-600 text-white hover:bg-purple-700 focus-visible:border-purple-400 focus-visible:ring-purple-200/70",
+          "border-purple-900 bg-purple-900 text-white hover:bg-purple-950 focus-visible:border-purple-900 focus-visible:ring-purple-200/70 disabled:opacity-70",
         link: "text-primary underline-offset-4 hover:underline",
       },
       size: {

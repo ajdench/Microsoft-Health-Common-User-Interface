@@ -83,6 +83,11 @@ interaction, slot anatomy, and visual consistency.
 - Do use clinical button variants in the consultation action rail: yellow for
   `Review Validation`, green for `Save Locally`, and purple for
   `Sign Consultation`.
+- Do keep consultation action button colours tied to their status/pane
+  families: validation uses the vivid yellow highlighted-pane border colour with a
+  stronger gold border/text, save uses a darker light-green fill than the
+  saved/ready pill family, and sign uses the unsigned purple text colour as its
+  fill.
 - Do use red-family status for unsaved local state and purple-family status
   for unsigned consultation state.
 - Do make `Review validation` reveal required sections needing attention and

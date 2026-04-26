@@ -108,7 +108,11 @@ consultation state uses a purple-family pill. `Review validation` marks all
 incomplete required consultation sections and scrolls/focuses the first one.
 The action buttons use clinical button variants: yellow warning for
 `Review Validation`, green for `Save Locally`, and purple for
-`Sign Consultation`.
+`Sign Consultation`. The button colours are intentionally tied back to nearby
+status colours: validation uses the vivid yellow highlighted-pane border
+colour with stronger gold border/text, save uses a darker light-green fill
+than the green pill family, and sign uses the unsigned consultation purple
+text colour as its fill.
 
 Unused local shadcn source components are intentionally retained. They are not
 legacy dependencies; they are available native primitives for upcoming passes.
