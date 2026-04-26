@@ -716,6 +716,12 @@
 - Outputs created: updated `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
 - Unresolved issues: none for selected-code chip typography.
 
+## 2026-04-26 12:20:48 BST — Softened V2 local-save action green
+- Action performed: changed the `Save Locally` clinical success button from `emerald-800` to `emerald-700` so it remains a filled local-state green action while better matching the duskier visual weight of the purple sign action.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user feedback that the green was slightly too dark, local shadcn Button variant, V2 e2e layout contract, V2 design contract, and the V2 companion wiki note.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/components/ui/button.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
+- Unresolved issues: none.
+
 ## 2026-04-26 12:18:13 BST — Formalised consultation action button colour contract
 - Action performed: set the `Review Validation` button fill to exact `#ffd230` with matched gold border/text; changed `Save Locally` to use the green pill text colour family as fill and border, keeping `Sign Consultation` aligned to the purple pill text colour family.
 - Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user-provided yellow reference, shadcn Button guidance, `prototypes/ehr-shadcn-pwa/src/components/ui/button.tsx`, V2 e2e layout contract, V2 design contract, and the V2 companion wiki note.

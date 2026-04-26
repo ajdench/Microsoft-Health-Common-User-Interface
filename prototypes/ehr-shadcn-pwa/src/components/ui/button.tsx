@@ -21,7 +21,7 @@ const buttonVariants = cva(
         clinicalWarn:
           "border-[#d6a100] bg-[#ffd230] text-[#7a5a00] hover:bg-[#f2c400] focus-visible:border-[#b88700] focus-visible:ring-[#ffd230]/60",
         clinicalSuccess:
-          "border-emerald-800 bg-emerald-800 text-white hover:bg-emerald-900 focus-visible:border-emerald-800 focus-visible:ring-emerald-200/70",
+          "border-emerald-700 bg-emerald-700 text-white hover:bg-emerald-800 focus-visible:border-emerald-700 focus-visible:ring-emerald-200/70",
         clinicalPurple:
           "border-purple-900 bg-purple-900 text-white hover:bg-purple-950 focus-visible:border-purple-900 focus-visible:ring-purple-200/70 disabled:opacity-70",
         link: "text-primary underline-offset-4 hover:underline",

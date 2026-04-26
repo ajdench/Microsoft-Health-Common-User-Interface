@@ -16,8 +16,8 @@ test('renders shadcn-native V2 consultation shell without horizontal overflow', 
   await expect(consultation.getByRole('button', { name: 'Review Validation' })).toHaveClass(/bg-\[#ffd230\]/)
   await expect(consultation.getByRole('button', { name: 'Review Validation' })).toHaveClass(/border-\[#d6a100\]/)
   await expect(consultation.getByRole('button', { name: 'Review Validation' })).toHaveClass(/text-\[#7a5a00\]/)
-  await expect(consultation.getByRole('button', { name: 'Save Locally' })).toHaveClass(/bg-emerald-800/)
-  await expect(consultation.getByRole('button', { name: 'Save Locally' })).toHaveClass(/border-emerald-800/)
+  await expect(consultation.getByRole('button', { name: 'Save Locally' })).toHaveClass(/bg-emerald-700/)
+  await expect(consultation.getByRole('button', { name: 'Save Locally' })).toHaveClass(/border-emerald-700/)
   await expect(consultation.getByRole('button', { name: 'Sign Consultation' })).toHaveClass(/bg-purple-900/)
   await expect(consultation.getByRole('button', { name: 'Sign Consultation' })).toHaveClass(/border-purple-900/)
   const railMetrics = await consultation.getByTestId('consultation-banner-action-rail').evaluate((rail) => {
