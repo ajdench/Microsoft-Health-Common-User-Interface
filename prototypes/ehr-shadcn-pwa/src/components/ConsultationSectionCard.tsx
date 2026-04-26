@@ -2,6 +2,7 @@ import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle }
 import { Textarea } from '@/components/ui/textarea'
 import { ClinicalBadge } from '@/components/ClinicalBadge'
 import { SectionCodingField } from '@/components/SectionCodingField'
+import { cn } from '@/lib/utils'
 import type { CodedEntry, ConsultationSection } from '@/types'
 
 type ConsultationSectionCardProps = {
@@ -10,13 +11,15 @@ type ConsultationSectionCardProps = {
   onTextChange: (value: string) => void
   onAddCode: (entry: Omit<CodedEntry, 'id' | 'sectionId'>) => void
   onRemoveCode: (entryId: string) => void
+  showValidationAttention?: boolean
 }
 
-export function ConsultationSectionCard({ section, codes, onTextChange, onAddCode, onRemoveCode }: ConsultationSectionCardProps) {
+export function ConsultationSectionCard({ section, codes, onTextChange, onAddCode, onRemoveCode, showValidationAttention = false }: ConsultationSectionCardProps) {
   const missingRequired = section.required && section.text.trim().length === 0
+  const needsAttention = showValidationAttention && missingRequired
 
   return (
-    <Card>
+    <Card className={cn(needsAttention && 'ring-2 ring-amber-300 bg-amber-50/40')} data-section-id={section.id}>
       <CardHeader>
         <CardTitle>{section.label}</CardTitle>
         <CardDescription>{section.required ? 'Required before sign-off' : 'Optional clinical context'}</CardDescription>
@@ -28,6 +31,7 @@ export function ConsultationSectionCard({ section, codes, onTextChange, onAddCod
         <SectionCodingField entries={codes} onAddCode={onAddCode} onRemoveCode={onRemoveCode} />
         <Textarea
           aria-label={`${section.label} notes`}
+          aria-invalid={needsAttention}
           className="min-h-28 resize-y"
           placeholder={`Add ${section.label.toLowerCase()} notes`}
           value={section.text}

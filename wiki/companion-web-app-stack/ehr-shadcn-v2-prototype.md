@@ -36,7 +36,7 @@ UI class structure.
 | Sync/local state | `SyncStateBar`, always visible below patient chrome |
 | Consultation section | `ConsultationSectionCard`, shadcn `Card` anatomy |
 | Section coding | `SectionCodingField`, shadcn `Popover` + `Command` |
-| Validation/actions | Consultation banner `CardAction`; status pills above matching buttons |
+| Validation/actions | Consultation banner `CardAction`; status pills above matching same-width buttons |
 | Follow-up | Final consultation section after Plan |
 | Reference context | `ReferencePanel`, shadcn `Tabs`, `Alert`, `Table`, and `Card` |
 
@@ -83,6 +83,11 @@ The consultation banner action rail now separates state from action: the top
 rail uses pills for validation, local-save, and signature state; the row below
 contains the corresponding review, save, and sign buttons. This keeps status
 scannable without making every status look like an action.
+
+The rail is a shared three-column grid so each status pill aligns with the
+matching button below. Unsaved local state uses a red-family pill; unsigned
+consultation state uses a purple-family pill. `Review validation` marks all
+incomplete required consultation sections and scrolls/focuses the first one.
 
 Unused local shadcn source components are intentionally retained. They are not
 legacy dependencies; they are available native primitives for upcoming passes.

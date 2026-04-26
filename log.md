@@ -685,3 +685,9 @@
 - Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, shadcn Button and Badge documentation, `prototypes/ehr-shadcn-pwa/src/App.tsx`, V2 e2e layout contract, V2 design contract, and the V2 companion wiki note.
 - Outputs created: updated `prototypes/ehr-shadcn-pwa/src/App.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
 - Unresolved issues: the local-save and signature states are still prototype-static labels; future state handling should drive these pills from actual dirty/signature state.
+
+## 2026-04-26 09:52:01 BST — Aligned V2 banner rail and added validation review navigation
+- Action performed: converted the consultation banner rail to a shared three-column grid so pills and buttons align, changed unsaved local state to a red-family pill, added a purple-family clinical tone for unsigned consultation state, and wired `Review validation` to highlight incomplete required sections and scroll/focus the first missing section.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, `prototypes/ehr-shadcn-pwa/src/App.tsx`, `ClinicalBadge`, `ConsultationSectionCard`, V2 e2e layout contract, V2 design contract, and the V2 companion wiki note.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/App.tsx`, `prototypes/ehr-shadcn-pwa/src/components/ClinicalBadge.tsx`, `prototypes/ehr-shadcn-pwa/src/components/ConsultationSectionCard.tsx`, `prototypes/ehr-shadcn-pwa/src/types.ts`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
+- Unresolved issues: save/sign state is still static prototype state; a future pass should connect the red and purple pills to real dirty-state and signature-state transitions.

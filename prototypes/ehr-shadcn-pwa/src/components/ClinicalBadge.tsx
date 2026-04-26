@@ -11,6 +11,7 @@ const toneClasses: Record<ClinicalTone, string> = {
   critical: 'border-red-200 bg-red-50 text-red-900',
   high: 'border-amber-200 bg-amber-50 text-amber-900',
   routine: 'border-border bg-secondary text-muted-foreground',
+  purple: 'border-purple-200 bg-purple-50 text-purple-900',
 }
 
 type ClinicalBadgeProps = ComponentProps<typeof Badge> & {

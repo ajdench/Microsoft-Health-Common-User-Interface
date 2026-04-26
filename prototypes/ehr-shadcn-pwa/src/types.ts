@@ -1,4 +1,4 @@
-export type ClinicalTone = 'neutral' | 'good' | 'warn' | 'bad' | 'critical' | 'high' | 'routine'
+export type ClinicalTone = 'neutral' | 'good' | 'warn' | 'bad' | 'critical' | 'high' | 'routine' | 'purple'
 
 export type PatientStatusFlag = {
   label: string

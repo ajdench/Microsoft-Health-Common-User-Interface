@@ -13,10 +13,9 @@ import './styles.css'
 export function App() {
   const [sections, setSections] = useState<ConsultationSection[]>(initialSections)
   const [codes, setCodes] = useState<CodedEntry[]>(initialCodes)
-  const missingRequiredCount = useMemo(
-    () => sections.filter((section) => section.required && section.text.trim().length === 0).length,
-    [sections],
-  )
+  const [showValidationAttention, setShowValidationAttention] = useState(false)
+  const missingRequiredSections = useMemo(() => sections.filter((section) => section.required && section.text.trim().length === 0), [sections])
+  const missingRequiredCount = missingRequiredSections.length
 
   function updateSection(sectionId: string, text: string) {
     setSections((current) => current.map((section) => (section.id === sectionId ? { ...section, text } : section)))
@@ -36,6 +35,21 @@ export function App() {
     setCodes((current) => current.filter((entry) => entry.id !== entryId))
   }
 
+  function reviewValidation() {
+    setShowValidationAttention(true)
+
+    const firstMissingSection = missingRequiredSections[0]
+    if (!firstMissingSection) {
+      return
+    }
+
+    window.requestAnimationFrame(() => {
+      const sectionElement = document.querySelector(`[data-section-id="${firstMissingSection.id}"]`)
+      sectionElement?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      sectionElement?.querySelector<HTMLTextAreaElement>('textarea')?.focus({ preventScroll: true })
+    })
+  }
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <PatientChrome patient={patient} />
@@ -48,20 +62,26 @@ export function App() {
               <CardDescription>
                 Author Dr Taylor Reed · {missingRequiredCount} required sections incomplete
               </CardDescription>
-              <CardAction className="mt-2 flex w-full flex-col gap-2 sm:mt-0 sm:w-auto sm:items-end">
-                <div className="flex flex-wrap gap-2 sm:justify-end">
-                  <ClinicalBadge tone={missingRequiredCount > 0 ? 'warn' : 'good'}>{missingRequiredCount > 0 ? 'Validation open' : 'Validation clear'}</ClinicalBadge>
-                  <ClinicalBadge tone="warn">Not saved locally</ClinicalBadge>
-                  <ClinicalBadge tone="neutral">Consultation not signed</ClinicalBadge>
+              <CardAction className="mt-2 grid w-full gap-2 sm:mt-0 sm:min-w-[34rem]" data-testid="consultation-banner-action-rail">
+                <div className="grid gap-2 sm:grid-cols-3">
+                  <ClinicalBadge className="h-7 w-full justify-center px-2.5 text-[0.8rem]" tone={missingRequiredCount > 0 ? 'warn' : 'good'}>
+                    {missingRequiredCount > 0 ? 'Validation open' : 'Validation clear'}
+                  </ClinicalBadge>
+                  <ClinicalBadge className="h-7 w-full justify-center px-2.5 text-[0.8rem]" tone="bad">
+                    Not saved locally
+                  </ClinicalBadge>
+                  <ClinicalBadge className="h-7 w-full justify-center px-2.5 text-[0.8rem]" tone="purple">
+                    Consultation not signed
+                  </ClinicalBadge>
                 </div>
-                <div className="flex flex-wrap gap-2 sm:justify-end">
-                  <Button variant="outline" type="button" size="sm">
+                <div className="grid gap-2 sm:grid-cols-3">
+                  <Button className="w-full" variant="outline" type="button" size="sm" onClick={reviewValidation}>
                     Review validation
                   </Button>
-                  <Button type="button" size="sm">
+                  <Button className="w-full" type="button" size="sm">
                     Save locally
                   </Button>
-                  <Button variant="outline" size="sm" type="button" disabled={missingRequiredCount > 0}>
+                  <Button className="w-full" variant="outline" size="sm" type="button" disabled={missingRequiredCount > 0}>
                     Sign consultation
                   </Button>
                 </div>
@@ -76,6 +96,7 @@ export function App() {
               onTextChange={(value) => updateSection(section.id, value)}
               onAddCode={(entry) => addCode(section.id, entry)}
               onRemoveCode={removeCode}
+              showValidationAttention={showValidationAttention}
             />
           ))}
         </section>

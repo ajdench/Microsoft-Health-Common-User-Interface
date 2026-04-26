@@ -13,9 +13,19 @@ test('renders shadcn-native V2 consultation shell without horizontal overflow', 
   await expect(consultation.getByRole('button', { name: 'Review validation' })).toBeVisible()
   await expect(consultation.getByRole('button', { name: 'Save locally' })).toBeVisible()
   await expect(consultation.getByRole('button', { name: 'Sign consultation' })).toBeVisible()
+  const railMetrics = await consultation.getByTestId('consultation-banner-action-rail').evaluate((rail) => {
+    const pills = Array.from(rail.querySelectorAll('[data-slot="badge"]')).map((element) => Math.round(element.getBoundingClientRect().width))
+    const buttons = Array.from(rail.querySelectorAll('[data-slot="button"]')).map((element) => Math.round(element.getBoundingClientRect().width))
+    return { pills, buttons }
+  })
+  expect(railMetrics.pills).toEqual(railMetrics.buttons)
   await expect(page.getByText('Follow-up tasks')).toHaveCount(0)
   await expect(consultation.locator('[data-slot="card-title"]').filter({ hasText: 'Follow-up' })).toBeVisible()
   await expect(page.getByRole('heading', { name: 'Medication review' })).toBeVisible()
+
+  await consultation.getByRole('button', { name: 'Review validation' }).click()
+  await expect(consultation.locator('[data-section-id="assessment"]')).toHaveClass(/ring-2/)
+  await expect(page.getByLabel('Assessment notes')).toBeFocused()
 
   await page.getByRole('tab', { name: 'Results' }).click()
   await expect(page.getByRole('heading', { name: 'Recent results' })).toBeVisible()
