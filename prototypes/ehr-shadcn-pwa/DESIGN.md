@@ -36,7 +36,7 @@ comparison material, but new component decisions should be made here first.
 - `SectionCodingField`: shadcn `Popover` and `Command` concept picker with
   selected codes attached to the section.
 - Consultation banner: shadcn `Card` header containing consultation state,
-  validation status, and save/sign actions.
+  a top row of status pills, and a second row of corresponding actions.
 - Follow-up section: final `ConsultationSectionCard` after Plan.
 - `ReferencePanel`: shadcn `Tabs` for medications, alerts, and results.
 
@@ -72,6 +72,9 @@ interaction, slot anatomy, and visual consistency.
   card-like headers instead of hand-styled header boxes.
 - Do let card actions stack below title/description on narrow viewports and
   move to the right-hand header rail from `sm` upward.
+- Do keep the consultation banner action rail as state pills first
+  (`Validation open`, `Not saved locally`, `Consultation not signed`) followed
+  by matching action buttons below.
 - Do use shadcn `Empty` for compact no-data states, including repeated
   section-local states.
 - Do keep layout responsive with grid/flex utility classes and stable gaps.

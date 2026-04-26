@@ -48,14 +48,23 @@ export function App() {
               <CardDescription>
                 Author Dr Taylor Reed · {missingRequiredCount} required sections incomplete
               </CardDescription>
-              <CardAction className="mt-2 flex flex-wrap gap-2 sm:mt-0 sm:justify-end">
-                <ClinicalBadge tone={missingRequiredCount > 0 ? 'warn' : 'good'}>{missingRequiredCount > 0 ? 'Validation open' : 'Validation clear'}</ClinicalBadge>
-                <Button type="button" size="sm">
-                  Save locally
-                </Button>
-                <Button variant="outline" size="sm" type="button" disabled={missingRequiredCount > 0}>
-                  Sign consultation
-                </Button>
+              <CardAction className="mt-2 flex w-full flex-col gap-2 sm:mt-0 sm:w-auto sm:items-end">
+                <div className="flex flex-wrap gap-2 sm:justify-end">
+                  <ClinicalBadge tone={missingRequiredCount > 0 ? 'warn' : 'good'}>{missingRequiredCount > 0 ? 'Validation open' : 'Validation clear'}</ClinicalBadge>
+                  <ClinicalBadge tone="warn">Not saved locally</ClinicalBadge>
+                  <ClinicalBadge tone="neutral">Consultation not signed</ClinicalBadge>
+                </div>
+                <div className="flex flex-wrap gap-2 sm:justify-end">
+                  <Button variant="outline" type="button" size="sm">
+                    Review validation
+                  </Button>
+                  <Button type="button" size="sm">
+                    Save locally
+                  </Button>
+                  <Button variant="outline" size="sm" type="button" disabled={missingRequiredCount > 0}>
+                    Sign consultation
+                  </Button>
+                </div>
               </CardAction>
             </CardHeader>
           </Card>

@@ -679,3 +679,9 @@
 - Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, `prototypes/ehr-shadcn-pwa/src/App.tsx`, `prototypes/ehr-shadcn-pwa/src/data/demo.ts`, V2 design contract, and the V2 companion wiki note.
 - Outputs created: updated `prototypes/ehr-shadcn-pwa/src/App.tsx`, `prototypes/ehr-shadcn-pwa/src/data/demo.ts`, `prototypes/ehr-shadcn-pwa/src/components/ui/card.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, removed obsolete `prototypes/ehr-shadcn-pwa/src/components/ActionRail.tsx`, updated `prototypes/ehr-shadcn-pwa/DESIGN.md`, updated `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and updated `log.md`.
 - Unresolved issues: validation currently reports only missing required sections; future passes should expand it into a structured validation summary if the clinical workflow needs actionable rule-level detail.
+
+## 2026-04-26 09:38:46 BST — Split V2 consultation banner status pills from action buttons
+- Action performed: changed the V2 consultation banner action rail so the top row is status pills (`Validation open`, `Not saved locally`, `Consultation not signed`) and the row beneath contains corresponding buttons for review, save, and sign.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, shadcn Button and Badge documentation, `prototypes/ehr-shadcn-pwa/src/App.tsx`, V2 e2e layout contract, V2 design contract, and the V2 companion wiki note.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/App.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
+- Unresolved issues: the local-save and signature states are still prototype-static labels; future state handling should drive these pills from actual dirty/signature state.
