@@ -94,6 +94,8 @@ interaction, slot anatomy, and visual consistency.
 - Do render section-local SNOMED search results as fixed-column rows: concept
   and SNOMED CT code on the left, semantic type and priority in right-aligned
   metadata columns sized for the largest expected pill text.
+- Do include result column headers above the aligned SNOMED result metadata
+  columns, using the same grid tracks as result rows.
 - Do render selected concepts as compact parent pills with primary display
   text, a smaller muted SNOMED CT code without brackets, the search-result
   semantic type and priority as nested `ClinicalBadge` pills, and an end

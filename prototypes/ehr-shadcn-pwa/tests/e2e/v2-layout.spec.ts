@@ -49,30 +49,45 @@ test('renders shadcn-native V2 consultation shell without horizontal overflow', 
   const reasonCodeSearch = reason.getByRole('textbox', { name: 'Search SNOMED CT concepts' })
   await expect(reasonCodeSearch).toBeVisible()
   await reasonCodeSearch.fill('diabetes')
+  await expect(page.locator('[data-snomed-result-header]').getByText('Concept')).toBeVisible()
+  await expect(page.locator('[data-snomed-result-header]').getByText('Type')).toBeVisible()
+  await expect(page.locator('[data-snomed-result-header]').getByText('Priority')).toBeVisible()
   const diabetesRows = page.locator('[data-slot="command-item"]').filter({ hasText: 'diabetes' })
-  const resultColumnMetrics = await diabetesRows.evaluateAll((rows) =>
-    rows.map((row) => {
+  const resultColumnMetrics = await diabetesRows.evaluateAll((rows) => {
+    const header = document.querySelector('[data-snomed-result-header]')
+    const headerTypeColumn = document.querySelector('[data-snomed-result-header-column="type"]')
+    const headerPriorityColumn = document.querySelector('[data-snomed-result-header-column="priority"]')
+
+    return rows.map((row) => {
       const typeColumn = row.querySelector('[data-snomed-result-column="type"]')
       const priorityColumn = row.querySelector('[data-snomed-result-column="priority"]')
 
-      if (!typeColumn || !priorityColumn) {
+      if (!header || !headerTypeColumn || !headerPriorityColumn || !typeColumn || !priorityColumn) {
         return null
       }
 
       return {
+        headerTypeWidth: Math.round(headerTypeColumn.getBoundingClientRect().width),
+        headerPriorityWidth: Math.round(headerPriorityColumn.getBoundingClientRect().width),
+        headerTypeRightGap: Math.round(header.getBoundingClientRect().right - headerTypeColumn.getBoundingClientRect().right),
+        headerPriorityRightGap: Math.round(header.getBoundingClientRect().right - headerPriorityColumn.getBoundingClientRect().right),
         typeWidth: Math.round(typeColumn.getBoundingClientRect().width),
         priorityWidth: Math.round(priorityColumn.getBoundingClientRect().width),
         typeRightGap: Math.round(row.getBoundingClientRect().right - typeColumn.getBoundingClientRect().right),
         priorityRightGap: Math.round(row.getBoundingClientRect().right - priorityColumn.getBoundingClientRect().right),
       }
     })
-  )
+  })
   const validColumnMetrics = resultColumnMetrics.filter((metrics): metrics is NonNullable<typeof metrics> => metrics !== null)
   expect(validColumnMetrics.length).toBeGreaterThan(1)
   expect(new Set(validColumnMetrics.map((metrics) => metrics.typeWidth)).size).toBe(1)
   expect(new Set(validColumnMetrics.map((metrics) => metrics.priorityWidth)).size).toBe(1)
   expect(new Set(validColumnMetrics.map((metrics) => metrics.priorityRightGap)).size).toBe(1)
   validColumnMetrics.forEach((metrics) => {
+    expect(metrics.headerTypeWidth).toBe(metrics.typeWidth)
+    expect(metrics.headerPriorityWidth).toBe(metrics.priorityWidth)
+    expect(metrics.headerTypeRightGap).toBe(metrics.typeRightGap)
+    expect(metrics.headerPriorityRightGap).toBe(metrics.priorityRightGap)
     expect(metrics.typeRightGap).toBeGreaterThan(metrics.priorityRightGap)
   })
   const type2DiabetesResult = page.locator('[data-slot="command-item"]').filter({ hasText: 'Type 2 diabetes mellitus' })

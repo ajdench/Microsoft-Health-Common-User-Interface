@@ -76,9 +76,9 @@ family as the rest of the V2 surface.
 
 Section coding now presents the entry point as a real SNOMED CT concept
 searchbar rather than a generic add button or a button that opens a second
-search field. Results open beneath that field and use fixed right-aligned
-metadata columns for semantic type and priority so the type and priority pills
-line up across result rows. Selected concepts render as compact pills in the
+search field. Results open beneath that field and use a header row plus fixed
+right-aligned metadata columns for semantic type and priority so the type and
+priority titles and pills line up across result rows. Selected concepts render as compact pills in the
 section, using primary display text, a smaller muted SNOMED CT code without
 brackets, and nested semantic-type and priority pills that match the
 search-result categorisation colours. Removing a selected concept opens a

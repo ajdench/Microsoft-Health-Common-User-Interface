@@ -81,6 +81,18 @@ export function SectionCodingField({ entries, onAddCode, onRemoveCode }: Section
                   <CommandEmpty>No matching concepts.</CommandEmpty>
                 ) : (
                   <CommandGroup heading="Suggested concepts">
+                    <div
+                      className="grid grid-cols-[minmax(0,1fr)_7.75rem_6.75rem] items-center gap-2 px-2 py-1 text-xs font-medium text-muted-foreground"
+                      data-snomed-result-header
+                    >
+                      <span>Concept</span>
+                      <span className="text-right" data-snomed-result-header-column="type">
+                        Type
+                      </span>
+                      <span className="text-right" data-snomed-result-header-column="priority">
+                        Priority
+                      </span>
+                    </div>
                     {filteredSuggestions.map((suggestion) => (
                       <CommandItem
                         className="grid! grid-cols-[minmax(0,1fr)_7.75rem_6.75rem] items-center gap-2 [&>svg:last-child]:hidden"
