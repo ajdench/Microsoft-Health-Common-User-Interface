@@ -716,6 +716,12 @@
 - Outputs created: updated `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
 - Unresolved issues: none for selected-code chip typography.
 
+## 2026-04-26 12:36:54 BST — Rebalanced selected SNOMED concept pill colour and rails
+- Action performed: changed SNOMED semantic `Disorder` from warning-like rose/red to a calmer blue family, moved `Situation` off grey, tinted selected concept parent pills from a lighter version of their semantic type family, and changed selected concept pills to a single centre-aligned grid rail with symmetric left/right insets.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user-provided selected SNOMED concept pill screenshot, `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, `prototypes/ehr-shadcn-pwa/src/components/ClinicalBadge.tsx`, V2 e2e layout contract, V2 design contract, and the V2 companion wiki note.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, `prototypes/ehr-shadcn-pwa/src/components/ClinicalBadge.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
+- Unresolved issues: none.
+
 ## 2026-04-26 12:32:30 BST — Reduced V2 action rail pill-to-button gap
 - Action performed: reduced the consultation banner gap between status-pill and action-button rows from `gap-4` to `gap-y-2.5`, and retuned the desktop header row gap so the author/incomplete-status line stays aligned to the lower button rail.
 - Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user feedback to make the pill-to-button gap two-thirds of the current size, `prototypes/ehr-shadcn-pwa/src/App.tsx`, V2 e2e layout contract, V2 design contract, and the V2 companion wiki note.

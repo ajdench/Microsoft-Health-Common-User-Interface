@@ -75,18 +75,40 @@ test('renders shadcn-native V2 consultation shell without horizontal overflow', 
   await expect(hypertensionChip.getByText('Hypertensive disorder')).toHaveClass(/text-sm/)
   await expect(hypertensionChip.getByText('Hypertensive disorder')).toHaveClass(/font-normal/)
   await expect(hypertensionChip.getByText('Hypertensive disorder')).not.toHaveClass(/font-medium/)
+  await expect(hypertensionChip).toHaveClass(/bg-blue-50\/40/)
+  await expect(hypertensionChip).toHaveClass(/border-blue-100/)
+  await expect(hypertensionChip.locator('[data-snomed-selected-type]')).toHaveClass(/bg-blue-50/)
+  await expect(hypertensionChip.locator('[data-snomed-selected-type]')).toHaveClass(/border-blue-200/)
+  await expect(hypertensionChip.locator('[data-snomed-selected-type]')).toHaveClass(/text-blue-900/)
+  await expect(hypertensionChip.locator('[data-snomed-selected-type]')).not.toHaveClass(/rose/)
   await expect(hypertensionChip.getByRole('button', { name: 'Remove Hypertensive disorder' })).toHaveClass(/text-destructive/)
   await expect(hypertensionChip.locator('svg')).toHaveAttribute('stroke-width', '3')
-  const hypertensionRemoveAlignment = await hypertensionChip.evaluate((chip) => {
+  const hypertensionChipMetrics = await hypertensionChip.evaluate((chip) => {
+    const title = chip.querySelector('[data-snomed-selected-title]')
+    const code = chip.querySelector('[data-snomed-selected-code]')
+    const type = chip.querySelector('[data-snomed-selected-type]')
+    const priority = chip.querySelector('[data-snomed-selected-priority]')
     const button = chip.querySelector('button')
 
-    if (!button) {
-      return Number.POSITIVE_INFINITY
+    if (!title || !code || !type || !priority || !button) {
+      return null
     }
 
-    return Math.round(chip.getBoundingClientRect().right - button.getBoundingClientRect().right)
+    const chipBox = chip.getBoundingClientRect()
+    const elements = [title, code, type, priority, button]
+
+    return {
+      leftInset: Math.round(title.getBoundingClientRect().left - chipBox.left),
+      rightInset: Math.round(chipBox.right - button.getBoundingClientRect().right),
+      centres: elements.map((element) => Math.round(element.getBoundingClientRect().top + element.getBoundingClientRect().height / 2)),
+    }
   })
-  expect(hypertensionRemoveAlignment).toBeLessThanOrEqual(8)
+  expect(hypertensionChipMetrics).not.toBeNull()
+  if (!hypertensionChipMetrics) {
+    throw new Error('Selected SNOMED concept chip metrics were not available')
+  }
+  expect(Math.abs(hypertensionChipMetrics.leftInset - hypertensionChipMetrics.rightInset)).toBeLessThanOrEqual(1)
+  expect(new Set(hypertensionChipMetrics.centres).size).toBe(1)
   await expect(reason.getByRole('button', { name: 'Search SNOMED CT concepts' })).toHaveCount(0)
   const reasonCodeSearch = reason.getByRole('textbox', { name: 'Search SNOMED CT concepts' })
   await expect(reasonCodeSearch).toBeVisible()

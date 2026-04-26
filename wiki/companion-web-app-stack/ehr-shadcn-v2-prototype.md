@@ -81,16 +81,21 @@ right-aligned metadata columns for semantic type and priority so the type and
 priority titles and pills line up across result rows. Selected concepts render as compact pills in the
 section, using primary display text, a smaller muted SNOMED CT code without
 brackets, and nested semantic-type and priority pills that match the
-search-result categorisation colours. Removing a selected concept opens a
-confirmation dialog before the code is deleted from the section. The remove
-control is pinned to the right side of the selected-concept pill and uses a
-bold red `XIcon` affordance to separate deletion from concept metadata. The
-selected-concept title uses the same normal body text scale as consultation
-free-text fields, leaving the nested pills to carry emphasis. The seed
-concept set now includes examples across disorder, finding, procedure,
-observable, situation, and regime/therapy tags so section-local coding can show
-the difference between diagnoses/problems, observations, procedures, contextual
-statements, and care regimes.
+search-result categorisation colours. The parent selected-concept pill now
+uses a lighter tint from the same semantic family as the type pill, with title,
+code, semantic type, priority, and remove control aligned on one centre rail and
+with symmetric left/right insets. `Disorder` uses a calmer blue family rather
+than red/warning colour, because it is a semantic category rather than a safety
+state; `Situation` has also moved off grey so contextual statements remain
+visibly classifiable. Removing a selected concept opens a confirmation dialog
+before the code is deleted from the section. The remove control is pinned to the
+right side of the selected-concept pill and uses a bold red `XIcon` affordance
+to separate deletion from concept metadata. The selected-concept title uses the
+same normal body text scale as consultation free-text fields, leaving the nested
+pills to carry emphasis. The seed concept set now includes examples across
+disorder, finding, procedure, observable, situation, and regime/therapy tags so
+section-local coding can show the difference between diagnoses/problems,
+observations, procedures, contextual statements, and care regimes.
 
 The middle-column action rail has been removed. Validation is part of the
 top consultation banner because it is a whole-consultation state. Follow-up is

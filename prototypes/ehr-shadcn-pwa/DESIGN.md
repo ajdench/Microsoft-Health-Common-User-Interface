@@ -116,6 +116,11 @@ interaction, slot anatomy, and visual consistency.
   text, a smaller muted SNOMED CT code without brackets, the search-result
   semantic type and priority as nested `ClinicalBadge` pills, and an end
   remove affordance with confirmation dialog.
+- Do tint the whole selected-concept parent pill from the same semantic family
+  as the type pill, but one lighter step, so the parent pill supports rather
+  than competes with the nested type badge.
+- Do keep selected-concept title, code, semantic type, priority, and remove
+  affordance on one centre-aligned grid rail with symmetric left/right insets.
 - Do keep selected-concept remove controls in their own right-aligned chip
   column, using a bold red `XIcon` treatment so deletion remains visibly
   distinct from the coded content.
@@ -124,7 +129,8 @@ interaction, slot anatomy, and visual consistency.
   pills, not the concept title.
 - Do use consistent semantic-type colours in SNOMED search and selected-code
   display, for example finding, disorder, procedure, observable, situation,
-  regime/therapy, and product.
+  regime/therapy, and product. Do not use red/warning-like colour for
+  `Disorder`; it is a semantic category, not a safety state.
 - Do keep layout responsive with grid/flex utility classes and stable gaps.
 - Do add tests with the component contract as soon as a new surface is added.
 - Don't import V1 CSS class names or recreate V1's component-local spacing

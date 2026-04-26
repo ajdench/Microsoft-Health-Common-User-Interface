@@ -9,6 +9,7 @@ import { Input } from '@/components/ui/input'
 import { Popover, PopoverAnchor, PopoverContent } from '@/components/ui/popover'
 import { ClinicalBadge } from '@/components/ClinicalBadge'
 import { codeSuggestions } from '@/data/demo'
+import { cn } from '@/lib/utils'
 import type { ClinicalTone, CodedEntry } from '@/types'
 
 type SectionCodingFieldProps = {
@@ -39,6 +40,16 @@ function formatSemanticTag(tag: CodedEntry['semanticTag']) {
   }
 
   return tag.charAt(0).toUpperCase() + tag.slice(1)
+}
+
+const conceptPillClasses: Record<CodedEntry['semanticTag'], string> = {
+  finding: 'border-sky-100 bg-sky-50/40',
+  disorder: 'border-blue-100 bg-blue-50/40',
+  procedure: 'border-indigo-100 bg-indigo-50/40',
+  observable: 'border-cyan-100 bg-cyan-50/40',
+  situation: 'border-lime-100 bg-lime-50/40',
+  regime: 'border-violet-100 bg-violet-50/40',
+  product: 'border-teal-100 bg-teal-50/40',
 }
 
 export function SectionCodingField({ entries, onAddCode, onRemoveCode }: SectionCodingFieldProps) {
@@ -130,15 +141,27 @@ export function SectionCodingField({ entries, onAddCode, onRemoveCode }: Section
         {entries.length > 0 ? (
           <ul className="flex flex-wrap gap-2" aria-label="Selected SNOMED CT concepts">
             {entries.map((entry) => (
-              <li className="inline-grid max-w-full grid-cols-[minmax(0,1fr)_auto] items-center gap-1.5 rounded-4xl border bg-background px-2 py-1" key={entry.id}>
-                <span className="flex min-w-0 flex-wrap items-center gap-1.5">
-                  <span className="text-sm leading-5 font-normal">{entry.display}</span>
-                  <span className="text-xs text-muted-foreground">{entry.code}</span>
-                  <ClinicalBadge tone={entry.semanticTag}>{formatSemanticTag(entry.semanticTag)}</ClinicalBadge>
-                  <ClinicalBadge tone={getPriorityTone(entry.priority)}>{formatPriority(entry.priority)}</ClinicalBadge>
+              <li
+                className={cn(
+                  'inline-grid max-w-full grid-cols-[minmax(0,1fr)_auto_auto_auto_auto] items-center gap-2 rounded-4xl border px-3 py-1',
+                  conceptPillClasses[entry.semanticTag]
+                )}
+                key={entry.id}
+              >
+                <span className="min-w-0 truncate text-sm leading-5 font-normal" data-snomed-selected-title>
+                  {entry.display}
                 </span>
+                <span className="text-xs leading-5 text-muted-foreground" data-snomed-selected-code>
+                  {entry.code}
+                </span>
+                <ClinicalBadge data-snomed-selected-type tone={entry.semanticTag}>
+                  {formatSemanticTag(entry.semanticTag)}
+                </ClinicalBadge>
+                <ClinicalBadge data-snomed-selected-priority tone={getPriorityTone(entry.priority)}>
+                  {formatPriority(entry.priority)}
+                </ClinicalBadge>
                 <Button
-                  className="-mr-1 text-destructive hover:bg-destructive/10 hover:text-destructive focus-visible:ring-destructive/30"
+                  className="justify-self-end text-destructive hover:bg-destructive/10 hover:text-destructive focus-visible:ring-destructive/30"
                   variant="ghost"
                   size="icon-xs"
                   type="button"
