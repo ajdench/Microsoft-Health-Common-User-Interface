@@ -28,16 +28,25 @@ export const initialCodes: CodedEntry[] = [
     display: 'Hypertensive disorder',
     code: '38341003',
     system: 'SNOMED CT',
+    semanticTag: 'disorder',
     priority: 'prioritised',
   },
 ]
 
 export const codeSuggestions: CodeSuggestion[] = [
-  { display: 'Type 2 diabetes mellitus', code: '44054006', system: 'SNOMED CT', priority: 'prioritised' },
-  { display: 'Medication review done', code: '182836005', system: 'SNOMED CT', priority: 'standard' },
-  { display: 'Diabetic annual review', code: '401191002', system: 'SNOMED CT', priority: 'standard' },
-  { display: 'Hypertensive disorder', code: '38341003', system: 'SNOMED CT', priority: 'prioritised' },
-  { display: 'Diabetes mellitus', code: '73211009', system: 'SNOMED CT', priority: 'ambiguous' },
+  { display: 'Type 2 diabetes mellitus', code: '44054006', system: 'SNOMED CT', semanticTag: 'disorder', priority: 'prioritised' },
+  { display: 'Diabetes mellitus', code: '73211009', system: 'SNOMED CT', semanticTag: 'disorder', priority: 'ambiguous' },
+  { display: 'Prediabetes', code: '714628002', system: 'SNOMED CT', semanticTag: 'finding', priority: 'standard' },
+  { display: 'Hyperglycemia', code: '80394007', system: 'SNOMED CT', semanticTag: 'disorder', priority: 'standard' },
+  { display: 'Hypoglycemia', code: '302866003', system: 'SNOMED CT', semanticTag: 'disorder', priority: 'standard' },
+  { display: 'Hypertensive disorder', code: '38341003', system: 'SNOMED CT', semanticTag: 'disorder', priority: 'prioritised' },
+  { display: 'Review of medication', code: '182836005', system: 'SNOMED CT', semanticTag: 'procedure', priority: 'standard' },
+  { display: 'Medication review done by doctor', code: '719328007', system: 'SNOMED CT', semanticTag: 'situation', priority: 'standard' },
+  { display: 'Diabetic foot examination', code: '401191002', system: 'SNOMED CT', semanticTag: 'regime', priority: 'standard' },
+  { display: 'Blood pressure', code: '75367002', system: 'SNOMED CT', semanticTag: 'observable', priority: 'standard' },
+  { display: 'Systolic blood pressure', code: '271649006', system: 'SNOMED CT', semanticTag: 'observable', priority: 'standard' },
+  { display: 'Diastolic blood pressure', code: '271650006', system: 'SNOMED CT', semanticTag: 'observable', priority: 'standard' },
+  { display: 'Body mass index', code: '60621009', system: 'SNOMED CT', semanticTag: 'observable', priority: 'standard' },
 ]
 
 export const medications: Medication[] = [

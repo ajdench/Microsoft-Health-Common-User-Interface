@@ -1,4 +1,21 @@
-export type ClinicalTone = 'neutral' | 'good' | 'warn' | 'bad' | 'critical' | 'high' | 'routine' | 'purple'
+export type ClinicalTone =
+  | 'neutral'
+  | 'good'
+  | 'warn'
+  | 'bad'
+  | 'critical'
+  | 'high'
+  | 'routine'
+  | 'purple'
+  | 'finding'
+  | 'disorder'
+  | 'procedure'
+  | 'observable'
+  | 'situation'
+  | 'regime'
+  | 'product'
+
+export type SnomedSemanticTag = 'finding' | 'disorder' | 'procedure' | 'observable' | 'situation' | 'regime' | 'product'
 
 export type PatientStatusFlag = {
   label: string
@@ -27,6 +44,7 @@ export type CodedEntry = {
   display: string
   code: string
   system: string
+  semanticTag: SnomedSemanticTag
   priority: 'prioritised' | 'standard' | 'ambiguous'
 }
 

@@ -32,6 +32,14 @@ function getPriorityTone(priority: CodedEntry['priority']): ClinicalTone {
   return 'neutral'
 }
 
+function formatSemanticTag(tag: CodedEntry['semanticTag']) {
+  if (tag === 'regime') {
+    return 'Regime/therapy'
+  }
+
+  return tag.charAt(0).toUpperCase() + tag.slice(1)
+}
+
 export function SectionCodingField({ entries, onAddCode, onRemoveCode }: SectionCodingFieldProps) {
   const [open, setOpen] = useState(false)
   const [entryPendingRemoval, setEntryPendingRemoval] = useState<CodedEntry | null>(null)
@@ -69,9 +77,10 @@ export function SectionCodingField({ entries, onAddCode, onRemoveCode }: Section
                           {suggestion.system} {suggestion.code}
                         </span>
                       </span>
-                      <ClinicalBadge className="ml-auto" tone={getPriorityTone(suggestion.priority)}>
-                        {formatPriority(suggestion.priority)}
-                      </ClinicalBadge>
+                      <span className="ml-auto flex items-center gap-1">
+                        <ClinicalBadge tone={suggestion.semanticTag}>{formatSemanticTag(suggestion.semanticTag)}</ClinicalBadge>
+                        <ClinicalBadge tone={getPriorityTone(suggestion.priority)}>{formatPriority(suggestion.priority)}</ClinicalBadge>
+                      </span>
                     </CommandItem>
                   ))}
                 </CommandGroup>
@@ -85,6 +94,7 @@ export function SectionCodingField({ entries, onAddCode, onRemoveCode }: Section
               <li className="inline-flex items-center gap-1.5 rounded-4xl border bg-background px-2 py-1" key={entry.id}>
                 <span className="text-sm font-medium">{entry.display}</span>
                 <span className="text-xs text-muted-foreground">{entry.code}</span>
+                <ClinicalBadge tone={entry.semanticTag}>{formatSemanticTag(entry.semanticTag)}</ClinicalBadge>
                 <ClinicalBadge tone={getPriorityTone(entry.priority)}>{formatPriority(entry.priority)}</ClinicalBadge>
                 <Button variant="ghost" size="icon-xs" type="button" aria-label={`Remove ${entry.display}`} onClick={() => setEntryPendingRemoval(entry)}>
                   <XIcon />

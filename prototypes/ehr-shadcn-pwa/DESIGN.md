@@ -93,8 +93,11 @@ interaction, slot anatomy, and visual consistency.
   add button.
 - Do render selected concepts as compact parent pills with primary display
   text, a smaller muted SNOMED CT code without brackets, the search-result
-  priority as a nested `ClinicalBadge`, and an end remove affordance with
-  confirmation dialog.
+  semantic type and priority as nested `ClinicalBadge` pills, and an end
+  remove affordance with confirmation dialog.
+- Do use consistent semantic-type colours in SNOMED search and selected-code
+  display, for example finding, disorder, procedure, observable, situation,
+  regime/therapy, and product.
 - Do keep layout responsive with grid/flex utility classes and stable gaps.
 - Do add tests with the component contract as soon as a new surface is added.
 - Don't import V1 CSS class names or recreate V1's component-local spacing

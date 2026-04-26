@@ -77,9 +77,13 @@ family as the rest of the V2 surface.
 Section coding now presents the entry point as a SNOMED CT concept searchbar
 rather than a generic add button. Selected concepts render as compact pills in
 the section, using primary display text, a smaller muted SNOMED CT code without
-brackets, and a nested priority pill that matches the search-result
-categorisation colour. Removing a selected concept opens a confirmation dialog
-before the code is deleted from the section.
+brackets, and nested semantic-type and priority pills that match the
+search-result categorisation colours. Removing a selected concept opens a
+confirmation dialog before the code is deleted from the section. The seed
+concept set now includes examples across disorder, finding, procedure,
+observable, situation, and regime/therapy tags so section-local coding can show
+the difference between diagnoses/problems, observations, procedures, contextual
+statements, and care regimes.
 
 The middle-column action rail has been removed. Validation is part of the
 top consultation banner because it is a whole-consultation state. Follow-up is

@@ -27,6 +27,7 @@ test('renders shadcn-native V2 consultation shell without horizontal overflow', 
   await expect(reason.getByText('Hypertensive disorder')).toBeVisible()
   await expect(reason.getByText('38341003')).toBeVisible()
   await expect(reason.getByText('[38341003]')).toHaveCount(0)
+  await expect(reason.locator('[aria-label="Selected SNOMED CT concepts"]').getByText('Disorder', { exact: true })).toBeVisible()
   await expect(reason.getByText('Prioritised')).toBeVisible()
   await reason.getByRole('button', { name: 'Search SNOMED CT concepts' }).click()
   await page.getByPlaceholder('Search SNOMED CT concepts...').fill('diabetes')
@@ -34,6 +35,7 @@ test('renders shadcn-native V2 consultation shell without horizontal overflow', 
   await expect(reason.getByText('Type 2 diabetes mellitus')).toBeVisible()
   await expect(reason.getByText('44054006')).toBeVisible()
   await expect(reason.getByText('[44054006]')).toHaveCount(0)
+  await expect(reason.locator('[aria-label="Selected SNOMED CT concepts"]').getByText('Disorder', { exact: true })).toHaveCount(2)
   await expect(reason.locator('[aria-label="Selected SNOMED CT concepts"]').getByText('Prioritised')).toHaveCount(2)
 
   await reason.getByRole('button', { name: 'Remove Type 2 diabetes mellitus' }).click()

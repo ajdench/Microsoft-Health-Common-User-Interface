@@ -716,6 +716,12 @@
 - Outputs created: updated `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
 - Unresolved issues: none for selected-code chip typography.
 
+## 2026-04-26 10:18:02 BST — Expanded V2 SNOMED seed concepts and semantic type badges
+- Action performed: added a first-class SNOMED semantic tag to coded entries, expanded the section-local search seed set, and rendered colour-coded semantic type pills in both search results and selected-code display, including disorder, finding, procedure, observable, situation, and regime/therapy examples.
+- Inputs used: current V2 section coding implementation, shadcn Badge/Command/Popover guidance, SNOMED hierarchy guidance, public SNOMED concept lookups for diabetes, hypertension, medication review, diabetic foot examination, and observable examples.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/types.ts`, `prototypes/ehr-shadcn-pwa/src/data/demo.ts`, `prototypes/ehr-shadcn-pwa/src/components/ClinicalBadge.tsx`, `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
+- Unresolved issues: the seed concepts remain prototype data, not a validated UK SNOMED refset or terminology-server integration.
+
 ## 2026-04-26 10:13:14 BST — Added clinical colour variants to V2 consultation action buttons
 - Action performed: extended the local shadcn `Button` primitive with clinical warning, success, and purple variants; applied yellow `REVIEW VALIDATION`, green `Save Locally`, and purple `Sign Consultation` styling to the consultation banner action rail.
 - Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, shadcn Button guidance, `prototypes/ehr-shadcn-pwa/src/components/ui/button.tsx`, `prototypes/ehr-shadcn-pwa/src/App.tsx`, V2 e2e layout contract, V2 design contract, and the V2 companion wiki note.
