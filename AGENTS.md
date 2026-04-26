@@ -18,6 +18,12 @@ The repo follows the LLM Wiki pattern:
 - `index.md` = navigational entrypoint
 - `log.md` = append-only chronology of work done
 
+## Repository support directories
+
+- `skills/` = local agent/tooling reference bundles and helper materials
+
+Items under `skills/` are not part of the canonical Health CUI corpus. Do not treat them as raw source material, derived artefacts, or wiki content unless they are explicitly copied into those canonical areas under the normal provenance and logging rules.
+
 ## Repository rules
 
 ### 1) Raw sources are immutable

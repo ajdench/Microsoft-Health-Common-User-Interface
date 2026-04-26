@@ -5,6 +5,9 @@ import { pathToFileURL } from 'node:url';
 const appRoot = path.resolve(import.meta.dirname, '..');
 const repoRoot = path.resolve(appRoot, '..');
 const docsRoot = path.join(appRoot, 'src', 'content', 'docs');
+const publicRoot = path.join(appRoot, 'public');
+const linkedAssetsDirName = '_llm-wiki-assets';
+const linkedAssetsRoot = path.join(publicRoot, linkedAssetsDirName);
 
 const rootMarkdownFiles = ['index.md', 'README.md', 'AGENTS.md', 'log.md'];
 const markdownDirs = ['wiki', 'derived'];
@@ -96,6 +99,227 @@ function escapeHtml(value) {
     .replaceAll('>', '&gt;')
     .replaceAll('"', '&quot;')
     .replaceAll("'", '&#39;');
+}
+
+function decodeLinkPath(value) {
+  try {
+    return decodeURI(value);
+  } catch {
+    return value;
+  }
+}
+
+function splitLinkTarget(value) {
+  const hashIndex = value.indexOf('#');
+  const queryIndex = value.indexOf('?');
+  let splitIndex = -1;
+
+  if (hashIndex >= 0 && queryIndex >= 0) {
+    splitIndex = Math.min(hashIndex, queryIndex);
+  } else {
+    splitIndex = Math.max(hashIndex, queryIndex);
+  }
+
+  if (splitIndex === -1) {
+    return { pathPart: value, suffix: '' };
+  }
+
+  return {
+    pathPart: value.slice(0, splitIndex),
+    suffix: value.slice(splitIndex),
+  };
+}
+
+function isExternalTarget(value) {
+  return /^(?:[a-z]+:|\/\/)/i.test(value);
+}
+
+function isMirroredDocPath(value) {
+  return value.endsWith('.md') || value.endsWith('.json');
+}
+
+function toRepoRelativePath(sourceRelativePath, targetPath) {
+  const sourceDirectory = path.dirname(path.join(repoRoot, sourceRelativePath));
+  const decodedTargetPath = decodeLinkPath(targetPath);
+  const resolvedAbsolutePath = path.resolve(sourceDirectory, decodedTargetPath);
+  const repoRelativePath = normalizePath(path.relative(repoRoot, resolvedAbsolutePath));
+
+  if (repoRelativePath.startsWith('../') || repoRelativePath === '..') {
+    return null;
+  }
+
+  return {
+    resolvedAbsolutePath,
+    repoRelativePath,
+  };
+}
+
+function buildMirroredDocUrl(repoRelativePath) {
+  if (repoRelativePath === 'index.md') {
+    return '/';
+  }
+
+  if (repoRelativePath.endsWith('.md')) {
+    return `/${repoRelativePath.slice(0, -3)}/`;
+  }
+
+  if (repoRelativePath.endsWith('.json')) {
+    return `/${repoRelativePath.slice(0, -5)}/`;
+  }
+
+  return null;
+}
+
+function buildLinkedAssetUrl(repoRelativePath, isDirectory = false) {
+  const normalizedPath = normalizePath(repoRelativePath);
+  const encodedPath = encodeURI(normalizedPath);
+  return `/${linkedAssetsDirName}/${encodedPath}${isDirectory ? '/' : ''}`;
+}
+
+function buildDirectoryIndexHtml(repoRelativePath, entries) {
+  const title = `Linked Repo Directory: ${repoRelativePath}`;
+  const items = entries
+    .sort((left, right) => left.name.localeCompare(right.name))
+    .map((entry) => {
+      const href = `${encodeURIComponent(entry.name)}${entry.isDirectory ? '/' : ''}`;
+      const label = `${entry.name}${entry.isDirectory ? '/' : ''}`;
+      return `    <li><a href="${href}">${escapeHtml(label)}</a></li>`;
+    })
+    .join('\n');
+
+  return [
+    '<!doctype html>',
+    '<html lang="en">',
+    '  <head>',
+    '    <meta charset="utf-8">',
+    '    <meta name="viewport" content="width=device-width, initial-scale=1">',
+    `    <title>${escapeHtml(title)}</title>`,
+    '    <style>',
+    '      body { font-family: ui-sans-serif, system-ui, sans-serif; margin: 2rem; line-height: 1.5; }',
+    '      code { background: #f3f4f6; padding: 0.15rem 0.35rem; border-radius: 0.25rem; }',
+    '      ul { padding-left: 1.25rem; }',
+    '    </style>',
+    '  </head>',
+    '  <body>',
+    `    <h1>${escapeHtml(title)}</h1>`,
+    '    <p>This directory index is generated for the Astro mirror only. The canonical source remains in the parent LLM Wiki repository.</p>',
+    `    <p><code>${escapeHtml(repoRelativePath)}</code></p>`,
+    '    <ul>',
+    items,
+    '    </ul>',
+    '  </body>',
+    '</html>',
+    '',
+  ].join('\n');
+}
+
+async function publishLinkedArtifacts(linkedArtifacts) {
+  await fs.rm(linkedAssetsRoot, { recursive: true, force: true });
+
+  if (linkedArtifacts.size === 0) {
+    return;
+  }
+
+  for (const artifact of [...linkedArtifacts.values()].sort((left, right) =>
+    left.repoRelativePath.localeCompare(right.repoRelativePath),
+  )) {
+    const targetAbsolutePath = path.join(linkedAssetsRoot, artifact.repoRelativePath);
+
+    if (artifact.type === 'directory') {
+      await fs.cp(artifact.sourceAbsolutePath, targetAbsolutePath, { recursive: true });
+
+      const entries = await fs.readdir(artifact.sourceAbsolutePath, { withFileTypes: true });
+      const directoryIndexHtml = buildDirectoryIndexHtml(
+        artifact.repoRelativePath,
+        entries.map((entry) => ({
+          name: entry.name,
+          isDirectory: entry.isDirectory(),
+        })),
+      );
+
+      await writeMirrorFile(path.join(targetAbsolutePath, 'index.html'), directoryIndexHtml);
+      continue;
+    }
+
+    await ensureParentDirectory(targetAbsolutePath);
+    await fs.copyFile(artifact.sourceAbsolutePath, targetAbsolutePath);
+  }
+}
+
+async function rewriteMarkdownLinks(content, sourceRelativePath, linkedArtifacts) {
+  const lines = content.split('\n');
+  const rewrittenLines = [];
+  let inFence = false;
+
+  for (const line of lines) {
+    if (/^\s*(```|~~~)/.test(line)) {
+      inFence = !inFence;
+      rewrittenLines.push(line);
+      continue;
+    }
+
+    if (inFence) {
+      rewrittenLines.push(line);
+      continue;
+    }
+
+    const rewrittenLineParts = [];
+    let lastIndex = 0;
+    const linkPattern = /(!?\[[^\]]*\]\()([^)]+)(\))/g;
+
+    for (const match of line.matchAll(linkPattern)) {
+      const [fullMatch, prefix, rawTarget, suffix] = match;
+      const startIndex = match.index ?? 0;
+      rewrittenLineParts.push(line.slice(lastIndex, startIndex));
+
+      let rewrittenTarget = rawTarget.trim();
+      let wrappedInAngles = false;
+
+      if (rewrittenTarget.startsWith('<') && rewrittenTarget.endsWith('>')) {
+        rewrittenTarget = rewrittenTarget.slice(1, -1);
+        wrappedInAngles = true;
+      }
+
+      if (!isExternalTarget(rewrittenTarget) && !rewrittenTarget.startsWith('/') && !rewrittenTarget.startsWith('#')) {
+        const { pathPart, suffix: targetSuffix } = splitLinkTarget(rewrittenTarget);
+        const resolvedTarget = toRepoRelativePath(sourceRelativePath, pathPart);
+
+        if (resolvedTarget) {
+          const targetStats = await fs.stat(resolvedTarget.resolvedAbsolutePath).catch(() => null);
+
+          if (targetStats?.isFile() && isMirroredDocPath(resolvedTarget.repoRelativePath)) {
+            rewrittenTarget = `${buildMirroredDocUrl(resolvedTarget.repoRelativePath)}${targetSuffix}`;
+          } else if (targetStats?.isDirectory()) {
+            linkedArtifacts.set(resolvedTarget.repoRelativePath, {
+              type: 'directory',
+              repoRelativePath: resolvedTarget.repoRelativePath,
+              sourceAbsolutePath: resolvedTarget.resolvedAbsolutePath,
+            });
+            rewrittenTarget = `${buildLinkedAssetUrl(resolvedTarget.repoRelativePath, true)}${targetSuffix}`;
+          } else if (targetStats?.isFile()) {
+            linkedArtifacts.set(resolvedTarget.repoRelativePath, {
+              type: 'file',
+              repoRelativePath: resolvedTarget.repoRelativePath,
+              sourceAbsolutePath: resolvedTarget.resolvedAbsolutePath,
+            });
+            rewrittenTarget = `${buildLinkedAssetUrl(resolvedTarget.repoRelativePath)}${targetSuffix}`;
+          }
+        }
+      }
+
+      if (wrappedInAngles) {
+        rewrittenTarget = `<${rewrittenTarget}>`;
+      }
+
+      rewrittenLineParts.push(`${prefix}${rewrittenTarget}${suffix}`);
+      lastIndex = startIndex + fullMatch.length;
+    }
+
+    rewrittenLineParts.push(line.slice(lastIndex));
+    rewrittenLines.push(rewrittenLineParts.join(''));
+  }
+
+  return rewrittenLines.join('\n');
 }
 
 function hasLeadingBlockquote(body) {
@@ -433,7 +657,7 @@ async function writeMirrorFile(targetPath, content) {
   await fs.writeFile(targetPath, content, 'utf8');
 }
 
-async function mirrorMarkdownFile(sourceAbsolutePath, descriptions) {
+async function mirrorMarkdownFile(sourceAbsolutePath, descriptions, linkedArtifacts) {
   const sourceRelativePath = normalizePath(path.relative(repoRoot, sourceAbsolutePath));
   const targetPath = path.join(docsRoot, sourceRelativePath);
   const content = await fs.readFile(sourceAbsolutePath, 'utf8');
@@ -474,7 +698,12 @@ async function mirrorMarkdownFile(sourceAbsolutePath, descriptions) {
     contextNote = buildContextNote(sourceRelativePath, description, title, reorderedBody);
     transformedBody = reorderedBody;
   }
-  const finalContent = `${frontmatter}${canonicalNote}${leadingBody}${contextNote}${transformedBody}\n`;
+  const rewrittenContent = await rewriteMarkdownLinks(
+    `${canonicalNote}${leadingBody}${contextNote}${transformedBody}`,
+    sourceRelativePath,
+    linkedArtifacts,
+  );
+  const finalContent = `${frontmatter}${rewrittenContent}\n`;
 
   await writeMirrorFile(targetPath, finalContent);
 
@@ -575,19 +804,20 @@ export async function syncRepoToDocs() {
   const indexPath = path.join(repoRoot, 'index.md');
   const indexContent = await fs.readFile(indexPath, 'utf8');
   const descriptions = extractDescriptions(indexContent);
+  const linkedArtifacts = new Map();
 
   await fs.rm(docsRoot, { recursive: true, force: true });
   await fs.mkdir(docsRoot, { recursive: true });
 
   for (const fileName of rootMarkdownFiles) {
-    await mirrorMarkdownFile(path.join(repoRoot, fileName), descriptions);
+    await mirrorMarkdownFile(path.join(repoRoot, fileName), descriptions, linkedArtifacts);
   }
 
   for (const directory of markdownDirs) {
     const absoluteDirectory = path.join(repoRoot, directory);
     const markdownFiles = await walkFiles(absoluteDirectory, '.md');
     for (const sourceAbsolutePath of markdownFiles) {
-      await mirrorMarkdownFile(sourceAbsolutePath, descriptions);
+      await mirrorMarkdownFile(sourceAbsolutePath, descriptions, linkedArtifacts);
     }
   }
 
@@ -605,6 +835,8 @@ export async function syncRepoToDocs() {
     `${JSON.stringify({ generatedAt }, null, 2)}\n`,
     'utf8',
   );
+
+  await publishLinkedArtifacts(linkedArtifacts);
 
   return { generatedAt };
 }

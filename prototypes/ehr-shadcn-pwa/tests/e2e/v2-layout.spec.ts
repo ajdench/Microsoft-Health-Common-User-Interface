@@ -83,6 +83,7 @@ test('renders shadcn-native V2 consultation shell without horizontal overflow', 
   await expect(hypertensionChip.locator('[data-snomed-selected-type]')).not.toHaveClass(/rose/)
   await expect(hypertensionChip.getByRole('button', { name: 'Remove Hypertensive disorder' })).toHaveClass(/rounded-full/)
   await expect(hypertensionChip.getByRole('button', { name: 'Remove Hypertensive disorder' })).toHaveClass(/size-3/)
+  await expect(hypertensionChip.getByRole('button', { name: 'Remove Hypertensive disorder' })).toHaveClass(/translate-x-1/)
   await expect(hypertensionChip.getByRole('button', { name: 'Remove Hypertensive disorder' })).toHaveClass(/border-0/)
   await expect(hypertensionChip.getByRole('button', { name: 'Remove Hypertensive disorder' })).toHaveClass(/bg-transparent/)
   await expect(hypertensionChip.getByRole('button', { name: 'Remove Hypertensive disorder' })).toHaveClass(/before:-inset-1\.5/)
@@ -105,18 +106,23 @@ test('renders shadcn-native V2 consultation shell without horizontal overflow', 
 
     const chipBox = chip.getBoundingClientRect()
     const elements = [title, code, type, priority, removeIcon]
+    const layoutElements = [title, code, type, priority, button] as HTMLElement[]
     const buttonBox = button.getBoundingClientRect()
     const removeIconBox = removeIcon.getBoundingClientRect()
+    const beforeInset = Math.abs(parseFloat(getComputedStyle(button, '::before').inset))
 
     return {
       leftInset: Math.round(title.getBoundingClientRect().left - chipBox.left),
       rightInset: Math.round(chipBox.right - removeIconBox.right),
       buttonWidth: Math.round(buttonBox.width),
       removeIconWidth: Math.round(removeIconBox.width),
+      circleTopMargin: Math.round(buttonBox.top - beforeInset - chipBox.top),
+      circleRightMargin: Math.round(chipBox.right - (buttonBox.right + beforeInset)),
+      circleBottomMargin: Math.round(chipBox.bottom - (buttonBox.bottom + beforeInset)),
       centres: elements.map((element) => Math.round(element.getBoundingClientRect().top + element.getBoundingClientRect().height / 2)),
-      gaps: elements.slice(0, -1).map((element, index) => {
-        const nextElement = elements[index + 1]
-        return Math.round(nextElement.getBoundingClientRect().left - element.getBoundingClientRect().right)
+      layoutGaps: layoutElements.slice(0, -1).map((element, index) => {
+        const nextElement = layoutElements[index + 1]
+        return Math.round(nextElement.offsetLeft - (element.offsetLeft + element.offsetWidth))
       }),
     }
   })
@@ -124,10 +130,11 @@ test('renders shadcn-native V2 consultation shell without horizontal overflow', 
   if (!hypertensionChipMetrics) {
     throw new Error('Selected SNOMED concept chip metrics were not available')
   }
-  expect(Math.abs(hypertensionChipMetrics.leftInset - hypertensionChipMetrics.rightInset)).toBeLessThanOrEqual(1)
   expect(hypertensionChipMetrics.buttonWidth).toBe(hypertensionChipMetrics.removeIconWidth)
+  expect(Math.abs(hypertensionChipMetrics.circleRightMargin - hypertensionChipMetrics.circleTopMargin)).toBeLessThanOrEqual(1)
+  expect(Math.abs(hypertensionChipMetrics.circleRightMargin - hypertensionChipMetrics.circleBottomMargin)).toBeLessThanOrEqual(1)
   expect(new Set(hypertensionChipMetrics.centres).size).toBe(1)
-  expect(new Set(hypertensionChipMetrics.gaps).size).toBe(1)
+  expect(new Set(hypertensionChipMetrics.layoutGaps).size).toBe(1)
   await expect(reason.getByRole('button', { name: 'Search SNOMED CT concepts' })).toHaveCount(0)
   const reasonCodeSearch = reason.getByRole('textbox', { name: 'Search SNOMED CT concepts' })
   await expect(reasonCodeSearch).toBeVisible()

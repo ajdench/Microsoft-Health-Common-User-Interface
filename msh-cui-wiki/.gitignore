@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # generated repo mirror
 src/content/docs/
+
+# localhost Pagefind bundle published for astro dev
+public/pagefind/

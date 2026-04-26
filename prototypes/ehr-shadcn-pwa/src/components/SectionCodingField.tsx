@@ -161,7 +161,7 @@ export function SectionCodingField({ entries, onAddCode, onRemoveCode }: Section
                   {formatPriority(entry.priority)}
                 </ClinicalBadge>
                 <Button
-                  className="relative size-3 justify-self-end overflow-visible rounded-full border-0 bg-transparent p-0 text-red-700 hover:bg-transparent hover:text-red-800 active:bg-transparent focus-visible:border-transparent focus-visible:bg-transparent focus-visible:ring-0 before:pointer-events-none before:absolute before:-inset-1.5 before:rounded-full before:border before:border-transparent before:bg-transparent before:transition-colors hover:before:border-red-200 hover:before:bg-red-50 active:before:border-red-200 active:before:bg-red-100 focus-visible:before:border-red-300 focus-visible:before:bg-red-50 [&_svg]:relative [&_svg]:z-10"
+                  className="relative size-3 translate-x-1 justify-self-end overflow-visible rounded-full border-0 bg-transparent p-0 text-red-700 hover:bg-transparent hover:text-red-800 active:bg-transparent focus-visible:border-transparent focus-visible:bg-transparent focus-visible:ring-0 before:pointer-events-none before:absolute before:-inset-1.5 before:rounded-full before:border before:border-transparent before:bg-transparent before:transition-colors hover:before:border-red-200 hover:before:bg-red-50 active:before:border-red-200 active:before:bg-red-100 focus-visible:before:border-red-300 focus-visible:before:bg-red-50 [&_svg]:relative [&_svg]:z-10"
                   variant="ghost"
                   size="icon-xs"
                   type="button"

@@ -1,3 +1,7 @@
 .DS_Store
 .playwright-cli/
 .jj/
+.local/
+msh-cui-wiki/public/_llm-wiki-assets/
+mkdocs-material/docs/
+site/

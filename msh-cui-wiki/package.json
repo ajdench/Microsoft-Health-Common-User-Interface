@@ -4,10 +4,11 @@
   "version": "0.0.1",
   "scripts": {
     "sync-content": "node ./scripts/sync-llm-wiki.mjs",
+    "prepare-dev-search": "node ./scripts/prepare-dev-search.mjs",
     "watch-content": "node ./scripts/watch-llm-wiki.mjs",
     "watch-content:poll": "CHOKIDAR_USEPOLLING=1 CHOKIDAR_INTERVAL=150 node ./scripts/watch-llm-wiki.mjs",
-    "dev": "npm run sync-content && concurrently --kill-others-on-fail --names sync,astro --prefix-colors cyan,magenta \"npm:watch-content\" \"astro dev\"",
-    "dev:4322": "npm run sync-content && concurrently --kill-others-on-fail --names sync,astro --prefix-colors cyan,magenta \"npm:watch-content:poll\" \"CHOKIDAR_USEPOLLING=1 CHOKIDAR_INTERVAL=150 astro dev --port 4322\"",
+    "dev": "npm run sync-content && npm run prepare-dev-search && concurrently --kill-others-on-fail --names sync,astro --prefix-colors cyan,magenta \"npm:watch-content\" \"astro dev\"",
+    "dev:4322": "npm run sync-content && npm run prepare-dev-search && concurrently --kill-others-on-fail --names sync,astro --prefix-colors cyan,magenta \"npm:watch-content:poll\" \"CHOKIDAR_USEPOLLING=1 CHOKIDAR_INTERVAL=150 astro dev --port 4322\"",
     "start": "npm run dev",
     "build": "npm run sync-content && astro build",
     "preview": "astro preview",

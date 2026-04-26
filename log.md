@@ -829,3 +829,9 @@
 - Inputs used: existing canonical wiki files, existing Astro/Starlight mirror shape, Material for MkDocs publishing guidance, and GitHub Pages custom workflow guidance.
 - Outputs created: `mkdocs.yml`, `requirements-mkdocs.txt`, `scripts/sync_mkdocs_material.py`, `mkdocs-material/README.md`, `.github/workflows/deploy-mkdocs-material.yml`, updated `.gitignore`, updated `README.md`, generated ignored `mkdocs-material/docs/`, generated ignored `site/`, and updated `log.md`.
 - Unresolved issues: the local git/jj worktree already contains unrelated uncommitted changes, so no checkpoint commit was created for this stage to avoid bundling unrelated work.
+
+## 2026-04-26 12:57:10 BST — JJ worktree checkpoint and GitHub publish prep
+- Action performed: prepared the mixed JJ/Git worktree for a full checkpoint, including preserving the nested toolkit checkout metadata locally while making the raw toolkit source files trackable in the parent repository.
+- Inputs used: `jj status`, `git status --short --branch`, `gh auth status`, nested toolkit origin `https://github.com/rbirkby/mscui.git`, and nested toolkit commit `471b618606e2910136751836837522d45f176429`.
+- Outputs created: updated `.gitignore`, updated `raw/metadata/toolkit-mscui.json`, local ignored preservation path `.local/raw-source-git/mscui.git/`, and updated `log.md`.
+- Unresolved issues: GitHub remote creation and push still pending in this stage.

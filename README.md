@@ -19,6 +19,21 @@ This repository is a durable local research and knowledge base for the Microsoft
 - `index.md` — human/LLM navigation entrypoint
 - `log.md` — append-only work chronology
 - `AGENTS.md` — repository rules and operating model
+- `msh-cui-wiki/` — existing Astro/Starlight wiki UI
+- `mkdocs.yml` — Material for MkDocs mirror config, deployed through GitHub Pages
+
+## Wiki UI builds
+The existing Astro/Starlight UI remains under `msh-cui-wiki/`.
+
+The Material for MkDocs version is generated from the same canonical corpus:
+
+```sh
+python -m pip install -r requirements-mkdocs.txt
+python scripts/sync_mkdocs_material.py
+mkdocs serve
+```
+
+GitHub Pages deployment is configured in `.github/workflows/deploy-mkdocs-material.yml`.
 
 ## Version control
 This repo now has a colocated `jj` and `git` setup.
