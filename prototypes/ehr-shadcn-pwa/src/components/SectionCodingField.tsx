@@ -143,7 +143,7 @@ export function SectionCodingField({ entries, onAddCode, onRemoveCode }: Section
             {entries.map((entry) => (
               <li
                 className={cn(
-                  'inline-grid max-w-full grid-cols-[minmax(0,1fr)_auto_auto_auto_auto] items-center gap-2 rounded-4xl border px-3 py-1',
+                  'inline-grid max-w-full grid-cols-[minmax(0,1fr)_auto_auto_auto_auto] items-center gap-2 rounded-4xl border py-1 pr-3 pl-2',
                   conceptPillClasses[entry.semanticTag]
                 )}
                 key={entry.id}

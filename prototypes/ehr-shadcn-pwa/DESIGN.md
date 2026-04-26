@@ -120,7 +120,9 @@ interaction, slot anatomy, and visual consistency.
   as the type pill, but one lighter step, so the parent pill supports rather
   than competes with the nested type badge.
 - Do keep selected-concept title, code, semantic type, priority, and remove
-  affordance on one centre-aligned grid rail with symmetric left/right insets.
+  affordance on one centre-aligned grid rail; drive the title's left inset from
+  the visual right inset of the `x` glyph, while preserving enough right padding
+  for the hover/focus circle to sit evenly inside the rounded pill end.
 - Do keep selected-concept remove controls in their own right-aligned chip
   column sized to the `x` glyph itself, not to an invisible larger hit box.
   Draw the circular red affordance as an overlay only on hover, active, or

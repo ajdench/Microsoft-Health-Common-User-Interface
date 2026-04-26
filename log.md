@@ -740,6 +740,12 @@
 - Outputs created: updated `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
 - Unresolved issues: none.
 
+## 2026-04-26 13:00:49 BST — Matched selected SNOMED title inset to remove glyph inset
+- Action performed: changed selected SNOMED parent pills from symmetric horizontal padding to `pl-2 pr-3`, so the title's left inset is driven by the shifted remove `x` visual right inset while the right padding still preserves equal hover-circle margins inside the rounded pill end.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user request to use the new right-side visual margin to the `x` to drive the left-side margin, `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, V2 e2e layout contract, V2 design contract, and the V2 companion wiki note.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
+- Unresolved issues: none.
+
 ## 2026-04-26 12:36:54 BST — Rebalanced selected SNOMED concept pill colour and rails
 - Action performed: changed SNOMED semantic `Disorder` from warning-like rose/red to a calmer blue family, moved `Situation` off grey, tinted selected concept parent pills from a lighter version of their semantic type family, and changed selected concept pills to a single centre-aligned grid rail with symmetric left/right insets.
 - Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user-provided selected SNOMED concept pill screenshot, `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, `prototypes/ehr-shadcn-pwa/src/components/ClinicalBadge.tsx`, V2 e2e layout contract, V2 design contract, and the V2 companion wiki note.
@@ -847,3 +853,9 @@
 - Inputs used: failed GitHub Actions run `24956081707`, GitHub Pages API response `Your current plan does not support GitHub Pages for this repository`, and the existing `.github/workflows/deploy-mkdocs-material.yml`.
 - Outputs created: public GitHub repository `ajdench/Microsoft-Health-Common-User-Interface`, updated `.github/workflows/deploy-mkdocs-material.yml`, and updated `log.md`.
 - Unresolved issues: final Pages workflow run still pending at the time of this log entry.
+
+## 2026-04-26 13:01:37 BST — GitHub Pages site enabled
+- Action performed: enabled the GitHub Pages site directly with the authenticated GitHub token after the workflow token was not permitted to create the Pages site.
+- Inputs used: failed GitHub Actions run `24956106070`, GitHub API endpoint `repos/ajdench/Microsoft-Health-Common-User-Interface/pages`, and `build_type=workflow`.
+- Outputs created: GitHub Pages site `https://ajdench.github.io/Microsoft-Health-Common-User-Interface/` configured for workflow deployment.
+- Unresolved issues: final deployment workflow run still pending at the time of this log entry.

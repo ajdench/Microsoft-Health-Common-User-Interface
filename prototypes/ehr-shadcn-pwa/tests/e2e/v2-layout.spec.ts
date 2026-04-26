@@ -131,6 +131,7 @@ test('renders shadcn-native V2 consultation shell without horizontal overflow', 
     throw new Error('Selected SNOMED concept chip metrics were not available')
   }
   expect(hypertensionChipMetrics.buttonWidth).toBe(hypertensionChipMetrics.removeIconWidth)
+  expect(Math.abs(hypertensionChipMetrics.leftInset - hypertensionChipMetrics.rightInset)).toBeLessThanOrEqual(1)
   expect(Math.abs(hypertensionChipMetrics.circleRightMargin - hypertensionChipMetrics.circleTopMargin)).toBeLessThanOrEqual(1)
   expect(Math.abs(hypertensionChipMetrics.circleRightMargin - hypertensionChipMetrics.circleBottomMargin)).toBeLessThanOrEqual(1)
   expect(new Set(hypertensionChipMetrics.centres).size).toBe(1)
