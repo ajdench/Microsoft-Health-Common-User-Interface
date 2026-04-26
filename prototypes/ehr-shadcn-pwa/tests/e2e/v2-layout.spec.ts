@@ -82,10 +82,13 @@ test('renders shadcn-native V2 consultation shell without horizontal overflow', 
   await expect(hypertensionChip.locator('[data-snomed-selected-type]')).toHaveClass(/text-blue-900/)
   await expect(hypertensionChip.locator('[data-snomed-selected-type]')).not.toHaveClass(/rose/)
   await expect(hypertensionChip.getByRole('button', { name: 'Remove Hypertensive disorder' })).toHaveClass(/rounded-full/)
-  await expect(hypertensionChip.getByRole('button', { name: 'Remove Hypertensive disorder' })).toHaveClass(/border-transparent/)
+  await expect(hypertensionChip.getByRole('button', { name: 'Remove Hypertensive disorder' })).toHaveClass(/size-3/)
+  await expect(hypertensionChip.getByRole('button', { name: 'Remove Hypertensive disorder' })).toHaveClass(/border-0/)
   await expect(hypertensionChip.getByRole('button', { name: 'Remove Hypertensive disorder' })).toHaveClass(/bg-transparent/)
-  await expect(hypertensionChip.getByRole('button', { name: 'Remove Hypertensive disorder' })).toHaveClass(/hover:border-red-200/)
-  await expect(hypertensionChip.getByRole('button', { name: 'Remove Hypertensive disorder' })).toHaveClass(/hover:bg-red-50/)
+  await expect(hypertensionChip.getByRole('button', { name: 'Remove Hypertensive disorder' })).toHaveClass(/before:-inset-1\.5/)
+  await expect(hypertensionChip.getByRole('button', { name: 'Remove Hypertensive disorder' })).toHaveClass(/before:border-transparent/)
+  await expect(hypertensionChip.getByRole('button', { name: 'Remove Hypertensive disorder' })).toHaveClass(/hover:before:border-red-200/)
+  await expect(hypertensionChip.getByRole('button', { name: 'Remove Hypertensive disorder' })).toHaveClass(/hover:before:bg-red-50/)
   await expect(hypertensionChip.getByRole('button', { name: 'Remove Hypertensive disorder' })).toHaveClass(/text-red-700/)
   await expect(hypertensionChip.locator('svg')).toHaveAttribute('stroke-width', '3')
   const hypertensionChipMetrics = await hypertensionChip.evaluate((chip) => {
@@ -94,17 +97,22 @@ test('renders shadcn-native V2 consultation shell without horizontal overflow', 
     const type = chip.querySelector('[data-snomed-selected-type]')
     const priority = chip.querySelector('[data-snomed-selected-priority]')
     const button = chip.querySelector('button')
+    const removeIcon = button?.querySelector('svg')
 
-    if (!title || !code || !type || !priority || !button) {
+    if (!title || !code || !type || !priority || !button || !removeIcon) {
       return null
     }
 
     const chipBox = chip.getBoundingClientRect()
-    const elements = [title, code, type, priority, button]
+    const elements = [title, code, type, priority, removeIcon]
+    const buttonBox = button.getBoundingClientRect()
+    const removeIconBox = removeIcon.getBoundingClientRect()
 
     return {
       leftInset: Math.round(title.getBoundingClientRect().left - chipBox.left),
-      rightInset: Math.round(chipBox.right - button.getBoundingClientRect().right),
+      rightInset: Math.round(chipBox.right - removeIconBox.right),
+      buttonWidth: Math.round(buttonBox.width),
+      removeIconWidth: Math.round(removeIconBox.width),
       centres: elements.map((element) => Math.round(element.getBoundingClientRect().top + element.getBoundingClientRect().height / 2)),
       gaps: elements.slice(0, -1).map((element, index) => {
         const nextElement = elements[index + 1]
@@ -117,6 +125,7 @@ test('renders shadcn-native V2 consultation shell without horizontal overflow', 
     throw new Error('Selected SNOMED concept chip metrics were not available')
   }
   expect(Math.abs(hypertensionChipMetrics.leftInset - hypertensionChipMetrics.rightInset)).toBeLessThanOrEqual(1)
+  expect(hypertensionChipMetrics.buttonWidth).toBe(hypertensionChipMetrics.removeIconWidth)
   expect(new Set(hypertensionChipMetrics.centres).size).toBe(1)
   expect(new Set(hypertensionChipMetrics.gaps).size).toBe(1)
   await expect(reason.getByRole('button', { name: 'Search SNOMED CT concepts' })).toHaveCount(0)

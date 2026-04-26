@@ -91,8 +91,10 @@ visibly classifiable. Removing a selected concept opens a confirmation dialog
 before the code is deleted from the section. The remove control is pinned to the
 right side of the selected-concept pill and uses a quiet red `x` by default,
 with the circular red affordance appearing only on hover, active, or keyboard
-focus. It is separated by the same grid gap as the other chip elements to
-separate deletion from concept metadata. The selected-concept title uses the
+focus. The remove column is sized to the `x` glyph itself, with the hover/focus
+circle drawn as an overlay that may overlap the chip margin rather than driving
+layout spacing. It is separated by the same grid gap as the other chip elements
+to separate deletion from concept metadata. The selected-concept title uses the
 same normal body text scale as consultation free-text fields, leaving the nested
 pills to carry emphasis. The seed concept set now includes examples across
 disorder, finding, procedure, observable, situation, and regime/therapy tags so

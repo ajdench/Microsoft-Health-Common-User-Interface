@@ -122,10 +122,10 @@ interaction, slot anatomy, and visual consistency.
 - Do keep selected-concept title, code, semantic type, priority, and remove
   affordance on one centre-aligned grid rail with symmetric left/right insets.
 - Do keep selected-concept remove controls in their own right-aligned chip
-  column, using a red `x` by default and only drawing the circular red
-  affordance on hover, active, or keyboard focus, with the same grid gap as the
-  other chip elements so deletion remains distinct without adding constant
-  visual noise.
+  column sized to the `x` glyph itself, not to an invisible larger hit box.
+  Draw the circular red affordance as an overlay only on hover, active, or
+  keyboard focus so it can overlap the chip margin without changing the glyph
+  rail or the grid gap to the priority pill.
 - Do keep selected-concept title text at the same normal body scale and weight
   as consultation free-text fields; reserve emphasis for type and priority
   pills, not the concept title.

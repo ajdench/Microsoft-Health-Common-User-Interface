@@ -728,6 +728,12 @@
 - Outputs created: updated `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
 - Unresolved issues: none.
 
+## 2026-04-26 12:48:44 BST — Made selected SNOMED remove glyph drive spacing
+- Action performed: reduced the selected SNOMED remove button layout box to the `x` glyph size and moved the red hover/focus circle into an overlay pseudo-element, so the glyph aligns to the chip margin while the activated circle can overlap the margin without driving spacing.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user correction that the invisible circle was still driving spacing, `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, V2 e2e layout contract, V2 design contract, and the V2 companion wiki note.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
+- Unresolved issues: none.
+
 ## 2026-04-26 12:36:54 BST — Rebalanced selected SNOMED concept pill colour and rails
 - Action performed: changed SNOMED semantic `Disorder` from warning-like rose/red to a calmer blue family, moved `Situation` off grey, tinted selected concept parent pills from a lighter version of their semantic type family, and changed selected concept pills to a single centre-aligned grid rail with symmetric left/right insets.
 - Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user-provided selected SNOMED concept pill screenshot, `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, `prototypes/ehr-shadcn-pwa/src/components/ClinicalBadge.tsx`, V2 e2e layout contract, V2 design contract, and the V2 companion wiki note.
@@ -817,3 +823,9 @@
 - Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, shadcn Button guidance, `prototypes/ehr-shadcn-pwa/src/components/ui/button.tsx`, `prototypes/ehr-shadcn-pwa/src/App.tsx`, V2 e2e layout contract, V2 design contract, and the V2 companion wiki note.
 - Outputs created: updated `prototypes/ehr-shadcn-pwa/src/components/ui/button.tsx`, `prototypes/ehr-shadcn-pwa/src/App.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
 - Unresolved issues: `Sign Consultation` remains disabled while validation is open, so its purple styling is shown in disabled state until required sections are completed.
+
+## 2026-04-26 12:47:28 BST — Added Material for MkDocs GitHub Pages mirror
+- Action performed: wired a parallel Material for MkDocs build that mirrors the canonical LLM Wiki corpus without replacing the existing Astro/Starlight wiki UI, and added a GitHub Pages deployment workflow for the MkDocs output.
+- Inputs used: existing canonical wiki files, existing Astro/Starlight mirror shape, Material for MkDocs publishing guidance, and GitHub Pages custom workflow guidance.
+- Outputs created: `mkdocs.yml`, `requirements-mkdocs.txt`, `scripts/sync_mkdocs_material.py`, `mkdocs-material/README.md`, `.github/workflows/deploy-mkdocs-material.yml`, updated `.gitignore`, updated `README.md`, generated ignored `mkdocs-material/docs/`, generated ignored `site/`, and updated `log.md`.
+- Unresolved issues: the local git/jj worktree already contains unrelated uncommitted changes, so no checkpoint commit was created for this stage to avoid bundling unrelated work.
