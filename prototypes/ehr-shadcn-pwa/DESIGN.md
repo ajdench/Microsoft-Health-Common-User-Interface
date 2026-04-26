@@ -76,6 +76,8 @@ interaction, slot anatomy, and visual consistency.
 - Do keep the consultation banner action rail as state pills first
   (`Validation open`, `Not saved locally`, `Consultation not signed`) followed
   by matching action buttons below.
+- Do keep banner status pills at normal shadcn `Badge` height; they may fill
+  grid-column width for alignment, but should not be enlarged to button height.
 - Do use red-family status for unsaved local state and purple-family status
   for unsigned consultation state.
 - Do make `Review validation` reveal required sections needing attention and

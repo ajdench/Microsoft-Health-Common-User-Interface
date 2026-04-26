@@ -64,13 +64,13 @@ export function App() {
               </CardDescription>
               <CardAction className="mt-2 grid w-full gap-2 sm:mt-0 sm:min-w-[34rem]" data-testid="consultation-banner-action-rail">
                 <div className="grid gap-2 sm:grid-cols-3">
-                  <ClinicalBadge className="h-7 w-full justify-center px-2.5 text-[0.8rem]" tone={missingRequiredCount > 0 ? 'warn' : 'good'}>
+                  <ClinicalBadge className="w-full justify-center" tone={missingRequiredCount > 0 ? 'warn' : 'good'}>
                     {missingRequiredCount > 0 ? 'Validation open' : 'Validation clear'}
                   </ClinicalBadge>
-                  <ClinicalBadge className="h-7 w-full justify-center px-2.5 text-[0.8rem]" tone="bad">
+                  <ClinicalBadge className="w-full justify-center" tone="bad">
                     Not saved locally
                   </ClinicalBadge>
-                  <ClinicalBadge className="h-7 w-full justify-center px-2.5 text-[0.8rem]" tone="purple">
+                  <ClinicalBadge className="w-full justify-center" tone="purple">
                     Consultation not signed
                   </ClinicalBadge>
                 </div>

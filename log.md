@@ -691,3 +691,9 @@
 - Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, `prototypes/ehr-shadcn-pwa/src/App.tsx`, `ClinicalBadge`, `ConsultationSectionCard`, V2 e2e layout contract, V2 design contract, and the V2 companion wiki note.
 - Outputs created: updated `prototypes/ehr-shadcn-pwa/src/App.tsx`, `prototypes/ehr-shadcn-pwa/src/components/ClinicalBadge.tsx`, `prototypes/ehr-shadcn-pwa/src/components/ConsultationSectionCard.tsx`, `prototypes/ehr-shadcn-pwa/src/types.ts`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
 - Unresolved issues: save/sign state is still static prototype state; a future pass should connect the red and purple pills to real dirty-state and signature-state transitions.
+
+## 2026-04-26 09:59:45 BST — Restored normal V2 consultation-banner pill height
+- Action performed: removed the forced enlarged height and text sizing from the consultation banner status pills so they use the normal shadcn `Badge` height while retaining shared grid-column width alignment above the action buttons.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, `prototypes/ehr-shadcn-pwa/src/App.tsx`, and `prototypes/ehr-shadcn-pwa/DESIGN.md`.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/App.tsx`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, and `log.md`.
+- Unresolved issues: none for pill height; action buttons intentionally remain normal button height.
