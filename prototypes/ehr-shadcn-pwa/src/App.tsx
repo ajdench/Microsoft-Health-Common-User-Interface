@@ -62,8 +62,8 @@ export function App() {
               <CardDescription>
                 Author Dr Taylor Reed · {missingRequiredCount} required sections incomplete
               </CardDescription>
-              <CardAction className="mt-2 grid w-full gap-2 sm:mt-0 sm:min-w-[34rem]" data-testid="consultation-banner-action-rail">
-                <div className="grid gap-2 sm:grid-cols-3">
+              <CardAction className="mt-2 grid w-full gap-4 sm:mt-0 sm:min-w-[34rem]" data-testid="consultation-banner-action-rail">
+                <div className="grid gap-4 sm:grid-cols-3">
                   <ClinicalBadge className="w-full justify-center" tone={missingRequiredCount > 0 ? 'warn' : 'good'}>
                     {missingRequiredCount > 0 ? 'Validation open' : 'Validation clear'}
                   </ClinicalBadge>
@@ -74,7 +74,7 @@ export function App() {
                     Consultation not signed
                   </ClinicalBadge>
                 </div>
-                <div className="grid gap-2 sm:grid-cols-3">
+                <div className="grid gap-4 sm:grid-cols-3">
                   <Button className="w-full" variant="clinicalWarn" type="button" size="sm" onClick={reviewValidation}>
                     Review Validation
                   </Button>

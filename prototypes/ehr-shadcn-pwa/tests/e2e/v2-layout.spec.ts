@@ -23,9 +23,20 @@ test('renders shadcn-native V2 consultation shell without horizontal overflow', 
   const railMetrics = await consultation.getByTestId('consultation-banner-action-rail').evaluate((rail) => {
     const pills = Array.from(rail.querySelectorAll('[data-slot="badge"]')).map((element) => Math.round(element.getBoundingClientRect().width))
     const buttons = Array.from(rail.querySelectorAll('[data-slot="button"]')).map((element) => Math.round(element.getBoundingClientRect().width))
-    return { pills, buttons }
+    const [pillRow, buttonRow] = Array.from(rail.children)
+
+    return {
+      pills,
+      buttons,
+      rowGap: getComputedStyle(rail).rowGap,
+      pillColumnGap: pillRow ? getComputedStyle(pillRow).columnGap : '',
+      buttonColumnGap: buttonRow ? getComputedStyle(buttonRow).columnGap : '',
+    }
   })
   expect(railMetrics.pills).toEqual(railMetrics.buttons)
+  expect(railMetrics.rowGap).toBe('16px')
+  expect(railMetrics.pillColumnGap).toBe('16px')
+  expect(railMetrics.buttonColumnGap).toBe('16px')
   await expect(page.getByText('Follow-up tasks')).toHaveCount(0)
   await expect(consultation.locator('[data-slot="card-title"]').filter({ hasText: 'Follow-up' })).toBeVisible()
   await expect(page.getByRole('heading', { name: 'Medication review' })).toBeVisible()

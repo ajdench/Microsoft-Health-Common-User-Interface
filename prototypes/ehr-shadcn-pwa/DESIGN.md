@@ -78,6 +78,9 @@ interaction, slot anatomy, and visual consistency.
 - Do keep the consultation banner action rail as state pills first
   (`Validation open`, `Not saved locally`, `Consultation not signed`) followed
   by matching action buttons below.
+- Do use the pane spacing rhythm (`gap-4`) inside the consultation banner
+  action rail: between the status-pill row and the button row, and between each
+  aligned status/action column.
 - Do keep banner status pills at normal shadcn `Badge` height; they may fill
   grid-column width for alignment, but should not be enlarged to button height.
 - Do use clinical button variants in the consultation action rail: yellow for

@@ -103,8 +103,10 @@ contains the corresponding review, save, and sign buttons. This keeps status
 scannable without making every status look like an action.
 
 The rail is a shared three-column grid so each status pill aligns with the
-matching button below. Unsaved local state uses a red-family pill; unsigned
-consultation state uses a purple-family pill. `Review validation` marks all
+matching button below. The internal rail gap uses the same `gap-4` pane rhythm
+between pill and button rows and between each status/action column. Unsaved
+local state uses a red-family pill; unsigned consultation state uses a
+purple-family pill. `Review validation` marks all
 incomplete required consultation sections and scrolls/focuses the first one.
 The action buttons use clinical button variants: yellow warning for
 `Review Validation`, green for `Save Locally`, and purple for
