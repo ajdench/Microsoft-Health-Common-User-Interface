@@ -23,6 +23,19 @@ test('renders shadcn-native V2 consultation shell without horizontal overflow', 
   await expect(consultation.locator('[data-slot="card-title"]').filter({ hasText: 'Follow-up' })).toBeVisible()
   await expect(page.getByRole('heading', { name: 'Medication review' })).toBeVisible()
 
+  const reason = consultation.locator('[data-section-id="reason"]')
+  await expect(reason.getByText('Hypertensive disorder [38341003] (Prioritised)')).toBeVisible()
+  await reason.getByRole('button', { name: 'Search SNOMED CT concepts' }).click()
+  await page.getByPlaceholder('Search SNOMED CT concepts...').fill('diabetes')
+  await page.getByText('Type 2 diabetes mellitus').click()
+  await expect(reason.getByText('Type 2 diabetes mellitus [44054006] (Prioritised)')).toBeVisible()
+
+  await reason.getByRole('button', { name: 'Remove Type 2 diabetes mellitus' }).click()
+  await expect(page.getByRole('dialog')).toBeVisible()
+  await expect(page.getByText('Remove coded concept?')).toBeVisible()
+  await page.getByRole('button', { name: 'Remove concept' }).click()
+  await expect(reason.getByText('Type 2 diabetes mellitus [44054006] (Prioritised)')).toHaveCount(0)
+
   await consultation.getByRole('button', { name: 'Review validation' }).click()
   await expect(consultation.locator('[data-section-id="assessment"]')).toHaveClass(/ring-2/)
   await expect(page.getByLabel('Assessment notes')).toBeFocused()

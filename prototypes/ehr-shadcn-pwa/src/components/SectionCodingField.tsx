@@ -1,7 +1,9 @@
 import { useState } from 'react'
+import { XIcon } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { Card, CardAction, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/command'
+import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import { Empty, EmptyDescription } from '@/components/ui/empty'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { ClinicalBadge } from '@/components/ClinicalBadge'
@@ -14,22 +16,24 @@ type SectionCodingFieldProps = {
   onRemoveCode: (entryId: string) => void
 }
 
+function formatPriority(priority: CodedEntry['priority']) {
+  return priority.charAt(0).toUpperCase() + priority.slice(1)
+}
+
 export function SectionCodingField({ entries, onAddCode, onRemoveCode }: SectionCodingFieldProps) {
   const [open, setOpen] = useState(false)
+  const [entryPendingRemoval, setEntryPendingRemoval] = useState<CodedEntry | null>(null)
 
   return (
     <Card className="border-dashed bg-muted/30 shadow-none" size="sm">
       <CardHeader>
         <CardTitle>Coded content</CardTitle>
-        <CardAction>
-          <ClinicalBadge tone={entries.length > 0 ? 'good' : 'neutral'}>{entries.length} coded</ClinicalBadge>
-        </CardAction>
       </CardHeader>
       <CardContent className="grid gap-3">
         <Popover open={open} onOpenChange={setOpen}>
           <PopoverTrigger asChild>
-            <Button variant="outline" size="sm" type="button" className="w-fit">
-              Add coded content
+            <Button variant="outline" size="sm" type="button" className="w-full justify-start text-muted-foreground">
+              Search SNOMED CT concepts
             </Button>
           </PopoverTrigger>
           <PopoverContent align="start" className="w-[min(28rem,calc(100vw-2rem))] p-0">
@@ -64,17 +68,14 @@ export function SectionCodingField({ entries, onAddCode, onRemoveCode }: Section
           </PopoverContent>
         </Popover>
         {entries.length > 0 ? (
-          <ul className="grid gap-2">
+          <ul className="flex flex-wrap gap-2" aria-label="Selected SNOMED CT concepts">
             {entries.map((entry) => (
-              <li className="flex flex-wrap items-center justify-between gap-2 rounded-lg border bg-background p-2" key={entry.id}>
-                <span className="grid gap-0.5">
-                  <strong className="text-sm">{entry.display}</strong>
-                  <span className="text-xs text-muted-foreground">
-                    {entry.system} {entry.code}
-                  </span>
+              <li className="inline-flex items-center gap-1.5 rounded-4xl border bg-background px-2 py-1 text-sm font-medium" key={entry.id}>
+                <span>
+                  {entry.display} [{entry.code}] ({formatPriority(entry.priority)})
                 </span>
-                <Button variant="ghost" size="sm" type="button" onClick={() => onRemoveCode(entry.id)}>
-                  Remove
+                <Button variant="ghost" size="icon-xs" type="button" aria-label={`Remove ${entry.display}`} onClick={() => setEntryPendingRemoval(entry)}>
+                  <XIcon />
                 </Button>
               </li>
             ))}
@@ -85,6 +86,35 @@ export function SectionCodingField({ entries, onAddCode, onRemoveCode }: Section
           </Empty>
         )}
       </CardContent>
+      <Dialog open={entryPendingRemoval !== null} onOpenChange={(nextOpen) => !nextOpen && setEntryPendingRemoval(null)}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Remove coded concept?</DialogTitle>
+            <DialogDescription>
+              This will remove {entryPendingRemoval ? `${entryPendingRemoval.display} [${entryPendingRemoval.code}]` : 'this concept'} from this consultation section.
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter>
+            <DialogClose asChild>
+              <Button variant="outline" type="button">
+                Cancel
+              </Button>
+            </DialogClose>
+            <Button
+              variant="destructive"
+              type="button"
+              onClick={() => {
+                if (entryPendingRemoval) {
+                  onRemoveCode(entryPendingRemoval.id)
+                  setEntryPendingRemoval(null)
+                }
+              }}
+            >
+              Remove concept
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </Card>
   )
 }

@@ -35,7 +35,7 @@ UI class structure.
 | Patient identity | `PatientChrome`, persistent top clinical anchor |
 | Sync/local state | `SyncStateBar`, always visible below patient chrome |
 | Consultation section | `ConsultationSectionCard`, shadcn `Card` anatomy |
-| Section coding | `SectionCodingField`, shadcn `Popover` + `Command` |
+| Section coding | `SectionCodingField`, SNOMED CT searchbar, shadcn `Popover` + `Command`, concept pills, confirmation `Dialog` |
 | Validation/actions | Consultation banner `CardAction`; status pills above matching same-width buttons |
 | Follow-up | Final consultation section after Plan |
 | Reference context | `ReferencePanel`, shadcn `Tabs`, `Alert`, `Table`, and `Card` |
@@ -73,6 +73,12 @@ shadcn `Card`, `CardHeader`, `CardTitle`, and `CardDescription` composition.
 The section-local coded-content empty state now uses shadcn `Empty` instead of
 plain paragraph text. This keeps repeated no-data states on the same primitive
 family as the rest of the V2 surface.
+
+Section coding now presents the entry point as a SNOMED CT concept searchbar
+rather than a generic add button. Selected concepts render as compact pills in
+the section, using `Display [code] (Priority)` and an end remove affordance.
+Removing a selected concept opens a confirmation dialog before the code is
+deleted from the section.
 
 The middle-column action rail has been removed. Validation is part of the
 top consultation banner because it is a whole-consultation state. Follow-up is

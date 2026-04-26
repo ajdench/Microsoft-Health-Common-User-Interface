@@ -697,3 +697,9 @@
 - Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, `prototypes/ehr-shadcn-pwa/src/App.tsx`, and `prototypes/ehr-shadcn-pwa/DESIGN.md`.
 - Outputs created: updated `prototypes/ehr-shadcn-pwa/src/App.tsx`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, and `log.md`.
 - Unresolved issues: none for pill height; action buttons intentionally remain normal button height.
+
+## 2026-04-26 10:05:59 BST — Simplified V2 section coding to SNOMED search and removable concept pills
+- Action performed: replaced the section coded-content add button and selected-code rows with a SNOMED CT concept searchbar trigger, selected concept pills using `Display [code] (Priority)`, an end `x` remove affordance, and a shadcn confirmation dialog before deleting a selected concept.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, shadcn Command, Popover, Dialog, Badge, and Button documentation, `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, V2 e2e layout contract, V2 design contract, and the V2 companion wiki note.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
+- Unresolved issues: search suggestions remain static prototype data; a future pass should replace them with a real SNOMED terminology-service adapter and section-specific value sets.

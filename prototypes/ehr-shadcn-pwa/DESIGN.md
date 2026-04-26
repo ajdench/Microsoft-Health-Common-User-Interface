@@ -33,8 +33,9 @@ comparison material, but new component decisions should be made here first.
 - `SyncStateBar`: online, local save, recovered draft, and sync-failure action.
 - `ConsultationSectionCard`: shadcn `Card` wrapper for section title, required
   status, section-local coded content, and note text.
-- `SectionCodingField`: shadcn `Popover` and `Command` concept picker with
-  selected codes attached to the section.
+- `SectionCodingField`: section-local SNOMED CT searchbar trigger over shadcn
+  `Popover` and `Command`, selected concept pills, and shadcn `Dialog`
+  confirmation before removing a code.
 - Consultation banner: shadcn `Card` header containing consultation state,
   a top row of status pills, and a second row of corresponding actions. The
   rail uses a shared three-column grid so pills and buttons align.
@@ -54,6 +55,7 @@ Current visible primitives include:
 - `Button`
 - `Card`
 - `Command`
+- `Dialog`
 - `Empty`
 - `Input`
 - `Popover`
@@ -84,6 +86,11 @@ interaction, slot anatomy, and visual consistency.
   scroll/focus the first incomplete section.
 - Do use shadcn `Empty` for compact no-data states, including repeated
   section-local states.
+- Do keep coded-content entry as a SNOMED CT concept searchbar, not a generic
+  add button.
+- Do render selected concepts as compact pills in the form
+  `Display [code] (Priority)` with an end remove affordance and confirmation
+  dialog.
 - Do keep layout responsive with grid/flex utility classes and stable gaps.
 - Do add tests with the component contract as soon as a new surface is added.
 - Don't import V1 CSS class names or recreate V1's component-local spacing
