@@ -124,8 +124,9 @@ interaction, slot anatomy, and visual consistency.
 - Do keep selected-concept remove controls in their own right-aligned chip
   column sized to the `x` glyph itself, not to an invisible larger hit box.
   Draw the circular red affordance as an overlay only on hover, active, or
-  keyboard focus so it can overlap the chip margin without changing the glyph
-  rail or the grid gap to the priority pill.
+  keyboard focus, and offset the glyph only enough for that overlay circle to
+  have equal top, bottom, and rounded-end margins without changing the layout
+  grid gap to the priority pill.
 - Do keep selected-concept title text at the same normal body scale and weight
   as consultation free-text fields; reserve emphasis for type and priority
   pills, not the concept title.
