@@ -82,10 +82,9 @@ export function SectionCodingField({ entries, onAddCode, onRemoveCode }: Section
         {entries.length > 0 ? (
           <ul className="flex flex-wrap gap-2" aria-label="Selected SNOMED CT concepts">
             {entries.map((entry) => (
-              <li className="inline-flex items-center gap-1.5 rounded-4xl border bg-background px-2 py-1 text-sm font-medium" key={entry.id}>
-                <span>
-                  {entry.display} [{entry.code}]
-                </span>
+              <li className="inline-flex items-center gap-1.5 rounded-4xl border bg-background px-2 py-1" key={entry.id}>
+                <span className="text-sm font-medium">{entry.display}</span>
+                <span className="text-xs text-muted-foreground">{entry.code}</span>
                 <ClinicalBadge tone={getPriorityTone(entry.priority)}>{formatPriority(entry.priority)}</ClinicalBadge>
                 <Button variant="ghost" size="icon-xs" type="button" aria-label={`Remove ${entry.display}`} onClick={() => setEntryPendingRemoval(entry)}>
                   <XIcon />

@@ -88,9 +88,10 @@ interaction, slot anatomy, and visual consistency.
   section-local states.
 - Do keep coded-content entry as a SNOMED CT concept searchbar, not a generic
   add button.
-- Do render selected concepts as compact parent pills in the form
-  `Display [code]`, with the search-result priority rendered as a nested
-  `ClinicalBadge` pill and an end remove affordance with confirmation dialog.
+- Do render selected concepts as compact parent pills with primary display
+  text, a smaller muted SNOMED CT code without brackets, the search-result
+  priority as a nested `ClinicalBadge`, and an end remove affordance with
+  confirmation dialog.
 - Do keep layout responsive with grid/flex utility classes and stable gaps.
 - Do add tests with the component contract as soon as a new surface is added.
 - Don't import V1 CSS class names or recreate V1's component-local spacing
