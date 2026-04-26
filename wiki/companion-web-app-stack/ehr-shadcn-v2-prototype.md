@@ -100,7 +100,7 @@ matching button below. Unsaved local state uses a red-family pill; unsigned
 consultation state uses a purple-family pill. `Review validation` marks all
 incomplete required consultation sections and scrolls/focuses the first one.
 The action buttons use clinical button variants: yellow warning for
-`REVIEW VALIDATION`, green for `Save Locally`, and purple for
+`Review Validation`, green for `Save Locally`, and purple for
 `Sign Consultation`.
 
 Unused local shadcn source components are intentionally retained. They are not

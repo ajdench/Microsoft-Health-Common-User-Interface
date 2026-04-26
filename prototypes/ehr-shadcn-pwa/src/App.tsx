@@ -76,7 +76,7 @@ export function App() {
                 </div>
                 <div className="grid gap-2 sm:grid-cols-3">
                   <Button className="w-full" variant="clinicalWarn" type="button" size="sm" onClick={reviewValidation}>
-                    REVIEW VALIDATION
+                    Review Validation
                   </Button>
                   <Button className="w-full" variant="clinicalSuccess" type="button" size="sm">
                     Save Locally

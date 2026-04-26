@@ -10,7 +10,7 @@ test('renders shadcn-native V2 consultation shell without horizontal overflow', 
   await expect(consultation.getByText('Validation open')).toBeVisible()
   await expect(consultation.getByText('Not saved locally')).toBeVisible()
   await expect(consultation.getByText('Consultation not signed')).toBeVisible()
-  await expect(consultation.getByRole('button', { name: 'REVIEW VALIDATION' })).toHaveAttribute('data-variant', 'clinicalWarn')
+  await expect(consultation.getByRole('button', { name: 'Review Validation' })).toHaveAttribute('data-variant', 'clinicalWarn')
   await expect(consultation.getByRole('button', { name: 'Save Locally' })).toHaveAttribute('data-variant', 'clinicalSuccess')
   await expect(consultation.getByRole('button', { name: 'Sign Consultation' })).toHaveAttribute('data-variant', 'clinicalPurple')
   const railMetrics = await consultation.getByTestId('consultation-banner-action-rail').evaluate((rail) => {
@@ -44,7 +44,7 @@ test('renders shadcn-native V2 consultation shell without horizontal overflow', 
   await page.getByRole('button', { name: 'Remove concept' }).click()
   await expect(reason.getByText('Type 2 diabetes mellitus')).toHaveCount(0)
 
-  await consultation.getByRole('button', { name: 'REVIEW VALIDATION' }).click()
+  await consultation.getByRole('button', { name: 'Review Validation' }).click()
   await expect(consultation.locator('[data-section-id="assessment"]')).toHaveClass(/ring-2/)
   await expect(page.getByLabel('Assessment notes')).toBeFocused()
 
