@@ -716,6 +716,12 @@
 - Outputs created: updated `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
 - Unresolved issues: none for selected-code chip typography.
 
+## 2026-04-26 12:32:30 BST — Reduced V2 action rail pill-to-button gap
+- Action performed: reduced the consultation banner gap between status-pill and action-button rows from `gap-4` to `gap-y-2.5`, and retuned the desktop header row gap so the author/incomplete-status line stays aligned to the lower button rail.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user feedback to make the pill-to-button gap two-thirds of the current size, `prototypes/ehr-shadcn-pwa/src/App.tsx`, V2 e2e layout contract, V2 design contract, and the V2 companion wiki note.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/App.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
+- Unresolved issues: none.
+
 ## 2026-04-26 12:25:36 BST — Aligned V2 consultation author text to lower action rail
 - Action performed: moved the consultation header description onto the same visual lower rail as the action buttons by tuning the desktop header row gap and giving the author/incomplete-status line compact small-button typography and line height.
 - Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user feedback that `Author Dr Taylor Reed · 2 required sections incomplete` should sit on the bottom rail as button text, `prototypes/ehr-shadcn-pwa/src/App.tsx`, V2 e2e layout contract, V2 design contract, and the V2 companion wiki note.

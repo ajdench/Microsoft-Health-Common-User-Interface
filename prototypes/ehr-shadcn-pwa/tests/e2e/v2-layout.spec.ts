@@ -35,7 +35,7 @@ test('renders shadcn-native V2 consultation shell without horizontal overflow', 
   })
   expect(railMetrics.pills).toEqual(railMetrics.buttons)
   expect(railMetrics.pills).toEqual([160, 160, 160])
-  expect(railMetrics.rowGap).toBe('16px')
+  expect(railMetrics.rowGap).toBe('10px')
   expect(railMetrics.pillColumnGap).toBe('16px')
   expect(railMetrics.buttonColumnGap).toBe('16px')
   const headerRailMetrics = await consultation.getByTestId('consultation-banner-action-rail').evaluate((rail) => {

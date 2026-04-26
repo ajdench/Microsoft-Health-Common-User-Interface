@@ -82,9 +82,9 @@ interaction, slot anatomy, and visual consistency.
   rail on desktop, using the same compact `text-[0.8rem]` and `leading-7`
   rhythm as small action-button text, and keep it to a single nowrap line from
   the desktop rail breakpoint upward.
-- Do use the pane spacing rhythm (`gap-4`) inside the consultation banner
-  action rail: between the status-pill row and the button row, and between each
-  aligned status/action column.
+- Do use a compact two-thirds pane rhythm (`gap-y-2.5`) between the
+  consultation banner status-pill row and button row, while retaining the pane
+  rhythm (`gap-4`) between aligned status/action columns.
 - Do keep consultation banner rail controls fixed to the widest status-pill
   width (`w-40`, 10rem), preserving normal shadcn pill side padding instead of
   stretching pills and buttons across the available header rail.
