@@ -8,7 +8,7 @@ import { Empty, EmptyDescription } from '@/components/ui/empty'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { ClinicalBadge } from '@/components/ClinicalBadge'
 import { codeSuggestions } from '@/data/demo'
-import type { CodedEntry } from '@/types'
+import type { ClinicalTone, CodedEntry } from '@/types'
 
 type SectionCodingFieldProps = {
   entries: CodedEntry[]
@@ -18,6 +18,18 @@ type SectionCodingFieldProps = {
 
 function formatPriority(priority: CodedEntry['priority']) {
   return priority.charAt(0).toUpperCase() + priority.slice(1)
+}
+
+function getPriorityTone(priority: CodedEntry['priority']): ClinicalTone {
+  if (priority === 'prioritised') {
+    return 'good'
+  }
+
+  if (priority === 'ambiguous') {
+    return 'warn'
+  }
+
+  return 'neutral'
 }
 
 export function SectionCodingField({ entries, onAddCode, onRemoveCode }: SectionCodingFieldProps) {
@@ -57,8 +69,8 @@ export function SectionCodingField({ entries, onAddCode, onRemoveCode }: Section
                           {suggestion.system} {suggestion.code}
                         </span>
                       </span>
-                      <ClinicalBadge className="ml-auto" tone={suggestion.priority === 'ambiguous' ? 'warn' : suggestion.priority === 'prioritised' ? 'good' : 'neutral'}>
-                        {suggestion.priority}
+                      <ClinicalBadge className="ml-auto" tone={getPriorityTone(suggestion.priority)}>
+                        {formatPriority(suggestion.priority)}
                       </ClinicalBadge>
                     </CommandItem>
                   ))}
@@ -72,8 +84,9 @@ export function SectionCodingField({ entries, onAddCode, onRemoveCode }: Section
             {entries.map((entry) => (
               <li className="inline-flex items-center gap-1.5 rounded-4xl border bg-background px-2 py-1 text-sm font-medium" key={entry.id}>
                 <span>
-                  {entry.display} [{entry.code}] ({formatPriority(entry.priority)})
+                  {entry.display} [{entry.code}]
                 </span>
+                <ClinicalBadge tone={getPriorityTone(entry.priority)}>{formatPriority(entry.priority)}</ClinicalBadge>
                 <Button variant="ghost" size="icon-xs" type="button" aria-label={`Remove ${entry.display}`} onClick={() => setEntryPendingRemoval(entry)}>
                   <XIcon />
                 </Button>
