@@ -38,6 +38,29 @@ test('renders shadcn-native V2 consultation shell without horizontal overflow', 
   expect(railMetrics.rowGap).toBe('16px')
   expect(railMetrics.pillColumnGap).toBe('16px')
   expect(railMetrics.buttonColumnGap).toBe('16px')
+  const headerRailMetrics = await consultation.getByTestId('consultation-banner-action-rail').evaluate((rail) => {
+    const header = rail.closest('[data-slot="card-header"]')
+    if (!header) {
+      return null
+    }
+
+    const description = header.querySelector('[data-slot="card-description"]')
+    const firstButton = header.querySelector('[data-slot="button"]')
+
+    if (!description || !firstButton) {
+      return null
+    }
+
+    return {
+      descriptionTop: Math.round(description.getBoundingClientRect().top),
+      firstButtonTop: Math.round(firstButton.getBoundingClientRect().top),
+      descriptionHeight: Math.round(description.getBoundingClientRect().height),
+      firstButtonHeight: Math.round(firstButton.getBoundingClientRect().height),
+    }
+  })
+  expect(headerRailMetrics).not.toBeNull()
+  expect(headerRailMetrics?.descriptionTop).toBe(headerRailMetrics?.firstButtonTop)
+  expect(headerRailMetrics?.descriptionHeight).toBe(headerRailMetrics?.firstButtonHeight)
   await expect(page.getByText('Follow-up tasks')).toHaveCount(0)
   await expect(consultation.locator('[data-slot="card-title"]').filter({ hasText: 'Follow-up' })).toBeVisible()
   await expect(page.getByRole('heading', { name: 'Medication review' })).toBeVisible()

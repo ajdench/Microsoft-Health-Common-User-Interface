@@ -57,9 +57,9 @@ export function App() {
       <main className="mx-auto grid max-w-[1440px] gap-4 p-4 xl:grid-cols-[minmax(0,1fr)_minmax(22rem,28rem)]">
         <section className="grid gap-4" aria-label="Consultation capture">
           <Card>
-            <CardHeader>
+            <CardHeader className="sm:gap-y-3.5">
               <CardTitle>Consultation capture</CardTitle>
-              <CardDescription>
+              <CardDescription className="text-[0.8rem] leading-7 font-medium sm:whitespace-nowrap">
                 Author Dr Taylor Reed · {missingRequiredCount} required sections incomplete
               </CardDescription>
               <CardAction className="mt-2 grid w-full justify-items-start gap-4 sm:mt-0 sm:w-auto" data-testid="consultation-banner-action-rail">

@@ -78,6 +78,10 @@ interaction, slot anatomy, and visual consistency.
 - Do keep the consultation banner action rail as state pills first
   (`Validation open`, `Not saved locally`, `Consultation not signed`) followed
   by matching action buttons below.
+- Do align the consultation author/incomplete-status text to the lower action
+  rail on desktop, using the same compact `text-[0.8rem]` and `leading-7`
+  rhythm as small action-button text, and keep it to a single nowrap line from
+  the desktop rail breakpoint upward.
 - Do use the pane spacing rhythm (`gap-4`) inside the consultation banner
   action rail: between the status-pill row and the button row, and between each
   aligned status/action column.

@@ -107,8 +107,9 @@ matching button below. The internal rail gap uses the same `gap-4` pane rhythm
 between pill and button rows and between each status/action column. Each pill
 and button is fixed to the widest status-pill width (`w-40`, 10rem), preserving
 normal shadcn pill side padding instead of stretching controls across the
-header. Unsaved local state uses a red-family pill; unsigned consultation state
-uses a purple-family pill. `Review validation` marks all
+header. The author/incomplete-status line is aligned to the lower button rail
+with compact button-scale text. Unsaved local state uses a red-family pill;
+unsigned consultation state uses a purple-family pill. `Review validation` marks all
 incomplete required consultation sections and scrolls/focuses the first one.
 The action buttons use clinical button variants: yellow warning for
 `Review Validation`, green for `Save Locally`, and purple for
