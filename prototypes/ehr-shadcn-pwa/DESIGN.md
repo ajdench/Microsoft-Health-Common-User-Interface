@@ -95,6 +95,9 @@ interaction, slot anatomy, and visual consistency.
   text, a smaller muted SNOMED CT code without brackets, the search-result
   semantic type and priority as nested `ClinicalBadge` pills, and an end
   remove affordance with confirmation dialog.
+- Do keep selected-concept remove controls in their own right-aligned chip
+  column, using a bold red `XIcon` treatment so deletion remains visibly
+  distinct from the coded content.
 - Do use consistent semantic-type colours in SNOMED search and selected-code
   display, for example finding, disorder, procedure, observable, situation,
   regime/therapy, and product.

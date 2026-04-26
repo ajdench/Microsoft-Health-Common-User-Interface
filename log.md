@@ -716,6 +716,12 @@
 - Outputs created: updated `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
 - Unresolved issues: none for selected-code chip typography.
 
+## 2026-04-26 10:28:04 BST — Right-aligned selected SNOMED remove affordance
+- Action performed: changed selected SNOMED concept pills to a two-column layout so concept metadata remains left-aligned and the remove control is pinned to the right edge; styled the remove `XIcon` as bold red while preserving the confirmation dialog.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, shadcn Button and Badge guidance, `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, V2 e2e layout contract, V2 design contract, and the V2 companion wiki note.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
+- Unresolved issues: none.
+
 ## 2026-04-26 10:26:37 BST — Normalised V2 review validation button casing
 - Action performed: changed the consultation banner validation action label from all-caps `REVIEW VALIDATION` to `Review Validation` while preserving the yellow clinical warning button variant.
 - Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, `prototypes/ehr-shadcn-pwa/src/App.tsx`, V2 e2e layout contract, V2 design contract, and the V2 companion wiki note.

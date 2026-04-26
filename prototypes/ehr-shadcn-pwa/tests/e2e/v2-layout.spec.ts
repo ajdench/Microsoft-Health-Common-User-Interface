@@ -29,6 +29,19 @@ test('renders shadcn-native V2 consultation shell without horizontal overflow', 
   await expect(reason.getByText('[38341003]')).toHaveCount(0)
   await expect(reason.locator('[aria-label="Selected SNOMED CT concepts"]').getByText('Disorder', { exact: true })).toBeVisible()
   await expect(reason.getByText('Prioritised')).toBeVisible()
+  const hypertensionChip = reason.locator('[aria-label="Selected SNOMED CT concepts"] li').filter({ hasText: 'Hypertensive disorder' })
+  await expect(hypertensionChip.getByRole('button', { name: 'Remove Hypertensive disorder' })).toHaveClass(/text-destructive/)
+  await expect(hypertensionChip.locator('svg')).toHaveAttribute('stroke-width', '3')
+  const hypertensionRemoveAlignment = await hypertensionChip.evaluate((chip) => {
+    const button = chip.querySelector('button')
+
+    if (!button) {
+      return Number.POSITIVE_INFINITY
+    }
+
+    return Math.round(chip.getBoundingClientRect().right - button.getBoundingClientRect().right)
+  })
+  expect(hypertensionRemoveAlignment).toBeLessThanOrEqual(8)
   await reason.getByRole('button', { name: 'Search SNOMED CT concepts' }).click()
   await page.getByPlaceholder('Search SNOMED CT concepts...').fill('diabetes')
   await page.getByText('Type 2 diabetes mellitus').click()

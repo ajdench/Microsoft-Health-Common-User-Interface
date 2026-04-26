@@ -79,7 +79,9 @@ rather than a generic add button. Selected concepts render as compact pills in
 the section, using primary display text, a smaller muted SNOMED CT code without
 brackets, and nested semantic-type and priority pills that match the
 search-result categorisation colours. Removing a selected concept opens a
-confirmation dialog before the code is deleted from the section. The seed
+confirmation dialog before the code is deleted from the section. The remove
+control is pinned to the right side of the selected-concept pill and uses a
+bold red `XIcon` affordance to separate deletion from concept metadata. The seed
 concept set now includes examples across disorder, finding, procedure,
 observable, situation, and regime/therapy tags so section-local coding can show
 the difference between diagnoses/problems, observations, procedures, contextual
