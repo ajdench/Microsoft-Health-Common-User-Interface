@@ -12,7 +12,7 @@ describe('EHR shadcn V2 prototype', () => {
     expect(screen.getByRole('region', { name: 'Medication review' })).toBeInTheDocument()
     expect(screen.queryByRole('heading', { name: 'Medication review' })).not.toBeInTheDocument()
     expect(screen.getByText('Medication')).toBeInTheDocument()
-    expect(screen.getByRole('textbox', { name: 'Task' })).toBeInTheDocument()
+    expect(screen.getByRole('textbox', { name: 'Actionable follow-up task' })).toBeInTheDocument()
     expect(screen.getAllByRole('textbox', { name: 'Add clinical code' })).toHaveLength(7)
   })
 })

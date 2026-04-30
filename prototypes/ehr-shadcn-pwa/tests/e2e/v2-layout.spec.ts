@@ -208,9 +208,12 @@ test('renders shadcn-native V2 consultation shell without horizontal overflow', 
   await expect(consultation.locator('[data-slot="card-title"]').filter({ hasText: 'Follow-up' })).toBeVisible()
   await expect(consultation.locator('[data-tasks-pane]')).toBeVisible()
   await expect(consultation.locator('[data-tasks-pane]').locator('[data-slot="card-title"]')).toHaveText('Tasks')
-  await expect(consultation.getByRole('textbox', { name: 'Task' })).toBeVisible()
-  await expect(consultation.getByRole('button', { name: 'Add task' })).toBeVisible()
-  await expect(consultation.getByRole('list', { name: 'Tasks' }).getByText('Book diabetes review bloods · Within 2 weeks')).toBeVisible()
+  await expect(consultation.getByRole('textbox', { name: 'Actionable follow-up task' })).toBeVisible()
+  await expect(consultation.getByRole('button', { name: 'Add actionable follow-up task' })).toBeVisible()
+  await expect(consultation.getByPlaceholder('Add actionable follow-up task')).toBeVisible()
+  await expect(consultation.getByText('Actionable follow-up work')).toHaveCount(0)
+  await expect(consultation.getByRole('list', { name: 'Tasks' }).getByText('Book diabetes review bloods')).toBeVisible()
+  await expect(consultation.getByRole('list', { name: 'Tasks' }).getByText('Within 2 weeks')).toBeVisible()
   const tasksPane = consultation.locator('[data-tasks-pane]')
   await tasksPane.evaluate((pane) => pane.scrollIntoView({ block: 'start' }))
   const tasksPaneMetrics = await tasksPane.evaluate((pane) => {
@@ -257,12 +260,29 @@ test('renders shadcn-native V2 consultation shell without horizontal overflow', 
   expect(tasksPaneMetrics.entryPaneTop).toBeGreaterThan(tasksPaneMetrics.codingTop)
   expect(tasksPaneMetrics.entryPaneRight).toBeLessThanOrEqual(tasksPaneMetrics.codingLeft)
   await expect(tasksPane.locator('[data-section-coding-field]')).toBeVisible()
-  await expect(tasksPane.locator('[data-section-coding-field]')).toHaveClass(/bg-muted\/20/)
+  await expect(tasksPane.locator('[data-section-coding-field]')).toHaveAttribute('data-section-coding-field-frameless', 'true')
   const taskCodeSearch = tasksPane.getByRole('textbox', { name: 'Add clinical code' })
   await expect(taskCodeSearch).toBeVisible()
   await expect(tasksPane.locator('[data-snomed-search-field]')).toBeVisible()
   await expect(tasksPane.locator('[data-snomed-search-field]')).toHaveClass(/bg-background/)
   await expect(tasksPane.locator('[data-snomed-search-field]').getByText('SNOMED CT')).toBeVisible()
+  const taskShellMetrics = await tasksPane.locator('[data-task-result-shell]').first().evaluate((shell) => {
+    const styles = getComputedStyle(shell)
+
+    return {
+      display: styles.display,
+      borderRadius: styles.borderRadius,
+      gridTemplateColumns: styles.gridTemplateColumns,
+      columnGap: styles.columnGap,
+      width: Math.round(shell.getBoundingClientRect().width),
+      parentWidth: Math.round(shell.parentElement?.getBoundingClientRect().width ?? 0),
+    }
+  })
+  expect(taskShellMetrics.display).toBe('grid')
+  expect(taskShellMetrics.borderRadius).toBe('20.8px')
+  expect(taskShellMetrics.gridTemplateColumns.split(' ').length).toBe(2)
+  expect(taskShellMetrics.columnGap).toBe('12px')
+  expect(taskShellMetrics.width).toBe(taskShellMetrics.parentWidth)
   await taskCodeSearch.fill('medication')
   const taskResults = page.locator('[data-slot="popover-content"]').last()
   const longMedicationResult = taskResults.locator('[data-slot="command-item"]').filter({ hasText: 'Medication review done by doctor' })

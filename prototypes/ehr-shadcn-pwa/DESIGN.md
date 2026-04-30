@@ -62,9 +62,10 @@ comparison material, but new component decisions should be made here first.
   rail uses a shared three-column grid so pills and buttons align.
 - Follow-up section: final narrative `ConsultationSectionCard` after Plan.
 - `TasksPane`: bottom shadcn `Card` for actionable follow-up task capture,
-  using the same split-card body as consultation sections: title/status,
-  description, and task entry on the left; task-local `SectionCodingField` for
-  SNOMED CT-coded task concepts on the right.
+  using the same split-card body as consultation sections: title/status and
+  task entry on the left; frameless task-local `SectionCodingField` for
+  SNOMED CT-coded task concepts on the right. Task rows use full-width rounded
+  shell pills rather than loose badges.
 - `ReferencePanel`: shadcn `Tabs` for medications, alerts, and results.
   Tab labels provide the visible section identity; the tab panels do not repeat
   internal titles. Muted column header rows sit directly below the tabs.
@@ -199,8 +200,9 @@ interaction, slot anatomy, and visual consistency.
   an empty coded section should show only the SNOMED CT concept searchbar until
   concepts are selected.
 - Do give the bottom Tasks pane the same SNOMED CT coding affordance as
-  consultation sections and the same split-card layout rail, scoped to
-  task-owned coded entries rather than to a narrative consultation section.
+  consultation sections and the same split-card layout rail, including the
+  frameless searchbar treatment, scoped to task-owned coded entries rather
+  than to a narrative consultation section.
 - Do keep coded-content entry as a clinical code searchbar, not a generic add
   button, and not a button that opens a second searchbar. Use `Add clinical
   code` as the field prompt. The control should be visually obvious as a search

@@ -1446,3 +1446,10 @@
 - Outputs created: changed the input's left padding from 6 px to 5 px while preserving the icon size, icon optical inset, field height, and suffix inset.
 - Verification: rendered measurements show the placeholder text start moved from 29 px to 28 px from the field border, and the estimated visible icon-stroke-to-text gap changed from about 8.75 px to about 7.75 px; `npm test` and `npm run build` pass in `prototypes/ehr-shadcn-pwa`.
 - Unresolved issues: none for this search-field optical spacing pass.
+
+## 2026-04-30 20:45:43 BST — Harmonised Tasks pane coding and result shells
+- Action performed: applied the consultation-section clinical-code treatment to the Tasks pane and removed the remaining task subtext row.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, `TasksPane`, `SectionCodingField`, V2 layout tests, `DESIGN.md`, and the companion V2 wiki page.
+- Outputs created: task-local `SectionCodingField` now uses the frameless searchbar treatment, the `Actionable follow-up work` description was removed, the task entry prompt and button now read `Add actionable follow-up task`, and task rows render as full-width rounded shell rows matching the clinical-code pill shell rhythm.
+- Verification: updated unit and e2e layout assertions for the new task label, frameless task coding field, and full-width task result shell; `npm test`, `npm run build`, and `npm run e2e` pass in `prototypes/ehr-shadcn-pwa`.
+- Unresolved issues: none for this Tasks pane alignment pass.
