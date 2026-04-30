@@ -23,14 +23,7 @@ export const initialSections: ConsultationSection[] = [
 
 export const initialCodes: CodedEntry[] = []
 
-export const initialTasks: FollowUpTask[] = [
-  {
-    id: 'task-review-bloods',
-    label: 'Book diabetes review bloods',
-    dueText: 'Within 2 weeks',
-    createdAt: '2026-04-26T09:00:00.000Z',
-  },
-]
+export const initialTasks: FollowUpTask[] = []
 
 export const codeSuggestions: CodeSuggestion[] = [
   { display: 'Type 2 diabetes mellitus', code: '44054006', system: 'SNOMED CT', semanticTag: 'disorder', priority: 'prioritised' },

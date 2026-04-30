@@ -65,9 +65,10 @@ comparison material, but new component decisions should be made here first.
   using the same split-card body as consultation sections: title and a status
   pill on the left with task entry below; the status is `Optional` while the
   task entry field is empty and switches to green `Ready` when task text is
-  entered. Frameless task-local `SectionCodingField` provides SNOMED CT-coded
-  task concepts on the right. Task rows use full-width rounded shell pills
-  rather than loose badges.
+  entered. The demo starts with no default task rows; task rows only appear
+  after clinician entry. Frameless task-local `SectionCodingField` provides
+  SNOMED CT-coded task concepts on the right. Task rows use full-width rounded
+  shell pills rather than loose badges.
 - `ReferencePanel`: shadcn `Tabs` for medications, alerts, and results.
   Tab labels provide the visible section identity; the tab panels do not repeat
   internal titles. Muted column header rows sit directly below the tabs.

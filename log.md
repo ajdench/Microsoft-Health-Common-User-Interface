@@ -1474,3 +1474,10 @@
 - Outputs created: set the `Switch patient` shadcn button to the same rendered width as `Simulate failure` and added an e2e assertion comparing both button bounding boxes.
 - Verification: `npm test`, `npm run build`, and `npm run e2e` pass in `prototypes/ehr-shadcn-pwa`.
 - Unresolved issues: none for this chrome action width alignment.
+
+## 2026-04-30 21:05:12 BST — Removed default Tasks rows
+- Action performed: removed the seeded default follow-up task from the V2 demo so the Tasks pane starts empty.
+- Inputs used: user request for no default Tasks, `initialTasks`, `TasksPane`, V2 layout tests, `DESIGN.md`, and the V2 companion wiki page.
+- Outputs created: `initialTasks` is now empty by default; the e2e test asserts no initial task list, then adds a task to keep the task-row shell contract covered; design documentation notes that task rows are clinician-entered rather than seeded.
+- Verification: `npm test`, `npm run build`, and `npm run e2e` pass in `prototypes/ehr-shadcn-pwa`.
+- Unresolved issues: none for default task removal.

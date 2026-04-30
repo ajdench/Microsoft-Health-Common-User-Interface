@@ -39,7 +39,7 @@ UI class structure.
 | Section coding | `SectionCodingField`, SNOMED CT searchbar composed with shadcn `InputGroup` + `Popover` + `Command`, concept pills, confirmation `Dialog` |
 | Validation/actions | Consultation banner `CardAction`; status pills above matching same-width buttons |
 | Follow-up | Final narrative consultation section after Plan |
-| Tasks | Bottom shadcn `Card` using the same split body as consultation sections, with actionable follow-up task entry on the left, an `Optional` to `Ready` task-entry status pill, and frameless task-local SNOMED CT coding on the right |
+| Tasks | Bottom shadcn `Card` using the same split body as consultation sections, with actionable follow-up task entry on the left, no default seeded task rows, an `Optional` to `Ready` task-entry status pill, and frameless task-local SNOMED CT coding on the right |
 | Reference context | `ReferencePanel`, shadcn `Tabs`, compact shadcn `Card` rows, and `ClinicalBadge` state pills |
 
 ## First Implementation
@@ -325,8 +325,9 @@ content, while the separate Tasks pane now sits at the bottom for actionable
 follow-up work. Tasks also use the same split-card rail, an optional-to-ready
 task-entry status pill, frameless SNOMED CT search treatment, selected concept
 pill pattern, and full-width shell row rhythm as consultation sections, but the
-left side is task entry rather than narrative note text and the resulting codes
-are scoped to task-owned entries rather than a narrative section.
+left side is task entry rather than narrative note text, task rows are not
+seeded by default, and the resulting codes are scoped to task-owned entries
+rather than a narrative section.
 
 The consultation banner action rail now separates state from action: the top
 rail uses pills for validation, local-save, and signature state; the row below
