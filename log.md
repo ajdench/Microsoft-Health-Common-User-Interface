@@ -1460,3 +1460,10 @@
 - Outputs created: changed only the button label from `Add actionable follow-up task` to `Add task`; the textbox label/placeholder remains `Actionable follow-up task` / `Add actionable follow-up task`.
 - Verification: updated e2e button assertion; `npm test`, `npm run build`, and `npm run e2e` pass in `prototypes/ehr-shadcn-pwa`.
 - Unresolved issues: none for the Tasks pane button label correction.
+
+## 2026-04-30 20:52:04 BST — Made Tasks status optional until active input
+- Action performed: changed the Tasks pane status from a combined `Optional/Ready` label to a stateful `Optional` to `Ready` transition driven by active task entry text.
+- Inputs used: user clarification that the Tasks status should be optional and then turn ready with input, `TasksPane`, V2 layout tests, `DESIGN.md`, and the V2 companion wiki page.
+- Outputs created: Tasks status now shows the blue-family `Optional` pill while the task entry field is empty and switches to the green `Ready` pill when task text is entered; tests and documentation were updated to match the transition.
+- Verification: `npm test`, `npm run build`, and `npm run e2e` pass in `prototypes/ehr-shadcn-pwa`.
+- Unresolved issues: none for the Tasks status transition.

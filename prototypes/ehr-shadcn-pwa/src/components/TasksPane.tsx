@@ -16,6 +16,7 @@ type TasksPaneProps = {
 
 export function TasksPane({ tasks, onAddTask, codes, onAddCode, onRemoveCode }: TasksPaneProps) {
   const [taskText, setTaskText] = useState('')
+  const hasTaskInput = taskText.trim().length > 0
 
   function addTask() {
     onAddTask(taskText)
@@ -28,8 +29,8 @@ export function TasksPane({ tasks, onAddTask, codes, onAddCode, onRemoveCode }: 
         <div className="grid min-w-0 gap-3 lg:grid-rows-[auto_minmax(10rem,1fr)]" data-tasks-list-pane>
           <div className="grid min-h-8 auto-rows-min grid-cols-[minmax(0,1fr)_auto] items-center gap-x-3 gap-y-1" data-tasks-pane-heading>
             <CardTitle>Tasks</CardTitle>
-            <ClinicalBadge data-tasks-pane-status tone="good">
-              Ready
+            <ClinicalBadge data-tasks-pane-status tone={hasTaskInput ? 'good' : 'optional'}>
+              {hasTaskInput ? 'Ready' : 'Optional'}
             </ClinicalBadge>
           </div>
           <div className="grid content-start gap-3" data-tasks-entry-pane>
