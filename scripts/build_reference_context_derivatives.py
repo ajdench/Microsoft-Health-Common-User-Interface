@@ -17,6 +17,7 @@ INVENTORIES_ROOT = ROOT / "derived" / "inventories"
 EXTRACTED_ROOT = ROOT / "derived" / "extracted-text" / "reference-context"
 NORMALIZED_ROOT = ROOT / "derived" / "normalized-markdown" / "reference-context"
 SECONDARY_ROOT = RAW_ROOT / "sources" / "references" / "secondary"
+DEFAULT_RETRIEVED_ON = "2026-04-18"
 
 
 REFERENCE_ITEMS = [
@@ -136,6 +137,16 @@ REFERENCE_ITEMS = [
         "category": "commentary / secondary analysis",
         "classification": "commentary / secondary analysis",
         "trust_note": "PubMed abstract page for a peer-reviewed article describing an exemplar implementation and reporting it increased interest in the programme.",
+    },
+    {
+        "source_path": SECONDARY_ROOT / "portico-microsoft-health-patient-journey-demonstrator-2008.pdf",
+        "title": "Microsoft health patient journey demonstrator (Portico PDF)",
+        "original_url": "https://access.portico.org/Portico/auView?auId=ark%253A%252F27927%252Fphw1p04s4h5&auViewType1=PDF",
+        "slug": "portico-microsoft-health-patient-journey-demonstrator-2008",
+        "category": "commentary / secondary analysis",
+        "classification": "commentary / secondary analysis",
+        "retrieved_on": "2026-04-27",
+        "trust_note": "Portico-preserved full-text PDF for the 2008 article. Stronger than the abstract-only PubMed page for exact wording and pagination, but preserved through a third-party scholarly archive rather than the original publisher site.",
     },
     {
         "source_path": SECONDARY_ROOT / "pubmed-hci-modelling-digital-health-technologies.html",
@@ -286,7 +297,7 @@ def main() -> None:
 
     metadata = {
         "title": "Secondary adoption, retirement, and afterlife sources",
-        "retrieved_on": "2026-04-18",
+        "retrieved_on": DEFAULT_RETRIEVED_ON,
         "files": [],
     }
     inventory_lines = [
@@ -315,6 +326,7 @@ def main() -> None:
                 "source_type": source_path.suffix.lower().lstrip(".") or "html",
                 "source_category": item["category"],
                 "retrieval_status": "retrieved",
+                "retrieved_on": item.get("retrieved_on", DEFAULT_RETRIEVED_ON),
                 "trust_note": item["trust_note"],
                 "sha256": sha256(source_path),
             }

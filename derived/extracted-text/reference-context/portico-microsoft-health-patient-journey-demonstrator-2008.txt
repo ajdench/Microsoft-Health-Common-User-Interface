@@ -1,0 +1,259 @@
+Informatics in Primary Care 2008;16:297–302                                # 2008 PHCSG, British Computer Society
+
+
+
+
+ Technology report
+
+Microsoft health patient journey
+demonstrator
+Kirsten Disse PGCHE MA
+User Experience Consultant, Microsoft Campus, Thames Valley Park, Reading, UK
+
+
+
+  ABSTRACT
+  Background As health care becomes more reliant            brings desktop functionality and enriched levels of
+  on electronic systems, there is a need to standardise     user experience to health settings worldwide via the
+  display elements to promote patient safety and            internet. We based the demonstrator on an easily
+  clinical eﬃciency. The Microsoft1 Health Common           recognisable clinical scenario which oﬀered us the
+  User Interface (MSCUI) programme, developed by            most scope for demonstrating MSCUI guidance
+  Microsoft and the National Health Service (NHS)           and innovation.
+  was born out of this need and creates guidance and        Output The demonstrator is structured in three
+  controls designed to increase patient safety and          sections (administration, primary care and secondary
+  clinical eﬀectiveness through consistent interface        care) each of which illustrates the activities asso-
+  treatments.                                               ciated within the setting relevant to our scenario.
+  Objective The Microsoft Health Patient Journey            The demonstrator is published on the MSCUI
+  Demonstrator is a prototype tool designed to pro-         website www.mscui.net
+  vide exemplar implementations of MSCUI guidance           Conclusion The MSCUI patient journey demon-
+  on a Microsoft platform. It is a targeted glimpse at a    strator has been successful in raising awareness and
+  visual interface for the integration of health-relevant   increasing interest in the CUI programme.
+  information, including electronic medical records.
+  Method We built the demonstrator in Microsoft             Keywords: common user interface, health infor-
+  SilverlightTM 2, our application technology which         mation, patient journey
+
+
+
+Introduction
+                                                              Box 1 Microsoft Health Common User
+                                                              Interface (MSCUI)
+The MSCUI programme, developed by Microsoft and
+the NHS, was born out of the need to standardise              The MSCUI programme, developed by Microsoft
+display elements to promote patient safety and clinical       in alliance with the NHS and a growing world-
+eﬃciency. It creates guidance and controls designed to        wide community of healthcare providers and
+increase patient safety and clinical eﬀectiveness through     developers, creates guidance and controls to enable
+consistent interface treatments (Box 1).1                     a common look and feel for patient-critical
+   The MSCUI patient journey demonstrator is                  clinical information system functions. The over-
+founded on MSCUI patient safety principles2 (Box 2)           all goal is increased patient safety and clinical
+and combines outputs from the MSCUI programme                 eﬀectiveness, reduced training and support costs
+with clinical functionality, excellence in user interface     and reduced time and expenditure for healthcare
+design and new Microsoft technologies to oﬀer en-             application developers and their customers.
+hanced visualisation, understanding and engagement
+with clinical data. The demonstrator looks to the
+future, is speculative and is designed to promote ‘the
+art of the possible’.                                       underpins the clinical decision-making process. In
+   Assimilation and interpretation of clinical data,        creating the demonstrator, we are also taking advan-
+often from multiple sources and in diﬀerent forms,          tage of modern technological visualisation capabilities
+298   K Disse
+
+
+
+and oﬀering clinicians holistic and enhanced ways of    Method of development
+accessing and assessing patient data.
+
+                                                        The demonstrator describes an end-to-end journey or
+                                                        care pathway through a speciﬁc clinical scenario. A
+  Box 2 MSCUI patient safety principles
+                                                        male patient with a history of essential hypertension
+  MSCUI patient safety principles                       visits his general practitioner with chest pain. The
+  1 The correct identiﬁcation of a patient and the      consultation is recorded along with observations, the
+    matching of patients to their care elements.        patient’s clinical history is assessed and he is referred
+  2 Prevention of patient care handover errors and      on to the hospital where an angiogram and angio-
+    safety during transitions of care.                  plasty (taking a picture of and then removing the
+  3 Assuring medication accuracy during the giv-        obstruction in a coronary artery) is performed. This
+    ing of care to a patient.                           scenario allowed us to show a complete care journey
+  4 Performance of correct procedure at correct         and illustrate a proposal for an integrated care record
+    body site.                                          which is patient-centric and in which the transitions
+                                                        between care settings are seamless. Data can be accessed
+  The MSCUI patient safety principles, created in
+                                                        and input from all care sources at any point along the
+  partnership with the NHS, are derived from the
+                                                        patient journey. The demonstrator is structured in
+  World Health Organization patient safety initiat-
+                                                        three sections – administration (see Figure 1), primary
+  ives, the National Patient Safety Agency, the Joint
+                                                        care (see Figure 2) and secondary care (see Figure 3) –
+  Commission 2008 National Patient Safety Goals
+                                                        each of which illustrates the activities associated within
+  and the Agency for Healthcare Research and
+                                                        the setting relevant to our scenario.
+  Quality.
+                                                           An important aspect of our method is the choice of
+                                                        a tightly controlled dataset. As we were working in a
+                                                        hypothetical situation, we were able to craft our data
+
+
+
+
+Figure 1 Administration demonstrator
+                                       Microsoft health patient journey demonstrator   299
+
+
+
+
+Figure 2 Primary care demonstrator
+
+
+
+
+Figure 3 Secondary care demonstrator
+300    K Disse
+
+
+
+to tell a very clear and aligned clinical story. This       multiple views into an angiogram procedure. These
+supported our design and innovation approaches in           are aligned with a 3D model of the heart to indicate
+illustrating format and content contextualisation of        the angle from which the angiogram video is taken.
+patient data, such as the ‘consultation dock’ and           Traditional video player controls, including a drag-
+‘patient charts’.                                           and-drop scroll bar, are incorporated as well as a
+   We held ongoing workshops and reviews with clin-         magniﬁcation and measurement viewer.
+icians in primary and secondary care to ensure devel-     . Care pathways. Building on well-received work from
+opment remained focused on clinical functionality,          previous care pathways demonstrators this oﬀers the
+which we delivered in technologically innovative            opportunity to manage an entire pathway through a
+ways. With the help of a small team of user experience      consistent interface.
+and technology experts, we adopted an agile, iterative
+design and development process that allowed us to be
+highly responsive and productive.
+                                                          Discussion
+
+The technology                                            The demonstrator successfully indicates how future
+                                                          clinical user interfaces might appear.
+
+The demonstrator is built in Microsoft Silverlight 2, a
+cross-browser, cross-platform and cross-device plug-
+                                                          Implications for practice
+in designed for delivering the next generation of media
+experiences and rich interactive applications for the     As this is a provocative technology demonstrator and
+Web.3 We also incorporated its ‘deep zoom’ func-          not an application prototype, there has been no in situ
+tionality, which allows users to magnify data extremely   testing. We are seeking a balance between implemen-
+quickly at high visual resolution.                        tation of MSCUI design guidance, subject to rigorous
+   The features of the demonstrator which are attract-    testing and evaluation, and the presentation of new
+ing clinical interest are as follows:                     and emerging concepts yet to be exposed to the same
+. Primary care – consultation dock. Working in
+                                                          levels of exploration and scrutiny.
+                                                             Initial feedback from the online community indi-
+  conjunction with a conﬁgurable timeline of consul-
+                                                          cates advantages in areas such as rapid understanding
+  tations, clinicians can drag individual or groups of
+                                                          and sharing of a person’s medical history, clinical data
+  consultations into a docking area for fast and easy
+                                                          analysis, trending and training. We are particularly
+  cross-consultation comparison, facilitating tracking
+                                                          interested in receiving feedback from this journal’s
+  of conditions or comparing observations from dif-
+                                                          readership on implications for practice.
+  ferent consultations over time.
+. Primary care – patient charts. Observations such
+  as blood pressure measurements are presented in
+  chart form, overlaid with related medication and        Comparison with existing interface
+  other observations such as cholesterol levels. Clin-    design
+  icians and patients can quickly see a medication’s
+  impact over time. Includes a scalable timeline, table   The demonstrator is a graphically rich interface com-
+  view toggle and the ability to show or hide and         pared with existing clinical interface design, much of
+  reorder the data shown.                                 which is entirely text based.
+. Primary care – MedsListView. Medications man-
+  agement is a key focus area of the MSCUI programme
+  and this available control embodies veriﬁed and         Limitations of the method
+  accepted guidance. The MedsListView control pre-
+  sents medication lists that can be sorted, grouped,     Our small team and very tight timescales meant that
+  ﬁltered and reordered.                                  some aspects of the demonstrator received more atten-
+. Secondary care – deep zoom. Deep zoom is used           tion than others. Some of the limitations of this
+  to explore and analyse electrocardiogram data. This     approach include:
+  allows users to very quickly see an overview of all     . We did not illustrate the full end-to-end journey but
+  data output and then to zoom into any detailed view,      only a selection of vignettes of key innovations.
+  while maintaining high visual resolution.               . We aggregated and integrated data in a way that has
+. Secondary care – angiogram. The demonstrator              wider implications for software infrastructure.
+  presents a selection of angiogram videos to allow       . We worked with a small, crafted data set.
+                                                           Microsoft health patient journey demonstrator             301
+
+
+
+. We relied heavily on a small number of clinicians          REFERENCES
+  and want to engage a wider group for input.
+                                                              1 Microsoft Health. Common User Interface (CUI).
+. A full analysis of existing clinical software systems
+                                                                www.mscui.net/
+  was not performed in this case. Instead, we relied on       2 Microsoft Health. CUI: patient safety. www.mscui.net/
+  primary research and input from those who have                Introduction/PatientSafety.aspx
+  experience with multiple clinical systems.                  3 Wikepedia. Microsoft Silverlight. en.wikipedia.org/wiki/
+. We worked with one speciﬁc clinical scenario. It is           Silverlight
+  not clear whether this demonstration would be               4 Chan WS, Stevenson M and McGlade K. Do general
+  suitable for other clinical care settings – clinicians        practitioners change how they use the computer during
+  may require diﬀerent data displays for diﬀerent               consultations with a signiﬁcant psychological component?
+  clinical contexts.4                                           International Journal of Medical Informatics 2008;77:
+                                                                534–8.
+                                                              5 Dayhoﬀ R, Kirin G, Pollock S, Miller C and Todd S.
+                                                                Medical data capture and display: the importance of
+Call for further research: next steps                           clinicians’ workstation design. Proceedings of the Annual
+We are currently planning the next stage of the                 Symposium of Computer Application in Medical Care
+                                                                1994:541–5.
+demonstrator project and are evaluating potential
+                                                              6 Musser RC and Tcheng JE. Quantitative and qualitative
+problems and real-life scenarios to build this upon.            comparison of text-based and graphical user interfaces
+Feedback from the clinical community will be invaluable         for computerized provider order entry. American Medi-
+in helping to conceptualise and create new ways of              cal Informatics Association Annual Symposium Proceed-
+using technology to support safe and eﬃcient care.              ings 2006:1041.
+   Graphical display of clinical information is not a         7 Microsoft Health. CUI: methods for displaying tables
+new concept and much existing work is available for             and graphs. www.mscui.net/DesignGuide/TablesGraphs
+investigation.5,6 Since writing, the MSCUI programme            Display.aspx
+has released new guidance7 on the display of graphs           8 Refsum C, Kumarapeli P, Gunaratne A, Dodds R, Hasan
+and tables which we are now incorporating.                      A and de Lusignan S. Measuring the impact of diﬀerent
+   As the demonstrator is designed as a provocation             brands of computer systems on the clinical consultation:
+                                                                a pilot study. Informatics in Primary Care 2008;16:119–27.
+piece and not conceived as an actual clinical system,
+                                                              9 Benson T. Prevention of errors and user alienation in
+full usability and evaluation has not taken place. Prior        healthcare IT integration programmes. Informatics in
+to clinical use additional evaluation would be required         Primary Care 2007;15:1–7.
+using established techniques.8–11                            10 Pearce C, Dwan K, Arnold M and Phillips C. Analysing
+                                                                the doctor–patient–computer relationship: the use of
+                                                                video data. Informatics in Primary Care. 2006;14:221–6.
+                                                             11 de Lusignan S, Kumarapeli P, Chan T et al. The ALFA
+                                                                (Activity Log Files Aggregation) toolkit: a method for
+Conclusion                                                      precise observation of the consultation. Journal of Medi-
+                                                                cal Internet Research 2008;10:e27. www.jmir.org/2008/4/
+                                                                e27/
+As an initial experiment, the MSCUI patient journey
+                                                             12 Microsoft Health. CUI: patient journey demonstrator live!
+demonstrator has successfully attracted interest from           www.codeplex.com/mscui/Thread/View.aspx?ThreadId=
+the clinical and technical communities. Innovative              26807
+features such as the ‘patient charts’ have inspired new      13 Microsoft Health. CUI. Email contact: mscui@
+areas for guidance within the MSCUI programme and               microsoft.com
+are being reﬁned into downloadable, customisable
+controls for clinical software companies, and anyone
+else, to incorporate into their software.                    CONFLICTS OF INTEREST
+   We are moving towards presenting the next gener-          None.
+ation of MSCUI guidance in areas such as medications
+administration, medication management and clinical
+noting. We welcome all feedback and input either via         ADDRESS FOR CORRESPONDENCE
+our discussion forum12 or directly to the project            Kirsten Disse
+mailbox.13                                                   c/o Microsoft Campus
+                                                             Thames Valley Park
+                                                             Reading
+ACKNOWLEDGEMENTS
+                                                             Berkshire RG6 1WG
+Our principal clinical consultants Dr Shaun O’Hanlon         UK
+(EMIS), concept and scenario development, and Dr             Tel: +44 (0)7903 183 949
+Sami Omar (cardiology) and the CUI CAPS team.                Email: mscui@microsoft.com
+302   K Disse
+
+
+
+Accepted October 2008
+
+
+
+
+  The MSCUI guidance and controls are freely available for all to use from www.mscui.net
+  The MSCUI Patient Journey Demonstrator is available at: www.mscui.net/PatientJourneyDemonstrator/
+  Further information about the Microsoft Health Common User Interface can be found at: www.mscui.net
+

@@ -6,6 +6,7 @@ export type ClinicalTone =
   | 'critical'
   | 'high'
   | 'routine'
+  | 'optional'
   | 'purple'
   | 'finding'
   | 'disorder'
@@ -36,6 +37,13 @@ export type ConsultationSection = {
   label: string
   required: boolean
   text: string
+}
+
+export type FollowUpTask = {
+  id: string
+  label: string
+  dueText: string
+  createdAt: string
 }
 
 export type CodedEntry = {

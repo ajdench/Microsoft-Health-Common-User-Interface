@@ -793,6 +793,16 @@ def build_missing_and_reference_entries() -> list[SourceEntry]:
             source_category="commentary / secondary analysis",
         ),
         SourceEntry(
+            title="Microsoft health patient journey demonstrator (Portico PDF)",
+            source_type="pdf",
+            source_classification="commentary / secondary analysis",
+            retrieval_status="retrieved",
+            original_url="https://access.portico.org/Portico/auView?auId=ark%253A%252F27927%252Fphw1p04s4h5&auViewType1=PDF",
+            local_path="raw/sources/references/secondary/portico-microsoft-health-patient-journey-demonstrator-2008.pdf",
+            notes="Portico-preserved full-text PDF for the 2008 article, localized after resolving the browser session-backed PDF endpoint.",
+            source_category="commentary / secondary analysis",
+        ),
+        SourceEntry(
             title="HCI-modelling for improving the clinical usability of digital health technologies",
             source_type="html",
             source_classification="commentary / secondary analysis",

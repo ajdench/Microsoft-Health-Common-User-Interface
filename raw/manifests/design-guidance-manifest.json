@@ -1064,6 +1064,16 @@
       "notes": "PubMed abstract page for the 2008 article describing an exemplar MSCUI implementation and its awareness-raising effect."
     },
     {
+      "title": "Microsoft health patient journey demonstrator (Portico PDF)",
+      "source_type": "pdf",
+      "source_category": "commentary / secondary analysis",
+      "classification": "commentary / secondary analysis",
+      "retrieval_status": "retrieved",
+      "original_url": "https://access.portico.org/Portico/auView?auId=ark%253A%252F27927%252Fphw1p04s4h5&auViewType1=PDF",
+      "local_path": "raw/sources/references/secondary/portico-microsoft-health-patient-journey-demonstrator-2008.pdf",
+      "notes": "Portico-preserved full-text PDF for the 2008 article, localized after resolving the browser session-backed PDF endpoint."
+    },
+    {
       "title": "HCI-modelling for improving the clinical usability of digital health technologies",
       "source_type": "html",
       "source_category": "commentary / secondary analysis",

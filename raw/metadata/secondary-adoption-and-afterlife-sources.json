@@ -9,6 +9,7 @@
       "source_type": "html",
       "source_category": "release metadata",
       "retrieval_status": "retrieved",
+      "retrieved_on": "2026-04-18",
       "trust_note": "Recovered from the public CodePlex archive. Useful for release provenance, but it is a preservation site rather than the original CodePlex host.",
       "sha256": "57db371c017aa190fa5c0ed95490b399a40bb6533394924afaa4fc5c887d5c1c"
     },
@@ -19,6 +20,7 @@
       "source_type": "html",
       "source_category": "release metadata",
       "retrieval_status": "retrieved",
+      "retrieved_on": "2026-04-18",
       "trust_note": "Recovered from the public CodePlex archive. Captures release-version history and attached package names.",
       "sha256": "af11b51957490bdd383146ffdfda7c507611e151e9d6542e8e0493e728e21fbb"
     },
@@ -29,6 +31,7 @@
       "source_type": "html",
       "source_category": "release metadata",
       "retrieval_status": "retrieved",
+      "retrieved_on": "2026-04-18",
       "trust_note": "Recovered from the public CodePlex archive and useful for confirming the published Ms-PL license.",
       "sha256": "cfdd42a7d6db7b8b958d35542e6266b107b80fff5b599464c10f35c000e08e60"
     },
@@ -39,6 +42,7 @@
       "source_type": "html",
       "source_category": "release metadata",
       "retrieval_status": "retrieved",
+      "retrieved_on": "2026-04-18",
       "trust_note": "Recovered from the public CodePlex archive. Useful mainly for understanding the limits of the surviving archive because the exposed tree is very thin and direct attachment URLs currently reject unauthenticated fetches.",
       "sha256": "5f3f575ef0731c2cff4230d963305c0d1f76065f7b67b87d50361cf402a000be"
     },
@@ -49,6 +53,7 @@
       "source_type": "html",
       "source_category": "commentary / secondary analysis",
       "retrieval_status": "retrieved",
+      "retrieved_on": "2026-04-18",
       "trust_note": "Industry press source, not a primary design source, but useful evidence of early supplier adoption claims.",
       "sha256": "73641acd52290349c800a969990a025e0aa94ea51e18a5b0e0545ecea0801002"
     },
@@ -59,6 +64,7 @@
       "source_type": "html",
       "source_category": "commentary / secondary analysis",
       "retrieval_status": "retrieved",
+      "retrieved_on": "2026-04-18",
       "trust_note": "Industry press source useful for evidence of recognition and adoption claims, including the iLink HealthVault/CUI implementation mention.",
       "sha256": "fecb620741b53ba50acc73f12790ad354cfd1277e0510812f4e247f2bb63b123"
     },
@@ -69,6 +75,7 @@
       "source_type": "html",
       "source_category": "commentary / secondary analysis",
       "retrieval_status": "retrieved",
+      "retrieved_on": "2026-04-18",
       "trust_note": "Third-party forum discussion. Useful only as narrow corroboration that `pjd.mscui.net/PrimaryCare.htm` was publicly reachable in 2010.",
       "sha256": "3c245df066f848fda5e172897c33bc529b1cf27dfb126f530fe42861b7e5f05c"
     },
@@ -79,6 +86,7 @@
       "source_type": "html",
       "source_category": "commentary / secondary analysis",
       "retrieval_status": "retrieved",
+      "retrieved_on": "2026-04-18",
       "trust_note": "Third-party tweet archive. Useful only as a light corroborating reference that the Patient Journey Demonstrator URL was being shared publicly in 2010.",
       "sha256": "78d6fe2e90ad98d65f2bd1566fd9fb15fde541671f3d24eaf1264aac58a40f7c"
     },
@@ -89,6 +97,7 @@
       "source_type": "html",
       "source_category": "commentary / secondary analysis",
       "retrieval_status": "retrieved",
+      "retrieved_on": "2026-04-18",
       "trust_note": "Industry press source useful because it adds a conservative contemporary reading of NHS adoption depth at launch, including the point that EMIS was the largest supplier then implementing CUI elements.",
       "sha256": "3a1ed79e9f229ba431dd6f1b85575d6e7945e9742571df50cefeedca0233d56a"
     },
@@ -99,6 +108,7 @@
       "source_type": "html",
       "source_category": "commentary / secondary analysis",
       "retrieval_status": "retrieved",
+      "retrieved_on": "2026-04-18",
       "trust_note": "Industry press source useful as a concrete trust deployment example tying Medway Sigma usage to significant CUI element adoption.",
       "sha256": "c1bf177fe21c8370cd22e354490a103b8333f16b400f2c35da102e33b0e98724"
     },
@@ -109,6 +119,7 @@
       "source_type": "html",
       "source_category": "commentary / secondary analysis",
       "retrieval_status": "retrieved",
+      "retrieved_on": "2026-04-18",
       "trust_note": "Investor-relations source from the supplier itself. It is not neutral, but it is stronger than second-hand commentary for claims about the product line and its stated CUI standardization.",
       "sha256": "2766e76c8a7f8dfd73a1d4ec5bd56de3783af4e00b96fea07c545d5319144f06"
     },
@@ -119,6 +130,7 @@
       "source_type": "html",
       "source_category": "commentary / secondary analysis",
       "retrieval_status": "retrieved",
+      "retrieved_on": "2026-04-18",
       "trust_note": "Browser-rendered capture of a current Indra-hosted article because plain HTTP fetches were challenged. Useful for the Valencia/ABUCASIS lead, but extraction may include translation and runtime chrome.",
       "sha256": "902aa5935b61567ccd9447698ecc9030d736a50ca1d7b5b5506da67184a5ba09"
     },
@@ -129,8 +141,20 @@
       "source_type": "html",
       "source_category": "commentary / secondary analysis",
       "retrieval_status": "retrieved",
+      "retrieved_on": "2026-04-18",
       "trust_note": "PubMed abstract page for a peer-reviewed article describing an exemplar implementation and reporting it increased interest in the programme.",
       "sha256": "0d94d97c84434b80dbf9566c70fefcb29d9d9bbd1a3858b162c606c6b76d133b"
+    },
+    {
+      "title": "Microsoft health patient journey demonstrator (Portico PDF)",
+      "original_url": "https://access.portico.org/Portico/auView?auId=ark%253A%252F27927%252Fphw1p04s4h5&auViewType1=PDF",
+      "local_path": "raw/sources/references/secondary/portico-microsoft-health-patient-journey-demonstrator-2008.pdf",
+      "source_type": "pdf",
+      "source_category": "commentary / secondary analysis",
+      "retrieval_status": "retrieved",
+      "retrieved_on": "2026-04-27",
+      "trust_note": "Portico-preserved full-text PDF for the 2008 article. Stronger than the abstract-only PubMed page for exact wording and pagination, but preserved through a third-party scholarly archive rather than the original publisher site.",
+      "sha256": "3e198b3aaf3197d58969592e4d848a9f7c8056c87d65e46fd45acbcc90559672"
     },
     {
       "title": "HCI-modelling for improving the clinical usability of digital health technologies",
@@ -139,6 +163,7 @@
       "source_type": "html",
       "source_category": "commentary / secondary analysis",
       "retrieval_status": "retrieved",
+      "retrieved_on": "2026-04-18",
       "trust_note": "PubMed abstract page for a recent peer-reviewed article explicitly combining NHS CUI and the NHS Design System.",
       "sha256": "c8f3ed9026db3d2f59d08f2d78412193a83e7452fbeb82ab5e4c95ea4d24ee61"
     },
@@ -149,6 +174,7 @@
       "source_type": "html",
       "source_category": "commentary / secondary analysis",
       "retrieval_status": "retrieved",
+      "retrieved_on": "2026-04-18",
       "trust_note": "Vendor product page. Not neutral evidence, but useful as a current explicit reference to CUI guidance surviving in product marketing and positioning.",
       "sha256": "7ed3cfd37852965b44afade49a86bef6da52abafeb3b8439f3042b4ddf9bbe23"
     },
@@ -159,6 +185,7 @@
       "source_type": "pdf",
       "source_category": "reference context",
       "retrieval_status": "retrieved",
+      "retrieved_on": "2026-04-18",
       "trust_note": "Later NHS requirements document showing that CUI standards and guidance were still being invoked in 2015.",
       "sha256": "cf1db8d66f0c2ee1ff084650571a736c36b0bfa2f725807249bf46ec9ea4f426"
     },
@@ -169,6 +196,7 @@
       "source_type": "pdf",
       "source_category": "reference context",
       "retrieval_status": "retrieved",
+      "retrieved_on": "2026-04-18",
       "trust_note": "Later NHS requirements specification showing CUI references persisted into downstream programme requirements.",
       "sha256": "5bffad039ccfe69a4e9000676d682ce1c82e4d6e09d21be3f569d3a9759c6c95"
     }

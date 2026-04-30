@@ -4,15 +4,19 @@ import { ClinicalBadge } from '@/components/ClinicalBadge'
 import { PatientChrome } from '@/components/PatientChrome'
 import { ReferencePanel } from '@/components/ReferencePanel'
 import { SyncStateBar } from '@/components/SyncStateBar'
+import { TasksPane } from '@/components/TasksPane'
 import { Button } from '@/components/ui/button'
 import { Card, CardAction, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { initialCodes, initialSections, patient } from '@/data/demo'
-import type { CodedEntry, ConsultationSection } from '@/types'
+import { initialCodes, initialSections, initialTasks, patient } from '@/data/demo'
+import type { CodedEntry, ConsultationSection, FollowUpTask } from '@/types'
 import './styles.css'
+
+const TASKS_CODE_SECTION_ID = 'tasks'
 
 export function App() {
   const [sections, setSections] = useState<ConsultationSection[]>(initialSections)
   const [codes, setCodes] = useState<CodedEntry[]>(initialCodes)
+  const [tasks, setTasks] = useState<FollowUpTask[]>(initialTasks)
   const [showValidationAttention, setShowValidationAttention] = useState(false)
   const missingRequiredSections = useMemo(() => sections.filter((section) => section.required && section.text.trim().length === 0), [sections])
   const missingRequiredCount = missingRequiredSections.length
@@ -35,6 +39,24 @@ export function App() {
     setCodes((current) => current.filter((entry) => entry.id !== entryId))
   }
 
+  function addTask(label: string) {
+    const trimmed = label.trim()
+
+    if (!trimmed) {
+      return
+    }
+
+    setTasks((current) => [
+      ...current,
+      {
+        id: `task-${Date.now()}`,
+        label: trimmed,
+        dueText: 'Within 2 weeks',
+        createdAt: new Date().toISOString(),
+      },
+    ])
+  }
+
   function reviewValidation() {
     setShowValidationAttention(true)
 
@@ -46,7 +68,7 @@ export function App() {
     window.requestAnimationFrame(() => {
       const sectionElement = document.querySelector(`[data-section-id="${firstMissingSection.id}"]`)
       sectionElement?.scrollIntoView({ behavior: 'smooth', block: 'center' })
-      sectionElement?.querySelector<HTMLTextAreaElement>('textarea')?.focus({ preventScroll: true })
+      sectionElement?.querySelector<HTMLElement>('[data-clinical-text-editor]')?.focus({ preventScroll: true })
     })
   }
 
@@ -54,15 +76,23 @@ export function App() {
     <div className="min-h-screen bg-background text-foreground">
       <PatientChrome patient={patient} />
       <SyncStateBar />
-      <main className="mx-auto grid max-w-[1440px] gap-4 p-4 xl:grid-cols-[minmax(0,1fr)_minmax(22rem,28rem)]">
-        <section className="grid gap-4" aria-label="Consultation capture">
+      <main className="mx-auto grid max-w-[1440px] gap-4 p-4" data-app-main-grid>
+        <ReferencePanel />
+        <section className="grid gap-4" aria-label="Consultation capture" data-consultation-column>
           <Card>
-            <CardHeader className="sm:gap-y-2">
-              <CardTitle>Consultation capture</CardTitle>
-              <CardDescription className="text-[0.8rem] leading-7 font-medium sm:whitespace-nowrap">
-                Author Dr Taylor Reed · {missingRequiredCount} required sections incomplete
-              </CardDescription>
-              <CardAction className="mt-2 grid w-full justify-items-start gap-y-2.5 sm:mt-0 sm:w-auto" data-testid="consultation-banner-action-rail">
+            <CardHeader className="gap-y-2 sm:grid-rows-[auto]! sm:items-start sm:gap-y-0!">
+              <div className="grid gap-y-2 sm:h-[3.8125rem] sm:grid-rows-[1.25rem_13px_1.75rem] sm:gap-y-0 sm:whitespace-nowrap" data-consultation-banner-text-stack>
+                <CardTitle>Consultation capture</CardTitle>
+                <span className="text-[0.8rem] leading-none font-semibold text-muted-foreground sm:self-center sm:translate-y-1" data-consultation-banner-clinician>
+                  Dr Taylor Reed
+                </span>
+                <CardDescription className="inline-flex h-7 items-center text-[0.8rem] leading-none font-normal" data-consultation-banner-incomplete-status>
+                  <span className="translate-y-px leading-none" data-consultation-banner-incomplete-text>
+                    {missingRequiredCount} required sections incomplete
+                  </span>
+                </CardDescription>
+              </div>
+              <CardAction className="row-start-2 mt-2 grid w-full justify-items-start gap-y-2.5 sm:row-span-1 sm:row-start-1 sm:mt-0 sm:w-auto sm:self-start sm:gap-y-[13px]" data-testid="consultation-banner-action-rail">
                 <div className="grid gap-4 sm:grid-cols-[repeat(3,10rem)]">
                   <ClinicalBadge className="w-40 justify-center" tone={missingRequiredCount > 0 ? 'warn' : 'good'}>
                     {missingRequiredCount > 0 ? 'Validation open' : 'Validation clear'}
@@ -76,13 +106,19 @@ export function App() {
                 </div>
                 <div className="grid gap-4 sm:grid-cols-[repeat(3,10rem)]">
                   <Button className="w-40" variant="clinicalWarn" type="button" size="sm" onClick={reviewValidation}>
-                    Review Validation
+                    <span className="leading-none" data-consultation-banner-action-text>
+                      Review Validation
+                    </span>
                   </Button>
                   <Button className="w-40" variant="clinicalSuccess" type="button" size="sm">
-                    Save Locally
+                    <span className="leading-none" data-consultation-banner-action-text>
+                      Save Locally
+                    </span>
                   </Button>
                   <Button className="w-40" variant="clinicalPurple" size="sm" type="button" disabled={missingRequiredCount > 0}>
-                    Sign Consultation
+                    <span className="leading-none" data-consultation-banner-action-text>
+                      Sign Consultation
+                    </span>
                   </Button>
                 </div>
               </CardAction>
@@ -99,8 +135,14 @@ export function App() {
               showValidationAttention={showValidationAttention}
             />
           ))}
+          <TasksPane
+            tasks={tasks}
+            codes={codes.filter((entry) => entry.sectionId === TASKS_CODE_SECTION_ID)}
+            onAddTask={addTask}
+            onAddCode={(entry) => addCode(TASKS_CODE_SECTION_ID, entry)}
+            onRemoveCode={removeCode}
+          />
         </section>
-        <ReferencePanel />
       </main>
     </div>
   )

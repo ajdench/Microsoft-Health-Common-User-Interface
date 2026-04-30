@@ -1,5 +1,110 @@
 # Log
 
+## 2026-04-30 06:50 BST — Documented deferred MAR optical-spacing bug
+
+- Action: Documented the MAR pane internal spacing issue as a deferred visual bug: measured 16px box-model insets are correct, but top/bottom spacing can read optically tighter than left/right because of tab shadow, rounded tab-list paint, item-card rings, and viewport cropping.
+- Inputs: User instruction to document the issue for later and to let design drive it, without implementing a change now.
+- Outputs: Updated `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and this log.
+- Unresolved issues: MAR optical-spacing remains intentionally unfixed pending a later visual design/screenshot-baseline pass.
+
+## 2026-04-30 06:43 BST — Optically centred consultation clinician rail
+
+- Action: Shifted the consultation banner clinician text to centre against the visible text rails rather than the row containers, and changed the e2e contract to measure the midpoint between the title text bottom and the visible incomplete-count text top.
+- Inputs: User screenshot showing `Dr Taylor Reed` still visually high between `Consultation capture` and `3 required sections incomplete`.
+- Outputs: Updated `prototypes/ehr-shadcn-pwa/src/App.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, and `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`.
+- Unresolved issues: ESLint still reports the existing advisory hook-dependency warnings around the document-level passive keyboard handler; no functional regression is known.
+
+## 2026-04-30 06:35 BST — Removed extra consultation banner bottom gap
+
+- Action: Removed the empty desktop header grid row and row gap that were adding excess space below the action buttons, kept the normal 16px top/bottom card padding, and increased the pill/button middle track to 13px so the clinician line can sit independently centred between title and incomplete-count rails.
+- Inputs: User screenshot showing excess bottom margin below the action buttons and `Dr Taylor Reed` not independently centred between `Consultation capture` and `3 required sections incomplete`.
+- Outputs: Updated `prototypes/ehr-shadcn-pwa/src/App.tsx`, strengthened `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, and updated the rail contract in `prototypes/ehr-shadcn-pwa/DESIGN.md` and `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`.
+- Unresolved issues: ESLint still reports the existing advisory hook-dependency warnings around the document-level passive keyboard handler; no functional regression is known.
+
+## 2026-04-30 06:29 BST — Rebased consultation banner on right action rail
+
+- Action: Changed the consultation banner desktop grid so the right pill/button action rail defines the card content height, with the left text stack mirroring that height: title pinned to the top rail, incomplete-count text pinned to the button rail, and clinician text centred independently in the middle track.
+- Inputs: User clarification that the card height should be driven by normal top/bottom margins around the right-side pills/buttons, not by treating the whole left text pane equally.
+- Outputs: Updated `prototypes/ehr-shadcn-pwa/src/App.tsx`, strengthened `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, and documented the rail contract in `prototypes/ehr-shadcn-pwa/DESIGN.md` and `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`.
+- Unresolved issues: ESLint still reports the existing advisory hook-dependency warnings around the document-level passive keyboard handler; no functional regression is known.
+
+## 2026-04-30 06:23 BST — Fixed consultation banner text rail collision
+
+- Action: Replaced the absolute-positioned clinician banner line with a normal-flow title/clinician/incomplete-count text stack, bottom-aligned the action rail to the stack, and strengthened e2e coverage to assert the title, clinician, and incomplete rails do not overlap.
+- Inputs: User screenshot showing `Dr Taylor Reed` colliding with `Consultation capture`.
+- Outputs: Updated `prototypes/ehr-shadcn-pwa/src/App.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, and `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`.
+- Unresolved issues: ESLint still reports the existing advisory hook-dependency warnings around the document-level passive keyboard handler; no functional regression is known.
+
+## 2026-04-29 23:46 BST — Split clinician and incomplete banner rails
+
+- Action: Separated the consultation banner clinician and incomplete-count text into distinct stacked rails: `Dr Taylor Reed` now sits between `Consultation capture` and `3 required sections incomplete`, the separator dot is removed, and the incomplete count remains the lower compact rail aligned to the action-button text.
+- Inputs: User correction that `3 required sections incomplete` must stay on its current line while `Dr Taylor Reed` sits between the title and that line.
+- Outputs: Updated `prototypes/ehr-shadcn-pwa/src/App.tsx`, the V2 layout contract, `prototypes/ehr-shadcn-pwa/DESIGN.md`, and `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`.
+- Unresolved issues: ESLint still reports the existing advisory hook-dependency warnings around the document-level passive keyboard handler; no functional regression is known.
+
+## 2026-04-29 23:43 BST — Restored muted clinician text colour
+
+- Action: Kept the new consultation banner clinician rail structure but changed `Dr Taylor Reed` back to the muted grey text colour while retaining bold weight.
+- Inputs: User request that `Dr Taylor Reed` should be grey as it was before.
+- Outputs: Updated `App.tsx`, Playwright style coverage, `DESIGN.md`, and the shadcn prototype companion wiki page.
+- Unresolved issues: ESLint still reports advisory hook-dependency warnings around the document-level passive keyboard handler; no functional regression is known.
+
+## 2026-04-29 23:39 BST — Refined consultation banner clinician rail and coding pane top rail
+
+- Action: Removed the `Author` prefix from the consultation banner clinician line, made `Dr Taylor Reed` bold, kept `n required sections incomplete` on the same rail in normal weight, and asserted that consultation coding searchbars sit at the top pane margin.
+- Inputs: User request to keep `Consultation capture` unchanged, vertically centre the clinician name in bold between the banner rails, leave the incomplete-count text on the same rail but non-bold, and make the clinical-code searchbar topmost.
+- Outputs: Updated `App.tsx`, Playwright layout/typography coverage, `DESIGN.md`, and the shadcn prototype companion wiki page.
+- Unresolved issues: ESLint still reports advisory hook-dependency warnings around the document-level passive keyboard handler; no functional regression is known.
+
+## 2026-04-29 23:33 BST — Removed consultation clinical-code parent frame
+
+- Action: Made section-local clinical-code panes frameless inside consultation sections, keeping the standalone framed treatment for Tasks.
+- Inputs: User request to remove the parent box around the clinical-code side of consultation panes, move the searchbar to the pane margins, and align the top selected concept pill with the top of the note text box.
+- Outputs: Updated `SectionCodingField.tsx`, `ConsultationSectionCard.tsx`, Playwright layout coverage, `DESIGN.md`, and the shadcn prototype companion wiki page.
+- Unresolved issues: ESLint still reports advisory hook-dependency warnings around the document-level passive keyboard handler; no functional regression is known.
+
+## 2026-04-29 23:28 BST — Simplified consultation section status headers
+
+- Action: Removed required/optional explanatory subtext from consultation section headers and added an `Optional` status pill for empty optional sections.
+- Inputs: User request to remove `Required before sign-off` and `Optional clinical context` from all consultation panes, and to use a blue `Optional` pill around `#80adce` that switches to green `Ready` once text is entered.
+- Outputs: Updated `ConsultationSectionCard.tsx`, `ClinicalBadge.tsx`, `types.ts`, Playwright coverage, `DESIGN.md`, and the shadcn prototype companion wiki page.
+- Unresolved issues: ESLint still reports advisory hook-dependency warnings around the document-level passive keyboard handler; no functional regression is known.
+
+## 2026-04-29 23:20 BST — Clamped clinical-code result keyboard navigation
+
+- Action: Changed clinical-code result keyboard navigation so `ArrowUp` on the first result remains on the first result and `ArrowDown` on the last result remains on the last result, instead of wrapping.
+- Inputs: User request that top item hover plus up key should not wrap to the bottom, and likewise at the bottom.
+- Outputs: Updated `SectionCodingField.tsx`, refreshed Playwright coverage for top and bottom clamp behaviour, and updated `DESIGN.md` plus companion wiki notes.
+- Unresolved issues: ESLint still reports advisory hook-dependency warnings around the document-level passive keyboard handler; no functional regression is known.
+
+## 2026-04-29 23:17 BST — Restored visible grey treatment on first active code result
+
+- Action: Narrowed the cmdk `data-selected` visual suppression so it applies only to inactive SNOMED result rows; app-active rows now always keep the grey active treatment, including the default first row.
+- Inputs: User report that the first row was logically selected but never visibly grey, while the second row showed the expected grey treatment.
+- Outputs: Updated `SectionCodingField.tsx` and added Playwright coverage asserting the initially active first row has a distinct background from the next result row.
+- Unresolved issues: ESLint still reports advisory hook-dependency warnings around the document-level passive keyboard handler; no functional regression is known.
+
+## 2026-04-29 23:09 BST — Restored default active first clinical-code result
+
+- Action: Changed clinical-code result active-state derivation so the first visible result row is app-active by default, while arrow navigation still advances from that row and only the app-owned active row paints grey.
+- Inputs: User report that suppressing cmdk's sticky selected styling removed the default first-row selected treatment entirely.
+- Outputs: Updated `SectionCodingField.tsx`, refreshed Playwright assertions for default first-row active state, and updated `DESIGN.md` plus companion wiki notes to formalize the default-active result contract.
+- Unresolved issues: ESLint still reports advisory hook-dependency warnings around the document-level passive keyboard handler; no functional regression is known.
+
+## 2026-04-29 23:02 BST — Fixed sticky visual preselection on clinical-code results
+
+- Action: Suppressed cmdk/shadcn's internal `data-selected` background treatment for SNOMED result rows so only the app-owned `data-snomed-result-active` row receives the grey keyboard preselection style.
+- Inputs: User report that the first result item visually kept the hover/preselect treatment while up/down correctly selected other rows.
+- Outputs: Updated `SectionCodingField.tsx` styling and added Playwright coverage asserting the first row no longer shares the active row background after keyboard navigation moves away from it.
+- Unresolved issues: ESLint still reports advisory hook-dependency warnings around the document-level passive keyboard handler; no functional regression is known.
+
+## 2026-04-29 22:54 BST — Added passive note-editor keyboard control for code results
+
+- Action: Extended the shadcn EHR prototype clinical-code keyboard contract so text-derived result lists opened from note typing respond to `ArrowDown`, `ArrowUp`, and `Enter` while DOM focus remains in the clinical note editor.
+- Inputs: Current prototype at `prototypes/ehr-shadcn-pwa`, user feedback that up/down was not moving the hover/highlight on search results opened from free text.
+- Outputs: Updated `SectionCodingField.tsx`, added Playwright coverage for passive note-editor result navigation, and updated `DESIGN.md` plus companion wiki guidance for the shared keyboard treatment.
+- Unresolved issues: This remains demo-local logic; production clinical coding should validate terminology source, provenance, preferred terms, refsets, and keyboard/a11y behaviour against the final code-search service and design-system implementation.
+
 ## 2026-04-25 22:54:10 BST — Modern equivalents research and wiki area
 - Action performed: researched current public equivalents and adjacent standards for Microsoft Health CUI, localized the key current source pages, and added a clearly separated modern-equivalents wiki area.
 - Inputs used: NHS digital service manual, NHS App design system, NHS England digital clinical safety assurance and DCB0129/DCB0160 review pages, HL7 SMART App Launch, HL7 CDS Hooks, openEHR clinical content model and archetyping pages, OpenMRS 3 overview, and VA.gov Design System health pages.
@@ -860,26 +965,435 @@
 - Outputs created: GitHub Pages site `https://ajdench.github.io/Microsoft-Health-Common-User-Interface/` configured for workflow deployment.
 - Unresolved issues: final deployment workflow run still pending at the time of this log entry.
 
-## 2026-04-30 06:54:00 BST — Rechecked and prepared combined Pages subpath deployment for push
-- Action performed: revalidated the combined Pages bundle, confirmed the preferred MkDocs wiki at `/mkdocs_wiki/`, the Starlight wiki at `/starlight_wiki/`, and the demo app at `/demo/`, moved the detached working state back onto local `main`, and prepared the deployment changes for push to `origin/main`.
-- Inputs used: updated `README.md`, `.github/workflows/deploy-mkdocs-material.yml`, `scripts/build_github_pages_bundle.sh`, `msh-cui-wiki` base-path configuration and mirror sync scripts, `prototypes/ehr-shadcn-pwa/vite.config.ts`, the local `main` branch, and `origin/main`.
-- Outputs created: refreshed local `site/` bundle verification, confirmed demo `vitest` pass, updated deployment configuration for the three published subpaths, and this log entry.
-- Unresolved issues: public GitHub Pages URLs will not reflect the new subpath deployment until the remote Actions workflow completes after push.
+## 2026-04-26 14:28:23 BST — Split V2 consultation sections into notes and coded content panes
+- Action performed: changed each V2 consultation section body from stacked coded content and textarea controls into a responsive split layout with free-text notes on the left and section-local coded content on the right at desktop widths, widened the coded-content pane enough for selected SNOMED pills to remain readable, and preserved a single-column fallback plus validation focus on the textarea.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user request to split consultation panes into left/right text-box and coded content, `prototypes/ehr-shadcn-pwa/src/components/ConsultationSectionCard.tsx`, `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, V2 e2e layout contract, V2 design contract, and the V2 companion wiki note.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/components/ConsultationSectionCard.tsx`, `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
+- Unresolved issues: the coded-content pane still uses static prototype SNOMED suggestions; real terminology service and section-specific value sets remain future work.
 
-## 2026-04-30 06:56:00 BST — Corrected GitHub Actions Node version for Astro build
-- Action performed: fixed the Pages workflow after the first remote run failed because Astro rejected Node 20 on GitHub Actions.
-- Inputs used: failed Actions run `25149823749`, its `Build Pages bundle` log, Astro engine requirement `>=22.12.0`, and `.github/workflows/deploy-mkdocs-material.yml`.
-- Outputs created: updated Pages workflow to use Node `22.12.0` and this log entry.
-- Unresolved issues: a fresh remote workflow run is still required to confirm the corrected deployment completes successfully.
+## 2026-04-26 14:35:51 BST — Moved V2 section status pills into the notes pane
+- Action performed: removed the full-width consultation section header and moved each section title, required/optional description, and Ready/Needs entry status pill into the left notes pane so the right coded-content pane starts at the top of the section body and gains vertical space.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user request to move Ready pills to the left column, `prototypes/ehr-shadcn-pwa/src/components/ConsultationSectionCard.tsx`, V2 e2e layout contract, V2 design contract, and the V2 companion wiki note.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/components/ConsultationSectionCard.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
+- Unresolved issues: none for the section status placement.
 
-## 2026-04-30 07:01:00 BST — Expanded GitHub-facing README badges to reflect code families
-- Action performed: expanded the top badge row in `README.md` so the GitHub front page advertises the actual implementation families, not only deployment and surface links.
-- Inputs used: current root `README.md`, `msh-cui-wiki/package.json`, and `prototypes/ehr-shadcn-pwa/package.json`.
-- Outputs created: new badges for MkDocs Material, Astro/Starlight, React 19, Vite 7, shadcn/ui, Radix UI, Tailwind CSS 4, and PWA.
-- Unresolved issues: none.
+## 2026-04-26 14:47:39 BST — Removed V2 SNOMED suggested-concepts heading
+- Action performed: removed the visible "Suggested concepts" group title from the section-local SNOMED CT search popover so results proceed directly from the searchbar to the Concept, Type, and Priority column headers.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user request to remove the redundant suggested-concepts title, `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, V2 e2e layout contract, V2 design contract, and the V2 companion wiki note.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
+- Unresolved issues: none for the suggested-concepts heading removal.
 
-## 2026-04-30 07:11:00 BST — Removed redundant docs-family badges from README
-- Action performed: removed the duplicate `docs: MkDocs Material` and `docs: Astro Starlight` badges from the root `README.md` while keeping the surface links and the app stack badges.
-- Inputs used: current root `README.md` and the published GitHub Pages surface layout.
-- Outputs created: simplified README badge row and this log entry.
-- Unresolved issues: none.
+## 2026-04-26 14:50:09 BST — Compacted V2 medication review cards
+- Action performed: changed right-pane medication review cards from tall mini-record cards with separate labelled Dose and Route rows into compact two-line reference cards showing medicine/status first and dose, route, and frequency together on the second line.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user request for more space-saving medication review cards, `prototypes/ehr-shadcn-pwa/src/components/ReferencePanel.tsx`, V2 e2e layout contract, V2 design contract, and the V2 companion wiki note.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/components/ReferencePanel.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
+- Unresolved issues: none for the medication-card compaction pass.
+
+## 2026-04-26 14:52:39 BST — Reordered V2 reference pane responsively
+- Action performed: changed the app shell so the Medications, Alerts, and Results reference pane appears above consultation capture on single-column/narrow screens while remaining the right-hand reference rail at desktop widths.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user request for the reference pane to be top on smaller screens and right pane on larger screens, `prototypes/ehr-shadcn-pwa/src/App.tsx`, `prototypes/ehr-shadcn-pwa/src/components/ReferencePanel.tsx`, V2 e2e layout contract, V2 design contract, and the V2 companion wiki note.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/App.tsx`, `prototypes/ehr-shadcn-pwa/src/components/ReferencePanel.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
+- Unresolved issues: none for the responsive reference-pane ordering.
+
+## 2026-04-26 14:54:18 BST — Normalised V2 card title typography
+- Action performed: changed shared card titles and reference section titles to normal app text size with subtitle weight and foreground colour so they remain black but no longer read as oversized headings.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user request for card titles to use common text size as black sub-titles, `prototypes/ehr-shadcn-pwa/src/components/ui/card.tsx`, `prototypes/ehr-shadcn-pwa/src/components/ReferencePanel.tsx`, V2 e2e layout contract, V2 design contract, and the V2 companion wiki note.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/components/ui/card.tsx`, `prototypes/ehr-shadcn-pwa/src/components/ReferencePanel.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
+- Unresolved issues: none for the card-title typography pass.
+
+## 2026-04-26 15:08:15 BST — Added labelled medication detail columns
+- Action performed: reformatted V2 medication review cards so dose, route, and frequency are shown in compact columns with pill labels, preserving explicit field/value pairing while using the available white space in each card.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user request to reformat medication details with columns and pill labels following design, shadcn, and CUI contracts, `prototypes/ehr-shadcn-pwa/src/components/ReferencePanel.tsx`, V2 e2e layout contract, V2 design contract, and the V2 companion wiki note.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/components/ReferencePanel.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
+- Unresolved issues: none for the medication detail label pass.
+
+## 2026-04-26 15:18:23 BST — Reworked medication cards to shared field columns
+- Action performed: moved Medication, Dose, Route, Frequency, and State into a shared column header row where the medication helper sentence had been, removed repeated label pills from individual cards, and aligned every medication card to the same compact 60px base row height as standard alert cards.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user request to make medication cards the same height as alert cards and put detail columns between title and state pill, `prototypes/ehr-shadcn-pwa/src/components/ReferencePanel.tsx`, V2 e2e layout contract, V2 design contract, and the V2 companion wiki note.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/components/ReferencePanel.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
+- Unresolved issues: none for the shared medication column pass.
+
+## 2026-04-26 15:21:33 BST — Applied shared reference columns to results
+- Action performed: replaced the Recent results table with compact shadcn card rows aligned under a muted Date, Result, Value, and Status column header row; medication and result field headers now use the same grey subtext styling.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user request to apply the medication-card column treatment to Results while keeping grey subtext styling, `prototypes/ehr-shadcn-pwa/src/components/ReferencePanel.tsx`, V2 e2e layout contract, V2 design contract, and the V2 companion wiki note.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/components/ReferencePanel.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
+- Unresolved issues: none for the shared results column pass.
+
+## 2026-04-26 15:24:10 BST — Aligned alert cards with reference row contract
+- Action performed: replaced the mixed shadcn Alert treatment with compact shadcn card rows under a muted Alert, Rationale, and State column header row; alert row border and fill now follow the same colour family as the state pill for critical, high, and routine states.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user request for Alert cards to follow the same style as Critical and the State pill, `prototypes/ehr-shadcn-pwa/src/components/ReferencePanel.tsx`, V2 e2e layout contract, V2 design contract, and the V2 companion wiki note.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/components/ReferencePanel.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
+- Unresolved issues: none for the alert-card alignment pass.
+
+## 2026-04-26 16:26:31 BST — Aligned section coding rail with notes textarea
+- Action performed: removed the repeated `Coded content` title from section coding cards, changed the SNOMED search field prompt to `Add SNOMED CT concept`, and aligned the selected concept list to the same vertical rail as the free-text textarea.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user request to remove coding titles, update search default text, and align added concepts with the free-text box, `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, V2 e2e layout contract, V2 design contract, and the V2 companion wiki note.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
+- Unresolved issues: none for the section coding rail alignment pass.
+
+## 2026-04-26 16:32:26 BST — Fixed reference list column alignment
+- Action performed: aligned Medications, Alerts, and Results column headers with their row values by giving header grids the same inset as card rows, forcing row card headers to use the intended explicit grid tracks, and replacing dynamic terminal `auto` state/status tracks with fixed-width columns.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user report that reference list item values were not below their column titles, `prototypes/ehr-shadcn-pwa/src/components/ReferencePanel.tsx`, V2 e2e layout contract, V2 design contract, and the V2 companion wiki note.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/components/ReferencePanel.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
+- Unresolved issues: none for the reference list column alignment pass.
+
+## 2026-04-26 16:38:23 BST — Moved reference context into fixed top stack
+- Action performed: restructured the V2 shell so patient chrome, sync state, Medications/Alerts/Results reference tabs, and the consultation banner form a fixed top context stack at every viewport size; consultation sections now occupy the only scrollable region below that stack.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user request to keep Medications/Alerts/Results as the top card at all window sizes and make the page scroll only below fixed header-type items, `prototypes/ehr-shadcn-pwa/src/App.tsx`, `prototypes/ehr-shadcn-pwa/src/components/ReferencePanel.tsx`, V2 e2e layout contract, V2 design contract, and the V2 companion wiki note.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/App.tsx`, `prototypes/ehr-shadcn-pwa/src/components/ReferencePanel.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
+- Unresolved issues: none for the fixed top-stack pass.
+
+## 2026-04-26 16:41:21 BST — Undid fixed-scroll shell change
+- Action performed: reverted the fixed top-stack/internal-scroll shell change so V2 returns to normal page scrolling, with the reference tabs above consultation on small screens and as the sticky right rail at desktop widths.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user request to undo the scroll change, `prototypes/ehr-shadcn-pwa/src/App.tsx`, `prototypes/ehr-shadcn-pwa/src/components/ReferencePanel.tsx`, V2 e2e layout contract, V2 design contract, and the V2 companion wiki note.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/App.tsx`, `prototypes/ehr-shadcn-pwa/src/components/ReferencePanel.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
+- Unresolved issues: none for the scroll-change undo.
+
+## 2026-04-26 17:50:30 BST — Removed repeated reference tab titles
+- Action performed: removed the visible `Medication review`, `Alerts and decision support`, and `Recent results` headings from the V2 reference tab panels while preserving accessible section labels and keeping the muted column headers as the first visible panel content.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user request to remove the internal titles from Medication, Alerts, and Results, `prototypes/ehr-shadcn-pwa/src/components/ReferencePanel.tsx`, V2 e2e layout contract, V2 design contract, and the V2 companion wiki note.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/components/ReferencePanel.tsx`, `prototypes/ehr-shadcn-pwa/src/App.test.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
+- Unresolved issues: none for the repeated reference title removal.
+
+## 2026-04-26 17:54:49 BST — Tightened and colour-coded result reference cards
+- Action performed: removed the forced 60px minimum from V2 result reference cards so they conform to one-line content and shadcn card padding, and added status-matched result card border/background colours aligned with the result status pill family.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user report that Results cards were too tall and should be colour-coded like Alerts, `prototypes/ehr-shadcn-pwa/src/components/ReferencePanel.tsx`, V2 e2e layout contract, V2 design contract, and the V2 companion wiki note.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/components/ReferencePanel.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
+- Unresolved issues: none for the result reference card sizing and colour pass.
+
+## 2026-04-26 17:57:41 BST — Aligned validation action button with block-fill rail actions
+- Action performed: updated the V2 `clinicalWarn` shadcn button variant so `Review Validation` keeps the `#ffd230` fill, uses the same-colour border, and switches to white text to match the block-fill treatment used by `Save Locally` and `Sign Consultation`.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user request to treat the validation action like the save and sign actions, `prototypes/ehr-shadcn-pwa/src/components/ui/button.tsx`, V2 e2e layout contract, V2 design contract, and the V2 companion wiki note.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/components/ui/button.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
+- Unresolved issues: none for the validation action button pass.
+
+## 2026-04-26 19:06:51 BST — Adjusted validation action fill token
+- Action performed: changed the V2 `clinicalWarn` shadcn button variant fill and matched border/focus colour from `#ffd230` to `#efc52e` for `Review Validation`, preserving white text and the block-fill action treatment.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user request to change the validation action fill to `#efc52e`, `prototypes/ehr-shadcn-pwa/src/components/ui/button.tsx`, V2 e2e layout contract, V2 design contract, and the V2 companion wiki note.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/components/ui/button.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
+- Unresolved issues: none for the validation action fill-token adjustment.
+
+## 2026-04-26 19:08:38 BST — Removed coded-content empty boxes
+- Action performed: removed the repeated `No codes added.` shadcn empty box from V2 section-local coded content so empty sections show only the SNOMED CT concept searchbar until codes are selected.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user request to remove all present `No codes added.` boxes, `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, V2 e2e layout contract, V2 design contract, and the V2 companion wiki note.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
+- Unresolved issues: none for the coded-content empty-box removal.
+
+## 2026-04-26 19:11:38 BST — Restored bottom Tasks pane
+- Action performed: added a distinct bottom `Tasks` pane after the Follow-up consultation section in V2, preserving Follow-up as narrative clinical content while restoring separate actionable follow-up task capture.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user question about where the Tasks pane had gone and request to add it to the bottom, V1 task pane precedent in `prototypes/ehr-pwa/src/components/ConsultationCaptureWorkspace.tsx`, V2 app state, V2 e2e layout contract, V2 design contract, and the V2 companion wiki note.
+- Outputs created: added `prototypes/ehr-shadcn-pwa/src/components/TasksPane.tsx`; updated `prototypes/ehr-shadcn-pwa/src/App.tsx`, `prototypes/ehr-shadcn-pwa/src/data/demo.ts`, `prototypes/ehr-shadcn-pwa/src/types.ts`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
+- Unresolved issues: none for the bottom Tasks pane restoration.
+
+## 2026-04-26 19:23:21 BST — Researched free-text SNOMED concept recognition
+- Action performed: documented a candidate-based approach for identifying SNOMED CT concepts in consultation free-text boxes, including terminology service boundaries, open-source NLP tool options, offline-first constraints, inline presentation guidance, and staged implementation recommendations.
+- Inputs used: user request to research identifying SNOMED terms/concepts in free-text boxes; NHS England Terminology Server documentation; NHS Terminology Server FHIR API catalogue; HL7 FHIR R4 terminology service documentation; SNOMED International Snowstorm repository; MedCAT documentation and repository; Apache cTAKES page; scispaCy repository; QuickUMLS repository; UMLS reference manual; NLM MetaMap maintenance notice.
+- Outputs created: updated `wiki/companion-web-app-stack/inline-clinical-coding-for-consultations.md` and `log.md`.
+- Unresolved issues: clinical validation set, terminology licensing/access model, and the final in-browser versus service-side NLP deployment boundary remain open design decisions.
+
+## 2026-04-26 19:25:20 BST — Added task-local SNOMED CT pane
+- Action performed: added the reusable SNOMED CT coding field to the V2 bottom Tasks pane, using a task-owned code scope so actionable follow-up tasks can carry structured coded concepts without becoming narrative consultation sections.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user request that Tasks should also have a SNOMED CT pane, `prototypes/ehr-shadcn-pwa/src/components/TasksPane.tsx`, `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, V2 layout tests, V2 design contract, and the V2 companion wiki note.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/App.tsx`, `prototypes/ehr-shadcn-pwa/src/components/TasksPane.tsx`, `prototypes/ehr-shadcn-pwa/src/App.test.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
+- Unresolved issues: task coding currently uses the same static SNOMED-like fixture and generic concept search as consultation section coding; later terminology-provider work should define task-specific value sets.
+
+## 2026-04-26 19:28:26 BST — Made MAR pane full-width above consultation
+- Action performed: changed the V2 consultation shell so the Medications, Alerts, and Results reference panel remains a full-width top pane at every viewport size instead of moving to a desktop right rail.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user request for MAR to be full-width at the top in all consultation browser window sizes, `prototypes/ehr-shadcn-pwa/src/App.tsx`, `prototypes/ehr-shadcn-pwa/src/components/ReferencePanel.tsx`, V2 layout tests, V2 design contract, and the V2 companion wiki note.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/App.tsx`, `prototypes/ehr-shadcn-pwa/src/components/ReferencePanel.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
+- Unresolved issues: none for the MAR top-pane layout pass.
+
+## 2026-04-26 19:31:23 BST — Made SNOMED search field more explicit
+- Action performed: replaced the bare section coding input with a shadcn `InputGroup` search control using a leading search icon, inline `SNOMED CT` addon, stronger card surface, and adjusted internal gap so selected concepts still align with the notes textarea rail.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user request to make the `Add SNOMED CT concept` search field more obvious and shadcn compliant, shadcn input/card/popover/command documentation, `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, V2 layout tests, V2 design contract, and the V2 companion wiki note.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
+- Unresolved issues: none for the SNOMED search field visual affordance pass.
+
+## 2026-04-26 22:06:37 BST — Added diabetes-context normal result
+- Action performed: added a normal `Body mass index` result to the V2 MAR Results tab, using a diabetes-review-relevant concept that also exists in the SNOMED CT coding suggestion fixture.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, previous MAR height measurement showing one additional Results row fits within the Medications/Alerts pane height, user request to add another relevant normal Results item in the diabetes context, `prototypes/ehr-shadcn-pwa/src/data/demo.ts`, V2 layout tests, and the V2 companion wiki note.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/data/demo.ts`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
+- Unresolved issues: none for the additional normal result fixture.
+
+## 2026-04-26 22:09:44 BST — Fixed MAR pane height
+- Action performed: fixed the V2 MAR pane height to the existing tallest Medications/Alerts height and adjusted Results row sizing so five compact Results cards fill the same MAR list area without moving the consultation form when switching tabs.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user request to make the MAR pane fixed height and adjust item cards to fit, `prototypes/ehr-shadcn-pwa/src/components/ReferencePanel.tsx`, V2 layout tests, V2 design contract, and the V2 companion wiki note.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/components/ReferencePanel.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
+- Unresolved issues: none for the fixed MAR pane pass.
+
+## 2026-04-26 22:11:44 BST — Centred MAR item-card contents
+- Action performed: vertically centred the row header grid inside medication, alert, and result item cards in the V2 MAR pane, and added layout assertions that the row content centre matches the card centre.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user request to vertically centre card contents, `prototypes/ehr-shadcn-pwa/src/components/ReferencePanel.tsx`, V2 layout tests, V2 design contract, and the V2 companion wiki note.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/components/ReferencePanel.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
+- Unresolved issues: none for the MAR row-card vertical centring pass.
+
+## 2026-04-26 22:13:36 BST — Colour-coded medication rows by state
+- Action performed: colour-coded V2 medication row card surfaces by medication state so active medications use the green state family and stopped medications use the neutral state family, aligning Medications with the MAR convention already used by Alerts and Results.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user request to colour-code Medications along State category, `prototypes/ehr-shadcn-pwa/src/components/ReferencePanel.tsx`, V2 layout tests, V2 design contract, and the V2 companion wiki note.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/components/ReferencePanel.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
+- Unresolved issues: none for the medication state colour pass.
+
+## 2026-04-26 22:16:40 BST — Renamed clinical code search prompt
+- Action performed: changed the section-local coding search field prompt and accessible label from `Add SNOMED CT concept` to `Add clinical code`, while retaining the inline `SNOMED CT` code-system addon.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user request to change the prompt text, `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, V2 unit/e2e tests, V2 design contract, and the V2 companion wiki note.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, `prototypes/ehr-shadcn-pwa/src/App.test.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
+- Unresolved issues: none for the prompt rename.
+
+## 2026-04-26 22:19:08 BST — Lightened clinical code pane surface
+- Action performed: changed the clinical-code pane surface to a light muted grey while keeping the searchbar itself on the normal input background.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user request to make the clinical code pane fill a lighter grey while leaving search bar fill unchanged, `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, V2 layout tests, V2 design contract, and the V2 companion wiki note.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
+- Unresolved issues: none for the clinical-code pane surface pass.
+
+## 2026-04-26 22:25:27 BST — Aligned selected clinical-code pills
+- Action performed: made selected clinical-code pills full width in the section-local coding pane and aligned SNOMED CT code, semantic type, and priority into fixed right-aligned columns across all selected concepts.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user request to make all clinical code pills in-pane full width with aligned code/type/priority columns, `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, V2 layout tests, V2 design contract, and the V2 companion wiki note.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
+- Unresolved issues: none for the selected clinical-code pill alignment pass.
+
+## 2026-04-26 22:36:05 BST — Tightened clinical-code metadata spacing
+- Action performed: tightened the visible gap between Type and Priority pills in SNOMED search results and selected clinical-code rows, removed the repeated `SNOMED CT` prefix from search result code lines, and added length-aware title sizing for longer concept titles while preserving row line-height.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user request to reduce inconsistent Type/Priority spacing, remove repeated result code-system text, and auto-shrink longer titles in search and selected code rows, `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, V2 layout tests, V2 design contract, and the V2 companion wiki note.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
+- Unresolved issues: none for the clinical-code metadata spacing pass.
+
+## 2026-04-26 22:41:24 BST — Restored natural priority pill widths
+- Action performed: removed the stretched full-width styling from Priority pills in SNOMED search results and selected clinical-code rows, keeping the tighter constrained priority column while allowing each priority badge to size naturally to its text.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user correction that common-size priority pills were not requested, `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, V2 layout tests, V2 design contract, and the V2 companion wiki note.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
+- Unresolved issues: none for the natural priority pill-width correction.
+
+## 2026-04-26 22:57:24 BST — Applied split-pane gap to clinical-code metadata
+- Action performed: changed SNOMED search result rows and selected clinical-code rows to use the same `gap-3`/12px column gap as the consultation free-text/code split between concept, type, and priority columns, and reduced the type metadata track so concept titles are not shrunk by unused metadata whitespace.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user request to increase the Type/Priority gap to match the consultation split-pane gap and apply the same gap between concept and Type, `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, V2 layout tests, V2 design contract, and the V2 companion wiki note.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
+- Unresolved issues: none for the clinical-code metadata gap pass.
+
+## 2026-04-26 23:01:00 BST — Inset clinical-code search column labels
+- Action performed: inset the `Type` and `Priority` header labels in the SNOMED search results by the badge horizontal padding so the label text aligns with the right rail of the text inside the corresponding metadata pills rather than the pill border edge.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user request to align clinical-code search column labels to the right end of pill text, `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, V2 layout tests, V2 design contract, and the V2 companion wiki note.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
+- Unresolved issues: none for the clinical-code search header rail pass.
+
+## 2026-04-26 23:04:53 BST — Restored right-aligned priority search pills
+- Action performed: restored right alignment for Priority pills in SNOMED search result rows and selected clinical-code rows, and kept the Priority column header inset to the right-hand text rail inside those right-aligned priority pills.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user correction that Priority pills should be right-aligned against the search result card margin and only the header label should be inset to the text rail, `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, V2 layout tests, V2 design contract, and the V2 companion wiki note.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
+- Unresolved issues: none for the priority pill alignment correction.
+
+## 2026-04-26 23:08:10 BST — Rebalanced clinical-code search concept width
+- Action performed: measured the SNOMED search result metadata gaps, confirmed that the visible Type-to-Priority gap varied around 15-28px while the Concept-to-Type gap was around 51-58px, then narrowed the search-result Type track so the Concept-to-Type gap now sits around 23-32px and the concept title column gains usable width.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user request to use the Priority/Type gap between the Type column and Concept column so result concept titles can be fuller width, `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, Playwright geometry measurement, V2 layout tests, V2 design contract, and the V2 companion wiki note.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, and `log.md`.
+- Unresolved issues: none for the clinical-code search concept-width rebalancing pass.
+
+## 2026-04-26 23:11:56 BST — Added temporary clinical-code column guides
+- Action performed: added temporary dashed vertical guide lines to the SNOMED search-result Type and Priority columns, and removed character-count-driven shrinking from search-result concept titles so `Medication review done by doctor` stays at normal text size when the concept column has room.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user request to draw temporary clinical-code result column lines and explain why the long medication concept was shrunk despite available space, `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, V2 layout tests, V2 design contract, and the V2 companion wiki note.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
+- Unresolved issues: the dashed result-column guide lines are intentionally temporary and should be removed once the clinical-code metadata column contract is accepted.
+
+## 2026-04-26 23:21:21 BST — Sized type guide to longest type pill
+- Action performed: resized the SNOMED search-result Type metadata track to the current longest type pill, `Regime/therapy`, so the temporary dashed Type guide marks that pill's left edge rather than cutting through it.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user observation that `Regime/Therapy` is the longest Type pill and the guide line should align with its leftmost extension, `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, V2 layout tests, V2 design contract, and the V2 companion wiki note.
+- Outputs created: updated `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, `prototypes/ehr-shadcn-pwa/tests/e2e/v2-layout.spec.ts`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `log.md`.
+- Unresolved issues: the dashed result-column guide lines remain temporary diagnostics.
+
+## 2026-04-26 23:27:05 BST — Verified V2 SNOMED seed concepts
+- Action performed: checked the V2 clinical-code seed concepts against the public Snowstorm SNOMED CT browser API, corrected the hypoglycaemia display to the preferred UK-facing spelling, and documented which search-result fields are terminology truth versus prototype ranking metadata.
+- Inputs used: `prototypes/ehr-shadcn-pwa/src/data/demo.ts`, `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, Snowstorm browser API concept lookups for the V2 fixture SCTIDs, `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, and `wiki/companion-web-app-stack/inline-clinical-coding-for-consultations.md`.
+- Outputs created: updated V2 fixture display for `302866003`, added a SNOMED fixture truth pass table to the V2 companion wiki, clarified the DESIGN.md terminology contract, and recorded that `Priority` is app/search-ranking metadata rather than a SNOMED CT property.
+- Unresolved issues: the prototype still uses static fixture data; UK edition/refset selection, terminology-service search, value-set governance, real ranking provenance, and sync-time validation remain future work.
+
+## 2026-04-26 23:30:26 BST — Documented clinical-code priority provenance
+- Action performed: researched and documented where a real-world replacement for the prototype `Priority` badge can come from, separating SNOMED ordered reference-set prioritisation, FHIR ValueSet/refset membership, terminology search scoring, local governance, patient-context ranking, and clinical safety severity.
+- Inputs used: SNOMED International reference-set guidance, FHIR ValueSet/terminology guidance, NHS England Terminology Server and SNOMED CT standards pages, `wiki/companion-web-app-stack/inline-clinical-coding-for-consultations.md`, and `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`.
+- Outputs created: updated companion wiki guidance recommending a result-reason model (`Exact match`, `In section value set`, `Ordered refset rank`, `Context match`, `Ambiguous`, `Local favourite`) rather than treating `Priority` as SNOMED concept truth.
+- Unresolved issues: the V2 UI still labels this column `Priority`; a future UI pass should rename or split it into standards-backed result reasons.
+
+## 2026-04-26 23:32:49 BST — Removed selected-pill clinical code display
+- Action performed: removed the numeric clinical code from selected clinical-code pills while keeping the code visible in search results and in the removal confirmation dialog.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, selected clinical-code layout tests, V2 design contract, and the V2 companion wiki note.
+- Outputs created: updated selected-pill grid layout, revised e2e assertions so selected pills contain title/type/priority/remove only, updated DESIGN.md and companion wiki guidance, and recorded the change in `log.md`.
+- Unresolved issues: the result column is still labelled `Priority`; a future pass should rename it to a standards-backed result-reason model.
+
+## 2026-04-26 23:35:53 BST — Documented selected-pill typography drift
+- Action performed: documented that selected clinical-code display names can still shrink by character count while consultation free-text uses normal textarea body text, and recorded this as UI drift rather than an intended final contract.
+- Inputs used: `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, `prototypes/ehr-shadcn-pwa/src/components/ui/textarea.tsx`, `prototypes/ehr-shadcn-pwa/DESIGN.md`, and `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`.
+- Outputs created: updated DESIGN.md and V2 companion wiki guidance to state that selected concept titles should normally match free-text body scale, with any future shrink driven by measured overflow rather than character count.
+- Unresolved issues: implementation intentionally unchanged at the user's request; the next UI pass should remove or replace the current selected-title shrink rule.
+
+## 2026-04-26 23:45:46 BST — Implemented inline clinical-code identification
+- Action performed: added a textarea-backed inline clinical-code recogniser for consultation free text, using a visual overlay to render recognised terms as compact semantic-type coloured pills while preserving plain text editing and storage.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, `prototypes/ehr-shadcn-pwa/src/components/ConsultationSectionCard.tsx`, `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, current SNOMED seed concepts, V2 layout tests, V2 design contract, and companion inline-coding wiki guidance.
+- Outputs created: new `ClinicalTextTextarea`, shared clinical-code display helpers, fixture-backed clinical text concept matching helpers, e2e coverage for inline term recognition and type colour pills, updated DESIGN.md, updated companion wiki pages, and this log entry.
+- Unresolved issues: inline recognition is deterministic fixture matching only; accept/reject actions, source-span persistence, assertion status, negation handling, terminology-service backed matching, and result-reason provenance remain future work.
+
+## 2026-04-26 23:53:27 BST — Moved text-derived code candidates out of textarea
+- Action performed: removed the textarea visual-overlay approach because it made the native caret behave as if it were unaware of clinical-code pills, and changed recognised free-text terms into selectable `From text` candidates in the section-local clinical-code pane.
+- Inputs used: user report from the V2 prototype at `http://127.0.0.1:5175/`, `ClinicalTextTextarea`, `ConsultationSectionCard`, `SectionCodingField`, fixture-backed clinical text matching helpers, V2 e2e layout contract, DESIGN.md, and companion wiki notes.
+- Outputs created: restored normal visible textarea behaviour, added text-derived candidate rows with semantic type colours and source metadata, added candidate acceptance behaviour that inserts a trailing space when needed and returns the caret to the next typing position, updated tests, and revised documentation to describe the safer candidate-rail model.
+- Unresolved issues: the previous log entry remains as history of the attempted overlay pass; a future rich editor could revisit true inline tokens only if the editor is token/caret aware.
+
+## 2026-04-26 23:59:43 BST — Added token-aware inline coded text pills
+- Action performed: replaced the plain textarea model with a small token-aware clinical text editor so accepted coded concepts render as non-editable inline pills in the note body while also appearing in the section coded-content list.
+- Inputs used: user correction that coded concepts selected from search or text identification should be added to both the body text and coded entries, `ClinicalTextTextarea`, `ConsultationSectionCard`, `SectionCodingField`, clinical text token helpers, V2 e2e layout contract, DESIGN.md, and companion wiki notes.
+- Outputs created: inline clinical-code token markers, inline concept pill rendering, search-result insertion at the current editor caret, text-derived candidate replacement of source phrases, e2e coverage for inline/search selected concepts, updated DESIGN.md, updated companion wiki pages, and this log entry.
+- Unresolved issues: this is still a prototype editor rather than a mature rich-text clinical editor; source-span provenance, keyboard token navigation, token deletion semantics, and sync-safe serialization need later hardening.
+
+## 2026-04-27 00:03:26 BST — Removed Reason default text
+- Action performed: removed seeded default text from the Reason section and replaced it with a visual-only grey example prompt, `Type: "Medication review and diabetes follow-up."`, with the example phrase italicised and cleared on focus.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user report that default Reason text was causing a failure loop and was clinically incorrect, `ClinicalTextTextarea`, `ConsultationSectionCard`, V2 demo data, V2 e2e layout contract, DESIGN.md, and companion inline-coding wiki guidance.
+- Outputs created: updated the Reason demo data to start empty, updated the token-aware editor to ignore placeholder nodes during value/caret reads, scoped the example placeholder to the Reason field, updated e2e coverage for the three-incomplete-section initial state and focus-clearing prompt, and documented the placeholder contract in DESIGN.md and companion wiki pages.
+- Unresolved issues: none for the placeholder/default-text correction.
+
+## 2026-04-27 00:09:22 BST — Routed text-derived concepts through clinical-code results
+- Action performed: changed free-text clinical-code identification so typed terms open the section-local clinical-code results popover instead of rendering a separate `From text` candidate rail or behaving like autocomplete.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user request that typed text should invoke the clinical-code results list, `SectionCodingField`, `ClinicalTextTextarea`, V2 e2e layout contract, DESIGN.md, and companion inline-coding wiki guidance.
+- Outputs created: text-derived concepts now render as normal fixed-column command result rows with concept, code, type, and priority; accepting a row still requires explicit selection and then creates the normal selected concept plus an inline concept pill; inline pills now use the same semantic parent-pill colour family as selected clinical-code pills; tests and documentation were updated.
+- Unresolved issues: the prototype still uses fixture-backed text recognition and static result ranking rather than terminology-service backed result provenance.
+
+## 2026-04-27 00:12:17 BST — Separated Finding and Disorder colours
+- Action performed: moved the `Finding` semantic type from the sky/blue-adjacent family to fuchsia while keeping `Disorder` in the calm blue family.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user report that `Disorder` and `Finding` were too close in colour, `ClinicalBadge`, clinical-code display helpers, V2 e2e layout contract, DESIGN.md, and companion wiki notes.
+- Outputs created: updated semantic-type badge and parent-pill classes for `Finding`, added e2e coverage that `Prediabetes` renders as a fuchsia `Finding` type rather than blue, and documented the palette distinction.
+- Unresolved issues: none for the semantic-colour separation pass.
+
+## 2026-04-27 00:46:22 BST — Audited semantic type palette
+- Action performed: checked the full semantic type palette after the previous Finding change and corrected remaining adjacent-hue collisions by moving `Finding` to pink, `Procedure` to orange, and keeping `Regime/therapy` violet and `Disorder` blue.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user report that `Finding` and `Regime/therapy` were now too close, `ClinicalBadge`, clinical-code display helpers, V2 e2e layout contract, DESIGN.md, and companion wiki notes.
+- Outputs created: updated semantic badge and parent-pill classes, changed temporary clinical-code column guide lines to neutral slate, extended e2e checks across Finding, Regime/therapy, Procedure, and Observable result rows, and documented the revised palette.
+- Unresolved issues: `Product` remains defined as teal but has no visible fixture row in the current demo data; add a product fixture if product colour needs browser-visible regression coverage.
+
+## 2026-04-27 00:49:33 BST — Opened full demo code list on search focus
+- Action performed: changed section-local clinical-code search so focusing or clicking an empty `Add clinical code` field opens the full demo code list instead of waiting for typed input.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user request that clicking clinical code search should display all demo codes, `SectionCodingField`, V2 e2e layout contract, DESIGN.md, and the V2 companion wiki note.
+- Outputs created: explicit search focus now opens all 13 demo code suggestions, typing still filters the list, passive text-derived recognition still opens only its scoped candidate result when the searchbar has not been explicitly opened, and e2e coverage verifies the full list appears on click.
+- Unresolved issues: none for the demo full-list search behaviour.
+
+## 2026-04-27 00:54:15 BST — Added live free-text code search
+- Action performed: changed consultation note typing so the current typed span can act as a live clinical-code search query while the clinician types, instead of waiting for an exact recognised term.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user report that free text was not turning into search query/results as they typed, `ClinicalTextTextarea`, `ConsultationSectionCard`, `SectionCodingField`, clinical text concept helpers, V2 e2e layout contract, DESIGN.md, and companion wiki notes.
+- Outputs created: partial typed text such as `diab` now opens filtered clinical-code result rows without autocompleting the note; selecting a live text-query result replaces the typed span with the standard inline concept pill and adds the selected coded concept to the section coded list; e2e coverage verifies live results appear before any code is selected.
+- Unresolved issues: live matching is still fixture-backed demo search rather than terminology-service backed typeahead.
+
+## 2026-04-27 01:09:59 BST — Kept live code search passive while typing
+- Action performed: corrected the consultation note editor and section clinical-code search interaction so passive free-text recognition mirrors the typed span into the `Add clinical code` field without stealing focus, interrupting continued typing, or committing a code automatically.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user report that recognised text stopped continued typing and should feed the search box without leaving the text box, `ClinicalTextTextarea`, `ConsultationSectionCard`, `SectionCodingField`, clinical text concept helpers, V2 e2e layout contract, DESIGN.md, companion wiki notes, and in-app browser verification.
+- Outputs created: the token-aware editor now avoids remounting during normal input, resyncs only for structured external updates such as inline code insertion, applies caret restoration once per inserted value, keeps blur from reclaiming focus, makes alias-backed searches such as `t2dm` searchable, and documents the passive mirror/no-autocommit contract.
+- Unresolved issues: the editor remains a prototype contenteditable implementation; production should still evaluate a mature editor/decorator model before handling complex token deletion, IME composition, undo stacks, and source-span provenance.
+
+## 2026-04-27 01:14:16 BST — Fixed progressive typing caret and removed default codes
+- Action performed: corrected caret offset calculation inside nested text spans so continued typing appends at the actual caret position, and removed the seeded default selected clinical-code entry from the V2 demo.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user report that the caret returned to the initial position and that default clinical-code entries should be removed, `ClinicalTextTextarea`, V2 demo data, V2 e2e layout contract, DESIGN.md, companion wiki notes, and targeted browser verification.
+- Outputs created: recursive caret offset reading/placement for contenteditable text nodes, empty initial selected-code lists, e2e coverage that explicitly adds hypertension before checking selected-pill styling, updated DESIGN.md, updated companion wiki pages, and this log entry.
+- Unresolved issues: the contenteditable editor remains a prototype; production should still validate IME input, undo/redo, token deletion, screen-reader behaviour, and persisted source-span provenance.
+
+## 2026-04-27 01:18:41 BST — Kept clinical-code search results open on click
+- Action performed: fixed the section-local `Add clinical code` searchbar so clicking an empty field opens and keeps the full demo result list visible instead of briefly flashing closed.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user report that search results blipped but did not stay displayed, `SectionCodingField`, V2 e2e layout contract, DESIGN.md, companion V2 wiki note, and targeted Playwright reproduction.
+- Outputs created: the searchbar now acts as the Radix popover trigger for positioning while preventing trigger-click toggling from closing an explicitly focused field, e2e coverage checks that the full result list remains mounted after click, and DESIGN/wiki notes clarify that focused empty search keeps results visible.
+- Unresolved issues: none for the click-to-open search behaviour.
+
+## 2026-04-27 01:20:58 BST — Aligned Tasks pane with split-card layout contract
+- Action performed: reworked the bottom Tasks pane so it follows the same card body layout as consultation sections instead of using a separate top `CardHeader`.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user report that the Tasks card did not follow the layout used by the other cards, `TasksPane`, `ConsultationSectionCard`, V2 e2e layout contract, DESIGN.md, and companion V2 wiki note.
+- Outputs created: Tasks now places title/status/description and task entry on the left rail, starts task-local clinical-code search on the right rail at the top of the card body, adds e2e split-layout assertions, updates DESIGN.md, updates the companion V2 wiki note, and records this log entry.
+- Unresolved issues: none for the Tasks card layout alignment.
+
+## 2026-04-27 02:24 BST — Aligned Reason instruction to available diabetes review concepts
+- Action performed: changed the Reason note instruction from `Medication review and diabetes follow-up.` to `Diabetes medication review and diabetic annual review.` so the prompt text better matches available coded concepts.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user observation that `diabetes follow-up` did not map to one exact clinical code, `ConsultationSectionCard`, V2 e2e layout contract, DESIGN.md, and the V2 companion wiki page.
+- Outputs created: Reason instruction now points toward `Diabetes medication review` and `Diabetic annual review`; e2e expectations, DESIGN.md, and companion wiki documentation were updated.
+- Unresolved issues: none for the prompt wording; production should source prompt copy from section-specific value sets and local clinical governance.
+
+## 2026-04-27 02:21 BST — Synced inline and selected clinical-code deletion
+- Action performed: made consultation-section inline clinical-code tokens and selected coded-content pills delete each other so the note editor and coding pane cannot drift apart.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user request that deleting a clinical coded item in the text box auto-deletes the corresponding coding-pane pill and that removing a coding-pane pill also deletes the text entry that stemmed it, `ClinicalTextTextarea`, `ConsultationSectionCard`, clinical text token helpers, V2 e2e layout contract, DESIGN.md, and the V2 companion wiki page.
+- Outputs created: added token helpers for reading marker codes and removing markers by code; consultation text changes now remove selected codes whose inline markers no longer exist; coding-pane remove actions now remove matching inline markers before deleting the selected code; e2e coverage verifies both deletion directions; DESIGN.md and companion wiki documentation were updated.
+- Unresolved issues: bidirectional deletion is scoped to consultation note sections; the Tasks pane remains a structured task coding surface without paired narrative tokens.
+
+## 2026-04-27 02:35 BST — Restored repeated inline clinical-code search
+- Action performed: fixed the section-local clinical-code search dismissal state so deleting an inline coded concept no longer prevents the same typed phrase from reopening text-derived search results.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user report that retyping after choosing and deleting a search item should trigger search again, `SectionCodingField`, token-aware note editor flow, V2 e2e layout contract, DESIGN.md, and the V2 companion wiki page.
+- Outputs created: text-derived candidate/search dismissal keys now clear once their source text span disappears; e2e coverage repeats the `t2dm` select/delete/retype flow; DESIGN.md and companion wiki documentation were updated.
+- Unresolved issues: none for repeated text-derived search after deletion.
+
+## 2026-04-27 22:05 BST — Added keyboard selection for clinical-code search results
+- Action performed: added keyboard navigation to the V2 section-local clinical-code search results so clinicians can move the highlighted result with up/down arrows and accept it with Enter.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, shadcn Command/Popover/Input Group documentation, `prototypes/ehr-shadcn-pwa/src/components/SectionCodingField.tsx`, V2 e2e layout contract, DESIGN.md, and companion clinical-coding wiki pages.
+- Outputs created: controlled active-result state for search results, visible active-row styling, `aria-activedescendant` wiring from the searchbar to the active result row, Enter-to-select behavior, e2e keyboard-selection coverage, and updated DESIGN/wiki documentation.
+- Unresolved issues: keyboard navigation is currently scoped to the explicit `Add clinical code` searchbar; passive note-editor text recognition keeps normal note-editor keyboard behavior.
+
+## 2026-04-27 07:21 BST — Aligned consultation author text rail
+- Action performed: adjusted the V2 consultation banner so the author/incomplete-status text uses the same compact text-box treatment as the action button labels, aligning the actual text rail rather than only the surrounding element boxes.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user screenshot showing author text slightly off the button-label rail, `prototypes/ehr-shadcn-pwa/src/App.tsx`, V2 e2e banner metrics, DESIGN.md, and the V2 companion wiki page.
+- Outputs created: added explicit banner author/action label spans, aligned the author line with `inline-flex h-7 items-center leading-none` plus the required single-pixel optical adjustment, strengthened the e2e assertion to compare author text centre to button-label text centre, and updated DESIGN.md, the V2 companion wiki note, and this log entry.
+- Unresolved issues: none for the consultation banner text-rail alignment pass.
+
+## 2026-04-27 07:19 BST — Updated V2 demo patient identity
+- Action performed: changed the V2 prototype's synthetic patient display name from `Alex Morgan` to `Margaret Ellis` so the patient banner better fits the existing 68-year-old female diabetes-review scenario.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, `prototypes/ehr-shadcn-pwa/src/data/demo.ts`, and the V2 Playwright patient-context contract.
+- Outputs created: updated the demo patient fixture, added e2e assertions for name/DOB/age/sex in the patient chrome, and updated this log entry.
+- Unresolved issues: none for the synthetic patient identity update.
+
+## 2026-04-27 02:39 BST — Reconciled internal clinical-coding documentation
+- Action performed: reviewed the current V2 clinical-code interaction contract across app design notes and companion wiki pages, then updated the broader inline clinical-coding page so it matches the current token-aware editor, persistent visual instructions, split coded pane, bidirectional deletion, and repeat-search-after-deletion behaviour.
+- Inputs used: `prototypes/ehr-shadcn-pwa/DESIGN.md`, `wiki/companion-web-app-stack/ehr-shadcn-v2-prototype.md`, `wiki/companion-web-app-stack/inline-clinical-coding-for-consultations.md`, current V2 source/test contract, and the previous JJ checkpoint for repeated clinical-code text search after deletion.
+- Outputs created: updated `wiki/companion-web-app-stack/inline-clinical-coding-for-consultations.md` and this log entry.
+- Unresolved issues: none for the internal documentation reconciliation pass.
+
+## 2026-04-27 02:11 BST — Anchored consultation note instructions
+- Action performed: changed consultation note `Type: "..."` prompts from focus-clearing placeholders to persistent visual instructions anchored to the bottom of each note editor.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user request to keep the Type instructions always on and stuck to the bottom as text boxes are resized, `ClinicalTextTextarea`, V2 e2e layout contract, DESIGN.md, and the V2 companion wiki page.
+- Outputs created: note editors now reserve bottom padding for the instruction line, keep it visible on focus and with entered text, ignore it for editor value/caret/clinical-code recognition, and keep it positioned at the bottom after editor height changes; e2e coverage checks persistent visibility and bottom anchoring; DESIGN.md and companion wiki documentation were updated.
+- Unresolved issues: none for persistent visual note instructions.
+
+## 2026-04-27 01:58 BST — Limited title disclosure to actual overflow
+- Action performed: changed SNOMED concept title disclosure from character-count treatment to measured overflow treatment so labels such as `Medication review done by doctor` are not underlined when the current column already shows the full title.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user report that `Medication review done by doctor` did not need treatment, follow-up request that pills no longer need shrunk text now underline expansion exists, `SectionCodingField`, `clinicalCodeDisplay`, V2 e2e layout contract, DESIGN.md, and the V2 companion wiki page.
+- Outputs created: `ExpandableConceptTitle` now measures `scrollWidth/clientWidth` and `scrollHeight/clientHeight` with `ResizeObserver`; titles only become underlined expansion controls when they actually overflow; selected-pill titles now use normal body text size rather than character-count shrinking; e2e coverage asserts that `Medication review done by doctor` has no expansion control while a constrained selected concept still expands; DESIGN.md and companion wiki documentation were updated.
+- Unresolved issues: none for the false-positive title treatment or selected-title shrink removal.
+
+## 2026-04-27 01:55 BST — Added expandable shortened clinical-code titles
+- Action performed: added an explicit expansion affordance for shortened SNOMED concept titles in search results and selected concept pills.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user request for link-like underlined shortened text that expands full text and removes obstructing pills until toggled or cleared, `SectionCodingField`, V2 e2e layout contract, DESIGN.md, and the V2 companion wiki page.
+- Outputs created: long/shortened concept titles now render with an underlined title control; activating it expands the full display text in place, hides type/priority metadata pills, hides the selected-pill remove affordance while expanded, and restores the fixed metadata layout when activated again or when clicking away; e2e coverage verifies search-result and selected-pill expansion/restore behaviour; DESIGN.md and companion wiki documentation were updated.
+- Unresolved issues: expansion is currently driven by the prototype's existing shortened-title threshold rather than measured actual text overflow; a production component should replace that with measured overflow or a resilient disclosure pattern.
+
+## 2026-04-27 01:45 BST — Added visual prompts to all consultation note cards
+- Action performed: extended the Reason section's visual-only grey instructional placeholder pattern to the later consultation note cards.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user request to add similar shortened grey instructional terms after Reason, `ConsultationSectionCard`, `ClinicalTextTextarea`, V2 e2e layout contract, DESIGN.md, and the V2 companion wiki page.
+- Outputs created: History, Examination, Assessment, Plan, and Follow-up now show concise diabetes-review `Type: "..."` prompts that are italic, visual-only, cleared on focus, ignored by required-section validation, and ignored by clinical-code recognition; e2e assertions cover each section prompt; DESIGN.md and companion wiki documentation were updated.
+- Unresolved issues: none for visual-only section prompts; production copy should still be clinically reviewed alongside section-specific value sets.
+
+## 2026-04-27 01:40 BST — Expanded diabetes SNOMED fixture and medication context
+- Action performed: expanded the V2 prototype's clinical-code fixture with active diabetes-review SNOMED CT concepts and corrected the fixture type/display details that were inconsistent with current terminology lookup evidence.
+- Inputs used: current V2 prototype at `http://127.0.0.1:5175/`, user request to add more relevant true SNOMED terms across consultation cards and confirm medication consistency, public SNOMED terminology lookup through Snowstorm/CSIRO Ontoserver-style FHIR operations, V2 demo data, clinical text aliasing, e2e layout/search tests, DESIGN.md, and companion wiki pages.
+- Outputs created: added active diabetes-context concepts for annual review, medication review, HbA1c, urine ACR, microalbuminuria, GFR/eGFR, diabetic kidney disease, diabetic neuropathy, symptoms, diet/lifestyle education, foot examination, and blood-glucose monitoring; corrected `Prediabetes` to `Disorder`; changed `Hyperglycemia` display to `Hyperglycaemia`; promoted diabetic foot examination in the diabetes context; replaced the stopped co-codamol demo medication with active atorvastatin so the MAR medication panel is coherent with type 2 diabetes/cardiovascular-risk context; updated text-recognition aliases, tests, DESIGN.md, and companion wiki documentation.
+- Unresolved issues: the fixture remains static demo terminology rather than a live NHS England Terminology Server/UK SNOMED CT implementation, and medicines remain plain reference rows rather than dm+d-coded medication statements.
+
+## 2026-04-27 01:29:02 BST — Localized Portico full-text PDF for the Patient Journey Demonstrator article
+- Action performed: localized the Portico-preserved full-text PDF for `Microsoft health patient journey demonstrator`, updated the reference-processing scripts to treat it as a new secondary source, regenerated the derived reference-context outputs and manifest/inventory layers, and refreshed the human-readable source note.
+- Inputs used: Portico article page at `https://access.portico.org/Portico/auView?auId=ark%253A%252F27927%252Fphw1p04s4h5&auViewType1=PDF`, the session-backed PDF endpoint exposed by the rendered page iframe, existing PubMed abstract capture, `scripts/build_reference_context_derivatives.py`, `scripts/build_health_cui_first_pass.py`, and `wiki/source-notes/patient-journey-demonstrator-2008.md`.
+- Outputs created: `raw/sources/references/secondary/portico-microsoft-health-patient-journey-demonstrator-2008.pdf`, `derived/extracted-text/reference-context/portico-microsoft-health-patient-journey-demonstrator-2008.txt`, `derived/normalized-markdown/reference-context/portico-microsoft-health-patient-journey-demonstrator-2008.md`, refreshed `raw/metadata/secondary-adoption-and-afterlife-sources.json`, refreshed `raw/manifests/design-guidance-manifest.json`, refreshed `derived/inventories/reference-context-inventory.md`, refreshed `derived/inventories/source-inventory.md`, and updated `wiki/source-notes/patient-journey-demonstrator-2008.md`.
+- Unresolved issues: the PDF endpoint is browser-session-backed and direct unauthenticated HTTP fetches returned `403`, so future reacquisition should assume Portico client bootstrap or human/browser mediation may be required.
+
+## 2026-04-29 23:07:00 BST — Reviewed wiki/app publishability and tightened GitHub-facing README
+- Action performed: reviewed the repo’s three user-facing surfaces for build and GitHub Pages readiness, confirmed the live preferred MkDocs wiki, checked the alternate Astro/Starlight wiki and the React/Vite demo app, and rewrote the root `README.md` to be concise for GitHub with deployment badges and accurate links.
+- Inputs used: root `README.md`, `mkdocs.yml`, `.github/workflows/deploy-mkdocs-material.yml`, `msh-cui-wiki/astro.config.mjs`, `msh-cui-wiki/README.md`, `prototypes/ehr-shadcn-pwa/package.json`, `prototypes/ehr-shadcn-pwa/vite.config.ts`, local build/test runs, and live GitHub Pages URL checks under `ajdench.github.io/Microsoft-Health-Common-User-Interface`.
+- Outputs created: updated `README.md` with status badges, preferred wiki link, source links for the alternate wiki and demo app, and a short publishing-model note that this repo currently has one live GitHub Pages surface rather than three.
+- Unresolved issues: the alternate Astro/Starlight wiki is not GitHub Pages-safe yet because it emits `localhost` sitemap/canonical URLs and root-relative links/assets, and the demo app is also not Pages-safe yet because its Vite/PWA config still assumes deployment at `/`.
+
+## 2026-04-29 23:16:41 BST — Made the combined Pages bundle subpath-safe for both wikis and the demo
+- Action performed: changed the GitHub Pages deployment model from a single MkDocs root publish to one combined artifact with a landing page at `/`, the preferred MkDocs wiki at `/mkdocs_wiki/`, the Astro/Starlight wiki at `/starlight_wiki/`, and the React/Vite demo app at `/demo/`.
+- Inputs used: `.github/workflows/deploy-mkdocs-material.yml`, `README.md`, `msh-cui-wiki/astro.config.mjs`, `msh-cui-wiki/scripts/sync-llm-wiki.mjs`, `msh-cui-wiki/src/components/Head.astro`, `prototypes/ehr-shadcn-pwa/vite.config.ts`, local MkDocs/Astro/Vite builds, and the repo’s GitHub Pages URL structure.
+- Outputs created: new `scripts/build_github_pages_bundle.sh`, updated Pages workflow, base-path-aware Astro config, base-aware Starlight mirror link generation, base-aware demo PWA/Vite config, refreshed GitHub-facing `README.md`, and a generated local `site/` bundle that validates the three-surface layout.
+- Unresolved issues: the new routes are verified locally in the generated `site/` bundle, but the public GitHub Pages URLs will not update until the workflow runs on push or manual dispatch.
+
+## 2026-04-30 07:50:48 BST — Recovered V2 prototype source onto Git main
+- Action performed: diagnosed why the local/public demo was showing an older UI and restored the latest V2 prototype, inline clinical-coding implementation, Tasks pane, design notes, companion wiki updates, and localized Portico source material from the reachable JJ UI head onto the current Git `main` working copy.
+- Inputs used: current `main`/`origin/main` at `654dbb47`, JJ graph showing the newer UI line ending at `cc065de0960c`, local Vite endpoint `http://127.0.0.1:5175/`, live GitHub Pages `/demo/` checks, restored prototype source under `prototypes/ehr-shadcn-pwa/`, and companion wiki/source-note files.
+- Outputs created: restored the V2 shadcn consultation shell source, section-local clinical-code search and inline coded text support, Tasks pane, MAR/consultation layout contract tests, updated `DESIGN.md`, updated companion wiki clinical-coding/design pages, restored Portico-derived source artefacts, and preserved the later README/GitHub workflow fixes already on `main`.
+- Verification: `npm test`, `npm run build`, and `npm run e2e` pass in `prototypes/ehr-shadcn-pwa`; the combined Pages artifact builds with `PATH="$PWD/.venv-mkdocs/bin:$PATH" bash scripts/build_github_pages_bundle.sh`.
+- Unresolved issues: the deployed GitHub Pages site remains old until this recovered working copy is committed to JJ/Git and pushed, then the Pages workflow completes.
