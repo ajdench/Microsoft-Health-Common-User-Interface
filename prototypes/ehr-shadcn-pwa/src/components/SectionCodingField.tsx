@@ -486,7 +486,7 @@ export function SectionCodingField({
         >
           <PopoverTrigger asChild>
             <InputGroup
-              className="h-9 border-primary/40 bg-background shadow-sm"
+              className="h-8 border-primary/40 bg-background shadow-sm"
               data-snomed-search-field
               onClick={(event) => {
                 event.preventDefault()

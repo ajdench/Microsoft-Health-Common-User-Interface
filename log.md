@@ -1411,3 +1411,10 @@
 - Outputs created: set the search icon to an explicit 14 px size to match the `text-sm` font size while keeping it vertically centred in the 36 px field.
 - Verification: rendered measurements show a 14 px icon with 11 px top/bottom insets, zero centre offset, and `Add clinical code`/`SNOMED CT` text at 14 px font size with 20 px line-height; `npm test` and `npm run build` pass in `prototypes/ehr-shadcn-pwa`.
 - Unresolved issues: none for the search icon visual-height correction.
+
+## 2026-04-30 12:03:17 BST — Set clinical-code search bar to 9 px vertical inset
+- Action performed: reduced the `Add clinical code` search bar height so the current 14 px search icon has the same 9 px top/bottom inset as its 9 px left inset.
+- Inputs used: rendered measurement of the clinical-code search field at `http://127.0.0.1:5175/`, user clarification that the 9 px top/bottom treatment was the intended search-bar rhythm, and `SectionCodingField`.
+- Outputs created: set the clinical-code `InputGroup` height to the shadcn native `h-8` control size while retaining the 14 px icon, `text-sm` input/suffix typography, and 9 px right inset for the suffix text.
+- Verification: rendered measurements show field height 32 px, icon height 14 px, icon insets of 9 px left/top/bottom, and `SNOMED CT` right inset of 9 px; `npm test` and `npm run build` pass in `prototypes/ehr-shadcn-pwa`.
+- Unresolved issues: none for the search-bar inset correction.
