@@ -1397,3 +1397,10 @@
 - Outputs created: restored the V2 shadcn consultation shell source, section-local clinical-code search and inline coded text support, Tasks pane, MAR/consultation layout contract tests, updated `DESIGN.md`, updated companion wiki clinical-coding/design pages, restored Portico-derived source artefacts, and preserved the later README/GitHub workflow fixes already on `main`.
 - Verification: `npm test`, `npm run build`, and `npm run e2e` pass in `prototypes/ehr-shadcn-pwa`; the combined Pages artifact builds with `PATH="$PWD/.venv-mkdocs/bin:$PATH" bash scripts/build_github_pages_bundle.sh`.
 - Unresolved issues: the deployed GitHub Pages site remains old until this recovered working copy is committed to JJ/Git and pushed, then the Pages workflow completes.
+
+## 2026-04-30 11:54:20 BST — Aligned clinical-code search field contents
+- Action performed: aligned the `Add clinical code` search bar contents so the search icon, input text, and `SNOMED CT` suffix share the same 20 px visual rail inside the 36 px search field.
+- Inputs used: rendered measurement of the current V2 prototype at `http://127.0.0.1:5175/`, `SectionCodingField`, shadcn input-group primitives, and user screenshot showing the near-aligned search field contents.
+- Outputs created: set the search icon to the same 20 px visual height as the text line, explicitly applied `leading-5` to the input and suffix text, and preserved the existing 9 px left/right visual insets.
+- Verification: rendered measurements now show icon top/bottom insets of 8 px, `SNOMED CT` top/bottom insets of 8 px, both centred at zero offset in the 36 px search field; `npm test` and `npm run build` pass in `prototypes/ehr-shadcn-pwa`.
+- Unresolved issues: none for the clinical-code search field content rail.

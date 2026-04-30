@@ -494,9 +494,10 @@ export function SectionCodingField({
               }}
             >
               <InputGroupAddon align="inline-start">
-                <SearchIcon aria-hidden="true" />
+                <SearchIcon aria-hidden="true" className="size-5" />
               </InputGroupAddon>
               <InputGroupInput
+                className="leading-5"
                 aria-label="Add clinical code"
                 aria-activedescendant={activeResultId}
                 aria-controls={popoverOpen ? resultListId : undefined}
@@ -514,7 +515,7 @@ export function SectionCodingField({
                 onKeyDown={handleSearchKeyDown}
               />
               <InputGroupAddon align="inline-end">
-                <InputGroupText>SNOMED CT</InputGroupText>
+                <InputGroupText className="leading-5">SNOMED CT</InputGroupText>
               </InputGroupAddon>
             </InputGroup>
           </PopoverTrigger>
