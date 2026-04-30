@@ -83,7 +83,7 @@ export function App() {
             <CardHeader className="gap-y-2 sm:grid-rows-[auto]! sm:items-start sm:gap-y-0!">
               <div className="grid gap-y-2 sm:h-[3.8125rem] sm:grid-rows-[1.25rem_13px_1.75rem] sm:gap-y-0 sm:whitespace-nowrap" data-consultation-banner-text-stack>
                 <CardTitle>Consultation capture</CardTitle>
-                <span className="text-[0.8rem] leading-none font-semibold text-muted-foreground sm:self-center sm:translate-y-1" data-consultation-banner-clinician>
+                <span className="text-[0.8rem] leading-none font-semibold text-muted-foreground sm:self-center sm:translate-y-[4.3px]" data-consultation-banner-clinician>
                   Dr Taylor Reed
                 </span>
                 <CardDescription className="inline-flex h-7 items-center text-[0.8rem] leading-none font-normal" data-consultation-banner-incomplete-status>

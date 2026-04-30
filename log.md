@@ -1425,3 +1425,10 @@
 - Outputs created: reduced the consultation section heading rail from 36 px to 32 px so the 32 px search field and left heading rail share the same height.
 - Verification: rendered measurements show the horizontal textbox-to-search-column gap is 12 px and the vertical search-field-bottom-to-textbox-top gap is also 12 px; `npm test` and `npm run build` pass in `prototypes/ehr-shadcn-pwa`.
 - Unresolved issues: none for this section-gap alignment pass.
+
+## 2026-04-30 12:23:36 BST — Optically centred consultation clinician line
+- Action performed: nudged the consultation banner clinician line so `Dr Taylor Reed` is visually centred between `Consultation capture` and the incomplete-sections line.
+- Inputs used: user screenshot of the banner, rendered text-box measurements from `http://127.0.0.1:5175/`, `App.tsx`, and the V2 Playwright layout contract.
+- Outputs created: changed the clinician line's desktop vertical translate from 4 px to 4.3 px and added a direct e2e assertion for the clinician midpoint against the title/incomplete-text gap centre.
+- Verification: rendered measurements show the clinician centre is within 0.005 px of the gap centre, with upper/lower visible gaps both about 4.4 px; `npm test`, `npm run build`, and `npm run e2e` pass in `prototypes/ehr-shadcn-pwa`.
+- Unresolved issues: none for this banner optical-centering pass.

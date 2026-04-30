@@ -182,6 +182,7 @@ test('renders shadcn-native V2 consultation shell without horizontal overflow', 
       incompleteCenter: Math.round(incompleteTextBox.top + incompleteTextBox.height / 2),
       incompleteTextTop: Math.round(incompleteTextInnerBox.top),
       incompleteTextCenter: Math.round(incompleteTextInnerBox.top + incompleteTextInnerBox.height / 2),
+      clinicianGapCenterOffset: clinicianTextBox.top + clinicianTextBox.height / 2 - ((titleBox.bottom + incompleteTextInnerBox.top) / 2),
       incompleteColor: getComputedStyle(incompleteText).color,
       incompleteFontWeight: getComputedStyle(incompleteText).fontWeight,
       firstButtonTextCenter: Math.round(firstButtonTextBox.top + firstButtonTextBox.height / 2),
@@ -199,6 +200,7 @@ test('renders shadcn-native V2 consultation shell without horizontal overflow', 
   expect(headerRailMetrics?.clinicianTop).toBeGreaterThanOrEqual(headerRailMetrics?.titleBottom ?? 0)
   expect(headerRailMetrics?.incompleteTextTop).toBeGreaterThanOrEqual(headerRailMetrics?.clinicianBottom ?? 0)
   expect(Math.abs((headerRailMetrics?.clinicianCenter ?? 0) - Math.round(((headerRailMetrics?.titleBottom ?? 0) + (headerRailMetrics?.incompleteTextTop ?? 0)) / 2))).toBeLessThanOrEqual(1)
+  expect(Math.abs(headerRailMetrics?.clinicianGapCenterOffset ?? 0)).toBeLessThanOrEqual(0.25)
   expect(Math.abs((headerRailMetrics?.incompleteCenter ?? 0) - (headerRailMetrics?.firstButtonTextCenter ?? 0))).toBeLessThanOrEqual(1)
   expect(headerRailMetrics?.clinicianColor).toBe(headerRailMetrics?.incompleteColor)
   expect(Number(headerRailMetrics?.clinicianFontWeight)).toBeGreaterThan(Number(headerRailMetrics?.incompleteFontWeight))
