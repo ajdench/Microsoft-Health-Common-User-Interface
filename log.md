@@ -865,3 +865,9 @@
 - Inputs used: updated `README.md`, `.github/workflows/deploy-mkdocs-material.yml`, `scripts/build_github_pages_bundle.sh`, `msh-cui-wiki` base-path configuration and mirror sync scripts, `prototypes/ehr-shadcn-pwa/vite.config.ts`, the local `main` branch, and `origin/main`.
 - Outputs created: refreshed local `site/` bundle verification, confirmed demo `vitest` pass, updated deployment configuration for the three published subpaths, and this log entry.
 - Unresolved issues: public GitHub Pages URLs will not reflect the new subpath deployment until the remote Actions workflow completes after push.
+
+## 2026-04-30 06:56:00 BST — Corrected GitHub Actions Node version for Astro build
+- Action performed: fixed the Pages workflow after the first remote run failed because Astro rejected Node 20 on GitHub Actions.
+- Inputs used: failed Actions run `25149823749`, its `Build Pages bundle` log, Astro engine requirement `>=22.12.0`, and `.github/workflows/deploy-mkdocs-material.yml`.
+- Outputs created: updated Pages workflow to use Node `22.12.0` and this log entry.
+- Unresolved issues: a fresh remote workflow run is still required to confirm the corrected deployment completes successfully.
