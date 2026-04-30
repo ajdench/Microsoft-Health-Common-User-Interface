@@ -1432,3 +1432,10 @@
 - Outputs created: changed the clinician line's desktop vertical translate from 4 px to 4.3 px and added a direct e2e assertion for the clinician midpoint against the title/incomplete-text gap centre.
 - Verification: rendered measurements show the clinician centre is within 0.005 px of the gap centre, with upper/lower visible gaps both about 4.4 px; `npm test`, `npm run build`, and `npm run e2e` pass in `prototypes/ehr-shadcn-pwa`.
 - Unresolved issues: none for this banner optical-centering pass.
+
+## 2026-04-30 12:57:45 BST — Optically aligned clinical-code search icon inset
+- Action performed: nudged the clinical-code search icon left so the visible Lucide search stroke, not just the SVG layout box, aligns with the `SNOMED CT` right text inset.
+- Inputs used: rendered search-field measurements, user screenshot showing the left icon gap reading larger than the right suffix gap, and `SectionCodingField`.
+- Outputs created: added a 1 px negative horizontal translate to the 14 px search icon while preserving the 32 px search field, 9 px vertical icon inset, and 9 px suffix right inset.
+- Verification: rendered measurements show the SVG box left inset is 8 px, the approximate painted icon left inset is 9.17 px, and the `SNOMED CT` right inset is 9 px; `npm test` and `npm run build` pass in `prototypes/ehr-shadcn-pwa`.
+- Unresolved issues: none for the clinical-code search icon optical inset pass.

@@ -494,7 +494,7 @@ export function SectionCodingField({
               }}
             >
               <InputGroupAddon align="inline-start">
-                <SearchIcon aria-hidden="true" className="size-3.5" />
+                <SearchIcon aria-hidden="true" className="size-3.5 -translate-x-px" />
               </InputGroupAddon>
               <InputGroupInput
                 className="leading-5"
