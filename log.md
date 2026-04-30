@@ -1453,3 +1453,10 @@
 - Outputs created: task-local `SectionCodingField` now uses the frameless searchbar treatment, the `Actionable follow-up work` description was removed, the task entry prompt and button now read `Add actionable follow-up task`, and task rows render as full-width rounded shell rows matching the clinical-code pill shell rhythm.
 - Verification: updated unit and e2e layout assertions for the new task label, frameless task coding field, and full-width task result shell; `npm test`, `npm run build`, and `npm run e2e` pass in `prototypes/ehr-shadcn-pwa`.
 - Unresolved issues: none for this Tasks pane alignment pass.
+
+## 2026-04-30 20:47:17 BST — Shortened Tasks pane add button
+- Action performed: shortened the Tasks pane action button label while keeping the explicit task-entry field prompt.
+- Inputs used: user request that the button should read `Add task`, `TasksPane`, and the V2 layout tests.
+- Outputs created: changed only the button label from `Add actionable follow-up task` to `Add task`; the textbox label/placeholder remains `Actionable follow-up task` / `Add actionable follow-up task`.
+- Verification: updated e2e button assertion; `npm test`, `npm run build`, and `npm run e2e` pass in `prototypes/ehr-shadcn-pwa`.
+- Unresolved issues: none for the Tasks pane button label correction.

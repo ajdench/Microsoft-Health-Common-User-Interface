@@ -209,7 +209,7 @@ test('renders shadcn-native V2 consultation shell without horizontal overflow', 
   await expect(consultation.locator('[data-tasks-pane]')).toBeVisible()
   await expect(consultation.locator('[data-tasks-pane]').locator('[data-slot="card-title"]')).toHaveText('Tasks')
   await expect(consultation.getByRole('textbox', { name: 'Actionable follow-up task' })).toBeVisible()
-  await expect(consultation.getByRole('button', { name: 'Add actionable follow-up task' })).toBeVisible()
+  await expect(consultation.getByRole('button', { name: 'Add task' })).toBeVisible()
   await expect(consultation.getByPlaceholder('Add actionable follow-up task')).toBeVisible()
   await expect(consultation.getByText('Actionable follow-up work')).toHaveCount(0)
   await expect(consultation.getByRole('list', { name: 'Tasks' }).getByText('Book diabetes review bloods')).toBeVisible()

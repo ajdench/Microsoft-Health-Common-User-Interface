@@ -41,7 +41,7 @@ export function TasksPane({ tasks, onAddTask, codes, onAddCode, onRemoveCode }: 
                 onChange={(event) => setTaskText(event.target.value)}
               />
               <Button variant="outline" type="button" onClick={addTask}>
-                Add actionable follow-up task
+                Add task
               </Button>
             </div>
             {tasks.length > 0 && (
