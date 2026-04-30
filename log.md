@@ -877,3 +877,9 @@
 - Inputs used: current root `README.md`, `msh-cui-wiki/package.json`, and `prototypes/ehr-shadcn-pwa/package.json`.
 - Outputs created: new badges for MkDocs Material, Astro/Starlight, React 19, Vite 7, shadcn/ui, Radix UI, Tailwind CSS 4, and PWA.
 - Unresolved issues: none.
+
+## 2026-04-30 07:11:00 BST — Removed redundant docs-family badges from README
+- Action performed: removed the duplicate `docs: MkDocs Material` and `docs: Astro Starlight` badges from the root `README.md` while keeping the surface links and the app stack badges.
+- Inputs used: current root `README.md` and the published GitHub Pages surface layout.
+- Outputs created: simplified README badge row and this log entry.
+- Unresolved issues: none.
