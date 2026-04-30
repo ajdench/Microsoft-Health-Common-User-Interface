@@ -99,7 +99,7 @@ export function ConsultationSectionCard({ section, codes, onTextChange, onAddCod
     <Card className={cn(needsAttention && 'ring-2 ring-amber-300 bg-amber-50/40')} data-section-id={section.id}>
       <CardContent className="grid gap-3 lg:grid-cols-[minmax(0,1fr)_minmax(28rem,32rem)] lg:items-stretch">
         <div className="grid min-w-0 gap-3 lg:grid-rows-[auto_minmax(10rem,1fr)]" data-consultation-notes-pane>
-          <div className="grid min-h-9 auto-rows-min grid-cols-[minmax(0,1fr)_auto] items-center gap-x-3 gap-y-1" data-consultation-section-heading>
+          <div className="grid min-h-8 auto-rows-min grid-cols-[minmax(0,1fr)_auto] items-center gap-x-3 gap-y-1" data-consultation-section-heading>
             <CardTitle>{section.label}</CardTitle>
             <ClinicalBadge data-consultation-section-status tone={missingRequired ? 'warn' : emptyOptional ? 'optional' : 'good'}>
               {missingRequired ? 'Needs entry' : emptyOptional ? 'Optional' : 'Ready'}

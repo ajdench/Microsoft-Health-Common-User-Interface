@@ -1418,3 +1418,10 @@
 - Outputs created: set the clinical-code `InputGroup` height to the shadcn native `h-8` control size while retaining the 14 px icon, `text-sm` input/suffix typography, and 9 px right inset for the suffix text.
 - Verification: rendered measurements show field height 32 px, icon height 14 px, icon insets of 9 px left/top/bottom, and `SNOMED CT` right inset of 9 px; `npm test` and `npm run build` pass in `prototypes/ehr-shadcn-pwa`.
 - Unresolved issues: none for the search-bar inset correction.
+
+## 2026-04-30 12:05:55 BST — Matched clinical-code vertical and horizontal section gaps
+- Action performed: aligned the vertical gap between the clinical-code search field and the consultation textbox with the horizontal gap between the textbox and clinical-code column.
+- Inputs used: user screenshot with red spacing guides, rendered measurements of the Reason consultation card, and `ConsultationSectionCard`.
+- Outputs created: reduced the consultation section heading rail from 36 px to 32 px so the 32 px search field and left heading rail share the same height.
+- Verification: rendered measurements show the horizontal textbox-to-search-column gap is 12 px and the vertical search-field-bottom-to-textbox-top gap is also 12 px; `npm test` and `npm run build` pass in `prototypes/ehr-shadcn-pwa`.
+- Unresolved issues: none for this section-gap alignment pass.
