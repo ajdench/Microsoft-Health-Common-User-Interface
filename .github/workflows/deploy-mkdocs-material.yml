@@ -1,4 +1,4 @@
-name: Deploy Material MkDocs to GitHub Pages
+name: Deploy Pages bundle to GitHub Pages
 
 on:
   push:
@@ -36,15 +36,26 @@ jobs:
           cache: pip
           cache-dependency-path: requirements-mkdocs.txt
 
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: |
+            msh-cui-wiki/package-lock.json
+            prototypes/ehr-shadcn-pwa/package-lock.json
+
       - name: Install MkDocs
         run: python -m pip install -r requirements-mkdocs.txt
 
-      - name: Build Material site
+      - name: Build Pages bundle
         env:
-          MKDOCS_SITE_URL: ${{ steps.pages.outputs.base_url }}
-        run: |
-          python scripts/sync_mkdocs_material.py
-          mkdocs build --strict --config-file mkdocs.yml --site-dir site
+          PAGES_SITE_ORIGIN: https://${{ github.repository_owner }}.github.io
+          REPO_BASE_PATH: /${{ github.event.repository.name }}/
+          MKDOCS_BASE_PATH: /${{ github.event.repository.name }}/mkdocs_wiki/
+          STARLIGHT_BASE_PATH: /${{ github.event.repository.name }}/starlight_wiki/
+          DEMO_BASE_PATH: /${{ github.event.repository.name }}/demo/
+        run: bash scripts/build_github_pages_bundle.sh site
 
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v5

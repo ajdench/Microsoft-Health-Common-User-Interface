@@ -1,5 +1,6 @@
 ---
 const { head } = Astro.locals.starlightRoute;
+const baseUrl = import.meta.env.BASE_URL || '/';
 ---
 
 {head.map(({ tag: Tag, attrs, content }) => <Tag {...attrs} set:html={content} />)}
@@ -29,18 +30,27 @@ const { head } = Astro.locals.starlightRoute;
   }
 </style>
 
-<script is:inline>
+<script is:inline define:vars={{ baseUrl }}>
   (() => {
+    const normalizePathname = (pathname) => {
+      if (baseUrl !== '/' && pathname.startsWith(baseUrl)) {
+        return pathname.slice(baseUrl.length - 1);
+      }
+
+      return pathname;
+    };
+
     const getNavBucket = (pathname) => {
-      if (pathname.startsWith('/derived/inventories/')) return 'Inventories';
+      const normalizedPathname = normalizePathname(pathname);
+      if (normalizedPathname.startsWith('/derived/inventories/')) return 'Inventories';
       if (
-        pathname.startsWith('/wiki/source-notes/') ||
-        pathname.startsWith('/raw/metadata/') ||
-        pathname.startsWith('/raw/manifests/')
+        normalizedPathname.startsWith('/wiki/source-notes/') ||
+        normalizedPathname.startsWith('/raw/metadata/') ||
+        normalizedPathname.startsWith('/raw/manifests/')
       ) {
         return 'Sources';
       }
-      if (pathname.startsWith('/wiki/overview/')) return 'Overview';
+      if (normalizedPathname.startsWith('/wiki/overview/')) return 'Overview';
       return 'Wiki';
     };
 

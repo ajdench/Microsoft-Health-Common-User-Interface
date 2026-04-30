@@ -3,9 +3,35 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import pagePlugin from '@pelagornis/page';
 
+function ensureWrappedSlashes(pathname) {
+	if (!pathname || pathname === '/') {
+		return '/';
+	}
+	return `/${pathname.replace(/^\/+|\/+$/g, '')}/`;
+}
+
+function stripTrailingSlash(pathname) {
+	if (pathname === '/') {
+		return '';
+	}
+	return pathname.replace(/\/+$/, '');
+}
+
+const astroSite = process.env.ASTRO_SITE_URL ?? 'http://localhost:4321';
+const astroBase = ensureWrappedSlashes(process.env.ASTRO_BASE_PATH ?? '/');
+
+function withBase(pathname) {
+	const normalizedPath = ensureWrappedSlashes(pathname);
+	if (astroBase === '/') {
+		return normalizedPath;
+	}
+	return `${stripTrailingSlash(astroBase)}${normalizedPath}`;
+}
+
 // https://astro.build/config
 export default defineConfig({
-	site: 'http://localhost:4321',
+	site: astroSite,
+	base: astroBase,
 	integrations: [
 		starlight({
 			title: 'MSH CUI Wiki',
@@ -20,10 +46,10 @@ export default defineConfig({
 			plugins: [
 				pagePlugin({
 					navigation: [
-						{ href: '/', label: 'Wiki' },
-						{ href: '/wiki/overview/health-cui-overview/', label: 'Overview' },
-						{ href: '/wiki/source-notes/toolkit-mirror-mscui/', label: 'Sources' },
-						{ href: '/derived/inventories/source-inventory/', label: 'Inventories' },
+						{ href: withBase('/'), label: 'Wiki' },
+						{ href: withBase('/wiki/overview/health-cui-overview/'), label: 'Overview' },
+						{ href: withBase('/wiki/source-notes/toolkit-mirror-mscui/'), label: 'Sources' },
+						{ href: withBase('/derived/inventories/source-inventory/'), label: 'Inventories' },
 					],
 				}),
 			],

@@ -859,3 +859,9 @@
 - Inputs used: failed GitHub Actions run `24956106070`, GitHub API endpoint `repos/ajdench/Microsoft-Health-Common-User-Interface/pages`, and `build_type=workflow`.
 - Outputs created: GitHub Pages site `https://ajdench.github.io/Microsoft-Health-Common-User-Interface/` configured for workflow deployment.
 - Unresolved issues: final deployment workflow run still pending at the time of this log entry.
+
+## 2026-04-30 06:54:00 BST — Rechecked and prepared combined Pages subpath deployment for push
+- Action performed: revalidated the combined Pages bundle, confirmed the preferred MkDocs wiki at `/mkdocs_wiki/`, the Starlight wiki at `/starlight_wiki/`, and the demo app at `/demo/`, moved the detached working state back onto local `main`, and prepared the deployment changes for push to `origin/main`.
+- Inputs used: updated `README.md`, `.github/workflows/deploy-mkdocs-material.yml`, `scripts/build_github_pages_bundle.sh`, `msh-cui-wiki` base-path configuration and mirror sync scripts, `prototypes/ehr-shadcn-pwa/vite.config.ts`, the local `main` branch, and `origin/main`.
+- Outputs created: refreshed local `site/` bundle verification, confirmed demo `vitest` pass, updated deployment configuration for the three published subpaths, and this log entry.
+- Unresolved issues: public GitHub Pages URLs will not reflect the new subpath deployment until the remote Actions workflow completes after push.

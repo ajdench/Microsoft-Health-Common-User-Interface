@@ -8,6 +8,7 @@ const docsRoot = path.join(appRoot, 'src', 'content', 'docs');
 const publicRoot = path.join(appRoot, 'public');
 const linkedAssetsDirName = '_llm-wiki-assets';
 const linkedAssetsRoot = path.join(publicRoot, linkedAssetsDirName);
+const astroBasePath = ensureWrappedSlashes(process.env.ASTRO_BASE_PATH ?? '/');
 
 const rootMarkdownFiles = ['index.md', 'README.md', 'AGENTS.md', 'log.md'];
 const markdownDirs = ['wiki', 'derived'];
@@ -18,6 +19,32 @@ const canonicalMessage =
 
 function normalizePath(value) {
   return value.replaceAll(path.sep, '/');
+}
+
+function ensureWrappedSlashes(value) {
+  if (!value || value === '/') {
+    return '/';
+  }
+
+  return `/${value.replace(/^\/+|\/+$/g, '')}/`;
+}
+
+function stripTrailingSlash(value) {
+  if (value === '/') {
+    return '';
+  }
+
+  return value.replace(/\/+$/, '');
+}
+
+function withBase(pathname) {
+  const normalizedPath = pathname.startsWith('/') ? pathname : `/${pathname}`;
+
+  if (astroBasePath === '/') {
+    return normalizedPath;
+  }
+
+  return `${stripTrailingSlash(astroBasePath)}${normalizedPath}`;
 }
 
 function humanizeFileName(value) {
@@ -156,15 +183,15 @@ function toRepoRelativePath(sourceRelativePath, targetPath) {
 
 function buildMirroredDocUrl(repoRelativePath) {
   if (repoRelativePath === 'index.md') {
-    return '/';
+    return withBase('/');
   }
 
   if (repoRelativePath.endsWith('.md')) {
-    return `/${repoRelativePath.slice(0, -3)}/`;
+    return withBase(`/${repoRelativePath.slice(0, -3)}/`);
   }
 
   if (repoRelativePath.endsWith('.json')) {
-    return `/${repoRelativePath.slice(0, -5)}/`;
+    return withBase(`/${repoRelativePath.slice(0, -5)}/`);
   }
 
   return null;
@@ -173,7 +200,7 @@ function buildMirroredDocUrl(repoRelativePath) {
 function buildLinkedAssetUrl(repoRelativePath, isDirectory = false) {
   const normalizedPath = normalizePath(repoRelativePath);
   const encodedPath = encodeURI(normalizedPath);
-  return `/${linkedAssetsDirName}/${encodedPath}${isDirectory ? '/' : ''}`;
+  return withBase(`/${linkedAssetsDirName}/${encodedPath}${isDirectory ? '/' : ''}`);
 }
 
 function buildDirectoryIndexHtml(repoRelativePath, entries) {
