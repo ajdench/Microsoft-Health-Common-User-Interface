@@ -1467,3 +1467,10 @@
 - Outputs created: Tasks status now shows the blue-family `Optional` pill while the task entry field is empty and switches to the green `Ready` pill when task text is entered; tests and documentation were updated to match the transition.
 - Verification: `npm test`, `npm run build`, and `npm run e2e` pass in `prototypes/ehr-shadcn-pwa`.
 - Unresolved issues: none for the Tasks status transition.
+
+## 2026-04-30 20:58:13 BST — Matched patient-switch action width
+- Action performed: aligned the patient chrome `Switch patient` action width with the sync rail `Simulate failure` action below it.
+- Inputs used: rendered button measurements from the V2 prototype, `PatientChrome`, `SyncStateBar`, and the V2 Playwright layout contract.
+- Outputs created: set the `Switch patient` shadcn button to the same rendered width as `Simulate failure` and added an e2e assertion comparing both button bounding boxes.
+- Verification: `npm test`, `npm run build`, and `npm run e2e` pass in `prototypes/ehr-shadcn-pwa`.
+- Unresolved issues: none for this chrome action width alignment.

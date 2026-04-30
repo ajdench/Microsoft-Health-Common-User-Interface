@@ -42,6 +42,22 @@ test('renders shadcn-native V2 consultation shell without horizontal overflow', 
   await expect(page.getByText('68 years')).toBeVisible()
   await expect(page.getByText('Female')).toBeVisible()
   await expect(page.getByRole('region', { name: 'Offline and sync state' })).toBeVisible()
+  const chromeActionMetrics = await page.evaluate(() => {
+    const buttons = Array.from(document.querySelectorAll('button'))
+    const switchPatient = buttons.find((button) => button.textContent?.trim() === 'Switch patient')
+    const simulateFailure = buttons.find((button) => button.textContent?.trim() === 'Simulate failure')
+
+    if (!switchPatient || !simulateFailure) {
+      return null
+    }
+
+    return {
+      switchPatientWidth: Math.round(switchPatient.getBoundingClientRect().width),
+      simulateFailureWidth: Math.round(simulateFailure.getBoundingClientRect().width),
+    }
+  })
+  expect(chromeActionMetrics).not.toBeNull()
+  expect(chromeActionMetrics?.switchPatientWidth).toBe(chromeActionMetrics?.simulateFailureWidth)
   const consultation = page.getByRole('region', { name: 'Consultation capture' })
   await expect(consultation).toBeVisible()
   const cardTitleMetrics = await page.locator('[data-slot="card-title"]').evaluateAll((titles) => {

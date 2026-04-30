@@ -26,7 +26,7 @@ export function PatientChrome({ patient }: PatientChromeProps) {
         </div>
         <div className="flex flex-wrap items-center gap-2">
           <ClinicalBadge tone="warn">Local draft active</ClinicalBadge>
-          <Button variant="secondary" size="sm" type="button">
+          <Button className="w-[7.27rem]" variant="secondary" size="sm" type="button">
             Switch patient
           </Button>
         </div>
