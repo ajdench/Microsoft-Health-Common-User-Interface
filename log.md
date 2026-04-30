@@ -871,3 +871,9 @@
 - Inputs used: failed Actions run `25149823749`, its `Build Pages bundle` log, Astro engine requirement `>=22.12.0`, and `.github/workflows/deploy-mkdocs-material.yml`.
 - Outputs created: updated Pages workflow to use Node `22.12.0` and this log entry.
 - Unresolved issues: a fresh remote workflow run is still required to confirm the corrected deployment completes successfully.
+
+## 2026-04-30 07:01:00 BST — Expanded GitHub-facing README badges to reflect code families
+- Action performed: expanded the top badge row in `README.md` so the GitHub front page advertises the actual implementation families, not only deployment and surface links.
+- Inputs used: current root `README.md`, `msh-cui-wiki/package.json`, and `prototypes/ehr-shadcn-pwa/package.json`.
+- Outputs created: new badges for MkDocs Material, Astro/Starlight, React 19, Vite 7, shadcn/ui, Radix UI, Tailwind CSS 4, and PWA.
+- Unresolved issues: none.

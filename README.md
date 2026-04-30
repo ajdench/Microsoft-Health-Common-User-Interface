@@ -4,6 +4,14 @@
 [![Preferred Wiki](https://img.shields.io/badge/wiki-Material%20for%20MkDocs-526CFE?logo=materialformkdocs&logoColor=white)](https://ajdench.github.io/Microsoft-Health-Common-User-Interface/mkdocs_wiki/)
 [![Alternate Wiki](https://img.shields.io/badge/wiki-Astro%20Starlight-DD6B20?logo=astro&logoColor=white)](https://ajdench.github.io/Microsoft-Health-Common-User-Interface/starlight_wiki/)
 [![Demo App](https://img.shields.io/badge/demo-React%20%2B%20Vite-646CFF?logo=vite&logoColor=white)](https://ajdench.github.io/Microsoft-Health-Common-User-Interface/demo/)
+[![MkDocs Material](https://img.shields.io/badge/docs-MkDocs%20Material-526CFE?logo=materialformkdocs&logoColor=white)](https://ajdench.github.io/Microsoft-Health-Common-User-Interface/mkdocs_wiki/)
+[![Astro Starlight](https://img.shields.io/badge/docs-Astro%20Starlight-DD6B20?logo=astro&logoColor=white)](https://ajdench.github.io/Microsoft-Health-Common-User-Interface/starlight_wiki/)
+[![React 19](https://img.shields.io/badge/app-React%2019-149ECA?logo=react&logoColor=white)](https://ajdench.github.io/Microsoft-Health-Common-User-Interface/demo/)
+[![Vite 7](https://img.shields.io/badge/build-Vite%207-646CFF?logo=vite&logoColor=white)](https://ajdench.github.io/Microsoft-Health-Common-User-Interface/demo/)
+[![shadcn/ui](https://img.shields.io/badge/ui-shadcn%2Fui-111111?logo=shadcnui&logoColor=white)](https://ajdench.github.io/Microsoft-Health-Common-User-Interface/demo/)
+[![Radix UI](https://img.shields.io/badge/ui-Radix-161618?logo=radixui&logoColor=white)](https://ajdench.github.io/Microsoft-Health-Common-User-Interface/demo/)
+[![Tailwind CSS 4](https://img.shields.io/badge/css-Tailwind%204-06B6D4?logo=tailwindcss&logoColor=white)](https://ajdench.github.io/Microsoft-Health-Common-User-Interface/demo/)
+[![PWA](https://img.shields.io/badge/app-PWA-5A0FC8?logo=pwa&logoColor=white)](https://ajdench.github.io/Microsoft-Health-Common-User-Interface/demo/)
 
 Durable research and implementation repo for the Microsoft Health Common User Interface (MSH CUI / Health CUI) programme.
 
