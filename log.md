@@ -1439,3 +1439,10 @@
 - Outputs created: added a 1 px negative horizontal translate to the 14 px search icon while preserving the 32 px search field, 9 px vertical icon inset, and 9 px suffix right inset.
 - Verification: rendered measurements show the SVG box left inset is 8 px, the approximate painted icon left inset is 9.17 px, and the `SNOMED CT` right inset is 9 px; `npm test` and `npm run build` pass in `prototypes/ehr-shadcn-pwa`.
 - Unresolved issues: none for the clinical-code search icon optical inset pass.
+
+## 2026-04-30 12:59:16 BST — Tightened clinical-code search icon-to-text gap
+- Action performed: moved the `Add clinical code` input text start left slightly so the visible gap between the search icon and placeholder text reads closer to the surrounding search-field rhythm.
+- Inputs used: rendered search-field measurements, user request to move the `Add clinical code` text left a little, and `SectionCodingField`.
+- Outputs created: changed the input's left padding from 6 px to 5 px while preserving the icon size, icon optical inset, field height, and suffix inset.
+- Verification: rendered measurements show the placeholder text start moved from 29 px to 28 px from the field border, and the estimated visible icon-stroke-to-text gap changed from about 8.75 px to about 7.75 px; `npm test` and `npm run build` pass in `prototypes/ehr-shadcn-pwa`.
+- Unresolved issues: none for this search-field optical spacing pass.

@@ -497,7 +497,7 @@ export function SectionCodingField({
                 <SearchIcon aria-hidden="true" className="size-3.5 -translate-x-px" />
               </InputGroupAddon>
               <InputGroupInput
-                className="leading-5"
+                className="leading-5 !pl-[5px]"
                 aria-label="Add clinical code"
                 aria-activedescendant={activeResultId}
                 aria-controls={popoverOpen ? resultListId : undefined}
